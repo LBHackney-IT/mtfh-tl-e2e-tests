@@ -1,0 +1,21 @@
+{
+  "name": "mtfh-tl-e2e-tests",
+  "version": "1.0.0",
+  "description": "End to end tests for MTFH T&L",
+  "main": "index.js",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:cypress:open": "cypress open",
+    "test:cypress:api": "cypress run -- --record --spec \"cypress/tests/api/api-spec.js\"",
+    "test:cypress:ui": "cypress run -- --record --spec \"cypress/tests/ui/ui-spec.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^7.1.0",
+    "cypress-cucumber-preprocessor": "^4.0.3"
+  }
+}
