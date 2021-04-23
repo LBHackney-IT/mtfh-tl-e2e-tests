@@ -1,8 +1,13 @@
 const baseUrl = require('../../environment-config').baseUrl
+const searchPageUrl = `${baseUrl}/search`
 
 class SearchPageObjects {
     visit() {
-        cy.visit(baseUrl)
+        cy.visit(searchPageUrl)
+    }
+
+    searchComponent() {
+        return cy.get("[data-testid='searchComponent']")
     }
 
     searchHeader() {
@@ -36,8 +41,8 @@ class SearchPageObjects {
     }
 
     iAmOnTheSearchPage() {
+        this.searchComponent().should('be.visible')
         this.searchHeader().contains('Search')
     }
 }
-
 export default SearchPageObjects

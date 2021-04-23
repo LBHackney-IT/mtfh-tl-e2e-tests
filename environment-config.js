@@ -1,6 +1,6 @@
 const environment = Cypress.env('ENVIRONMENT')
 
-let baseUrl = "http://localhost:8500"
+let baseUrl = "http://localhost:9000"
 console.log(environment)
 
 if (environment === 'dev') {
