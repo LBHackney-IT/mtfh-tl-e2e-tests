@@ -26,6 +26,14 @@ class SearchPageObjects {
         return cy.get("[class='govuk-button lbh-button']")
     }
 
+    searchResults() {
+        return cy.get("[class='mtfh-search__results']")
+    }
+
+    searchResultTitle() {
+        return cy.get("[class='mtfh-search-result__title']")
+    }
+
     filterPersonRadioButton() {
         return cy.get("[id='filterPerson']")
     }
