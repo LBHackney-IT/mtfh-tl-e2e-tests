@@ -4,60 +4,82 @@ Feature: T&L Search Function
 
   Background:
     Given I am on the search page
+    Then the page header is visible
+    And the page footer is visible
 
   @Positive
-  Scenario: Execute search
-    When I enter any of the following criteria with a minimum of 2 characters
-    | searchTerm |
-    | Ab         |
-    | Andrew     |
-    | Jeff       |
-    | Keith      |
-    | Trev       |
-    | Victor     |
-    Then the search results are displayed by best match
+  Scenario Outline: Execute search
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+
+    Examples:
+      | characters |
+      | Ab         |
+      | Andrew     |
+      | Jeff       |
+      | Keith      |
+      | Trev       |
+      | Victor     |
+    
 
   @Positive
-  Scenario: Wildcard and partial searches 
-    When I enter any of the following criteria with a minimum of 2 characters
-    | searchTerm |
-    | *a         |
-    | a*         |
-    | *a*        |
-    | ch         |
-    | *ev        |
-    | *ic*       |
-    | te*        |
-    Then the search results are displayed by best match
+  Scenario Outline: Wildcard and partial searches 
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
 
-  # need a separate binding for this, or we can use the same binding but with a mechanism to substring both searches
+    Examples:
+      | characters |
+      | *a         |
+      | a*         |
+      | *a*        |
+      | ch         |
+      | *ev        |
+      | *ic*       |
+      | te*        |
+      
   # @Positive
-  # Scenario: Multiple search criteria
-  #   When I enter any of the following criteria with a minimum of 2 characters
-  #   | searchTerm     |
-  #   | ad e           |
-  #   | ch a           |
-  #   | s te           |
-  #   | A* Rickman     |
-  #   | *e* *a         |
-  #   | a Ellie        |
-  #   Then the search results are displayed by best match
+  # Scenario Outline: Multiple search criteria
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<characters>"
 
-  @Negative
-  Scenario: Insufficient characters
-    When I do not enter a minimum of 2 characters into the search
-    | searchTerm |
-    | a          |
-    | b          |
-    | c          |
+  #   Examples:
+  #     | characters     |
+  #     | ad e           |
+  #     | ch a           |
+  #     | s te           |
+  #     | A* Rickman     |
+  #     | *e* *a         |
+  #     | a Ellie        |
+
+  # @Negative
+  # Scenario Outline: Insufficient characters
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then no results are returned
+  #   And a validation error message is displayed  
+
+  #   Examples:
+  #     | characters |
+  #     | b          |
+  #     | c          |
+  #     | d          |
+  #     | e          |
+  #     | !          |
+  #     |            |
+
+  @Positive
+  Scenario Outline: Results are not returned
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
     Then no results are returned
-    And a validation error message is displayed  
 
-  @Positive
-  Scenario: Results are displayed
-    When there are no results found
-  
-
-  @Positive
-  Scenario: Results are not returned
-    When there are no results found
+    Examples:
+      | characters |
+      | 123        |
+      | AZKQ       |
+      | dp0        |
+      | elqsn      |
+      | !!!!!!!    |

@@ -8,28 +8,32 @@ Given('I am on the search page', () => {
     searchPage.iAmOnTheSearchPage();
 })
 
-When('I enter any of the following criteria with a minimum of 2 characters', (dataTable) => {
-    dataTable.hashes().forEach((element) => {
-        let trimAsterisk = element.searchTerm.replace(/\*/g, '')
-        searchPage.searchContainer().type(element.searchTerm)
-        searchPage.searchButton().click()
-        searchPage.searchConfirmation().contains(element.searchTerm)
-        searchPage.searchResultTitle().contains(trimAsterisk)
-        searchPage.searchAgainButton().click()
-    })
+When('I enter any of the following criteria {string}', (searchTerm) => {
+    cy.log(searchTerm)
+    searchPage.searchContainer().type(searchTerm)       
 })
 
-Then('the search results are displayed by best match', () => {
-    searchPage.searchResultTitle().should('be.visible')
+And('I click on the search button', () => {
+    searchPage.searchButton().click()
 })
 
-// Waiting on fix for unhandled exception when invalid search is sent
-When('I do not enter a minimum of 2 characters into the search', (dataTable) => {
-    dataTable.hashes().forEach((element) => {
-        searchPage.searchContainer().type(element.searchTerm)
-        searchPage.searchButton().click()
-        searchPage.searchConfirmation().should('not.exist')
-        searchPage.searchContainer().clear()
-    })
+Then('the search results are displayed by best match {string}', (searchTerm) => {
+    searchPage.searchResultPropertiesAreDisplayed()
+    searchPage.searchConfirmation().contains(searchTerm)
+    searchPage.searchResults().contains(searchTerm.replace(/\*/g, '')) 
 })
+
+Then('no results are returned', () => {
+    searchPage.searchConfirmation().should('not.exist')
+})
+
+// // Waiting on fix for unhandled exception when invalid search is sent
+// When('I do not enter a minimum of 2 characters into the search', (dataTable) => {
+//     dataTable.hashes().forEach((element) => {
+//         searchPage.searchContainer().type(element.searchTerm)
+//         searchPage.searchButton().click()
+//         searchPage.searchConfirmation().should('not.exist')
+//         searchPage.searchContainer().clear()
+//     })
+// })
 
