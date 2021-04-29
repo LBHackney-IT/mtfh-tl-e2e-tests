@@ -1,11 +1,11 @@
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 import SearchPageObjects from '../../pageObjects/searchPage';
 
-const searchPage = new SearchPageObjects
+const searchPage = new SearchPageObjects()
 
 Given('I am on the search page', () => {
-    searchPage.visit();
-    searchPage.iAmOnTheSearchPage();
+    searchPage.visit()
+    searchPage.iAmOnTheSearchPage()
 })
 
 When('I enter any of the following criteria {string}', (searchTerm) => {

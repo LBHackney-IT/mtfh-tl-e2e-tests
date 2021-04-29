@@ -38,6 +38,20 @@ Feature: T&L Search Function
       | *ev        |
       | *ic*       |
       | te*        |
+
+    @Positive
+  Scenario Outline: Results are not returned
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then no results are returned
+
+    Examples:
+      | characters |
+      | 123        |
+      | AZKQ       |
+      | dp0        |
+      | elqsn      |
+      | !!!!!!!    |
       
   # @Positive
   # Scenario Outline: Multiple search criteria
@@ -70,16 +84,3 @@ Feature: T&L Search Function
   #     | !          |
   #     |            |
 
-  @Positive
-  Scenario Outline: Results are not returned
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then no results are returned
-
-    Examples:
-      | characters |
-      | 123        |
-      | AZKQ       |
-      | dp0        |
-      | elqsn      |
-      | !!!!!!!    |
