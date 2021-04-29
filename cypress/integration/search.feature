@@ -22,7 +22,6 @@ Feature: T&L Search Function
       | Trev       |
       | Victor     |
     
-
   @Positive
   Scenario Outline: Wildcard and partial searches 
     When I enter any of the following criteria "<characters>"
@@ -39,8 +38,8 @@ Feature: T&L Search Function
       | *ic*       |
       | te*        |
 
-    @Positive
-  Scenario Outline: Results are not returned
+  @Positive
+    Scenario Outline: Results are not returned
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then no results are returned
