@@ -1,20 +1,85 @@
 @SearchPage
 Feature: T&L Search Function
-    I want to search for a keyword
+    I want to search for a person
 
   Background:
     Given I am on the search page
+    Then the page header is visible
+    And the page footer is visible
 
-  Scenario: Search for a keyword
-    When I enter a search term
+  @Positive
+  Scenario Outline: Execute search
+    When I enter any of the following criteria "<characters>"
     And I click on the search button
-    Then it performs a search
+    Then the search results are displayed by best match "<characters>"
 
-  Scenario: Search for a list of keywords
-    When When I enter a list of search terms
-    | searchTerm |
-    | abc        |
-    | 123        |
+    Examples:
+      | characters |
+      | Ab         |
+      | Andrew     |
+      | Jeff       |
+      | Keith      |
+      | Trev       |
+      | Victor     |
+    
+  @Positive
+  Scenario Outline: Wildcard and partial searches 
+    When I enter any of the following criteria "<characters>"
     And I click on the search button
+    Then the search results are displayed by best match "<characters>"
 
+    Examples:
+      | characters |
+      | *a         |
+      | a*         |
+      | *a*        |
+      | ch         |
+      | *ev        |
+      | *ic*       |
+      | te*        |
+
+  @Positive
+    Scenario Outline: Results are not returned
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then no results are returned
+
+    Examples:
+      | characters |
+      | 123        |
+      | AZKQ       |
+      | dp0        |
+      | elqsn      |
+      | !!!!!!!    |
+      
+  # @Positive
+  # Scenario Outline: Multiple search criteria
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<characters>"
+
+  #   Examples:
+  #     | characters     |
+  #     | ad e           |
+  #     | ch a           |
+  #     | s te           |
+  #     | A* Rickman     |
+  #     | *e* *a         |
+  #     | a Ellie        |
+
+  # @Negative
+  # Scenario Outline: Insufficient characters
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then no results are returned
+  #   And a validation error message is displayed  
+
+  #   Examples:
+  #     | characters |
+  #     | b          |
+  #     | c          |
+  #     | d          |
+  #     | e          |
+  #     | !          |
+  #     |            |
 

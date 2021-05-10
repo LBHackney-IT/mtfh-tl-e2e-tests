@@ -26,6 +26,34 @@ class SearchPageObjects {
         return cy.get("[class='govuk-button lbh-button']")
     }
 
+    searchResults() {
+        return cy.get("[class='mtfh-search__results']")
+    }
+
+    searchResultContainer() {
+        return cy.get("[class='mtfh-search-result']")
+    }
+
+    searchResultTitle() {
+        return cy.get("[class='mtfh-search-result__title']")
+    }
+
+    searchResultSubtitle() {
+        return cy.get("[class='mtfh-search-result__subtitle']")
+    }
+
+    searchResultDateOfBirth() {
+        return cy.get("[class='mtfh-search-result__row']").eq(0)
+    }
+
+    searchResultTenure() {
+        return cy.get("[class='mtfh-search-result__row']").eq(1)
+    }
+
+    searchResultMoreDetails() {
+        return cy.get("[class='mtfh-search-result__row']").eq(2)
+    }
+
     filterPersonRadioButton() {
         return cy.get("[id='filterPerson']")
     }
@@ -43,6 +71,17 @@ class SearchPageObjects {
     iAmOnTheSearchPage() {
         this.searchComponent().should('be.visible')
         this.searchHeader().contains('Search')
+    }
+
+    searchResultPropertiesAreDisplayed() {
+        this.searchResultTitle().should('be.visible')
+        this.searchResultSubtitle().should('be.visible')
+        this.searchResultDateOfBirth().should('be.visible')
+        this.searchResultDateOfBirth().contains('DOB:')
+        this.searchResultTenure().should('be.visible')
+        this.searchResultTenure().contains('Tenure:')
+        this.searchResultMoreDetails().should('be.visible')
+        this.searchResultMoreDetails().contains('More details')
     }
 }
 export default SearchPageObjects
