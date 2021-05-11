@@ -1,9 +1,8 @@
-const baseUrl = require('../../environment-config').baseUrl
-const searchPageUrl = `${baseUrl}/search`
+const searchUrl = require('../../environment-config').searchUrl
 
 class SearchPageObjects {
     visit() {
-        cy.visit(searchPageUrl)
+        cy.visit(searchUrl)
     }
 
     searchComponent() {

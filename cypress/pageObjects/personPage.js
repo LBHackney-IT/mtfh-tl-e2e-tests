@@ -1,19 +1,17 @@
-const baseUrl = require('../../environment-config').baseUrl
-// will need to update once we have a mechanism for getting a person or some test data
-const personPageUrl = `${baseUrl}`
+const personUrl = require('../../environment-config').personUrl
 
 class PersonPageObjects {
     visit() {
-        // change to more appropriate path
-        cy.visit('http://localhost:8080')
+        cy.visit(personUrl)
     }
 
+    //
     headerContainerPhoto() {
-        // Needs a better selector
+        return cy.get("[alt='Profile photo']")
     }
 
     headerContainerName() {
-        // Needs a better selector
+        return cy.get("[data-testid='root']")
     }
 
     headerContainerDateOfBirth() {
@@ -36,12 +34,16 @@ class PersonPageObjects {
         return cy.get("[class='govuk-accordion__section-button']")
     }
 
+    mainContent() {
+        return cy.get("[class='main']")
+    }
+
     dateOfBirthHeader() {
-        return cy.get("[data-testid='dateOfBirth']")
+        return cy.get("[data-testid='Date Of Birth']")
     }
 
     dateOfBirthDefinition() {
-        return cy.get("[data-testid='dateOfBirthDefinition']")
+        return cy.get("[data-testid='Date Of BirthDefinition']")
     }
 
     phoneNumberHeader() {
@@ -61,11 +63,11 @@ class PersonPageObjects {
     }
 
     typeHeader() {
-        return cy.get("[data-testid='type']")
+        return cy.get("[data-testid='Type']")
     }
 
     typeField() {
-        return cy.get("[data-testid='typeDefinition']")
+        return cy.get("[data-testid='TypeDefinition']")
     }
 
     genderHeader() {
@@ -85,99 +87,91 @@ class PersonPageObjects {
     }
 
     placeOfBirthHeader() {
-        return cy.get("[data-testid='placeOfBirth']")
+        return cy.get("[data-testid='place Of Birth']")
     }
 
     placeOfBirthDefinition() {
-        return cy.get("[data-testid='placeOfBirthDefinition']")
+        return cy.get("[data-testid='place Of BirthDefinition']")
     }
 
     nationalInsuranceHeader() {
-        return cy.get("[data-testid='nationalInsurance']")
+        return cy.get("[data-testid='NI']")
     }
 
     nationalInsuranceDefinition() {
-        return cy.get("[data-testid='nationalInsuranceDefinition']")
+        return cy.get("[data-testid='NIDefinition']")
     }
 
     languagesHeader() {
-        return cy.get("[data-testid='language']")
+        return cy.get("[data-testid='Languages']")
     }
 
     languagesHeaderDefinition() {
-        return cy.get("[data-testid='languageDefinition']")
+        return cy.get("[data-testid='LanguagesDefinition']")
     }
 
     signLanguageHeader() {
-        return cy.get("[data-testid='signLanguage']")
+        return cy.get("[data-testid='Sign language']")
     }
 
     signLanguageDefinition() {
-        return cy.get("[data-testid='signLanguageDefinition']")
+        return cy.get("[data-testid='Sign languageDefinition']")
     }
 
     interpreterHeader() {
-        return cy.get("[data-testid='interpreter']")
+        return cy.get("[data-testid='Interpreter']")
     }
 
     interpreterDefinition() {
-        return cy.get("[data-testid='interpreterDefinition']")
+        return cy.get("[data-testid='InterpreterDefinition']")
     }
 
     nextOfKinHeader() {
-        return cy.get("[data-testid='nextOfKin']")
+        return cy.get("[data-testid='Next of kin']")
     }
 
     nextOfKinDefinition() {
-        return cy.get("[data-testid='nextOfKinDefinition']")
+        return cy.get("[data-testid='Next of kinDefinition']")
     }
 
     motherHeader() {
-        return cy.get("[data-testid='mother']")
+        return cy.get("[data-testid='Mother']")
     }
 
     motherDefinition() {
-        return cy.get("[data-testid='motherDefinition']")
+        return cy.get("[data-testid='MotherDefinition']")
     }
 
     fatherHeader() {
-        return cy.get("[data-testid='father']")
+        return cy.get("[data-testid='Father']")
     }
 
     fatherDefinition() {
-        return cy.get("[data-testid='fatherDefinition']")
+        return cy.get("[data-testid='FatherDefinition']")
     }
 
     caresForHeader() {
-        return cy.get("[data-testid='caresFor']")
+        return cy.get("[data-testid='Cares for']")
     }
 
     caresForDefinition() {
-        return cy.get("[data-testid='caresForDefinition']")
+        return cy.get("[data-testid='Cares forDefinition']")
     }
 
     correspondenceAddressHeader() {
-        return cy.get("[data-testid='correspondenceAddress']")
+        return cy.get("[data-testid='correspondence Address']")
     }
 
     correspondenceAddressDefinition() {
-        return cy.get("[data-testid='correspondenceAddressDefinition']")
+        return cy.get("[data-testid='correspondence AddressDefinition']")
     }
 
-    previousAddressHeader() {
-        return cy.get("[data-testid='previousAddress']")
+    correspondenceAddressUprnHeader() {
+        return cy.get("[data-testid='correspondence Address  U P R N']")
     }
 
-    previousAddressDefinition() {
-        return cy.get("[data-testid='previousAddressDefinition']")
-    }
-
-    previousUrpnHeader() {
-        return cy.get("[data-testid='previousUrpn']")
-    }
-
-    previousUrpnDefinition() {
-        return cy.get("[data-testid='previousUrpnDefinition']")
+    correspondenceAddressUprnDefinition() {
+        return cy.get("[data-testid='correspondence Address  U P R NDefinition']")
     }
 
     headerPersonalDetailsAreDisplayed() {
@@ -221,10 +215,8 @@ class PersonPageObjects {
         this.caresForDefinition().should('be.visible')
         this.correspondenceAddressHeader().should('be.visible')
         this.correspondenceAddressDefinition().should('be.visible')
-        this.previousAddressHeader().should('be.visible')
-        this.previousAddressDefinition().should('be.visible')
-        this.previousUrpnHeader().should('be.visible')
-        this.previousUrpnDefinition().should('be.visible')
+        this.correspondenceAddressUprnHeader().should('be.visible')
+        this.correspondenceAddressUprnDefinition().should('be.visible')
     }
 }
 export default PersonPageObjects

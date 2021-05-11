@@ -5,7 +5,7 @@ const searchPage = new SearchPageObjects()
 
 Given('I am on the search page', () => {
     searchPage.visit()
-    searchPage.iAmOnTheSearchPage()
+    // searchPage.iAmOnTheSearchPage()
 })
 
 When('I enter any of the following criteria {string}', (searchTerm) => {

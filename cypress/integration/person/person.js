@@ -11,8 +11,12 @@ Then('the header Person details are displayed', () => {
     personPage.headerPersonalDetailsAreDisplayed()
 })
 
+When('I am using a mobile viewport {string}', (device) => {
+    cy.viewport(`${device}`)
+})
+
 When('I click on the expand all sections button', () => {
-    personPage.headerContainerExpandPersonalDetails()
+    personPage.expandPersonalDetails().click()
 })
 
 Then('the body Person details are displayed', () => {
