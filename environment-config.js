@@ -1,14 +1,18 @@
 const environment = Cypress.env('ENVIRONMENT')
 
-let baseUrl = "http://localhost:9000"
-console.log(environment)
+let rootUrl = "http://local.hackney.gov.uk"
+let searchUrl = "search"
+let personUrl = "person"
+let rootComponentPort = "9000"
+
+let baseUrl = `${rootUrl}:${rootComponentPort}`
 
 if (environment === 'dev') {
-    baseUrl = "https://devenvironment.com"
+    baseUrl = "https://manage-my-home-development.hackney.gov.uk"
 }
 
 if (environment === 'staging') {
-    baseUrl = "https://stagingenvironment.com"
+    baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
 }
 
 if (environment === 'production') {
@@ -16,5 +20,7 @@ if (environment === 'production') {
 }
 
 module.exports = {
+    searchUrl,
+    personUrl,
     baseUrl
 }

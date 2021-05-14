@@ -1,11 +1,22 @@
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 import SearchPageObjects from '../../pageObjects/searchPage';
+import HomePageObjects from '../../pageObjects/homePage';
 
 const searchPage = new SearchPageObjects()
+const homePage = new HomePageObjects()
 
 Given('I am on the search page', () => {
     searchPage.visit()
-    searchPage.iAmOnTheSearchPage()
+    // searchPage.iAmOnTheSearchPage()
+})
+
+Given('I want to log in to the search page', () => {
+    searchPage.visit()
+    homePage.signInButton().click()
+    homePage.emailField().type(Cypress.env('USERNAME'), { log: false })
+    homePage.nextButton().click()
+    homePage.passwordField().type(Cypress.env('PASSWORD'), { log: false })
+    homePage.nextButton().click()
 })
 
 When('I enter any of the following criteria {string}', (searchTerm) => {
