@@ -1,17 +1,32 @@
-const personUrl = require('../../environment-config').personUrl
+const envConfig = require('../../environment-config')
 
 class PersonPageObjects {
-    visit() {
-        cy.visit(personUrl)
+    visit(personId) {
+        cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${personId}`)
     }
 
-    //
+    feedbackMessageContainer() {
+        return cy.get("[id='single-spa-application:@mtfh/personal-details']")
+    }
+
+    errorMessageContainer() {
+        return cy.get("[id='error-summary-title']")
+    }
+
+    tryAgainButton() {
+        return cy.contains("Try again")
+    }
+
     headerContainerPhoto() {
         return cy.get("[alt='Profile photo']")
     }
 
     headerContainerName() {
         return cy.get("[data-testid='root']")
+    }
+
+    headerCntainerPhoto() {
+        return cy.get("[class='personal-details__photo']")
     }
 
     headerContainerDateOfBirth() {
@@ -175,7 +190,7 @@ class PersonPageObjects {
     }
 
     headerPersonalDetailsAreDisplayed() {
-        // this.headerContainerPhoto().is('displayed')
+        this.headerContainerPhoto().is('displayed')
         // this.headerContainerName().is('displayed')
         this.headerContainerDateOfBirth().should('be.visible')
         this.headerContainerMobileNumber().should('be.visible')

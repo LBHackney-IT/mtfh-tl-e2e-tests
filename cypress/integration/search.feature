@@ -2,13 +2,9 @@
 Feature: T&L Search Function
     I want to search for a person
 
-  Background:
-    Given I am on the search page
-    Then the page header is visible
-    And the page footer is visible
-
   @Positive
   Scenario Outline: Execute search
+    Given I want to log in to the search page
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
@@ -52,34 +48,33 @@ Feature: T&L Search Function
       | elqsn      |
       | !!!!!!!    |
       
-  # @Positive
-  # Scenario Outline: Multiple search criteria
-  #   When I enter any of the following criteria "<characters>"
-  #   And I click on the search button
-  #   Then the search results are displayed by best match "<characters>"
+  @Positive
+  Scenario Outline: Multiple search criteria
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
 
-  #   Examples:
-  #     | characters     |
-  #     | ad e           |
-  #     | ch a           |
-  #     | s te           |
-  #     | A* Rickman     |
-  #     | *e* *a         |
-  #     | a Ellie        |
+    Examples:
+      | characters     |
+      | ad e           |
+      | ch a           |
+      | s te           |
+      | A* Rickman     |
+      | *e* *a         |
+      | a Ellie        |
 
-  # @Negative
-  # Scenario Outline: Insufficient characters
-  #   When I enter any of the following criteria "<characters>"
-  #   And I click on the search button
-  #   Then no results are returned
-  #   And a validation error message is displayed  
+  @Negative
+  Scenario Outline: Insufficient characters
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then no results are returned
+    And a validation error message is displayed  
 
-  #   Examples:
-  #     | characters |
-  #     | b          |
-  #     | c          |
-  #     | d          |
-  #     | e          |
-  #     | !          |
-  #     |            |
+    Examples:
+      | characters |
+      | b          |
+      | c          |
+      | d          |
+      | e          |
+      | !          |
 

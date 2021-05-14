@@ -3,8 +3,17 @@ import PersonPageObjects from '../../pageObjects/personPage'
 
 const personPage = new PersonPageObjects()
 
-Given('I have loaded a Person record', () => {
-    personPage.visit()
+Given('I have loaded a Person record', (record) => {
+    personPage.visit(record)
+})
+
+Given('I have loaded an invalid person record {string}', (record) => {
+    personPage.visit(record)
+})
+
+Then('The person you\'ve requested does not exist error message appears', () => {
+    personPage.feedbackMessageContainer().should('be.visible')
+    personPage.feedbackMessageContainer().contains('The person you\'ve requested does not exist')
 })
 
 Then('the header Person details are displayed', () => {

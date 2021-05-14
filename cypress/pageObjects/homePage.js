@@ -5,13 +5,12 @@ class HomePageObjects {
         cy.visit(baseUrl)
     }
 
-    mainContent() {
-        return cy.get("[id='main-content']")
+    signInButton() {
+        return cy.contains("Sign in using Hackney.gov.uk")
     }
 
     iAmOnTheHomePage() {
         this.mainContent().should('be.visible')
-        this.mainContent().contains('Welcome to the default page')
     }
 }
 export default HomePageObjects
