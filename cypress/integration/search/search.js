@@ -12,11 +12,11 @@ Given('I am on the search page', () => {
 
 Given('I want to log in to the search page', () => {
     searchPage.visit()
-    homePage.signInButton().click()
-    homePage.emailField().type(Cypress.env('USERNAME'), { log: false })
-    homePage.nextButton().click()
-    homePage.passwordField().type(Cypress.env('PASSWORD'), { log: false })
-    homePage.nextButton().click()
+    // homePage.signInButton().click()
+    // homePage.emailField().type(Cypress.env('USERNAME'), { log: false })
+    // homePage.nextButton().click()
+    // homePage.passwordField().type(Cypress.env('PASSWORD'), { log: false })
+    // homePage.nextButton().click()
 })
 
 When('I enter any of the following criteria {string}', (searchTerm) => {

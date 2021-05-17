@@ -1,10 +1,10 @@
 class FooterObjects {
     footerMain() {
-        return cy.get("[class='mtfh-footer']")
+        return cy.get('.mtfh-footer')
     }
 
     footerMenu() {
-        cy.get("[class='mtfh-footer__menu']")
+        cy.get('.mtfh-footer__menu')
     }
 
     footerIsDisplayed() {

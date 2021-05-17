@@ -29,11 +29,11 @@ class PersonPageObjects {
     }
 
     headerContainerExpandPersonalDetails() {
-        return cy.get("[class='govuk-accordion__open-all']")
+        return cy.get('.govuk-accordion__open-all')
     }
 
     expandPersonalDetails() {
-        return cy.get("[class='govuk-accordion__section-button']")
+        return cy.get('.govuk-accordion__section-button')
     }
 
     dateOfBirthHeader() {

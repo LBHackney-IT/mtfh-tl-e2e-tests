@@ -29,7 +29,7 @@ Feature: T&L Person Comment
 
         Examples:
             | person                               | characters |
-            | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 1          |
+            | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 2          |
             | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 50         |
             | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 99         |
             | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 350        |
@@ -43,16 +43,14 @@ Feature: T&L Person Comment
 
         Examples:
             | person                               | characters |
-            | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 501        |
-            | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 510        |
-            | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 530        |
+            | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 502        |
+            | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 508        |
 
     @Negative  
     Scenario Outline: I go to create a comment for a person page
         Given I am on the create comment for a person page "<person>"
-        When I enter a valid comment
         Then I click the save comment button
-        Then the comment is submitted
+        Then a validation error occurs
 
         Examples:
             | person                               |

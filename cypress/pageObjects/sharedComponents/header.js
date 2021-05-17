@@ -1,14 +1,14 @@
 class HeaderObjects {
     headerMain() {
-        return cy.get("[class='lbh-header__main']")
+        return cy.get('.lbh-header__main')
     }
 
     headerServiceName() {
-        return cy.get("[class='lbh-header__service-name']")
+        return cy.get('.lbh-header__service-name')
     }
 
     headerLinks() {
-        cy.get("[class='lbh-header__links']")
+        cy.get('.lbh-header__links')
     }
 
     headerIsDisplayed() {

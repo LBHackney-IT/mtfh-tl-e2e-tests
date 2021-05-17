@@ -3,6 +3,7 @@ const environment = Cypress.env('ENVIRONMENT')
 let rootUrl = "http://local.hackney.gov.uk"
 let searchUrl = "search"
 let personUrl = "person"
+let personCommentsUrl = `comments/${personUrl}`
 let rootComponentPort = "9000"
 
 let baseUrl = `${rootUrl}:${rootComponentPort}`
@@ -22,5 +23,6 @@ if (environment === 'production') {
 module.exports = {
     searchUrl,
     personUrl,
+    personCommentsUrl,
     baseUrl
 }

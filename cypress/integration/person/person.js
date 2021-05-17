@@ -1,4 +1,4 @@
-import { Given,Then, When } from "cypress-cucumber-preprocessor/steps";
+import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import PersonPageObjects from '../../pageObjects/personPage'
 
 const personPage = new PersonPageObjects()

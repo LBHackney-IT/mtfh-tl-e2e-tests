@@ -10,7 +10,7 @@ class SearchPageObjects {
     }
 
     searchHeader() {
-        return cy.get("[class='mtfh-search__title']")
+        return cy.get('.mtfh-search__title')
     }
 
     searchContainer() {
@@ -22,35 +22,35 @@ class SearchPageObjects {
     }
 
     searchAgainButton() {
-        return cy.get("[class='govuk-button lbh-button']")
+        return cy.get('.govuk-button lbh-button')
     }
 
     searchResults() {
-        return cy.get("[class='mtfh-search__results']")
+        return cy.get('.mtfh-search__results')
     }
 
     searchResultContainer() {
-        return cy.get("[class='mtfh-search-result']")
+        return cy.get('.mtfh-search-result')
     }
 
     searchResultTitle() {
-        return cy.get("[class='mtfh-search-result__title']")
+        return cy.get('.mtfh-search-result__title')
     }
 
     searchResultSubtitle() {
-        return cy.get("[class='mtfh-search-result__subtitle']")
+        return cy.get('.mtfh-search-result__subtitle')
     }
 
     searchResultDateOfBirth() {
-        return cy.get("[class='mtfh-search-result__row']").eq(0)
+        return cy.get('.mtfh-search-result__row')
     }
 
     searchResultTenure() {
-        return cy.get("[class='mtfh-search-result__row']").eq(1)
+        return cy.get('.mtfh-search-result__row')
     }
 
     searchResultMoreDetails() {
-        return cy.get("[class='mtfh-search-result__row']").eq(2)
+        return cy.get('.mtfh-search-result__row')
     }
 
     filterPersonRadioButton() {
@@ -58,7 +58,7 @@ class SearchPageObjects {
     }
 
     searchConfirmation() {
-        return cy.get("[class='mtfh-search__subtitle__highlight']")
+        return cy.get('.mtfh-search__subtitle__highlight')
     }
 
     enterKeywordAndClickSearch(searchTerm) {
