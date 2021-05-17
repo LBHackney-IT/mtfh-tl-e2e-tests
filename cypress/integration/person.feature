@@ -3,25 +3,29 @@ Feature: T&L Person Page
   I want to view a person
 
   @Positive
-  Scenario: View person details web page view
-    Given I have loaded a Person record
+  Scenario Outline: View person details web page view
+    Given I have loaded a Person record "<record>"
     Then the body Person details are displayed
 
+    Examples:
+        | record                               |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+
   Scenario Outline: View person details mobile view
-    Given I have loaded a Person record
+    Given I have loaded a Person record "<record>"
     When I am using a mobile viewport "<device>"
     Then the header Person details are displayed
     When I click on the expand all sections button
     Then the body Person details are displayed
 
     Examples:
-        | device    |
-        | iphone-3  |
-        | iphone-4  |
-        | iphone-5  |
-        | iphone-5  |
-        | iphone-6  |
-        | iphone-6+ |
+        | device    | record                               |
+        | iphone-3  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+        | iphone-4  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+        | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+        | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+        | iphone-6  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+        | iphone-6+ | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   Scenario Outline: Look for record that does not exist
     Given I have loaded an invalid person record "<record>"

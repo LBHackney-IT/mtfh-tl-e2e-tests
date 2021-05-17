@@ -5,6 +5,10 @@ class HomePageObjects {
         cy.visit(baseUrl)
     }
 
+    mainContent() {
+        return cy.get('.mtfh-container')
+    }
+
     signInButton() {
         return cy.contains("Sign in using Hackney.gov.uk")
     }

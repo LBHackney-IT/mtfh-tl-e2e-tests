@@ -9,48 +9,48 @@ Given('I am on the Home page', () => {
     homePage.iAmOnTheHomePage()
 })
 
-import 'cypress-localstorage-commands'
+// import 'cypress-localstorage-commands'
 
-before(() => {
-  describe('Login through Google', () => {
-    const username = Cypress.env('USERNAME')
-    const password = Cypress.env('PASSWORD')
-    const loginUrl = envConfig.baseUrl
-    const localStorageItem = Cypress.env('lsdItemName')
-    const socialLoginOptions = {
-      username: username,
-      password: password,
-      loginUrl: loginUrl,
-      headless: false,
-      logs: true,
-      loginSelector: '[class="govuk-button lbh-button"]',
-      postLoginSelector: '[class="lbh-link lbh-signout"]'
-    }
+// before(() => {
+//   describe('Login through Google', () => {
+//     const username = Cypress.env('USERNAME')
+//     const password = Cypress.env('PASSWORD')
+//     const loginUrl = envConfig.baseUrl
+//     const localStorageItem = Cypress.env('lsdItemName')
+//     const socialLoginOptions = {
+//       username: username,
+//       password: password,
+//       loginUrl: loginUrl,
+//       headless: false,
+//       logs: true,
+//       loginSelector: '[class="govuk-button lbh-button"]',
+//       postLoginSelector: '[class="lbh-link lbh-signout"]'
+//     }
 
-    cy.clearLocalStorageSnapshot()
+//     cy.clearLocalStorageSnapshot()
 
-    return cy.task('GoogleSocialLogin', socialLoginOptions).then(({lsd}) => {
-      const hasLsd = Object.keys(lsd)
-        .filter(item => item === localStorageItem)
-        .pop()
+//     return cy.task('GoogleSocialLogin', socialLoginOptions).then(({lsd}) => {
+//       const hasLsd = Object.keys(lsd)
+//         .filter(item => item === localStorageItem)
+//         .pop()
 
-      if (hasLsd) {
-        cy.window().then(() => {
-          Object.keys(lsd).forEach(key => {
-            cy.setLocalStorage(key, lsd[key])
-          })
-        })
+//       if (hasLsd) {
+//         cy.window().then(() => {
+//           Object.keys(lsd).forEach(key => {
+//             cy.setLocalStorage(key, lsd[key])
+//           })
+//         })
 
-        cy.saveLocalStorage()
-      }
-    })
-  })
-})
+//         cy.saveLocalStorage()
+//       }
+//     })
+//   })
+// })
 
-beforeEach(() => {
-  cy.restoreLocalStorage()
-})
+// beforeEach(() => {
+//   cy.restoreLocalStorage()
+// })
 
-afterEach(() => {
-  cy.saveLocalStorage()
-})
+// afterEach(() => {
+//   cy.saveLocalStorage()
+// })

@@ -1,9 +1,9 @@
-import { Given,Then, When } from "cypress-cucumber-preprocessor/steps";
+import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import PersonPageObjects from '../../pageObjects/personPage'
 
 const personPage = new PersonPageObjects()
 
-Given('I have loaded a Person record', (record) => {
+Given('I have loaded a Person record {string}', (record) => {
     personPage.visit(record)
 })
 
