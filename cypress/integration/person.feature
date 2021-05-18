@@ -35,3 +35,18 @@ Feature: T&L Person Page
         | record |
         | kdfbv  |
         | dfkkkl |
+
+  Scenario Outline: Add a comment for a person
+    Given I have loaded a Person record "<record>"
+    Then the body Person details are displayed
+    When I click on the add comment button
+    Then I am taken to the add comment for person page
+    When I enter a valid comment
+    Then I click the save comment button
+    Then the comment is submitted
+    Given I have loaded a Person record "<record>"
+    Then the new comment is loaded
+
+    Examples:
+        | record                               |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
