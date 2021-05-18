@@ -16,6 +16,22 @@ class PersonPageObjects {
         // Needs a better selector
     }
 
+    addCommentButton() {
+        return cy.get('.govuk-button lbh-button')
+    }
+
+    commentTable() {
+        return cy.get('.comment')
+    }
+
+    previousPaginationNavigationButton() {
+        return cy.get('.pagination__item')
+    }
+
+    nextPaginationNavigationButton() {
+        return cy.get('.pagination__item --next')
+    }
+
     headerContainerDateOfBirth() {
         return cy.get("[data-testid='intro-dateOfBirth']")
     }

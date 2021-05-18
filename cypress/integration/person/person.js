@@ -1,5 +1,8 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import PersonPageObjects from '../../pageObjects/personPage'
+import envConfig from '../../../environment-config'
+import validComment from '../../helpers/personCommentText'
+
 
 const personPage = new PersonPageObjects()
 
@@ -30,4 +33,12 @@ When('I click on the expand all sections button', () => {
 
 Then('the body Person details are displayed', () => {
     personPage.bodyPersonalDeatailsAreDisplayed()
+})
+
+Then('I am taken to the add comment for person page', (record) => {
+    cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${record}`)
+})
+
+Then('The new comment is loaded', () => {
+    personPage.commentTable().contains(validComment)
 })

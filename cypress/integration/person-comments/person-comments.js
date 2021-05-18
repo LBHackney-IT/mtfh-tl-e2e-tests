@@ -8,21 +8,8 @@ Given('I am on the create comment for a person page {string}', (person) => {
     personCommentsPage.visit(person)
 })
 
-When ('I enter a valid comment', () => {
-    personCommentsPage.commentContainer().type('This is a valid comment')
-})
-
 Then('the create comment for a person components are displayed',  () => {
     personCommentsPage.personCommentsComponentsAreDisplayed()
-})
-
-Then('I click the save comment button', () => {
-    personCommentsPage.submitCommentButton().click()
-})
-
-Then('the comment is submitted', () => {
-    personCommentsPage.pageAnnouncementHeader().should('be.visible')
-    personCommentsPage.pageAnnouncementHeader().contains('Comment successfully saved')
 })
 
 When('I enter {int} characters into the comment field', (characters) => {
