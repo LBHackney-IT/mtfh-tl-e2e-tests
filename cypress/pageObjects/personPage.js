@@ -1,11 +1,10 @@
-const baseUrl = require('../../environment-config').baseUrl
+const envConfig = require('../../environment-config')
 // will need to update once we have a mechanism for getting a person or some test data
-const personPageUrl = `${baseUrl}`
 
 class PersonPageObjects {
-    visit() {
+    visit(record) {
         // change to more appropriate path
-        cy.visit(personPageUrl)
+        cy.visit(`${envConfig.baseUrl}/person/${record}`)
     }
 
     headerContainerPhoto() {
@@ -13,7 +12,7 @@ class PersonPageObjects {
     }
 
     headerContainerName() {
-        // Needs a better selector
+        return cy.get("[data-testid='person-fullName']")
     }
 
     addCommentButton() {

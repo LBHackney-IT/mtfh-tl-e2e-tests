@@ -29,6 +29,10 @@ class SearchPageObjects {
         return cy.get('.mtfh-search__results')
     }
 
+    moreDetailsForAllSearchResultsInView() {
+        return cy.findAllByTestId('searchMoreDetails')
+    }
+
     searchResultContainer() {
         return cy.get('.mtfh-search-result')
     }

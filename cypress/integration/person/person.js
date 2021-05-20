@@ -40,5 +40,5 @@ Then('I am taken to the add comment for person page', (record) => {
 })
 
 Then('The new comment is loaded', () => {
-    personPage.commentTable().contains(validComment)
+    personPage.commentTable().contains('aac57a95-11e4-9eeb-954a-c2dd5a0a7f31')
 })

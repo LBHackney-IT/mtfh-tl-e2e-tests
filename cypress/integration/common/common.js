@@ -1,6 +1,6 @@
-import { Then, And, Given } from "cypress-cucumber-preprocessor/steps";
-import FooterPageObjects from '../../pageObjects/sharedComponents/footer';
-import HeaderPageObjects from '../../pageObjects/sharedComponents/header';
+import { Then, And } from "cypress-cucumber-preprocessor/steps"
+import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
+import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
 import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
 import validComment from '../../helpers/personCommentText'
 
