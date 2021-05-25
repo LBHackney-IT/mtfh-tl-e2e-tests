@@ -1,6 +1,6 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
-import SearchPageObjects from('../../pageObjects/searchPage')
-import PersonPageObjects from('../../pageObjects/personPage')
+import SearchPageObjects from '../../pageObjects/searchPage'
+import PersonPageObjects from '../../pageObjects/personPage'
 
 const searchPage = new SearchPageObjects()
 const personPage = new PersonPageObjects()

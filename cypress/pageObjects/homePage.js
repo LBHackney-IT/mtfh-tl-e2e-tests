@@ -13,6 +13,10 @@ class HomePageObjects {
         return cy.contains("Sign in using Hackney.gov.uk")
     }
 
+    headerLinks() {
+        return cy.get('.lbh-header__links')
+    }
+
     iAmOnTheHomePage() {
         this.mainContent().should('be.visible')
     }

@@ -2,7 +2,7 @@ const envConfig = require('../../environment-config')
 
 class SearchPageObjects {
     visit() {
-        cy.visit(`${envConfig.baseUrl}/search`)
+        cy.visit(`${envConfig.baseUrl}/search`, {failOnStatusCode: false})
     }
 
     searchComponent() {

@@ -2,7 +2,7 @@ const envConfig = require('../../environment-config')
 
 class PersonCommentsPageObjects {
     visit(person) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person}`) 
+        cy.visit(`${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person}`, {failOnStatusCode: false})
     }
 
     addCommentHeader() {
