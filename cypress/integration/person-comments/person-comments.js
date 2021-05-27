@@ -17,10 +17,10 @@ When('I enter {int} characters into the comment field', (characters) => {
         if (str.length <= num) {
           return str
         }
-        return str.slice(0, num)
+        return str.toString().slice(0, num)
       }
 
-    const inputText = truncateString(helperText, characters)
+    const inputText = truncateString(helperText.helperText, characters)
     personCommentsPage.commentContainer().type(inputText)
 })
 
@@ -43,5 +43,5 @@ Then('a validation error occurs', () => {
 })
 
 function differenceInCharacters(characters) {
-    return Math.abs(500-characters)
+    return Math.abs(characters-500)
 }

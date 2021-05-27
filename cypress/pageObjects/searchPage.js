@@ -3,6 +3,7 @@ const envConfig = require('../../environment-config')
 class SearchPageObjects {
     visit() {
         cy.visit(`${envConfig.baseUrl}/search`)
+        cy.injectAxe()
     }
 
     searchComponent() {
@@ -30,7 +31,7 @@ class SearchPageObjects {
     }
 
     moreDetailsForAllSearchResultsInView() {
-        return cy.findAllByTestId('searchMoreDetails')
+        return cy.contains('More details')
     }
 
     searchResultContainer() {

@@ -81,3 +81,6 @@ Feature: T&L Search Function
       | e          |
       | !          |
 
+  @Accessibility
+  Scenario: Accessibility Testing
+    And have no detectable a11y violations

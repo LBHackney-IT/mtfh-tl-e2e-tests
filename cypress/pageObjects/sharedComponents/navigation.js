@@ -1,6 +1,6 @@
-class navigationObjects {
+class NavigationObjects {
     backButton() {
-        return cy.get('.govuk-back-link lbh-back-link')
+        return cy.get('[class="govuk-back-link lbh-back-link"]')
     }
 }
-export default navigationObjects
+export default NavigationObjects

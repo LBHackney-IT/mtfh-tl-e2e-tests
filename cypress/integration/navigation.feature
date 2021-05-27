@@ -24,3 +24,7 @@ Feature: Navigation
     When I navigate to a person
     And I click the back button
     Then I am on the search landing page
+
+  @Accessibility
+  Scenario: Accessibility Testing
+    And have no detectable a11y violations
