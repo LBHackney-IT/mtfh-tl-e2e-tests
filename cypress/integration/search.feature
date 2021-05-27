@@ -2,9 +2,12 @@
 Feature: T&L Search Function
     I want to search for a person
 
+    Background: I am on the search page
+      Given I am logged in
+      Given I am on the search page
+
   @Positive
   Scenario Outline: Execute search
-    Given I want to log in to the search page
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"

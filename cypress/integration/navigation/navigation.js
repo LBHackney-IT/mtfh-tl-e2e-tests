@@ -1,6 +1,6 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
-import SearchPageObjects from('../../pageObjects/searchPage')
-import PersonPageObjects from('../../pageObjects/personPage')
+import SearchPageObjects from '../../pageObjects/searchPage'
+import PersonPageObjects from '../../pageObjects/personPage'
 
 const searchPage = new SearchPageObjects()
 const personPage = new PersonPageObjects()
@@ -18,6 +18,7 @@ Then('I am on the search landing page', () => {
 When('I enter a search term and click search', () => {
     searchPage.searchContainer().type('callum')
     searchContext = cy.intercept('*api/v1/search/persons*')
+    searchPage.searchButton().click()
 })
 
 Then ('I click on a search result', () => {

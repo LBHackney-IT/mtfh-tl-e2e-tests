@@ -2,11 +2,11 @@ const envConfig = require('../../environment-config')
 
 class PersonCommentsPageObjects {
     visit(person) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person}`) 
+        cy.visit(`${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person}`)
     }
 
-    addCommentHeader() {
-        return cy.get('.lbh-heading-h2')
+    addCommentForm() {
+        return cy.get('[data-testid="addComment-form"]')
     }
 
     pageAnnouncementHeader() {
@@ -38,7 +38,7 @@ class PersonCommentsPageObjects {
     }
 
     characterCountMessage() {
-        return cy.get('.govuk-hint govuk-character-count__message')
+        return cy.get('[class="govuk-hint govuk-character-count__message"]')
     }
 
     characterCountErrorMessage() {
@@ -50,8 +50,8 @@ class PersonCommentsPageObjects {
     }
 
     personCommentsComponentsAreDisplayed() {
-        this.addCommentHeader().should('be.visible')
-        this.addCommentLabel().should('be.visible')
+        this.addCommentForm().should('be.visible')
+        // this.addCommentLabel().should('be.visible')
         this.commentContainer().should('be.visible')
         this.characterCountMessage().should('be.visble')
         this.submitCommentButton().should('be.visible')

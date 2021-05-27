@@ -3,6 +3,7 @@ Feature: Navigation
     Page Navigation
 
     Background: Navigate to the search page
+      Given I am logged in
       Given I navigate to the search landing page
       Then I am on the search landing page
 

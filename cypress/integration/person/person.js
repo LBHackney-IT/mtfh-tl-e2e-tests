@@ -1,7 +1,6 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import PersonPageObjects from '../../pageObjects/personPage'
 import envConfig from '../../../environment-config'
-import validComment from '../../helpers/personCommentText'
 
 
 const personPage = new PersonPageObjects()

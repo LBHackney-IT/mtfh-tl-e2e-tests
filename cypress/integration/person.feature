@@ -2,14 +2,17 @@
 Feature: T&L Person Page
   I want to view a person
 
+  Background:
+    Given I am logged in
+
   @Positive
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
     Then the body Person details are displayed
 
     Examples:
-        | record                               |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | record                               |
+      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   Scenario Outline: View person details mobile view
     Given I have loaded a Person record "<record>"
@@ -19,22 +22,22 @@ Feature: T&L Person Page
     Then the body Person details are displayed
 
     Examples:
-        | device    | record                               |
-        | iphone-3  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-        | iphone-4  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-        | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-        | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-        | iphone-6  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-        | iphone-6+ | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | device    | record                               |
+      | iphone-3  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-4  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-6  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-6+ | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   Scenario Outline: Look for record that does not exist
     Given I have loaded an invalid person record "<record>"
     Then The person you've requested does not exist error message appears
 
     Examples:
-        | record |
-        | kdfbv  |
-        | dfkkkl |
+      | record |
+      | kdfbv  |
+      | dfkkkl |
 
   Scenario Outline: Add a comment for a person
     Given I have loaded a Person record "<record>"
@@ -48,5 +51,5 @@ Feature: T&L Person Page
     Then the new comment is loaded
 
     Examples:
-        | record                               |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | record                               |
+      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
