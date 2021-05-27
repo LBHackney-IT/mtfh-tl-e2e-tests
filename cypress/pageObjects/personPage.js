@@ -4,7 +4,7 @@ const envConfig = require('../../environment-config')
 class PersonPageObjects {
     visit(record) {
         // change to more appropriate path
-        cy.visit(`${envConfig.baseUrl}/person/${record}`, {failOnStatusCode: false})
+        cy.visit(`${envConfig.baseUrl}/person/${record}`)
     }
 
     headerContainerPhoto() {

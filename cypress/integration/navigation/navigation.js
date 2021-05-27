@@ -18,6 +18,7 @@ Then('I am on the search landing page', () => {
 When('I enter a search term and click search', () => {
     searchPage.searchContainer().type('callum')
     searchContext = cy.intercept('*api/v1/search/persons*')
+    searchPage.searchButton().click()
 })
 
 Then ('I click on a search result', () => {
