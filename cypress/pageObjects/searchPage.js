@@ -23,7 +23,7 @@ class SearchPageObjects {
     }
 
     searchAgainButton() {
-        return cy.get('.govuk-button lbh-button')
+        return cy.contains('Search again')
     }
 
     searchResults() {
