@@ -1,9 +1,7 @@
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 import SearchPageObjects from '../../pageObjects/searchPage';
-import HomePageObjects from '../../pageObjects/homePage';
 
 const searchPage = new SearchPageObjects()
-const homePage = new HomePageObjects()
 
 Given('I am on the search page', () => {
     searchPage.visit()
@@ -14,7 +12,6 @@ Given('I want to log in to the search page', () => {
 })
 
 When('I enter any of the following criteria {string}', (searchTerm) => {
-    cy.log(searchTerm)
     searchPage.searchContainer().type(searchTerm)       
 })
 
@@ -30,6 +27,10 @@ Then('the search results are displayed by best match {string}', (searchTerm) => 
 
 Then('no results are returned', () => {
     searchPage.searchConfirmation().should('not.exist')
+})
+
+And ('I click on the search again button', () => {
+    searchPage.searchAgainButton().click()
 })
 
 // // Waiting on fix for unhandled exception when invalid search is sent

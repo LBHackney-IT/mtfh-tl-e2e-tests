@@ -1,6 +1,7 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import PersonPageObjects from '../../pageObjects/personPage'
 import envConfig from '../../../environment-config'
+import validComment from '../../helpers/personCommentText'
 
 
 const personPage = new PersonPageObjects()
@@ -27,17 +28,21 @@ When('I am using a mobile viewport {string}', (device) => {
 })
 
 When('I click on the expand all sections button', () => {
-    personPage.expandPersonalDetails().click()
+    personPage.expandPersonalDetails().click({force: true})
 })
 
 Then('the body Person details are displayed', () => {
     personPage.bodyPersonalDeatailsAreDisplayed()
 })
 
-Then('I am taken to the add comment for person page', (record) => {
-    cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${record}`)
+When('I click on the add comment button', () => {
+    personPage.addCommentButton().click()
 })
 
-Then('The new comment is loaded', () => {
-    personPage.commentTable().contains('aac57a95-11e4-9eeb-954a-c2dd5a0a7f31')
+Then('I am taken to the add comment for person page {string}', (record) => {
+    cy.url().should('contain', `${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${record}`)
+})
+
+Then('the new comment is loaded', () => {
+    personPage.commentTable().contains(validComment.validComment)
 })

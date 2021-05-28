@@ -14,3 +14,7 @@ Feature: T&L Home page
     Then the header link says welcome
     Then the page header is visible
     And the page footer is visible
+
+  @Accessibility
+  Scenario: Accessibility Testing
+    And have no detectable a11y violations

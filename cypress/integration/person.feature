@@ -23,11 +23,11 @@ Feature: T&L Person Page
 
     Examples:
       | device    | record                               |
-      | iphone-3  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-4  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-6  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      # | iphone-3  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      # | iphone-4  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      # | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      # | iphone-5  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      # | iphone-6  | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       | iphone-6+ | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   Scenario Outline: Look for record that does not exist
@@ -43,7 +43,7 @@ Feature: T&L Person Page
     Given I have loaded a Person record "<record>"
     Then the body Person details are displayed
     When I click on the add comment button
-    Then I am taken to the add comment for person page
+    Then I am taken to the add comment for person page "<record>"
     When I enter a valid comment
     Then I click the save comment button
     Then the comment is submitted
@@ -53,3 +53,7 @@ Feature: T&L Person Page
     Examples:
       | record                               |
       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+
+  @Accessibility
+  Scenario: Accessibility Testing
+    And have no detectable a11y violations

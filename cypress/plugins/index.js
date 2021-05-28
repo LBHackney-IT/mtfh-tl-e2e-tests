@@ -5,16 +5,31 @@
 
 // dotenv.config()
 
-const {GoogleSocialLogin} = require('cypress-social-logins').plugins
+const { lighthouse, pa11y, prepareAudit } = require('cypress-audit');
 const cucumber = require('cypress-cucumber-preprocessor').default
+
 module.exports = (on, config) => {
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+    prepareAudit(launchOptions);
+  });
   on('file:preprocessor', cucumber())
   on('task', {
-    GoogleSocialLogin: GoogleSocialLogin
-  })
-  config.env.googleRefreshToken = process.env.GOOGLE_REFRESH_TOKEN
-  config.env.googleClientId = process.env.REACT_APP_GOOGLE_CLIENTID
-  config.env.googleClientSecret = process.env.REACT_APP_GOOGLE_CLIENT_SECRET
+    lighthouse: lighthouse((lighthouseReport) => {
+      console.log(lighthouseReport);
+    }),
+    pa11y: pa11y((pa11yReport) => {
+      console.log(pa11yReport);
+    }),
+    log(message) {
+      console.log(message)
 
+      return null
+    },
+    table(message) {
+      console.table(message)
+
+      return null
+    }
+  })
   return config
 }

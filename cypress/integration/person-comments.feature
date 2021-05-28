@@ -54,10 +54,18 @@ Feature: T&L Person Comment
     Scenario Outline: I go to create a comment for a person page
       Given I am on the create comment for a person page "<person>"
       Then I click the save comment button
+      Then I click the save comment button
       Then a validation error occurs
 
       Examples:
         | person                               |
         | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
-    
+    @Accessibility
+    Scenario Outline: Accessibility Testing
+      Given I am on the create comment for a person page "<person>"
+      And have no detectable a11y violations
+
+      Examples:
+        | person                               |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |

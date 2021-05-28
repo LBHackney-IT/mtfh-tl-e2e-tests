@@ -1,4 +1,4 @@
-import { Then, And, Given } from "cypress-cucumber-preprocessor/steps"
+import { Then, And, Given } from 'cypress-cucumber-preprocessor/steps'
 import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
 import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
 import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
@@ -28,7 +28,7 @@ And('the page footer is visible', () => {
 
     // Person Comments shared steps
 When ('I enter a valid comment', () => {
-    personCommentsPage.commentContainer().type(validComment)
+    personCommentsPage.commentContainer().type(validComment.validComment)
 })
 
 Then('I click the save comment button', () => {
@@ -38,4 +38,28 @@ Then('I click the save comment button', () => {
 Then('the comment is submitted', () => {
     personCommentsPage.pageAnnouncementHeader().should('be.visible')
     personCommentsPage.pageAnnouncementHeader().contains('Comment successfully saved')
+})
+
+    // Accessibility
+And('have no detectable a11y violations', () => {
+    cy.checkA11y(null, null, axeTerminalLog, {skipFailures: true})
+
+    function axeTerminalLog(violations) {
+        cy.task(
+          'log',
+          `${violations.length} accessibility violation${
+            violations.length === 1 ? '' : 's'
+          } ${violations.length === 1 ? 'was' : 'were'} detected`
+        )
+
+        const violationData = violations.map(
+          ({ id, impact, description, nodes }) => ({
+            id,
+            impact,
+            description,
+            nodes: nodes.length
+          })
+        )
+        cy.task('table', violationData)
+    }
 })
