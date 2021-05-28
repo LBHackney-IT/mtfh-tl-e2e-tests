@@ -18,3 +18,8 @@ Feature: T&L Home page
   @Accessibility
   Scenario: Accessibility Testing
     And have no detectable a11y violations
+
+  @Footer
+  Scenario: Page footer links
+    Then the page footer links are visible
+    And the page footer links are correct

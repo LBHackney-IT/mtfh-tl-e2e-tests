@@ -26,6 +26,14 @@ And('the page footer is visible', () => {
     footer.footerIsDisplayed()
 })
 
+Then ('the page footer links are visible', () => {
+    footer.footerLinksAreDisplayed()
+})
+
+And ('the page footer links are correct', () => {
+    footer.footerLinksAreCorrect()
+})
+
     // Person Comments shared steps
 When ('I enter a valid comment', () => {
     personCommentsPage.commentContainer().type(validComment.validComment)
