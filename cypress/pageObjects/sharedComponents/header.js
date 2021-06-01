@@ -13,7 +13,7 @@ class HeaderObjects {
 
     headerIsDisplayed() {
         this.headerMain().should('be.visible')
-        this.headerServiceName().contains('Housing tool')
+        this.headerServiceName().contains('Manage my Home')
     }
 }
 export default HeaderObjects
