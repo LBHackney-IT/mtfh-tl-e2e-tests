@@ -26,7 +26,7 @@ Then('the search results are displayed by best match {string}', (searchTerm) => 
 })
 
 Then('no results are returned', () => {
-    searchPage.searchConfirmation().should('not.exist')
+    searchPage.searchComponent().contains('No results')
 })
 
 And ('I click on the search again button', () => {
