@@ -6,8 +6,14 @@ Feature: T&L Search Function
       Given I am logged in
       Given I am on the search page
 
+  Scenario: Execute initial search
+    When I enter any of the following criteria "Colin"
+    And I click on the search button
+    Then the search results are displayed by best match "Colin"
+
   @Positive
-  Scenario Outline: Execute search
+  Scenario Outline: Execute searches
+    When I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
@@ -22,7 +28,8 @@ Feature: T&L Search Function
       | Victor     |
     
   @Positive
-  Scenario Outline: Wildcard and partial searches 
+  Scenario Outline: Wildcard and partial searches
+    When I click on the search again button 
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
@@ -39,6 +46,7 @@ Feature: T&L Search Function
 
   @Positive
     Scenario Outline: Results are not returned
+    When I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then no results are returned
@@ -51,35 +59,32 @@ Feature: T&L Search Function
       | elqsn      |
       | !!!!!!!    |
       
-  @Positive
-  Scenario Outline: Multiple search criteria
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+  # @Positive
+  # Scenario Outline: Multiple search criteria
+  #   When I click on the search again button
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<characters>"
 
-    Examples:
-      | characters     |
-      | ad e           |
-      | ch a           |
-      | s te           |
-      | A* Rickman     |
-      | *e* *a         |
-      | a Ellie        |
+  #   Examples:
+  #     | characters     |
+  #     | ad e           |
 
-  @Negative
-  Scenario Outline: Insufficient characters
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then no results are returned
-    And a validation error message is displayed  
+  # @Negative
+  # Scenario Outline: Insufficient characters
+  #   When I click on the search again button
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then no results are returned
+  #   And a validation error message is displayed  
 
-    Examples:
-      | characters |
-      | b          |
-      | c          |
-      | d          |
-      | e          |
-      | !          |
+  #   Examples:
+  #     | characters |
+  #     | b          |
+  #     | c          |
+  #     | d          |
+  #     | e          |
+  #     | !          |
 
   @Accessibility
   Scenario: Accessibility Testing

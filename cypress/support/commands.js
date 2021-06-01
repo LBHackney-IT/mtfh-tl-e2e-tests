@@ -12,4 +12,5 @@ Cypress.Commands.add('login', () => {
 
 Cypress.Commands.add('logout', () => {
     cy.clearCookies()
+    cy.getCookies().should('be.empty')
 })
