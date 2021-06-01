@@ -26,7 +26,7 @@ And('the page footer is visible', () => {
     footer.footerIsDisplayed()
 })
 
-Then ('the page footer links are visible', () => {
+Then('the page footer links are visible', () => {
     footer.footerLinksAreDisplayed()
 })
 
