@@ -23,7 +23,8 @@
     "cypress-audit": "^0.3.0",
     "cypress-axe": "^0.12.2",
     "cypress-cucumber-preprocessor": "^4.0.3",
-    "cypress-localstorage-commands": "^1.4.4"
+    "cypress-localstorage-commands": "^1.4.4",
+    "cypress-social-logins": "^1.11.3"
   },
   "dependencies": {
     "uuid": "^8.3.2"

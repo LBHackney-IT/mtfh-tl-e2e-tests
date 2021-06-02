@@ -55,9 +55,9 @@ Feature: T&L Search Function
       | characters |
       | 123        |
       | AZKQ       |
-      | dp0        |
-      | elqsn      |
-      | !!!!!!!    |
+      # | dp0        |
+      # | elqsn      |
+      # | !!!!!!!    |
       
   # @Positive
   # Scenario Outline: Multiple search criteria
