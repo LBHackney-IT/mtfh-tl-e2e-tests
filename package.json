@@ -9,9 +9,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cypress:open": "cypress open",
-    "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility'",
+    "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore'",
     "test:cypress:accessibility": "cypress run -e TAGS='@Accessibility'",
-    "test:cypress:GoogleLighthouse": "cypress run -e TAGS='@GoogleLighthouse'"
+    "test:cypress:GoogleLighthouse": "cypress run -e TAGS='@GoogleLighthouse'",
+    "test:cypress:SearchPage": "cypress run -e TAGS='@SearchPage'",
+    "test:cypress:new": "cypress run -e TAGS='@new'"
   },
   "author": "",
   "license": "ISC",

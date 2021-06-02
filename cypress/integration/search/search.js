@@ -33,13 +33,22 @@ And ('I click on the search again button', () => {
     searchPage.searchAgainButton().click()
 })
 
-// // Waiting on fix for unhandled exception when invalid search is sent
-// When('I do not enter a minimum of 2 characters into the search', (dataTable) => {
-//     dataTable.hashes().forEach((element) => {
-//         searchPage.searchContainer().type(element.searchTerm)
-//         searchPage.searchButton().click()
-//         searchPage.searchConfirmation().should('not.exist')
-//         searchPage.searchContainer().clear()
-//     })
-// })
+When('I set the number of results to {int}', (results) => {
+    searchPage.numberOfResultsDisplayed(results)
+})
+
+Then('the correct number of {int} are displayed', (results) => {
+    searchPage.paginationSummary().contains(results)
+    searchPage.filterStatus().contains(results)
+})
+
+// Waiting on fix for unhandled exception when invalid search is sent
+When('I do not enter a minimum of 2 characters into the search', (dataTable) => {
+    dataTable.hashes().forEach((element) => {
+        searchPage.searchContainer().type(element.searchTerm)
+        searchPage.searchButton().click()
+        searchPage.searchConfirmation().should('not.exist')
+        searchPage.searchContainer().clear()
+    })
+})
 

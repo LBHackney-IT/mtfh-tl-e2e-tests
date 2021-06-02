@@ -45,7 +45,7 @@ Feature: T&L Search Function
       # | te*        |
 
   @Positive
-    Scenario Outline: Results are not returned
+  Scenario Outline: Results are not returned
     When I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
@@ -59,33 +59,48 @@ Feature: T&L Search Function
       # | elqsn      |
       # | !!!!!!!    |
       
-  # @Positive
-  # Scenario Outline: Multiple search criteria
-  #   When I click on the search again button
-  #   When I enter any of the following criteria "<characters>"
-  #   And I click on the search button
-  #   Then the search results are displayed by best match "<characters>"
+  @Positive
+  @ignore
+  Scenario Outline: Multiple search criteria
+    When I click on the search again button
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
 
-  #   Examples:
-  #     | characters     |
-  #     | ad e           |
+    Examples:
+      | characters     |
+      | ad e           |
 
-  # @Negative
-  # Scenario Outline: Insufficient characters
-  #   When I click on the search again button
-  #   When I enter any of the following criteria "<characters>"
-  #   And I click on the search button
-  #   Then no results are returned
-  #   And a validation error message is displayed  
+  @Negative
+  @ignore
+  Scenario Outline: Insufficient characters
+    When I click on the search again button
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then no results are returned
+    And a validation error message is displayed  
 
-  #   Examples:
-  #     | characters |
-  #     | b          |
-  #     | c          |
-  #     | d          |
-  #     | e          |
-  #     | !          |
+    Examples:
+      | characters |
+      | b          |
+      | c          |
+      | d          |
+      | e          |
+      | !          |
 
   @Accessibility
   Scenario: Accessibility Testing
     And have no detectable a11y violations
+
+  Scenario Outline: Filter searches
+    When I click on the search again button
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    When I set the number of results to <results>
+    Then the correct number of <results> are displayed
+
+    Examples:
+      | characters | results |
+      | Ab         | 40      |
+      | Bre        | 12      |
+      | Chris      | 20      |
