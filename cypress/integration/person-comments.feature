@@ -34,9 +34,9 @@ Feature: T&L Person Comment
       Examples:
         | person                               | characters |
         | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 2          |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 50         |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 99         |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 350        |
+        # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 50         |
+        # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 99         |
+        # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 350        |
         | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 500        |
 
     @Negative
@@ -48,7 +48,7 @@ Feature: T&L Person Comment
       Examples:
         | person                               | characters |
         | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 502        |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 508        |
+        # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 508        |
 
     @Negative  
     Scenario Outline: I go to create a comment for a person page

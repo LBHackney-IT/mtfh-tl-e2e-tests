@@ -9,7 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cypress:open": "cypress open",
-    "test:cypress:run": "cypress run --headless --browser chrome"
+    "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility'",
+    "test:cypress:accessibility": "cypress run -e TAGS='@Accessibility'",
+    "test:cypress:GoogleLighthouse": "cypress run -e TAGS='@GoogleLighthouse'"
   },
   "author": "",
   "license": "ISC",
@@ -21,8 +23,7 @@
     "cypress-audit": "^0.3.0",
     "cypress-axe": "^0.12.2",
     "cypress-cucumber-preprocessor": "^4.0.3",
-    "cypress-localstorage-commands": "^1.4.4",
-    "cypress-social-logins": "^1.11.3"
+    "cypress-localstorage-commands": "^1.4.4"
   },
   "dependencies": {
     "uuid": "^8.3.2"

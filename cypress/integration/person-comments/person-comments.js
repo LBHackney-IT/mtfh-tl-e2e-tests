@@ -43,5 +43,5 @@ Then('a validation error occurs', () => {
 })
 
 function differenceInCharacters(characters) {
-    return Math.abs(characters-500)
+    return Math.abs(500-characters)
 }
