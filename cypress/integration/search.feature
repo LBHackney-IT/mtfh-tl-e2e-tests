@@ -23,9 +23,9 @@ Feature: T&L Search Function
       | Ab         |
       | Andrew     |
       | Jeff       |
-      | Keith      |
-      | Trev       |
-      | Victor     |
+      # | Keith      |
+      # | Trev       |
+      # | Victor     |
     
   @Positive
   Scenario Outline: Wildcard and partial searches
@@ -37,12 +37,12 @@ Feature: T&L Search Function
     Examples:
       | characters |
       | *a         |
-      | a*         |
-      | *a*        |
-      | ch         |
-      | *ev        |
-      | *ic*       |
-      | te*        |
+      | b*         |
+      | *c*        |
+      # | ch         |
+      # | *ev        |
+      # | *ic*       |
+      # | te*        |
 
   @Positive
     Scenario Outline: Results are not returned

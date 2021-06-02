@@ -5,5 +5,5 @@ workflows:
   run-cypress-tests:
     jobs:
       - cypress/run:
-          command: npx cypress run -e TAGS='not @GoogleLightHouse'
+          command: npx cypress run -e TAGS='not @GoogleLighthouse'
 
