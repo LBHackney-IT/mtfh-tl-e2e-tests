@@ -5,7 +5,7 @@ workflows:
   run-cypress-tests:
     jobs:
       - cypress/run:
-          executor: cypress/browsers-chrome69
+          executor: cypress/browsers-chrome67
           browser: chrome
           command: npx cypress run
 
