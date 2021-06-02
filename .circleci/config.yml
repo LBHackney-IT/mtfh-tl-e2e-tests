@@ -5,5 +5,5 @@ workflows:
   run-cypress-tests:
     jobs:
       - cypress/run:
-          command: npm run test:cypress:accessibility
+          command: npm run test:cypress:run
 
