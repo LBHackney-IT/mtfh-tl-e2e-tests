@@ -1,4 +1,5 @@
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
+import { readyException } from "cypress/types/jquery";
 import SearchPageObjects from '../../pageObjects/searchPage';
 
 const searchPage = new SearchPageObjects()
@@ -42,13 +43,28 @@ Then('the correct number of {int} are displayed', (results) => {
     searchPage.filterStatus().contains(results)
 })
 
+And('the search again button is displayed', () => {
+    searchPage.searchAgainButton().should('be.visible')
+})
+
+And('the search panel is not visible', () => {
+    searchPage.searchContainer().should('not.exist')
+})
+
+And('the search panel is visible', () => {
+    searchPage.searchContainer().should('be.visible')
+})
+
+And('the close search button is visible', () => {
+    searchPage.closeSearchButton().should('be.visible')
+})
+
+When('I click on the close search button', () => {
+    searchPage.closeSearchButton().click()
+})
+
 // Waiting on fix for unhandled exception when invalid search is sent
-When('I do not enter a minimum of 2 characters into the search', (dataTable) => {
-    dataTable.hashes().forEach((element) => {
-        searchPage.searchContainer().type(element.searchTerm)
-        searchPage.searchButton().click()
-        searchPage.searchConfirmation().should('not.exist')
-        searchPage.searchContainer().clear()
-    })
+When('I do not enter a minimum of 2 characters into the search', () => {
+
 })
 

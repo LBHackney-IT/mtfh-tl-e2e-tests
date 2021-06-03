@@ -30,6 +30,14 @@ class SearchPageObjects {
         return cy.get('.mtfh-search__results')
     }
 
+    closeSearchButton() {
+        return cy.contains('Close')
+    }
+
+    personRadioButton() {
+        return cy.get('[id="filterPerson"]')
+    }
+
     filterStatus() {
         return cy.get('[class="mtfh-search__filters-status"]')
     }
