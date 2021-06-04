@@ -30,6 +30,34 @@ class SearchPageObjects {
         return cy.get('.mtfh-search__results')
     }
 
+    closeSearchButton() {
+        return cy.contains('Close')
+    }
+
+    personRadioButton() {
+        return cy.get('[id="filterPerson"]')
+    }
+
+    filterStatus() {
+        return cy.get('[class="mtfh-search__filters-status"]')
+    }
+
+    sortByOption() {
+        return cy.get('[id="select-1"]')
+    }
+
+    showOptions() {
+        return cy.get('[id="select-2"]')
+    }
+
+    filterStatus() {
+        return cy.get('[class="mtfh-search__filters-status"]')
+    }
+
+    paginationSummary() {
+        return cy.get('.lbh-pagination__summary')
+    }
+
     moreDetailsForAllSearchResultsInView() {
         return cy.contains('More details')
     }
@@ -86,6 +114,14 @@ class SearchPageObjects {
         this.searchResultTenure().contains('Tenure:')
         this.searchResultMoreDetails().should('be.visible')
         this.searchResultMoreDetails().contains('More details')
+    }
+
+    numberOfResultsDisplayed(results) {
+        this.showOptions().select(`${results} items`)
+    }
+
+    sortBy(option) {
+        this.sortByOption().select(option)
     }
 }
 export default SearchPageObjects
