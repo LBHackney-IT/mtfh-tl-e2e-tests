@@ -16,7 +16,7 @@ Given('I have loaded an invalid person record {string}', (record) => {
 
 Then('The person you\'ve requested does not exist error message appears', () => {
     personPage.feedbackMessageContainer().should('be.visible')
-    personPage.feedbackMessageContainer().contains('The person you\'ve requested does not exist')
+    personPage.feedbackMessageContainer().contains('There was a problem retrieving the record')
 })
 
 Then('the header Person details are displayed', () => {
@@ -27,12 +27,12 @@ When('I am using a mobile viewport {string}', (device) => {
     cy.viewport(`${device}`)
 })
 
-When('I click on the expand all sections button', () => {
-    personPage.expandPersonalDetails().click({force: true})
+When('I click on the more personal details accordion', () => {
+    personPage.morePersonalDetailsAccordion().click()
 })
 
 Then('the body Person details are displayed', () => {
-    personPage.bodyPersonalDeatailsAreDisplayed()
+    personPage.morePersonalDetails()
 })
 
 When('I click on the add comment button', () => {

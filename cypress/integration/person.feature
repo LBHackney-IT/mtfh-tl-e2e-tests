@@ -17,8 +17,8 @@ Feature: T&L Person Page
   Scenario Outline: View person details mobile view
     Given I have loaded a Person record "<record>"
     When I am using a mobile viewport "<device>"
-    Then the header Person details are displayed
-    When I click on the expand all sections button
+    # Then the header Person details are displayed
+    When I click on the more personal details accordion
     Then the body Person details are displayed
 
     Examples:
