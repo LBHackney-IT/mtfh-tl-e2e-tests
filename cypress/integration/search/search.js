@@ -1,5 +1,4 @@
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
-import { readyException } from "cypress/types/jquery";
 import SearchPageObjects from '../../pageObjects/searchPage';
 
 const searchPage = new SearchPageObjects()
@@ -43,11 +42,11 @@ Then('the correct number of {int} are displayed', (results) => {
     searchPage.filterStatus().contains(results)
 })
 
-And('the search again button is displayed', () => {
+Then('the search again button is displayed', () => {
     searchPage.searchAgainButton().should('be.visible')
 })
 
-And('the search panel is not visible', () => {
+Then('the search panel is not visible', () => {
     searchPage.searchContainer().should('not.exist')
 })
 
