@@ -14,7 +14,7 @@ workflows:
   run-cypress-nightly:
     triggers:
       - schedule:
-          cron: "11 13 * * *"
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
