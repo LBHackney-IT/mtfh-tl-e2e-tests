@@ -29,4 +29,5 @@ workflows:
     jobs:
       - cypress/run:
           name: ci
+          executor: cypress/browsers-chrome78-ff70
           command: test:cypress:run
