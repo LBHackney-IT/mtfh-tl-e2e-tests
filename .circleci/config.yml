@@ -25,7 +25,7 @@ workflows:
            name: firefox
            executor: cypress/browsers-chrome78-ff70
            command: npm run test:cypress:nightly:chrome
-  run-ci-build:
+  run-ci-tests:
     jobs:
       - cypress/run:
           name: ci
