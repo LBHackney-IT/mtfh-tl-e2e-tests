@@ -14,7 +14,7 @@
     "test:cypress:GoogleLighthouse": "cypress run -e TAGS='@GoogleLighthouse'",
     "test:cypress:SearchPage": "cypress run -e TAGS='@SearchPage'",
     "test:cypress:new": "cypress run -e TAGS='@new'",
-    "test:cypress:nightly:chrome": "cypress run --browser --headless chrome -e TAGS='not @ignore'",
+    "test:cypress:nightly:chrome": "cypress run --browser chrome --headless -e TAGS='not @ignore'",
     "test:cypress:nightly:chromium": "cypress run --browser chromium --headless -e TAGS='not @ignore'",
     "test:cypress:nightly:edge": "cypress run --browser edge --headless -e TAGS='not @ignore'",
     "test:cypress:nightly:electron": "cypress run -e TAGS='not @ignore'",
