@@ -19,6 +19,8 @@ Feature: T&L Person Page
     When I am using a mobile viewport "<device>"
     When I click on the more personal details accordion
     Then the body Person details are displayed
+    When I click on the more tenure details accordion
+    Then the body tenure details are displayed
 
     Examples:
       | device    | record                               |

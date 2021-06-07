@@ -35,6 +35,14 @@ Then('the body Person details are displayed', () => {
     personPage.morePersonalDetails()
 })
 
+When('I click on the more tenure details accordion', () => {
+    personPage.moreTenureDetailsAccordion().click()
+})
+
+Then('the body tenure details are displayed', () => {
+    personPage.moreTenureDetails()
+})
+
 When('I click on the add comment button', () => {
     personPage.addCommentButton().click()
 })
