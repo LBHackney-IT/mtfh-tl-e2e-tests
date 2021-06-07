@@ -1,12 +1,15 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
+browsers-chrome78-ff70:
+    docker:
+      - image: cypress/browsers:node12.13.0-chrome78-ff70
 workflows:
   run-cypress-tests:
     jobs:
       - cypress/run:
-          command: npm run test:cypress:run
+          executor: cypress/browsers-chrome78-ff70
+          command: npm run test:cypress:nightly:firefox
       - cypress/run:
+           executor: cypress/browsers-chrome78-ff70
            command: npm run test:cypress:nightly:chrome
-
-          
