@@ -4,15 +4,13 @@ orbs:
 browsers-chrome78-ff70:
     docker:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
-browsers-edge88:
-    docker:
       - image: cypress/browsers:node14.10.1-edge88
 workflows:
   run-ci-tests:
     jobs:
       - cypress/run:
           name: ci
-          executor: cypress/browsers-edge88
+          executor: cypress/browsers-chrome78-ff70
           command: npm run test:nightly:edge
           store_artifacts: true
   run-cypress-nightly:
@@ -31,7 +29,7 @@ workflows:
           store_artifacts: true
       - cypress/run:
           name: edge
-          executor: cypress/browsers-edge88
+          executor: cypress/browsers-chrome78-ff70
           command: npm run test:cypress:nightly:edge
           store_artifacts: true
       - cypress/run:
