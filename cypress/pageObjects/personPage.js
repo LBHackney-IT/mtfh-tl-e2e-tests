@@ -207,6 +207,14 @@ class PersonPageObjects {
         return cy.contains('Add comment')
     }
 
+    morePersonalDetailsAccordion() {
+        return cy.contains('More personal details')
+    }
+
+    moreTenureDetailsAccordion() {
+        return cy.contains('More tenure details')
+    }
+
     headerPersonalDetailsAreDisplayed() {
         // this.headerContainerPhoto().is('displayed')
         // this.headerContainerName().is('displayed')
@@ -215,7 +223,7 @@ class PersonPageObjects {
         // this.headerContainerEmailAddress().should('be.visible')
     }
 
-    bodyPersonalDeatailsAreDisplayed() {
+    morePersonalDetails() {
         this.dateOfBirthHeader().should('be.visible')
         this.dateOfBirthDefinition().should('be.visible')
         // this.phoneNumberHeader().should('be.visible')
@@ -252,6 +260,10 @@ class PersonPageObjects {
         // this.previousAddressDefinition().should('be.visible')
         // this.previousUrpnHeader().should('be.visible')
         // this.previousUrpnDefinition().should('be.visible')
+    }
+
+    moreTenureDetails() {
+        
     }
 }
 export default PersonPageObjects
