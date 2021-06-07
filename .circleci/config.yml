@@ -39,5 +39,5 @@ workflows:
       - cypress/run:
           name: ci
           executor: cypress/browsers-chrome78-ff70
-          command: npm run test:cypress:nightly:electron
+          command: npm run test:cypress:nightly:edge
           store_artifacts: true
