@@ -5,10 +5,16 @@ browsers-chrome78-ff70:
     docker:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 workflows:
+  run-ci-tests:
+    jobs:
+      - cypress/run:
+          name: ci
+          command: npm run test:cypress:run
+          store_artifacts: true
   run-cypress-nightly:
     triggers:
       - schedule:
-          cron: '0 14 * * *'
+          cron: "10 14 * * *"
           filters:
             branches:
               only:
@@ -29,9 +35,3 @@ workflows:
            executor: cypress/browsers-chrome78-ff70
            command: npm run test:cypress:nightly:chrome
            store_artifacts: true
-  run-ci-tests:
-    jobs:
-      - cypress/run:
-          name: ci
-          command: npm run test:cypress:run
-          store_artifacts: true
