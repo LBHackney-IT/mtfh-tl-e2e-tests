@@ -15,13 +15,19 @@ workflows:
                 - master
     jobs:
       - cypress/run:
-          name: electron
-          command: npm run test:cypress:nightly:electron
-          store_artifacts: true
-      - cypress/run:
           name: chrome
           executor: cypress/browsers-chrome78-ff70
           command: npm run test:cypress:nightly:firefox
+          store_artifacts: true
+      - cypress/run:
+           name: edge
+           executor: cypress/browsers-chrome78-ff70
+           command: npm run test:cypress:nightly:chrome
+           store_artifacts: true
+      - cypress/run:
+          name: electron
+          executor: cypress/browsers-chrome78-ff70
+          command: npm run test:cypress:nightly:electron
           store_artifacts: true
       - cypress/run:
            name: firefox
@@ -32,5 +38,6 @@ workflows:
     jobs:
       - cypress/run:
           name: ci
-          command: npm run test:cypress:run
+          executor: cypress/browsers-chrome78-ff70
+          command: npm run test:cypress:nightly:electron
           store_artifacts: true
