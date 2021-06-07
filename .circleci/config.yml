@@ -6,3 +6,8 @@ workflows:
     jobs:
       - cypress/run:
           command: npm run test:cypress:run
+      - cypress/chrome:
+           executor: cypress/browsers-chrome69
+           command: npm run test:cypress:nightly:chrome
+
+          
