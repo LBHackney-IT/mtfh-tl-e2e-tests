@@ -201,7 +201,7 @@ class PersonPageObjects {
 
     moreTenureDetailsAccordion() {
         // return cy.contains('More tenure details')
-        return cy.get('aria-controls=["null-content-2"]')
+        return cy.get('.govuk-accordion__section-button').eq(1)
     }
 
     viewTenureButton() {
