@@ -26,11 +26,6 @@ workflows:
           command: npm run test:cypress:nightly:chrome
           store_artifacts: true
       - cypress/run:
-          name: chromium
-          executor: cypress/browsers-chrome78-ff70
-          command: npm run test:cypress:nightly:chromium
-          store_artifacts: true
-      - cypress/run:
           name: electron
           executor: cypress/browsers-chrome78-ff70
           command: npm run test:cypress:nightly:electron
