@@ -36,7 +36,7 @@ Then('the body Person details are displayed', () => {
 })
 
 When('I click on the more tenure details accordion', () => {
-    personPage.moreTenureDetailsAccordion().click()
+    personPage.moreTenureDetailsAccordion().click({force: true})
 })
 
 Then('the body tenure details are displayed', () => {
