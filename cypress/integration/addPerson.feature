@@ -18,11 +18,12 @@ Feature: Add a new person to a tenure
     And I enter a date of birth "<day>" "<month>" "<year>"
     And I enter a reason for creation
     And I click add person
+    Then a person is created
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year |
       | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Testy     | McTest     | Face     | 08  | 05    | 1969 |
-  
+      | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mrs   | Household member    | Testy     | McTest     | Face     | 09  | 03    | 1983 |
   @Negative
   Scenario Outline: Validation check
     Given I create a person for tenure '<tenure>'

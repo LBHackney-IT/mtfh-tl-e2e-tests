@@ -50,6 +50,10 @@ And('I click add person', () => {
     addPersonPage.addPersonButton().click()
 })
 
+Then('a person is created', () => {
+    cy.url().should('include','tenure')
+})
+
 Then('the form error container is displayed', () => {
     addPersonPage.addPersonFormErrorContainer().should('be.visible')
     addPersonPage.errorSummaryBody().contains('You must select a person type before proceeding')
