@@ -3,7 +3,7 @@ const envConfig = require('../../environment-config')
 
 class PersonPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/person/${record}`)
+        cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${record}`)
         cy.injectAxe()
     }
 
@@ -64,26 +64,34 @@ class PersonPageObjects {
     }
 
     phoneNumberHeader() {
-        return cy.get("[data-testid='phone']")
+        return cy.get("[data-testid='Phone']")
     }
 
     phoneNumberDefinition() {
-        return cy.get("[data-testid='phoneDefinition']")
+        return cy.get("[data-testid='PhoneDefinition']")
     }
 
     emailAddressHeader() {
-        return cy.get("[data-testid='email']")
+        return cy.get("[data-testid='Email']")
     }
 
     emailAddressDefinition() {
-        return cy.get("[data-testid='emailDefinition']")
+        return cy.get("[data-testid='EmailDefinition']")
+    }
+
+    identificationHeader() {
+        return cy.get("[data-testid='Identification']")
+    }
+
+    identificationDefinition() {
+        return cy.get("[data-testid='IdentificationDefinition']")
     }
 
     typeHeader() {
         return cy.get("[data-testid='Type']")
     }
 
-    typeField() {
+    typeDefinition() {
         return cy.get("[data-testid='TypeDefinition']")
     }
 
@@ -175,32 +183,12 @@ class PersonPageObjects {
         return cy.get("[data-testid='caresForDefinition']")
     }
 
-    correspondenceAddressHeader() {
-        return cy.get("[data-testid='correspondenceAddress']")
+    addressHeader() {
+        return cy.get("[data-testid='Address']")
     }
 
-    correspondenceAddressDefinition() {
-        return cy.get("[data-testid='correspondenceAddressDefinition']")
-    }
-
-    previousAddressHeader() {
-        return cy.get("[data-testid='previousAddress']")
-    }
-
-    previousAddressDefinition() {
-        return cy.get("[data-testid='previousAddressDefinition']")
-    }
-
-    previousUrpnHeader() {
-        return cy.get("[data-testid='previousUrpn']")
-    }
-
-    previousUrpnDefinition() {
-        return cy.get("[data-testid='previousUrpnDefinition']")
-    }
-
-    feedbackMessageContainer() {
-        return cy.get("[id='single-spa-application:@mtfh/personal-details']")
+    addressDefinition() {
+        return cy.get('[data-testid="AddressDefinition"]')
     }
 
     addCommentButton() {
@@ -212,7 +200,16 @@ class PersonPageObjects {
     }
 
     moreTenureDetailsAccordion() {
-        return cy.contains('More tenure details')
+        // return cy.contains('More tenure details')
+        return cy.get('.govuk-accordion__section-button').eq(1)
+    }
+
+    viewTenureButton() {
+        return cy.get('[class="govuk-button lbh-button govuk-secondary lbh-button--secondary"]')
+    }
+
+    feedbackMessageContainer() {
+        return cy.get('[id="single-spa-application:@mtfh/personal-details"]')
     }
 
     headerPersonalDetailsAreDisplayed() {
@@ -226,12 +223,12 @@ class PersonPageObjects {
     morePersonalDetails() {
         this.dateOfBirthHeader().should('be.visible')
         this.dateOfBirthDefinition().should('be.visible')
-        // this.phoneNumberHeader().should('be.visible')
-        // this.phoneNumberDefinition().should('be.visible')
-        // this.emailAddressHeader().should('be.visible')
-        // this.emailAddressDefinition().should('be.visible')
-        // this.typeHeader().should('be.visible')
-        // this.typeField().should('be.visible')
+        this.identificationHeader().should('be.visible')
+        this.identificationDefinition().should('be.visible')
+        this.phoneNumberHeader().should('be.visible')
+        this.phoneNumberDefinition().should('be.visible')
+        this.emailAddressHeader().should('be.visible')
+        this.emailAddressDefinition().should('be.visible')
         // this.genderHeader().should('be.visible')
         // this.genderDefinition().should('be.visible')
         // this.nationalityHeader().should('be.visible')
@@ -254,16 +251,16 @@ class PersonPageObjects {
         // this.fatherDefinition().should('be.visible')
         // this.caresForHeader().should('be.visible')
         // this.caresForDefinition().should('be.visible')
-        // this.correspondenceAddressHeader().should('be.visible')
-        // this.correspondenceAddressDefinition().should('be.visible')
-        // this.previousAddressHeader().should('be.visible')
-        // this.previousAddressDefinition().should('be.visible')
         // this.previousUrpnHeader().should('be.visible')
         // this.previousUrpnDefinition().should('be.visible')
     }
 
     moreTenureDetails() {
-        
+        this.addressHeader().should('be.visible')
+        this.addressDefinition().should('be.visible')
+        this.typeHeader().should('be.visible')
+        this.typeDefinition().should('be.visible')
+        this.viewTenureButton().should('be.visible')
     }
 }
 export default PersonPageObjects

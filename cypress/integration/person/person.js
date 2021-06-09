@@ -1,4 +1,4 @@
-import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
+import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import PersonPageObjects from '../../pageObjects/personPage'
 import envConfig from '../../../environment-config'
 import validComment from '../../helpers/personCommentText'
@@ -23,16 +23,20 @@ Then('the header Person details are displayed', () => {
     personPage.headerPersonalDetailsAreDisplayed()
 })
 
-When('I am using a mobile viewport {string}', (device) => {
-    cy.viewport(`${device}`)
-})
-
 When('I click on the more personal details accordion', () => {
     personPage.morePersonalDetailsAccordion().click()
 })
 
 Then('the body Person details are displayed', () => {
     personPage.morePersonalDetails()
+})
+
+When('I click on the more tenure details accordion', () => {
+    personPage.moreTenureDetailsAccordion().click({force: true})
+})
+
+Then('the body tenure details are displayed', () => {
+    personPage.moreTenureDetails()
 })
 
 When('I click on the add comment button', () => {
