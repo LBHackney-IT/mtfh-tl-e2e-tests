@@ -18,7 +18,8 @@
     "test:cypress:nightly:chromium": "cypress run --browser chromium --headless -e TAGS='not @ignore'",
     "test:cypress:nightly:edge": "cypress run --browser edge --headless -e TAGS='not @ignore'",
     "test:cypress:nightly:electron": "cypress run -e TAGS='not @ignore'",
-    "test:cypress:nightly:firefox": "cypress run --browser firefox --headless -e TAGS='not @ignore'"
+    "test:cypress:nightly:firefox": "cypress run --browser firefox --headless -e TAGS='not @ignore'",
+    "test:cypress:devices": "cypress run --browser chrome --headless -e TAGS='@device'"
   },
   "author": "",
   "license": "ISC",

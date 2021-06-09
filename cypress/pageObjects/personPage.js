@@ -3,7 +3,7 @@ const envConfig = require('../../environment-config')
 
 class PersonPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/person/${record}`)
+        cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${record}`)
         cy.injectAxe()
     }
 

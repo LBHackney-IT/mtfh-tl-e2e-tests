@@ -1,4 +1,4 @@
-import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
+import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import PersonPageObjects from '../../pageObjects/personPage'
 import envConfig from '../../../environment-config'
 import validComment from '../../helpers/personCommentText'
@@ -21,10 +21,6 @@ Then('The person you\'ve requested does not exist error message appears', () => 
 
 Then('the header Person details are displayed', () => {
     personPage.headerPersonalDetailsAreDisplayed()
-})
-
-When('I am using a mobile viewport {string}', (device) => {
-    cy.viewport(`${device}`)
 })
 
 When('I click on the more personal details accordion', () => {

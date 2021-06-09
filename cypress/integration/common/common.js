@@ -48,6 +48,10 @@ Then('the comment is submitted', () => {
     personCommentsPage.pageAnnouncementHeader().contains('Comment successfully saved')
 })
 
+When('I am using a mobile viewport {string}', (device) => {
+    cy.viewport(`${device}`)
+})
+
     // Accessibility
 And('have no detectable a11y violations', () => {
     cy.checkA11y(null, null, axeTerminalLog, {skipFailures: true})
