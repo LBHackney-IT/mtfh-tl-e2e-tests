@@ -35,7 +35,7 @@ class AddPersonPageObjects {
     }
 
     middleNameContainer() {
-        return cy.get('id="person-form-middleName-field"')
+        return cy.get('[id="person-form-middleName-field"]')
     }
 
     lastNameContainer() {
@@ -64,6 +64,18 @@ class AddPersonPageObjects {
 
     cancelButton() {
         return cy.contains('Cancel')
+    }
+
+    addPersonFormErrorContainer() {
+        return cy.get('[id="person-form-errors"]')
+    }
+
+    errorSummaryBody() {
+        return cy.get('[class="govuk-error-summary__body"]')
+    }
+
+    personTypeError() {
+        return cy.get('[id="person-form-personType-error"]')
     }
 
     addPersonPageIsDisplayed() {

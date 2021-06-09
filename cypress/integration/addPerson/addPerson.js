@@ -11,11 +11,15 @@ Then('the add a new person tenure page is correct', () => {
     addPersonPage.addPersonPageIsDisplayed()
 })
 
+And('I select a title {string}', (title) => {
+    addPersonPage.personTitleSelection(title)
+})
+
 When('I select person type {string}', (personType) => {
     if(personType === 'Named tenure holder') {
         addPersonPage.tenureHolderRadioButton().click()
     }
-    if(type === 'Household member') {
+    if(personType === 'Household member') {
         addPersonPage.householdMemberRadioButton().click()
     }
 })
@@ -44,4 +48,13 @@ And('I enter a reason for creation', () => {
 
 And('I click add person', () => {
     addPersonPage.addPersonButton().click()
+})
+
+Then('the form error container is displayed', () => {
+    addPersonPage.addPersonFormErrorContainer().should('be.visible')
+    addPersonPage.errorSummaryBody().contains('You must select a person type before proceeding')
+})
+And('the person type inline error message is displayed', () => {
+    addPersonPage.personTypeError().should('be.visible')
+    addPersonPage.personTypeError().contains('You must select a person type before proceeding')
 })
