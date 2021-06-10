@@ -9,10 +9,6 @@ parameters:
     type: boolean
 orbs:
   cypress: cypress-io/cypress@1
-
-node-executor:
-    docker:
-      - image: circleci/node:14.15.4-browsers
 browsers-chrome78-ff70:
     docker:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
@@ -26,7 +22,6 @@ workflows:
           store_artifacts: true
       - cypress/run:
           name: accessibility
-          executor: node-executor
           requires:
             - ci
           command: |
