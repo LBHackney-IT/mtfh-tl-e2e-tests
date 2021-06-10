@@ -13,10 +13,10 @@ workflows:
           store_artifacts: true
   run-accessibility-tests:
     jobs:
-      -cypress/run:
-        name: accessibility tests
-        command: npm run test:cypress:accessibility
-        store_artifacts: false
+      - cypress/run:
+          name: accessibility tests
+          command: npm run test:cypress:accessibility
+          store_artifacts: false
   run-cypress-nightly:
     triggers:
       - schedule:
