@@ -7,11 +7,24 @@ parameters:
   run_workflow_GoogleLighthouse:
     default: false
     type: boolean
+
 orbs:
   cypress: cypress-io/cypress@1
 browsers-chrome78-ff70:
     docker:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
+
+jobs:
+  trigger-accessibility:
+    docker:
+      - image: cimg/base
+    steps:
+      - run: |
+            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-tl-e2e-tests/pipeline' \
+            --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+            --header 'Content-Type: application/json' \
+            --data ' {"branch": "trigger_workflow_via_api", "parameters": {"run_workflow_ci": false, "run_workflow_GoogleLighthouse": true}}'
+    
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
@@ -20,15 +33,10 @@ workflows:
           name: ci
           command: npm run test:cypress:run
           store_artifacts: true
-      - cypress/run:
+      - trigger-accessibility:
           name: accessibility
           requires:
             - ci
-          command: |
-            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-tl-e2e-tests/pipeline' \
-            --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-            --header 'Content-Type: application/json' \
-            --data ' {"branch": "trigger_workflow_via_api", "parameters": {"run_workflow_ci": false, "run_workflow_GoogleLighthouse": true}}'
 
   run-accessibility-tests:
     when: << pipeline.parameters.run_workflow_GoogleLighthouse >>
@@ -37,6 +45,7 @@ workflows:
           name: Google Lighthouse tests
           command: npm run test:cypress:GoogleLighthouse
           store_artifacts: false
+
   run-cypress-nightly:
     triggers:
       - schedule:
@@ -45,17 +54,20 @@ workflows:
             branches:
               only:
                 - master
+                
     jobs:
       - cypress/run:
           name: chrome
           executor: cypress/browsers-chrome78-ff70
           command: npm run test:cypress:nightly:chrome
           store_artifacts: true
+
       - cypress/run:
           name: electron
           executor: cypress/browsers-chrome78-ff70
           command: npm run test:cypress:nightly:electron
           store_artifacts: true
+
       - cypress/run:
            name: firefox
            executor: cypress/browsers-chrome78-ff70
