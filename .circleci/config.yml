@@ -8,6 +8,10 @@ parameters:
     default: false
     type: boolean
 
+    run_workflow_accessibility_sequentially:
+      default: false
+      type: boolean
+
 orbs:
   cypress: cypress-io/cypress@1
 browsers-chrome78-ff70:
@@ -41,6 +45,19 @@ workflows:
   run-accessibility-tests:
     when: << pipeline.parameters.run_workflow_GoogleLighthouse >>
     jobs:
+      - cypress/run:
+          name: Google Lighthouse tests
+          command: npm run test:cypress:GoogleLighthouse
+          store_artifacts: false
+
+  run-accessibility-sequentially:
+    when: << run_workflow_accessibility_sequentially >>
+    jobs:
+      - cypress/run:
+          name: ci
+          command: npm run test:cypress:run
+          store_artifacts: true
+
       - cypress/run:
           name: Google Lighthouse tests
           command: npm run test:cypress:GoogleLighthouse
