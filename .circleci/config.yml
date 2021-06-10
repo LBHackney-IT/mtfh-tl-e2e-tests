@@ -1,4 +1,12 @@
 version: 2.1
+parameters:
+  run_workflow_ci:
+    default: true
+    type: boolean
+
+  run_workflow_GoogleLighthouse:
+    default: false
+    type: boolean
 orbs:
   cypress: cypress-io/cypress@1
 browsers-chrome78-ff70:
@@ -6,6 +14,7 @@ browsers-chrome78-ff70:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 workflows:
   run-ci-tests:
+    when: << pipeline.parameters.run_workflow_ci >>
     jobs:
       - cypress/run:
           name: ci
@@ -13,9 +22,10 @@ workflows:
           store_artifacts: true
   run-accessibility-tests:
     jobs:
+      when: << pipeline.parameters.run_workflow_GoogleLighthouse >>
       - cypress/run:
-          name: accessibility tests
-          command: npm run test:cypress:accessibility
+          name: Google Lighthouse tests
+          command: npm run test:cypress:GoogleLighthouse
           store_artifacts: false
   run-cypress-nightly:
     triggers:
