@@ -20,7 +20,7 @@ workflows:
           name: ci
           command: npm run test:cypress:run
           store_artifacts: true
-      - cypress-run:
+      - cypress/run:
           requires:
             - ci
           command: |
