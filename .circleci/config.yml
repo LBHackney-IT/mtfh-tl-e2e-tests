@@ -8,9 +8,9 @@ parameters:
     default: false
     type: boolean
 
-    run_workflow_accessibility_sequentially:
-      default: false
-      type: boolean
+  run_workflow_accessibility_sequentially:
+    default: false
+    type: boolean
 
 orbs:
   cypress: cypress-io/cypress@1
@@ -51,7 +51,7 @@ workflows:
           store_artifacts: false
 
   run-accessibility-sequentially:
-    when: << run_workflow_accessibility_sequentially >>
+    when: << pipeline.parameters.run_workflow_accessibility_sequentially >>
     jobs:
       - cypress/run:
           name: ci
