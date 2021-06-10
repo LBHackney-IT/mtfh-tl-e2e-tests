@@ -9,6 +9,10 @@ parameters:
     type: boolean
 orbs:
   cypress: cypress-io/cypress@1
+
+node-executor:
+    docker:
+      - image: circleci/node:14.15.4-browsers
 browsers-chrome78-ff70:
     docker:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
@@ -21,15 +25,15 @@ workflows:
           command: npm run test:cypress:run
           store_artifacts: true
       - cypress/run:
+          name: accessibility
+          executor: node-executor
           requires:
             - ci
           command: |
             curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-tl-e2e-tests/pipeline' \
-            --header 'Circle-Token: ${CIRCLE_TOKEN}' \
+            --header 'Circle-Token: '"$CIRCLE_TOKEN'"' \
             --header 'Content-Type: application/json' \
             --data ' {"branch": "trigger_workflow_via_api", "parameters": {"run_workflow_ci": false, "run_workflow_GoogleLighthouse": true}}'
-
-
 
   run-accessibility-tests:
     when: << pipeline.parameters.run_workflow_GoogleLighthouse >>
