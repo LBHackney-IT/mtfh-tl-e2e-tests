@@ -62,6 +62,8 @@ workflows:
           name: Google Lighthouse tests
           command: npm run test:cypress:GoogleLighthouse
           store_artifacts: false
+          requires:
+            - ci
 
   run-cypress-nightly:
     triggers:
