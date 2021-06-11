@@ -58,6 +58,7 @@ Then('the form error container is displayed', () => {
     addPersonPage.addPersonFormErrorContainer().should('be.visible')
     addPersonPage.errorSummaryBody().contains('You must select a person type before proceeding')
 })
+
 And('the person type inline error message is displayed', () => {
     addPersonPage.personTypeError().should('be.visible')
     addPersonPage.personTypeError().contains('You must select a person type before proceeding')

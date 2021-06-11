@@ -10,3 +10,7 @@ When('I view a Tenure {string}', (record) => {
 Then('the tenure information is displayed', () => {
     tenurePage.tenureDetailsAreDisplayed()
 })
+
+And('the residents information is displayed', () => {
+    tenurePage.residentsDetailsAreDisplayed()
+})

@@ -8,6 +8,7 @@ Feature: Tenure page
     Scenario Outline: View tenure details
       When I view a Tenure "<tenure>"
       Then the tenure information is displayed
+      And the residents information is displayed
       
       Examples:
           | tenure                                |
