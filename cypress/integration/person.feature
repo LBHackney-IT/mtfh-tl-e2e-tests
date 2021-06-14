@@ -6,6 +6,7 @@ Feature: T&L Person Page
     Given I am logged in
 
   @Positive
+  @ignore
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
     Then the body Person details are displayed
