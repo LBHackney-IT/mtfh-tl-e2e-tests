@@ -16,6 +16,7 @@ Feature: T&L Person Page
       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   @device
+  @ignore
   Scenario Outline: View person details device view
     Given I have loaded a Person record "<record>"
     When I am using a mobile viewport "<device>"
@@ -54,6 +55,7 @@ Feature: T&L Person Page
       | kdfbv  |
       | dfkkkl |
 
+  @ignore
   Scenario Outline: Add a comment for a person
     Given I have loaded a Person record "<record>"
     Then the body Person details are displayed
