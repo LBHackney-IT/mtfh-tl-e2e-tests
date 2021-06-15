@@ -12,7 +12,7 @@ Then('the add a new person tenure page is correct', () => {
 })
 
 And('I select a title {string}', (title) => {
-    addPersonPage.personTitleSelection(title)
+    addPersonPage.personTitleSelection().select(title)
 })
 
 When('I select person type {string}', (personType) => {
@@ -56,10 +56,115 @@ Then('a person is created', () => {
 
 Then('the form error container is displayed', () => {
     addPersonPage.addPersonFormErrorContainer().should('be.visible')
-    addPersonPage.errorSummaryBody().contains('You must select a person type before proceeding')
+    addPersonPage.errorSummaryBody().contains('The date cannot be in the future')
+    addPersonPage.errorSummaryBody().contains('Please enter a valid National Insurance Number')
 })
 
-And('the person type inline error message is displayed', () => {
-    addPersonPage.personTypeError().should('be.visible')
-    addPersonPage.personTypeError().contains('You must select a person type before proceeding')
+And('I select a gender {string}', (gender) => {
+    addPersonPage.genderContainer().select(gender)
+})
+
+And('I select a nationality {string}', (nationality) => {
+    addPersonPage.nationalityContainer().select(nationality)
+})
+
+And('I enter a national insurance number {string}', (nationalInsuranceNumber) => {
+    addPersonPage.nationalInsuranceNumberContainer().type(nationalInsuranceNumber)
+})
+
+And('I enter a place of birth {string}', (placeOfBirth) => {
+    addPersonPage.placeOfBirthContainer().type(placeOfBirth)
+})
+
+And('I select a preferred title {string}', (preferredTitle) => {
+    addPersonPage.preferredTitleContainer().select(preferredTitle)
+})
+
+And('I select a preferred first name {string}', (preferredFirstName) => {
+    addPersonPage.preferredFirstNameContainer().type(preferredFirstName)
+})
+
+And('I select a preferred middle name {string}', (preferredMiddleName) => {
+    addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName)
+})
+
+And('I select a preferred last name {string}', (preferredLastName) => {
+    addPersonPage.preferredLastNameContainer().type(preferredLastName)
+})
+
+And('I click to add a language', () => {
+    addPersonPage.addLanguageButton().click()
+})
+
+Then('the add language options are displayed', () => {
+    addPersonPage.languageContainer().should('be.visible')
+})
+
+And('I select a language {string}', (language) => {
+    addPersonPage.languageSelectionContainer().select(language)
+})
+
+And('I click to add an id', () => {
+    addPersonPage.addIdButton().click()
+})
+    
+Then('the add id options are displayed', () => {
+    addPersonPage.idContainer().should('be.visible')
+})
+
+And('I select an id type {string}', (idType) => {
+    addPersonPage.idSelectionContainer().select(idType)
+})
+
+And('I enter an id number {string}', (idNumber) => {
+    addPersonPage.idNumberContainer().type(idNumber)
+})
+
+And('I select id option seen {string}', (idSeen) => {
+    if(idSeen === 'Yes') {
+        addPersonPage.idYesRadioButton().click()
+    }
+    if(idSeen === "No") {
+        addPersonPage.idNoRadioButton().click()
+    }
+})
+
+And('I click to add a language {int} times', (number) => {
+    for (let index = 0; index < number; index++) {
+        addPersonPage.addLanguageButton().click()
+    }
+})
+
+And('I click to add an id {int} times', (number) => {
+    for (let index = 0; index < number; index++) {
+        addPersonPage.addIdButton().click()
+    }
+})
+
+Then('the add language button is not displayed', () => {
+    addPersonPage.addLanguageButton().should('not.exist')
+})
+
+Then('the add id button is not displayed', () => {
+    addPersonPage.addIdButton().should('not.exist')
+})
+
+And('I click to remove a language {int} times', (number) => {
+    for (let index = 0; index < number; index++) {
+        addPersonPage.removeLanguageButton().click()
+    }
+})
+
+And('I click to remove an id {int} times', (number) => {
+    for (let index = 0; index < number; index++) {
+        addPersonPage.removeIdButton().click()
+    }
+})
+
+Then('the add language options are not displayed', () => {
+    addPersonPage.languageContainer().should('not.exist')
+})
+
+Then('the add id options are not displayed', () => {
+    addPersonPage.idContainer().should('not.exist')
 })
