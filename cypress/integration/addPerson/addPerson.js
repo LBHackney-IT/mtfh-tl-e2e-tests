@@ -1,6 +1,8 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
+import testGuid from '../../helpers/personCommentText'
 
+const envConfig = require('../../../environment-config')
 const addPersonPage = new AddPersonPageObjects()
 
 Given('I create a person for tenure {string}', (record) => {
@@ -33,6 +35,9 @@ And('I enter a middle name {string}', (middleName) => {
 })
 
 And('I enter a last name {string}', (lastName) => {
+    if(lastName === 'guid') {
+        lastName = testGuid.testGuid
+    }
     addPersonPage.lastNameContainer().type(lastName)
 })
 
@@ -163,4 +168,8 @@ Then('the add language options are not displayed', () => {
 
 Then('the add id options are not displayed', () => {
     addPersonPage.idContainer().should('not.exist')
+})
+
+And('I am on the tenure page {string}', (tenureId) => {
+    cy.url().should('include', `${tenureId}`)
 })

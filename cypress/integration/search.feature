@@ -1,4 +1,3 @@
-@ignore
 @SearchPage
 Feature: T&L Search Function
     I want to search for a person
@@ -7,16 +6,28 @@ Feature: T&L Search Function
       Given I am logged out
       Given I am logged in
       Given I am on the search page
-    
+  
   @Positive
-  Scenario Outline: Execute searches
-    When I enter any of the following criteria "<characters>"
+  Scenario Outline: Initial search
+  When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
 
     Examples:
       | characters |
       | Ab         |
+
+    
+  @Positive
+  Scenario Outline: Execute searches
+    And I click on the search again button
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+
+    Examples:
+      | characters |
+      | Al         |
       | Andrew     |
       | Jeff       |
       # | Keith      |
@@ -25,6 +36,7 @@ Feature: T&L Search Function
     
   @Positive
   Scenario Outline: Wildcard and partial searches
+    And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
@@ -41,6 +53,7 @@ Feature: T&L Search Function
 
   @Positive
   Scenario Outline: Results are not returned
+    And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then no results are returned
@@ -56,6 +69,7 @@ Feature: T&L Search Function
   @Positive
   @ignore
   Scenario Outline: Multiple search criteria
+    And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
@@ -67,6 +81,7 @@ Feature: T&L Search Function
   @Negative
   @ignore
   Scenario Outline: Insufficient characters
+    And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then no results are returned
@@ -85,6 +100,7 @@ Feature: T&L Search Function
     And have no detectable a11y violations
 
   Scenario Outline: Filter searches
+    And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     When I set the number of results to <results>
@@ -97,6 +113,7 @@ Feature: T&L Search Function
       | Chris      | 20      |
 
   Scenario Outline: Re-execute search
+    And I click on the search again button
     When I enter any of the following criteria "<firstSearch>"
     And I click on the search button
     Then the search results are displayed by best match "<firstSearch>"
