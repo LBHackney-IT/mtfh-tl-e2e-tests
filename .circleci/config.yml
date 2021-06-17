@@ -32,7 +32,7 @@ jobs:
       - image: cimg/base:2021.05
     steps:
       - run: |
-            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-'"<<parameters.external_pipeline>>"'/pipeline' \
+            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-'"<<pipeline.parameters.external_pipeline>>"'/pipeline' \
             --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
             --header 'Content-Type: application/json' \
             --data ' {"branch": "trigger_workflow_via_api", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true}}'
