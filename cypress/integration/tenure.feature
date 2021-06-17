@@ -30,7 +30,7 @@ Feature: Tenure page
 
       Examples:
           | tenure                               |
-          | 424fcfb2-e629-7584-e217-bb57ff8e4f07 |
+          | bba2793e-df7d-aa4a-71df-57d067c21036 |
 
     Scenario Outline: No named tenure holders
       When I view a Tenure "<tenure>"
