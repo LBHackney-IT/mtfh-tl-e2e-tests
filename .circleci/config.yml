@@ -17,7 +17,8 @@ parameters:
     type: boolean
 
   external_pipeline:
-    type:string
+    default: ""
+    type: string
 
 orbs:
   cypress: cypress-io/cypress@1
