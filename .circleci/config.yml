@@ -12,6 +12,13 @@ parameters:
     default: false
     type: boolean
 
+  external_trigger:
+    default: false
+    type: boolean
+
+  external_pipeline:
+    type:string
+
 orbs:
   cypress: cypress-io/cypress@1
 browsers-chrome78-ff70:
@@ -19,6 +26,16 @@ browsers-chrome78-ff70:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 
 jobs:
+  trigger-recurring-pipeline:
+    docker:
+      - image: cimg/base:2021.05
+    steps:
+      - run: |
+            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-'"<<parameters.external_pipeline>>"'/pipeline' \
+            --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+            --header 'Content-Type: application/json' \
+            --data ' {"branch": "trigger_workflow_via_api", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true}}'
+
   trigger-accessibility:
     docker:
       - image: cimg/base:2021.05
@@ -49,6 +66,11 @@ workflows:
           name: Google Lighthouse tests
           command: npm run test:cypress:GoogleLighthouse
           store_artifacts: false
+      
+      - trigger-recurring-pipeline:
+          requires:
+            - Google Lighthouse tests
+
 
   run-accessibility-sequentially:
     when: << pipeline.parameters.run_workflow_accessibility_sequentially >>
