@@ -1,5 +1,4 @@
 @AddPersonPage
-@ignore
 Feature: Add a new person to a tenure
   I want to add a person to a tenure
 
@@ -34,7 +33,6 @@ Feature: Add a new person to a tenure
     And I select id option seen "<idSeen>"
     And I enter a reason for creation
     And I click add person
-    Then a person is created
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen |

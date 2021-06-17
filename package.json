@@ -32,7 +32,9 @@
     "cypress-axe": "^0.12.2",
     "cypress-cucumber-preprocessor": "^4.0.3",
     "cypress-localstorage-commands": "^1.4.4",
-    "cypress-social-logins": "^1.11.3"
+    "cypress-social-logins": "^1.11.3",
+    "glob-parent": ">=5.1.2",
+    "ws": ">=6.2.2"
   },
   "dependencies": {
     "uuid": "^8.3.2"

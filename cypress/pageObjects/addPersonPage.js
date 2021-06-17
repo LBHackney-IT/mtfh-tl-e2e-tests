@@ -146,6 +146,14 @@ class AddPersonPageObjects {
         return cy.get('[id="person-form-reason-field"]')
     }
 
+    viewResidentButton() {
+        return cy.get('.govuk-button lbh-button govuk-secondary lbh-button--secondary view-person-button')
+    }
+
+    otherHouseholdMembersButton() {
+        return cy.get('.other-household-member-link')
+    }
+
     addPersonButton() {
         return cy.get('[type="submit"]')
     }
