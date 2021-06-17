@@ -50,10 +50,6 @@ And('I click add person', () => {
     addPersonPage.addPersonButton().click()
 })
 
-Then('a person is created', () => {
-    cy.url().should('include','tenure')
-})
-
 Then('the form error container is displayed', () => {
     addPersonPage.addPersonFormErrorContainer().should('be.visible')
     addPersonPage.errorSummaryBody().contains('The date cannot be in the future')
