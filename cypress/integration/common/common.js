@@ -2,11 +2,14 @@ import { Then, And, Given } from 'cypress-cucumber-preprocessor/steps'
 import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
 import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
 import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
+import SearchPageObjects from '../../pageObjects/searchPage'
 import validComment from '../../helpers/personCommentText'
+import testGuid from '../../helpers/personCommentText'
 
 const footer = new FooterPageObjects
 const header = new HeaderPageObjects
 const personCommentsPage = new PersonCommentsPageObjects
+const searchPage = new SearchPageObjects
 
 Given('I am logged in', () => {
     cy.login()
@@ -50,6 +53,28 @@ Then('the comment is submitted', () => {
 
 When('I am using a mobile viewport {string}', (device) => {
     cy.viewport(`${device}`)
+})
+
+    // Search page shared steps
+Given('I am on the search page', () => {
+    searchPage.visit()
+})
+
+When('I enter any of the following criteria {string}', (searchTerm) => {
+    if(searchTerm === 'guid') {
+        searchTerm = testGuid.testGuid
+    }
+    searchPage.searchContainer().type(searchTerm)       
+})
+
+And('I click on the search button', () => {
+    searchPage.searchButton().click()
+})
+
+Then('the search results are displayed by best match {string}', (searchTerm) => {
+    searchPage.searchResultPropertiesAreDisplayed()
+    searchPage.searchConfirmation().contains(searchTerm)
+    searchPage.searchResults().contains(searchTerm.replace(/\*/g, '')) 
 })
 
     // Accessibility
