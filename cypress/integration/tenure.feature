@@ -1,4 +1,3 @@
-@ignore
 @TenurePage
 Feature: Tenure page
 
@@ -21,7 +20,7 @@ Feature: Tenure page
 
       Examples:
           | tenure                               |
-          | 957cc50e-2dc4-e782-a013-c0a331884e49 |
+          | 8f2bb5cf-1215-b9de-59fd-adcf33b0c601 |
 
     Scenario Outline: View individual household members
       When I view a Tenure "<tenure>"
@@ -31,7 +30,7 @@ Feature: Tenure page
 
       Examples:
           | tenure                               |
-          | 424fcfb2-e629-7584-e217-bb57ff8e4f07 |
+          | bba2793e-df7d-aa4a-71df-57d067c21036 |
 
     Scenario Outline: No named tenure holders
       When I view a Tenure "<tenure>"

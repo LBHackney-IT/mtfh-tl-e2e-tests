@@ -19,27 +19,27 @@ class AddPersonPageObjects {
     }
 
     tenureHolderRadioButton() {
-        return cy.get('[id="person-form-type-tenure-holder"]')
+        return cy.get('#person-form-type-tenure-holder')
     }
 
     householdMemberRadioButton() {
-        return cy.get('[id="person-form-type-household-member"]')
+        return cy.get('#person-form-type-household-member')
     }
 
-    personTitleSelection(title) {
-        return cy.get('[id="person-form-title-field"]').select(title)
+    personTitleSelection() {
+        return cy.get('#person-form-title-field')
     }
 
     firstNameContainer() {
-        return cy.get('[id="person-form-firstName-field"]')
+        return cy.get('#person-form-firstName-field')
     }
 
     middleNameContainer() {
-        return cy.get('[id="person-form-middleName-field"]')
+        return cy.get('#person-form-middleName-field')
     }
 
     lastNameContainer() {
-        return cy.get('[id="person-form-surname-field"]')
+        return cy.get('#person-form-surname-field')
     }
 
     dateOfBirthDayContainer() {
@@ -52,6 +52,94 @@ class AddPersonPageObjects {
 
     dateOfBirthYearContainer() {
         return cy.get('[name="dobYear"]')
+    }
+
+    genderContainer() {
+        return cy.get('#person-form-gender-field')
+    }
+
+    nationalityContainer() {
+        return cy.get('#person-form-nationality-field')
+    }
+
+    nationalInsuranceNumberContainer() {
+        return cy.get('#person-form-nationalInsuranceNo-field')
+    }
+
+    placeOfBirthContainer() {
+        return cy.get('#person-form-placeOfBirth-field')
+    }
+
+    preferredTitleContainer() {
+        return cy.get('#person-form-preferredTitle-field')
+    }
+
+    preferredFirstNameContainer() {
+        return cy.get('#person-form-preferredFirstName-field')
+    }
+
+    preferredMiddleNameContainer() {
+        return cy.get('#person-form-preferredMiddleName-field')
+    }
+
+    preferredLastNameContainer() {
+        return cy.get('#person-form-preferredSurname-field')
+    }
+
+    addLanguageButton() {
+        return cy.contains('Add Language')
+    }
+
+    languageContainer() {
+        return cy.get('#person-form-languages-0-language')
+    }
+
+    languageSelectionContainer() {
+        return cy.get('#person-form-languages-0-language-field')
+    }
+
+    idContainer() {
+        return cy.get('#person-form-identifications-0-identificationType')
+    }
+
+    idSelectionContainer() {
+        return cy.get('#person-form-identifications-0-identificationType-field')
+    }
+
+    idNumberContainer() {
+        return cy.get('#person-form-identifications-0-value-field')
+    }
+
+    idYesRadioButton() {
+        return cy.get('#person-form-identification-0-seen-yes')
+    }
+
+    idNoRadioButton() {
+        return cy.get('#person-form-identification-0-seen-no')
+    } 
+
+    isPrimaryLanguage() {
+        return cy.get('#person-form-languages-0-isPrimary')
+    }
+
+    removeLanguageButton() {
+        return cy.contains('Remove language')
+    }
+
+    removeIdButton() {
+        return cy.contains('Remove ID')
+    }
+
+    signLanguageRequiredButton() {
+        return cy.get('#person-form-signLanguage')
+    }
+
+    interpreterRequiredButton() {
+        return cy.get('#person-form-interpreter')
+    }
+
+    addIdButton() {
+        return cy.contains('Add ID')
     }
 
     reasonForCreationContainer() {
@@ -72,10 +160,6 @@ class AddPersonPageObjects {
 
     errorSummaryBody() {
         return cy.get('[class="govuk-error-summary__body"]')
-    }
-
-    personTypeError() {
-        return cy.get('[id="person-form-personType-error"]')
     }
 
     addPersonPageIsDisplayed() {

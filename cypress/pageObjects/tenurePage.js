@@ -57,7 +57,7 @@ class TenurePageObjects {
     tenureDetailsAreDisplayed() {
         this.paymentReference().should('be.visible')
         this.tenureDetailsContainer().should('be.visible')
-        this.tenureDetailsContainer().contains('Active')
+        // this.tenureDetailsContainer().contains('Active')
         this.tenureDetailsContainer().contains('Start date')
         this.tenureDetailsContainer().contains('End date')
         this.tenureDetailsContainer().contains('Tenure type')
