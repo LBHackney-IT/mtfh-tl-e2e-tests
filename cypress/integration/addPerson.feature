@@ -38,8 +38,8 @@ Feature: Add a new person to a tenure
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen |
-      | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Testy     | McTest     | Face     | 08  | 05    | 1969 | Male   | Fiji        | AA123456C               | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | Occitan  | Passport        | 999999   | Yes    |
-      | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mrs   | Household member    | Testly    | McTesty    | Head     | 09  | 03    | 1983 | Other  | Canada      | AA123456C               | Toronto      | Dr             | Karen              | Steve               | Henderson         | Sanskrit | Driving Licence | 111111   | No     |
+      | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Testy     | McTest     | guid     | 08  | 05    | 1969 | Male   | Fiji        | AA123456C               | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | Occitan  | Passport        | 999999   | Yes    |
+      | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mrs   | Household member    | Testly    | McTesty    | guid     | 09  | 03    | 1983 | Other  | Canada      | AA123456C               | Toronto      | Dr             | Karen              | Steve               | Henderson         | Sanskrit | Driving Licence | 111111   | No     |
 
   @Negative
   Scenario Outline: Validation check
