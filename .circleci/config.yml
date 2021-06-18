@@ -63,7 +63,7 @@ workflows:
       - cypress/run:
           name: ci
           command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-             echo $CYPRESS_ENVIRONMENT
+             echo $CYPRESS_ENVIRONMENT;
              npm run test:cypress:run
           store_artifacts: true
 
@@ -73,7 +73,7 @@ workflows:
       - cypress/run:
           name: Google Lighthouse tests
           command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-             echo $CYPRESS_ENVIRONMENT
+             echo $CYPRESS_ENVIRONMENT;
              npm run test:cypress:GoogleLighthouse
           store_artifacts: false
       
