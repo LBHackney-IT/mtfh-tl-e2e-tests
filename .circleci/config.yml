@@ -79,7 +79,7 @@ workflows:
   mfe-triggered-pipeline-develop:
     when: << pipeline.parameters.external_trigger >>
       - and 
-          - equal [development, << pipeline.parameters.target_environment >>] 
+          - condition [development, << pipeline.parameters.target_environment >>] 
     jobs:
       - trigger-post-deployment-tests:
           name: e2e-tests
@@ -90,7 +90,7 @@ workflows:
 
   mfe-triggered-pipeline-staging:
     when: << pipeline.parameters.external_pipeline >>
-      - and 
+      - condition 
           - equal [staging, << pipeline.parameters.target_environment >>] 
     jobs:
       - trigger-post-deployment-tests:
@@ -102,7 +102,7 @@ workflows:
 
   mfe-triggered-pipeline-production:
     when: << pipeline.parameters.external_pipeline >>
-      - and 
+      - condition 
         - equal [ production, << pipeline.parameters.target_environment >>] 
     jobs:
       - cypress/run:
