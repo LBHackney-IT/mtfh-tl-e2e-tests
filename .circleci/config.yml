@@ -24,7 +24,7 @@ parameters:
     type: string
 
   target_environment:
-    description: The target environment for the tests. Must be "development", "staging" or "production".
+    description: The target environment for the tests.
     default: "development"
     type: enum
     enum: ["development", "staging", "production"]
@@ -63,7 +63,7 @@ workflows:
       - cypress/run:
           name: ci
           command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-             echo $CYPRESS_ENVIRONMENT;
+             echo "Running against $CYPRESS_ENVIRONMENT environment";
              npm run test:cypress:run
           store_artifacts: true
 
@@ -73,7 +73,7 @@ workflows:
       - cypress/run:
           name: Google Lighthouse tests
           command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-             echo $CYPRESS_ENVIRONMENT;
+             echo "Running against $CYPRESS_ENVIRONMENT environment";
              npm run test:cypress:GoogleLighthouse
           store_artifacts: false
       

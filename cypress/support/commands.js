@@ -1,10 +1,9 @@
 import '@testing-library/cypress/add-commands';
 import 'cypress-axe'
 import 'cypress-audit/commands'
+const gssoTestKey = require('../../environment-config').gssoTestKey
 
 Cypress.Commands.add('login', () => {
-    const gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN')
-  
     cy.getCookies().should('be.empty')
     cy.setCookie('hackneyToken', gssoTestKey)
     cy.getCookie('hackneyToken').should('have.property', 'value', gssoTestKey)
