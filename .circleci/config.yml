@@ -1,6 +1,7 @@
 version: 2.1
 parameters:
   run_workflow_ci:
+    description: The default behaviour of the pipeline when a commit and/or merge is performed.
     default: true
     type: boolean
 
@@ -13,12 +14,20 @@ parameters:
     type: boolean
 
   external_trigger:
+    description: Used to determine if the tests are triggered by a mfe upstream.
     default: false
     type: boolean
 
   external_pipeline:
+    description: The name of the mfe that triggered the tests upstream.
     default: ""
     type: string
+
+  target_environment:
+    description: The target environment for the tests. Must be "development", "staging" or "production".
+    default: "development"
+    type: enum
+    enum: ["development", "staging", "production"]
 
 orbs:
   cypress: cypress-io/cypress@1
