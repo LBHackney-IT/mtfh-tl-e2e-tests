@@ -41,7 +41,7 @@ jobs:
       - image: cimg/base:2021.05
     steps:
       - run: |
-            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<<pipeline.parameters.external_pipeline>>/pipeline' \
+            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
             --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
             --header 'Content-Type: application/json' \
             --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true}}'
@@ -62,7 +62,8 @@ workflows:
     jobs:
       - cypress/run:
           name: ci
-          command: CYPRESS_ENVIRONMENT=<<pipeline.parameters.target_environment>> ;
+          command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
+             echo $CYPRESS_ENVIRONMENT
              npm run test:cypress:run
           store_artifacts: true
 
@@ -71,7 +72,9 @@ workflows:
     jobs:
       - cypress/run:
           name: Google Lighthouse tests
-          command: npm run test:cypress:GoogleLighthouse
+          command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
+             echo $CYPRESS_ENVIRONMENT
+             npm run test:cypress:GoogleLighthouse
           store_artifacts: false
       
       - trigger-recurring-pipeline:
