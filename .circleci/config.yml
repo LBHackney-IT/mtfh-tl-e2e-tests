@@ -77,7 +77,7 @@ jobs:
     
 workflows:
   mfe-triggered-pipeline-develop:
-    when: << pipeline.parameters.external_pipeline >>
+    when: << pipeline.parameters.external_trigger >>
       - and 
           - equal [development, << pipeline.parameters.target_environment >>] 
     jobs:
