@@ -36,7 +36,7 @@ browsers-chrome78-ff70:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 
 jobs:
-  trigger-recurring-pipeline:
+  trigger-staging-deployment:
     docker:
       - image: cimg/base:2021.05
     steps:
@@ -44,7 +44,17 @@ jobs:
             curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
             --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
             --header 'Content-Type: application/json' \
-            --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true}}'
+            --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "staging"}}'
+
+  trigger-production-deployment:
+    docker:
+      - image: cimg/base:2021.05
+    steps:
+      - run: |
+            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
+            --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+            --header 'Content-Type: application/json' \
+            --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "production"}}'
 
   trigger-accessibility:
     docker:
@@ -55,8 +65,53 @@ jobs:
             --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
             --header 'Content-Type: application/json' \
             --data ' {"branch": "trigger_workflow_via_api", "parameters": {"run_workflow_ci": false, "run_workflow_GoogleLighthouse": true}}'
+
+  trigger-post-deployment-tests:
+    docker:
+      - image: cypress/browsers:node12.13.0-chrome78-ff70
+    steps:
+      - run: |
+            export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
+             echo "Running against $CYPRESS_ENVIRONMENT environment";
+             npm run test:cypress:run
     
 workflows:
+  mfe-triggered-pipeline-develop:
+    when: << pipeline.parameters.external_pipeline >>
+      - and 
+          - equal [development, << pipeline.parameters.target_environment >>] 
+    jobs:
+      - trigger-post-deployment-tests:
+          name: e2e-tests
+      - trigger-staging-deployment:
+          name: trigger staging deployment
+          requires:
+            - e2e-tests
+
+  mfe-triggered-pipeline-staging:
+    when: << pipeline.parameters.external_pipeline >>
+      - and 
+          - equal [staging, << pipeline.parameters.target_environment >>] 
+    jobs:
+      - trigger-post-deployment-tests:
+          name: e2e-tests
+      - trigger-production-deployment:
+          name: trigger production deployment
+          requires:
+            - e2e-tests
+
+  mfe-triggered-pipeline-production:
+    when: << pipeline.parameters.external_pipeline >>
+      - and 
+        - equal [ production, << pipeline.parameters.target_environment >>] 
+    jobs:
+      - cypress/run:
+          name: e2e-tests
+          command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
+            echo "Running against $CYPRESS_ENVIRONMENT environment";
+            npm run test:cypress:run
+          store_artifacts: true
+
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
     jobs:
@@ -66,20 +121,6 @@ workflows:
              echo "Running against $CYPRESS_ENVIRONMENT environment";
              npm run test:cypress:run
           store_artifacts: true
-
-  run-accessibility-tests:
-    when: << pipeline.parameters.run_workflow_GoogleLighthouse >>
-    jobs:
-      - cypress/run:
-          name: Google Lighthouse tests
-          command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-             echo "Running against $CYPRESS_ENVIRONMENT environment";
-             npm run test:cypress:GoogleLighthouse
-          store_artifacts: false
-      
-      - trigger-recurring-pipeline:
-          requires:
-            - Google Lighthouse tests
 
   run-cypress-nightly:
     triggers:
