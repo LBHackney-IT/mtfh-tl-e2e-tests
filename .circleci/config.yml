@@ -62,12 +62,9 @@ workflows:
     jobs:
       - cypress/run:
           name: ci
-          command: npm run test:cypress:run
+          command: CYPRESS_ENVIRONMENT=<<pipeline.parameters.target_environment>> ;
+             npm run test:cypress:run
           store_artifacts: true
-      - trigger-accessibility:
-          name: accessibility
-          requires:
-            - ci
 
   run-accessibility-tests:
     when: << pipeline.parameters.run_workflow_GoogleLighthouse >>
@@ -80,22 +77,6 @@ workflows:
       - trigger-recurring-pipeline:
           requires:
             - Google Lighthouse tests
-
-
-  run-accessibility-sequentially:
-    when: << pipeline.parameters.run_workflow_accessibility_sequentially >>
-    jobs:
-      - cypress/run:
-          name: ci
-          command: npm run test:cypress:run
-          store_artifacts: true
-
-      - cypress/run:
-          name: Google Lighthouse tests
-          command: npm run test:cypress:GoogleLighthouse
-          store_artifacts: false
-          requires:
-            - ci
 
   run-cypress-nightly:
     triggers:

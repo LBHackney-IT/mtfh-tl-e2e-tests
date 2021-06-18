@@ -10,7 +10,7 @@ let rootComponentPort = "9000"
 
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 
-if (environment === 'dev') {
+if (environment === 'development') {
     baseUrl = "https://manage-my-home-development.hackney.gov.uk"
 }
 
