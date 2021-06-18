@@ -77,7 +77,7 @@ jobs:
     
 workflows:
   mfe-triggered-pipeline-develop:
-    when: << pipeline.parameters.external_trigger >>
+    when: << pipeline.parameters.external_trigger >> && [develop, << pipeline.parameters.target_environment>>]
     jobs:
       - trigger-post-deployment-tests:
           name: e2e-tests
@@ -87,7 +87,7 @@ workflows:
             - e2e-tests
 
   mfe-triggered-pipeline-staging:
-    when: << pipeline.parameters.external_trigger >>
+    when: << pipeline.parameters.external_trigger >> && [staging, << pipeline.parameters.target_environment>>]
     jobs:
       - trigger-post-deployment-tests:
           name: e2e-tests
