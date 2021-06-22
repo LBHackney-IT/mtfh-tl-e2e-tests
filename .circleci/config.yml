@@ -42,16 +42,21 @@ jobs:
             - when:
                 condition: <<  pipeline.parameters.development_environment >>
                 steps:
-                  - run: export CYPRESS_ENVIRONMENT="development" ;
+                  - run: |
+                          export CYPRESS_ENVIRONMENT=development ;
+                          npm run test:cypress:run ;
             - when:
                 condition: <<  pipeline.parameters.staging_environment >>
                 steps:
-                  - run: export CYPRESS_ENVIRONMENT="staging" ;
+                  - run: |
+                          export CYPRESS_ENVIRONMENT=staging ;
+                          npm run test:cypress:run ;
             - when:
                 condition: <<  pipeline.parameters.production_environment >>
                 steps:
-                  - run: export CYPRESS_ENVIRONMENT="production" ;
-                run: npm run test:cypress:run
+                  - run: |
+                          export CYPRESS_ENVIRONMENT=production ;
+                          npm run test:cypress:run ;
                 
     trigger-downstream-deployment:
         docker:
@@ -63,17 +68,22 @@ jobs:
                 - when:
                     condition: <<  pipeline.parameters.development_environment >>
                     steps:
-                      - run: export TARGET_ENVIRONMENT="staging" ;
+                      - run: |
+                              echo "Deploying to $TARGET_ENVIRONMENT" ;
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
+                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                              --header 'Content-Type: application/json' \
+                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "staging"}}' ;
                 - when:
                     condition: <<  pipeline.parameters.staging_environment >>
                     steps:
-                      - run: export TARGET_ENVIRONMENT="production" ;             
-                - run: |
-                    echo "Deploying to $TARGET_ENVIRONMENT" ;
-                    curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
-                    --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                    --header 'Content-Type: application/json' \
-                    --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": '"$TARGET_ENVIRONMENT"'}}' ;
+                      - run: |
+                              echo "Deploying to $TARGET_ENVIRONMENT" ;
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
+                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                              --header 'Content-Type: application/json' \
+                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "production"}}' ;
+                    
 
 workflows:
   run-ci-tests:
