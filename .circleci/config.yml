@@ -35,28 +35,7 @@ browsers-chrome78-ff70:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 
 jobs:
-    # run-e2e-tests:
-    #     docker:
-    #         - image: cypress/browsers:node12.13.0-chrome78-ff70
-    #     steps:
-    #         - when:
-    #             condition: <<  pipeline.parameters.development_environment >>
-    #             steps:
-    #               - run: |
-    #                       export CYPRESS_ENVIRONMENT="development"
-    #         - when:
-    #             condition: <<  pipeline.parameters.staging_environment >>
-    #             steps:
-    #               - run: |
-    #                       export CYPRESS_ENVIRONMENT="staging"
-    #         - when:
-    #             condition: <<  pipeline.parameters.production_environment >>
-    #             steps:
-    #               - run: |
-    #                       export CYPRESS_ENVIRONMENT="production"
-
-                
-    trigger-downstream-deployment:
+  trigger-downstream-deployment:
         docker:
           - image: cimg/base:2021.05
         steps:
@@ -67,22 +46,19 @@ jobs:
                     condition: <<  pipeline.parameters.development_environment >>
                     steps:
                       - run: |
-                              echo "Deploying to $TARGET_ENVIRONMENT" ;
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
-                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "staging"}}' ;
+                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "staging_deploy": true}}' ;
                 - when:
                     condition: <<  pipeline.parameters.staging_environment >>
                     steps:
                       - run: |
-                              echo "Deploying to $TARGET_ENVIRONMENT" ;
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
-                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "production"}}' ;
+                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "production_deploy": true}}' ;
                     
-
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
@@ -137,14 +113,7 @@ workflows:
           command: export CYPRESS_ENVIRONMENT="producton" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
-
-  # trigger-e2e-tests:
-  #   when: << pipeline.parameters.external_trigger >>
-  #   jobs:
-  #     - run-e2e-tests
-  #     - trigger-downstream-deployment:
-  #         requires: 
-  #           - e2e-development
+          - e2e-development
 
   run-cypress-nightly:
     triggers:
@@ -153,21 +122,18 @@ workflows:
           filters:
             branches:
               only:
-                - master
-                
+                - master             
     jobs:
       - cypress/run:
           name: chrome
           executor: cypress/browsers-chrome78-ff70
           command: npm run test:cypress:nightly:chrome
           store_artifacts: true
-
       - cypress/run:
           name: electron
           executor: cypress/browsers-chrome78-ff70
           command: npm run test:cypress:nightly:electron
           store_artifacts: true
-
       - cypress/run:
            name: firefox
            executor: cypress/browsers-chrome78-ff70
