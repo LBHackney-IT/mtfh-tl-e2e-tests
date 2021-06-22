@@ -113,7 +113,6 @@ workflows:
           command: export CYPRESS_ENVIRONMENT="producton" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
-          - e2e-development
 
   run-cypress-nightly:
     triggers:
