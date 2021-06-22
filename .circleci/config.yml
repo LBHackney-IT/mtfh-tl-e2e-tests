@@ -1,21 +1,9 @@
 version: 2.1
+
 parameters:
   run_workflow_ci:
     description: The default behaviour of the pipeline when a commit and/or merge is performed.
     default: true
-    type: boolean
-
-  run_workflow_GoogleLighthouse:
-    default: false
-    type: boolean
-
-  run_workflow_accessibility_sequentially:
-    default: false
-    type: boolean
-
-  external_trigger:
-    description: Used to determine if the tests are triggered by a mfe upstream.
-    default: false
     type: boolean
 
   external_pipeline:
@@ -23,12 +11,23 @@ parameters:
     default: ""
     type: string
 
-  target_environment:
-    description: The target environment for the tests.
-    default: "development"
-    type: enum
-    enum: ["development", "staging", "production"]
+  external_trigger:
+    description: Pipeline triggered externally
+    default: false
+    type: boolean
 
+  development_environment:
+    default: false
+    type: boolean
+
+  staging_environment:
+    default: false
+    type: boolean
+
+  production_environment:
+    default: false
+    type: boolean
+    
 orbs:
   cypress: cypress-io/cypress@1
 browsers-chrome78-ff70:
@@ -36,85 +35,64 @@ browsers-chrome78-ff70:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 
 jobs:
-  trigger-staging-deployment:
-    docker:
-      - image: cimg/base:2021.05
-    steps:
-      - run: |
-            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
-            --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-            --header 'Content-Type: application/json' \
-            --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "staging"}}'
+    run-e2e-tests:
+        docker:
+            - image: cypress/browsers:node12.13.0-chrome78-ff70
+        steps:
+            - when:
+                condition: <<  pipeline.parameters.development_environment >>
+                steps:
+                  - run: export CYPRESS_ENVIRONMENT="development" ;
+            - when:
+                condition: <<  pipeline.parameters.staging_environment >>
+                steps:
+                  - run: export CYPRESS_ENVIRONMENT="staging" ;
+            - when:
+                condition: <<  pipeline.parameters.production_environment >>
+                steps:
+                  - run: export CYPRESS_ENVIRONMENT="production" ;
+                run: npm run test:cypress:run
+                
+    trigger-downstream-deployment:
+        docker:
+          - image: cimg/base:2021.05
+        steps:
+          - when:
+              condition: << pipeline.parameters.external_trigger >> 
+              steps:
+                - when:
+                    condition: <<  pipeline.parameters.development_environment >>
+                    steps:
+                      - run: export TARGET_ENVIRONMENT="staging" ;
+                - when:
+                    condition: <<  pipeline.parameters.staging_environment >>
+                    steps:
+                      - run: export TARGET_ENVIRONMENT="production" ;             
+                - run: |
+                    echo "Deploying to $TARGET_ENVIRONMENT" ;
+                    curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
+                    --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                    --header 'Content-Type: application/json' \
+                    --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": '"$TARGET_ENVIRONMENT"'}}' ;
 
-  trigger-production-deployment:
-    docker:
-      - image: cimg/base:2021.05
-    steps:
-      - run: |
-            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
-            --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-            --header 'Content-Type: application/json' \
-            --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "target_environment": "production"}}'
-
-  trigger-accessibility:
-    docker:
-      - image: cimg/base:2021.05
-    steps:
-      - run: |
-            curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-tl-e2e-tests/pipeline' \
-            --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-            --header 'Content-Type: application/json' \
-            --data ' {"branch": "trigger_workflow_via_api", "parameters": {"run_workflow_ci": false, "run_workflow_GoogleLighthouse": true}}'
-
-  trigger-post-deployment-tests:
-    docker:
-      - image: cypress/browsers:node12.13.0-chrome78-ff70
-    steps:
-      - run: |
-            export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-             echo "Running against $CYPRESS_ENVIRONMENT environment";
-             npm run test:cypress:run
-    
 workflows:
-  mfe-triggered-pipeline-develop:
-    when: << pipeline.parameters.external_trigger >>
-    jobs:
-      - trigger-post-deployment-tests:
-          name: e2e-tests
-      - trigger-staging-deployment:
-          name: trigger staging deployment
-          requires:
-            - e2e-tests
-
-  mfe-triggered-pipeline-staging:
-    when: << pipeline.parameters.external_trigger >>
-    jobs:
-      - trigger-post-deployment-tests:
-          name: e2e-tests
-      - trigger-production-deployment:
-          name: trigger production deployment
-          requires:
-            - e2e-tests
-
-  mfe-triggered-pipeline-production:
-    when: << pipeline.parameters.external_trigger >>
-    jobs:
-      - cypress/run:
-          name: e2e-tests
-          command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-            echo "Running against $CYPRESS_ENVIRONMENT environment";
-            npm run test:cypress:run
-          store_artifacts: true
-
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
     jobs:
       - cypress/run:
           name: ci
-          command: export CYPRESS_ENVIRONMENT=<< pipeline.parameters.target_environment >>;
-             echo "Running against $CYPRESS_ENVIRONMENT environment";
+          command: export CYPRESS_ENVIRONMENT="development" ;
+             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
           store_artifacts: true
+
+  trigger-e2e-tests:
+    when: << pipeline.parameters.external_trigger >>
+    jobs:
+      - run-e2e-tests
+      - trigger-downstream-deployment:
+          requires: 
+            - run-e2e-tests
 
   run-cypress-nightly:
     triggers:
@@ -143,3 +121,4 @@ workflows:
            executor: cypress/browsers-chrome78-ff70
            command: npm run test:cypress:nightly:firefox
            store_artifacts: true
+
