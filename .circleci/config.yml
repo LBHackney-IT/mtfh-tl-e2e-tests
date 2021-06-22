@@ -46,18 +46,19 @@ jobs:
                     condition: <<  pipeline.parameters.development_environment >>
                     steps:
                       - run: |
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
-                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                              --header 'Content-Type: application/json' \
-                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "staging_deploy": true}}' ;
+                              export DEPLOYMENT_ENVIRONMENT='staging_deploy' ;
                 - when:
                     condition: <<  pipeline.parameters.staging_environment >>
                     steps:
                       - run: |
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
-                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                              --header 'Content-Type: application/json' \
-                              --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, "production_deploy": true}}' ;
+                              export DEPLOYMENT_ENVIRONMENT='production_deploy' ;
+                - run: |
+                        echo "Deploying to $DEPLOYMENT_ENVIRONMENT"
+                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
+                        --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                        --header 'Content-Type: application/json' \
+                        --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, '"$DEPLOYMENT_ENVIRONMENT"': true}}' ;
+
                     
 workflows:
   run-ci-tests:
