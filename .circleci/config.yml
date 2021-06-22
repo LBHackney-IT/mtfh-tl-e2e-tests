@@ -47,15 +47,12 @@ jobs:
                         then export DEPLOYMENT_ENVIRONMENT='staging_deploy'
                         if [ << pipeline.parameters.staging_environment >> ]
                         then export DEPLOYMENT_ENVIRONMENT='production_deploy'
-                        fi
-
                         echo "Deploying to $DEPLOYMENT_ENVIRONMENT"
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
                         --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run-development-workflow": false, "run-temporary-workflow": true, '"$DEPLOYMENT_ENVIRONMENT"': true}}' ;
-
-                    
+            
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
