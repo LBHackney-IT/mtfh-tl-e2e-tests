@@ -42,17 +42,13 @@ jobs:
           - when:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
-                - when:
-                    condition: <<  pipeline.parameters.development_environment >>
-                    steps:
-                      - run: |
-                              export DEPLOYMENT_ENVIRONMENT='staging_deploy' ;
-                - when:
-                    condition: <<  pipeline.parameters.staging_environment >>
-                    steps:
-                      - run: |
-                              export DEPLOYMENT_ENVIRONMENT='production_deploy' ;
                 - run: |
+                        if [ << pipeline.parameters.development_environment >> ]
+                        then export DEPLOYMENT_ENVIRONMENT='staging_deploy'
+                        if [ << pipeline.parameters.staging_environment >> ]
+                        then export DEPLOYMENT_ENVIRONMENT='production_deploy'
+                        fi
+
                         echo "Deploying to $DEPLOYMENT_ENVIRONMENT"
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
