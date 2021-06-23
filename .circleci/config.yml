@@ -44,10 +44,10 @@ jobs:
               steps:
                 - run: |
                         case << pipeline.parameters.development_environment >> in
-                        (true) export DEPLOYMENT_ENVIRONMENT='staging_deploy' ;;
+                        (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
                         esac
                         case << pipeline.parameters.staging_environment >> in
-                        (true) export DEPLOYMENT_ENVIRONMENT='production_deploy' ;;
+                        (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                         esac
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
@@ -104,7 +104,7 @@ workflows:
         - or: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - cypress/run:
-          name: run-staging-e2e
+          name: run-production-e2e
           command: export CYPRESS_ENVIRONMENT="producton" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
