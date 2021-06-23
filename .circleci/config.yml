@@ -6,7 +6,7 @@ parameters:
     default: true
     type: boolean
 
-  external_pipeline:
+  upstream_pipeline_name:
     description: The name of the mfe that triggered the tests upstream.
     default: ""
     type: string
