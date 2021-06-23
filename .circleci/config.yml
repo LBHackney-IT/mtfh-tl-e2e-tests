@@ -49,7 +49,7 @@ jobs:
                         case << pipeline.parameters.staging_environment >> in
                         (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                         esac
-                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
+                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
                         --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run_development_workflow": false, "run_temporary_workflow": true, '\""$DEPLOYMENT_ENVIRONMENT"\"': true}}' ;
