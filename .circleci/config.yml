@@ -65,7 +65,7 @@ workflows:
              npm run test:cypress:run
           store_artifacts: true
 
-  trigger-e2e-tests-dev:
+  e2e-tests-development:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
@@ -81,7 +81,7 @@ workflows:
           # requires: 
           #   - run-development-e2e
 
-  trigger-e2e-tests-staging:
+  e2e-tests-staging:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
@@ -97,7 +97,7 @@ workflows:
           # requires: 
           #   - run-staging-e2e
       
-  trigger-e2e-tests-production:
+  e2e-tests-production:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
