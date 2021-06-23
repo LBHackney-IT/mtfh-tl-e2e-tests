@@ -44,12 +44,12 @@ jobs:
               steps:
                 - run: |
                         case << pipeline.parameters.development_environment >> in
-                        (true) export DEPLOYMENT_ENVIRONMENT='staging_deploy' ;;
+                        (true) echo "I am using the dev_environment param!" ;;
                         esac
                         case << pipeline.parameters.development_environment >> in
-                        (true) export DEPLOYMENT_ENVIRONMENT='production_deploy' ;;
+                        (true) "I am using the staging_environment param!" ;;
                         esac
-                        echo $DEPLOYMENT_ENVIRONMENT
+                        echo "Stuff and things!"
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
@@ -72,15 +72,15 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - or: [ << pipeline.parameters.development_environment >> ]
     jobs:
-      # - cypress/run:
-      #     name: run-development-e2e
-      #     command: export CYPRESS_ENVIRONMENT="development" ;
-      #        echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-      #        npm run test:cypress:run
+      - cypress/run:
+          name: run-development-e2e
+          command: export CYPRESS_ENVIRONMENT="development" ;
+             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+             npm run test:cypress:run
       - trigger-downstream-deployment:
           name: deploy to staging
-          # requires: 
-          #   - run-development-e2e
+          requires: 
+            - run-development-e2e
 
   trigger-e2e-tests-staging:
     when:
