@@ -49,7 +49,7 @@ jobs:
                         if [ << pipeline.parameters.staging_environment >> ] \
                         then export DEPLOYMENT_ENVIRONMENT='production_deploy' \
                         echo "Deploying to $DEPLOYMENT_ENVIRONMENT" ;
-                        fi ;
+                        fi
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
