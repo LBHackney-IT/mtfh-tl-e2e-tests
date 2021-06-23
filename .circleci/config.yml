@@ -72,15 +72,15 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - or: [ << pipeline.parameters.development_environment >> ]
     jobs:
-      - cypress/run:
-          name: run-development-e2e
-          command: export CYPRESS_ENVIRONMENT="development" ;
-             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-             npm run test:cypress:run
+      # - cypress/run:
+      #     name: run-development-e2e
+      #     command: export CYPRESS_ENVIRONMENT="development" ;
+      #        echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+      #        npm run test:cypress:run
       - trigger-downstream-deployment:
           name: deploy to staging
-          requires: 
-            - run-development-e2e
+          # requires: 
+          #   - run-development-e2e
 
   trigger-e2e-tests-staging:
     when:
