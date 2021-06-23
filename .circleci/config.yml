@@ -46,8 +46,8 @@ jobs:
                         case << pipeline.parameters.development_environment >> in
                         (true) echo "I am using the dev_environment param!" ;;
                         esac
-                        case << pipeline.parameters.development_environment >> in
-                        (true) "I am using the staging_environment param!" ;;
+                        case << pipeline.parameters.staging_environment >> in
+                        (true) echo "I am using the staging_environment param!" ;;
                         esac
                         echo "Stuff and things!"
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.external_pipeline >>/pipeline' \
