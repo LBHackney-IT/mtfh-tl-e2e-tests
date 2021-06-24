@@ -39,6 +39,19 @@ browsers-chrome78-ff70:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 
 jobs:
+  trigger-message-on-failure:
+        docker:
+          - image: cimg/base:2021.05
+        steps:
+          - when:
+              condition: on_fail
+              steps:
+                - run: |
+                        curl --location --request POST 'https://circleci.com/api/v2/pipeline/continue' \
+                        --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                        --header 'content-type: application/json' \
+                        --data '{ "continuation-key": "<< pipeline.parameters.continuation_key >>", "configuration": "string", "parameters": { "run_development_workflow":false, '\""failing_e2e_tests"\"': true } }'
+
   trigger-downstream-deployment:
         docker:
           - image: cimg/base:2021.05
@@ -56,7 +69,7 @@ jobs:
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
-                        --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true, "continuation_key": '\""$CIRCLE_CONTINUATION_KEY\""'}}' ;
+                        --data ' { "branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
 
 workflows:
   run-ci-tests:
@@ -84,6 +97,11 @@ workflows:
           name: deploy to staging
           # requires: 
           #   - run-development-e2e
+      - trigger-message-on-failure:
+          name: trigger failure message
+          requires:
+            - trigger-downstream-deployment
+      
 
   e2e-tests-staging:
     when:
@@ -100,6 +118,10 @@ workflows:
           name: deploy to production
           # requires: 
           #   - run-staging-e2e
+      - trigger-message-on-failure:
+          name: trigger failure message
+          requires:
+            - trigger-downstream-deployment
       
   e2e-tests-production:
     when:
@@ -112,6 +134,10 @@ workflows:
           command: export CYPRESS_ENVIRONMENT="producton" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
+      - trigger-message-on-failure:
+          name: trigger failure message
+          requires:
+            - trigger-downstream-deployment
 
   run-cypress-nightly:
     triggers:
