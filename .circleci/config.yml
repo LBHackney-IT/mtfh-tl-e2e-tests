@@ -93,14 +93,14 @@ workflows:
       #     command: export CYPRESS_ENVIRONMENT="development" ;
       #        echo "Running against $CYPRESS_ENVIRONMENT environment" ;
       #        npm run test:cypress:run
-      - trigger-downstream-deployment:
-          name: deploy to staging
+      # - trigger-downstream-deployment:
+      #     name: deploy to staging
           # requires: 
           #   - run-development-e2e
       - trigger-message-on-failure:
           name: trigger failure message
-          requires:
-            - trigger-downstream-deployment
+          # requires:
+          #   - trigger-downstream-deployment
       
 
   e2e-tests-staging:
