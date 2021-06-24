@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  trigger-message-on-failure:
+        docker:
+          - image: cimg/base:2021.05
+        steps:
+          - run: |
+                  echo "I got here"
+
+workflows:
+  trigger-failure-message:
+    jobs:
+      - trigger-message-on-failure
