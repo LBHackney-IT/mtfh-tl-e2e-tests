@@ -47,10 +47,11 @@ jobs:
               condition: on_fail
               steps:
                 - run: |
+                        echo << pipeline.parameters.continuation_key >>
                         curl --location --request POST 'https://circleci.com/api/v2/pipeline/continue' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'content-type: application/json' \
-                        --data '{ "continuation-key": "<< pipeline.parameters.continuation_key >>", "configuration": "", "parameters": { "run_development_workflow":false, '\""failing_e2e_tests"\"': true } }'
+                        --data '{ "continuation-key": "<< pipeline.parameters.continuation_key >>", "configuration": ".circleci/config.yml", "parameters": { "run_development_workflow":false, '\""failing_e2e_tests"\"': true } }'
 
   trigger-downstream-deployment:
         docker:
