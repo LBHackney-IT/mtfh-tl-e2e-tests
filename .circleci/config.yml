@@ -27,6 +27,10 @@ parameters:
   production_environment:
     default: false
     type: boolean
+
+  continuation_key:
+    default: ""
+    type: string
     
 orbs:
   cypress: cypress-io/cypress@1
@@ -52,8 +56,8 @@ jobs:
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
-                        --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true}}' ;
-            
+                        --data ' {"branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": {"run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true, "continuation_key": '\""$CIRCLE_CONTINUATION_KEY\""'}}' ;
+
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
@@ -133,4 +137,3 @@ workflows:
            executor: cypress/browsers-chrome78-ff70
            command: npm run test:cypress:nightly:firefox
            store_artifacts: true
-
