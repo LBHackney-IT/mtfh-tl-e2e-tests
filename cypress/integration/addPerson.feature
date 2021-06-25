@@ -8,7 +8,7 @@ Feature: Add a new person to a tenure
   @Positive
   Scenario Outline: Add a new person to a tenure
     Given I create a person for tenure '<tenure>'
-    Then the add a new person tenure page is correct
+    # Then the add a new person tenure page is correct
     When I select person type "<personType>"
     And I select a title "<title>"
     And I enter a first name "<firstName>"
@@ -43,7 +43,7 @@ Feature: Add a new person to a tenure
   @Negative
   Scenario Outline: Validation check
     Given I create a person for tenure '<tenure>'
-    Then the add a new person tenure page is correct
+    # Then the add a new person tenure page is correct
     When I select person type "<personType>"
     And I select a title "<title>"
     And I enter a first name "<firstName>"
@@ -61,7 +61,7 @@ Feature: Add a new person to a tenure
 
   Scenario Outline: Communication
     Given I create a person for tenure '<tenure>'
-    Then the add a new person tenure page is correct 
+    # Then the add a new person tenure page is correct 
     And I click to add a language <add> times
     Then the add language options are displayed
     Then the add language button is not displayed
@@ -75,7 +75,7 @@ Feature: Add a new person to a tenure
 
   Scenario Outline: ID Documents
     Given I create a person for tenure '<tenure>'
-    Then the add a new person tenure page is correct
+    # Then the add a new person tenure page is correct
     And I click to add an id <add> times 
     Then the add id options are displayed
     Then the add id button is not displayed
@@ -89,7 +89,7 @@ Feature: Add a new person to a tenure
   @ignore
   Scenario Outline: New person returned in search
     Given I create a person for tenure '<tenure>'
-    Then the add a new person tenure page is correct
+    # Then the add a new person tenure page is correct
     And I select a title "<title>"
     And I enter a first name "<firstName>"
     And I enter a middle name "<middleName>"
