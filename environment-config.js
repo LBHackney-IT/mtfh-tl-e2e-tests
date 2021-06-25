@@ -8,7 +8,6 @@ let tenureUrl = "tenure"
 let addPersonUrl = "person/add"
 let rootComponentPort = "9000"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
-
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 
 if (environment === 'development') {
