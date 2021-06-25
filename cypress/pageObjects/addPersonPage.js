@@ -11,7 +11,7 @@ class AddPersonPageObjects {
     }
     
     addPersonHeader() {
-        return cy.get('.lbh-heading-h1')
+        return cy.get('.heading')
     }
 
     tenureDetails() {
