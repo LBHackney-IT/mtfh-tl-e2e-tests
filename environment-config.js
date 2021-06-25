@@ -5,9 +5,9 @@ let searchUrl = "search"
 let personUrl = "person"
 let personCommentsUrl = "comment/person"
 let tenureUrl = "tenure"
+let addPersonUrl = "person/add"
 let rootComponentPort = "9000"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
-
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 
 if (environment === 'development') {
@@ -31,5 +31,6 @@ module.exports = {
     personCommentsUrl,
     baseUrl,
     tenureUrl,
+    addPersonUrl,
     gssoTestKey
 }
