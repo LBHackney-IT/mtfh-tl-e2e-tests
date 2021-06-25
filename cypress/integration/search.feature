@@ -1,4 +1,5 @@
 @SearchPage
+@ignore
 Feature: T&L Search Function
     I want to search for a person
 
@@ -11,7 +12,7 @@ Feature: T&L Search Function
   Scenario Outline: Initial search
   When I enter any of the following criteria "<characters>"
     And I click on the search button
-    # Then the search results are displayed by best match "<characters>"
+    Then the search results are displayed by best match "<characters>"
 
     Examples:
       | characters |
