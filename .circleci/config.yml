@@ -84,19 +84,19 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - or: [ << pipeline.parameters.development_environment >> ]
     jobs:
-      # - cypress/run:
-      #     name: run-development-e2e
-      #     command: export CYPRESS_ENVIRONMENT="development" ;
-      #        echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-      #        npm run test:cypress:run
-      # - trigger-downstream-deployment:
-      #     name: deploy to staging
-          # requires: 
-          #   - run-development-e2e
+      - cypress/run:
+          name: run-development-e2e
+          command: export CYPRESS_ENVIRONMENT="development" ;
+             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+             npm run test:cypress:run
+      - trigger-downstream-deployment:
+          name: deploy to staging
+          requires: 
+            - run-development-e2e
       - trigger-message-on-failure:
           name: trigger failure message
-          # requires:
-          #   - trigger-downstream-deployment
+          requires:
+            - trigger-downstream-deployment
       
 
   e2e-tests-staging:
@@ -105,15 +105,15 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - or: [ << pipeline.parameters.staging_environment >> ]
     jobs:
-      # - cypress/run:
-      #     name: run-staging-e2e
-      #     command: export CYPRESS_ENVIRONMENT="staging" ;
-      #        echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-      #        npm run test:cypress:run
+      - cypress/run:
+          name: run-staging-e2e
+          command: export CYPRESS_ENVIRONMENT="staging" ;
+             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+             npm run test:cypress:run
       - trigger-downstream-deployment:
           name: deploy to production
-          # requires: 
-          #   - run-staging-e2e
+          requires: 
+            - run-staging-e2e
       - trigger-message-on-failure:
           name: trigger failure message
           requires:
