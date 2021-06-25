@@ -170,6 +170,19 @@ Then('the add id options are not displayed', () => {
     addPersonPage.idContainer().should('not.exist')
 })
 
+And('the person has been added to the tenure', () => {
+    for (let i = 0; i < 5; i++) {
+        addPersonPage.mainContent().then(($body) => {
+            if ($body.text().includes(testGuid.testGuid)) {
+                addPersonPage.mainContent().contains(testGuid.testGuid)
+            } else {
+                cy.wait(1000)
+                cy.reload(true)
+            }
+        })
+    }
+})
+
 And('I am on the tenure page {string}', (tenureId) => {
-    cy.url().should('include', `${tenureId}`)
+    cy.url().should('include', `tenure/${tenureId}`)
 })

@@ -2,8 +2,12 @@ const envConfig = require('../../environment-config')
 
 class AddPersonPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.addPersonUrl}/${record}`)
+        cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${record}/add`)
         cy.injectAxe()
+    }
+
+    mainContent() {
+        return cy.get('#main-content')
     }
 
     backButton() {
