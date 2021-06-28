@@ -1,7 +1,13 @@
+const environment = Cypress.env('ENVIRONMENT')
+
+let rootUrl = "http://local.hackney.gov.uk"
+let searchUrl = "search"
+let personUrl = "person"
+let personCommentsUrl = "comment/person"
 let tenureUrl = "tenure"
-let addPersonUrl = "person/add"
 let rootComponentPort = "9000"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
+
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 
 if (environment === 'development') {
@@ -20,9 +26,10 @@ if (environment === 'production') {
 }
 
 module.exports = {
+    searchUrl,
+    personUrl,
     personCommentsUrl,
     baseUrl,
     tenureUrl,
-    addPersonUrl,
     gssoTestKey
 }
