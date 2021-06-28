@@ -96,7 +96,7 @@ workflows:
       - trigger-message-on-failure:
           name: trigger failure message
           requires:
-            - trigger-downstream-deployment
+            - deploy to staging
       
 
   e2e-tests-staging:
@@ -117,7 +117,7 @@ workflows:
       - trigger-message-on-failure:
           name: trigger failure message
           requires:
-            - trigger-downstream-deployment
+            - deploy to production
       
   e2e-tests-production:
     when:
