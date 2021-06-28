@@ -82,7 +82,7 @@ workflows:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
-        - or: [ << pipeline.parameters.development_environment >> ]
+        - and: [ << pipeline.parameters.development_environment >> ]
     jobs:
       - cypress/run:
           name: run development e2e
@@ -96,14 +96,13 @@ workflows:
       - trigger-error-code-on-failure:
           name: trigger error code on parent pipeline
           requires:
-            - deploy to staging
-      
-
+            - run development e2e
+          
   e2e-tests-staging:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
-        - or: [ << pipeline.parameters.staging_environment >> ]
+        - and: [ << pipeline.parameters.staging_environment >> ]
     jobs:
       - cypress/run:
           name: run staging e2e
@@ -117,13 +116,13 @@ workflows:
       - trigger-error-code-on-failure:
           name: trigger error code on parent pipeline
           requires:
-            - deploy to production
+            - run staging e2e
       
   e2e-tests-production:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
-        - or: [ << pipeline.parameters.production_environment >> ]
+        - and: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - cypress/run:
           name: run production e2e
