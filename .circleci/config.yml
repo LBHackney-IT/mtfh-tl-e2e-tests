@@ -39,14 +39,14 @@ jobs:
         docker:
           - image: cimg/base:2021.05
         steps:
-          - when:
-              condition: on_fail
-              steps:
-                - run: |
+          - run:
+              name: trigger error code on failure
+              command: |
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
                         --data '{ "branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
+              when: on_fail
 
   trigger-downstream-deployment:
         docker:
