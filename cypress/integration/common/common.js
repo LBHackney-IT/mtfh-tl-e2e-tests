@@ -107,3 +107,70 @@ And('have no detectable a11y violations', () => {
 And('I click the done button', () => {
     personContactPage.doneButton().click()
 })
+
+And('I click the add email address button', () => {
+    personContactPage.addEmailAddressButton().click()
+})
+
+And('I enter an email address {string}', (emailAddress) => {
+    personContactPage.emailAddressField().type(emailAddress)
+})
+
+And('I enter an email description {string}', (emailDescription) => {
+    personContactPage.emailAddressDescription().type(emailDescription)
+})
+
+And('I click save email address', () => {
+    personContactPage.saveEmailAddressButton().click()
+})
+
+And('I click the add phone number button', () => {
+    personContactPage.addPhoneNumberButton().click()
+})
+
+And('I enter a phone number {string}', (phoneNumber) => {
+    personContactPage.phoneNumberField().type(phoneNumber)
+})
+
+And('I select a phone number type {string}', (phoneType) => {
+    switch (phoneType) {
+        case 'Mobile':
+            personContactPage.phoneNumberMobileType().click()
+            break;
+        
+        case 'Work':
+            personContactPage.phoneNumberWorkType().click()
+            break;
+        
+        case 'Home':
+            personContactPage.phoneNumberHomeType().click()
+            break;
+        
+        case 'Other':
+            personContactPage.phoneNumberOtherType().click()
+            break;
+    
+        default:
+            cy.log('Please select a valid phone number type')
+            break;
+    }
+})
+
+And('I enter a phone number description {string}', (phoneDescription) =>  {
+    personContactPage.phoneNumberDescription().type(phoneDescription)
+})
+
+And('I click save phone number', () => {
+    personContactPage.savePhoneNumberButton().click()
+})
+
+And('the email information is captured {string} {string}', (email, emailDescription) => {
+    personContactPage.fieldsetContent().contains(email)
+    personContactPage.fieldsetContent().contains(emailDescription)
+})
+
+And('the phone information is captured {string} {string} {string}', (phoneNumber, phoneType, phoneDescription) => {
+    personContactPage.fieldsetContent().contains(phoneNumber)
+    personContactPage.fieldsetContent().contains(phoneType)
+    personContactPage.fieldsetContent().contains(phoneDescription)
+})
