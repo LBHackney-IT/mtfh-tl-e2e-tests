@@ -35,7 +35,7 @@ browsers-chrome78-ff70:
       - image: cypress/browsers:node12.13.0-chrome78-ff70
 
 jobs:
-  trigger-message-on-failure:
+  trigger-error-code-on-failure:
         docker:
           - image: cimg/base:2021.05
         steps:
@@ -85,16 +85,16 @@ workflows:
         - or: [ << pipeline.parameters.development_environment >> ]
     jobs:
       - cypress/run:
-          name: run-development-e2e
+          name: run development e2e
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
       - trigger-downstream-deployment:
           name: deploy to staging
           requires: 
-            - run-development-e2e
-      - trigger-message-on-failure:
-          name: trigger failure message
+            - run development e2e
+      - trigger-error-code-on-failure:
+          name: trigger error code on parent pipeline
           requires:
             - deploy to staging
       
@@ -106,16 +106,16 @@ workflows:
         - or: [ << pipeline.parameters.staging_environment >> ]
     jobs:
       - cypress/run:
-          name: run-staging-e2e
+          name: run staging e2e
           command: export CYPRESS_ENVIRONMENT="staging" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
       - trigger-downstream-deployment:
           name: deploy to production
           requires: 
-            - run-staging-e2e
-      - trigger-message-on-failure:
-          name: trigger failure message
+            - run staging e2e
+      - trigger-error-code-on-failure:
+          name: trigger error code on parent pipeline
           requires:
             - deploy to production
       
@@ -126,14 +126,14 @@ workflows:
         - or: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - cypress/run:
-          name: run-production-e2e
+          name: run production e2e
           command: export CYPRESS_ENVIRONMENT="producton" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
-      - trigger-message-on-failure:
-          name: trigger failure message
+      - trigger-error-code-on-failure:
+          name: trigger error code on parent pipeline
           requires:
-            - trigger-downstream-deployment
+            - run production e2e
 
   run-cypress-nightly:
     triggers:
