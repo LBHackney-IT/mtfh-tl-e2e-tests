@@ -8,4 +8,4 @@ Cypress.Commands.add('login', () => {
     cy.getCookies().should('be.empty')
     cy.setCookie('hackneyToken', gssoTestKey)
     cy.getCookie('hackneyToken').should('have.property', 'value', gssoTestKey)
-}
+})
