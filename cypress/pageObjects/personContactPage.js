@@ -58,6 +58,22 @@ class PersonContactPageObjects {
         return cy.contains('Save phone number')
     }
 
+    removeEmailAddressButton() {
+        return cy.contains('Remove email address')
+    }
+
+    removePhoneNumberButton() {
+        return cy.contains('Remove phone number')
+    }
+
+    cancelRemovalDialogBox() {
+        return cy.contains('Cancel')
+    }
+
+    closeModal() {
+        return cy.get('.lbh-dialog__close')
+    }
+
     doneButton() {
         return cy.contains('Done')
     }
