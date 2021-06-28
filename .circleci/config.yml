@@ -48,24 +48,49 @@ jobs:
                         --data '{ "branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
               when: on_fail
 
-  trigger-downstream-deployment:
+  run-e2e-tests:
         docker:
-          - image: cimg/base:2021.05
+          - image: cypress/browsers:node12.13.0-chrome78-ff70
         steps:
           - when:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
-                - run: |
-                        case << pipeline.parameters.development_environment >> in
-                        (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
-                        esac
-                        case << pipeline.parameters.staging_environment >> in
-                        (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
-                        esac
-                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
-                        --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                        --header 'Content-Type: application/json' \
-                        --data '{ "branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
+                - run:
+                    name: Execute e2e tests
+                    command: |
+                              case << pipeline.parameters.development_environment >> in
+                              (true) export CYPRESS_ENVIRONMENT='development' ;;
+                              esac
+                              case << pipeline.parameters.staging_environment >> in
+                              (true) export CYPRESS_ENVIRONMENT='staging' ;;
+                              esac
+                              case << pipeline.parameters.production_environment >> in
+                              (true) export CYPRESS_ENVIRONMENT='production' ;;
+                              esac
+                              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                              npm run test:cypress:run
+                - run: 
+                    name:
+                    command: |
+                              case << pipeline.parameters.development_environment >> in
+                              (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
+                              esac
+                              case << pipeline.parameters.staging_environment >> in
+                              (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
+                              esac
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
+                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                              --header 'Content-Type: application/json' \
+                              --data '{ "branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
+                    when: on_success
+                - run:
+                    name:
+                    command: |
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
+                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                              --header 'Content-Type: application/json' \
+                              --data '{ "branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
+                    when: on_fail
 
 workflows:
   run-ci-tests:
@@ -84,19 +109,7 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.development_environment >> ]
     jobs:
-      - cypress/run:
-          name: run development e2e
-          command: export CYPRESS_ENVIRONMENT="development" ;
-             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-             npm run test:cypress:run
-          post-steps:
-            - run:
-                - trigger-error-code-on-failure:
-                
-      - trigger-downstream-deployment:
-          name: deploy to staging
-          requires: 
-            - run development e2e
+      - run-e2e-tests
           
   e2e-tests-staging:
     when:
@@ -104,19 +117,7 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.staging_environment >> ]
     jobs:
-      - cypress/run:
-          name: run staging e2e
-          command: export CYPRESS_ENVIRONMENT="staging" ;
-             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-             npm run test:cypress:run
-      - trigger-downstream-deployment:
-          name: deploy to production
-          requires: 
-            - run staging e2e
-      - trigger-error-code-on-failure:
-          name: trigger error code on parent pipeline
-          requires:
-            - run staging e2e
+      - run-e2e-tests
       
   e2e-tests-production:
     when:
@@ -124,15 +125,7 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.production_environment >> ]
     jobs:
-      - cypress/run:
-          name: run production e2e
-          command: export CYPRESS_ENVIRONMENT="producton" ;
-             echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-             npm run test:cypress:run
-      - trigger-error-code-on-failure:
-          name: trigger error code on parent pipeline
-          requires:
-            - run production e2e
+      - run-e2e-tests
 
   run-cypress-nightly:
     triggers:
