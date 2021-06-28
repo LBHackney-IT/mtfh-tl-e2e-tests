@@ -81,7 +81,8 @@ workflows:
   e2e-tests-development:
     when:
       and:
-        - equal: [ << pipeline.parameters.external_trigger >>, << pipeline.parameters.development_environment >> ]
+        - equal: [ << pipeline.parameters.external_trigger >> ]
+        - or: [ << pipeline.parameters.development_environment >> ]
     jobs:
       - cypress/run:
           name: run-development-e2e
@@ -100,7 +101,9 @@ workflows:
 
   e2e-tests-staging:
     when:
-      equal: [ << pipeline.parameters.external_trigger >>, << pipeline.parameters.staging_environment >> ]
+      and:
+        - equal: [ << pipeline.parameters.external_trigger >> ]
+        - or: [ << pipeline.parameters.staging_environment >> ]
     jobs:
       - cypress/run:
           name: run-staging-e2e
@@ -119,7 +122,8 @@ workflows:
   e2e-tests-production:
     when:
       and:
-        - equal: [ << pipeline.parameters.external_trigger >>, << pipeline.parameters.production_environment >> ]
+        - equal: [ << pipeline.parameters.external_trigger >> ]
+        - or: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - cypress/run:
           name: run-production-e2e
