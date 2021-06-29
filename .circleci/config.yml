@@ -50,11 +50,12 @@ jobs:
 
   run-e2e-tests:
         docker:
-          - image: cypress/browsers:node12.13.0-chrome78-ff70
+          - image: cypress/base:8
         steps:
           - when:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
+                - checkout
                 - run:
                     name: Execute e2e tests
                     command: |
