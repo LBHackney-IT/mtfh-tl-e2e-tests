@@ -30,10 +30,9 @@ parameters:
     
 orbs:
   cypress: cypress-io/cypress@1
-browsers-chrome78-ff70:
+  browsers-chrome78-ff70:
     docker:
       - image: cypress/browsers:node14.16.0-chrome89-ff86
-
 
 jobs:
   trigger-error-code-on-failure:
@@ -80,7 +79,7 @@ jobs:
                               npm install ;
                               npm run test:cypress:run
                 - run: 
-                    name:
+                    name: trigger downstream deployment
                     command: |
                               case << pipeline.parameters.development_environment >> in
                               (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
@@ -94,7 +93,7 @@ jobs:
                               --data '{ "branch": "MTTL-856-configure-e2e-pipeline-trigger", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
                     when: on_success
                 - run:
-                    name:
+                    name: trigger failure message to parent pipeline
                     command: |
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
@@ -149,15 +148,21 @@ workflows:
       - cypress/run:
           name: chrome
           executor: cypress/browsers-chrome78-ff70
-          command: npm run test:cypress:nightly:chrome
+          command: |
+                    export CYPRESS_ENVIRONMENT='development';
+                    npm run test:cypress:nightly:chrome
           store_artifacts: true
       - cypress/run:
           name: electron
           executor: cypress/browsers-chrome78-ff70
-          command: npm run test:cypress:nightly:electron
+          command: |
+                    export CYPRESS_ENVIRONMENT='development';
+                    npm run test:cypress:nightly:electron
           store_artifacts: true
       - cypress/run:
            name: firefox
            executor: cypress/browsers-chrome78-ff70
-           command: npm run test:cypress:nightly:firefox
+           command: |
+                     export CYPRESS_ENVIRONMENT='development';
+                     npm run test:cypress:nightly:firefox
            store_artifacts: true
