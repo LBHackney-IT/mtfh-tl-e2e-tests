@@ -1,5 +1,4 @@
 @AddPersonPage
-@ignore
 Feature: Add a new person to a tenure
   I want to add a person to a tenure
 
@@ -90,28 +89,28 @@ Feature: Add a new person to a tenure
       | tenure                               | add | remove |
       | 957cc50e-2dc4-e782-a013-c0a331884e49 | 5   | 5      |
 
-  # @ignore
-  # Scenario Outline: New person returned in search
-  #   Given I create a person for tenure '<tenure>'
-  #   Then the add a new person tenure page is correct
-  #   When I select person type "<personType>"
-  #   And I select a title "<title>"
-  #   And I enter a first name "<firstName>"
-  #   And I enter a middle name "<middleName>"
-  #   And I enter a last name "<lastName>"
-  #   And I enter a date of birth "<day>" "<month>" "<year>"
-  #   And I enter a reason for creation
-  #   And I click add person
-  #   And I click the done button
-  #   And I am on the tenure page '<tenure>'
-  #   Given I am on the search page
-  #   When I enter any of the following criteria "<characters>"
-  #   And I click on the search button
-  #   Then the search results are displayed by best match "<characters>"
+  @ignore
+  Scenario Outline: New person returned in search
+    Given I create a person for tenure '<tenure>'
+    Then the add a new person tenure page is correct
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a reason for creation
+    And I click add person
+    And I click the done button
+    And I am on the tenure page '<tenure>'
+    Given I am on the search page
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
     
-  #   Examples:
-  #       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | characters |
-  #       | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | guid       |
+    Examples:
+        | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | characters |
+        | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | guid       |
 
   Scenario Outline: Person Contact details
     Given I create a person for tenure '<tenure>'
