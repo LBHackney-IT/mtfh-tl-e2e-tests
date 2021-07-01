@@ -188,19 +188,19 @@ And('the person has been added to the tenure', () => {
 })
 
 And('the person is added to the tenure page {string} {string} {string}', (title, firstName, middleName) => {
-        for (let index = 0; index < 10;) {
-            cy.get('.mtfh-resident-details').then(($residentDetails) => {
-                if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`)) {
-                    cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).should('be.visible')
-                } else {
-                    cy.wait
-                    cy.reload()
-                    index++
-                }
-            })
-        }
-            
-
+    
+    for (let index = 0; index < 10;) {
+        cy.get('.mtfh-resident-details').then(($residentDetails) => {
+            if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`)) {
+                cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).should('be.visible')
+            } else {
+                cy.wait
+                cy.reload()
+                index++
+            }
+        })
+    }
+    
     const person = `${title} ${firstName} ${middleName} ${testGuid.testGuid}`
     for (let i = 0; i < 10; i++) {
         addPersonPage.mainContent().then(($body) => {
