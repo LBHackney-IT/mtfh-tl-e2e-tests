@@ -45,11 +45,6 @@ jobs:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
                 - checkout
-                - restore_cache:
-                    keys:
-                      - v2-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
-                      - v2-deps-{{ .Branch }}-
-                      - v2-deps-
                 - run:
                     name: Execute e2e tests
                     command: |

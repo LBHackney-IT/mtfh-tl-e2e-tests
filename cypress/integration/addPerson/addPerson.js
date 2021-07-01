@@ -2,7 +2,6 @@ import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import testGuid from '../../helpers/personCommentText'
 
-const envConfig = require('../../../environment-config')
 const addPersonPage = new AddPersonPageObjects()
 
 Given('I create a person for tenure {string}', (record) => {
@@ -27,10 +26,12 @@ When('I select person type {string}', (personType) => {
 })
 
 And('I enter a first name {string}', (firstName) => {
+    addPersonPage.firstNameContainer().clear()
     addPersonPage.firstNameContainer().type(firstName)
 })
 
 And('I enter a middle name {string}', (middleName) => {
+    addPersonPage.middleNameContainer().clear()
     addPersonPage.middleNameContainer().type(middleName)
 })
 
@@ -38,12 +39,16 @@ And('I enter a last name {string}', (lastName) => {
     if(lastName === 'guid') {
         lastName = testGuid.testGuid
     }
+    addPersonPage.lastNameContainer().clear()
     addPersonPage.lastNameContainer().type(lastName)
 })
 
 And('I enter a date of birth {string} {string} {string}', (day, month, year) => {
+    addPersonPage.dateOfBirthDayContainer().clear()
     addPersonPage.dateOfBirthDayContainer().type(day)
+    addPersonPage.dateOfBirthMonthContainer().clear()
     addPersonPage.dateOfBirthMonthContainer().type(month)
+    addPersonPage.dateOfBirthYearContainer().clear()
     addPersonPage.dateOfBirthYearContainer().type(year)
 })
 
@@ -70,10 +75,12 @@ And('I select a nationality {string}', (nationality) => {
 })
 
 And('I enter a national insurance number {string}', (nationalInsuranceNumber) => {
+    addPersonPage.nationalInsuranceNumberContainer().clear()
     addPersonPage.nationalInsuranceNumberContainer().type(nationalInsuranceNumber)
 })
 
 And('I enter a place of birth {string}', (placeOfBirth) => {
+    addPersonPage.placeOfBirthContainer().clear()
     addPersonPage.placeOfBirthContainer().type(placeOfBirth)
 })
 
@@ -82,14 +89,20 @@ And('I select a preferred title {string}', (preferredTitle) => {
 })
 
 And('I select a preferred first name {string}', (preferredFirstName) => {
+    addPersonPage.preferredFirstNameContainer().clear()
     addPersonPage.preferredFirstNameContainer().type(preferredFirstName)
 })
 
 And('I select a preferred middle name {string}', (preferredMiddleName) => {
+    addPersonPage.preferredMiddleNameContainer().clear()
     addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName)
 })
 
 And('I select a preferred last name {string}', (preferredLastName) => {
+    if(preferredLastName === 'guid') {
+        preferredLastName = testGuid.testGuid
+    }
+    addPersonPage.preferredLastNameContainer().clear()
     addPersonPage.preferredLastNameContainer().type(preferredLastName)
 })
 
@@ -171,10 +184,28 @@ Then('the add id options are not displayed', () => {
 })
 
 And('the person has been added to the tenure', () => {
-    for (let i = 0; i < 5; i++) {
+    addPersonPage.pageAnnouncement().contains('Person added to tenure')
+})
+
+And('the person is added to the tenure page {string} {string} {string}', (title, firstName, middleName) => {
+        for (let index = 0; index < 10;) {
+            cy.get('.mtfh-resident-details').then(($residentDetails) => {
+                if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`)) {
+                    cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).should('be.visible')
+                } else {
+                    cy.wait
+                    cy.reload()
+                    index++
+                }
+            })
+        }
+            
+
+    const person = `${title} ${firstName} ${middleName} ${testGuid.testGuid}`
+    for (let i = 0; i < 10; i++) {
         addPersonPage.mainContent().then(($body) => {
             if ($body.text().includes(testGuid.testGuid)) {
-                addPersonPage.mainContent().contains(testGuid.testGuid)
+                cy.contains(person).click()
             } else {
                 cy.wait(1000)
                 cy.reload(true)
@@ -183,6 +214,30 @@ And('the person has been added to the tenure', () => {
     }
 })
 
+And('the person page is loaded', () => {
+    cy.url().should('contain', 'person')
+})
+
 And('I am on the tenure page {string}', (tenureId) => {
     cy.url().should('include', `tenure/${tenureId}`)
+})
+
+And('I edit the person {string} {string} {string} {string}', (title, personType, firstName, middleName) => {
+    if(personType === 'Named tenure holder') {
+        cy.contains(`View ${title} ${firstName} ${middleName} ${testGuid.testGuid}`).click()
+    } else {
+        cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).click()
+    }
+})
+
+And('I click the update person button', () => {
+    addPersonPage.updatePersonButton().click()
+})
+
+And('the person has been updated {string} {string} {string}', (firstName, middleName, lastName) => {
+    addPersonPage.pageAnnouncement().contains('Person updated')
+    if(lastName === 'guid') {
+        lastName = testGuid.testGuid
+    }
+    addPersonPage.mainContent().contains(`${firstName} ${middleName} ${lastName}`)
 })

@@ -18,6 +18,14 @@ class AddPersonPageObjects {
         return cy.get('[class="lbh-heading-h1"]')
     }
 
+    mainContent() {
+        return cy.get('#main-content')
+    }
+
+    pageAnnouncement() {
+        return cy.get('.lbh-page-announcement')
+    }
+
     tenureDetails() {
         return cy.get('h2')
     }
@@ -172,6 +180,10 @@ class AddPersonPageObjects {
 
     errorSummaryBody() {
         return cy.get('[class="govuk-error-summary__body"]')
+    }
+
+    updatePersonButton() {
+        return cy.contains('Update person')
     }
 
     addPersonPageIsDisplayed() {

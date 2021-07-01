@@ -212,6 +212,10 @@ class PersonPageObjects {
         return cy.get('[id="single-spa-application:@mtfh/personal-details"]')
     }
 
+    editPersonButton() {
+        return cy.contains('Edit person')
+    }
+
     headerPersonalDetailsAreDisplayed() {
         // this.headerContainerPhoto().is('displayed')
         // this.headerContainerName().is('displayed')

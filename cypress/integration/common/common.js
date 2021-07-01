@@ -3,6 +3,7 @@ import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
 import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
 import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
+import PersonPageObjects from '../../pageObjects/personPage'
 import SearchPageObjects from '../../pageObjects/searchPage'
 import validComment from '../../helpers/personCommentText'
 import testGuid from '../../helpers/personCommentText'
@@ -11,6 +12,7 @@ const footer = new FooterPageObjects
 const header = new HeaderPageObjects
 const personCommentsPage = new PersonCommentsPageObjects
 const personContactPage = new PersonContactPageObjects
+const personPage = new PersonPageObjects
 const searchPage = new SearchPageObjects
 
 Given('I am logged in', () => {
@@ -173,4 +175,9 @@ And('the phone information is captured {string} {string} {string}', (phoneNumber
     personContactPage.fieldsetContent().contains(phoneNumber)
     personContactPage.fieldsetContent().contains(phoneType)
     personContactPage.fieldsetContent().contains(phoneDescription)
+})
+
+        // Person page
+And('I click edit person', () => {
+    personPage.editPersonButton().click()
 })
