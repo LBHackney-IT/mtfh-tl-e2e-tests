@@ -1,6 +1,8 @@
 import { Then, And, Given } from 'cypress-cucumber-preprocessor/steps'
+import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
 import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
+import ModalPageObjects from '../../pageObjects/sharedComponents/modal'
 import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import PersonPageObjects from '../../pageObjects/personPage'
@@ -8,8 +10,10 @@ import SearchPageObjects from '../../pageObjects/searchPage'
 import validComment from '../../helpers/personCommentText'
 import testGuid from '../../helpers/personCommentText'
 
+const addPersonPage = new AddPersonPageObjects
 const footer = new FooterPageObjects
 const header = new HeaderPageObjects
+const modal = new ModalPageObjects
 const personCommentsPage = new PersonCommentsPageObjects
 const personContactPage = new PersonContactPageObjects
 const personPage = new PersonPageObjects
@@ -72,10 +76,14 @@ When('I enter any of the following criteria {string}', (searchTerm) => {
 })
 
 And('I click on the search button', () => {
+    cy.wait(5000)
     searchPage.searchButton().click()
 })
 
 Then('the search results are displayed by best match {string}', (searchTerm) => {
+    if(searchTerm === 'guid') {
+        searchTerm = testGuid.testGuid
+    }
     searchPage.searchResultPropertiesAreDisplayed()
     searchPage.searchConfirmation().contains(searchTerm)
     searchPage.searchResults().contains(searchTerm.replace(/\*/g, '')) 
@@ -167,17 +175,46 @@ And('I click save phone number', () => {
 })
 
 And('the email information is captured {string} {string}', (email, emailDescription) => {
+    personContactPage.pageAnnouncementHeader().should('be.visible')
+    personContactPage.mainContent().contains('Email address saved')
     personContactPage.fieldsetContent().contains(email)
     personContactPage.fieldsetContent().contains(emailDescription)
 })
 
 And('the phone information is captured {string} {string} {string}', (phoneNumber, phoneType, phoneDescription) => {
+    personContactPage.pageAnnouncementHeader().should('be.visible')
+    personContactPage.mainContent().contains('Phone number saved')
     personContactPage.fieldsetContent().contains(phoneNumber)
     personContactPage.fieldsetContent().contains(phoneType)
     personContactPage.fieldsetContent().contains(phoneDescription)
 })
 
+And('I click remove email address', () => {
+    personContactPage.removeEmailAddressButton().click()
+})
+
+And('the remove email address modal is displayed', () => {
+    modal.modalBody().should('be.visible')
+})
+
+And('the modal is not displayed', () => {
+    modal.modalBody().should('not.exist')
+})
+
+And('I click remove phone number', () => {
+    personContactPage.removePhoneNumberButton().click()
+})
+
+And('the remove phone number modal is displayed', () => {
+    modal.modalBody().should('be.visible')
+})
+
         // Person page
 And('I click edit person', () => {
     personPage.editPersonButton().click()
+})
+
+        // Create/edit person page
+And('I click cancel', () => {
+    addPersonPage.cancelButton().click()
 })

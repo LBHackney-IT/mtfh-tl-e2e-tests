@@ -186,6 +186,10 @@ class AddPersonPageObjects {
         return cy.contains('Update person')
     }
 
+    confirmationModal() {
+        return cy.get('.lbh-dialog')
+    }
+
     addPersonPageIsDisplayed() {
         this.addPersonHeader().should('be.visible')
         this.addPersonHeader().contains('Add new person to tenure')

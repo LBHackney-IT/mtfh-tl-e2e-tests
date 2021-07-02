@@ -241,3 +241,14 @@ And('the person has been updated {string} {string} {string}', (firstName, middle
     }
     addPersonPage.mainContent().contains(`${firstName} ${middleName} ${lastName}`)
 })
+
+And('the confirmation modal is displayed', () => {
+    addPersonPage.confirmationModal().should('be.visible')
+    addPersonPage.confirmationModal().contains('Yes')
+    addPersonPage.confirmationModal().contains('Cancel')
+    addPersonPage.confirmationModal().contains('Unsaved changes will be lost.')
+})
+
+And('the confirmation modal is not displayed', () => {
+    addPersonPage.confirmationModal().should('not.exist')
+})
