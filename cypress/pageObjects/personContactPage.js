@@ -6,8 +6,16 @@ class PersonContactPageObjects {
         cy.injectAxe()
     }
 
+    mainContent() {
+        return cy.get('#main-content')
+    }
+
     fieldsetContent() {
         return cy.get('.mtfh-fieldset__content')
+    }
+
+    pageAnnouncementHeader() {
+        return cy.get('.lbh-page-announcement__title')
     }
 
     addEmailAddressButton() {
