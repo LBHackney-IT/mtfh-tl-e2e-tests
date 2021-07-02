@@ -1,11 +1,15 @@
 {
-    "testFiles": "**/*.{feature,features}",
-    "defaultCommandTimeout": 10000,
-    "lighthouse": {
-        "performance": 0,
-        "accessibility": 0,
-        "best-practices": 0,
-        "seo": 0,
-        "pwa": 0
-      }
+  "testFiles": "**/*.{feature,features}",
+  "defaultCommandTimeout": 10000,
+  "lighthouse": {
+      "performance": 0,
+      "accessibility": 0,
+      "best-practices": 0,
+      "seo": 0,
+      "pwa": 0
+    },
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  }
 }
