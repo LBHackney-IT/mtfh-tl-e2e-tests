@@ -1,5 +1,4 @@
 @SearchPage
-@ignore
 Feature: T&L Search Function
     I want to search for a person
 
@@ -16,7 +15,7 @@ Feature: T&L Search Function
 
     Examples:
       | characters |
-      | Ab         |
+      | An         |
 
     
   @Positive
@@ -28,7 +27,7 @@ Feature: T&L Search Function
 
     Examples:
       | characters |
-      | Al         |
+      | am         |
       | Andrew     |
       | Jeff       |
       # | Keith      |
@@ -61,7 +60,7 @@ Feature: T&L Search Function
 
     Examples:
       | characters |
-      | 123        |
+      | 12345678   |
       | AZKQ       |
       # | dp0        |
       # | elqsn      |
