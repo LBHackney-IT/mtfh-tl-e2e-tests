@@ -76,7 +76,6 @@ When('I enter any of the following criteria {string}', (searchTerm) => {
 })
 
 And('I click on the search button', () => {
-    cy.wait(5000)
     searchPage.searchButton().click()
 })
 

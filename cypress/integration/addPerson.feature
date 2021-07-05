@@ -113,7 +113,7 @@ Feature: Add a new person to a tenure
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | guid       |
 
   @Positive
-  Scenario Outline: Person Contact details
+  Scenario Outline: Person Contact details/Minimum fields
     Given I create a person for tenure '<tenure>'
     Then the add a new person tenure page is correct
     When I select person type "<personType>"
@@ -122,7 +122,6 @@ Feature: Add a new person to a tenure
     And I enter a middle name "<middleName>"
     And I enter a last name "<lastName>"
     And I enter a date of birth "<day>" "<month>" "<year>"
-    And I select a gender "<gender>"
     And I enter a reason for creation
     And I click add person
     And I click the add email address button
@@ -141,8 +140,8 @@ Feature: Add a new person to a tenure
     # And the person is added to the tenure page "<title>" "<firstName>" "<middleName>"
     
     Examples:
-        | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
-        | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | Female | testymctestface@email.com | email description | 01189998    | Other     | phone description |
+        | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
+        | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
     @Positive
     Scenario Outline: Edit a tenure
