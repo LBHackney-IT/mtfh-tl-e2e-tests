@@ -174,6 +174,7 @@ And('I click save phone number', () => {
 })
 
 And('the email information is captured {string} {string}', (email, emailDescription) => {
+    personContactPage.pageWarning().should('not.exist')
     personContactPage.pageAnnouncementHeader().should('be.visible')
     personContactPage.mainContent().contains('Email address saved')
     personContactPage.fieldsetContent().contains(email)
@@ -181,6 +182,7 @@ And('the email information is captured {string} {string}', (email, emailDescript
 })
 
 And('the phone information is captured {string} {string} {string}', (phoneNumber, phoneType, phoneDescription) => {
+    personContactPage.pageWarning().should('not.exist')
     personContactPage.pageAnnouncementHeader().should('be.visible')
     personContactPage.mainContent().contains('Phone number saved')
     personContactPage.fieldsetContent().contains(phoneNumber)

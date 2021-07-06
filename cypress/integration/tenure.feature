@@ -65,4 +65,9 @@ Feature: Tenure page
 
     @Accessibility
     Scenario: Accessibility Testing
+      When I view a Tenure "<tenure>"
       And have no detectable a11y violations
+
+      Examples:
+          | tenure                                |
+          | 68c6896c-16f1-54d2-3504-847cb438a1b1  |

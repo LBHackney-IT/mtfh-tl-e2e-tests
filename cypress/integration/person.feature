@@ -73,4 +73,9 @@ Feature: T&L Person Page
 
   @Accessibility
   Scenario: Accessibility Testing
+    Given I have loaded a Person record "<record>"
     And have no detectable a11y violations
+
+    Examples:
+      | record                               |
+      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |

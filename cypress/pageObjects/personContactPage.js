@@ -14,6 +14,10 @@ class PersonContactPageObjects {
         return cy.get('.mtfh-fieldset__content')
     }
 
+    pageWarning() {
+        return cy.get('.lbh-page-announcement lbh-page-announcement--warning')
+    }
+
     pageAnnouncementHeader() {
         return cy.get('.lbh-page-announcement__title')
     }

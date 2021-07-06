@@ -253,3 +253,7 @@ Feature: Add a new person to a tenure
       Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Original  | Test       | guid     | 09  | 12    | 1950 | Female | Japan       | AA123456C               | Mt. Fuji     | Reverend       | Pref orig          | Mid orig            | guid              | Occitan  | Passport        | 999999   | Yes    | testymctestface@email.com | email description | 01189998    | Other     | phone description |
+
+    @Accessibility
+    Scenario: Accessibility Testing
+      And have no detectable a11y violations
