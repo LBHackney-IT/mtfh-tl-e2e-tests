@@ -252,3 +252,8 @@ And('the confirmation modal is displayed', () => {
 And('the confirmation modal is not displayed', () => {
     addPersonPage.confirmationModal().should('not.exist')
 })
+
+And('the person type options are not displayed', () => {
+    addPersonPage.tenureHolderRadioButton().should('not.exist')
+    addPersonPage.householdMemberRadioButton().should('not.exist')
+})
