@@ -85,7 +85,7 @@ Then('the search results are displayed by best match {string}', (searchTerm) => 
     }
     searchPage.searchResultPropertiesAreDisplayed()
     searchPage.searchConfirmation().contains(searchTerm)
-    searchPage.searchResults().contains(searchTerm.replace(/\*/g, '')) 
+    searchPage.searchResults().contains(searchTerm.replace(/\*/g, ''), {matchCase: false}) 
 })
 
     // Accessibility
