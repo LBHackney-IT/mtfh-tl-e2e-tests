@@ -64,7 +64,7 @@ Feature: Tenure page
           | iphone-3 | 68c6896c-16f1-54d2-3504-847cb438a1b1  |
 
     @Accessibility
-    Scenario: Accessibility Testing
+    Scenario Outline: Accessibility Testing
       When I view a Tenure "<tenure>"
       And have no detectable a11y violations
 
