@@ -40,8 +40,8 @@ Feature: Add a new person to a tenure
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen |
-      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Male   | Fiji        | AA123456C               | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | Occitan  | Passport        | 999999   | Yes    |
-      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Other  | Canada      | AA123456C               | Toronto      | Dr             | Karen              | Steve               | Henderson         | Sanskrit | Driving Licence | 111111   | No     |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Male   | Fijian        | AA123456C               | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | Occitan  | Passport        | 999999   | Yes    |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Other  | Canadian      | AA123456C               | Toronto      | Dr             | Karen              | Steve               | Henderson         | Sanskrit | Driving Licence | 111111   | No     |
 
   @Negative
   Scenario Outline: Validation check
