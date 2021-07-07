@@ -43,11 +43,11 @@ class SearchPageObjects {
     }
 
     sortByOption() {
-        return cy.get('[id="select-1"]')
+        return cy.get('#select-1')
     }
 
     showOptions() {
-        return cy.get('[id="select-2"]')
+        return cy.get('#select-2')
     }
 
     filterStatus() {

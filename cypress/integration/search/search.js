@@ -11,7 +11,7 @@ Then('no results are returned', () => {
     searchPage.searchComponent().contains('No results')
 })
 
-And ('I click on the search again button', () => {
+And('I click on the search again button', () => {
     searchPage.searchAgainButton().click()
 })
 
@@ -47,5 +47,13 @@ When('I click on the close search button', () => {
 // Waiting on fix for unhandled exception when invalid search is sent
 When('I do not enter a minimum of 2 characters into the search', () => {
 
+})
+
+Then('the default sort option is correct', () => {
+    searchPage.sortByOption().contains('Best match')
+})
+
+When('I select to sort by {string}', (filter) => {
+    searchPage.sortByOption().select(filter)
 })
 

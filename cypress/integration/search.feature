@@ -103,14 +103,16 @@ Feature: T&L Search Function
     And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
+    Then the default sort option is correct
+    When I select to sort by "<filter>"
     When I set the number of results to <results>
     Then the correct number of <results> are displayed
 
     Examples:
-      | characters | results |
-      | Ab         | 40      |
-      | Bre        | 12      |
-      | Chris      | 20      |
+      | characters | filter        | results |
+      | Ab         | Last name A-Z | 40      |
+      | Bre        | Last name Z-A | 12      |
+      | Chris      | Best match    | 20      |
 
   Scenario Outline: Re-execute search
     And I click on the search again button
