@@ -6,17 +6,15 @@ Feature: T&L Person Page
     Given I am logged in
 
   @Positive
-  @ignore
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
-    Then the body Person details are displayed
+    # Then the body Person details are displayed
 
     Examples:
       | record                               |
       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   @device
-  @ignore
   Scenario Outline: View person details device view
     Given I have loaded a Person record "<record>"
     When I am using a mobile viewport "<device>"
@@ -55,10 +53,9 @@ Feature: T&L Person Page
       | kdfbv  |
       | dfkkkl |
 
-  @ignore
   Scenario Outline: Add a comment for a person
     Given I have loaded a Person record "<record>"
-    Then the body Person details are displayed
+    # Then the body Person details are displayed
     When I click on the add comment button
     Then I am taken to the add comment for person page "<record>"
     When I enter a valid comment
@@ -72,5 +69,10 @@ Feature: T&L Person Page
       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   @Accessibility
-  Scenario: Accessibility Testing
+  Scenario Outline: Scenario Outline name: Accessibility Testing
+    Given I have loaded a Person record "<record>"
     And have no detectable a11y violations
+
+    Examples:
+      | record                               |
+      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |

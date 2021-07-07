@@ -40,8 +40,8 @@ Feature: Add a new person to a tenure
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen |
-      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Male   | Fiji        | AA123456C               | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | Occitan  | Passport        | 999999   | Yes    |
-      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Other  | Canada      | AA123456C               | Toronto      | Dr             | Karen              | Steve               | Henderson         | Sanskrit | Driving Licence | 111111   | No     |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Male   | Fijian        | AA123456C               | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | Occitan  | Passport        | 999999   | Yes    |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Other  | Canadian      | AA123456C               | Toronto      | Dr             | Karen              | Steve               | Henderson         | Sanskrit | Driving Licence | 111111   | No     |
 
   @Negative
   Scenario Outline: Validation check
@@ -113,6 +113,7 @@ Feature: Add a new person to a tenure
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | guid       |
 
   @Positive
+  @ignore
   Scenario Outline: Person Contact details/Minimum fields
     Given I create a person for tenure '<tenure>'
     Then the add a new person tenure page is correct
@@ -143,6 +144,7 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
+    @ignore
     @Positive
     Scenario Outline: Edit a tenure
       Given I create a person for tenure '<tenure>'
@@ -215,6 +217,7 @@ Feature: Add a new person to a tenure
         | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Original  | Test       | guid     | 09  | 12    | 1950 | Female | Japan       | AA123456C               | Mt. Fuji     | Reverend       | Pref orig          | Mid orig            | guid              | Occitan  | Passport        | 999999   | Yes    | testytest@test.com     | This is an email | 0118999     | Other     | This is a phone | Ms            | Modified          | modified           | guid             | 12          | 12            | 2012         | Male           | Switzerland         | BB123456B                       | Geneva               | Mr                     | Modified first             | Modifield middle            | modified last             |
         | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Original  | Test       | guid     | 30  | 06    | 1988 | Male   | Greece      | AA123456C               | Crete        | Ms             | Pref orig          | Mid orig            | guid              | Sanskrit | Driving Licence | 111111   | No     | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone | Mr            | Modified          | modified           | guid             | 30          | 03            | 2015         | Female         | Brazil              | BB123456B                       | Sao Paulo            | Mrs                    | Modified first             | Modifield middle            | modified last             |
 
+    @ignore
     Scenario Outline: Confirmation modal
       Given I create a person for tenure '<tenure>'
       Then the add a new person tenure page is correct
@@ -253,3 +256,7 @@ Feature: Add a new person to a tenure
       Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Original  | Test       | guid     | 09  | 12    | 1950 | Female | Japan       | AA123456C               | Mt. Fuji     | Reverend       | Pref orig          | Mid orig            | guid              | Occitan  | Passport        | 999999   | Yes    | testymctestface@email.com | email description | 01189998    | Other     | phone description |
+
+    @Accessibility
+    Scenario: Accessibility Testing
+      And have no detectable a11y violations

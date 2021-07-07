@@ -20,7 +20,10 @@ Then('The person you\'ve requested does not exist error message appears', () => 
 })
 
 Then('the header Person details are displayed', () => {
-    personPage.headerPersonalDetailsAreDisplayed()
+    personPage.personalDetailsContainer().contains('Date of birth')
+    personPage.personalDetailsContainer().contains('NI number')
+    personPage.personalDetailsContainer().contains('Phone')
+    personPage.personalDetailsContainer().contains('Email')
 })
 
 When('I click on the more personal details accordion', () => {
@@ -28,7 +31,10 @@ When('I click on the more personal details accordion', () => {
 })
 
 Then('the body Person details are displayed', () => {
-    personPage.morePersonalDetails()
+    personPage.sidebar().contains('Date of birth')
+    personPage.sidebar().contains('NI number')
+    personPage.sidebar().contains('Phone')
+    personPage.sidebar().contains('Email')
 })
 
 When('I click on the more tenure details accordion', () => {
@@ -36,7 +42,8 @@ When('I click on the more tenure details accordion', () => {
 })
 
 Then('the body tenure details are displayed', () => {
-    personPage.moreTenureDetails()
+    personPage.sidebar().contains('Address')
+    personPage.sidebar().contains('Type')
 })
 
 When('I click on the add comment button', () => {

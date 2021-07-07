@@ -47,6 +47,7 @@ class TenurePageObjects {
         this.tenureViewSidebar().contains('End date')
         this.tenureViewSidebar().contains('Tenure type')
         this.tenureViewSidebar().contains('Property ID')
+        this.tenureViewSidebar().contains('Status')
     }
 
     residentDetailsAccordionInformation() {
@@ -57,7 +58,7 @@ class TenurePageObjects {
     tenureDetailsAreDisplayed() {
         this.paymentReference().should('be.visible')
         this.tenureDetailsContainer().should('be.visible')
-        // this.tenureDetailsContainer().contains('Active')
+        this.tenureDetailsContainer().contains('Status')
         this.tenureDetailsContainer().contains('Start date')
         this.tenureDetailsContainer().contains('End date')
         this.tenureDetailsContainer().contains('Tenure type')
