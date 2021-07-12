@@ -122,14 +122,14 @@ workflows:
     jobs:
       - run-e2e-tests
 
-  api-tests:
-    when: << pipeline.parameters.run_workflow_ci >>
+  api-tests-development:
+    when: << pipeline.parameters.api_tests >>
     jobs:
       - cypress/run:
-          name: ci
+          name: API tests
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-             npm run test:cypress:run
+             npm run test:cypress:api
 
   run-cypress-nightly:
     triggers:
