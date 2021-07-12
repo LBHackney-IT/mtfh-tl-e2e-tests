@@ -19,7 +19,8 @@
     "test:cypress:nightly:edge": "cypress run --browser edge --headless -e TAGS='not @ignore'",
     "test:cypress:nightly:electron": "cypress run -e TAGS='not @ignore'",
     "test:cypress:nightly:firefox": "cypress run --browser firefox --headless -e TAGS='not @ignore'",
-    "test:cypress:devices": "cypress run --browser chrome --headless -e TAGS='@device'"
+    "test:cypress:devices": "cypress run --browser chrome --headless -e TAGS='@device'",
+    "test:cypress:api": "cypress run -e TAGS='@api'"
   },
   "author": "",
   "license": "ISC",
@@ -37,6 +38,7 @@
     "ws": ">=6.2.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "uuid": "^8.3.2"
   }
 }
