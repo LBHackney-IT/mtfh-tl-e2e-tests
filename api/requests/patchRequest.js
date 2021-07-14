@@ -5,7 +5,7 @@ const config = {
     headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
 };
 
-async function postRequest(endpoint, payload) {
+async function patchRequest(endpoint, payload) {
     try {
       const response = await axios.patch(endpoint, payload, config);
       cy.log('Sending post request')
@@ -17,5 +17,5 @@ async function postRequest(endpoint, payload) {
 }
 
 module.exports = {
-    postRequest
+    patchRequest
 }
