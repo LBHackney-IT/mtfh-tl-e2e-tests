@@ -1,4 +1,4 @@
-const personCommentModel = {
+const createPersonModel = {
     "firstName": "Add",
     "middleName": "Person",
     "surname": "API Test",
@@ -26,5 +26,5 @@ const personCommentModel = {
 }
 
 module.exports = {
-    personCommentModel
+    createPersonModel
 }

@@ -144,7 +144,7 @@ Feature: Add a new person to a tenure
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
     @Positive
-    Scenario Outline: Edit a tenure
+    Scenario Outline: Edit a person
       Given I create a person for tenure '<tenure>'
       Then the add a new person tenure page is correct
       When I select person type "<personType>"

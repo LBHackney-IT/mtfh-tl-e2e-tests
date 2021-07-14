@@ -3,4 +3,4 @@ Feature: I want to do some API tests
   
   @api
   Scenario: Test some APIs
-    Given I want to test the person-comment api
+    Given I want to test the add-person api

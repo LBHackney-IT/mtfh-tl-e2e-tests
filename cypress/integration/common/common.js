@@ -9,7 +9,7 @@ import PersonPageObjects from '../../pageObjects/personPage'
 import SearchPageObjects from '../../pageObjects/searchPage'
 import validComment from '../../helpers/personCommentText'
 import testGuid from '../../helpers/personCommentText'
-import personComments from '../../../api/person-comment'
+import person from '../../../api/person'
 
 const addPersonPage = new AddPersonPageObjects
 const footer = new FooterPageObjects
@@ -20,9 +20,10 @@ const personContactPage = new PersonContactPageObjects
 const personPage = new PersonPageObjects
 const searchPage = new SearchPageObjects
 
-Given('I want to test the person-comment api', async () => {
-    const response = await personComments.personCommentPost()
+Given('I want to test the add-person api', async () => {
+    const response = await person.createPerson()
     cy.log(`Status code ${response.status} returned`)
+    cy.log(response.data.title)
     assert.deepEqual(response.status, 201)
 })
 
