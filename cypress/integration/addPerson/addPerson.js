@@ -4,10 +4,6 @@ import testGuid from '../../helpers/personCommentText'
 
 const addPersonPage = new AddPersonPageObjects()
 
-Given('I create a person for tenure {string}', (record) => {
-    addPersonPage.visit(record)
-})
-
 Then('the add a new person tenure page is correct', () => {
     addPersonPage.addPersonPageIsDisplayed()
 })
@@ -52,14 +48,6 @@ And('I enter a date of birth {string} {string} {string}', (day, month, year) => 
     addPersonPage.dateOfBirthYearContainer().type(year)
 })
 
-And('I enter a reason for creation', () => {
-    addPersonPage.reasonForCreationContainer().type('This is a test')
-})
-
-And('I click add person', () => {
-    addPersonPage.addPersonButton().click()
-})
-
 Then('the form error container is displayed', () => {
     addPersonPage.addPersonFormErrorContainer().should('be.visible')
     addPersonPage.errorSummaryBody().contains('The date cannot be in the future')
@@ -91,11 +79,6 @@ And('I select a preferred title {string}', (preferredTitle) => {
 And('I select a preferred first name {string}', (preferredFirstName) => {
     addPersonPage.preferredFirstNameContainer().clear()
     addPersonPage.preferredFirstNameContainer().type(preferredFirstName)
-})
-
-And('I select a preferred middle name {string}', (preferredMiddleName) => {
-    addPersonPage.preferredMiddleNameContainer().clear()
-    addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName)
 })
 
 And('I select a preferred last name {string}', (preferredLastName) => {
