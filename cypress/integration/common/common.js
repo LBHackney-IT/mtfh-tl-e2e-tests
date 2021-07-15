@@ -226,6 +226,10 @@ And('I click edit person', () => {
     personPage.editPersonButton().click()
 })
 
+And('I am on the person page for {string}', (person) => {
+    cy.url().should('include', person)
+})
+
         // Create/edit person page
 Given('I create a person for tenure {string}', (record) => {
     addPersonPage.visit(record)
@@ -237,6 +241,14 @@ And('I select a preferred middle name {string}', (preferredMiddleName) => {
     }
     addPersonPage.preferredMiddleNameContainer().clear()
     addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName)
+})
+
+And('I select a preferred last name {string}', (preferredLastName) => {
+    if(preferredLastName === 'guid') {
+        preferredLastName = testGuid.testGuid
+    }
+    addPersonPage.preferredLastNameContainer().clear()
+    addPersonPage.preferredLastNameContainer().type(preferredLastName)
 })
 
 And('I enter a reason for creation', () => {
