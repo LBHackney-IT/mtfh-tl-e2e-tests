@@ -81,14 +81,6 @@ And('I select a preferred first name {string}', (preferredFirstName) => {
     addPersonPage.preferredFirstNameContainer().type(preferredFirstName)
 })
 
-And('I select a preferred last name {string}', (preferredLastName) => {
-    if(preferredLastName === 'guid') {
-        preferredLastName = testGuid.testGuid
-    }
-    addPersonPage.preferredLastNameContainer().clear()
-    addPersonPage.preferredLastNameContainer().type(preferredLastName)
-})
-
 And('I click to add a language', () => {
     addPersonPage.addLanguageButton().click()
 })
