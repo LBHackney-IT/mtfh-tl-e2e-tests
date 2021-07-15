@@ -12,3 +12,7 @@ Given('I go to the activity history for {string}', (person) => {
 Then('the activity history is displayed', () => {
     activityHistory.activityTable().should('be.visible')
 })
+
+Then('I click close activity history', () => {
+    activityHistory.closeActivityHistory().click()
+})
