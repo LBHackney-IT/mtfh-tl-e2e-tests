@@ -51,20 +51,6 @@ And('I enter a date of birth {string} {string} {string}', (day, month, year) => 
 Then('the form error container is displayed', () => {
     addPersonPage.addPersonFormErrorContainer().should('be.visible')
     addPersonPage.errorSummaryBody().contains('The date cannot be in the future')
-    addPersonPage.errorSummaryBody().contains('Please enter a valid National Insurance Number')
-})
-
-And('I select a gender {string}', (gender) => {
-    addPersonPage.genderContainer().select(gender)
-})
-
-And('I select a nationality {string}', (nationality) => {
-    addPersonPage.nationalityContainer().select(nationality)
-})
-
-And('I enter a national insurance number {string}', (nationalInsuranceNumber) => {
-    addPersonPage.nationalInsuranceNumberContainer().clear()
-    addPersonPage.nationalInsuranceNumberContainer().type(nationalInsuranceNumber)
 })
 
 And('I enter a place of birth {string}', (placeOfBirth) => {
@@ -79,83 +65,6 @@ And('I select a preferred title {string}', (preferredTitle) => {
 And('I select a preferred first name {string}', (preferredFirstName) => {
     addPersonPage.preferredFirstNameContainer().clear()
     addPersonPage.preferredFirstNameContainer().type(preferredFirstName)
-})
-
-And('I click to add a language', () => {
-    addPersonPage.addLanguageButton().click()
-})
-
-Then('the add language options are displayed', () => {
-    addPersonPage.languageContainer().should('be.visible')
-})
-
-And('I select a language {string}', (language) => {
-    addPersonPage.languageSelectionContainer().select(language)
-})
-
-And('I click to add an id', () => {
-    addPersonPage.addIdButton().click()
-})
-    
-Then('the add id options are displayed', () => {
-    addPersonPage.idContainer().should('be.visible')
-})
-
-And('I select an id type {string}', (idType) => {
-    addPersonPage.idSelectionContainer().select(idType)
-})
-
-And('I enter an id number {string}', (idNumber) => {
-    addPersonPage.idNumberContainer().type(idNumber)
-})
-
-And('I select id option seen {string}', (idSeen) => {
-    if(idSeen === 'Yes') {
-        addPersonPage.idYesRadioButton().click()
-    }
-    if(idSeen === "No") {
-        addPersonPage.idNoRadioButton().click()
-    }
-})
-
-And('I click to add a language {int} times', (number) => {
-    for (let index = 0; index < number; index++) {
-        addPersonPage.addLanguageButton().click()
-    }
-})
-
-And('I click to add an id {int} times', (number) => {
-    for (let index = 0; index < number; index++) {
-        addPersonPage.addIdButton().click()
-    }
-})
-
-Then('the add language button is not displayed', () => {
-    addPersonPage.addLanguageButton().should('not.exist')
-})
-
-Then('the add id button is not displayed', () => {
-    addPersonPage.addIdButton().should('not.exist')
-})
-
-And('I click to remove a language {int} times', (number) => {
-    for (let index = 0; index < number; index++) {
-        addPersonPage.removeLanguageButton().click()
-    }
-})
-
-And('I click to remove an id {int} times', (number) => {
-    for (let index = 0; index < number; index++) {
-        addPersonPage.removeIdButton().click()
-    }
-})
-
-Then('the add language options are not displayed', () => {
-    addPersonPage.languageContainer().should('not.exist')
-})
-
-Then('the add id options are not displayed', () => {
-    addPersonPage.idContainer().should('not.exist')
 })
 
 And('the person has been added to the tenure', () => {
@@ -231,4 +140,24 @@ And('the confirmation modal is not displayed', () => {
 And('the person type options are not displayed', () => {
     addPersonPage.tenureHolderRadioButton().should('not.exist')
     addPersonPage.householdMemberRadioButton().should('not.exist')
+})
+
+Then('the gender field is not displayed', () => {
+    addPersonPage.genderContainer().should('not.exist')
+})
+
+And('the nationality field is not displayed', () => {
+    addPersonPage.nationalityContainer().should('not.exist')
+})
+
+And('the national insurance field is not displayed', () => {
+    addPersonPage.nationalInsuranceNumberContainer().should('not.exist')
+})
+
+And('the add language options are not displayed', () => {
+    addPersonPage.addLanguageButton().should('not.exist')
+})
+
+And('the add id options are not displayed', () => {
+    addPersonPage.addIdButton().should('not.exist')
 })
