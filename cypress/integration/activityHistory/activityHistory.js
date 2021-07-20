@@ -1,7 +1,5 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
-import testGuid from '../../helpers/personCommentText'
-import dateCapture from '../common/common'
 
 const activityHistory = new ActivityHistoryPageObjects()
 
