@@ -38,7 +38,6 @@ Feature: Add a new person to a tenure
     And I click the done button
     And I am on the tenure page '<tenure>'
     And the person has been added to the tenure
-    And the person is added to the tenure page "<title>" "<firstName>" "<middleName>"
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
@@ -111,7 +110,6 @@ Feature: Add a new person to a tenure
     And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
     And I click the done button
     And the person has been added to the tenure
-    And the person is added to the tenure page "<title>" "<firstName>" "<middleName>"
     
     Examples:
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
@@ -170,7 +168,6 @@ Feature: Add a new person to a tenure
       And I select a preferred last name "<modifiedPreferredLastName>"
       And I click the update person button
       And I click the done button
-      And the person has been updated "<modifiedFirstName>" "<modifiedMiddleName>" "<modifiedLastName>"
 
       Examples:
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | modifiedTitle | modifiedFirstName | modifiedMiddleName | modifiedLastName | modifiedDay | modifiedMonth | modifiedYear | modifiedPlaceOfBirth | modifiedPreferredTitle | modifiedPreferredFirstName | modifiedPreferredMiddleName | modifiedPreferredLastName |
