@@ -2,11 +2,11 @@
   "testFiles": "**/*.{feature,features}",
   "defaultCommandTimeout": 10000,
   "lighthouse": {
-      "performance": 0,
-      "accessibility": 0,
-      "best-practices": 0,
-      "seo": 0,
-      "pwa": 0
+      "performance": 40,
+      "accessibility": 90,
+      "best-practices": 85,
+      "seo": 80,
+      "pwa": 40
     },
   "retries": {
     "runMode": 2,
