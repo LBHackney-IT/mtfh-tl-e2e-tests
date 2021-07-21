@@ -7,6 +7,7 @@ Feature: T&L Search Function
       Given I am logged in
       Given I am on the search page
   
+  @SmokeTest
   @Positive
   Scenario Outline: Initial search
   When I enter any of the following criteria "<characters>"
@@ -17,7 +18,7 @@ Feature: T&L Search Function
       | characters |
       | An         |
 
-    
+  @SmokeTest 
   @Positive
   Scenario Outline: Execute searches
     And I click on the search again button
@@ -33,7 +34,38 @@ Feature: T&L Search Function
       # | Keith      |
       # | Trev       |
       # | Victor     |
-    
+
+
+  @device
+  Scenario Outline: Execute searches on device
+    When I am using a mobile viewport "<device>"
+    And I click on the search again button
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+
+    Examples:
+      | device        | characters  |
+      | ipad-2        | Andrew      |
+      | ipad-mini     | Alan        |
+      | iphone-3      | Christopher |
+      | iphone-4      | Jeff        |
+      | iphone-5      | Bill        |
+      | iphone-6      | Jade        |
+      | iphone-6+     | Callum      |
+      | iphone-7      | Steve       |
+      | iphone-8      | Trev        |
+      | iphone-x      | Keith       |
+      | iphone-xr     | Anna        |
+      | iphone-se2    | Gill        |
+      | macbook-11    | Emily       |
+      | macbook-13    | Katie       |
+      | macbook-15    | Karen       |
+      | macbook-16    | Sally       |
+      | samsung-note9 | Jodie       |
+      | samsung-s10   | Molly       |
+
+  @SmokeTest    
   @Positive
   Scenario Outline: Wildcard and partial searches
     And I click on the search again button
@@ -51,6 +83,7 @@ Feature: T&L Search Function
       # | *ic*       |
       # | te*        |
 
+  @SmokeTest
   @Positive
   Scenario Outline: Results are not returned
     And I click on the search again button
@@ -65,7 +98,8 @@ Feature: T&L Search Function
       # | dp0        |
       # | elqsn      |
       # | !!!!!!!    |
-      
+
+  @SmokeTest     
   @Positive
   @ignore
   Scenario Outline: Multiple search criteria
@@ -78,6 +112,7 @@ Feature: T&L Search Function
       | characters     |
       | ad e           |
 
+  @SmokeTest
   @Negative
   @ignore
   Scenario Outline: Insufficient characters
@@ -99,6 +134,7 @@ Feature: T&L Search Function
   Scenario: Accessibility Testing
     And have no detectable a11y violations
 
+  @SmokeTest
   Scenario Outline: Filter searches
     And I click on the search again button
     When I enter any of the following criteria "<characters>"
@@ -114,6 +150,7 @@ Feature: T&L Search Function
       | Bre        | Last name Z-A | 12      |
       | Chris      | Best match    | 20      |
 
+  @SmokeTest
   Scenario Outline: Re-execute search
     And I click on the search again button
     When I enter any of the following criteria "<firstSearch>"
