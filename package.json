@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cypress:open": "cypress open",
-    "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @flaky'",
+    "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @flaky and not @device and not @LongRunning'",
     "test:cypress:accessibility": "cypress run -e TAGS='@Accessibility'",
     "test:cypress:GoogleLighthouse": "cypress run -e TAGS='@GoogleLighthouse'",
     "test:cypress:SearchPage": "cypress run -e TAGS='@SearchPage'",
@@ -19,7 +19,8 @@
     "test:cypress:nightly:edge": "cypress run --browser edge --headless -e TAGS='not @ignore'",
     "test:cypress:nightly:electron": "cypress run -e TAGS='not @ignore'",
     "test:cypress:nightly:firefox": "cypress run --browser firefox --headless -e TAGS='not @ignore'",
-    "test:cypress:devices": "cypress run --browser chrome --headless -e TAGS='@device'"
+    "test:cypress:devices": "cypress run --browser chrome --headless -e TAGS='@device'",
+    "test:cypress:smoke": "cypress run --browser chrome --headless -e TAGS='@SmokeTest and not @ignore'"
   },
   "author": "",
   "license": "ISC",
