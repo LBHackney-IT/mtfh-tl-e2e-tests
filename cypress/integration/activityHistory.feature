@@ -4,7 +4,8 @@ Feature: Activity History
 
   Background: 
     Given I am logged in
-
+    
+    @SmokeTest
     Scenario Outline: View activity history
       Given I go to the activity history for "<person>"
       Then the activity history is displayed
@@ -26,6 +27,6 @@ Feature: Activity History
       Then the activity history is correct
       
       Examples:
-        | person                               | preferredLastName   |
-        | c9c2e6ab-679e-d83b-d2e4-830b64c509c4 | guid                |
+        | person                               | preferredLastName |
+        | c9c2e6ab-679e-d83b-d2e4-830b64c509c4 | guid              |
 
