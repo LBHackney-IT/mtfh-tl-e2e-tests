@@ -1,3 +1,4 @@
+@ignore
 Feature: I want to do some API tests
     I want to test some APIs
   

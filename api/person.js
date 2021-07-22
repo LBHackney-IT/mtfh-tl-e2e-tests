@@ -1,5 +1,5 @@
 const post = require('./requests/postRequest')
-const model = require('./requests/createPersonModel')
+const model = require('./models/requests/createPersonModel')
 const personUrl = Cypress.env('CREATE_PERSON_ENDPOINT')
 let response
 
