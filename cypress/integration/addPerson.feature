@@ -4,7 +4,22 @@ Feature: Add a new person to a tenure
 
   Background: 
     Given I am logged in
+
+  @SmokeTest
+  @Regression
+  Scenario Outline: Removed fields are not displayed
+    Given I create a person for tenure '<tenure>'
+    Then the gender field is not displayed
+    And the nationality field is not displayed
+    And the national insurance field is not displayed
+    And the add language options are not displayed
+    And the add id options are not displayed
+
+    Examples:
+      | tenure                               |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 |
   
+  @SmokeTest
   @Positive
   Scenario Outline: Add a new person to a tenure
     Given I create a person for tenure '<tenure>'
@@ -15,34 +30,65 @@ Feature: Add a new person to a tenure
     And I enter a middle name "<middleName>"
     And I enter a last name "<lastName>"
     And I enter a date of birth "<day>" "<month>" "<year>"
-    And I select a gender "<gender>"
-    And I select a nationality "<nationality>"
-    And I enter a national insurance number "<nationalInsuranceNumber>"
     And I enter a place of birth "<placeOfBirth>"
     And I select a preferred title "<preferredTitle>"
     And I select a preferred first name "<preferredFirstName>"
     And I select a preferred middle name "<preferredMiddleName>"
     And I select a preferred last name "<preferredLastName>"
-    And I click to add a language
-    Then the add language options are displayed
-    And I select a language "<language>"
-    And I click to add an id
-    Then the add id options are displayed
-    And I select an id type "<idType>"
-    And I enter an id number "<idNumber>"
-    And I select id option seen "<idSeen>"
     And I enter a reason for creation
     And I click add person
     And I click the done button
     And I am on the tenure page '<tenure>'
     And the person has been added to the tenure
-    # And the person is added to the tenure page "<title>" "<firstName>" "<middleName>"
 
     Examples:
-      | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen |
-      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Male   | Fijian        | AA123456C               | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | Occitan  | Passport        | 999999   | Yes    |
-      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Other  | Canadian      | AA123456C               | Toronto      | Dr             | Karen              | Steve               | Henderson         | Sanskrit | Driving Licence | 111111   | No     |
+      | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
 
+  @device
+  Scenario Outline: Add a new person to tenure on a device
+    Given I create a person for tenure '<tenure>'
+    And I am using a mobile viewport "<device>"
+    Then the add a new person tenure page is correct
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a place of birth "<placeOfBirth>"
+    And I select a preferred title "<preferredTitle>"
+    And I select a preferred first name "<preferredFirstName>"
+    And I select a preferred middle name "<preferredMiddleName>"
+    And I select a preferred last name "<preferredLastName>"
+    And I enter a reason for creation
+    And I click add person
+    And I click the done button
+    And I am on the tenure page '<tenure>'
+    And the person has been added to the tenure
+
+    Examples:
+      | tenure                               | device        | title | personType          | firstName     | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | ipad-2        | Mr    | Named tenure holder | ipad2         | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | ipad-mini     | Mrs   | Household member    | ipad-mini     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-3      | Mrs   | Named tenure holder | iphone3       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-4      | Miss  | Household member    | iphone4       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-5      | Mrs   | Named tenure holder | iphone5       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-6      | Mr    | Household member    | iphone6       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-6+     | Miss  | Named tenure holder | iphone6+      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-7      | Miss  | Household member    | iphone7       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-8      | Mr    | Named tenure holder | iphone8       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-xr     | Mrs   | Household member    | iphone-xr     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | iphone-se2    | Mrs   | Named tenure holder | iphone-se2    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | macbook-11    | Mr    | Household member    | macbook-11    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | macbook-13    | Miss  | Named tenure holder | macbook-13    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | macbook-15    | Mr    | Household member    | macbook-15    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | macbook-16    | Miss  | Named tenure holder | macbook-17    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | samsung-note9 | Miss  | Household member    | samsung-note9 | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | samsung-s10   | Miss  | Named tenure holder | samsung-s10   | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+
+  @SmokeTest
   @Negative
   Scenario Outline: Validation check
     Given I create a person for tenure '<tenure>'
@@ -53,41 +99,13 @@ Feature: Add a new person to a tenure
     And I enter a middle name "<middleName>"
     And I enter a last name "<lastName>"
     And I enter a date of birth "<day>" "<month>" "<year>"
-    And I enter a national insurance number "<nationalInsuranceNumber>"
     And I enter a reason for creation
     And I click add person
     Then the form error container is displayed
 
     Examples:
-      | tenure                               | personType          | title | firstName | middleName | lastName | day | month | year | nationalInsuranceNumber |
-      | 957cc50e-2dc4-e782-a013-c0a331884e49 | Named tenure holder | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 | ZZ098765Z               |
-
-  Scenario Outline: Communication
-    Given I create a person for tenure '<tenure>'
-    Then the add a new person tenure page is correct 
-    And I click to add a language <add> times
-    Then the add language options are displayed
-    Then the add language button is not displayed
-    And I click to remove a language <remove> times
-    Then the add language options are not displayed
-
-    Examples:
-      | tenure                               | add | remove |
-      | 957cc50e-2dc4-e782-a013-c0a331884e49 | 10  | 10     |
-    
-
-  Scenario Outline: ID Documents
-    Given I create a person for tenure '<tenure>'
-    Then the add a new person tenure page is correct
-    And I click to add an id <add> times 
-    Then the add id options are displayed
-    Then the add id button is not displayed
-    And I click to remove an id <remove> times
-    Then the add language options are not displayed
-
-    Examples:
-      | tenure                               | add | remove |
-      | 957cc50e-2dc4-e782-a013-c0a331884e49 | 5   | 5      |
+      | tenure                               | personType          | title | firstName | middleName | lastName | day | month | year |
+      | 957cc50e-2dc4-e782-a013-c0a331884e49 | Named tenure holder | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 |
 
   @flaky
   Scenario Outline: New person returned in search
@@ -112,6 +130,7 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | characters |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | guid       |
 
+  @SmokeTest
   @Positive
   Scenario Outline: Person Contact details/Minimum fields
     Given I create a person for tenure '<tenure>'
@@ -137,12 +156,12 @@ Feature: Add a new person to a tenure
     And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
     And I click the done button
     And the person has been added to the tenure
-    # And the person is added to the tenure page "<title>" "<firstName>" "<middleName>"
     
     Examples:
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
+    @SmokeTest
     @Positive
     Scenario Outline: Edit a person
       Given I create a person for tenure '<tenure>'
@@ -153,21 +172,11 @@ Feature: Add a new person to a tenure
       And I enter a middle name "<middleName>"
       And I enter a last name "<lastName>"
       And I enter a date of birth "<day>" "<month>" "<year>"
-      And I select a nationality "<nationality>"
-      And I enter a national insurance number "<nationalInsuranceNumber>"
       And I enter a place of birth "<placeOfBirth>"
       And I select a preferred title "<preferredTitle>"
       And I select a preferred first name "<preferredFirstName>"
       And I select a preferred middle name "<preferredMiddleName>"
       And I select a preferred last name "<preferredLastName>"
-      And I click to add a language
-      Then the add language options are displayed
-      And I select a language "<language>"
-      And I click to add an id
-      Then the add id options are displayed
-      And I select an id type "<idType>"
-      And I enter an id number "<idNumber>"
-      And I select id option seen "<idSeen>"
       And I enter a reason for creation
       And I click add person
       And I click the add email address button
@@ -199,9 +208,6 @@ Feature: Add a new person to a tenure
       And I enter a middle name "<modifiedMiddleName>"
       And I enter a last name "<modifiedLastName>"
       And I enter a date of birth "<modifiedDay>" "<modifiedMonth>" "<modifiedYear>"
-      And I select a gender "<modifiedGender>"
-      And I select a nationality "<modifiedNationality>"
-      And I enter a national insurance number "<modifiedNationalInsuranceNumber>"
       And I enter a place of birth "<modifiedPlaceOfBirth>"
       And I select a preferred title "<modifiedPreferredTitle>"
       And I select a preferred first name "<modifiedPreferredFirstName>"
@@ -209,12 +215,11 @@ Feature: Add a new person to a tenure
       And I select a preferred last name "<modifiedPreferredLastName>"
       And I click the update person button
       And I click the done button
-      And the person has been updated "<modifiedFirstName>" "<modifiedMiddleName>" "<modifiedLastName>"
 
       Examples:
-        | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | modifiedTitle | modifiedFirstName | modifiedMiddleName | modifiedLastName | modifiedDay | modifiedMonth | modifiedYear | modifiedGender | modifiedNationality | modifiedNationalInsuranceNumber | modifiedPlaceOfBirth | modifiedPreferredTitle | modifiedPreferredFirstName | modifiedPreferredMiddleName | modifiedPreferredLastName |
-        | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Original  | Test       | guid     | 09  | 12    | 1950 | Female | Japanese    | AA123456C               | Mt. Fuji     | Reverend       | Pref orig          | Mid orig            | guid              | Occitan  | Passport        | 999999   | Yes    | testytest@test.com     | This is an email | 0118999     | Other     | This is a phone | Ms            | Modified          | modified           | guid             | 12          | 12            | 2012         | Male           | Swiss                | BB123456B                       | Geneva               | Mr                     | Modified first             | Modifield middle            | modified last             |
-        | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Original  | Test       | guid     | 30  | 06    | 1988 | Male   | Greek       | AA123456C               | Crete        | Ms             | Pref orig          | Mid orig            | guid              | Sanskrit | Driving Licence | 111111   | No     | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone | Mr            | Modified          | modified           | guid             | 30          | 03            | 2015         | Female         | Brazilian            | BB123456B                       | Sao Paulo            | Mrs                    | Modified first             | Modifield middle            | modified last             |
+        | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | modifiedTitle | modifiedFirstName | modifiedMiddleName | modifiedLastName | modifiedDay | modifiedMonth | modifiedYear | modifiedPlaceOfBirth | modifiedPreferredTitle | modifiedPreferredFirstName | modifiedPreferredMiddleName | modifiedPreferredLastName |
+        | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Original  | Test       | guid     | 09  | 12    | 1950 | Mt. Fuji     | Reverend       | Pref orig          | Mid orig            | guid              | testytest@test.com     | This is an email | 0118999     | Other     | This is a phone  | Ms            | Modified          | modified           | guid             | 12          | 12            | 2012         | Geneva               | Mr                     | Modified first             | Modifield middle            | modified last             |
+        | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Original  | Test       | guid     | 30  | 06    | 1988 | Crete        | Ms             | Pref orig          | Mid orig            | guid              | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone  | Mr            | Modified          | modified           | guid             | 30          | 03            | 2015         | Sao Paulo            | Mrs                    | Modified first             | Modifield middle            | modified last             |
 
     @ignore
     Scenario Outline: Confirmation modal
@@ -226,22 +231,11 @@ Feature: Add a new person to a tenure
       And I enter a middle name "<middleName>"
       And I enter a last name "<lastName>"
       And I enter a date of birth "<day>" "<month>" "<year>"
-      And I select a gender "<gender>"
-      And I select a nationality "<nationality>"
-      And I enter a national insurance number "<nationalInsuranceNumber>"
       And I enter a place of birth "<placeOfBirth>"
       And I select a preferred title "<preferredTitle>"
       And I select a preferred first name "<preferredFirstName>"
       And I select a preferred middle name "<preferredMiddleName>"
       And I select a preferred last name "<preferredLastName>"
-      And I click to add a language
-      Then the add language options are displayed
-      And I select a language "<language>"
-      And I click to add an id
-      Then the add id options are displayed
-      And I select an id type "<idType>"
-      And I enter an id number "<idNumber>"
-      And I select id option seen "<idSeen>"
       And I enter a reason for creation
       And I click add person
       And I click the done button
@@ -253,8 +247,8 @@ Feature: Add a new person to a tenure
       Then the confirmation modal is displayed
 
       Examples:
-      | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType          | idNumber | idSeen | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
-      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Original  | Test       | guid     | 09  | 12    | 1950 | Female | Japanese    | AA123456C               | Mt. Fuji     | Reverend       | Pref orig          | Mid orig            | guid              | Occitan  | Passport        | 999999   | Yes    | testymctestface@email.com | email description | 01189998    | Other     | phone description |
+      | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | gender | nationality | nationalInsuranceNumber | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | language | idType   | idNumber | idSeen | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
+      | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Original  | Test       | guid     | 09  | 12    | 1950 | Female | Japanese    | AA123456C               | Mt. Fuji     | Reverend       | Pref orig          | Mid orig            | guid              | Occitan  | Passport | 999999   | Yes    | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
     @Accessibility
     Scenario: Accessibility Testing

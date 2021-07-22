@@ -21,7 +21,6 @@ Then('The person you\'ve requested does not exist error message appears', () => 
 
 Then('the header Person details are displayed', () => {
     personPage.personalDetailsContainer().contains('Date of birth')
-    personPage.personalDetailsContainer().contains('NI number')
     personPage.personalDetailsContainer().contains('Phone')
     personPage.personalDetailsContainer().contains('Email')
 })
@@ -32,7 +31,6 @@ When('I click on the more personal details accordion', () => {
 
 Then('the body Person details are displayed', () => {
     personPage.sidebar().contains('Date of birth')
-    personPage.sidebar().contains('NI number')
     personPage.sidebar().contains('Phone')
     personPage.sidebar().contains('Email')
 })

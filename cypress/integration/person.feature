@@ -5,6 +5,7 @@ Feature: T&L Person Page
   Background:
     Given I am logged in
 
+  @SmokeTest
   @Positive
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
@@ -28,22 +29,23 @@ Feature: T&L Person Page
       # | ipad-2        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       # | ipad-mini     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       | iphone-3      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-4      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-5      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-6      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-6+     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-7      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-8      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-x      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-xr     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | iphone-se2    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-4      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-5      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-6      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-6+     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-7      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-8      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-x      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-xr     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | iphone-se2    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       # | macbook-11    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       # | macbook-13    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       # | macbook-15    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       # | macbook-16    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
       # | samsung-note9 | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | samsung-s10   | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | samsung-s10   | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
+  @SmokeTest
   Scenario Outline: Look for record that does not exist
     Given I have loaded an invalid person record "<record>"
     Then The person you've requested does not exist error message appears
@@ -53,6 +55,7 @@ Feature: T&L Person Page
       | kdfbv  |
       | dfkkkl |
 
+  @SmokeTest
   Scenario Outline: Add a comment for a person
     Given I have loaded a Person record "<record>"
     # Then the body Person details are displayed

@@ -141,23 +141,40 @@ workflows:
                 - master             
     jobs:
       - cypress/run:
-          name: chrome
+          name: development-nightly
           executor: cypress/browsers-chrome78-ff70
           command: |
                     export CYPRESS_ENVIRONMENT='development';
                     npm run test:cypress:nightly:chrome
           store_artifacts: true
       - cypress/run:
+          name: staging-nightly
+          executor: cypress/browsers-chrome78-ff70
+          command: |
+                    export CYPRESS_ENVIRONMENT='staging';
+                    npm run test:cypress:nightly:chrome
+          store_artifacts: true
+
+  run-cypress-weekly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 3"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - cypress/run:
           name: electron
           executor: cypress/browsers-chrome78-ff70
           command: |
-                    export CYPRESS_ENVIRONMENT='development';
+                    export CYPRESS_ENVIRONMENT='staging';
                     npm run test:cypress:nightly:electron
           store_artifacts: true
       - cypress/run:
            name: firefox
            executor: cypress/browsers-chrome78-ff70
            command: |
-                     export CYPRESS_ENVIRONMENT='development';
+                     export CYPRESS_ENVIRONMENT='staging';
                      npm run test:cypress:nightly:firefox
            store_artifacts: true

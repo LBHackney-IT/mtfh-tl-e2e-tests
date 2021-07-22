@@ -1,4 +1,5 @@
 import { Then, And, Given } from 'cypress-cucumber-preprocessor/steps'
+import ActivityHistory from './../activityHistory/activityHistory'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
 import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
@@ -10,7 +11,11 @@ import SearchPageObjects from '../../pageObjects/searchPage'
 import validComment from '../../helpers/personCommentText'
 import testGuid from '../../helpers/personCommentText'
 import person from '../../../api/person'
+import date from 'date-and-time'
+import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
 
+const envConfig = require('../../../environment-config')
+const activityHistory = new ActivityHistoryPageObjects
 const addPersonPage = new AddPersonPageObjects
 const footer = new FooterPageObjects
 const header = new HeaderPageObjects
@@ -26,6 +31,8 @@ Given('I want to test the add-person api', async () => {
     cy.log(response.data.title)
     assert.deepEqual(response.status, 201)
 })
+let dateCaptureDay
+let dateCaptureTime
 
 Given('I am logged in', () => {
     cy.login()
@@ -122,7 +129,10 @@ And('have no detectable a11y violations', () => {
 
     // Person-contact
 And('I click the done button', () => {
+    const now = new Date()
     personContactPage.doneButton().click()
+    dateCaptureDay = date.format(now, 'DD/MM/YY')
+    dateCaptureTime = date.format(now, 'hh:mm')
 })
 
 And('I click the add email address button', () => {
@@ -223,7 +233,49 @@ And('I click edit person', () => {
     personPage.editPersonButton().click()
 })
 
+And('I am on the person page for {string}', (person) => {
+    cy.url().should('include', person)
+})
+
         // Create/edit person page
+Given('I create a person for tenure {string}', (record) => {
+    addPersonPage.visit(record)
+})
+
+And('I select a preferred middle name {string}', (preferredMiddleName) => {
+    if(preferredMiddleName === 'guid') {
+        preferredMiddleName = testGuid.testGuid
+    }
+    addPersonPage.preferredMiddleNameContainer().clear()
+    addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName)
+})
+
+And('I select a preferred last name {string}', (preferredLastName) => {
+    if(preferredLastName === 'guid') {
+        preferredLastName = testGuid.testGuid
+    }
+    addPersonPage.preferredLastNameContainer().clear()
+    addPersonPage.preferredLastNameContainer().type(preferredLastName)
+})
+
+And('I enter a reason for creation', () => {
+    addPersonPage.reasonForCreationContainer().type('This is a test')
+})
+
+And('I click add person', () => {
+    addPersonPage.addPersonButton().click()
+})
+
 And('I click cancel', () => {
     addPersonPage.cancelButton().click()
+})
+
+Given('I am on the edit person page for {string}', (person) => {
+    cy.visit(`${envConfig.baseUrl}/person/${person}/edit`)
+})
+
+Then('the activity history is correct', () => {
+    activityHistory.activityTableRow().eq(0).contains(testGuid.testGuid)
+    activityHistory.activityTableRow().eq(0).contains(dateCaptureDay)
+    activityHistory.activityTableRow().eq(0).contains(dateCaptureTime)
 })
