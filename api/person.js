@@ -1,13 +1,26 @@
-const post = require('./requests/postRequest')
-const model = require('./models/requests/createPersonModel')
-const personUrl = Cypress.env('CREATE_PERSON_ENDPOINT')
-let response
+const request = require('./requests/requests')
+const createPersonModel = require('./models/requests/createPersonModel')
+const editPersonModel = require('./models/requests/editPersonModel')
+const personEndpoint = Cypress.env('PERSON_ENDPOINT')
+const url = `https://${personEndpoint}/api/v1/persons`
 
 const createPerson = async () => {
-    response = await post.postRequest(`https://${personUrl}/api/v1/persons`, model.createPersonModel)
+    const response = await request.postRequest(url, createPersonModel.createPersonModel)
+    return response
+}
+
+const editPerson = async (personId) => {
+    const response = await request.patchRequest(`${url}/${personId}`, editPersonModel.editPersonModel)
+    return response
+}
+
+const viewPerson = (personId) => {
+    const response = request.getRequest(`${url}/${personId}`)
     return response
 }
 
 module.exports = {
-    createPerson
+    createPerson,
+    editPerson,
+    viewPerson
 }

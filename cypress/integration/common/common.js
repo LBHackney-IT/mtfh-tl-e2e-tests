@@ -10,6 +10,8 @@ import PersonPageObjects from '../../pageObjects/personPage'
 import SearchPageObjects from '../../pageObjects/searchPage'
 import validComment from '../../helpers/personCommentText'
 import testGuid from '../../helpers/personCommentText'
+import comment from '../../../api/comment'
+import contact from '../../../api/contact'
 import person from '../../../api/person'
 import date from 'date-and-time'
 import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
@@ -25,14 +27,52 @@ const personContactPage = new PersonContactPageObjects
 const personPage = new PersonPageObjects
 const searchPage = new SearchPageObjects
 
-Given('I want to test the add-person api', async () => {
-    const response = await person.createPerson()
-    cy.log(`Status code ${response.status} returned`)
-    cy.log(response.data.title)
-    assert.deepEqual(response.status, 201)
-})
 let dateCaptureDay
 let dateCaptureTime
+let personId
+
+Given('I want to create a person', async () => {
+    cy.log('Creating Person record')
+    const response = await person.createPerson()
+    cy.log(`Status code ${response.status} returned`)
+    cy.log(`Person record ${response.data.id} created!`)
+    assert.deepEqual(response.status, 201)
+    personId = response.data.id
+})
+
+Then('I want to view a person', async () => {
+    cy.log(`Checking Person record ${personId}`)
+    const response = await person.viewPerson(personId)
+    cy.log(`Status code ${response.status} returned`)
+    cy.log(`Person record ${personId} read!`)
+    assert.deepEqual(response.status, 200)
+})
+
+And('I want to edit a person', async () => {
+    cy.log(`Updating Person record ${personId}`)
+    const response = await person.editPerson(personId)
+    cy.log(`Status code ${response.status} returned`)
+    cy.log(`Person record ${personId} updated!`)
+    assert.deepEqual(response.status, 204)
+})
+
+And('I want to add contact details', async () => {
+    // TODO: Pass in the personId to the request JSON object
+    // cy.log(`Creating contact details for record ${personId}`)
+    const response = await contact.addContact(personId)
+    cy.log(`Status code ${response.status} returned`)
+    cy.log(`Contact details for record ${response.data.id} created!`)
+    assert.deepEqual(response.status, 201)
+})
+
+And('I want to add a comment', async () => {
+    // TODO: Pass in the personId to the request JSON object
+    // cy.log(`Creating comment for record ${personId}`)
+    const response = await comment.addComment(personId)
+    cy.log(`Status code ${response.status} returned`)
+    cy.log(`Comment for record ${response.data.id} created!`)
+    assert.deepEqual(response.status, 201)
+})
 
 Given('I am logged in', () => {
     cy.login()
