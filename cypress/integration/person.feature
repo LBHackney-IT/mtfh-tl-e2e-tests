@@ -9,41 +9,58 @@ Feature: T&L Person Page
   @Positive
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
-    # Then the body Person details are displayed
+    Then the personal details are displayed on the sidebar
+    When I click on the more contact details accordion
+    Then the more contact details are displayed
+    When I click on the more contact details accordion
+    When I click on the more personal details accordion
+    Then the body Person details are displayed
+    When I click on the more personal details accordion
+    When I click on the more tenure details accordion
+    Then the body tenure details are displayed
+    When I click on the more tenure details accordion
+    And I clear the session storage
 
     Examples:
       | record                               |
-      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
 
   @device
   Scenario Outline: View person details device view
     Given I have loaded a Person record "<record>"
     When I am using a mobile viewport "<device>"
+    Then the personal details are displayed on the mobile content container
+    When I click on the more contact details accordion
+    Then the more contact details are displayed
+    When I click on the more contact details accordion
     When I click on the more personal details accordion
     Then the body Person details are displayed
+    When I click on the more personal details accordion
     When I click on the more tenure details accordion
     Then the body tenure details are displayed
+    When I click on the more tenure details accordion
+    And I clear the session storage
 
     Examples:
       | device        | record                               |
-      # | ipad-2        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | ipad-mini     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-3      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-4      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-5      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-6      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-6+     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-7      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-8      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-x      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-xr     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | iphone-se2    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | macbook-11    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | macbook-13    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | macbook-15    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | macbook-16    | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      # | samsung-note9 | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-      | samsung-s10   | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      # | ipad-2        | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      # | ipad-mini     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-3      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-4      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-5      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-6      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-6+     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-7      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-8      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-x      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-xr     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | iphone-se2    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      # | macbook-11    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      # | macbook-13    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      # | macbook-15    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      # | macbook-16    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      # | samsung-note9 | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | samsung-s10   | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
 
   @SmokeTest
   Scenario Outline: Look for record that does not exist

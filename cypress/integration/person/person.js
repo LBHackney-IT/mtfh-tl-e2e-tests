@@ -30,9 +30,7 @@ When('I click on the more personal details accordion', () => {
 })
 
 Then('the body Person details are displayed', () => {
-    personPage.sidebar().contains('Date of birth')
-    personPage.sidebar().contains('Phone')
-    personPage.sidebar().contains('Email')
+    personPage.personDetails().contains('Place of birth')
 })
 
 When('I click on the more tenure details accordion', () => {
@@ -40,8 +38,10 @@ When('I click on the more tenure details accordion', () => {
 })
 
 Then('the body tenure details are displayed', () => {
-    personPage.sidebar().contains('Address')
-    personPage.sidebar().contains('Type')
+    personPage.tenureDetails().contains('Address')
+    personPage.tenureDetails().contains('Payment ref')
+    personPage.tenureDetails().contains('Property ref')
+    personPage.tenureDetails().contains('Tenure type')
 })
 
 When('I click on the add comment button', () => {
@@ -54,4 +54,28 @@ Then('I am taken to the add comment for person page {string}', (record) => {
 
 Then('the new comment is loaded', () => {
     personPage.commentTable().contains(validComment.validComment)
+})
+
+Then('the personal details are displayed on the sidebar' ,() => {
+    personPage.sidebar().contains('Date of birth')
+    personPage.sidebar().contains('Phone 1')
+    personPage.sidebar().contains('Email 1')
+    personPage.sidebar().contains('Correspondence address 1')
+    
+})
+    
+When('I click on the more contact details accordion', () => {
+    personPage.moreContactDetailsAccordion().click()
+})
+
+Then('the more contact details are displayed', () => {
+    personPage.contactDetails().contains('Correspondence address 2')
+    personPage.contactDetails().contains('Correspondence address 2 description')
+})
+
+Then('the personal details are displayed on the mobile content container', () => {
+    personPage.personalDetailsMobile().contains('Date of birth')
+    personPage.personalDetailsMobile().contains('Phone 1')
+    personPage.personalDetailsMobile().contains('Email 1')
+    personPage.personalDetailsMobile().contains('Correspondence address 1')
 })
