@@ -23,7 +23,7 @@ class TenurePageObjects {
     }
 
     viewResidentButton() {
-        return cy.get('[class="govuk-button lbh-button govuk-secondary lbh-button--secondary view-person-button"]')
+        return cy.get('[class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary view-person-button"]')
     }
 
     otherHouseholdMembersContainer() {
