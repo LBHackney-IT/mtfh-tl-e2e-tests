@@ -169,19 +169,12 @@ And('the add id options are not displayed', () => {
     addPersonPage.addIdButton().should('not.exist')
 })
 
-// And('I capture the etag', () => {
-//     cy.intercept('GET', '/edit', { statusCode : 304 }, (req) => {
-//         etag = req.headers
-//     })
-// })
-
-And('I complete the edit using an old etag', () => {
-    addPersonPage.updatePersonButton().click()
-    cy.intercept('PATCH', '*/persons/*', (req) => {
-        req.headers['If-Match'] = etag
-      })
-})
-
 And('there is a merge conflict', () => {
+    cy.intercept('PATCH','**/persons/**', (req) => {
+        req.headers['If-Match'] = '0'
+    }).as('edit')
+    
+    addPersonPage.updatePersonButton().click()
+    cy.wait('@edit')
     editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
 })
