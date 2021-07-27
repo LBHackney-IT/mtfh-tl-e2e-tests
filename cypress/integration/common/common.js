@@ -13,6 +13,7 @@ import testGuid from '../../helpers/personCommentText'
 import comment from '../../../api/comment'
 import contact from '../../../api/contact'
 import person from '../../../api/person'
+import referenceData from '../../../api/reference-data'
 import date from 'date-and-time'
 import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
 
@@ -30,6 +31,13 @@ const searchPage = new SearchPageObjects
 let dateCaptureDay
 let dateCaptureTime
 let personId
+
+Given('I want to check the reference data API with a category of {string} {string}', async (category, subCategory) => {
+    cy.log('Retrieving reference data')
+    const response = await referenceData.viewReferenceData(category, subCategory)
+    cy.log(`Status code ${response.status} returned`)
+    assert.deepEqual(response.status, 200)
+})
 
 Given('I want to create a person', async () => {
     cy.log('Creating Person record')
