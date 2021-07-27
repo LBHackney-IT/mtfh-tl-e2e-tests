@@ -20,6 +20,7 @@
     "test:cypress:nightly:electron": "cypress run -e TAGS='not @ignore'",
     "test:cypress:nightly:firefox": "cypress run --browser firefox --headless -e TAGS='not @ignore'",
     "test:cypress:devices": "cypress run --browser chrome --headless -e TAGS='@device'",
+    "test:cypress:api": "cypress run -e TAGS='@api'",
     "test:cypress:smoke": "cypress run --browser chrome --headless -e TAGS='@SmokeTest and not @ignore'"
   },
   "author": "",
@@ -38,6 +39,7 @@
     "ws": ">=6.2.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "date-and-time": "^1.0.1",
     "uuid": "^8.3.2"
   }
