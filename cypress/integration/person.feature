@@ -19,7 +19,6 @@ Feature: T&L Person Page
     When I click on the more tenure details accordion
     Then the body tenure details are displayed
     When I click on the more tenure details accordion
-    And I clear the session storage
 
     Examples:
       | record                               |
@@ -39,7 +38,6 @@ Feature: T&L Person Page
     When I click on the more tenure details accordion
     Then the body tenure details are displayed
     When I click on the more tenure details accordion
-    And I clear the session storage
 
     Examples:
       | device        | record                               |
