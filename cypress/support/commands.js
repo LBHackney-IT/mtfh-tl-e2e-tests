@@ -15,9 +15,3 @@ Cypress.Commands.add('logout', () => {
     cy.clearCookies()
     cy.getCookies().should('be.empty')
 })
-
-Cypress.Commands.add('clearSessionStorage', () => {
-    cy.window().then((win) => {
-        win.sessionStorage.clear()
-      });
-})
