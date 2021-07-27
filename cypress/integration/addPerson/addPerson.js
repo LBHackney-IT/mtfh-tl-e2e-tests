@@ -1,8 +1,12 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
+import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import testGuid from '../../helpers/personCommentText'
 
 const addPersonPage = new AddPersonPageObjects()
+const editPersonPage = new EditPersonPageObjects()
+
+let etag;
 
 Then('the add a new person tenure page is correct', () => {
     addPersonPage.addPersonPageIsDisplayed()
@@ -107,6 +111,9 @@ And('I am on the tenure page {string}', (tenureId) => {
 })
 
 And('I edit the person {string} {string} {string} {string}', (title, personType, firstName, middleName) => {
+    cy.intercept('GET', '/edit', (req) => {
+        etag = req.headers
+    })
     if(personType === 'Named tenure holder') {
         cy.contains(`View ${title} ${firstName} ${middleName} ${testGuid.testGuid}`).click()
     } else {
@@ -160,4 +167,14 @@ And('the add language options are not displayed', () => {
 
 And('the add id options are not displayed', () => {
     addPersonPage.addIdButton().should('not.exist')
+})
+
+And('there is a merge conflict', () => {
+    cy.intercept('PATCH','**/persons/**', (req) => {
+        req.headers['If-Match'] = '0'
+    }).as('edit')
+    
+    addPersonPage.updatePersonButton().click()
+    cy.wait('@edit')
+    editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
 })

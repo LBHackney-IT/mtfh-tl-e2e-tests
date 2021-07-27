@@ -59,13 +59,16 @@ class PersonPageObjects {
         return cy.contains('Add comment')
     }
 
+    moreContactDetailsAccordion() {
+        return cy.contains('More contact details')
+    }
+
     morePersonalDetailsAccordion() {
-        return cy.contains('More personal details')
+        return cy.get('[id="accordion-heading-additional-person-details"]')
     }
 
     moreTenureDetailsAccordion() {
-        // return cy.contains('More tenure details')
-        return cy.get('.govuk-accordion__section-button').eq(1)
+        return cy.contains('Additional tenures')
     }
 
     viewTenureButton() {
@@ -85,7 +88,27 @@ class PersonPageObjects {
     }
 
     sidebar() {
-        return cy.get('#sidebar')
+        return cy.get('[class="mtfh-sidebar"]')
+    }
+
+    deviceViewSidebar() {
+        return cy.get('[id="sidebar"]')
+    }
+
+    personalDetailsMobile() {
+        return cy.get('.mtfh-personal-details-mobile')
+    }
+
+    contactDetails() {
+        return cy.get('[id="contact-details"]')
+    }
+
+    personDetails() {
+        return cy.get('[id="accordion-content-additional-person-details"]')
+    }
+
+    tenureDetails() {
+        return cy.get('[class="mtfh-tenure-details"]')
     }
 }
 export default PersonPageObjects

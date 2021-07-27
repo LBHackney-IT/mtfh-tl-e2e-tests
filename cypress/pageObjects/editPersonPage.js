@@ -5,6 +5,10 @@ class EditPersonPageObjects {
         cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${record}/edit`)
         cy.injectAxe()
     }
+
+    mergeConflictDialogBox() {
+        return cy.get('#person-form-errors')
+    }
 }
 
 export default EditPersonPageObjects
