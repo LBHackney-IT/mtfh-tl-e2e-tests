@@ -15,7 +15,7 @@ class SearchPageObjects {
     }
 
     searchContainer() {
-        return cy.get("[data-testid='searchInput']")
+        return cy.get("#search-form-searchTerm-field")
     }
 
     searchButton() {

@@ -7,7 +7,7 @@ class EditPersonPageObjects {
     }
 
     mergeConflictDialogBox() {
-        return cy.get('#person-form-errors')
+        return cy.get('#person-form-conflict')
     }
 }
 

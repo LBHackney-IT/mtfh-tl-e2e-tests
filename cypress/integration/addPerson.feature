@@ -163,7 +163,7 @@ Feature: Add a new person to a tenure
 
     @SmokeTest
     @Positive
-    Scenario Outline: Edit a tenure
+    Scenario Outline: Edit a person
       Given I create a person for tenure '<tenure>'
       Then the add a new person tenure page is correct
       When I select person type "<personType>"
