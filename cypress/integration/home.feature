@@ -2,6 +2,7 @@
 Feature: T&L Home page
     I am on the Tenants and Leaseholders Home page
 
+  @Production
   @SmokeTest
   Scenario: Home Page whilst logged out
     Given I am on the Home page
@@ -21,6 +22,7 @@ Feature: T&L Home page
   Scenario: Accessibility Testing
     And have no detectable a11y violations
 
+  @Production
   @SmokeTest
   @Footer
   Scenario: Page footer links
