@@ -7,11 +7,15 @@ class SearchPageObjects {
     }
 
     searchComponent() {
-        return cy.get("[data-testid='searchComponent']")
+        return cy.get(".mtfh-search-controls__status")
     }
 
     searchHeader() {
         return cy.get('.mtfh-search__title')
+    }
+
+    searchSubtitle() {
+        return cy.get('.lbh-heading-h2')
     }
 
     searchContainer() {
@@ -30,28 +34,20 @@ class SearchPageObjects {
         return cy.get('.mtfh-search__results')
     }
 
-    closeSearchButton() {
-        return cy.contains('Close')
-    }
-
     personRadioButton() {
         return cy.get('[id="filterPerson"]')
     }
 
     filterStatus() {
-        return cy.get('[class="mtfh-search__filters-status"]')
+        return cy.get('.mtfh-search-controls__status')
     }
 
     sortByOption() {
-        return cy.get('#select-1')
+        return cy.get('#sortBy-field')
     }
 
     showOptions() {
-        return cy.get('#select-2')
-    }
-
-    filterStatus() {
-        return cy.get('[class="mtfh-search__filters-status"]')
+        return cy.get('#limit-field')
     }
 
     paginationSummary() {
@@ -66,32 +62,24 @@ class SearchPageObjects {
         return cy.get('.mtfh-search-result')
     }
 
-    searchResultTitle() {
-        return cy.get('.lbh-heading-h1')
-    }
-
-    searchResultSubtitle() {
-        return cy.get('.mtfh-search-result__subtitle')
-    }
-
-    searchResultDateOfBirth() {
-        return cy.get('.mtfh-search-result__row')
-    }
-
-    searchResultTenure() {
-        return cy.get('.mtfh-search-result__row')
-    }
-
-    searchResultMoreDetails() {
-        return cy.get('.mtfh-search-result__row')
-    }
-
     filterPersonRadioButton() {
         return cy.get("[id='filterPerson']")
     }
 
     searchConfirmation() {
         return cy.get('.mtfh-search__subtitle__highlight')
+    }
+
+    searchTermError() {
+        return cy.get('#search-form-searchTerm-error')
+    }
+
+    searchResultName() {
+        return cy.get('[data-testid*="searchMoreDetails"]')
+    }
+
+    searchResultDateOfBirth() {
+        return cy.get('[data-testid*="searchDOB"]')
     }
 
     enterKeywordAndClickSearch(searchTerm) {
@@ -103,17 +91,6 @@ class SearchPageObjects {
     iAmOnTheSearchPage() {
         this.searchComponent().should('be.visible')
         this.searchHeader().contains('Search')
-    }
-
-    searchResultPropertiesAreDisplayed() {
-        this.searchResultTitle().should('be.visible')
-        this.searchResultSubtitle().should('be.visible')
-        this.searchResultDateOfBirth().should('be.visible')
-        this.searchResultDateOfBirth().contains('DOB:')
-        this.searchResultTenure().should('be.visible')
-        this.searchResultTenure().contains('Tenure:')
-        this.searchResultMoreDetails().should('be.visible')
-        this.searchResultMoreDetails().contains('More details')
     }
 
     numberOfResultsDisplayed(results) {

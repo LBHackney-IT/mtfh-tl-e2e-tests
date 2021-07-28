@@ -7,6 +7,7 @@ Feature: T&L Search Function
       Given I am logged out
       Given I am logged in
       Given I am on the search page
+      
   
   @SmokeTest
   @Positive
@@ -26,6 +27,7 @@ Feature: T&L Search Function
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
+    Then the page breadcrumb is displayed
 
     Examples:
       | characters |
@@ -44,6 +46,7 @@ Feature: T&L Search Function
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
+    Then the page breadcrumb is displayed
 
     Examples:
       | device        | characters  |
@@ -115,21 +118,19 @@ Feature: T&L Search Function
 
   @SmokeTest
   @Negative
-  @ignore
   Scenario Outline: Insufficient characters
     And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
-    Then no results are returned
-    And a validation error message is displayed  
+    Then a validation error message is displayed  
 
     Examples:
       | characters |
       | b          |
-      | c          |
-      | d          |
-      | e          |
-      | !          |
+      # | c          |
+      # | d          |
+      # | e          |
+      # | !          |
 
   @Accessibility
   Scenario: Accessibility Testing
@@ -158,13 +159,6 @@ Feature: T&L Search Function
     And I click on the search button
     Then the search results are displayed by best match "<firstSearch>"
     Then the search again button is displayed
-    And the search panel is not visible
-    When I click on the search again button
-    And the search panel is visible
-    And the close search button is visible
-    When I click on the close search button
-    Then the search again button is displayed
-    Then the search panel is not visible
     When I click on the search again button
     When I enter any of the following criteria "<secondSearch>"
     And I click on the search button

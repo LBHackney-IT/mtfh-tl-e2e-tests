@@ -96,7 +96,7 @@ workflows:
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
-          store_artifacts: true
+          store_artifacts: false
 
   e2e-tests-development:
     when:
@@ -141,19 +141,12 @@ workflows:
                 - master             
     jobs:
       - cypress/run:
-          name: development-nightly
-          executor: cypress/browsers-chrome78-ff70
-          command: |
-                    export CYPRESS_ENVIRONMENT='development';
-                    npm run test:cypress:nightly:chrome
-          store_artifacts: true
-      - cypress/run:
           name: staging-nightly
           executor: cypress/browsers-chrome78-ff70
           command: |
                     export CYPRESS_ENVIRONMENT='staging';
                     npm run test:cypress:nightly:chrome
-          store_artifacts: true
+          store_artifacts: false
 
   run-cypress-weekly:
     triggers:
@@ -170,11 +163,11 @@ workflows:
           command: |
                     export CYPRESS_ENVIRONMENT='staging';
                     npm run test:cypress:nightly:electron
-          store_artifacts: true
+          store_artifacts: false
       - cypress/run:
            name: firefox
            executor: cypress/browsers-chrome78-ff70
            command: |
                      export CYPRESS_ENVIRONMENT='staging';
                      npm run test:cypress:nightly:firefox
-           store_artifacts: true
+           store_artifacts: false
