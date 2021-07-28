@@ -8,7 +8,7 @@ Given('I want to log in to the search page', () => {
 })
 
 Then('no results are returned', () => {
-    searchPage.searchComponent().contains('No results')
+    searchPage.searchComponent().contains('No matching search results found')
 })
 
 And('I click on the search again button', () => {
@@ -28,25 +28,8 @@ Then('the search again button is displayed', () => {
     searchPage.searchAgainButton().should('be.visible')
 })
 
-Then('the search panel is not visible', () => {
-    searchPage.searchContainer().should('not.exist')
-})
-
-And('the search panel is visible', () => {
-    searchPage.searchContainer().should('be.visible')
-})
-
-And('the close search button is visible', () => {
-    searchPage.closeSearchButton().should('be.visible')
-})
-
-When('I click on the close search button', () => {
-    searchPage.closeSearchButton().click()
-})
-
-// Waiting on fix for unhandled exception when invalid search is sent
-When('I do not enter a minimum of 2 characters into the search', () => {
-
+Then('a validation error message is displayed', () => {
+    searchPage.searchTermError().should('be.visible')
 })
 
 Then('the default sort option is correct', () => {

@@ -146,8 +146,9 @@ Then('the search results are displayed by best match {string}', (searchTerm) => 
     if(searchTerm === 'guid') {
         searchTerm = testGuid.testGuid
     }
-    searchPage.searchResultPropertiesAreDisplayed()
-    searchPage.searchConfirmation().contains(searchTerm)
+    searchPage.searchResultName().should('be.visible')
+    searchPage.searchResultDateOfBirth().should('be.visible')
+    searchPage.searchSubtitle().contains(searchTerm)
     searchPage.searchResults().contains(searchTerm.replace(/\*/g, ''), {matchCase: false}) 
 })
 

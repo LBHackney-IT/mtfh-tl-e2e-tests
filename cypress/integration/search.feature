@@ -19,70 +19,70 @@ Feature: T&L Search Function
       | characters |
       | An         |
 
-  @SmokeTest 
-  @Positive
-  Scenario Outline: Execute searches
-    And I click on the search again button
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+  # @SmokeTest 
+  # @Positive
+  # Scenario Outline: Execute searches
+  #   And I click on the search again button
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<characters>"
 
-    Examples:
-      | characters |
-      | am         |
-      | Andrew     |
-      | Jeff       |
-      # | Keith      |
-      # | Trev       |
-      # | Victor     |
+  #   Examples:
+  #     | characters |
+  #     | am         |
+  #     | Andrew     |
+  #     | Jeff       |
+  #     # | Keith      |
+  #     # | Trev       |
+  #     # | Victor     |
 
 
-  @device
-  Scenario Outline: Execute searches on device
-    When I am using a mobile viewport "<device>"
-    And I click on the search again button
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+  # @device
+  # Scenario Outline: Execute searches on device
+  #   When I am using a mobile viewport "<device>"
+  #   And I click on the search again button
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<characters>"
 
-    Examples:
-      | device        | characters  |
-      | ipad-2        | Andrew      |
-      | ipad-mini     | Alan        |
-      | iphone-3      | Christopher |
-      | iphone-4      | Jeff        |
-      | iphone-5      | Bill        |
-      | iphone-6      | Jade        |
-      | iphone-6+     | Callum      |
-      | iphone-7      | Steve       |
-      | iphone-8      | Trev        |
-      | iphone-x      | Keith       |
-      | iphone-xr     | Anna        |
-      | iphone-se2    | Gill        |
-      | macbook-11    | Emily       |
-      | macbook-13    | Katie       |
-      | macbook-15    | Karen       |
-      | macbook-16    | Sally       |
-      | samsung-note9 | Jodie       |
-      | samsung-s10   | Molly       |
+  #   Examples:
+  #     | device        | characters  |
+  #     | ipad-2        | Andrew      |
+  #     | ipad-mini     | Alan        |
+  #     | iphone-3      | Christopher |
+  #     | iphone-4      | Jeff        |
+  #     | iphone-5      | Bill        |
+  #     | iphone-6      | Jade        |
+  #     | iphone-6+     | Callum      |
+  #     | iphone-7      | Steve       |
+  #     | iphone-8      | Trev        |
+  #     | iphone-x      | Keith       |
+  #     | iphone-xr     | Anna        |
+  #     | iphone-se2    | Gill        |
+  #     | macbook-11    | Emily       |
+  #     | macbook-13    | Katie       |
+  #     | macbook-15    | Karen       |
+  #     | macbook-16    | Sally       |
+  #     | samsung-note9 | Jodie       |
+  #     | samsung-s10   | Molly       |
 
-  @SmokeTest    
-  @Positive
-  Scenario Outline: Wildcard and partial searches
-    And I click on the search again button
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+  # @SmokeTest    
+  # @Positive
+  # Scenario Outline: Wildcard and partial searches
+  #   And I click on the search again button
+  #   When I enter any of the following criteria "<characters>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<characters>"
 
-    Examples:
-      | characters |
-      | *a         |
-      | b*         |
-      | *c*        |
-      # | ch         |
-      # | *ev        |
-      # | *ic*       |
-      # | te*        |
+  #   Examples:
+  #     | characters |
+  #     | *a         |
+  #     | b*         |
+  #     | *c*        |
+  #     # | ch         |
+  #     # | *ev        |
+  #     # | *ic*       |
+  #     # | te*        |
 
   @SmokeTest
   @Positive
@@ -115,21 +115,19 @@ Feature: T&L Search Function
 
   @SmokeTest
   @Negative
-  @ignore
   Scenario Outline: Insufficient characters
     And I click on the search again button
     When I enter any of the following criteria "<characters>"
     And I click on the search button
-    Then no results are returned
-    And a validation error message is displayed  
+    Then a validation error message is displayed  
 
     Examples:
       | characters |
       | b          |
-      | c          |
-      | d          |
-      | e          |
-      | !          |
+      # | c          |
+      # | d          |
+      # | e          |
+      # | !          |
 
   @Accessibility
   Scenario: Accessibility Testing
@@ -158,13 +156,6 @@ Feature: T&L Search Function
     And I click on the search button
     Then the search results are displayed by best match "<firstSearch>"
     Then the search again button is displayed
-    And the search panel is not visible
-    When I click on the search again button
-    And the search panel is visible
-    And the close search button is visible
-    When I click on the close search button
-    Then the search again button is displayed
-    Then the search panel is not visible
     When I click on the search again button
     When I enter any of the following criteria "<secondSearch>"
     And I click on the search button
