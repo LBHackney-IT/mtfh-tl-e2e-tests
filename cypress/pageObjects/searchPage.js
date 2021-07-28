@@ -19,7 +19,7 @@ class SearchPageObjects {
     }
 
     searchButton() {
-        return cy.get("[data-testid='btnSearch']")
+        return cy.get('[type="submit"]')
     }
 
     searchAgainButton() {
@@ -67,7 +67,7 @@ class SearchPageObjects {
     }
 
     searchResultTitle() {
-        return cy.get('.mtfh-search-result__title')
+        return cy.get('.lbh-heading-h1')
     }
 
     searchResultSubtitle() {

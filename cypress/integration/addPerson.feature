@@ -107,6 +107,7 @@ Feature: Add a new person to a tenure
       | tenure                               | personType          | title | firstName | middleName | lastName | day | month | year |
       | 957cc50e-2dc4-e782-a013-c0a331884e49 | Named tenure holder | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 |
 
+  @ignore
   @flaky
   Scenario Outline: New person returned in search
     Given I create a person for tenure '<tenure>'
