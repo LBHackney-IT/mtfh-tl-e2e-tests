@@ -32,6 +32,8 @@ let dateCaptureDay
 let dateCaptureTime
 let personId
 
+
+    // API
 Given('I want to check the reference data API with a category of {string} {string}', async (category, subCategory) => {
     cy.log('Retrieving reference data')
     const response = await referenceData.viewReferenceData(category, subCategory)
@@ -82,12 +84,18 @@ And('I want to add a comment', async () => {
     assert.deepEqual(response.status, 201)
 })
 
+    // Generic
 Given('I am logged in', () => {
     cy.login()
 })
 
 Given('I am logged out', () => {
     cy.logout()
+})
+
+Then('the page breadcrumb is displayed', () => {
+    const breadCrumb = cy.get('[class*="govuk-back-link lbh-back-link"]')
+    breadCrumb.should('be.visible')
 })
 
     // Page Header shared steps
@@ -146,8 +154,9 @@ Then('the search results are displayed by best match {string}', (searchTerm) => 
     if(searchTerm === 'guid') {
         searchTerm = testGuid.testGuid
     }
-    searchPage.searchResultPropertiesAreDisplayed()
-    searchPage.searchConfirmation().contains(searchTerm)
+    searchPage.searchResultName().should('be.visible')
+    searchPage.searchResultDateOfBirth().should('be.visible')
+    searchPage.searchSubtitle().contains(searchTerm)
     searchPage.searchResults().contains(searchTerm.replace(/\*/g, ''), {matchCase: false}) 
 })
 
