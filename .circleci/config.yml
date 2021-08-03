@@ -67,13 +67,14 @@ jobs:
                 - run: 
                     name: trigger downstream deployment
                     command: |
-                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,://github.com/,,g')"
                               case << pipeline.parameters.development_environment >> in
                               (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
                               esac
                               case << pipeline.parameters.staging_environment >> in
                               (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                               esac
+                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,://github.com/,,g')"
+                              echo setting downstream pipeline to to $upstreamPipeline
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/$upstreamPipeline/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
@@ -83,6 +84,7 @@ jobs:
                     name: trigger failure message to parent pipeline
                     command: |
                               upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,://github.com/,,g')"
+                              echo setting downstream pipeline to to $upstreamPipeline
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/$upstreamPipeline/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
@@ -97,7 +99,6 @@ workflows:
           name: ci
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-             echo << pipeline.project.git_url >>
              npm run test:cypress:run
           store_artifacts: false
 
