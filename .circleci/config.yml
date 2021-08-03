@@ -67,13 +67,14 @@ jobs:
                 - run: 
                     name: trigger downstream deployment
                     command: |
+                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,://github.com/,,g')"
                               case << pipeline.parameters.development_environment >> in
                               (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
                               esac
                               case << pipeline.parameters.staging_environment >> in
                               (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                               esac
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/$upstreamPipeline/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
@@ -81,7 +82,8 @@ jobs:
                 - run:
                     name: trigger failure message to parent pipeline
                     command: |
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
+                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,://github.com/,,g')"
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/$upstreamPipeline/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
@@ -95,6 +97,7 @@ workflows:
           name: ci
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+             echo << pipeline.project.git_url >>
              npm run test:cypress:run
           store_artifacts: false
 
