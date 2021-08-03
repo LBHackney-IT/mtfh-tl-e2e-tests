@@ -95,6 +95,7 @@ workflows:
           name: ci
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+             echo << pipeline.project.git_url >>
              npm run test:cypress:run
           store_artifacts: false
 
