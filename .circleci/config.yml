@@ -73,7 +73,7 @@ jobs:
                               case << pipeline.parameters.staging_environment >> in
                               (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                               esac
-                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,://github.com/,,g')"
+                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $upstreamPipeline
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/$upstreamPipeline/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
