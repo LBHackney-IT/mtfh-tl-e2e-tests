@@ -83,7 +83,7 @@ jobs:
                 - run:
                     name: trigger failure message to parent pipeline
                     command: |
-                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,://github.com/,,g')"
+                              upstreamPipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $upstreamPipeline
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/$upstreamPipeline/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
