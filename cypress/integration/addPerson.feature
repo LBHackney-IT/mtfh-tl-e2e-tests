@@ -19,6 +19,7 @@ Feature: Add a new person to a tenure
       | tenure                               |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 |
   
+  @ignore
   @SmokeTest
   @Positive
   Scenario Outline: Add a new person to a tenure
