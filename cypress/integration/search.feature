@@ -1,4 +1,4 @@
-@ignoreDev
+@ignore
 @SearchPage
 Feature: T&L Search Function
     I want to search for a person
