@@ -75,7 +75,7 @@ jobs:
                               esac
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $UPSTREAM_PIPELINE
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/"$UPSTREAM_PIPELINE"/pipeline' \
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
@@ -83,9 +83,9 @@ jobs:
                 - run:
                     name: trigger failure message to parent pipeline
                     command: |
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
+                              export UPSTREAM_PIPELINE="$(echo https://github.com/LBHackney-IT/mtfh-frontend-header | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $UPSTREAM_PIPELINE
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/"$UPSTREAM_PIPELINE"/pipeline' \
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
