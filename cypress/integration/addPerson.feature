@@ -1,3 +1,4 @@
+@ignoreDev
 @AddPersonPage
 Feature: Add a new person to a tenure
   I want to add a person to a tenure
