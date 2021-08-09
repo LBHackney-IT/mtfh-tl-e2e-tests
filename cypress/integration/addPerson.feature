@@ -162,6 +162,7 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
+    @ignoreDev
     @SmokeTest
     @Positive
     Scenario Outline: Edit a person
