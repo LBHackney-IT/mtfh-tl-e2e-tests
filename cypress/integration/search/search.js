@@ -40,3 +40,6 @@ When('I select to sort by {string}', (filter) => {
     searchPage.sortByOption().select(filter)
 })
 
+Then('there is no filter option', () => {
+    searchPage.sortByOption().should('not.exist')
+})

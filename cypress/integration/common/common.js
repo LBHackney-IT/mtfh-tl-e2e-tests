@@ -145,6 +145,15 @@ When('I enter any of the following criteria {string}', (searchTerm) => {
     searchPage.searchContainer().type(searchTerm)       
 })
 
+When('I click on the radio button for {string}', (searchType) => {
+    if(searchType === 'Person') {
+        searchPage.personRadioButton().click()
+    }
+    if(searchType === 'Tenure') {
+        searchPage.tenureRadioButton().click()
+    }
+})
+
 And('I click on the search button', () => {
     searchPage.searchButton().click()
 })
