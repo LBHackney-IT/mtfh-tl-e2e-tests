@@ -22,7 +22,7 @@ Feature: Tenure page
 
       Examples:
           | tenure                               |
-          | 8f2bb5cf-1215-b9de-59fd-adcf33b0c601 |
+          | ae94deaf-2179-6d4a-d30b-7ebd5066e9d7 |
 
     @SmokeTest
     Scenario Outline: View individual household members

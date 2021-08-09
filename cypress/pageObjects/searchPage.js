@@ -74,10 +74,6 @@ class SearchPageObjects {
         return cy.get('#search-form-searchTerm-error')
     }
 
-    searchResultName() {
-        return cy.get('[data-testid*="searchMoreDetails"]')
-    }
-
     searchResultDateOfBirth() {
         return cy.get('[data-testid*="searchDOB"]')
     }
