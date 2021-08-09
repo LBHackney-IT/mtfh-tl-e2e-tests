@@ -1,5 +1,4 @@
 import { Then, And, Given } from 'cypress-cucumber-preprocessor/steps'
-import ActivityHistory from './../activityHistory/activityHistory'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
 import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
@@ -154,8 +153,6 @@ Then('the search results are displayed by best match {string}', (searchTerm) => 
     if(searchTerm === 'guid') {
         searchTerm = testGuid.testGuid
     }
-    searchPage.searchResultName().should('be.visible')
-    searchPage.searchResultDateOfBirth().should('be.visible')
     searchPage.searchSubtitle().contains(searchTerm)
     searchPage.searchResults().contains(searchTerm.replace(/\*/g, ''), {matchCase: false}) 
 })
