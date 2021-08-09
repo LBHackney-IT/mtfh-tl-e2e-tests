@@ -47,6 +47,7 @@ Feature: T&L Search Function
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
+    And tenure search results are prefixed correctly
     Then the page breadcrumb is displayed
 
     Examples:

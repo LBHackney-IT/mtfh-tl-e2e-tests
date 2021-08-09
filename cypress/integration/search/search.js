@@ -43,3 +43,7 @@ When('I select to sort by {string}', (filter) => {
 Then('there is no filter option', () => {
     searchPage.sortByOption().should('not.exist')
 })
+
+And('tenure search results are prefixed correctly', () => {
+    searchPage.searchResults().contains('Tenure payment ref')
+})
