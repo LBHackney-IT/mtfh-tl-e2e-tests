@@ -22,6 +22,14 @@ class SearchPageObjects {
         return cy.get("#search-form-searchTerm-field")
     }
 
+    personRadioButton() {
+        return cy.get('#search-form-type-persons')
+    }
+
+    tenureRadioButton() {
+        return cy.get('#search-form-type-tenures')
+    }
+
     searchButton() {
         return cy.get('[type="submit"]')
     }
@@ -32,10 +40,6 @@ class SearchPageObjects {
 
     searchResults() {
         return cy.get('.mtfh-search__results')
-    }
-
-    personRadioButton() {
-        return cy.get('[id="filterPerson"]')
     }
 
     filterStatus() {
