@@ -32,7 +32,7 @@ Feature: T&L Search Function
       | characters |
       | am         |
       | Andrew     |
-      # | Jeff       |
+      | Jeff       |
       # | Keith      |
       # | Trev       |
       # | Victor     |
