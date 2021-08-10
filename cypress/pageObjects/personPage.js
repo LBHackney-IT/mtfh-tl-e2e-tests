@@ -75,6 +75,10 @@ class PersonPageObjects {
         return cy.get('[class="govuk-button lbh-button govuk-secondary lbh-button--secondary"]')
     }
 
+    viewPropertyButton() {
+        return cy.contains('View property')
+    }
+
     feedbackMessageContainer() {
         return cy.get('[id="single-spa-application:@mtfh/personal-details"]')
     }

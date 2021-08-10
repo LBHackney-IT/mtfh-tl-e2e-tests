@@ -3,6 +3,7 @@ import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
 import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
 import ModalPageObjects from '../../pageObjects/sharedComponents/modal'
+import NavigationPageObjects from '../../pageObjects/sharedComponents/navigation'
 import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import PersonPageObjects from '../../pageObjects/personPage'
@@ -15,6 +16,7 @@ import person from '../../../api/person'
 import referenceData from '../../../api/reference-data'
 import date from 'date-and-time'
 import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
+import TenurePageObjects from '../../pageObjects/tenurePage'
 
 const envConfig = require('../../../environment-config')
 const activityHistory = new ActivityHistoryPageObjects
@@ -22,15 +24,16 @@ const addPersonPage = new AddPersonPageObjects
 const footer = new FooterPageObjects
 const header = new HeaderPageObjects
 const modal = new ModalPageObjects
+const navigation = new NavigationPageObjects
 const personCommentsPage = new PersonCommentsPageObjects
 const personContactPage = new PersonContactPageObjects
 const personPage = new PersonPageObjects
 const searchPage = new SearchPageObjects
+const tenurePage = new TenurePageObjects
 
 let dateCaptureDay
 let dateCaptureTime
 let personId
-
 
     // API
 Given('I want to check the reference data API with a category of {string} {string}', async (category, subCategory) => {
@@ -93,8 +96,15 @@ Given('I am logged out', () => {
 })
 
 Then('the page breadcrumb is displayed', () => {
-    const breadCrumb = cy.get('[class*="govuk-back-link lbh-back-link"]')
-    breadCrumb.should('be.visible')
+    navigation.backButton().should('be.visible')
+})
+
+And('I click on the breadcrumb', () => {
+    navigation.backButton().click()
+})
+    
+Then('I am taken to the search page', () => {
+    cy.url().should('contain', "search")
 })
 
     // Page Header shared steps
@@ -341,4 +351,9 @@ Then('the activity history is correct', () => {
     activityHistory.activityTableRow().eq(0).contains(testGuid.testGuid)
     activityHistory.activityTableRow().eq(0).contains(dateCaptureDay)
     activityHistory.activityTableRow().eq(0).contains(dateCaptureTime)
+})
+
+        // Tenure page
+Then('the tenure information is displayed', () => {
+    tenurePage.tenureDetailsAreDisplayed()
 })
