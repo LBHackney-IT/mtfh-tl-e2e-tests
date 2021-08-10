@@ -1,6 +1,6 @@
 @SearchPage
 Feature: T&L Search Function
-    I want to search for a person
+    I want to search for a person or tenure
 
     Background: I am on the search page
       Given I am logged out
@@ -10,134 +10,159 @@ Feature: T&L Search Function
   
   @SmokeTest
   @Positive
-  Scenario Outline: Initial search
-  When I enter any of the following criteria "<characters>"
+  Scenario Outline: Initial person search
+    # When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
 
     Examples:
-      | characters |
-      | An         |
+      | characters | searchType |
+      | An         | Person     |
 
   @SmokeTest 
   @Positive
-  Scenario Outline: Execute searches
+  Scenario Outline: Execute person searches
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
     Then the page breadcrumb is displayed
 
     Examples:
-      | characters |
-      | am         |
-      | Andrew     |
-      | Jeff       |
-      # | Keith      |
-      # | Trev       |
-      # | Victor     |
+      | characters | searchType |
+      | am         | Person     |
+      | Andrew     | Person     |
+      | Jeff       | Person     |
+      # | Keith      | Person     |
+      # | Trev       | Person     |
+      # | Victor     | Person     |
+
+  @SmokeTest 
+  @Positive
+  Scenario Outline: Execute tenure searches
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+    And tenure search results are prefixed correctly
+    Then the page breadcrumb is displayed
+
+    Examples:
+      | characters | searchType |
+      | 12         | Tenure     |
+      | Avenue     | Tenure     |
+      | castle     | Tenure     |
 
 
   @device
   Scenario Outline: Execute searches on device
     When I am using a mobile viewport "<device>"
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
     Then the page breadcrumb is displayed
 
     Examples:
-      | device        | characters  |
-      | ipad-2        | Andrew      |
-      | ipad-mini     | Alan        |
-      | iphone-3      | Christopher |
-      | iphone-4      | Jeff        |
-      | iphone-5      | Bill        |
-      | iphone-6      | Jade        |
-      | iphone-6+     | Callum      |
-      | iphone-7      | Steve       |
-      | iphone-8      | Trev        |
-      | iphone-x      | Keith       |
-      | iphone-xr     | Anna        |
-      | iphone-se2    | Gill        |
-      | macbook-11    | Emily       |
-      | macbook-13    | Katie       |
-      | macbook-15    | Karen       |
-      | macbook-16    | Sally       |
-      | samsung-note9 | Jodie       |
-      | samsung-s10   | Molly       |
+      | device        | characters  | searchType |
+      | ipad-2        | Andrew      | Person     | 
+      | ipad-mini     | Alan        | Person     |
+      | iphone-3      | Christopher | Person     |
+      | iphone-4      | Jeff        | Person     |
+      | iphone-5      | Bill        | Person     |
+      | iphone-6      | Jade        | Person     |
+      | iphone-6+     | Callum      | Person     |
+      | iphone-7      | Steve       | Person     |
+      | iphone-8      | Trev        | Person     |
+      | iphone-x      | Keith       | Person     |
+      | iphone-xr     | Anna        | Person     |
+      | iphone-se2    | Gill        | Person     |
+      | macbook-11    | Emily       | Person     |
+      | macbook-13    | Katie       | Person     |
+      | macbook-15    | Karen       | Person     |
+      | macbook-16    | Sally       | Person     |
+      | samsung-note9 | Jodie       | Person     |
+      | samsung-s10   | Molly       | Person     |
 
   @SmokeTest    
   @Positive
   Scenario Outline: Wildcard and partial searches
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
 
     Examples:
-      | characters |
-      | *a         |
-      | b*         |
-      | *c*        |
-      # | ch         |
-      # | *ev        |
-      # | *ic*       |
-      # | te*        |
+      | characters | searchType |
+      | *a         | Person     |
+      | b*         | Tenure     |
+      | *c*        | Person     |
+      # | ch         | Tenure     |
+      # | *ev        | Person     |
+      # | *ic*       | Tenure     |
+      # | te*        | Person     |
 
   @SmokeTest
   @Positive
   Scenario Outline: Results are not returned
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then no results are returned
 
     Examples:
-      | characters |
-      | 12345678   |
-      | AZKQ       |
-      # | dp0        |
-      # | elqsn      |
-      # | !!!!!!!    |
+      | characters | searchType |
+      | 12345678   | Person     |
+      | AZKQ       | Tenure     |
+      # | dp0        | Person     |
+      # | elqsn      | Tenure     |
+      # | !!!!!!!    | Person     |
 
   @SmokeTest     
   @Positive
   @ignore
   Scenario Outline: Multiple search criteria
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the search results are displayed by best match "<characters>"
 
     Examples:
-      | characters     |
-      | ad e           |
+      | characters     | searchType |
+      | ad e           | Person     |
 
   @SmokeTest
   @Negative
   Scenario Outline: Insufficient characters
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then a validation error message is displayed  
 
     Examples:
-      | characters |
-      | b          |
-      # | c          |
-      # | d          |
-      # | e          |
-      # | !          |
+      | characters | searchType |
+      | b          | Person     |
+      | c          | Tenure     |
+      # | d          | Person     |
+      # | e          | Tenure     |
+      # | !          | Person     |
 
   @Accessibility
   Scenario: Accessibility Testing
     And have no detectable a11y violations
 
   @SmokeTest
-  Scenario Outline: Filter searches
+  Scenario Outline: Filter searches for person
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then the default sort option is correct
@@ -146,14 +171,31 @@ Feature: T&L Search Function
     Then the correct number of <results> are displayed
 
     Examples:
-      | characters | filter        | results |
-      | Ab         | Last name A-Z | 40      |
-      | Bre        | Last name Z-A | 12      |
-      | Chris      | Best match    | 20      |
+      | characters | filter        | results | searchType |
+      | Ab         | Last name A-Z | 40      | Person     |
+      | Bre        | Last name Z-A | 12      | Person     |
+      | Chris      | Best match    | 20      | Person     |
+
+  @SmokeTest
+  Scenario Outline: Filter searches for tenure
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then there is no filter option
+    When I set the number of results to <results>
+    Then the correct number of <results> are displayed
+
+    Examples:
+      | characters | results | searchType |
+      | Ab         | 40      | Tenure     |
+      | Bre        | 12      | Tenure     |
+      | Chris      | 20      | Tenure     |
 
   @SmokeTest
   Scenario Outline: Re-execute search
     And I click on the search again button
+    When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<firstSearch>"
     And I click on the search button
     Then the search results are displayed by best match "<firstSearch>"
@@ -164,5 +206,5 @@ Feature: T&L Search Function
     Then the search results are displayed by best match "<secondSearch>"
 
     Examples:
-      | firstSearch | secondSearch |
-      | Steve       | Dave         |
+      | firstSearch | secondSearch | searchType |
+      | Steve       | Dave         | Person     |
