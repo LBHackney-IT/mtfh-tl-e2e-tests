@@ -100,7 +100,6 @@ workflows:
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:run
-          store_artifacts: false
 
   e2e-tests-development:
     when:
@@ -109,7 +108,6 @@ workflows:
         - and: [ << pipeline.parameters.development_environment >> ]
     jobs:
       - run-e2e-tests
-    store_artifacts: false
           
   e2e-tests-staging:
     when:
@@ -118,7 +116,6 @@ workflows:
         - and: [ << pipeline.parameters.staging_environment >> ]
     jobs:
       - run-e2e-tests
-    store_artifacts: false
       
   e2e-tests-production:
     when:
@@ -127,7 +124,6 @@ workflows:
         - and: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - run-e2e-tests
-    store_artifacts: false
 
   api-tests-development:
     when: << pipeline.parameters.api_tests >>
@@ -137,7 +133,6 @@ workflows:
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:api
-          store_artifacts: false
 
   run-cypress-nightly:
     triggers:
