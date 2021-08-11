@@ -6,11 +6,12 @@ Feature: T&L Search Function
       Given I am logged out
       Given I am logged in
       Given I am on the search page
-      
-  
+    
+
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
+    Given The feature "MMH.SearchTenure" is false
     # When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
