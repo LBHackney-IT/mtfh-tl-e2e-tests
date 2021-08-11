@@ -16,7 +16,7 @@ Feature: Property Page
       
       Examples:
           | property                             |
-          | 99f16a78-4a57-f179-28c6-dacf35a0b805 |
+          | 37c4e5a2-8893-dd5f-1ff3-9d4b18a9e5e9 |
 
     @SmokeTest
     Scenario Outline: View property details
@@ -29,4 +29,4 @@ Feature: Property Page
       
       Examples:
           | property                             |
-          | 99f16a78-4a57-f179-28c6-dacf35a0b805 |
+          | 37c4e5a2-8893-dd5f-1ff3-9d4b18a9e5e9 |
