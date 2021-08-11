@@ -6,7 +6,7 @@ const url = `https://${commentsEndpoint}/api/v1/notes`
 
 
 const addComment = async (targetId) => {
-    const response = await request.postRequest(url, addCommentModel.addCommentModel)
+    const response = await request.postRequest(`${url}/${targetId}`, addCommentModel.addCommentModel)
     return response
 }
 
