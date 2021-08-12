@@ -6,7 +6,7 @@ const url = `https://${contactEndpoint}/api/v1/contactDetails`
 
 
 const addContact = async (targetId) => {
-    const response = await request.postRequest(url, addContactModel.addContactModel)
+    const response = await request.postRequest(`${url}/${targetId}`, addContactModel.addContactModel)
     return response
 }
 

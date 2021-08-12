@@ -46,7 +46,7 @@ class TenurePageObjects {
         this.tenureViewSidebar().contains('Start date')
         this.tenureViewSidebar().contains('End date')
         this.tenureViewSidebar().contains('Tenure type')
-        this.tenureViewSidebar().contains('Property ID')
+        // this.tenureViewSidebar().contains('Property ID')
         this.tenureViewSidebar().contains('Status')
     }
 
@@ -56,13 +56,13 @@ class TenurePageObjects {
     }
 
     tenureDetailsAreDisplayed() {
-        this.paymentReference().should('be.visible')
+        // this.paymentReference().should('be.visible')
         this.tenureDetailsContainer().should('be.visible')
         this.tenureDetailsContainer().contains('Status')
         this.tenureDetailsContainer().contains('Start date')
         this.tenureDetailsContainer().contains('End date')
         this.tenureDetailsContainer().contains('Tenure type')
-        this.tenureDetailsContainer().contains('Property ID')
+        // this.tenureDetailsContainer().contains('Property ID')
     }
 
     residentsDetailsAreDisplayed() {

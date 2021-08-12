@@ -6,6 +6,7 @@ let personUrl = "person"
 let personCommentsUrl = "comment/person"
 let tenureUrl = "tenure"
 let rootComponentPort = "9000"
+let property = "property"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 
 let baseUrl = `${rootUrl}:${rootComponentPort}`
@@ -31,5 +32,6 @@ module.exports = {
     personCommentsUrl,
     baseUrl,
     tenureUrl,
+    property,
     gssoTestKey
 }
