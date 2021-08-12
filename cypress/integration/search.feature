@@ -3,7 +3,7 @@ Feature: T&L Search Function
     I want to search for a person or tenure
 
     Background: I am on the search page
-      Given The feature "MMH.SearchTenure" is false
+      Given The feature "MMH.SearchTenure" is true
       Given I am logged out
       Given I am logged in
       Given I am on the search page
