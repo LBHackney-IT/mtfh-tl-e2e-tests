@@ -378,3 +378,4 @@ Then("the activity history is correct", () => {
   activityHistory.activityTableRow().eq(0).contains(dateCaptureDay);
   activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
 });
+
