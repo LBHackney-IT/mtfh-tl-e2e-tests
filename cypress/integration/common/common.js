@@ -1,359 +1,397 @@
-import { Then, And, Given } from 'cypress-cucumber-preprocessor/steps'
-import AddPersonPageObjects from '../../pageObjects/addPersonPage'
-import FooterPageObjects from '../../pageObjects/sharedComponents/footer'
-import HeaderPageObjects from '../../pageObjects/sharedComponents/header'
-import ModalPageObjects from '../../pageObjects/sharedComponents/modal'
-import NavigationPageObjects from '../../pageObjects/sharedComponents/navigation'
-import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
-import PersonContactPageObjects from '../../pageObjects/personContactPage'
-import PersonPageObjects from '../../pageObjects/personPage'
-import SearchPageObjects from '../../pageObjects/searchPage'
-import validComment from '../../helpers/personCommentText'
-import testGuid from '../../helpers/personCommentText'
-import comment from '../../../api/comment'
-import contact from '../../../api/contact'
-import person from '../../../api/person'
-import referenceData from '../../../api/reference-data'
-import date from 'date-and-time'
-import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
-import TenurePageObjects from '../../pageObjects/tenurePage'
+import {
+  Then,
+  And,
+  Given,
+  defineParameterType,
+} from "cypress-cucumber-preprocessor/steps";
+import AddPersonPageObjects from "../../pageObjects/addPersonPage";
+import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
+import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
+import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
+import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
+import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
+import PersonContactPageObjects from "../../pageObjects/personContactPage";
+import PersonPageObjects from "../../pageObjects/personPage";
+import SearchPageObjects from "../../pageObjects/searchPage";
+import TenurePageObjects from "../../pageObjects/tenurePage";
+import validComment from "../../helpers/personCommentText";
+import testGuid from "../../helpers/personCommentText";
+import comment from "../../../api/comment";
+import contact from "../../../api/contact";
+import person from "../../../api/person";
+import referenceData from "../../../api/reference-data";
+import date from "date-and-time";
+import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPage";
+import { hasToggle } from "../../helpers/hasToggle";
 
-const envConfig = require('../../../environment-config')
-const activityHistory = new ActivityHistoryPageObjects
-const addPersonPage = new AddPersonPageObjects
-const footer = new FooterPageObjects
-const header = new HeaderPageObjects
-const modal = new ModalPageObjects
-const navigation = new NavigationPageObjects
-const personCommentsPage = new PersonCommentsPageObjects
-const personContactPage = new PersonContactPageObjects
-const personPage = new PersonPageObjects
-const searchPage = new SearchPageObjects
-const tenurePage = new TenurePageObjects
+const envConfig = require("../../../environment-config");
+const activityHistory = new ActivityHistoryPageObjects();
+const addPersonPage = new AddPersonPageObjects();
+const footer = new FooterPageObjects();
+const header = new HeaderPageObjects();
+const modal = new ModalPageObjects();
+const navigation = new NavigationPageObjects();
+const personCommentsPage = new PersonCommentsPageObjects();
+const personContactPage = new PersonContactPageObjects();
+const personPage = new PersonPageObjects();
+const searchPage = new SearchPageObjects();
+const tenurePage = new TenurePageObjects();
 
-let dateCaptureDay
-let dateCaptureTime
-let personId
+let dateCaptureDay;
+let dateCaptureTime;
+let personId;
 
-    // API
-Given('I want to check the reference data API with a category of {string} {string}', async (category, subCategory) => {
-    cy.log('Retrieving reference data')
-    const response = await referenceData.viewReferenceData(category, subCategory)
-    cy.log(`Status code ${response.status} returned`)
-    assert.deepEqual(response.status, 200)
-})
+defineParameterType({
+  name: "boolean",
+  regexp: /true|false/,
+  transformer: (s) => (s === "true" ? true : false),
+});
 
-Given('I want to create a person', async () => {
-    cy.log('Creating Person record')
-    const response = await person.createPerson()
-    cy.log(`Status code ${response.status} returned`)
-    cy.log(`Person record ${response.data.id} created!`)
-    assert.deepEqual(response.status, 201)
-    personId = response.data.id
-})
+Given("The feature {string} is {boolean}", function (feature, on) {
+  if (hasToggle(feature) !== on) {
+    return this.skip();
+  }
+});
 
-Then('I want to view a person', async () => {
-    cy.log(`Checking Person record ${personId}`)
-    const response = await person.viewPerson(personId)
-    cy.log(`Status code ${response.status} returned`)
-    cy.log(`Person record ${personId} read!`)
-    assert.deepEqual(response.status, 200)
-})
+// API
+Given(
+  "I want to check the reference data API with a category of {string} {string}",
+  async (category, subCategory) => {
+    cy.log("Retrieving reference data");
+    const response = await referenceData.viewReferenceData(
+      category,
+      subCategory
+    );
+    cy.log(`Status code ${response.status} returned`);
+    assert.deepEqual(response.status, 200);
+  }
+);
 
-And('I want to edit a person', async () => {
-    cy.log(`Updating Person record ${personId}`)
-    const response = await person.editPerson(personId)
-    cy.log(`Status code ${response.status} returned`)
-    cy.log(`Person record ${personId} updated!`)
-    assert.deepEqual(response.status, 204)
-})
+Given("I want to create a person", async () => {
+  cy.log("Creating Person record");
+  const response = await person.createPerson();
+  cy.log(`Status code ${response.status} returned`);
+  cy.log(`Person record ${response.data.id} created!`);
+  assert.deepEqual(response.status, 201);
+  personId = response.data.id;
+});
 
-And('I want to add contact details', async () => {
-    // TODO: Pass in the personId to the request JSON object
-    // cy.log(`Creating contact details for record ${personId}`)
-    const response = await contact.addContact(personId)
-    cy.log(`Status code ${response.status} returned`)
-    cy.log(`Contact details for record ${response.data.id} created!`)
-    assert.deepEqual(response.status, 201)
-})
+Then("I want to view a person", async () => {
+  cy.log(`Checking Person record ${personId}`);
+  const response = await person.viewPerson(personId);
+  cy.log(`Status code ${response.status} returned`);
+  cy.log(`Person record ${personId} read!`);
+  assert.deepEqual(response.status, 200);
+});
 
-And('I want to add a comment', async () => {
-    // TODO: Pass in the personId to the request JSON object
-    // cy.log(`Creating comment for record ${personId}`)
-    const response = await comment.addComment(personId)
-    cy.log(`Status code ${response.status} returned`)
-    cy.log(`Comment for record ${response.data.id} created!`)
-    assert.deepEqual(response.status, 201)
-})
+And("I want to edit a person", async () => {
+  cy.log(`Updating Person record ${personId}`);
+  const response = await person.editPerson(personId);
+  cy.log(`Status code ${response.status} returned`);
+  cy.log(`Person record ${personId} updated!`);
+  assert.deepEqual(response.status, 204);
+});
 
-    // Generic
-Given('I am logged in', () => {
-    cy.login()
-})
+And("I want to add contact details", async () => {
+  // TODO: Pass in the personId to the request JSON object
+  // cy.log(`Creating contact details for record ${personId}`)
+  const response = await contact.addContact(personId);
+  cy.log(`Status code ${response.status} returned`);
+  cy.log(`Contact details for record ${response.data.id} created!`);
+  assert.deepEqual(response.status, 201);
+});
 
-Given('I am logged out', () => {
-    cy.logout()
-})
+And("I want to add a comment", async () => {
+  // TODO: Pass in the personId to the request JSON object
+  // cy.log(`Creating comment for record ${personId}`)
+  const response = await comment.addComment(personId);
+  cy.log(`Status code ${response.status} returned`);
+  cy.log(`Comment for record ${response.data.id} created!`);
+  assert.deepEqual(response.status, 201);
+});
 
-Then('the page breadcrumb is displayed', () => {
-    navigation.backButton().should('be.visible')
-})
+// Generic
+Given("I am logged in", () => {
+  cy.login();
+});
+
+Given("I am logged out", () => {
+  cy.logout();
+});
+
+Then("the page breadcrumb is displayed", () => {
+  const breadCrumb = cy.get('[class*="govuk-back-link lbh-back-link"]');
+  breadCrumb.should("be.visible");
+});
 
 And('I click on the breadcrumb', () => {
-    navigation.backButton().click()
+  navigation.backButton().click()
 })
-    
+
 Then('I am taken to the search page', () => {
-    cy.url().should('contain', "search")
+  cy.url().should('contain', "search")
 })
 
-    // Page Header shared steps
-Then('the page header is visible', () => {
-    header.headerIsDisplayed()
-})
+// Page Header shared steps
+Then("the page header is visible", () => {
+  header.headerIsDisplayed();
+});
 
-    // Page Footer shared steps
-And('the page footer is visible', () => {
-    footer.footerIsDisplayed()
-})
+// Page Footer shared steps
+And("the page footer is visible", () => {
+  footer.footerIsDisplayed();
+});
 
-Then('the page footer links are visible', () => {
-    footer.footerLinksAreDisplayed()
-})
+Then("the page footer links are visible", () => {
+  footer.footerLinksAreDisplayed();
+});
 
-And ('the page footer links are correct', () => {
-    footer.footerLinksAreCorrect()
-})
+And("the page footer links are correct", () => {
+  footer.footerLinksAreCorrect();
+});
 
-    // Person Comments shared steps
-When ('I enter a valid comment', () => {
-    personCommentsPage.commentContainer().type(validComment.validComment)
-})
+// Person Comments shared steps
+When("I enter a valid comment", () => {
+  personCommentsPage.commentContainer().type(validComment.validComment);
+});
 
-Then('I click the save comment button', () => {
-    personCommentsPage.submitCommentButton().click()
-})
+Then("I click the save comment button", () => {
+  personCommentsPage.submitCommentButton().click();
+});
 
-Then('the comment is submitted', () => {
-    personCommentsPage.pageAnnouncementHeader().should('be.visible')
-    personCommentsPage.pageAnnouncementHeader().contains('Comment successfully saved')
-})
+Then("the comment is submitted", () => {
+  personCommentsPage.pageAnnouncementHeader().should("be.visible");
+  personCommentsPage
+    .pageAnnouncementHeader()
+    .contains("Comment successfully saved");
+});
 
-When('I am using a mobile viewport {string}', (device) => {
-    cy.viewport(`${device}`)
-})
+When("I am using a mobile viewport {string}", (device) => {
+  cy.viewport(`${device}`);
+});
 
-    // Search page shared steps
-Given('I am on the search page', () => {
-    searchPage.visit()
-})
+// Search page shared steps
+Given("I am on the search page", () => {
+  searchPage.visit();
+});
 
-When('I enter any of the following criteria {string}', (searchTerm) => {
-    if(searchTerm === 'guid') {
-        searchTerm = testGuid.testGuid
+When("I enter any of the following criteria {string}", (searchTerm) => {
+  if (searchTerm === "guid") {
+    searchTerm = testGuid.testGuid;
+  }
+  searchPage.searchContainer().type(searchTerm);
+});
+
+When("I click on the radio button for {string}", (searchType) => {
+  if (searchType === "Person") {
+    searchPage.personRadioButton().click();
+  }
+  if (searchType === "Tenure") {
+    searchPage.tenureRadioButton().click();
+  }
+});
+
+And("I click on the search button", () => {
+  searchPage.searchButton().click();
+});
+
+Then(
+  "the search results are displayed by best match {string}",
+  (searchTerm) => {
+    if (searchTerm === "guid") {
+      searchTerm = testGuid.testGuid;
     }
-    searchPage.searchContainer().type(searchTerm)       
-})
+    searchPage.searchSubtitle().contains(searchTerm);
+    searchPage
+      .searchResults()
+      .contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
+  }
+);
 
-When('I click on the radio button for {string}', (searchType) => {
-    if(searchType === 'Person') {
-        searchPage.personRadioButton().click()
-    }
-    if(searchType === 'Tenure') {
-        searchPage.tenureRadioButton().click()
-    }
-})
+// Accessibility
+And("have no detectable a11y violations", () => {
+  cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });
 
-And('I click on the search button', () => {
-    searchPage.searchButton().click()
-})
+  function axeTerminalLog(violations) {
+    cy.task(
+      "log",
+      `${violations.length} accessibility violation${
+        violations.length === 1 ? "" : "s"
+      } ${violations.length === 1 ? "was" : "were"} detected`
+    );
 
-Then('the search results are displayed by best match {string}', (searchTerm) => {
-    if(searchTerm === 'guid') {
-        searchTerm = testGuid.testGuid
-    }
-    searchPage.searchSubtitle().contains(searchTerm)
-    searchPage.searchResults().contains(searchTerm.replace(/\*/g, ''), {matchCase: false}) 
-})
+    const violationData = violations.map(
+      ({ id, impact, description, nodes }) => ({
+        id,
+        impact,
+        description,
+        nodes: nodes.length,
+      })
+    );
+    cy.task("table", violationData);
+  }
+});
 
-    // Accessibility
-And('have no detectable a11y violations', () => {
-    cy.checkA11y(null, null, axeTerminalLog, {skipFailures: true})
+// Person-contact
+And("I click the done button", () => {
+  const now = new Date();
+  personContactPage.doneButton().click();
+  dateCaptureDay = date.format(now, "DD/MM/YY");
+  dateCaptureTime = date.format(now, "hh:mm");
+});
 
-    function axeTerminalLog(violations) {
-        cy.task(
-          'log',
-          `${violations.length} accessibility violation${
-            violations.length === 1 ? '' : 's'
-          } ${violations.length === 1 ? 'was' : 'were'} detected`
-        )
+And("I click the add email address button", () => {
+  personContactPage.addEmailAddressButton().click();
+});
 
-        const violationData = violations.map(
-          ({ id, impact, description, nodes }) => ({
-            id,
-            impact,
-            description,
-            nodes: nodes.length
-          })
-        )
-        cy.task('table', violationData)
-    }
-})
+And("I enter an email address {string}", (emailAddress) => {
+  personContactPage.emailAddressField().type(emailAddress);
+});
 
-    // Person-contact
-And('I click the done button', () => {
-    const now = new Date()
-    personContactPage.doneButton().click()
-    dateCaptureDay = date.format(now, 'DD/MM/YY')
-    dateCaptureTime = date.format(now, 'hh:mm')
-})
+And("I enter an email description {string}", (emailDescription) => {
+  personContactPage.emailAddressDescription().type(emailDescription);
+});
 
-And('I click the add email address button', () => {
-    personContactPage.addEmailAddressButton().click()
-})
+And("I click save email address", () => {
+  personContactPage.saveEmailAddressButton().click();
+});
 
-And('I enter an email address {string}', (emailAddress) => {
-    personContactPage.emailAddressField().type(emailAddress)
-})
+And("I click the add phone number button", () => {
+  personContactPage.addPhoneNumberButton().click();
+});
 
-And('I enter an email description {string}', (emailDescription) => {
-    personContactPage.emailAddressDescription().type(emailDescription)
-})
+And("I enter a phone number {string}", (phoneNumber) => {
+  personContactPage.phoneNumberField().type(phoneNumber);
+});
 
-And('I click save email address', () => {
-    personContactPage.saveEmailAddressButton().click()
-})
+And("I select a phone number type {string}", (phoneType) => {
+  switch (phoneType) {
+    case "Mobile":
+      personContactPage.phoneNumberMobileType().click();
+      break;
 
-And('I click the add phone number button', () => {
-    personContactPage.addPhoneNumberButton().click()
-})
+    case "Work":
+      personContactPage.phoneNumberWorkType().click();
+      break;
 
-And('I enter a phone number {string}', (phoneNumber) => {
-    personContactPage.phoneNumberField().type(phoneNumber)
-})
+    case "Home":
+      personContactPage.phoneNumberHomeType().click();
+      break;
 
-And('I select a phone number type {string}', (phoneType) => {
-    switch (phoneType) {
-        case 'Mobile':
-            personContactPage.phoneNumberMobileType().click()
-            break;
-        
-        case 'Work':
-            personContactPage.phoneNumberWorkType().click()
-            break;
-        
-        case 'Home':
-            personContactPage.phoneNumberHomeType().click()
-            break;
-        
-        case 'Other':
-            personContactPage.phoneNumberOtherType().click()
-            break;
-    
-        default:
-            cy.log('Please select a valid phone number type')
-            break;
-    }
-})
+    case "Other":
+      personContactPage.phoneNumberOtherType().click();
+      break;
 
-And('I enter a phone number description {string}', (phoneDescription) =>  {
-    personContactPage.phoneNumberDescription().type(phoneDescription)
-})
+    default:
+      cy.log("Please select a valid phone number type");
+      break;
+  }
+});
 
-And('I click save phone number', () => {
-    personContactPage.savePhoneNumberButton().click()
-})
+And("I enter a phone number description {string}", (phoneDescription) => {
+  personContactPage.phoneNumberDescription().type(phoneDescription);
+});
 
-And('the email information is captured {string} {string}', (email, emailDescription) => {
-    personContactPage.pageWarning().should('not.exist')
-    personContactPage.pageAnnouncementHeader().should('be.visible')
-    personContactPage.mainContent().contains('Email address saved')
-    personContactPage.fieldsetContent().contains(email)
-    personContactPage.fieldsetContent().contains(emailDescription)
-})
+And("I click save phone number", () => {
+  personContactPage.savePhoneNumberButton().click();
+});
 
-And('the phone information is captured {string} {string} {string}', (phoneNumber, phoneType, phoneDescription) => {
-    personContactPage.pageWarning().should('not.exist')
-    personContactPage.pageAnnouncementHeader().should('be.visible')
-    personContactPage.mainContent().contains('Phone number saved')
-    personContactPage.fieldsetContent().contains(phoneNumber)
-    personContactPage.fieldsetContent().contains(phoneType)
-    personContactPage.fieldsetContent().contains(phoneDescription)
-})
+And(
+  "the email information is captured {string} {string}",
+  (email, emailDescription) => {
+    personContactPage.pageWarning().should("not.exist");
+    personContactPage.pageAnnouncementHeader().should("be.visible");
+    personContactPage.mainContent().contains("Email address saved");
+    personContactPage.fieldsetContent().contains(email);
+    personContactPage.fieldsetContent().contains(emailDescription);
+  }
+);
 
-And('I click remove email address', () => {
-    personContactPage.removeEmailAddressButton().click()
-})
+And(
+  "the phone information is captured {string} {string} {string}",
+  (phoneNumber, phoneType, phoneDescription) => {
+    personContactPage.pageWarning().should("not.exist");
+    personContactPage.pageAnnouncementHeader().should("be.visible");
+    personContactPage.mainContent().contains("Phone number saved");
+    personContactPage.fieldsetContent().contains(phoneNumber);
+    personContactPage.fieldsetContent().contains(phoneType);
+    personContactPage.fieldsetContent().contains(phoneDescription);
+  }
+);
 
-And('the remove email address modal is displayed', () => {
-    modal.modalBody().should('be.visible')
-})
+And("I click remove email address", () => {
+  personContactPage.removeEmailAddressButton().click();
+});
 
-And('the modal is not displayed', () => {
-    modal.modalBody().should('not.exist')
-})
+And("the remove email address modal is displayed", () => {
+  modal.modalBody().should("be.visible");
+});
 
-And('I click remove phone number', () => {
-    personContactPage.removePhoneNumberButton().click()
-})
+And("the modal is not displayed", () => {
+  modal.modalBody().should("not.exist");
+});
 
-And('the remove phone number modal is displayed', () => {
-    modal.modalBody().should('be.visible')
-})
+And("I click remove phone number", () => {
+  personContactPage.removePhoneNumberButton().click();
+});
 
-        // Person page
-And('I click edit person', () => {
-    personPage.editPersonButton().click()
-})
+And("the remove phone number modal is displayed", () => {
+  modal.modalBody().should("be.visible");
+});
 
-And('I am on the person page for {string}', (person) => {
-    cy.url().should('include', person)
-})
+// Person page
+And("I click edit person", () => {
+  personPage.editPersonButton().click();
+});
 
-        // Create/edit person page
-Given('I create a person for tenure {string}', (record) => {
-    addPersonPage.visit(record)
-})
+And("I am on the person page for {string}", (person) => {
+  cy.url().should("include", person);
+});
 
-And('I select a preferred middle name {string}', (preferredMiddleName) => {
-    if(preferredMiddleName === 'guid') {
-        preferredMiddleName = testGuid.testGuid
-    }
-    addPersonPage.preferredMiddleNameContainer().clear()
-    addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName)
-})
+// Create/edit person page
+Given("I create a person for tenure {string}", (record) => {
+  addPersonPage.visit(record);
+});
 
-And('I select a preferred last name {string}', (preferredLastName) => {
-    if(preferredLastName === 'guid') {
-        preferredLastName = testGuid.testGuid
-    }
-    addPersonPage.preferredLastNameContainer().clear()
-    addPersonPage.preferredLastNameContainer().type(preferredLastName)
-})
+And("I select a preferred middle name {string}", (preferredMiddleName) => {
+  if (preferredMiddleName === "guid") {
+    preferredMiddleName = testGuid.testGuid;
+  }
+  addPersonPage.preferredMiddleNameContainer().clear();
+  addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName);
+});
 
-And('I enter a reason for creation', () => {
-    addPersonPage.reasonForCreationContainer().type('This is a test')
-})
+And("I select a preferred last name {string}", (preferredLastName) => {
+  if (preferredLastName === "guid") {
+    preferredLastName = testGuid.testGuid;
+  }
+  addPersonPage.preferredLastNameContainer().clear();
+  addPersonPage.preferredLastNameContainer().type(preferredLastName);
+});
 
-And('I click add person', () => {
-    addPersonPage.addPersonButton().click()
-})
+And("I enter a reason for creation", () => {
+  addPersonPage.reasonForCreationContainer().type("This is a test");
+});
 
-And('I click cancel', () => {
-    addPersonPage.cancelButton().click()
-})
+And("I click add person", () => {
+  addPersonPage.addPersonButton().click();
+});
 
-Given('I am on the edit person page for {string}', (person) => {
-    cy.visit(`${envConfig.baseUrl}/person/${person}/edit`)
-})
+And("I click cancel", () => {
+  addPersonPage.cancelButton().click();
+});
 
-Then('the activity history is correct', () => {
-    activityHistory.activityTableRow().eq(0).contains(testGuid.testGuid)
-    activityHistory.activityTableRow().eq(0).contains(dateCaptureDay)
-    activityHistory.activityTableRow().eq(0).contains(dateCaptureTime)
-})
+Given("I am on the edit person page for {string}", (person) => {
+  cy.visit(`${envConfig.baseUrl}/person/${person}/edit`);
+});
 
-        // Tenure page
-Then('the tenure information is displayed', () => {
+Then("the activity history is correct", () => {
+  activityHistory.activityTableRow().eq(0).contains(testGuid.testGuid);
+  activityHistory.activityTableRow().eq(0).contains(dateCaptureDay);
+  activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
+});
+
+  // Tenure page
+  Then('the tenure information is displayed', () => {
     tenurePage.tenureDetailsAreDisplayed()
 })

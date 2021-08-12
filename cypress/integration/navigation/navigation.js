@@ -2,8 +2,6 @@ import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import SearchPageObjects from '../../pageObjects/searchPage'
 import PersonPageObjects from '../../pageObjects/personPage'
 import NavigationObjects from '../../pageObjects/sharedComponents/navigation'
-import { is } from "cypress/types/bluebird"
-import { should } from "chai"
 
 const searchPage = new SearchPageObjects()
 const personPage = new PersonPageObjects()
