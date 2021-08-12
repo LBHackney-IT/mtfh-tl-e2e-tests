@@ -51,4 +51,4 @@ Feature: Property Page
 
       Examples:
           | record                               |
-          | 32dfda17-72e5-d3a7-1fb2-4ecdc607df49 |
+          | 80886abb-eecb-644f-5806-6c01ccc2126b |
