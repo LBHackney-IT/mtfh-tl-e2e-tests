@@ -10,9 +10,6 @@ Feature: T&L Person Page
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
     Then the personal details are displayed on the sidebar
-    When I click on the more contact details accordion
-    Then the more contact details are displayed
-    When I click on the more contact details accordion
     When I click on the more personal details accordion
     Then the body Person details are displayed
     When I click on the more personal details accordion
@@ -29,9 +26,6 @@ Feature: T&L Person Page
     Given I have loaded a Person record "<record>"
     When I am using a mobile viewport "<device>"
     Then the personal details are displayed on the mobile content container
-    When I click on the more contact details accordion
-    Then the more contact details are displayed
-    When I click on the more contact details accordion
     When I click on the more personal details accordion
     Then the body Person details are displayed
     When I click on the more personal details accordion
