@@ -132,6 +132,10 @@ Then('I am taken to the search page', () => {
   cy.url().should('contain', "search")
 })
 
+And('I click on the view property button', () => {
+  navigation.viewPropertyButton().click()
+})
+
 // Page Header shared steps
 Then("the page header is visible", () => {
   header.headerIsDisplayed();
@@ -344,9 +348,21 @@ And("I click edit person", () => {
   personPage.editPersonButton().click();
 });
 
+Given('I have loaded a Person record {string}', (record) => {
+  personPage.visit(record)
+})
+
 And("I am on the person page for {string}", (person) => {
   cy.url().should("include", person);
 });
+
+Then('the personal details are displayed on the sidebar' ,() => {
+  personPage.sidebar().contains('Date of birth')
+  personPage.sidebar().contains('Phone 1')
+  personPage.sidebar().contains('Email 1')
+  personPage.sidebar().contains('Correspondence address 1')
+  
+})
 
 // Create/edit person page
 Given("I create a person for tenure {string}", (record) => {
@@ -392,6 +408,10 @@ Then("the activity history is correct", () => {
 });
 
   // Tenure page
+  When('I view a Tenure {string}', (record) => {
+    tenurePage.visit(record)
+})
+
   Then('the tenure information is displayed', () => {
     tenurePage.tenureDetailsAreDisplayed()
 })

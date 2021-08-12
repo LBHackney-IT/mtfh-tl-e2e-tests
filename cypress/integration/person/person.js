@@ -6,10 +6,6 @@ import validComment from '../../helpers/personCommentText'
 
 const personPage = new PersonPageObjects()
 
-Given('I have loaded a Person record {string}', (record) => {
-    personPage.visit(record)
-})
-
 Given('I have loaded an invalid person record {string}', (record) => {
     personPage.visit(record)
 })
@@ -54,14 +50,6 @@ Then('I am taken to the add comment for person page {string}', (record) => {
 
 Then('the new comment is loaded', () => {
     personPage.commentTable().contains(validComment.validComment)
-})
-
-Then('the personal details are displayed on the sidebar' ,() => {
-    personPage.sidebar().contains('Date of birth')
-    personPage.sidebar().contains('Phone 1')
-    personPage.sidebar().contains('Email 1')
-    personPage.sidebar().contains('Correspondence address 1')
-    
 })
     
 When('I click on the more contact details accordion', () => {
