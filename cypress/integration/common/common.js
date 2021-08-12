@@ -8,10 +8,12 @@ import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
 import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
+import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import SearchPageObjects from "../../pageObjects/searchPage";
+import TenurePageObjects from "../../pageObjects/tenurePage";
 import validComment from "../../helpers/personCommentText";
 import testGuid from "../../helpers/personCommentText";
 import comment from "../../../api/comment";
@@ -28,10 +30,12 @@ const addPersonPage = new AddPersonPageObjects();
 const footer = new FooterPageObjects();
 const header = new HeaderPageObjects();
 const modal = new ModalPageObjects();
+const navigation = new NavigationPageObjects();
 const personCommentsPage = new PersonCommentsPageObjects();
 const personContactPage = new PersonContactPageObjects();
 const personPage = new PersonPageObjects();
 const searchPage = new SearchPageObjects();
+const tenurePage = new TenurePageObjects();
 
 let dateCaptureDay;
 let dateCaptureTime;
@@ -119,6 +123,14 @@ Then("the page breadcrumb is displayed", () => {
   const breadCrumb = cy.get('[class*="govuk-back-link lbh-back-link"]');
   breadCrumb.should("be.visible");
 });
+
+And('I click on the breadcrumb', () => {
+  navigation.backButton().click()
+})
+
+Then('I am taken to the search page', () => {
+  cy.url().should('contain', "search")
+})
 
 // Page Header shared steps
 Then("the page header is visible", () => {
@@ -379,3 +391,7 @@ Then("the activity history is correct", () => {
   activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
 });
 
+  // Tenure page
+  Then('the tenure information is displayed', () => {
+    tenurePage.tenureDetailsAreDisplayed()
+})
