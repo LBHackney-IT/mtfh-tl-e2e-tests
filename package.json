@@ -35,7 +35,7 @@
     "cypress": "^7.7.0",
     "cypress-audit": "^0.3.0",
     "cypress-axe": "^0.12.2",
-    "cypress-cucumber-preprocessor": "^4.0.3",
+    "cypress-cucumber-preprocessor": "^4.2.0",
     "cypress-localstorage-commands": "^1.4.4",
     "cypress-social-logins": "^1.11.3",
     "glob-parent": ">=5.1.2",
