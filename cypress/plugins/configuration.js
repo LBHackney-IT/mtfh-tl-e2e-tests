@@ -1,9 +1,8 @@
 const axios = require("axios");
-let url = "";
+let url = env.FEATURE_TOGGLE_ENDPOINT;
 
 const getConfiguration = async (env) => {
   let token = env.E2E_ACCESS_TOKEN_LOCAL;
-  url = `https://a9nuohv61k.execute-api.eu-west-2.amazonaws.com/development/api/v1/configuration?types=MMH`;
 
   if (env.ENVIRONMENT === "development") {
     token = env.E2E_ACCESS_TOKEN_DEV;
@@ -11,12 +10,10 @@ const getConfiguration = async (env) => {
 
   if (env.ENVIRONMENT === "staging") {
     token = env.E2E_ACCESS_TOKEN_STAGING;
-    url = `https://4arxz3ei3a.execute-api.eu-west-2.amazonaws.com/staging/api/v1/configuration?types=MMH`;
   }
 
   if (env.ENVIRONMENT === "production") {
     token = env.E2E_ACCESS_TOKEN_PROD;
-    url = `https://ngg28gmp69.execute-api.eu-west-2.amazonaws.com/production/api/v1/configuration?types=MMH`;
   }
 
   const response = await axios.get(encodeURI(url), {
