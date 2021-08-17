@@ -359,7 +359,7 @@ And("I am on the person page for {string}", (person) => {
 Then('the personal details are displayed on the sidebar' ,() => {
   personPage.sidebar().contains('Date of birth')
   personPage.sidebar().contains('Phone 1')
-  // personPage.sidebar().contains('Email 1')
+  personPage.sidebar().contains('Email 1')
   personPage.sidebar().contains('Correspondence address 1')
   
 })
