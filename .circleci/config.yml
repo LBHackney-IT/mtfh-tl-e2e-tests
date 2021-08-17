@@ -50,6 +50,7 @@ jobs:
               steps:
                 - checkout
                 - run:
+                    context: mtfh-mfe-e2e-tests
                     name: Execute e2e tests
                     command: |
                               case << pipeline.parameters.development_environment >> in
@@ -66,6 +67,7 @@ jobs:
                               npm run test:cypress:$CYPRESS_ENVIRONMENT
                 - run: 
                     name: trigger downstream deployment
+                    context: mtfh-mfe-e2e-tests
                     command: |
                               case << pipeline.parameters.development_environment >> in
                               (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
@@ -82,6 +84,7 @@ jobs:
                     when: on_success
                 - run:
                     name: trigger failure message to parent pipeline
+                    context: mtfh-mfe-e2e-tests
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $UPSTREAM_PIPELINE
@@ -96,6 +99,7 @@ workflows:
     when: << pipeline.parameters.run_workflow_ci >>
     jobs:
       - cypress/run:
+          context: mtfh-mfe-e2e-tests
           name: ci
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
