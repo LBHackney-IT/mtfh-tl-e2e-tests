@@ -98,36 +98,25 @@ jobs:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
                 - *attach_workspace
-                - aws-cli/install
                 - checkout
                 - run:
                     name: Execute e2e tests
                     command: |
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text)
-                              echo $FEATURE_TOGGLE_ENDPOINT
-                              export ENVIRONMENT=<<parameters.stage>>
-                              echo $ENVIRONMENT
-                              case << pipeline.parameters.development_environment >> in
-                              (true) export CYPRESS_ENVIRONMENT='development' ;;
-                              esac
-                              case << pipeline.parameters.staging_environment >> in
-                              (true) export CYPRESS_ENVIRONMENT='staging' ;;
-                              esac
-                              case << pipeline.parameters.production_environment >> in
-                              (true) export CYPRESS_ENVIRONMENT='production' ;;
-                              esac
+                              export CYPRESS_ENVIRONMENT=<<parameters.stage>>
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT
                 - run: 
                     name: trigger downstream deployment
                     command: |
-                              case << pipeline.parameters.development_environment >> in
-                              (true) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
+                              case << parameters.stage >> in
+                              (development) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
                               esac
-                              case << pipeline.parameters.staging_environment >> in
-                              (true) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
+                              case << parameters.stage >> in
+                              (staging) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                               esac
+                              echo deployment environment is $DEPLOYMENT_ENVIRONMENT
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $UPSTREAM_PIPELINE
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
