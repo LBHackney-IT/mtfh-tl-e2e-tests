@@ -1,5 +1,5 @@
 const axios = require("axios");
-let url = env.FEATURE_TOGGLE_ENDPOINT;
+let url = cypress.env('FEATURE_TOGGLE_ENDPOINT');
 
 const getConfiguration = async (env) => {
   let token = env.E2E_ACCESS_TOKEN_LOCAL;
