@@ -1,5 +1,12 @@
 version: 2.1
 
+orbs:
+  aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
+  cypress: cypress-io/cypress@1
+  browsers-chrome78-ff70:
+    docker:
+      - image: cypress/browsers:node14.16.0-chrome89-ff86
+
 parameters:
   run_workflow_ci:
     description: The default behaviour of the pipeline when a commit and/or merge is performed.
@@ -27,18 +34,54 @@ parameters:
   production_environment:
     default: false
     type: boolean
-  
-  api_tests:
-    default: false
-    type: boolean
-    
-orbs:
-  cypress: cypress-io/cypress@1
-  browsers-chrome78-ff70:
-    docker:
-      - image: cypress/browsers:node14.16.0-chrome89-ff86
+
+references:
+    workspace_root: &workspace_root '~'
+    attach_workspace: &attach_workspace
+        attach_workspace:
+            at: *workspace_root
+
+executors:
+    docker-python:
+        docker:
+            - image: circleci/python:3.7
+
+commands:
+    assume-role-and-persist-workspace:
+        description: 'Assume deployment role and persist credentials across jobs'
+        parameters:
+            aws-account:
+                type: string
+        steps:
+            - checkout
+            - aws_assume_role/assume_role:
+                  account: <<parameters.aws-account>>
+                  profile_name: default
+                  role: 'LBH_Circle_CI_Deployment_Role'
+            - persist_to_workspace:
+                  root: *workspace_root
+                  paths:
+                      - .aws
 
 jobs:
+  assume-role-development:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_DEVELOPMENT
+
+    assume-role-staging:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_STAGING
+
+    assume-role-production:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_PRODUCTION
+
   run-e2e-tests:
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
@@ -48,10 +91,14 @@ jobs:
           - when:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
+                - *attach_workspace
+                - aws-cli/install
                 - checkout
                 - run:
                     name: Execute e2e tests
                     command: |
+                              export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>//configuration-api-url --query Parameter.Value --output text)
+                              echo $FEATURE_TOGGLE_ENDPOINT
                               case << pipeline.parameters.development_environment >> in
                               (true) export CYPRESS_ENVIRONMENT='development' ;;
                               esac
@@ -133,44 +180,3 @@ workflows:
           command: export CYPRESS_ENVIRONMENT="development" ;
              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
              npm run test:cypress:api
-
-  run-cypress-nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master             
-    jobs:
-      - cypress/run:
-          name: staging-nightly
-          executor: cypress/browsers-chrome78-ff70
-          command: |
-                    export CYPRESS_ENVIRONMENT='staging';
-                    npm run test:cypress:nightly:chrome
-          store_artifacts: false
-
-  run-cypress-weekly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * 3"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - cypress/run:
-          name: electron
-          executor: cypress/browsers-chrome78-ff70
-          command: |
-                    export CYPRESS_ENVIRONMENT='staging';
-                    npm run test:cypress:nightly:electron
-          store_artifacts: false
-      - cypress/run:
-           name: firefox
-           executor: cypress/browsers-chrome78-ff70
-           command: |
-                     export CYPRESS_ENVIRONMENT='staging';
-                     npm run test:cypress:nightly:firefox
-           store_artifacts: false
