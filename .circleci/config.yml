@@ -162,6 +162,8 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.development_environment >> ]
     jobs:
+      - assume-role-development:
+                  context: api-assume-role-housing-development-context
       - run-e2e-tests:
           stage: development
           
@@ -171,6 +173,8 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.staging_environment >> ]
     jobs:
+       - assume-role-staging:
+                  context: api-assume-role-housing-staging-context
       - run-e2e-tests:
           stage: staging
       
@@ -180,5 +184,7 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.production_environment >> ]
     jobs:
+      - assume-role-production:
+                  context: api-assume-role-housing-production-context
       - run-e2e-tests:
           stage: production
