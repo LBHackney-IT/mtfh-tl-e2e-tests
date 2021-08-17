@@ -98,6 +98,7 @@ jobs:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
                 - *attach_workspace
+                - aws-cli/install
                 - checkout
                 - run:
                     name: Execute e2e tests
