@@ -103,7 +103,7 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
-                              export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>//configuration-api-url --query Parameter.Value --output text)
+                              export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text)
                               echo $FEATURE_TOGGLE_ENDPOINT
                               export ENVIRONMENT=<<parameters.stage>>
                               echo $ENVIRONMENT
