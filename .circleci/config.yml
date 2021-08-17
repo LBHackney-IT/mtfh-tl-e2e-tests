@@ -166,6 +166,8 @@ workflows:
                   context: api-assume-role-housing-development-context
       - run-e2e-tests:
           stage: development
+          requires:
+            - assume-role-development
           
   e2e-tests-staging:
     when:
@@ -177,6 +179,8 @@ workflows:
                   context: api-assume-role-housing-staging-context
       - run-e2e-tests:
           stage: staging
+          requires:
+            - assume-role-staging
       
   e2e-tests-production:
     when:
@@ -188,3 +192,5 @@ workflows:
                   context: api-assume-role-housing-production-context
       - run-e2e-tests:
           stage: production
+          requires: 
+            - assume-role-production
