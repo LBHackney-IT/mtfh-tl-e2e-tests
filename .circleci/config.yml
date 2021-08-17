@@ -173,7 +173,7 @@ workflows:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.staging_environment >> ]
     jobs:
-       - assume-role-staging:
+      - assume-role-staging:
                   context: api-assume-role-housing-staging-context
       - run-e2e-tests:
           stage: staging
