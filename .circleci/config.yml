@@ -103,11 +103,12 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
-                              export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text)
-                              export CYPRESS_ENVIRONMENT=<<parameters.stage>>
+                              export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
+                              export CYPRESS_E2E_ACCESS_TOKEN=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-testing/token --query Parameter.Value --output text) ;
+                              export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
-                              npm run test:cypress:$CYPRESS_ENVIRONMENT
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT ;
                 - run: 
                     name: trigger downstream deployment
                     command: |
