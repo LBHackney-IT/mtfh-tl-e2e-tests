@@ -1,5 +1,4 @@
 const environment = Cypress.env('ENVIRONMENT')
-const featureToggleEndpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT')
 
 let rootUrl = "http://local.hackney.gov.uk"
 let searchUrl = "search"
@@ -36,6 +35,5 @@ module.exports = {
     baseUrl,
     tenureUrl,
     property,
-    gssoTestKey,
-    featureToggleEndpoint
+    gssoTestKey
 }

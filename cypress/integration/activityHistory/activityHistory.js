@@ -4,6 +4,7 @@ import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
 const activityHistory = new ActivityHistoryPageObjects()
 
 Given('I go to the activity history for {string}', (person) => {
+    cy.log(Cypress.env('CONTACT_DETAILS_API_URL'))
     activityHistory.visit(person)
 })
 
