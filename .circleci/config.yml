@@ -110,7 +110,7 @@ jobs:
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               echo $CYPRESS_PERSON_ENDPOINT ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-                              npm run test:cypress:$CYPRESS_ENVIRONMENT ;
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT --env ;
                 - run: 
                     name: trigger downstream deployment
                     command: |
