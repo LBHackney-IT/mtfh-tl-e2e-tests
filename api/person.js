@@ -2,7 +2,7 @@ const request = require('./requests/requests')
 const createPersonModel = require('./models/requests/createPersonModel')
 const editPersonModel = require('./models/requests/editPersonModel')
 const personEndpoint = Cypress.env('PERSON_ENDPOINT')
-const url = `https://${personEndpoint}/person`
+const url = `${personEndpoint}/persons`
 
 const createPerson = async () => {
     const response = await request.postRequest(url, createPersonModel.createPersonModel)
