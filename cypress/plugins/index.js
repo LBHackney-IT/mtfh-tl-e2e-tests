@@ -6,10 +6,11 @@
 const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 const cucumber = require("cypress-cucumber-preprocessor").default;
 const { getConfiguration } = require("./configuration");
-const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT')
+const featureToggleEndpoint = process.env.FEATURE_TOGGLE_ENDPOINT
+// const { featureToggleEndpoint } = require("../../environment-config").featureToggleEndpoint
 
 module.exports = async (on, config) => {
-  config.featureToggles = (await getConfiguration(config.env, endpoint)) || {};
+  config.featureToggles = (await getConfiguration(config.env, featureToggleEndpoint)) || {};
   on("before:browser:launch", (browser = {}, launchOptions) => {
     prepareAudit(launchOptions);
   });

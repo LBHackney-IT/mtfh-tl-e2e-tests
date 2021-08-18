@@ -108,7 +108,7 @@ jobs:
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
-                              npm run --env FEATURE_TOGGLE_ENDPOINT=$FEATURE_TOGGLE_ENDPOINT test:cypress:$CYPRESS_ENVIRONMENT ;
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT ;
                 - run: 
                     name: trigger downstream deployment
                     command: |
