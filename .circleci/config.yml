@@ -104,7 +104,7 @@ jobs:
                           export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_CONTACT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_COMMENTS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-url --query Parameter.Value --output text) ;
-                          npm run test:cypress:$CYPRESS_ENVIRONMENT ;
+                          npm run test:cypress:run ;
 
   run-e2e-tests:
         docker:
@@ -126,6 +126,7 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
+                              npm install ;
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_CONTACT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
