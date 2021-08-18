@@ -8,8 +8,6 @@ let tenureUrl = "tenure"
 let rootComponentPort = "9000"
 let property = "property"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
-// let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN')
-// let gssoTestKey = process.env
 
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 
