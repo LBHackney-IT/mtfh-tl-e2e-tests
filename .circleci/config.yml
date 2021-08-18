@@ -110,7 +110,7 @@ jobs:
                               echo $CYPRESS_PERSON_ENDPOINT
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
-                              npm run test:cypress:$CYPRESS_ENVIRONMENT --env PERSON_ENDPOINT=$PERSON_ENDPOINT ;
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT --env PERSON_ENDPOINT="$PERSON_ENDPOINT" ;
                 - run: 
                     name: trigger downstream deployment
                     command: |
