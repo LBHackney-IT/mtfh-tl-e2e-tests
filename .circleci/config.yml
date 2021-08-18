@@ -104,7 +104,7 @@ jobs:
                     name: Execute e2e tests
                     command: |
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
-                              export CYPRESS_E2E_ACCESS_TOKEN=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-testing/token --query Parameter.Value --output text) ;
+                              echo $FEATURE_TOGGLE_ENDPOINT
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
