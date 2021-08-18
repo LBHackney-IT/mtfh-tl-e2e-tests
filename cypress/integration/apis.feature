@@ -1,8 +1,10 @@
-@ignore
+
+
 @api
 Feature: I want to check the MMH APIs
     I want to test some APIs
 
+  @ignore
   Scenario Outline: Reference data
     Given I want to check the reference data API with a category of "<category>" "<subCategory>"
 

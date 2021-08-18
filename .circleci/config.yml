@@ -105,11 +105,12 @@ jobs:
                     command: |
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CONTACT_DETAILS_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
+                              export PERSON_API_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               echo $FEATURE_TOGGLE_ENDPOINT
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
-                              npm run test:cypress:$CYPRESS_ENVIRONMENT --env CONTACT_DETAILS_API_URL=$CONTACT_DETAILS_API_URL ;
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT --env PERSON_ENDPOINT=$PERSON_API_URL ;
                 - run: 
                     name: trigger downstream deployment
                     command: |
