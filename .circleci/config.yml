@@ -93,18 +93,23 @@ jobs:
             stage:
                 type: string
         steps:
-            - *attach_workspace
-            - aws-cli/install
-            - checkout
-            - run:
-                name: Execute e2e tests
-                command: |
-                          npm install ;
-                          export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_CONTACT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_COMMENTS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-url --query Parameter.Value --output text) ;
-                          npm run test:cypress:run ;
+            - when:
+                condition: << pipeline.parameters.run_workflow_ci >> 
+                steps:
+                  - *attach_workspace
+                  - aws-cli/install
+                  - checkout
+                  - run:
+                      name: Execute e2e tests
+                      command: |
+                                npm install ;
+                                export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
+                                export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
+                                export CYPRESS_CONTACT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
+                                export CYPRESS_COMMENTS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-url --query Parameter.Value --output text) ;
+                                export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
+                                echo "Running against <<parameters.stage>> environment" ;
+                                npm run test:cypress:$CYPRESS_ENVIRONMENT ;
 
   run-e2e-tests:
         docker:
@@ -132,7 +137,7 @@ jobs:
                               export CYPRESS_CONTACT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_COMMENTS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/notes-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
-                              echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                              echo "Running against <<parameters.stage>> environment" ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;
                 - run: 
                     name: trigger downstream deployment
