@@ -39,7 +39,9 @@ const tenurePage = new TenurePageObjects();
 
 let dateCaptureDay;
 let dateCaptureTime;
-let personId;
+let personId = "";
+
+const endpoint = Cypress.env('PERSON_ENDPOINT')
 
 defineParameterType({
   name: "boolean",
@@ -81,6 +83,8 @@ Then("I want to view a person", async () => {
   const response = await person.viewPerson(personId);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Person record ${personId} read!`);
+  cy.log(`${personId}`)
+  cy.log(endpoint)
   assert.deepEqual(response.status, 200);
 });
 
