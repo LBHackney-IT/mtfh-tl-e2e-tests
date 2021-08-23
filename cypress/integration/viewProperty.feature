@@ -1,4 +1,3 @@
-@ignore
 @PropertyPage
 Feature: Property Page
 

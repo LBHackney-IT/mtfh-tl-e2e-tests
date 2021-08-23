@@ -1,4 +1,3 @@
-@ignore
 @PersonCommentPage
 Feature: T&L Person Comment
     I want to view a person's comments

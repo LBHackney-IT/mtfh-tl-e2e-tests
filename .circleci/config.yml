@@ -122,7 +122,6 @@ jobs:
                               echo deployment environment is $DEPLOYMENT_ENVIRONMENT
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $UPSTREAM_PIPELINE
-                              echo 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline'
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
@@ -172,9 +171,7 @@ workflows:
     when: << pipeline.parameters.run_workflow_ci >>
     jobs:
       - assume-role-development:
-          context: 
-            - api-assume-role-housing-development-context
-            - mtfh-mfe-e2e-tests
+          context: api-assume-role-housing-development-context
       - run-ci-tests:
           stage: development
           requires:
@@ -187,9 +184,7 @@ workflows:
         - and: [ << pipeline.parameters.development_environment >> ]
     jobs:
       - assume-role-development:
-          context: 
-            - api-assume-role-housing-development-context
-            - mtfh-mfe-e2e-tests
+          context: api-assume-role-housing-development-context
       - run-e2e-tests:
           stage: development
           requires:
@@ -202,9 +197,7 @@ workflows:
         - and: [ << pipeline.parameters.staging_environment >> ]
     jobs:
       - assume-role-staging:
-          context: 
-            - api-assume-role-housing-staging-context
-            - mtfh-mfe-e2e-tests
+          context: api-assume-role-housing-staging-context
       - run-e2e-tests:
           stage: staging
           requires:
@@ -217,9 +210,7 @@ workflows:
         - and: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - assume-role-production:
-          context: 
-            - api-assume-role-housing-production-context
-            - mtfh-mfe-e2e-tests
+          context: api-assume-role-housing-production-context
       - run-e2e-tests:
           stage: production
           requires: 

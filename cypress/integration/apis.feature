@@ -1,4 +1,4 @@
-@ignore
+# @ignore
 @api
 Feature: I want to check the MMH APIs
     I want to test some APIs

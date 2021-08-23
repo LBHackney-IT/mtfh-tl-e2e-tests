@@ -1,4 +1,3 @@
-@ignore
 @SearchPage
 Feature: T&L Search Function
     I want to search for a person or tenure
@@ -58,6 +57,24 @@ Feature: T&L Search Function
       | Avenue     | Tenure     |
       | castle     | Tenure     |
 
+  @SmokeTest 
+  @Positive
+  Scenario Outline: Execute property searches
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+    And tenure search results are prefixed correctly
+    Then the page breadcrumb is displayed
+
+    Examples:
+      | characters | searchType   |
+      | 12         | Property     |
+      | Avenue     | Property     |
+      | castle     | Property     |
+
+
 
   @device
   Scenario Outline: Execute searches on device
@@ -103,7 +120,8 @@ Feature: T&L Search Function
       | characters | searchType |
       | *a         | Person     |
       | b*         | Tenure     |
-      | *c*        | Person     |
+      | *c*        | Property   |
+
       # | ch         | Tenure     |
       # | *ev        | Person     |
       # | *ic*       | Tenure     |
@@ -193,6 +211,22 @@ Feature: T&L Search Function
       | Ab         | 40      | Tenure     |
       | Bre        | 12      | Tenure     |
       | Chris      | 20      | Tenure     |
+
+  @SmokeTest
+  Scenario Outline: Filter searches for property
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then there is no filter option
+    When I set the number of results to <results>
+    Then the correct number of <results> are displayed
+
+    Examples:
+      | characters | results | searchType |
+      | Ab         | 40      | Property   |
+      | Bre        | 12      | Property   |
+      | Chris      | 20      | Property   |
 
   @SmokeTest
   Scenario Outline: Re-execute search
