@@ -1,3 +1,4 @@
+@ignore
 @TenurePage
 Feature: Tenure page
 

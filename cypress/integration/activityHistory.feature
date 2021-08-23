@@ -1,3 +1,4 @@
+@ignore
 @ActivityHistoryPage
 Feature: Activity History
   I want to view a person's activity history

@@ -1,3 +1,4 @@
+@ignore
 @PersonPage
 Feature: T&L Person Page
   I want to view a person
