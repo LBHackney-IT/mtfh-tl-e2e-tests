@@ -171,6 +171,7 @@ Feature: T&L Search Function
       | characters | searchType |
       | b          | Person     |
       | c          | Tenure     |
+      | g          | Property   |
       # | d          | Person     |
       # | e          | Tenure     |
       # | !          | Person     |
