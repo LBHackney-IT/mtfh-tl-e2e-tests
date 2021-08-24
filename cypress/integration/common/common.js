@@ -197,6 +197,9 @@ When("I click on the radio button for {string}", (searchType) => {
   if (searchType === "Tenure") {
     searchPage.tenureRadioButton().click();
   }
+  if (searchPage === "Property") {
+    searchPage.propertyRadionButton().click()
+  }
 });
 
 And("I click on the search button", () => {

@@ -26,6 +26,10 @@ class SearchPageObjects {
         return cy.get('#search-form-type-persons')
     }
 
+    propertyRadioButton() {
+        return cy.get('#search-form-type-assets')
+    }
+
     tenureRadioButton() {
         return cy.get('#search-form-type-tenures')
     }
@@ -72,6 +76,10 @@ class SearchPageObjects {
 
     searchConfirmation() {
         return cy.get('.mtfh-search__subtitle__highlight')
+    }
+
+    searchRadioButtons() {
+        return cy.get('.govuk-radios__item')
     }
 
     searchTermError() {
