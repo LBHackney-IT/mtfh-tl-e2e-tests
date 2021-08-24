@@ -46,6 +46,10 @@ class SearchPageObjects {
         return cy.get('.mtfh-search__results')
     }
 
+    searchCard() {
+        return cy.get('.mtfh-search-card')
+    }
+
     filterStatus() {
         return cy.get('.mtfh-search-controls__status')
     }
