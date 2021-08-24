@@ -7,11 +7,11 @@ Feature: T&L Search Function
       Given I am logged out
       Given I am logged in
       Given I am on the search page
-    
 
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
+    Then I can see the options to search in the correct order
     When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
@@ -56,6 +56,24 @@ Feature: T&L Search Function
       | 12         | Tenure     |
       | Avenue     | Tenure     |
       | castle     | Tenure     |
+
+  @SmokeTest 
+  @Positive
+  Scenario Outline: Execute property searches
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+    And property search results are prefixed correctly
+    Then the page breadcrumb is displayed
+
+    Examples:
+      | characters | searchType   |
+      | 12         | Property     |
+      | Avenue     | Property     |
+      | castle     | Property     |
+
 
 
   @device
@@ -102,7 +120,8 @@ Feature: T&L Search Function
       | characters | searchType |
       | *a         | Person     |
       | b*         | Tenure     |
-      | *c*        | Person     |
+      | *c*        | Property   |
+
       # | ch         | Tenure     |
       # | *ev        | Person     |
       # | *ic*       | Tenure     |
@@ -152,6 +171,7 @@ Feature: T&L Search Function
       | characters | searchType |
       | b          | Person     |
       | c          | Tenure     |
+      | g          | Property   |
       # | d          | Person     |
       # | e          | Tenure     |
       # | !          | Person     |
@@ -192,6 +212,22 @@ Feature: T&L Search Function
       | Ab         | 40      | Tenure     |
       | Bre        | 12      | Tenure     |
       | Chris      | 20      | Tenure     |
+
+  @SmokeTest
+  Scenario Outline: Filter searches for property
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then there is no filter option
+    When I set the number of results to <results>
+    Then the correct number of <results> are displayed
+
+    Examples:
+      | characters | results | searchType |
+      | Ab         | 40      | Property   |
+      | Bre        | 12      | Property   |
+      | Chris      | 20      | Property   |
 
   @SmokeTest
   Scenario Outline: Re-execute search

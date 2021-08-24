@@ -46,3 +46,13 @@ Then("there is no filter option", () => {
 And("tenure search results are prefixed correctly", () => {
   searchPage.searchResults().contains("Tenure payment ref");
 });
+
+Then("I can see the options to search in the correct order", () => {
+  searchPage.searchRadioButtons().first().contains('Property')
+})
+
+And("property search results are prefixed correctly", () => {
+  searchPage.searchResults().contains("Property type")
+  searchPage.searchResults().contains("Tenure")
+  searchPage.searchResults().contains("UPRN")
+})
