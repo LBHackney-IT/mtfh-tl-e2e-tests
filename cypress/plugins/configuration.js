@@ -34,7 +34,7 @@ const getConfiguration = async (env) => {
     };
   });
 
-  console.log(`Current feature toggle config is set to: ${featureToggleStore}`)
+  console.log('Current feature toggle config is set to:', featureToggleStore)
   return featureToggleStore;
 };
 
