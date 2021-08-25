@@ -1,11 +1,12 @@
 const axios = require("axios");
 
 const getConfiguration = async (env) => {
-  let token = env.E2E_ACCESS_TOKEN_LOCAL;
-  const featureToggleEndpoint = env.FEATURE_TOGGLE_ENDPOINT;
+  let token = CYPRESS.E2E_ACCESS_TOKEN_LOCAL;
+  const featureToggleEndpoint = process.env.FEATURE_TOGGLE_ENDPOINT;
 
   console.log(featureToggleEndpoint)
   url = `${featureToggleEndpoint}/configuration?types=MMH`;
+  console.log(url)
 
   if (env.ENVIRONMENT === "development") {
     token = env.E2E_ACCESS_TOKEN_DEV;
