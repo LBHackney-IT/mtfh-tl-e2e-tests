@@ -1,6 +1,7 @@
 import '@testing-library/cypress/add-commands';
 import 'cypress-axe'
 import 'cypress-audit/commands'
+import "cypress-localstorage-commands"
 
 const environmentConfig = require('../../environment-config')
 
@@ -15,4 +16,8 @@ Cypress.Commands.add('login', () => {
 Cypress.Commands.add('logout', () => {
     cy.clearCookies()
     cy.getCookies().should('be.empty')
+})
+
+Cypress.Commands.add('featureToggle', () => {
+    cy.setLocalStorage('features', JSON.stringify(Cypress.config('featureToggles')))
 })
