@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const getConfiguration = async (env) => {
-  let token = CYPRESS.E2E_ACCESS_TOKEN_LOCAL;
+  let token = env.E2E_ACCESS_TOKEN_LOCAL;
   const featureToggleEndpoint = process.env.FEATURE_TOGGLE_ENDPOINT;
 
   console.log(featureToggleEndpoint)
