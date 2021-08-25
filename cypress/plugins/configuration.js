@@ -5,7 +5,7 @@ const getConfiguration = async (env) => {
   const featureToggleEndpoint = process.env.FEATURE_TOGGLE_ENDPOINT;
 
   console.log(featureToggleEndpoint)
-  url = `${featureToggleEndpoint}/configuration?types=MMH`;
+  url = `${featureToggleEndpoint}/api/v2configuration?types=MMH`;
   console.log(url)
 
   if (env.ENVIRONMENT === "development") {
