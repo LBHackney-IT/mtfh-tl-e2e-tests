@@ -3,7 +3,7 @@ Feature: T&L Search Function
     I want to search for a person or tenure
 
     Background: I am on the search page
-      Given The feature "MMH.SearchTenure" is true
+      # Given The feature "MMH.SearchTenure" is false
       Given I am logged out
       Given I am logged in
       Given I am on the search page
@@ -19,7 +19,24 @@ Feature: T&L Search Function
 
     Examples:
       | characters | searchType |
-      | An         | Person     |
+      | An         | Property   |
+
+  @SmokeTest 
+  @Positive
+  Scenario Outline: Execute property searches
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+    And property search results are prefixed correctly
+    Then the page breadcrumb is displayed
+
+    Examples:
+      | characters | searchType   |
+      | 12         | Property     |
+      | Avenue     | Property     |
+      | castle     | Property     |
 
   @SmokeTest 
   @Positive
@@ -56,24 +73,6 @@ Feature: T&L Search Function
       | 12         | Tenure     |
       | Avenue     | Tenure     |
       | castle     | Tenure     |
-
-  @SmokeTest 
-  @Positive
-  Scenario Outline: Execute property searches
-    And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
-    And property search results are prefixed correctly
-    Then the page breadcrumb is displayed
-
-    Examples:
-      | characters | searchType   |
-      | 12         | Property     |
-      | Avenue     | Property     |
-      | castle     | Property     |
-
 
 
   @device
