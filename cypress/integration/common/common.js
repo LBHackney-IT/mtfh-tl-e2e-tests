@@ -117,6 +117,10 @@ And("I want to add a comment", async () => {
 // Generic
 Given("I am logged in", () => {
   cy.login();
+  window.localStorage.setItem(
+    "features",
+    JSON.stringify(Cypress.config("featureToggles"))
+  );
 });
 
 Given("I am logged out", () => {
