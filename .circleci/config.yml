@@ -101,17 +101,20 @@ jobs:
                 - aws-cli/install
                 - checkout
                 - run:
+                    context: mtfh-mfe-e2e-tests
                     name: Execute e2e tests
                     command: |
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
+                              echo $FEATURE_TOGGLE_ENDPOINT ;
                               echo $CYPRESS_PERSON_ENDPOINT ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;
                 - run: 
                     name: trigger downstream deployment
+                    context: mtfh-mfe-e2e-tests
                     command: |
                               case << parameters.stage >> in
                               (development) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
@@ -129,6 +132,7 @@ jobs:
                     when: on_success
                 - run:
                     name: trigger failure message to parent pipeline
+                    context: mtfh-mfe-e2e-tests
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               echo setting downstream pipeline to to $UPSTREAM_PIPELINE

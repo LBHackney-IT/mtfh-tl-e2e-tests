@@ -2,7 +2,6 @@ import {
   Then,
   And,
   Given,
-  Before,
   defineParameterType,
 } from "cypress-cucumber-preprocessor/steps";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
@@ -43,10 +42,6 @@ let dateCaptureTime;
 let personId = "";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
-
-Before(() => {
-  cy.featureToggle();
-});
 
 defineParameterType({
   name: "boolean",

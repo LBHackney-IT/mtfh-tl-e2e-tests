@@ -1,5 +1,4 @@
 const environment = Cypress.env('ENVIRONMENT')
-
 let rootUrl = "http://local.hackney.gov.uk"
 let searchUrl = "search"
 let personUrl = "person"

@@ -11,13 +11,14 @@ Cypress.Commands.add('login', () => {
     cy.getCookies().should('be.empty')
     cy.setCookie('hackneyToken', gssoTestKey)
     cy.getCookie('hackneyToken').should('have.property', 'value', gssoTestKey)
+    cy.log(Cypress.config("featureToggles"))
+    window.localStorage.setItem(
+        "features",
+        JSON.stringify(Cypress.config("featureToggles"))
+    );
 })
 
 Cypress.Commands.add('logout', () => {
     cy.clearCookies()
     cy.getCookies().should('be.empty')
-})
-
-Cypress.Commands.add('featureToggle', () => {
-    cy.setLocalStorage('features', JSON.stringify(Cypress.config('featureToggles')))
 })

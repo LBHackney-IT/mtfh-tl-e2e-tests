@@ -23,15 +23,15 @@ class SearchPageObjects {
     }
 
     personRadioButton() {
-        return cy.get('#search-form-type-persons')
+        return cy.get('[id="search-form-type-persons"]')
     }
 
     propertyRadioButton() {
-        return cy.get('#search-form-type-assets')
+        return cy.get('[id="search-form-type-assets]')
     }
 
     tenureRadioButton() {
-        return cy.get('#search-form-type-tenures')
+        return cy.get('[id="search-form-type-tenures"]')
     }
 
     searchButton() {
