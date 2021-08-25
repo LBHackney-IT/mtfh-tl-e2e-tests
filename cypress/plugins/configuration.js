@@ -4,9 +4,8 @@ const getConfiguration = async (env) => {
   let token = env.E2E_ACCESS_TOKEN_LOCAL;
   const featureToggleEndpoint = process.env.FEATURE_TOGGLE_ENDPOINT;
 
-  console.log(featureToggleEndpoint)
   url = `${featureToggleEndpoint}/api/v1/configuration?types=MMH`;
-  console.log(url)
+  console.log(`Checking feature toggle config at ${url}`)
 
   if (env.ENVIRONMENT === "development") {
     token = env.E2E_ACCESS_TOKEN_DEV;
@@ -35,7 +34,7 @@ const getConfiguration = async (env) => {
     };
   });
 
-  console.log(featureToggleStore)
+  console.log(`Current feature toggle config is set to: ${featureToggleStore}`)
   return featureToggleStore;
 };
 
