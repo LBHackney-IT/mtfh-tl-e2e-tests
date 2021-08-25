@@ -3,7 +3,7 @@ Feature: T&L Search Function
     I want to search for a person or tenure
 
     Background: I am on the search page
-      Given The feature "MMH.SearchTenure" is true
+      Given The feature "MMH.SearchTenure" is false
       Given I am logged out
       Given I am logged in
       Given I am on the search page
@@ -11,7 +11,7 @@ Feature: T&L Search Function
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
-    Then I can see the options to search in the correct order
+    # Then I can see the options to search in the correct order
     When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
