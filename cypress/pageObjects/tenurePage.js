@@ -45,16 +45,16 @@ class TenurePageObjects {
   }
 
   tenureDetailsAccordionInformation() {
-    this.tenureViewSidebar().contains("Start date");
-    this.tenureViewSidebar().contains("End date");
-    this.tenureViewSidebar().contains("Type");
-    // this.tenureViewSidebar().contains('Property ID')
-    this.tenureViewSidebar().contains("Status");
+    this.tenureDetailsContainer().contains("Start date");
+    this.tenureDetailsContainer().contains("End date");
+    this.tenureDetailsContainer().contains("Type");
+    this.tenureDetailsContainer().contains("UPRN");
+    this.tenureDetailsContainer().contains("Status");
   }
 
   residentDetailsAccordionInformation() {
-    this.tenureViewSidebar().contains("Residents");
-    this.tenureViewSidebar().contains("Other household members");
+    this.tenureResidentsContainer().contains("Residents");
+    this.tenureResidentsContainer().contains("Other household members");
   }
 
   tenureDetailsAreDisplayed() {
@@ -64,7 +64,7 @@ class TenurePageObjects {
     this.tenureDetailsContainer().contains("Start date");
     this.tenureDetailsContainer().contains("End date");
     this.tenureDetailsContainer().contains("Type");
-    // this.tenureDetailsContainer().contains('Property ID')
+    this.tenureDetailsContainer().contains("UPRN");
   }
 
   residentsDetailsAreDisplayed() {
