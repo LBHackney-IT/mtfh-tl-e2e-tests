@@ -137,7 +137,7 @@ Feature: T&L Search Function
 
     Examples:
       | characters | searchType |
-      | 12345678   | Person     |
+      | 98765432   | Person     |
       | AZKQ       | Tenure     |
       # | dp0        | Person     |
       # | elqsn      | Tenure     |
