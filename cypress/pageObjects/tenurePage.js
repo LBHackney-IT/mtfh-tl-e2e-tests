@@ -45,7 +45,7 @@ class TenurePageObjects {
     tenureDetailsAccordionInformation() {
         this.tenureViewSidebar().contains('Start date')
         this.tenureViewSidebar().contains('End date')
-        this.tenureViewSidebar().contains('Tenure type')
+        this.tenureViewSidebar().contains('Type')
         // this.tenureViewSidebar().contains('Property ID')
         this.tenureViewSidebar().contains('Status')
     }
@@ -61,7 +61,7 @@ class TenurePageObjects {
         this.tenureDetailsContainer().contains('Status')
         this.tenureDetailsContainer().contains('Start date')
         this.tenureDetailsContainer().contains('End date')
-        this.tenureDetailsContainer().contains('Tenure type')
+        this.tenureDetailsContainer().contains('Type')
         // this.tenureDetailsContainer().contains('Property ID')
     }
 

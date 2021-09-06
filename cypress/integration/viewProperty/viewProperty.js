@@ -9,9 +9,9 @@ When('I view a property {string}', (propertyId) => {
 
 Then('the property information is displayed', () => {
     propertyPage.propertyViewSidebar().should('be.visible')
-    propertyPage.propertyViewSidebar().contains('Property type')
+    propertyPage.propertyViewSidebar().contains('Type')
     propertyPage.propertyViewSidebar().contains('UPRN')
-    propertyPage.propertyViewSidebar().contains('Property reference')
+    propertyPage.propertyViewSidebar().contains('Reference')
 })
 
 And('I click on the view tenure button', () => {
