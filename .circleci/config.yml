@@ -137,9 +137,6 @@ jobs:
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
                     when: on_fail
-                - run:
-                    name: rollback to previous version
-                    command: |
 
   run-ci-tests:
         docker:
