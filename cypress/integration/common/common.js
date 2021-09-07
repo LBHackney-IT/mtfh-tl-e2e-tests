@@ -424,5 +424,9 @@ Then("the activity history is correct", () => {
 })
 
   Then('the tenure information is displayed', () => {
-    tenurePage.tenureDetailsAreDisplayed()
+    tenurePage.tenureDetailsContainer().should("be.visible");
+    tenurePage.tenureDetailsContainer().contains("Status");
+    tenurePage.tenureDetailsContainer().contains("Start date");
+    tenurePage.tenureDetailsContainer().contains("End date");
+    tenurePage.tenureDetailsContainer().contains("Type");
 })
