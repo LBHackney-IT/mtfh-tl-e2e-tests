@@ -166,6 +166,31 @@ jobs:
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;
 
+  run-e2e-devices:
+        docker:
+          - image: cypress/browsers:node14.16.0-chrome89-ff86
+            environment:
+              TERM: xterm
+        environment:
+            aws-region: eu-west-2
+        parameters:
+            stage:
+                type: string
+        steps:
+          - *attach_workspace
+          - aws-cli/install
+          - checkout
+          - run:
+              name: Execute e2e tests
+              command: |
+                        export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
+                        export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
+                        export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
+                        echo $CYPRESS_PERSON_ENDPOINT ;
+                        echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                        npm install ;
+                        npm run test:cypress:$CYPRESS_ENVIRONMENT:devices ;
+
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
@@ -215,3 +240,19 @@ workflows:
           stage: production
           requires: 
             - assume-role-production
+
+  e2e-tests-devices:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 2"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - assume-role-staging:
+          context: api-assume-role-housing-staging-context
+      - run-e2e-devices:
+          stage: staging
+          requires:
+            - assume-role-staging

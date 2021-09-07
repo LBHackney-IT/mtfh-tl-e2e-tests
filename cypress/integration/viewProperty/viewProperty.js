@@ -7,12 +7,12 @@ When("I view a property {string}", (propertyId) => {
   propertyPage.visit(propertyId);
 });
 
-Then("the property information is displayed", () => {
-  propertyPage.propertyViewSidebar().should("be.visible");
-  propertyPage.propertyViewSidebar().contains("Type");
-  propertyPage.propertyViewSidebar().contains("UPRN");
-  propertyPage.propertyViewSidebar().contains("Reference");
-});
+Then('the property information is displayed', () => {
+    propertyPage.propertyViewSidebar().should('be.visible')
+    propertyPage.propertyViewSidebar().contains('Type')
+    propertyPage.propertyViewSidebar().contains('UPRN')
+    propertyPage.propertyViewSidebar().contains('Reference')
+})
 
 And("I click on the view tenure button", () => {
   propertyPage.viewTenureButton().click();

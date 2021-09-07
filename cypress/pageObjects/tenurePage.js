@@ -44,27 +44,17 @@ class TenurePageObjects {
     return cy.get("#accordion-heading-resident-details");
   }
 
-  tenureDetailsAccordionInformation() {
-    this.tenureViewSidebar().contains("Start date");
-    this.tenureViewSidebar().contains("End date");
-    this.tenureViewSidebar().contains("Type");
-    // this.tenureViewSidebar().contains("UPRN");
-    this.tenureViewSidebar().contains("Status");
-  }
+    tenureDetailsAccordionInformation() {
+        this.tenureViewSidebar().contains('Start date')
+        this.tenureViewSidebar().contains('End date')
+        this.tenureViewSidebar().contains('Type')
+        // this.tenureViewSidebar().contains('Property ID')
+        this.tenureViewSidebar().contains('Status')
+    }
 
   residentDetailsAccordionInformation() {
     this.tenureViewSidebar().contains("Residents");
     this.tenureViewSidebar().contains("Other household members");
-  }
-
-  tenureDetailsAreDisplayed() {
-    // this.paymentReference().should('be.visible')
-    this.tenureDetailsContainer().should("be.visible");
-    this.tenureDetailsContainer().contains("Status");
-    this.tenureDetailsContainer().contains("Start date");
-    this.tenureDetailsContainer().contains("End date");
-    this.tenureDetailsContainer().contains("Type");
-    // this.tenureDetailsContainer().contains("UPRN");
   }
 
   residentsDetailsAreDisplayed() {
