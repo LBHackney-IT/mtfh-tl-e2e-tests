@@ -367,6 +367,10 @@ And("I am on the person page for {string}", (person) => {
   cy.url().should("include", person);
 });
 
+And("I am on the tenure page for {string}", (tenure) => {
+  cy.url().should("include", tenure);
+});
+
 Then('the personal details are displayed on the sidebar' ,() => {
   personPage.sidebar().contains('Date of birth')
   personPage.sidebar().contains('Phone 1')
