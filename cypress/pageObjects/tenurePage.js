@@ -44,13 +44,17 @@ class TenurePageObjects {
     return cy.get("#accordion-heading-resident-details");
   }
 
-    tenureDetailsAccordionInformation() {
-        this.tenureViewSidebar().contains('Start date')
-        this.tenureViewSidebar().contains('End date')
-        this.tenureViewSidebar().contains('Type')
-        // this.tenureViewSidebar().contains('Property ID')
-        this.tenureViewSidebar().contains('Status')
-    }
+  addNewPersonToTenureButton() {
+    return cy.contains('Add new person to tenure')
+  }
+
+  tenureDetailsAccordionInformation() {
+      this.tenureViewSidebar().contains('Start date')
+      this.tenureViewSidebar().contains('End date')
+      this.tenureViewSidebar().contains('Type')
+      // this.tenureViewSidebar().contains('Property ID')
+      this.tenureViewSidebar().contains('Status')
+  }
 
   residentDetailsAccordionInformation() {
     this.tenureViewSidebar().contains("Residents");
