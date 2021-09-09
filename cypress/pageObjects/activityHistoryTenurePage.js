@@ -7,7 +7,7 @@ class ActivityHistoryTenurePageObjects {
     }
 
     activityHistoryTenureActivities() {
-        cy.get('[data-testid="activities"]')
+        return cy.get('[data-testid="activities"]')
     }
 
     closeActivityHistoryButton() {
