@@ -7,7 +7,7 @@ class PersonCommentsPageObjects {
     }
 
     addCommentForm() {
-        return cy.get('[data-testid="addComment-form"]')
+        return cy.get('[data-testid="add-comment-to-person"]')
     }
 
     pageAnnouncementHeader() {
@@ -19,15 +19,11 @@ class PersonCommentsPageObjects {
     }
 
     addCommentsError() {
-        return cy.get('#add-comment-error')
-    }
-
-    commentDescriptionErrorLabel() {
-        return cy.get('[for="person-comment-description"]')
+        return cy.get('#add-comments-error')
     }
 
     commentDescriptionError() {
-        return cy.get('#person-comment-description-error')
+        return cy.get('#add-comment-description-error')
     }
 
     addCommentLabel() {
@@ -35,7 +31,7 @@ class PersonCommentsPageObjects {
     }
 
     commentContainer() {
-        return cy.get('#person-comment-description')
+        return cy.get('#add-comment-description')
     }
 
     characterCountMessage() {
