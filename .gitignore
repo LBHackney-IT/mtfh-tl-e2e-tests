@@ -4,3 +4,4 @@ node_modules
 .DS_Store
 cypress.env.json
 .env
+.metals/metals.h2.db
