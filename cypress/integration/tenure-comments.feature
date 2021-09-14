@@ -55,30 +55,30 @@ Feature: Tenure Comment
     #     | tenure                               |
     #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 |
 
-    @Positive
-    Scenario Outline: Character limit counter
+    # @Positive
+    # Scenario Outline: Character limit counter
+    #   Given I am on the create comment for a tenure page "<tenure>"
+    #   When I enter <characters> characters into the comment field
+    #   Then the number of characters remaining is correct <characters>
+
+    #   Examples:
+    #     | tenure                               | characters |
+    #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 2          |
+    #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 50         |
+    #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 99         |
+    #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 350        |
+    #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 500        |
+
+    @Negative
+    Scenario Outline: Character limit exceeded
       Given I am on the create comment for a tenure page "<tenure>"
       When I enter <characters> characters into the comment field
-      Then the number of characters remaining is correct <characters>
+      Then the warning message tells me I am over by <characters>
 
       Examples:
         | tenure                               | characters |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 2          |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 50         |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 99         |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 350        |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 500        |
-
-    # @Negative
-    # Scenario Outline: Character limit exceeded
-    #   Given I am on the create comment for a person page "<person>"
-    #   When I enter <characters> characters into the comment field
-    #   Then the warning message tells me I am over by <characters>
-
-    #   Examples:
-    #     | person                               | characters |
-    #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 502        |
-    #     | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 508        |
+        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 502        |
+        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 508        |
 
     # @SmokeTest
     # @Negative  
