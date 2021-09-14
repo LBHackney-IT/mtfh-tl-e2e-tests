@@ -46,7 +46,7 @@ class TenureCommentsPageObjects {
         return cy.get('[type="submit"]')
     }
 
-    personCommentsComponentsAreDisplayed() {
+    tenureCommentsComponentsAreDisplayed() {
         this.addCommentForm().should('be.visible')
         // this.addCommentLabel().should('be.visible')
         this.commentContainer().should('be.visible')

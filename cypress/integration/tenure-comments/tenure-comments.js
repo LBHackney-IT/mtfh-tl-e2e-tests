@@ -8,8 +8,8 @@ Given('I am on the create comment for a tenure page {string}', (tenure) => {
     tenureCommentsPage.visit(tenure)
 })
 
-Then('the create comment for a person components are displayed',  () => {
-    tenureCommentsPage.personCommentsComponentsAreDisplayed()
+Then('the create comment for a tenure components are displayed',  () => {
+    tenureCommentsPage.tenureCommentsComponentsAreDisplayed()
 })
 
 When('I enter {int} characters into the comment field', (characters) => {

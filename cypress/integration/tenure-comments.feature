@@ -9,7 +9,7 @@ Feature: Tenure Comment
     @Positive
     Scenario Outline: I go to create a comment for a tenure page
       Given I am on the create comment for a tenure page "<tenure>"
-      # Then the create comment for a tenure components are displayed
+      Then the create comment for a tenure components are displayed
 
       Examples:
         | tenure                               |
