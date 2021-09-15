@@ -31,7 +31,7 @@ class PersonCommentsPageObjects {
     }
 
     commentContainer() {
-        return cy.get('#add-comment-description')
+        return cy.get('#add-comment-description-field')
     }
 
     characterCountMessage() {
