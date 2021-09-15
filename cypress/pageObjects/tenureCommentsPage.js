@@ -48,7 +48,6 @@ class TenureCommentsPageObjects {
 
     tenureCommentsComponentsAreDisplayed() {
         this.addCommentForm().should('be.visible')
-        // this.addCommentLabel().should('be.visible')
         this.commentContainer().should('be.visible')
         this.characterCountMessage().should('be.visible')
         this.submitCommentButton().should('be.visible')

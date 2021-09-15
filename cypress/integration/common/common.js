@@ -180,8 +180,6 @@ Then("the comment is submitted", () => {
     .contains("Comment successfully saved");
 });
 
-//
-
 When("I am using a mobile viewport {string}", (device) => {
   cy.viewport(`${device}`);
 });
