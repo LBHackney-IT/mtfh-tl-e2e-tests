@@ -1,13 +1,13 @@
 const envConfig = require('../../environment-config')
 
-class PersonCommentsPageObjects {
-    visit(person) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person}`)
+class TenureCommentsPageObjects {
+    visit(tenure) {
+        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureCommentsUrl}/${tenure}`)
         cy.injectAxe()
     }
 
     addCommentForm() {
-        return cy.get('[data-testid="add-comment-to-person"]')
+        return cy.get('[data-testid="add-comment-to-tenure"]')
     }
 
     pageAnnouncementHeader() {
@@ -31,7 +31,7 @@ class PersonCommentsPageObjects {
     }
 
     commentContainer() {
-        return cy.get('#add-comment-description-field')
+        return cy.get('#add-comment-description')
     }
 
     characterCountMessage() {
@@ -46,13 +46,12 @@ class PersonCommentsPageObjects {
         return cy.get('[type="submit"]')
     }
 
-    personCommentsComponentsAreDisplayed() {
+    tenureCommentsComponentsAreDisplayed() {
         this.addCommentForm().should('be.visible')
-        // this.addCommentLabel().should('be.visible')
         this.commentContainer().should('be.visible')
         this.characterCountMessage().should('be.visible')
         this.submitCommentButton().should('be.visible')
     }
 }
 
-export default PersonCommentsPageObjects
+export default TenureCommentsPageObjects

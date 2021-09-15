@@ -38,7 +38,6 @@ Then('the warning message tells me I am over by {int}', (characters) => {
 
 Then('a validation error occurs', () => {
     personCommentsPage.addCommentsError().should('be.visible')
-    personCommentsPage.commentDescriptionErrorLabel().should('be.visible')
     personCommentsPage.commentDescriptionError().should('be.visible')
 })
 

@@ -10,6 +10,7 @@ import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
+import TenureCommentsPageObjects from "../../pageObjects/tenureCommentsPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import SearchPageObjects from "../../pageObjects/searchPage";
@@ -32,6 +33,7 @@ const header = new HeaderPageObjects();
 const modal = new ModalPageObjects();
 const navigation = new NavigationPageObjects();
 const personCommentsPage = new PersonCommentsPageObjects();
+const tenureCommentsPage = new TenureCommentsPageObjects();
 const personContactPage = new PersonContactPageObjects();
 const personPage = new PersonPageObjects();
 const searchPage = new SearchPageObjects();
