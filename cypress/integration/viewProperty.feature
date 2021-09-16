@@ -40,7 +40,7 @@ Feature: Property Page
       
       Examples:
           | tenure                               |
-          | 6a9260dc-b0ef-7a34-17f4-35bc3577d000 |
+          | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
     @Regression
     Scenario Outline: View property via person

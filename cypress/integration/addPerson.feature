@@ -268,4 +268,4 @@ Feature: Add a new person to a tenure
 
       Examples:
           | tenure                               |
-          | d04ac9c7-a4cc-d0a6-51f9-55a10d2fee9b |
+          | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
