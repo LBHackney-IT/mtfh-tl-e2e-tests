@@ -7,10 +7,6 @@ When('I view a Tenure {string}', (record) => {
     tenurePage.visit(record)
 })
 
-And('the residents information is displayed', () => {
-    tenurePage.residentsDetailsAreDisplayed()
-})
-
 And('there are no household members', () => {
     tenurePage.tenureResidentsContainer().contains('This tenure has no household members')
 })

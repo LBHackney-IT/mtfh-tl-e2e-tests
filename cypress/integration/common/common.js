@@ -420,6 +420,10 @@ Then("the activity history is correct", () => {
   activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
 });
 
+Then('the add a new person tenure page is correct', () => {
+  addPersonPage.addPersonPageIsDisplayed()
+})
+
   // Tenure page
   When('I view a Tenure {string}', (record) => {
     tenurePage.visit(record)
@@ -431,4 +435,12 @@ Then("the activity history is correct", () => {
     tenurePage.tenureDetailsContainer().contains("Start date");
     tenurePage.tenureDetailsContainer().contains("End date");
     tenurePage.tenureDetailsContainer().contains("Type");
+})
+
+And('the residents information is displayed', () => {
+  tenurePage.residentsDetailsAreDisplayed()
+})
+
+When('I click on the add new person to tenure button', () => {
+  tenurePage.addNewPersonToTenureButton().click()
 })

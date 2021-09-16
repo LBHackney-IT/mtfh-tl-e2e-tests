@@ -162,7 +162,6 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
-    @ignoreDev
     @SmokeTest
     @Positive
     Scenario Outline: Edit a person
@@ -258,3 +257,15 @@ Feature: Add a new person to a tenure
     @Accessibility
     Scenario: Accessibility Testing
       And have no detectable a11y violations
+
+    @SmokeTest
+    Scenario Outline: Navigate to add person via tenure page
+      When I view a Tenure "<tenure>"
+      Then the tenure information is displayed
+      And the residents information is displayed
+      When I click on the add new person to tenure button
+      Then the add a new person tenure page is correct
+
+      Examples:
+          | tenure                               |
+          | d04ac9c7-a4cc-d0a6-51f9-55a10d2fee9b |
