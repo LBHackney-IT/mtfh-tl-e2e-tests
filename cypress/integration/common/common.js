@@ -13,6 +13,7 @@ import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
 import TenureCommentsPageObjects from "../../pageObjects/tenureCommentsPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
+import PropertyPageObjects from "../../pageObjects/propertyPage"
 import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
 import validComment from "../../helpers/personCommentText";
@@ -33,9 +34,10 @@ const header = new HeaderPageObjects();
 const modal = new ModalPageObjects();
 const navigation = new NavigationPageObjects();
 const personCommentsPage = new PersonCommentsPageObjects();
-const tenureCommentsPage = new TenureCommentsPageObjects();
 const personContactPage = new PersonContactPageObjects();
 const personPage = new PersonPageObjects();
+const propertyPage = new PropertyPageObjects();
+const tenureCommentsPage = new TenureCommentsPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 
@@ -432,3 +434,23 @@ Then("the activity history is correct", () => {
     tenurePage.tenureDetailsContainer().contains("End date");
     tenurePage.tenureDetailsContainer().contains("Type");
 })
+
+  // Property page
+  When("I view a property {string}", (propertyId) => {
+    propertyPage.visit(propertyId);
+  });
+
+  Then('the property information is displayed', () => {
+    propertyPage.propertyViewSidebar().should('be.visible')
+    propertyPage.propertyViewSidebar().contains('Type')
+    propertyPage.propertyViewSidebar().contains('UPRN')
+    propertyPage.propertyViewSidebar().contains('Reference')
+  })
+
+  Then('I am on the create new tenure page {string}', (tenureId) => {
+    cy.url().should('contain', `tenure/${tenureId}/add`)
+  })
+
+  When('I click on the new tenure button', () => {
+    propertyPage.newTenureButton().click()
+  })
