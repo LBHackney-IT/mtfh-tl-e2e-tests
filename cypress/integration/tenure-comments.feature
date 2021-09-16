@@ -13,7 +13,7 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
         
     @device    
     Scenario Outline: I go to create a comment for a tenure page on a device
@@ -25,23 +25,23 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               | device        |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | ipad-2        |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | ipad-mini     |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-3      |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-4      |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-5      |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-6      |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-6+     |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-7      |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-8      |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-xr     |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | iphone-se2    |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | macbook-11    |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | macbook-13    |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | macbook-15    |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | macbook-16    |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | samsung-note9 |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | samsung-s10   |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-2        |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-mini     |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-3      |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-4      |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-5      |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6      |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6+     |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-7      |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-8      |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-xr     |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-se2    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-11    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-13    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-15    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-16    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-note9 |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-s10   |
 
     @SmokeTest
     @Positive    
@@ -53,7 +53,7 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
     @Positive
     Scenario Outline: Character limit counter
@@ -63,11 +63,11 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               | characters |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 2          |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 50         |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 99         |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 350        |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 500        |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 2          |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 50         |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 99         |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 350        |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 500        |
 
     @Negative
     Scenario Outline: Character limit exceeded
@@ -77,8 +77,8 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               | characters |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 502        |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 | 508        |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 502        |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 508        |
 
     @SmokeTest
     @Negative  
@@ -90,7 +90,7 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
     @Accessibility
     Scenario Outline: Accessibility Testing for tenure
@@ -99,4 +99,4 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               |
-        | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
