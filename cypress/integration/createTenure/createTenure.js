@@ -18,6 +18,12 @@ And('I enter a tenure start date {string} {string} {string}', (day, month, year)
     createTenurePage.tenureStartDateYearContainer().type(year)
 })
 
+And('I enter a tenure end date {string} {string} {string}', (day, month, year) => {
+    createTenurePage.tenureEndDateDayContainer().type(day)
+    createTenurePage.tenureEndDateMonthContainer().type(month)
+    createTenurePage.tenureEndDateYearContainer().type(year)
+})
+
 And('I click the next button', () => {
     createTenurePage.nextButton().click()
 })
