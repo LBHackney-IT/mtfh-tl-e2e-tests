@@ -1,3 +1,4 @@
+@ignore
 @AddPersonPage
 Feature: Create tenure
   I want to create a new tenure
@@ -14,6 +15,7 @@ Feature: Create tenure
     When I select a tenure type "<tenureType>"
     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
     And I click the next button
+    And the person search is displayed
 
     Examples:
         | property                             | tenureType | startDay | startMonth | startYear |

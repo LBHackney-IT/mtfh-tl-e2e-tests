@@ -36,3 +36,8 @@ Then('a create tenure error is triggered', () => {
     createTenurePage.errorContainer().should('be.visible')
     createTenurePage.errorBody().contains('Start date must occur after the end date of the previous tenure')
 })
+
+And('the person search is displayed', () => {
+    createTenurePage.searchContainer().should('be.visible')
+    createTenurePage.searchButton().should('be.visible')
+})
