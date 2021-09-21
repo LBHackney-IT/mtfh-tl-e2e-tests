@@ -465,3 +465,11 @@ And('the residents information is displayed', () => {
 When('I click on the add new person to tenure button', () => {
   tenurePage.addNewPersonToTenureButton().click()
 })
+
+And('I click the modal cancel button', () => {
+  modal.cancelButton().click()
+})
+
+And('I click the confirm button', () => {
+  modal.confirmationButton().click()
+})

@@ -63,7 +63,7 @@ class CreateTenurePageObjects {
     }
 
     errorContainer() {
-        return cy.get('#form-error')
+        return cy.get('#tenure-form-error')
     }
 
     errorBody() {

@@ -29,11 +29,11 @@ Feature: Create tenure
     Then the new tenure landing page is displayed
     And I click the cancel button
     Then the cancel confirmation modal is displayed
-    And I click the cancel button
+    And I click the modal cancel button
     Then the new tenure landing page is displayed
     And I click the cancel button
     Then the cancel confirmation modal is displayed
-    And I click the cancel button
+    And I click the confirm button
     Then the property information is displayed
 
     Examples:
