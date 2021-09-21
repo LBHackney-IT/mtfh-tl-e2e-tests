@@ -1,7 +1,9 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import CreateTenurePageObjects from "../../pageObjects/createTenurePage"
+import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
 
 const createTenurePage = new CreateTenurePageObjects()
+const modal = new ModalPageObjects()
 
 Then('the new tenure landing page is displayed', () => {
     createTenurePage.addPropertyHeading().should('be.visible')
@@ -40,4 +42,12 @@ Then('a create tenure error is triggered', () => {
 And('the person search is displayed', () => {
     createTenurePage.searchContainer().should('be.visible')
     createTenurePage.searchButton().should('be.visible')
+})
+
+And('I click the cancel button', () => {
+    createTenurePage.cancelButton().click()
+})
+
+Then('the cancel confirmation modal is displayed', () => {
+    modal.modalBody().should('be.visible')
 })
