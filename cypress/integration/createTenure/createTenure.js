@@ -31,7 +31,7 @@ And('I click the next button', () => {
 })
 
 And('I click the cancel button', () => {
-    createTenurePage.cancelButton().click()
+    createTenurePage.cancelButton().click({force: true})
 })
 
 Then('a create tenure error is triggered', () => {
@@ -42,10 +42,6 @@ Then('a create tenure error is triggered', () => {
 And('the person search is displayed', () => {
     createTenurePage.searchContainer().should('be.visible')
     createTenurePage.searchButton().should('be.visible')
-})
-
-And('I click the cancel button', () => {
-    createTenurePage.cancelButton().click()
 })
 
 Then('the cancel confirmation modal is displayed', () => {
