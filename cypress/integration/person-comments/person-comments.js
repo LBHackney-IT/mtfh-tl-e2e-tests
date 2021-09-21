@@ -41,3 +41,8 @@ Then('a validation error occurs', () => {
 function differenceInCharacters(characters) {
     return Math.abs(500-characters)
 }
+
+Then('the create comment for a person components are displayed', () => {
+    personCommentsPage.addCommentForm().should('be.visible')
+    personCommentsPage.submitCommentButton().should('be.visible')
+})

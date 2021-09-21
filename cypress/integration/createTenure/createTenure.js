@@ -51,3 +51,11 @@ And('I click the cancel button', () => {
 Then('the cancel confirmation modal is displayed', () => {
     modal.modalBody().should('be.visible')
 })
+
+And('the tenure person search is displayed', () => {
+    createTenurePage.searchContainer().should('be.visible')
+    createTenurePage.searchButton().should('be.visible')
+    createTenurePage.main().contains('Property type')
+    createTenurePage.main().contains('UPRN')
+    createTenurePage.main().contains('Property reference')
+})

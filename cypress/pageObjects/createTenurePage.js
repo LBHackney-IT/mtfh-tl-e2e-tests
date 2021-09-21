@@ -6,6 +6,10 @@ class CreateTenurePageObjects {
         cy.injectAxe()
     }
 
+    main() {
+        return cy.get('.mtfh-layout__main')
+    }
+
     addPropertyHeading() {
         return cy.get('.lbh-heading-h1')
     }
