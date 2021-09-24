@@ -7,11 +7,15 @@ class ActivityHistoryTenurePageObjects {
     }
 
     activityHistoryTenureActivities() {
-        return cy.get('[data-testid="activities"]')
+        return cy.get('[data-testid="tenure-activities"]')
     }
 
     closeActivityHistoryButton() {
         return cy.contains('Close activity history')
+    }
+
+    activityHistoryRow() {
+        return cy.get('.govuk-table__row govuk-table__row mtfh-activity-history')
     }
 }
 

@@ -69,6 +69,51 @@ Given(
   }
 );
 
+
+// Need to work out why the If-Match header is not being recognised as part of the PATCH request
+Given("I edit a tenure {string} {string}", (tenureId, tenureType) => {
+  let etag
+  cy.request({
+    method: 'GET',
+    url: `${envConfig.editTenureEndpoint}/tenures/${tenureId}`,
+    headers: {
+      'Authorization': `Bearer ${envConfig.gssoTestKey}`,
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive'
+    },
+  }).then(
+    (response) => {
+      expect(response.status).to.eq(200)
+      etag = response.headers.etag
+      cy.log(etag)
+    }
+  )
+
+  cy.request({
+    method: 'PATCH',
+    url: `${envConfig.editTenureEndpoint}/tenures/${tenureId}`,
+    headers: {
+      'Authorization': `Bearer ${envConfig.gssoTestKey}`,
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'If-Match': `${etag}`,
+    },
+    body: {
+      tenureType: 
+        { "code": "INT", "description": tenureType }
+    },
+  }).then(
+    (response) => {
+      cy.log(etag)
+      expect(response.status).to.eq(204)
+    }
+  )
+})
+
 Given("I want to create a person", async () => {
   cy.log("Creating Person record");
   const response = await person.createPerson();
@@ -423,14 +468,14 @@ Then("the activity history is correct", () => {
 });
 
   // Tenure page
-  When('I view a Tenure {string}', (record) => {
-    tenurePage.visit(record)
+When('I view a Tenure {string}', (record) => {
+  tenurePage.visit(record)
 })
 
-  Then('the tenure information is displayed', () => {
-    tenurePage.tenureDetailsContainer().should("be.visible");
-    tenurePage.tenureDetailsContainer().contains("Status");
-    tenurePage.tenureDetailsContainer().contains("Start date");
-    tenurePage.tenureDetailsContainer().contains("End date");
-    tenurePage.tenureDetailsContainer().contains("Type");
+Then('the tenure information is displayed', () => {
+  tenurePage.tenureDetailsContainer().should("be.visible");
+  tenurePage.tenureDetailsContainer().contains("Status");
+  tenurePage.tenureDetailsContainer().contains("Start date");
+  tenurePage.tenureDetailsContainer().contains("End date");
+  tenurePage.tenureDetailsContainer().contains("Type");
 })

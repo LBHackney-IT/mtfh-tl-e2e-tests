@@ -7,10 +7,14 @@ Given('I go to the tenure activity history for {string}', (tenure) => {
     activityHistoryTenure.visit(tenure)
 })
 
-Then('no tenure activity history is displayed', () => {
-    activityHistoryTenure.activityHistoryTenureActivities().contains('No activity history')
+Then('tenure migrated activity history is displayed', () => {
+    activityHistoryTenure.activityHistoryTenureActivities().contains('Tenure migrated')
 })
 
 Then('I click close activity history', () => {
     activityHistoryTenure.closeActivityHistoryButton().click()
+})
+
+Then('the tenure activity history is displayed', () => {
+    activityHistoryTenure.activityHistoryTenureActivities().should('be.visible')
 })
