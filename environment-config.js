@@ -3,6 +3,7 @@ let rootUrl = "http://local.hackney.gov.uk"
 let searchUrl = "search"
 let personUrl = "person"
 let personCommentsUrl = "comment/person"
+let tenureCommentsUrl="comment/tenure"
 let tenureUrl = "tenure"
 let rootComponentPort = "9000"
 let property = "property"
@@ -33,6 +34,7 @@ module.exports = {
     searchUrl,
     personUrl,
     personCommentsUrl,
+    tenureCommentsUrl,
     baseUrl,
     tenureUrl,
     property,
