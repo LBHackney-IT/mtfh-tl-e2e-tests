@@ -21,6 +21,7 @@ Feature: Create tenure
         | property                             | tenureType | startDay | startMonth | startYear |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
 
+  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure and cancel
     When I view a property "<property>"
