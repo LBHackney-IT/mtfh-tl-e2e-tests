@@ -478,14 +478,6 @@ When('I view a Tenure {string}', (record) => {
   tenurePage.visit(record)
 })
 
-<<<<<<< HEAD
-Then('the tenure information is displayed', () => {
-  tenurePage.tenureDetailsContainer().should("be.visible");
-  tenurePage.tenureDetailsContainer().contains("Status");
-  tenurePage.tenureDetailsContainer().contains("Start date");
-  tenurePage.tenureDetailsContainer().contains("End date");
-  tenurePage.tenureDetailsContainer().contains("Type");
-=======
   Then('the tenure information is displayed', () => {
     tenurePage.tenureDetailsContainer().should("be.visible");
     tenurePage.tenureDetailsContainer().contains("Status");
@@ -500,5 +492,4 @@ And('the residents information is displayed', () => {
 
 When('I click on the add new person to tenure button', () => {
   tenurePage.addNewPersonToTenureButton().click()
->>>>>>> master
 })
