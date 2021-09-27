@@ -18,7 +18,7 @@ Feature: Activity History for Tenure
         | tenure                               | 
         | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 |
 
-  Update tenure id
+  # Update tenure id
   @ignore
   Scenario Outline: View Tenure activity history page for legacy data - Data imported
         Given I go to the tenure activity history for "<tenure>"
