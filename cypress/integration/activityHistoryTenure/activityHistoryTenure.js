@@ -18,3 +18,7 @@ Then('I click close activity history', () => {
 Then('the tenure activity history is displayed', () => {
     activityHistoryTenure.activityHistoryTenureActivities().should('be.visible')
 })
+
+Then('the update exists in the activity history {string}', (update) => {
+    activityHistoryTenure.activityHistoryCell().eq(6).contains(`Changed to: ${update}`)
+})

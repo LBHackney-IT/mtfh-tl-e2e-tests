@@ -14,8 +14,8 @@ class ActivityHistoryTenurePageObjects {
         return cy.contains('Close activity history')
     }
 
-    activityHistoryRow() {
-        return cy.get('.govuk-table__row govuk-table__row mtfh-activity-history')
+    activityHistoryCell() {
+        return cy.get('.govuk-table__cell')
     }
 }
 

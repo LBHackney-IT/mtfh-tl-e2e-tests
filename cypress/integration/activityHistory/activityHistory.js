@@ -15,7 +15,3 @@ Then('the activity history is displayed', () => {
 Then('I click close activity history', () => {
     activityHistory.closeActivityHistory().click()
 })
-
-Then('the update {string} exists in the activity history', (update) => {
-    activityHistory.activityTableRow().eq(0).contains(`Changed to: ${update}`)
-})
