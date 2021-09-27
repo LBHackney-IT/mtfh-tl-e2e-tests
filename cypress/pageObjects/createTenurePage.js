@@ -93,6 +93,14 @@ class CreateTenurePageObjects {
     addedHouseholdMembersContainer() {
         return cy.get('[testid="household-members-container"]')
     }
+
+    createNewPersonButton() {
+        return cy.contains('Create new person')
+    }
+
+    doneButton() {
+        return cy.contains('Done')
+    }
 }
 
 export default CreateTenurePageObjects
