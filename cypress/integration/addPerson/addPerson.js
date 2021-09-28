@@ -6,6 +6,10 @@ import testGuid from '../../helpers/personCommentText'
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 
+Then('the add a new person tenure page is correct', () => {
+    addPersonPage.addPersonPageIsDisplayed()
+})
+
 And('I select a title {string}', (title) => {
     addPersonPage.personTitleSelection().select(title)
 })

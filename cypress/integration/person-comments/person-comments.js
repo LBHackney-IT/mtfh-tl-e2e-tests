@@ -1,15 +1,12 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import PersonCommentsPageObjects from '../../pageObjects/personCommentsPage'
 import helperText from '../../helpers/inputText'
+import { hasToggle } from '../../helpers/hasToggle'
 
 const personCommentsPage = new PersonCommentsPageObjects()
 
 Given('I am on the create comment for a person page {string}', (person) => {
     personCommentsPage.visit(person)
-})
-
-Then('the create comment for a person components are displayed',  () => {
-    personCommentsPage.personCommentsComponentsAreDisplayed()
 })
 
 When('I enter {int} characters into the comment field', (characters) => {
@@ -44,3 +41,8 @@ Then('a validation error occurs', () => {
 function differenceInCharacters(characters) {
     return Math.abs(500-characters)
 }
+
+Then('the create comment for a person components are displayed', () => {
+    personCommentsPage.addCommentForm().should('be.visible')
+    personCommentsPage.submitCommentButton().should('be.visible')
+})
