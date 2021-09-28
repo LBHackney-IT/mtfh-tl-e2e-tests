@@ -20,12 +20,14 @@ import testGuid from "../../helpers/personCommentText";
 import comment from "../../../api/comment";
 import contact from "../../../api/contact";
 import person from "../../../api/person";
+import tenure from "../../../api/tenure"
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPage";
 import { hasToggle } from "../../helpers/hasToggle";
 
 const envConfig = require("../../../environment-config");
+// const request = require('../../../api/requests')
 const activityHistory = new ActivityHistoryPageObjects();
 const addPersonPage = new AddPersonPageObjects();
 const footer = new FooterPageObjects();
@@ -70,6 +72,61 @@ Given(
     assert.deepEqual(response.status, 200);
   }
 );
+
+Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
+  const getResponse = await tenure.getTenure(tenureId)
+  cy.log(`something ${getResponse.status}`)
+  cy.log(getResponse.headers.etag)
+
+  const patchResponse = await tenure.editTenure(tenureId, tenureType, getResponse.headers.etag)
+  cy.log(patchResponse.status)
+})
+
+// Need to work out why the If-Match header is not being recognised as part of the PATCH request
+// Given("I edit a tenure {string} {string}", (tenureId, tenureType) => {
+  // let etag
+  // cy.request({
+  //   method: 'GET',
+  //   url: `${envConfig.editTenureEndpoint}/tenures/${tenureId}`,
+  //   headers: {
+  //     'Authorization': `Bearer ${envConfig.gssoTestKey}`,
+  //     'Content-Type': 'application/json',
+  //     'Accept': '*/*',
+  //     'Accept-Encoding': 'gzip, deflate, br',
+  //     'Connection': 'keep-alive'
+  //   },
+  // }).then(
+  //   (response) => {
+  //     expect(response.status).to.eq(200)
+  //     etag = response.headers.etag
+  //     cy.writeFile('etag.json', etag)
+  //     cy.log(etag)
+  //   }
+  // )
+
+  // cy.readFile('etag.json')
+  // cy.request({
+  //   method: 'PATCH',
+  //   url: `${envConfig.editTenureEndpoint}/tenures/${tenureId}`,
+  //   headers: {
+  //     'Authorization': `Bearer ${envConfig.gssoTestKey}`,
+  //     'Content-Type': 'application/json',
+  //     'Accept': '*/*',
+  //     'Accept-Encoding': 'gzip, deflate, br',
+  //     'Connection': 'keep-alive',
+  //     'If-Match': '0',
+  //   },
+  //   body: {
+  //     tenureType: 
+  //       { "code": "INT", "description": tenureType }
+  //   },
+  // }).then(
+  //   (response) => {
+  //     cy.log(etag)
+  //     expect(response.status).to.eq(204)
+  //   }
+  // )
+// })
 
 Given("I want to create a person", async () => {
   cy.log("Creating Person record");
@@ -369,6 +426,10 @@ And("I am on the person page for {string}", (person) => {
   cy.url().should("include", person);
 });
 
+And("I am on the tenure page for {string}", (tenure) => {
+  cy.url().should("include", tenure);
+});
+
 Then('the personal details are displayed on the sidebar' ,() => {
   personPage.sidebar().contains('Date of birth')
   personPage.sidebar().contains('Phone 1')
@@ -425,8 +486,8 @@ Then('the add a new person tenure page is correct', () => {
 })
 
   // Tenure page
-  When('I view a Tenure {string}', (record) => {
-    tenurePage.visit(record)
+When('I view a Tenure {string}', (record) => {
+  tenurePage.visit(record)
 })
 
   Then('the tenure information is displayed', () => {

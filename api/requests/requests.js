@@ -5,9 +5,7 @@ const config = {
     headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
 };
 
-const patchConfig = {
-  headers: { 'If-Match': 0, Authorization: `Bearer ${envConfig.gssoTestKey}` }
-};
+
 
 async function getRequest(endpoint) {
     try {
@@ -20,7 +18,10 @@ async function getRequest(endpoint) {
     }
 }
 
-async function patchRequest(endpoint, payload) {
+async function patchRequest(endpoint, payload, ifMatch) {
+  const patchConfig = {
+    headers: { 'If-Match': ifMatch, Authorization: `Bearer ${envConfig.gssoTestKey}` }
+  };
     try {
       const response = await axios.patch(endpoint, payload, patchConfig);
       cy.log('Sending patch request')
