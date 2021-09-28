@@ -1,5 +1,5 @@
 import { Then } from "cypress-cucumber-preprocessor/steps"
-import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPage'
+import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPersonPage'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import HomePageObjects from '../../pageObjects/homePage'

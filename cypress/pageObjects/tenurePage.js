@@ -44,6 +44,10 @@ class TenurePageObjects {
     return cy.get("#accordion-heading-resident-details");
   }
 
+  editTenureButton() {
+    return cy.contains('Edit Tenure')
+  }
+
   addNewPersonToTenureButton() {
     return cy.contains('Add new person to tenure')
   }

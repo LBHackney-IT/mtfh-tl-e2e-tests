@@ -8,7 +8,7 @@ class ModalPageObjects {
     }
 
     cancelButton() {
-        return cy.get('govuk-link lbh-link lbh-link--no-visited-state')
+        return cy.get('.lbh-dialog__close')
     }
 
     confirmationButton() {

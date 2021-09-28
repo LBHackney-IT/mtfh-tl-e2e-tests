@@ -24,7 +24,7 @@ import person from "../../../api/person";
 import tenure from "../../../api/tenure"
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
-import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPage";
+import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import { hasToggle } from "../../helpers/hasToggle";
 
 const envConfig = require("../../../environment-config");
@@ -313,7 +313,7 @@ And("I click the done button", () => {
   const now = new Date();
   personContactPage.doneButton().click();
   dateCaptureDay = date.format(now, "DD/MM/YY");
-  dateCaptureTime = date.format(now, "hh:mm");
+  dateCaptureTime = date.format(now, "HH:mm");
 });
 
 And("I click the add email address button", () => {
@@ -492,33 +492,41 @@ When('I view a Tenure {string}', (record) => {
   tenurePage.visit(record)
 })
 
-  Then('the tenure information is displayed', () => {
-    tenurePage.tenureDetailsContainer().should("be.visible");
-    tenurePage.tenureDetailsContainer().contains("Status");
-    tenurePage.tenureDetailsContainer().contains("Start date");
-    tenurePage.tenureDetailsContainer().contains("End date");
-    tenurePage.tenureDetailsContainer().contains("Type");
+Then('the tenure information is displayed', () => {
+  tenurePage.tenureDetailsContainer().should("be.visible");
+  tenurePage.tenureDetailsContainer().contains("Status");
+  tenurePage.tenureDetailsContainer().contains("Start date");
+  tenurePage.tenureDetailsContainer().contains("End date");
+  tenurePage.tenureDetailsContainer().contains("Type");
+})
+
+And('I click edit tenure', () => {
+  tenurePage.editTenureButton().click()
+})
+
+And('the edit tenure button is not displayed', () => {
+  tenurePage.editTenureButton().should('not.exist')
 })
 
   // Property page
-  When("I view a property {string}", (propertyId) => {
-    propertyPage.visit(propertyId);
-  });
+When("I view a property {string}", (propertyId) => {
+  propertyPage.visit(propertyId);
+});
 
-  Then('the property information is displayed', () => {
-    propertyPage.propertyViewSidebar().should('be.visible')
-    propertyPage.propertyViewSidebar().contains('Type')
-    propertyPage.propertyViewSidebar().contains('UPRN')
-    propertyPage.propertyViewSidebar().contains('Reference')
-  })
+Then('the property information is displayed', () => {
+  propertyPage.propertyViewSidebar().should('be.visible')
+  propertyPage.propertyViewSidebar().contains('Type')
+  propertyPage.propertyViewSidebar().contains('UPRN')
+  propertyPage.propertyViewSidebar().contains('Reference')
+})
 
-  Then('I am on the create new tenure page {string}', (tenureId) => {
-    cy.url().should('contain', `tenure/${tenureId}/add`)
-  })
+Then('I am on the create new tenure page {string}', (tenureId) => {
+  cy.url().should('contain', `tenure/${tenureId}/add`)
+})
 
-  When('I click on the new tenure button', () => {
-    propertyPage.newTenureButton().click()
-  })
+When('I click on the new tenure button', () => {
+  propertyPage.newTenureButton().click()
+})
 And('the residents information is displayed', () => {
   tenurePage.residentsDetailsAreDisplayed()
 })
@@ -533,4 +541,16 @@ And('I click the modal cancel button', () => {
 
 And('I click the confirm button', () => {
   modal.confirmationButton().within().click({force: true})
+})
+
+Then('the cancel modal is displayed', () => {
+  modal.modalBody().should('be.visible')
+})
+
+When('I click cancel on the modal', () => {
+  modal.cancelButton().click()
+})
+
+And('I click yes on the modal', () => {
+  modal.confirmationButton().click()
 })
