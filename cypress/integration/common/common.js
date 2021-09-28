@@ -532,5 +532,5 @@ And('I click the modal cancel button', () => {
 })
 
 And('I click the confirm button', () => {
-  modal.confirmationButton().click({force: true})
+  modal.confirmationButton().within().click({force: true})
 })
