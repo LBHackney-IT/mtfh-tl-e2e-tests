@@ -55,3 +55,14 @@ And('the tenure person search is displayed', () => {
     createTenurePage.main().contains('UPRN')
     createTenurePage.main().contains('Property reference')
 })
+
+Then('the edit tenure information is displayed', () => {
+    createTenurePage.tenureTypeSelection().should('be.visible')
+    createTenurePage.tenureStartDateDayContainer().should('be.visible')
+    createTenurePage.tenureStartDateMonthContainer().should('be.visible')
+    createTenurePage.tenureStartDateYearContainer().should('be.visible')
+})
+
+And('I click the done button', () => {
+    createTenurePage.doneButton().click()
+})

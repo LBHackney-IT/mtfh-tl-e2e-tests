@@ -1,4 +1,4 @@
-@AddPersonPage
+@CreateTenure
 Feature: Create tenure
   I want to create a new tenure
 
@@ -71,3 +71,45 @@ Feature: Create tenure
     Examples:
         | property                             | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
+
+  Scenario Outline: Edit existing tenure
+        When I view a Tenure "<tenure>"
+        Then the tenure information is displayed
+        And I click edit tenure
+        Then the edit tenure information is displayed
+        When I select a tenure type "<tenureType>"
+        And I click the done button
+        Then the tenure information is displayed
+
+        Examples:
+        | tenure                               | tenureType |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold   |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Secure     |
+
+    Scenario Outline: Edit existing tenure and cancel
+        When I view a Tenure "<tenure>"
+        Then the tenure information is displayed
+        And I click edit tenure
+        Then the edit tenure information is displayed
+        When I select a tenure type "<tenureType>"
+        And I click the cancel button
+        Then the cancel modal is displayed
+        When I click cancel on the modal
+        Then the edit tenure information is displayed
+        And I click the cancel button
+        Then the cancel modal is displayed
+        And I click yes on the modal
+        Then the tenure information is displayed
+
+        Examples:
+        | tenure                               | tenureType |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold   |
+
+    Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
+        When I view a Tenure "<tenure>"
+        Then the tenure information is displayed
+        And the edit tenure button is not displayed
+
+        Examples:
+        | tenure                               |
+        | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
