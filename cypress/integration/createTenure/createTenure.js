@@ -76,8 +76,10 @@ Then('the tenure cannot be edited warning message is displayed', () => {
     createTenurePage.errorMessageContainer().contains('This tenure is no longer active and cannot be edited.')
 })
 
-When('I click on add as a named tenure holder', () => {
-    createTenurePage.addAsNamedTenureHolderButton().eq(0).click()
+When('I add {int} named tenure holder', (tenureHolders) => {
+    for(let i = 0; i < tenureHolders; i++) {
+        createTenurePage.addAsNamedTenureHolderButton().eq(i).click()
+    }
 })
 
 Then('the person is added to the tenure', () => {
@@ -90,6 +92,13 @@ Then('the person is not added to the tenure', () => {
     createTenurePage.pageAnnouncementContainer().contains('Person added to tenure')
 })
 
-When('I click on add as a household member', () => {
-    createTenurePage.addAsHousholdMember().eq(1).click()
+When('I add {int} household member', (householdMembers) => {
+    for(let i = 0; i < householdMembers; i++) {
+        createTenurePage.addAsHousholdMember().eq(i).click()
+    }
+})
+
+Then('a new tenure error message appears {string}', (error) => {
+    createTenurePage.pageAnnouncementContainer.should('be.visible')
+    createTenurePage.pageAnnouncementContainer().contains(error)
 })

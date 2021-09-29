@@ -36,9 +36,9 @@ Feature: Create tenure
     And I click search
     And I click on the search button
     Then the search results are displayed by best match "<searchTerm>"
-    When I click on add as a named tenure holder
+    When I add 1 named tenure holder
     Then the person is added to the tenure
-    When I click on add as a household member
+    When I add 1 household member
     Then the person is added to the tenure
     And I click the done button
     Then the tenure is complete
@@ -72,6 +72,35 @@ Feature: Create tenure
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Last name A-Z | 40      |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
+
+  @ignore
+  Scenario Outline: Create new tenure validation
+    When I view a property "<property>"
+    When I click on the new tenure button
+    Then I am on the create new tenure page "<property>"
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
+    When I enter any of the following criteria "<searchTerm>"
+    And I click search
+    And I click on the search button
+    Then the search results are displayed by best match "<searchTerm>"
+    When I add 1 named tenure holder
+    Then the person is added to the tenure
+    When I add 1 named tenure holder
+    Then a tenure error message appears "The person is already added"
+    When I add 1 household member
+    Then the person is added to the tenure
+    When I add 1 household member
+    Then a new tenure error message appears "The person is already added"
+    When I add 5 named tenure holder
+    Then a new tenure error message appears "Max. tenure holders added"
+
+    Examples:
+        | property                             | tenureType | startDay | startMonth | startYear | searchTerm |
+        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        |
 
   @ignore
   @SmokeTest
