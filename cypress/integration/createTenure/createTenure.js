@@ -1,5 +1,4 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
-import { eq } from "cypress/types/lodash"
 import CreateTenurePageObjects from "../../pageObjects/createTenurePage"
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
 
