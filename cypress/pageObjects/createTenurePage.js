@@ -1,8 +1,13 @@
 const envConfig = require('../../environment-config')
 
 class CreateTenurePageObjects {
-    visit(propertyId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${propertyId}/add`)
+    createTenure(tenureId) {
+        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}/add`)
+        cy.injectAxe()
+    }
+
+    editTenure(tenureId) {
+        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}/edit`)
         cy.injectAxe()
     }
 
@@ -100,6 +105,10 @@ class CreateTenurePageObjects {
 
     doneButton() {
         return cy.contains('Done')
+    }
+
+    errorMessageContainer() {
+        return cy.get('.govuk-error-summary__title')
     }
 }
 

@@ -1,4 +1,5 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
+import { eq } from "cypress/types/lodash"
 import CreateTenurePageObjects from "../../pageObjects/createTenurePage"
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
 
@@ -65,4 +66,31 @@ Then('the edit tenure information is displayed', () => {
 
 And('I click the done button', () => {
     createTenurePage.doneButton().click()
+})
+
+When('I edit a Tenure {string}', (tenureId) => {
+    createTenurePage.editTenure(tenureId)
+})
+
+Then('the tenure cannot be edited warning message is displayed', () => {
+    createTenurePage.errorMessageContainer().should('be.visible')
+    createTenurePage.errorMessageContainer().contains('This tenure is no longer active and cannot be edited.')
+})
+
+When('I click on add as a named tenure holder', () => {
+    createTenurePage.addAsNamedTenureHolderButton().eq(0).click()
+})
+
+Then('the person is added to the tenure', () => {
+    createTenurePage.pageAnnouncementContainer().should('be.visible')
+    createTenurePage.pageAnnouncementContainer().contains('Person added to tenure')
+})
+
+Then('the person is not added to the tenure', () => {
+    createTenurePage.pageAnnouncementContainer().should('be.visible')
+    createTenurePage.pageAnnouncementContainer().contains('Person added to tenure')
+})
+
+When('I click on add as a household member', () => {
+    createTenurePage.addAsHousholdMember().eq(1).click()
 })

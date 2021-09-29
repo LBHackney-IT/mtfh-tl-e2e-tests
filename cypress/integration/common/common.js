@@ -277,12 +277,28 @@ Then(
     if (searchTerm === "guid") {
       searchTerm = testGuid.testGuid;
     }
-    searchPage.searchSubtitle().contains(searchTerm);
     searchPage
       .searchResults()
       .contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
   }
 );
+
+Then("the default sort option is correct", () => {
+  searchPage.sortByOption().contains("Best match");
+});
+
+When("I select to sort by {string}", (filter) => {
+  searchPage.sortByOption().select(filter);
+});
+
+When("I set the number of results to {int}", (results) => {
+  searchPage.numberOfResultsDisplayed(results);
+});
+
+Then("the correct number of {int} are displayed", (results) => {
+  searchPage.paginationSummary().contains(results);
+  searchPage.filterStatus().contains(results);
+});
 
 // Accessibility
 And("have no detectable a11y violations", () => {
