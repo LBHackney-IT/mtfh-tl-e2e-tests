@@ -23,6 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "@testing-library/cypress": "^7.0.6",
+    "ansi-regex": ">=5.0.1",
     "axe-core": "^4.2.1",
     "browserslist": ">=4.16.5",
     "cypress": "^8.3.1",
@@ -32,6 +33,7 @@
     "cypress-localstorage-commands": "^1.4.4",
     "cypress-social-logins": "^1.11.3",
     "glob-parent": ">=5.1.2",
+    "set-value": ">=4.0.1",
     "ws": ">=6.2.2"
   },
   "dependencies": {
