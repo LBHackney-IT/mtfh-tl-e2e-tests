@@ -52,3 +52,22 @@ Feature: Property Page
       Examples:
           | record                               |
           | 80886abb-eecb-644f-5806-6c01ccc2126b |
+
+    Scenario Outline: Asset API for valid FE type
+      Given I check the asset API with a valid assetType "<assetId>"
+      When I navigate to the asset page "<assetId>"
+      Then the property information is displayed
+
+      Examples:
+      | assetId                              |
+      | 49202bdc-5d97-a46c-289c-997df568500f |
+
+
+    Scenario Outline: Asset API for invalid FE type
+      Given I check the asset API with an invalid assetType "<assetId>"
+      When I navigate to the asset page "<assetId>"
+      And I am shown an error message 
+
+      Examples:
+      | assetId                              |
+      | 5372e973-2857-98df-a343-4acfb76af535 |
