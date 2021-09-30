@@ -63,11 +63,11 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               | characters |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 2          |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 2          |
         | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 50         |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 99         |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 99         |
         | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 350        |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 500        |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 500        |
 
     @Negative
     Scenario Outline: Character limit exceeded
@@ -77,7 +77,7 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               | characters |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 502        |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 502        |
         | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 508        |
 
     @SmokeTest

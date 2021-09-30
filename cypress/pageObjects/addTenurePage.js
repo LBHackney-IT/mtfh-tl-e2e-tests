@@ -1,5 +1,3 @@
-import AddPersonPageObjects from './addPersonPage'
-
 const envConfig = require('../../environment-config')
 
 class AddTenurePageObjects {

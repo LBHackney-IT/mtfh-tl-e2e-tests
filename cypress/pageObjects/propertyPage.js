@@ -10,6 +10,10 @@ class PropertyPageObjects {
         return cy.get('.heading')
     }
 
+    propertyPage() {
+        return cy.get('[data-testid="property"]')
+    }
+
     propertyViewSidebar() {
         return cy.get('#property-view-sidebar')
     }
