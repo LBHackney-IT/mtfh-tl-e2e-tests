@@ -83,7 +83,7 @@ Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
   const patchResponse = await tenure.editTenure(tenureId, tenureType, getResponse.headers.etag)
   cy.log(`Status code ${patchResponse.status} returned`)
   assert.deepEqual(patchResponse.status, 204)
-  cy,log('Tenure updated!')
+  cy.log('Tenure updated!')
 })
 
 Given("I want to create a person", async () => {
