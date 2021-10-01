@@ -43,8 +43,20 @@ async function postRequest(endpoint, payload) {
     }
 }
 
+async function deleteRequest(endpoint) {
+  try {
+    const response = await axios.delete(endpoint, config);
+    cy.log('Sending delete request')
+    return response
+  } catch (error) {
+    console.error(error);
+    return error
+  }
+}
+
 module.exports = {
     getRequest,
     patchRequest,
-    postRequest
+    postRequest,
+    deleteRequest
 }

@@ -15,7 +15,13 @@ const editTenure = async(tenureId, tenureType, ifMatch) => {
     return response
 }
 
+const deleteTenure = async(tenureId, personId) => {
+    const response = await request.deleteRequest(`${tenureEndpoint}/tenures/${tenureId}/person/${personId}`)
+    return response
+}
+
 module.exports = {
     getTenure,
-    editTenure
+    editTenure,
+    deleteTenure
 }

@@ -4,6 +4,7 @@ import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
 
 const createTenurePage = new CreateTenurePageObjects()
 const modal = new ModalPageObjects()
+const tenure = require('../../../api/tenure')
 
 Then('the new tenure landing page is displayed', () => {
     createTenurePage.addPropertyHeading().should('be.visible')
@@ -123,4 +124,31 @@ Then('I am on the create contact for a new tenure page', () => {
 And('the person is added to the list of tenures {string} {string} {string} {string} {string} {string}', (title, firstName, lastName, day, month, year) => {
     createTenurePage.addAsHousholdMember().contains(`${title} ${firstName} ${lastName}`)
     createTenurePage.addAsHousholdMember().contains(`${day}/${month}/${year},`)
+})
+
+When('I navigate to a create person for new tenure {string} {string}', (property, tenure) => {
+    createTenurePage.createNewPerson(property, tenure)
+})
+
+Given('I delete all existing persons from the new tenure {string}', async (tenureId) => {
+    // GET the list of people from the tenure
+    const getResponse = await tenure.getTenure(tenureId)
+    cy.log(`Status code ${getResponse.status} returned`)
+    assert.deepEqual(getResponse.status, 200)
+
+    // cy.log(getResponse.data.householdMembers[0].id)
+
+    const householdMembers = getResponse.data.householdMembers;
+
+    // foreach person in the array of household members run a DELETE with their personId
+
+    cy.log(householdMembers[0].id)
+    cy.log(householdMembers.length)
+
+    for(let i = 0; i > householdMembers.length; i++) {
+        const deleteResponse = await tenure.deleteTenure(tenureId, householdMembers[i].id)
+        cy.log(deleteResponse.status)
+        assert.deepEqual(deleteResponse.status, 204)
+    }
+    cy.log(`${householdMembers.length} person records deleted`)
 })
