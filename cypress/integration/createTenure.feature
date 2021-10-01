@@ -33,7 +33,6 @@ Feature: Create tenure
     And I click the next button
     And the tenure person search is displayed
     When I enter any of the following criteria "<searchTerm>"
-    And I click search
     And I click on the search button
     Then the search results are displayed by best match "<searchTerm>"
     When I add 1 named tenure holder
@@ -59,7 +58,6 @@ Feature: Create tenure
     And I click the next button
     And the tenure person search is displayed
     When I enter any of the following criteria "<searchTerm>"
-    And I click search
     And I click on the search button
     Then the search results are displayed by best match "<searchTerm>"
     Then the default sort option is correct
@@ -74,6 +72,55 @@ Feature: Create tenure
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
 
   @ignore
+  Scenario Outline: Create new tenure and add new person
+    When I view a property "<property>"
+    When I click on the new tenure button
+    Then I am on the create new tenure page "<property>"
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
+    And the create new person button is not enabled
+    When I enter any of the following criteria "<searchTerm>"
+    And I click on the search button
+    And I click create new person
+    And I am on the create new person for a new tenure page
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a place of birth "<placeOfBirth>"
+    And I select a preferred title "<preferredTitle>"
+    And I select a preferred first name "<preferredFirstName>"
+    And I select a preferred middle name "<preferredMiddleName>"
+    And I select a preferred last name "<preferredLastName>"
+    And I enter a reason for creation
+    And I click add person
+    Then I am on the create contact for a new tenure page
+    And I click the add email address button
+    And I enter an email address "<email>"
+    And I enter an email description "<emailDescription>"
+    And I click save email address
+    And the email information is captured "<email>" "<emailDescription>"
+    And I click the add phone number button
+    And I enter a phone number "<phoneNumber>"
+    And I select a phone number type "<phoneType>"
+    And I enter a phone number description "<phoneDescription>"
+    And I click save phone number
+    And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
+    And I click the done button
+    Then the person is added to the tenure
+    And the person is added to the list of tenures "<title>" "<firstName>" "<lastName>" "<day>" "<month>" "<year>"
+    And the tenure person search is displayed
+
+        Examples:
+        | property                             | tenureType | startDay | startMonth | startYear | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
+        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
+
+  @ignore
   Scenario Outline: Create new tenure validation
     When I view a property "<property>"
     When I click on the new tenure button
@@ -84,7 +131,6 @@ Feature: Create tenure
     And I click the next button
     And the tenure person search is displayed
     When I enter any of the following criteria "<searchTerm>"
-    And I click search
     And I click on the search button
     Then the search results are displayed by best match "<searchTerm>"
     When I add 1 named tenure holder

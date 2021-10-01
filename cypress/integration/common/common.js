@@ -526,3 +526,64 @@ When('I click cancel on the modal', () => {
 And('I click yes on the modal', () => {
   modal.confirmationButton().click()
 })
+
+    // Add person
+
+    And('I select a title {string}', (title) => {
+      addPersonPage.personTitleSelection().select(title)
+  })
+  
+  When('I select person type {string}', (personType) => {
+      if(personType === 'Named tenure holder') {
+          addPersonPage.tenureHolderRadioButton().click()
+      }
+      if(personType === 'Household member') {
+          addPersonPage.householdMemberRadioButton().click()
+      }
+  })
+  
+  And('I enter a first name {string}', (firstName) => {
+      addPersonPage.firstNameContainer().clear()
+      addPersonPage.firstNameContainer().type(firstName)
+  })
+  
+  And('I enter a middle name {string}', (middleName) => {
+      addPersonPage.middleNameContainer().clear()
+      addPersonPage.middleNameContainer().type(middleName)
+  })
+  
+  And('I enter a last name {string}', (lastName) => {
+      if(lastName === 'guid') {
+          lastName = testGuid.testGuid
+      }
+      addPersonPage.lastNameContainer().clear()
+      addPersonPage.lastNameContainer().type(lastName)
+  })
+  
+  And('I enter a date of birth {string} {string} {string}', (day, month, year) => {
+      addPersonPage.dateOfBirthDayContainer().clear()
+      addPersonPage.dateOfBirthDayContainer().type(day)
+      addPersonPage.dateOfBirthMonthContainer().clear()
+      addPersonPage.dateOfBirthMonthContainer().type(month)
+      addPersonPage.dateOfBirthYearContainer().clear()
+      addPersonPage.dateOfBirthYearContainer().type(year)
+  })
+  
+  Then('the form error container is displayed', () => {
+      addPersonPage.addPersonFormErrorContainer().should('be.visible')
+      addPersonPage.errorSummaryBody().contains('The date cannot be in the future')
+  })
+  
+  And('I enter a place of birth {string}', (placeOfBirth) => {
+      addPersonPage.placeOfBirthContainer().clear()
+      addPersonPage.placeOfBirthContainer().type(placeOfBirth)
+  })
+  
+  And('I select a preferred title {string}', (preferredTitle) => {
+      addPersonPage.preferredTitleContainer().select(preferredTitle)
+  })
+  
+  And('I select a preferred first name {string}', (preferredFirstName) => {
+      addPersonPage.preferredFirstNameContainer().clear()
+      addPersonPage.preferredFirstNameContainer().type(preferredFirstName)
+  })

@@ -102,3 +102,25 @@ Then('a new tenure error message appears {string}', (error) => {
     createTenurePage.pageAnnouncementContainer.should('be.visible')
     createTenurePage.pageAnnouncementContainer().contains(error)
 })
+
+And('the create new person button is not enabled', () => {
+    createTenurePage.createNewPersonButton().should('have.attr', 'aria-disabled').and('equal', true)
+})
+
+And('I click create new person', () => {
+    createTenurePage.createNewPersonButton().click()
+})
+
+And('I am on the create new person for a new tenure page', () => {
+    cy.url().should('include', '/person/new/')
+})
+
+Then('I am on the create contact for a new tenure page', () => {
+    cy.url().should('include', '/person/new/add/')
+    cy.url().should('include', '/contact')
+})
+
+And('the person is added to the list of tenures {string} {string} {string} {string} {string} {string}', (title, firstName, lastName, day, month, year) => {
+    createTenurePage.addAsHousholdMember().contains(`${title} ${firstName} ${lastName}`)
+    createTenurePage.addAsHousholdMember().contains(`${day}/${month}/${year},`)
+})

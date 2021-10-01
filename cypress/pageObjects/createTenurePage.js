@@ -11,6 +11,10 @@ class CreateTenurePageObjects {
         cy.injectAxe()
     }
 
+    createNewPerson(propertyId, tenureId) {
+        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${propertyId}/add/${tenureId}/person/new`)
+    }
+
     main() {
         return cy.get('.mtfh-layout__main')
     }
