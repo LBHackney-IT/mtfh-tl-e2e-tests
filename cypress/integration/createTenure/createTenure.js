@@ -4,6 +4,7 @@ import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
 
 const createTenurePage = new CreateTenurePageObjects()
 const modal = new ModalPageObjects()
+const tenure = require('../../../api/tenure')
 
 Then('the new tenure landing page is displayed', () => {
     createTenurePage.addPropertyHeading().should('be.visible')
@@ -65,4 +66,87 @@ Then('the edit tenure information is displayed', () => {
 
 And('I click the done button', () => {
     createTenurePage.doneButton().click()
+})
+
+When('I edit a Tenure {string}', (tenureId) => {
+    createTenurePage.editTenure(tenureId)
+})
+
+Then('the tenure cannot be edited warning message is displayed', () => {
+    createTenurePage.errorMessageContainer().should('be.visible')
+    createTenurePage.errorMessageContainer().contains('This tenure is no longer active and cannot be edited.')
+})
+
+When('I add {int} named tenure holder', (tenureHolders) => {
+    for(let i = 0; i < tenureHolders; i++) {
+        createTenurePage.addAsNamedTenureHolderButton().eq(i).click()
+    }
+})
+
+Then('the person is added to the tenure', () => {
+    createTenurePage.pageAnnouncementContainer().should('be.visible')
+    createTenurePage.pageAnnouncementContainer().contains('Person added to tenure')
+})
+
+Then('the person is not added to the tenure', () => {
+    createTenurePage.pageAnnouncementContainer().should('be.visible')
+    createTenurePage.pageAnnouncementContainer().contains('Person added to tenure')
+})
+
+When('I add {int} household member', (householdMembers) => {
+    for(let i = 0; i < householdMembers; i++) {
+        createTenurePage.addAsHousholdMember().eq(i).click()
+    }
+})
+
+Then('a new tenure error message appears {string}', (error) => {
+    createTenurePage.pageAnnouncementContainer.should('be.visible')
+    createTenurePage.pageAnnouncementContainer().contains(error)
+})
+
+And('the create new person button is not enabled', () => {
+    createTenurePage.createNewPersonButton().should('have.attr', 'aria-disabled').and('equal', 'true')
+})
+
+And('I click create new person', () => {
+    createTenurePage.createNewPersonButton().click()
+})
+
+And('I am on the create new person for a new tenure page', () => {
+    cy.url().should('include', '/person/new/')
+})
+
+Then('I am on the create contact for a new tenure page', () => {
+    cy.url().should('include', '/person/new/add/')
+    cy.url().should('include', '/contact')
+})
+
+And('the person is added to the list of tenures {string} {string} {string} {string} {string} {string}', (title, firstName, lastName, day, month, year) => {
+    createTenurePage.addAsHousholdMember().contains(`${title} ${firstName} ${lastName}`)
+    createTenurePage.addAsHousholdMember().contains(`${day}/${month}/${year},`)
+})
+
+When('I navigate to a create person for new tenure {string} {string}', (property, tenure) => {
+    createTenurePage.createNewPerson(property, tenure)
+})
+
+Given('I delete all existing persons from the new tenure {string}', async (tenureId) => {
+    // GET the list of people from the tenure
+    const getResponse = await tenure.getTenure(tenureId)
+    cy.log(`Status code ${getResponse.status} returned`)
+    assert.deepEqual(getResponse.status, 200)
+
+    const householdMembers = getResponse.data.householdMembers;
+
+    // DELETE any existing person from the tenure
+    for(let i = 0; i < householdMembers.length; i++) {
+        const deleteResponse = await tenure.deleteTenure(tenureId, householdMembers[i].id)
+        cy.log(`Status code ${deleteResponse.status} returned`)
+        assert.deepEqual(deleteResponse.status, 204)
+    }
+    cy.log(`${householdMembers.length} person records deleted`)
+})
+
+And('I click remove person', () => {
+    createTenurePage.confirmRemovePersonButton().click()
 })

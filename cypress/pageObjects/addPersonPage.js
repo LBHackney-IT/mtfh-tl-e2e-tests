@@ -30,6 +30,10 @@ class AddPersonPageObjects {
         return cy.get('h2')
     }
 
+    removePersonFromTenure() {
+        return cy.contains('Remove')
+    }
+
     tenureHolderRadioButton() {
         return cy.get('#person-form-type-tenure-holder')
     }

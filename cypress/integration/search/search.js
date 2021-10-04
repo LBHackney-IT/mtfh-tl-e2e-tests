@@ -14,15 +14,6 @@ And("I click on the search again button", () => {
   searchPage.searchAgainButton().click();
 });
 
-When("I set the number of results to {int}", (results) => {
-  searchPage.numberOfResultsDisplayed(results);
-});
-
-Then("the correct number of {int} are displayed", (results) => {
-  searchPage.paginationSummary().contains(results);
-  searchPage.filterStatus().contains(results);
-});
-
 Then("the search again button is displayed", () => {
   searchPage.searchAgainButton().should("be.visible");
 });
@@ -31,13 +22,7 @@ Then("a validation error message is displayed", () => {
   searchPage.searchTermError().should("be.visible");
 });
 
-Then("the default sort option is correct", () => {
-  searchPage.sortByOption().contains("Best match");
-});
 
-When("I select to sort by {string}", (filter) => {
-  searchPage.sortByOption().select(filter);
-});
 
 Then("there is no filter option", () => {
   searchPage.sortByOption().should("not.exist");
