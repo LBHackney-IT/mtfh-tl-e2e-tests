@@ -146,3 +146,7 @@ Given('I delete all existing persons from the new tenure {string}', async (tenur
     }
     cy.log(`${householdMembers.length} person records deleted`)
 })
+
+And('I click remove person', () => {
+    createTenurePage.confirmRemovePersonButton().click()
+})
