@@ -136,18 +136,12 @@ Given('I delete all existing persons from the new tenure {string}', async (tenur
     cy.log(`Status code ${getResponse.status} returned`)
     assert.deepEqual(getResponse.status, 200)
 
-    // cy.log(getResponse.data.householdMembers[0].id)
-
     const householdMembers = getResponse.data.householdMembers;
 
-    // foreach person in the array of household members run a DELETE with their personId
-
-    cy.log(householdMembers[0].id)
-    cy.log(householdMembers.length)
-
-    for(let i = 0; i > householdMembers.length; i++) {
+    // DELETE any existing person from the tenure
+    for(let i = 0; i < householdMembers.length; i++) {
         const deleteResponse = await tenure.deleteTenure(tenureId, householdMembers[i].id)
-        cy.log(deleteResponse.status)
+        cy.log(`Status code ${deleteResponse.status} returned`)
         assert.deepEqual(deleteResponse.status, 204)
     }
     cy.log(`${householdMembers.length} person records deleted`)
