@@ -114,6 +114,10 @@ class CreateTenurePageObjects {
     errorMessageContainer() {
         return cy.get('.govuk-error-summary__title')
     }
+
+    confirmRemovePersonButton() {
+        return cy.contains('Remove person')
+    }
 }
 
 export default CreateTenurePageObjects

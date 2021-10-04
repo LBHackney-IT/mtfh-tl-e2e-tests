@@ -304,6 +304,10 @@ Feature: Create tenure
         And I am on the create new person for a new tenure page
         And the named tenure holder button is not active
         And I remove one of the tenure holders
+        And I click the cancel button
+        And I remove one of the tenure holders
+        And I click remove person
+        Then the person is removed
         When I select person type "Named tenure holder"
         And I select a title "<title>"
         And I enter a first name "<firstName>"
