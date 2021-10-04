@@ -31,5 +31,5 @@ When('I navigate to the asset page {string}', (assetId) => {
 })
 
 And('I am shown an error message', () => {
-    propertyPage.propertyPage().contains('This asset could not be loaded.')
+    propertyPage.propertyPage().contains('This property could not be loaded.')
 })

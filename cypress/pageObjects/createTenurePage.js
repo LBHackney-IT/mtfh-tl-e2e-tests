@@ -12,7 +12,7 @@ class CreateTenurePageObjects {
     }
 
     createNewPerson(propertyId, tenureId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${propertyId}/add/${tenureId}/person/new`)
+        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${propertyId}/add/${tenureId}/person`)
     }
 
     main() {

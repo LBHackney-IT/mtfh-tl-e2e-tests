@@ -284,15 +284,14 @@ Feature: Create tenure
         And I click save phone number
         And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
         And I click the done button
-        Then the person is added to the tenure
-        And the person is added to the list of tenures "<title>" "<firstName>" "<lastName>" "<day>" "<month>" "<year>"
-        And the tenure person search is displayed
+       And the tenure person search is displayed
 
         Examples:
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
         | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
         
 
+    @ignore
     Scenario Outline: Create person for new tenure validation
         Given I delete all existing persons from the new tenure "<tenure>"
         When I navigate to a create person for new tenure "<property>" "<tenure>"
@@ -315,7 +314,6 @@ Feature: Create tenure
         And I enter a date of birth "<day>" "<month>" "<year>"
         And I enter a reason for creation
         And I click the done button
-        Then the person is added to the tenure
 
         Examples:
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |

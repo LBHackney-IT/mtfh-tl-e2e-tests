@@ -105,7 +105,7 @@ Then('a new tenure error message appears {string}', (error) => {
 })
 
 And('the create new person button is not enabled', () => {
-    createTenurePage.createNewPersonButton().should('have.attr', 'aria-disabled').and('equal', true)
+    createTenurePage.createNewPersonButton().should('have.attr', 'aria-disabled').and('equal', 'true')
 })
 
 And('I click create new person', () => {
