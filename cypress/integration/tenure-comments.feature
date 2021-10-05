@@ -5,44 +5,45 @@ Feature: Tenure Comment
     Background:
       Given I am logged in
 
-    # @SmokeTest
-    # @Positive
-    # Scenario Outline: I go to create a comment for a tenure page
-    #   Given I am on the create comment for a tenure page "<tenure>"
-    #   Then the create comment for a tenure components are displayed
+    @SmokeTest
+    @Positive
+    Scenario Outline: I go to create a comment for a tenure page
+      Given I am on the create comment for a tenure page "<tenure>"
+      Then the create comment for a tenure components are displayed
 
-    #   Examples:
-    #     | tenure                               |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+      Examples:
+        | tenure                               |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
-    # Need to update this!! 
-    # @device    
-    # Scenario Outline: I go to create a comment for a tenure page on a device
-    #   Given I am on the create comment for a tenure page "<tenure>"
-    #   And I am using a mobile viewport "<device>"
-    #   When I enter a valid comment
-    #   Then I click the save comment button
-    #   Then the comment is submitted
+    @device    
+    Scenario Outline: I go to create a comment for a tenure page on a device
+      Given I am on the create comment for a tenure page "<tenure>"
+      And I am using a mobile viewport "<device>"
+      When I enter a valid title
+      And I enter a valid comment
+      And I select a comment category "<category>"
+      Then I click the save comment button
+      Then the comment is submitted
 
-    #   Examples:
-    #     | tenure                               | device        |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-2        |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-mini     |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-3      |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-4      |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-5      |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6      |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6+     |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-7      |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-8      |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-xr     |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-se2    |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-11    |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-13    |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-15    |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-16    |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-note9 |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-s10   |
+      Examples:
+        | tenure                               | device        | category             |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-2        | Appointments         |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-mini     | Estate management    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-3      | Evictions            |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-4      | Parking              |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-5      | Planned maintenance  |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6      | Rehousing            |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6+     | Rents                |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-7      | Repairs              |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-8      | Service charge       |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-xr     | Temporary decant     |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-se2    | Tenure breaches      |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-11    | Tenure management    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-13    | Voids                |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-15    | Appointments         |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-16    | Appointments         |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-note9 | Appointments         |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-s10   | Appointments         |
 
     @SmokeTest
     @Positive  
@@ -155,11 +156,11 @@ Feature: Tenure Comment
     # #     | tenure                               |
     # #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
-    # # @Accessibility
-    # # Scenario Outline: Accessibility Testing for tenure
-    # #   Given I am on the create comment for a tenure page "<tenure>"
-    # #   And have no detectable a11y violations
+    @Accessibility
+    Scenario Outline: Accessibility Testing for tenure
+      Given I am on the create comment for a tenure page "<tenure>"
+      And have no detectable a11y violations
 
-    # #   Examples:
-    # #     | tenure                               |
-    # #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+      Examples:
+        | tenure                               |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
