@@ -19,29 +19,31 @@ Feature: T&L Person Comment
     Scenario Outline: I go to create a comment for a person page on a device
       Given I am on the create comment for a person page "<person>"
       And I am using a mobile viewport "<device>"
+      When I enter a valid title
       When I enter a valid comment
+      And I select a comment category "<category>"
       Then I click the save comment button
       Then the comment is submitted
 
       Examples:
-        | person                               | device        |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-2        |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-mini     |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-3      |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-4      |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-5      |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-6      |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-6+     |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-7      |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-8      |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-xr     |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-se2    |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-11    |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-13    |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-15    |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-16    |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-note9 |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-s10   |
+        | person                               | device       | category             |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-2       | Appointments         |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-mini     | Estate management    |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-3      | Evictions            |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-4      | Parking              |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-5      | Planned maintenance  |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-6      | Rehousing            |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-6+     | Rents                |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-7      | Repairs              |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-8      | Service charge       |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-xr     | Temporary decant     |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-se2    | Tenure breaches      |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-11    | Tenure management    |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-13    | Voids                |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-15    | Appointments         |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-16    | Appointments         |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-note9 | Appointments         |
+        # | ac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-s10   | Appointments         |
 
     @SmokeTest
     @Positive    
