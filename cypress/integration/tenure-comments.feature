@@ -50,14 +50,14 @@ Feature: Tenure Comment
     Scenario Outline: Save comment for tenure 
       Given I am on the create comment for a tenure page "<tenure>"
       When I enter a valid title
-      # When I enter a valid comment
-      # And I fill the mandatory fields
+      And I enter a valid comment
+      And I select a comment category "<category>"
       # Then I click the save comment button
       # Then the comment is submitted
 
       Examples:
-        | tenure                               |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+        | tenure                               | category     |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | Appointments |
     
     # @SmokeTest
     # @Negative

@@ -14,6 +14,10 @@ class TenureCommentsPageObjects {
         return cy.get('[data-testid="add-comment-to-tenure"]')
     }
 
+    addCommentCategoryField(){
+        return cy.get('[id="add-comment-category-field"]')
+    }
+
     pageAnnouncementHeader() {
         return cy.get('.lbh-page-announcement__title')
     }

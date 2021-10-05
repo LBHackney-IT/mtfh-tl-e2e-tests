@@ -15,10 +15,8 @@ Then('the create comment for a tenure components are displayed',  () => {
 })
 
 When('I enter a valid title',  () => {
-    //tenureCommentsPage.addCommentTitleField().type('test')
     tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
 })
-
 
 When('I enter {int} characters into the comment field', (characters) => {
     function truncateString(str, num) {
@@ -30,6 +28,10 @@ When('I enter {int} characters into the comment field', (characters) => {
 
     const inputText = truncateString(helperText.helperText, characters)
     tenureCommentsPage.commentContainer().type(inputText)
+})
+
+When('I select a comment category {string}',  (category) => {
+    tenureCommentsPage.addCommentCategoryField().select(category)
 })
 
 Then('the number of characters remaining is correct {int}', (characters) => {
