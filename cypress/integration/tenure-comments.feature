@@ -52,8 +52,8 @@ Feature: Tenure Comment
       When I enter a valid title
       And I enter a valid comment
       And I select a comment category "<category>"
-      # Then I click the save comment button
-      # Then the comment is submitted
+      Then I click the save comment button
+      Then the comment is submitted
 
       Examples:
         | tenure                               | category     |
