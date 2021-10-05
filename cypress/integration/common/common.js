@@ -10,7 +10,6 @@ import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
-import TenureCommentsPageObjects from "../../pageObjects/tenureCommentsPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage"
@@ -25,7 +24,6 @@ import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
-import commentTitle from "../../helpers/commentText";
 import { hasToggle } from "../../helpers/hasToggle";
 
 const envConfig = require("../../../environment-config");
@@ -36,7 +34,6 @@ const header = new HeaderPageObjects();
 const modal = new ModalPageObjects();
 const navigation = new NavigationPageObjects();
 const personCommentsPage = new PersonCommentsPageObjects();
-const tenureCommentsPage = new TenureCommentsPageObjects();
 const personContactPage = new PersonContactPageObjects();
 const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
@@ -182,15 +179,10 @@ And("the page footer links are correct", () => {
   footer.footerLinksAreCorrect();
 });
 
-// Comments shared steps for person and tenure
-When('I enter a valid title',  () => {
-  tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
-})
-
+// Person Comments shared steps
 When("I enter a valid comment", () => {
   personCommentsPage.commentContainer().type(validComment.validComment);
 });
-
 
 Then("I click the save comment button", () => {
   personCommentsPage.submitCommentButton().click();

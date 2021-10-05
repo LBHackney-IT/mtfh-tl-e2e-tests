@@ -21,10 +21,6 @@ When('I enter {int} characters into the comment field', (characters) => {
     personCommentsPage.commentContainer().type(inputText)
 })
 
-When('I select a comment category {string}',  (category) => {
-    personCommentsPage.addCommentCategoryField().select(category)
-})
-
 Then('the number of characters remaining is correct {int}', (characters) => {
     const difference = differenceInCharacters(characters)
     personCommentsPage.characterCountMessage().should('be.visible')

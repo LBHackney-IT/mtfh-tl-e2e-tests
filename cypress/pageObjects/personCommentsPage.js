@@ -14,14 +14,6 @@ class PersonCommentsPageObjects {
         return cy.get('.lbh-page-announcement__title')
     }
 
-    addCommentTitleField() {
-        return cy.get('[id="add-comment-title-field"]')
-    }
-
-    addCommentCategoryField(){
-        return cy.get('[id="add-comment-category-field"]')
-    }
-
     errorMessageContainer() {
         return cy.get('.govuk-error-summary optional-extra-class lbh-error-summary')
     }

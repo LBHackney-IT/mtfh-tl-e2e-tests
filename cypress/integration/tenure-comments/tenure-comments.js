@@ -14,6 +14,10 @@ Then('the create comment for a tenure components are displayed',  () => {
     tenureCommentsPage.tenureCommentsComponentsAreDisplayed()
 })
 
+When('I enter a valid title',  () => {
+    tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
+})
+
 When('I enter {int} characters into the comment field', (characters) => {
     function truncateString(str, num) {
         if (str.length <= num) {
