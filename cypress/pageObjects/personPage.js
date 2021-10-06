@@ -15,6 +15,14 @@ class PersonPageObjects {
         return cy.get("[data-testid='person-fullName']")
     }
 
+    addCommentTitleField() {
+        return cy.get('[id="add-comment-title-field"]')
+    }
+
+    addCommentCategoryField(){
+        return cy.get('[id="add-comment-category-field"]')
+    }
+
     addCommentButton() {
         return cy.get('.govuk-button lbh-button')
     }

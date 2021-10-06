@@ -3,6 +3,7 @@ import {
   And,
   Given,
   defineParameterType,
+  When,
 } from "cypress-cucumber-preprocessor/steps";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
@@ -15,8 +16,11 @@ import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage"
 import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
+
+import commentTitle from "../../helpers/personCommentText";
 import validComment from "../../helpers/personCommentText";
 import testGuid from "../../helpers/personCommentText";
+
 import comment from "../../../api/comment";
 import contact from "../../../api/contact";
 import person from "../../../api/person";
@@ -180,9 +184,18 @@ And("the page footer links are correct", () => {
 });
 
 // Person Comments shared steps
+
+When("I enter a valid title", () => {
+  personCommentsPage.commentContainer().type(commentTitle.commentTitle);
+});
+
 When("I enter a valid comment", () => {
   personCommentsPage.commentContainer().type(validComment.validComment);
 });
+
+When('I select a comment category {string}',  (category) => {
+  personCommentsPage.addCommentCategoryField().select(category)
+})
 
 Then("I click the save comment button", () => {
   personCommentsPage.submitCommentButton().click();

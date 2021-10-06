@@ -6,8 +6,16 @@ class TenureCommentsPageObjects {
         cy.injectAxe()
     }
 
+    addCommentTitleField() {
+        return cy.get('[id="add-comment-title-field"]')
+    }
+
     addCommentForm() {
         return cy.get('[data-testid="add-comment-to-tenure"]')
+    }
+
+    addCommentCategoryField(){
+        return cy.get('[id="add-comment-category-field"]')
     }
 
     pageAnnouncementHeader() {
