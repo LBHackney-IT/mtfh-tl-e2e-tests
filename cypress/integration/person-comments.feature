@@ -45,7 +45,6 @@ Feature: T&L Person Comment
         | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-note9 | Appointments         |
         | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-s10   | Appointments         |
    
-
     @SmokeTest
     @Positive    
     Scenario Outline: I go to create a comment for a person page

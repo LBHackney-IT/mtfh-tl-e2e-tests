@@ -47,7 +47,6 @@ Feature: Tenure Comment
 
     @SmokeTest
     @Positive  
-    #Notes: TL-60 added additional fields - AC 3 
     Scenario Outline: Save comment for tenure 
       Given I am on the create comment for a tenure page "<tenure>"
       When I enter a valid title
