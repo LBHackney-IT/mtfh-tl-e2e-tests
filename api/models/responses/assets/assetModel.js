@@ -25,7 +25,9 @@ const assetModelWithValidAssetType = {
         "managingOrganisation": "London Borough of Hackney",
         "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724",
         "owner": "OOB",
-        "isTMOManaged": false
+        "isTMOManaged": false,
+        "propertyOccupiedStatus": null,
+        "isNoRepairsMaintenance": false
     },
     "assetCharacteristics": {
         "numberOfBedrooms": 2,
@@ -85,7 +87,9 @@ const assetModelWithInvalidAssetType = {
         "managingOrganisation": "Wyke Tenants and Residents Co-operative",
         "managingOrganisationId": "bcf63270-4e09-7336-ce58-38a146edcdb4",
         "owner": "LBH",
-        "isTMOManaged": true
+        "isTMOManaged": true,
+        "propertyOccupiedStatus": null,
+        "isNoRepairsMaintenance": false
     },
     "assetCharacteristics": {
         "numberOfBedrooms": 0,
