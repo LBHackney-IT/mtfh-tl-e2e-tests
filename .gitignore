@@ -6,3 +6,4 @@ cypress.env.json
 .env
 .vscode/settings.json
 .metals/
+.vscode/launch.json
