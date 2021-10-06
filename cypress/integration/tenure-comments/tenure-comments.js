@@ -1,6 +1,8 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
 import helperText from '../../helpers/inputText'
+import commentTitle from "../../helpers/commentText";
+
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 
@@ -10,6 +12,10 @@ Given('I am on the create comment for a tenure page {string}', (tenure) => {
 
 Then('the create comment for a tenure components are displayed',  () => {
     tenureCommentsPage.tenureCommentsComponentsAreDisplayed()
+})
+
+When('I enter a valid title',  () => {
+    tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
 })
 
 When('I enter {int} characters into the comment field', (characters) => {
@@ -22,6 +28,10 @@ When('I enter {int} characters into the comment field', (characters) => {
 
     const inputText = truncateString(helperText.helperText, characters)
     tenureCommentsPage.commentContainer().type(inputText)
+})
+
+When('I select a comment category {string}',  (category) => {
+    tenureCommentsPage.addCommentCategoryField().select(category)
 })
 
 Then('the number of characters remaining is correct {int}', (characters) => {

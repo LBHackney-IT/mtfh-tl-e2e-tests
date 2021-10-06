@@ -6,10 +6,18 @@ class PersonCommentsPageObjects {
         cy.injectAxe()
     }
 
+    addCommentTitleField() {
+        return cy.get('[id="add-comment-title-field"]')
+    }
+
     addCommentForm() {
         return cy.get('[data-testid="add-comment-to-person"]')
     }
 
+    addCommentCategoryField(){
+        return cy.get('[id="add-comment-category-field"]')
+    }
+    
     pageAnnouncementHeader() {
         return cy.get('.lbh-page-announcement__title')
     }
