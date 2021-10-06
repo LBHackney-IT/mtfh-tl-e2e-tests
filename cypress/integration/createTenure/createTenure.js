@@ -150,3 +150,7 @@ Given('I delete all existing persons from the new tenure {string}', async (tenur
 And('I click remove person', () => {
     createTenurePage.confirmRemovePersonButton().click()
 })
+
+Then('the edit tenure information is displayed {string}', (tenureId) => {
+    cy.url().should('include', `tenure/${tenureId}/edit`)
+})
