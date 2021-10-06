@@ -206,7 +206,7 @@ Feature: Create tenure
         Then the edit tenure information is displayed
         When I select a tenure type "<tenureType>"
         And I click the done button
-        Then the tenure information is displayed
+        Then the edit tenure information is displayed
 
         Examples:
         | tenure                               | tenureType |
