@@ -206,12 +206,12 @@ Feature: Create tenure
         Then the edit tenure information is displayed
         When I select a tenure type "<tenureType>"
         And I click the done button
-        Then the tenure information is displayed
+        Then the edit tenure information is displayed
 
         Examples:
         | tenure                               | tenureType |
         | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold   |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Secure     |
+        # | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Secure     |
 
     Scenario Outline: Edit existing tenure and cancel
         When I view a Tenure "<tenure>"

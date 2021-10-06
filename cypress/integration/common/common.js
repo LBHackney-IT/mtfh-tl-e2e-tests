@@ -186,7 +186,7 @@ And("the page footer links are correct", () => {
 // Person Comments shared steps
 
 When("I enter a valid title", () => {
-  personCommentsPage.commentContainer().type(commentTitle.commentTitle);
+  personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle);
 });
 
 When("I enter a valid comment", () => {

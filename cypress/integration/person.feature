@@ -70,15 +70,17 @@ Feature: T&L Person Page
     # Then the body Person details are displayed
     When I click on the add comment button
     Then I am taken to the add comment for person page "<record>"
+    When I enter a valid title
     When I enter a valid comment
+    And I select a comment category "<category>"
     Then I click the save comment button
     Then the comment is submitted
     Given I have loaded a Person record "<record>"
     Then the new comment is loaded
 
     Examples:
-      | record                               |
-      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      | record                               | category     |
+      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | Appointments |
 
   @Accessibility
   Scenario Outline: Scenario Outline name: Accessibility Testing
