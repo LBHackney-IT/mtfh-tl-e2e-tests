@@ -5,6 +5,7 @@ import commentTitle from "../../helpers/commentText";
 
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
+let validationMessageField = ""
 
 Given('I am on the create comment for a tenure page {string}', (tenure) => {
     tenureCommentsPage.visit(tenure)
@@ -38,21 +39,25 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
     if (commentTitle === "")
         {
             tenureCommentsPage.commentContainer().type(commentDescription);
-            tenureCommentsPage.addCommentCategoryField().select(commentCategory)  
+            tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+            validationMessageField = "commentTitle"
+            
         }
     else if(commentDescription === "")
         {
             tenureCommentsPage.addCommentTitleField().type(commentTitle)
-            tenureCommentsPage.addCommentCategoryField().select(commentCategory)  
+            tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+            validationMessageField = "commentDescription"
+  
         }
     else if (commentCategory === "")
         {
             tenureCommentsPage.addCommentTitleField().type(commentTitle)
-            tenureCommentsPage.commentContainer().type(commentDescription);
+            tenureCommentsPage.commentContainer().type(commentDescription)
+            validationMessageField = "commentCategory"
+
         }
 })
-
-
 
 Then('the number of characters remaining is correct {int}', (characters) => {
     const difference = differenceInCharacters(characters)
@@ -69,6 +74,21 @@ Then('the warning message tells me I am over by {int}', (characters) => {
 Then('a validation error occurs', () => {
     tenureCommentsPage.addCommentsError().should('be.visible')
     tenureCommentsPage.commentDescriptionError().should('be.visible')
+})
+
+Then ('I can see a specific validation message for the field {string}',(validationMessage)=>{
+    if (validationMessageField == "commentTitle") 
+    {
+        tenureCommentsPage.addCommentTitleError().contains(validationMessage)
+    }
+    else if(validationMessageField == "commentDescription")
+    {
+        tenureCommentsPage.commentDescriptionError().contains(validationMessage)
+    }
+    else if (validationMessageField == "commentCategory")
+    {
+        tenureCommentsPage.addCommentCategoryError().contains(validationMessage)
+    }
 })
 
 function differenceInCharacters(characters) {

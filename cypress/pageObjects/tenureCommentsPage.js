@@ -9,6 +9,11 @@ class TenureCommentsPageObjects {
     addCommentTitleField() {
         return cy.get('[id="add-comment-title-field"]')
     }
+    
+    addCommentTitleError()
+    {
+        return cy.get('[id="add-comment-title-error"]')
+    }
 
     addCommentForm() {
         return cy.get('[data-testid="add-comment-to-tenure"]')
@@ -18,6 +23,10 @@ class TenureCommentsPageObjects {
         return cy.get('[id="add-comment-category-field"]')
     }
 
+    addCommentCategoryError(){
+        return cy.get ('[id ="add-comment-category-error"]')
+    }
+    
     pageAnnouncementHeader() {
         return cy.get('.lbh-page-announcement__title')
     }

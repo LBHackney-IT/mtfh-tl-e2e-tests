@@ -66,13 +66,13 @@ Feature: Tenure Comment
       Given I am on the create comment for a tenure page "<tenure>"
       When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
       And I click the save comment button
-      Then I can see a validation message "<validationMessage>" 
+      Then I can see a specific validation message for the field "<validationMessage>" 
 
       Examples:
-        | tenure                               | commentTitle | commentDescription | commentCategory | validationMessage                         |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |              | test comment       |  Rents          | You must provide a title for this comment |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   |                    |  Rents          |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   | test comment       |                 |
+        | tenure                               | commentTitle | commentDescription | commentCategory | validationMessage                                |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |              | test comment       |  Rents          | You must provide a title for this comment        |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   |                    |  Rents          | You must enter a description for this comment    |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   | test comment       |                 | You must select a category for this comment      |
 
     # @SmokeTest
     # @Positive
