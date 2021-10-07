@@ -34,6 +34,26 @@ When('I select a comment category {string}',  (category) => {
     tenureCommentsPage.addCommentCategoryField().select(category)
 })
 
+When('I do not fill the mandatory fields:{string} {string} {string}',  (commentTitle, commentDescription, commentCategory ) => {
+    if (commentTitle === "")
+        {
+            tenureCommentsPage.commentContainer().type(commentDescription);
+            tenureCommentsPage.addCommentCategoryField().select(commentCategory)  
+        }
+    else if(commentDescription === "")
+        {
+            tenureCommentsPage.addCommentTitleField().type(commentTitle)
+            tenureCommentsPage.addCommentCategoryField().select(commentCategory)  
+        }
+    else if (commentCategory === "")
+        {
+            tenureCommentsPage.addCommentTitleField().type(commentTitle)
+            tenureCommentsPage.commentContainer().type(commentDescription);
+        }
+})
+
+
+
 Then('the number of characters remaining is correct {int}', (characters) => {
     const difference = differenceInCharacters(characters)
     tenureCommentsPage.characterCountMessage().should('be.visible')
