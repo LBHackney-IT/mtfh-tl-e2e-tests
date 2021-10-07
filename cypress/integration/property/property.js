@@ -16,14 +16,14 @@ Given('I check the asset API with a valid assetType {string}', async (assetId) =
     const getResponse = await asset.getAsset(assetId)
     cy.log(`Status code ${getResponse.status} returned`)
     assert.deepEqual(getResponse.status, 200)
-    // assert.deepEqual(getResponse.data, assetModel.assetModelWithValidAssetType)
+    assert.deepEqual(getResponse.data.assetType, assetModel.assetModelWithValidAssetType.assetType)
 })
 
 Given('I check the asset API with an invalid assetType {string}', async (assetId) => {
     const getResponse = await asset.getAsset(assetId)
     cy.log(`Status code ${getResponse.status} returned`)
     assert.deepEqual(getResponse.status, 200)
-    // assert.deepEqual(getResponse.data, assetModel.assetModelWithInvalidAssetType)
+    assert.deepEqual(getResponse.data.assetType, assetModel.assetModelWithInvalidAssetType.assetType)
 })
 
 When('I navigate to the asset page {string}', (assetId) => {
