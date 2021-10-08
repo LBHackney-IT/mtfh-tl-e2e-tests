@@ -1,14 +1,17 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
 import helperText from '../../helpers/inputText'
-import commentTitle from "../../helpers/commentText";
-
+import commentTitle from "../../helpers/commentText"
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
+const envConfig = require('../../../environment-config');
+
 let validationMessageField = ""
+let tenureId =""
 
 Given('I am on the create comment for a tenure page {string}', (tenure) => {
     tenureCommentsPage.visit(tenure)
+    tenureId = tenure
 })
 
 Then('the create comment for a tenure components are displayed',  () => {
@@ -66,6 +69,10 @@ Then('I can see the cancellation pop up for comment',  () => {
     tenureCommentsPage.cancellationPopUpWindow().contains('Are you sure you wish to cancel adding this comment?')
 })
 
+Then('I can cancel the comment',  () => {
+   tenureCommentsPage.cancellationYesButton().contains('Yes').click()
+    cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}`)
+})
 
 Then('the number of characters remaining is correct {int}', (characters) => {
     const difference = differenceInCharacters(characters)
