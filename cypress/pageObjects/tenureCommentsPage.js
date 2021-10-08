@@ -26,7 +26,7 @@ class TenureCommentsPageObjects {
     addCommentCategoryError(){
         return cy.get ('[id ="add-comment-category-error"]')
     }
-    
+
     pageAnnouncementHeader() {
         return cy.get('.lbh-page-announcement__title')
     }
@@ -61,6 +61,10 @@ class TenureCommentsPageObjects {
 
     submitCommentButton() {
         return cy.get('[type="submit"]')
+    }
+
+    discardCommentLink (){
+        return cy.get('[class ="govuk-link lbh-link lbh-link--no-visited-state"]')
     }
 
     tenureCommentsComponentsAreDisplayed() {

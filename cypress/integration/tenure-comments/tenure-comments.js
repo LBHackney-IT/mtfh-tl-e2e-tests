@@ -58,6 +58,14 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
 
         }
 })
+When('I click the Discard comment link',  () => {
+    tenureCommentsPage.discardCommentLink().click()
+})
+
+Then('I can see the cancellation pop up for comment',  () => {
+
+})
+
 
 Then('the number of characters remaining is correct {int}', (characters) => {
     const difference = differenceInCharacters(characters)

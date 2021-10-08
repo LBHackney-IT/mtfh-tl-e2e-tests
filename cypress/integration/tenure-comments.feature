@@ -59,34 +59,32 @@ Feature: Tenure Comment
     #     | tenure                               | category     |
     #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | Appointments |
     
-    @SmokeTest
-    @Negative
-    #Notes: TL-60 added additional fields - AC2
-      Scenario Outline: User cannot submit a comment without mandatory fields
-      Given I am on the create comment for a tenure page "<tenure>"
-      When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
-      And I click the save comment button
-      Then I can see a specific validation message for the field "<validationMessage>" 
-
-      Examples:
-        | tenure                               | commentTitle | commentDescription | commentCategory | validationMessage                                |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |              | test comment       |  Rents          | You must provide a title for this comment        |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   |                    |  Rents          | You must enter a description for this comment    |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   | test comment       |                 | You must select a category for this comment      |
-
     # @SmokeTest
-    # @Positive
-    # @ignore
-    # #Notes: TL-60 AC3.1 Cancel
-    # Scenario Outline: Cancel comment and pop up message
+    # @Negative
+    # #Notes: TL-60 added additional fields - AC2
+    #   Scenario Outline: User cannot submit a comment without mandatory fields
     #   Given I am on the create comment for a tenure page "<tenure>"
-    #   And I enter a valid comment
-    #   When I click the Discard comment Are you sure you wish to cancel adding this comment?
-    #   Then I can see a button to Discard comment
+    #   When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
+    #   And I click the save comment button
+    #   Then I can see a specific validation message for the field "<validationMessage>" 
 
     #   Examples:
-    #     | tenure                               |
-    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+    #     | tenure                               | commentTitle | commentDescription | commentCategory | validationMessage                                |
+    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |              | test comment       |  Rents          | You must provide a title for this comment        |
+    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   |                    |  Rents          | You must enter a description for this comment    |
+    #     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   | test comment       |                 | You must select a category for this comment      |
+
+    @SmokeTest
+    @Positive
+    #Notes: TL-60 AC3.1 Cancel
+    Scenario Outline: Cancel comment and pop up message
+      Given I am on the create comment for a tenure page "<tenure>"
+      When I click the Discard comment link
+      # Then I can see a button to Discard comment
+
+      Examples:
+        | tenure                               |
+        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
     
     # @SmokeTest
     # @Positive
