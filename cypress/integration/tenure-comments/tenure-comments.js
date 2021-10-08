@@ -63,7 +63,7 @@ When('I click the Discard comment link',  () => {
 })
 
 Then('I can see the cancellation pop up for comment',  () => {
-
+    tenureCommentsPage.cancellationPopUpWindow().contains('Are you sure you wish to cancel adding this comment?')
 })
 
 

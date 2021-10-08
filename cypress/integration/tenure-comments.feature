@@ -80,7 +80,7 @@ Feature: Tenure Comment
     Scenario Outline: Cancel comment and pop up message
       Given I am on the create comment for a tenure page "<tenure>"
       When I click the Discard comment link
-      # Then I can see a button to Discard comment
+      Then I can see the cancellation pop up for comment
 
       Examples:
         | tenure                               |

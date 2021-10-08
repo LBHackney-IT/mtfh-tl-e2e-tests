@@ -66,6 +66,9 @@ class TenureCommentsPageObjects {
     discardCommentLink (){
         return cy.get('[class ="govuk-link lbh-link lbh-link--no-visited-state"]')
     }
+    cancellationPopUpWindow (){
+        return cy.get ('[class="lbh-heading-h2 lbh-dialog__title"]')
+    }    
 
     tenureCommentsComponentsAreDisplayed() {
         this.addCommentForm().should('be.visible')
