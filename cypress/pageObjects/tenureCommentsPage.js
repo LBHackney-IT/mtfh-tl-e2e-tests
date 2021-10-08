@@ -1,4 +1,4 @@
-const envConfig = require('../../environment-config')
+const envConfig = require('../../environment-config');
 
 class TenureCommentsPageObjects {
     visit(tenure) {
@@ -67,9 +67,12 @@ class TenureCommentsPageObjects {
         return cy.get('[class ="govuk-link lbh-link lbh-link--no-visited-state"]')
     }
     cancellationPopUpWindow (){
-        return cy.get ('[class="lbh-heading-h2 lbh-dialog__title"]')
-    }    
-
+        return cy.get('[class="lbh-heading-h2 lbh-dialog__title"]')
+    }  
+    cancellationYesButton(){
+        return cy.get('[class="govuk-button lbh-button"]')
+    }
+    
     tenureCommentsComponentsAreDisplayed() {
         this.addCommentForm().should('be.visible')
         this.commentContainer().should('be.visible')
