@@ -128,7 +128,7 @@ jobs:
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/"<< pipeline.parameters.upstream_pipeline_name >>"/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
-                              --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
+                              --data '{ "branch": "MTTL-1726_Add_scoped_tests_to_MFE_pipelines", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
                     when: on_success
                 - run:
                     name: trigger failure message to parent pipeline
@@ -138,7 +138,7 @@ jobs:
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
-                              --data '{ "branch": "main", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
+                              --data '{ "branch": "MTTL-1726_Add_scoped_tests_to_MFE_pipelines", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
                     when: on_fail
 
   run-ci-tests:
