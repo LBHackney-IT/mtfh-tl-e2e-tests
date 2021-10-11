@@ -11,6 +11,8 @@ import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
+import TenureCommentsPageObjects  from "../../pageObjects/tenureCommentsPage"
+
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage"
@@ -43,10 +45,12 @@ const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
+const tenureCommentsPage = new TenureCommentsPageObjects()
 
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
+let tenureId ="";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -184,12 +188,28 @@ And("the page footer links are correct", () => {
 });
 
 // Person Comments shared steps
+Given('I am on the create comment page for {string} {string}', (commentType, id) => {
+  console.log('commentType and id',commentType, id)
+  // switch (commentType) {
+  //     case "tenures":
+  //         tenureCommentsPage.visit(id)
+  //         tenureId = id    
+  //     break;
+      
+  //     case "person":
+  //     break;
 
-When("I enter a valid title", () => {
+  //     default:
+  //     break;
+  // }
+})
+
+
+When('I enter a valid title', () => {
   personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle);
 });
 
-When("I enter a valid comment", () => {
+When('I enter a valid comment', () => {
   personCommentsPage.commentContainer().type(validComment.validComment);
 });
 
@@ -197,11 +217,11 @@ When('I select a comment category {string}',  (category) => {
   personCommentsPage.addCommentCategoryField().select(category)
 })
 
-Then("I click the save comment button", () => {
+Then('I click the save comment button', () => {
   personCommentsPage.submitCommentButton().click();
 });
 
-Then("the comment is submitted", () => {
+Then('the comment is submitted', () => {
   personCommentsPage.pageAnnouncementHeader().should("be.visible");
   personCommentsPage
     .pageAnnouncementHeader()
@@ -211,6 +231,17 @@ Then("the comment is submitted", () => {
 When("I am using a mobile viewport {string}", (device) => {
   cy.viewport(`${device}`);
 });
+
+When('I select a checkbox {string}', (checkbox) => {
+  personCommentsPage.c
+});
+
+When('I create a comment', () => {
+  personCommentsPage.commentContainer().type(validComment.validComment)
+  personCommentsPage.addCommentCategoryField().select("Parking")
+  personCommentsPage.submitCommentButton().click();
+});
+
 
 // Search page shared steps
 Given("I am on the search page", () => {
@@ -541,7 +572,6 @@ And('I click yes on the modal', () => {
 })
 
     // Add person
-
 And('I select a title {string}', (title) => {
   addPersonPage.personTitleSelection().select(title)
 })
