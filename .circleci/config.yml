@@ -104,12 +104,13 @@ jobs:
                     name: Execute e2e tests
                     command: |
                               # export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')"
+                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')" ;
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
+                              echo $UPSTREAM_PIPELINE ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
@@ -123,9 +124,9 @@ jobs:
                               (staging) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                               esac
                               echo deployment environment is $DEPLOYMENT_ENVIRONMENT
-                              # export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')"
+                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')"
                               echo setting downstream pipeline to to $UPSTREAM_PIPELINE
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/"<< pipeline.parameters.upstream_pipeline_name >>"/pipeline' \
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "MTTL-1726_Add_scoped_tests_to_MFE_pipelines", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
