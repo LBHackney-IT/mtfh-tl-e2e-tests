@@ -3,6 +3,7 @@ Feature: T&L Home page
     I am on the Tenants and Leaseholders Home page
 
   @Production
+  @header
   @SmokeTest
   Scenario: Home Page whilst logged out
     Given I am on the Home page
@@ -11,6 +12,7 @@ Feature: T&L Home page
     And the page footer is visible
 
   @SmokeTest
+  @header
   Scenario: Home page whilst logged in
     Given I am logged in
     When I am on the Home page
@@ -24,7 +26,7 @@ Feature: T&L Home page
 
   @Production
   @SmokeTest
-  @Footer
+  @header
   Scenario: Page footer links
     Then the page footer links are visible
     And the page footer links are correct
