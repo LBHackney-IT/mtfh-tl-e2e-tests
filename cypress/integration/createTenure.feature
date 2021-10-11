@@ -205,7 +205,7 @@ Feature: Create tenure
         And I click edit tenure
         Then the edit tenure information is displayed
         When I select a tenure type "<tenureType>"
-        And I click the done button
+        And I click the next button
         Then the edit tenure information is displayed "<tenure>"
 
         Examples:
@@ -249,8 +249,7 @@ Feature: Create tenure
         | tenure                               |
         | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
 
-    @ignoreStaging
-    @ignoreProd
+    @ignore
     Scenario Outline: Create person by navigating to new tenure
         Given I delete all existing persons from the tenure "<tenure>"
         When I navigate to a create person for new tenure "<property>" "<tenure>"
