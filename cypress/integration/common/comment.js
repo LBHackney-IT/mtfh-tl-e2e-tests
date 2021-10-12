@@ -16,6 +16,7 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
             tenureId = id    
         break;
         case "person":
+            //update here later
         break;
   
         default:
@@ -24,5 +25,5 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
   })
   
   When('I select a checkbox for {string}', (checkbox) => {
-    tenureCommentsPage.Commentcheckbox(checkbox).select()
+    tenureCommentsPage.Commentcheckbox(checkbox).check()
   })

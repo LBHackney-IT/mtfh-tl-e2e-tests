@@ -19,7 +19,7 @@ Feature: Tenure Comment
     @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
       Given I am on the create comment page for "<commentType>" "<id>"
-      # When I select a checkbox for "<checkbox>"
+      When I select a checkbox for "<checkbox>"
       When I enter a valid title
       And I enter a valid comment
       # When I select a checkbox "<checkbox>"
