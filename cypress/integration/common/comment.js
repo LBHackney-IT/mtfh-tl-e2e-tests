@@ -12,42 +12,65 @@ const tenurePage = new TenurePageObjects()
 const personPage = new PersonPageObjects()
 const envConfig = require('../../../environment-config')
 
-let validationMessageField = ""
 let tenureId =""
-
-
-let uniqueText =(Math.random() + 1).toString(10).substring(5);
-
-
+let uniqueText =(Math.random() + 1).toString(10).substring(5)
+let commentGroup=""
 
 Given('I am on the create comment page for {string} {string}', (commentType, id) => {
-    switch (commentType) {
+    commentGroup = commentType
+    switch (commentGroup) {
         case "tenure":
             tenureCommentsPage.visit(id)
             tenureId = id    
-        break;
+            break;
         case "person":
             //update here later
-        break;
- 
+            break;
         default:
-        break;
+            break;
     }
-  })
+})
   
 When('I select a checkbox for {string}', (checkbox) => {
-    tenureCommentsPage.Commentcheckbox(checkbox).check()
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.Commentcheckbox(checkbox).check()
+            break;
+        case "person":
+                //update here later
+            break;
+        default:
+            break;
+    }
 })
 
 When('I create a comment', () => {
-        tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
-        tenureCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
-        tenureCommentsPage.addCommentCategoryField().select(category.category)
-        tenureCommentsPage.submitCommentButton().click()
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
+            tenureCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
+            tenureCommentsPage.addCommentCategoryField().select(category.category)
+            tenureCommentsPage.submitCommentButton().click()
+            break;
+        case "person":
+                //update here later
+            break;
+        default:
+            break;
+    }
 })
 
-Then('I can see the same comments in the tenure and linked tenant screens', () => {
-        tenurePage.comment().contains(uniqueText)
-        tenurePage.viewResidentButton().click()
-        personPage.comment().contains(uniqueText)
-    })
+Then('I can see the same comments in the linked entities', () => {
+    switch (commentGroup) {
+        case "tenure":    
+            tenurePage.comment().contains(uniqueText)
+            tenurePage.viewResidentButton().click()
+            personPage.comment().contains(uniqueText)
+            break;
+        case "person":
+                //update here later
+            break;
+        default:
+            break;
+    }
+})
