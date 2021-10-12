@@ -20,10 +20,7 @@ Feature: Tenure Comment
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
       Given I am on the create comment page for "<commentType>" "<id>"
       When I select a checkbox for "<checkbox>"
-      When I enter a valid title
-      And I enter a valid comment
-      # When I select a checkbox "<checkbox>"
-      # And I create a comments
+      When I create a comment
       # Then the create comment for a person components are displayed
       # Then I can also see the same comment in the selected entity screen "<entityScreen>"
 
