@@ -188,21 +188,26 @@ And("the page footer links are correct", () => {
 });
 
 // Person Comments shared steps
-Given('I am on the create comment page for {string} {string}', (commentType, id) => {
-  console.log('commentType and id',commentType, id)
-  // switch (commentType) {
-  //     case "tenures":
-  //         tenureCommentsPage.visit(id)
-  //         tenureId = id    
-  //     break;
-      
-  //     case "person":
-  //     break;
 
-  //     default:
-  //     break;
-  // }
-})
+// Given('I am testing'), ()=> {
+//   console.log('testing now')
+// }
+
+// Given('I am on the create comment page for {string} {string}', (commentType, id) => {
+//   console.log('commentType and id',commentType, id)
+//   switch (commentType) {
+//       case "tenures":
+//           tenureCommentsPage.visit(id)
+//           tenureId = id    
+//       break;
+      
+//       case "person":
+//       break;
+
+//       default:
+//       break;
+//   }
+// })
 
 
 When('I enter a valid title', () => {

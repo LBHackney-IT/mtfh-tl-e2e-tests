@@ -18,15 +18,16 @@ Feature: Tenure Comment
     @SmokeTest
     @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
-      Given I am on the create comment page for {commentType} {id}
+      # Given I am on the create comment for a tenure page "<id>"
+      Given I am on the create comment page for "<commentType>" "<id>"
       # When I select a checkbox "<checkbox>"
-      # And I create a comment
+      # And I create a comments
       # Then the create comment for a person components are displayed
       # Then I can also see the same comment in the selected entity screen "<entityScreen>"
 
       Examples:
-        | commentType| id                                   | checkbox | entityScreen |
-        | tenure     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |          |              |
+        | commentType| id                                   | checkbox    |
+        | tenure     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | chekboxupdate|
 
     # @device    
     # Scenario Outline: I go to create a comment for a tenure page on a device

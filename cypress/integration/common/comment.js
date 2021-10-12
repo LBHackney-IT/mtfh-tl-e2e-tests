@@ -9,33 +9,22 @@ const envConfig = require('../../../environment-config');
 let validationMessageField = ""
 let tenureId =""
 
-// Given('I am on the create comment page for {string} {string}', (commentType, id) => {
-//     console.log('commentType and id',commentType, id)
-//     switch (commentType) {
-//         case "tenures":
-//             tenureCommentsPage.visit(id)
-//             tenureId = id    
-//         break;
+Given('I am on the create comment page for {string} {string}', (commentType, id) => {
+    console.log('commentType and id',commentType, id)
+    switch (commentType) {
+        case "tenures":
+            tenureCommentsPage.visit(id)
+            tenureId = id    
+        break;
         
-//         case "person":
-//         break;
+        case "person":
+        break;
   
-//         default:
-//         break;
-//     }
+        default:
+        break;
+    }
+  })
+  
+//   When('I select a checkbox {checkbox}', (checkbox) => {
+//     tenureCommentsPage.Commentcheckbox(checkbox).select()
 //   })
-
-// Given('test', () => {
-//     switch (commentType) {
-//         case "tenant":
-//             tenureCommentsPage.visit(id)
-//             tenureId = id    
-//         break;
-        
-//         case "person":
-//         break;
-
-//         default:
-//         break;
-//     }
-// })
