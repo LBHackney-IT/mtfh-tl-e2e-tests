@@ -103,14 +103,12 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
-                              # export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')" ;
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
-                              echo $UPSTREAM_PIPELINE ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
