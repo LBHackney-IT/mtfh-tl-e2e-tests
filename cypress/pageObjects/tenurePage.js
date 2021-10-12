@@ -56,8 +56,6 @@ class TenurePageObjects {
     return cy.get('[class="comment__item --center"]')
   }
 
-
-
   tenureDetailsAccordionInformation() {
       this.tenureViewSidebar().contains('Start date')
       this.tenureViewSidebar().contains('End date')

@@ -30,6 +30,10 @@ class PersonPageObjects {
     commentTable() {
         return cy.get('.comment')
     }
+    
+    comment(){
+        return cy.get('[class="comment__item --center"]')
+      }
 
     previousPaginationNavigationButton() {
         return cy.get('.pagination__item')
