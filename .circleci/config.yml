@@ -124,8 +124,6 @@ jobs:
                               (staging) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                               esac
                               echo deployment environment is $DEPLOYMENT_ENVIRONMENT
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')"
-                              echo setting downstream pipeline to to $UPSTREAM_PIPELINE
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
@@ -134,9 +132,7 @@ jobs:
                 - run:
                     name: trigger failure message to parent pipeline
                     command: |
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')"
-                              echo setting downstream pipeline to to $UPSTREAM_PIPELINE
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/<< pipeline.parameters.upstream_pipeline_name >>/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "MTTL-1726_Add_scoped_tests_to_MFE_pipelines", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
