@@ -1,12 +1,14 @@
-import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
-import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage';
+import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
+import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
+import TenurePageObjects from "../../pageObjects/tenurePage"
 import helperText from '../../helpers/inputText'
 import commentTitle from "../../helpers/commentText"
 import comment from "../../helpers/commentText"
-import category from "../../helpers/commentText";
+import category from "../../helpers/commentText"
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
-const envConfig = require('../../../environment-config');
+const tenurePage = new TenurePageObjects()
+const envConfig = require('../../../environment-config')
 
 let validationMessageField = ""
 let tenureId =""
@@ -39,4 +41,10 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
     tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
     tenureCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
     tenureCommentsPage.addCommentCategoryField().select(category.category)
+    tenureCommentsPage.submitCommentButton().click()
+  })
+
+    
+  Then('I can see the same comments in the tenure and linked tenant screens', () => {
+    tenurePage.comment().contains(uniqueText)
   })

@@ -21,7 +21,7 @@ Feature: Tenure Comment
       Given I am on the create comment page for "<commentType>" "<id>"
       When I select a checkbox for "<checkbox>"
       When I create a comment
-      # Then the create comment for a person components are displayed
+      Then I can see the same comments in the tenure and linked tenant screens
       # Then I can also see the same comment in the selected entity screen "<entityScreen>"
 
       Examples:

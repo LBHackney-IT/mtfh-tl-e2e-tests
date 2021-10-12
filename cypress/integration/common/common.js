@@ -187,29 +187,6 @@ And("the page footer links are correct", () => {
   footer.footerLinksAreCorrect();
 });
 
-// Person Comments shared steps
-
-// Given('I am testing'), ()=> {
-//   console.log('testing now')
-// }
-
-// Given('I am on the create comment page for {string} {string}', (commentType, id) => {
-//   console.log('commentType and id',commentType, id)
-//   switch (commentType) {
-//       case "tenures":
-//           tenureCommentsPage.visit(id)
-//           tenureId = id    
-//       break;
-      
-//       case "person":
-//       break;
-
-//       default:
-//       break;
-//   }
-// })
-
-
 When('I enter a valid title', () => {
   personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle);
 });
@@ -237,16 +214,11 @@ When("I am using a mobile viewport {string}", (device) => {
   cy.viewport(`${device}`);
 });
 
-When('I select a checkbox {string}', (checkbox) => {
-  personCommentsPage.c
-});
-
 When('I create a comment', () => {
   personCommentsPage.commentContainer().type(validComment.validComment)
   personCommentsPage.addCommentCategoryField().select("Parking")
   personCommentsPage.submitCommentButton().click();
 });
-
 
 // Search page shared steps
 Given("I am on the search page", () => {
