@@ -5,8 +5,7 @@ class TenureCommentsPageObjects {
         cy.visit(`${envConfig.baseUrl}/${envConfig.tenureCommentsUrl}/${tenure}`)
         cy.injectAxe()
     }
-    id="de414b82-24c0-aaed-64e7-c51f79b1a08d"
-
+    
     Commentcheckbox(id){
         return cy.get(`[id=${id}]`)
     }

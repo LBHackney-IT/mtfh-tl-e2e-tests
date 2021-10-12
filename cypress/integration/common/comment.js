@@ -10,13 +10,11 @@ let validationMessageField = ""
 let tenureId =""
 
 Given('I am on the create comment page for {string} {string}', (commentType, id) => {
-    console.log('commentType and id',commentType, id)
     switch (commentType) {
-        case "tenures":
+        case "tenure":
             tenureCommentsPage.visit(id)
             tenureId = id    
         break;
-        
         case "person":
         break;
   
@@ -25,6 +23,6 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
     }
   })
   
-//   When('I select a checkbox {checkbox}', (checkbox) => {
-//     tenureCommentsPage.Commentcheckbox(checkbox).select()
-//   })
+  When('I select a checkbox for {string}', (checkbox) => {
+    tenureCommentsPage.Commentcheckbox(checkbox).select()
+  })
