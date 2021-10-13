@@ -34,7 +34,20 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
             break;
     }
 })
-  
+
+When('I enter a valid title',  () => {
+    switch (commentGroup) {
+        case "tenure":
+            tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
+            break;
+        case "person":
+            personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
+            break;
+        default:
+            break;
+    }
+})
+
 When('I select a checkbox for {string}', (checkbox) => {
     switch (commentGroup) {
         case "tenure":    
@@ -42,6 +55,32 @@ When('I select a checkbox for {string}', (checkbox) => {
             break;
         case "person":
             personCommentsPage.Commentcheckbox(checkbox).check()
+            break;
+        default:
+            break;
+    }
+})
+
+When('I enter a valid comment', () => {
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.commentContainer().type(comment.comment);
+            break;
+        case "person":
+            personCommentsPage.commentContainer().type(comment.comment);
+            break;
+        default:
+            break;
+    }
+})
+
+When('I select a comment category {string}',  (category) => {
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.addCommentCategoryField().select(category)
+            break;
+        case "person":
+            personCommentsPage.addCommentCategoryField().select(category)
             break;
         default:
             break;
@@ -67,6 +106,34 @@ When('I create a comment', () => {
     }
 })
 
+Then('I click the save comment button', () => {
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.submitCommentButton().click();
+            break;
+        case "person":
+            personCommentsPage.submitCommentButton().click();
+            break;
+        default:
+            break;
+    }
+})
+
+Then('the comment is submitted', () => {
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.pageAnnouncementHeader().should("be.visible");
+            tenureCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");  
+            break;
+        case "person":
+            personCommentsPage.pageAnnouncementHeader().should("be.visible");
+            personCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");            
+            break;
+        default:
+            break;
+    }
+})
+
 Then('I can see the same comments in the linked entities', () => {
     switch (commentGroup) {
         case "tenure":    
@@ -83,3 +150,60 @@ Then('I can see the same comments in the linked entities', () => {
             break;
     }
 })
+
+Then('the create comment for a person components are displayed', () => {
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.addCommentForm().should('be.visible')
+            tenureCommentsPage.submitCommentButton().should('be.visible')
+            break;
+        case "person":
+            personCommentsPage.addCommentForm().should('be.visible')
+            personCommentsPage.submitCommentButton().should('be.visible')
+        default:
+            break;
+    }  
+})
+
+// Field validation related steps
+When('I enter {int} characters into the comment field', (characters) => {
+    const inputText = truncateString(helperText.helperText, characters)
+    switch (commentGroup) {
+        case "tenure":    
+            tenureCommentsPage.commentContainer().type(inputText)
+            break;
+        case "person":
+            personCommentsPage.commentContainer().type(inputText)
+            break;
+        default:
+            break;
+    }
+})
+
+Then('the number of characters remaining is correct {int}', (characters) => {
+    const difference = differenceInCharacters(characters)
+    personCommentsPage.characterCountMessage().should('be.visible')
+    personCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
+})
+
+Then('the warning message tells me I am over by {int}', (characters) => {
+    const difference = differenceInCharacters(characters)
+    personCommentsPage.characterCountErrorMessage().should('be.visible')
+    personCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)
+})
+
+Then('a validation error occurs', () => {
+    personCommentsPage.addCommentsError().should('be.visible')
+    personCommentsPage.commentDescriptionError().should('be.visible')
+})
+
+function differenceInCharacters(characters) {
+    return Math.abs(500-characters)
+}
+
+function truncateString(str, num) {
+    if (str.length <= num) {
+    return str
+    }
+    return str.toString().slice(0, num)
+}

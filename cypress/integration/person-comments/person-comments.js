@@ -6,9 +6,9 @@ import commentTitle from "../../helpers/commentText";
 
 const personCommentsPage = new PersonCommentsPageObjects()
 
-Given('I am on the create comment for a person page {string}', (person) => {
-    personCommentsPage.visit(person)
-})
+// Given('I am on the create comment for a person page {string}', (person) => {
+//     personCommentsPage.visit(person)
+// })
 
 // When('I enter {int} characters into the comment field', (characters) => {
 //     function truncateString(str, num) {
@@ -36,22 +36,22 @@ Given('I am on the create comment for a person page {string}', (person) => {
 //     personCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
 // })
 
-Then('the warning message tells me I am over by {int}', (characters) => {
-    const difference = differenceInCharacters(characters)
-    personCommentsPage.characterCountErrorMessage().should('be.visible')
-    personCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)
-})
+// Then('the warning message tells me I am over by {int}', (characters) => {
+//     const difference = differenceInCharacters(characters)
+//     personCommentsPage.characterCountErrorMessage().should('be.visible')
+//     personCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)
+// })
 
-Then('a validation error occurs', () => {
-    personCommentsPage.addCommentsError().should('be.visible')
-    personCommentsPage.commentDescriptionError().should('be.visible')
-})
+// Then('a validation error occurs', () => {
+//     personCommentsPage.addCommentsError().should('be.visible')
+//     personCommentsPage.commentDescriptionError().should('be.visible')
+// })
 
-function differenceInCharacters(characters) {
-    return Math.abs(500-characters)
-}
+// function differenceInCharacters(characters) {
+//     return Math.abs(500-characters)
+// }
 
-Then('the create comment for a person components are displayed', () => {
-    personCommentsPage.addCommentForm().should('be.visible')
-    personCommentsPage.submitCommentButton().should('be.visible')
-})
+// Then('the create comment for a person components are displayed', () => {
+//     personCommentsPage.addCommentForm().should('be.visible')
+//     personCommentsPage.submitCommentButton().should('be.visible')
+// })

@@ -187,38 +187,38 @@ And("the page footer links are correct", () => {
   footer.footerLinksAreCorrect();
 });
 
-When('I enter a valid title', () => {
-  personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle);
-});
+// When('I enter a valid title', () => {
+//   personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle);
+// });
 
-When('I enter a valid comment', () => {
-  personCommentsPage.commentContainer().type(validComment.validComment);
-});
+// When('I enter a valid comment', () => {
+//   personCommentsPage.commentContainer().type(validComment.validComment);
+// });
 
-When('I select a comment category {string}',  (category) => {
-  personCommentsPage.addCommentCategoryField().select(category)
-})
+// When('I select a comment category {string}',  (category) => {
+//   personCommentsPage.addCommentCategoryField().select(category)
+// })
 
-Then('I click the save comment button', () => {
-  personCommentsPage.submitCommentButton().click();
-});
+// Then('I click the save comment button', () => {
+//   personCommentsPage.submitCommentButton().click();
+// });
 
-Then('the comment is submitted', () => {
-  personCommentsPage.pageAnnouncementHeader().should("be.visible");
-  personCommentsPage
-    .pageAnnouncementHeader()
-    .contains("Comment successfully saved");
-});
+// Then('the comment is submitted', () => {
+//   personCommentsPage.pageAnnouncementHeader().should("be.visible");
+//   personCommentsPage
+//     .pageAnnouncementHeader()
+//     .contains("Comment successfully saved");
+// });
 
 When("I am using a mobile viewport {string}", (device) => {
   cy.viewport(`${device}`);
 });
 
-When('I create a comment', () => {
-  personCommentsPage.commentContainer().type(validComment.validComment)
-  personCommentsPage.addCommentCategoryField().select("Parking")
-  personCommentsPage.submitCommentButton().click();
-});
+// When('I create a comment', () => {
+//   personCommentsPage.commentContainer().type(validComment.validComment)
+//   personCommentsPage.addCommentCategoryField().select("Parking")
+//   personCommentsPage.submitCommentButton().click();
+// });
 
 // Search page shared steps
 Given("I am on the search page", () => {
