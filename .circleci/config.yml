@@ -110,6 +110,7 @@ jobs:
                               export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                              echo "Upstream pipeline set to $UPSTREAM_PIPELINE"
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
                 - run: 
