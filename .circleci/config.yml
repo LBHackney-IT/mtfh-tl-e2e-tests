@@ -104,7 +104,7 @@ jobs:
                     name: Execute e2e tests
                     command: |
                               echo "Upstream pipeline = << pipeline.parameters.upstream_pipeline_name >>"
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-,,g')"
+                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
@@ -132,7 +132,7 @@ jobs:
                 - run:
                     name: trigger failure message to parent pipeline
                     command: |
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-"$UPSTREAM_PIPELINE"/pipeline' \
+                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/LBHackney-IT/mtfh-frontend-"$UPSTREAM_PIPELINE"/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
                               --data '{ "branch": "MTTL-1726_Add_scoped_tests_to_MFE_pipelines", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
