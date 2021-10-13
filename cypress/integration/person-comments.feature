@@ -1,19 +1,19 @@
 @PersonCommentPage
 Feature: T&L Person Comment
-    I want to view a person's comments
+    I want to create and view a person's comments
 
     Background:
       Given I am logged in
 
-    @SmokeTest
-    @Positive
-    Scenario Outline: I go to create a comment for a person page
-      Given I am on the create comment page for "<commentType>" "<personId>"
-      Then the create comment for a person components are displayed
+    # @SmokeTest
+    # @Positive
+    # Scenario Outline: I go to create a comment for a person page
+    #   Given I am on the create comment page for "<commentType>" "<personId>"
+    #   Then the create comment for a person components are displayed
 
-      Examples:
-       | commentType  | personId                               |
-       | person       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+    #   Examples:
+    #     | commentType  | personId                               |
+    #     | person       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   |
 
     # @SmokeTest
     # @Positive
@@ -30,7 +30,7 @@ Feature: T&L Person Comment
     
     # @device    
     # Scenario Outline: I go to create a comment for a person page on a device
-    #   Given I am on the create comment for a person page "<person>"
+    #   Given I am on the create comment page for "<commentType>" "<personId>"
     #   And I am using a mobile viewport "<device>"
     #   When I enter a valid title
     #   And I enter a valid comment
@@ -39,8 +39,8 @@ Feature: T&L Person Comment
     #   Then the comment is submitted
 
     #   Examples:
-    #     | person                               | device        | category             |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-2        | Appointments         |
+    #     | commentType  | personId                               | device        | category             |
+    #     | person       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-2        | Appointments         |
     #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-mini     | Estate management    |
     #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-3      | Evictions            |
     #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-4      | Parking              |
@@ -61,30 +61,29 @@ Feature: T&L Person Comment
     # @SmokeTest
     # @Positive    
     # Scenario Outline: I go to create a comment for a person page
-    #   Given I am on the create comment for a person page "<person>"
+    #   Given I am on the create comment page for "<commentType>" "<personId>"
     #   When I enter a valid title
-    #   When I enter a valid comment
+    #   And I enter a valid comment
     #   And I select a comment category "<category>"
     #   Then I click the save comment button
-    #   Then the comment is submitted
-
+      
     #   Examples:
-    #     | person                               |  category      |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |  Appointments  |
+    #    | commentType | personId                               |  category      |
+    #    | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   |  Appointments  |
 
     # @Positive
     # Scenario Outline: Character limit counter
-    #   Given I am on the create comment for a person page "<person>"
+    #   Given I am on the create comment page for "<commentType>" "<personId>"
     #   When I enter <characters> characters into the comment field
     #   Then the number of characters remaining is correct <characters>
 
     #   Examples:
-    #     | person                               | characters |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 2          |
-    #     # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 50         |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 99         |
-    #     # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 350        |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 500        |
+    #     | commentType | personId                               | characters |
+    #     | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 2          |
+    #     | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 50         |
+    #     | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 99         |
+    #     | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 350        |
+    #     | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 500        |
 
     # @Negative
     # Scenario Outline: Character limit exceeded

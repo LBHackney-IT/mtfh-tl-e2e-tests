@@ -10,31 +10,31 @@ Given('I am on the create comment for a person page {string}', (person) => {
     personCommentsPage.visit(person)
 })
 
-When('I enter {int} characters into the comment field', (characters) => {
-    function truncateString(str, num) {
-        if (str.length <= num) {
-          return str
-        }
-        return str.toString().slice(0, num)
-      }
+// When('I enter {int} characters into the comment field', (characters) => {
+//     function truncateString(str, num) {
+//         if (str.length <= num) {
+//           return str
+//         }
+//         return str.toString().slice(0, num)
+//       }
 
-    const inputText = truncateString(helperText.helperText, characters)
-    personCommentsPage.commentContainer().type(inputText)
-})
+//     const inputText = truncateString(helperText.helperText, characters)
+//     personCommentsPage.commentContainer().type(inputText)
+// })
 
-When('I enter a valid title',  () => {
-    personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
-})
+// When('I enter a valid title',  () => {
+//     personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
+// })
 
-When('I select a comment category {string}',  (category) => {
-    personCommentsPage.addCommentCategoryField().select(category)
-})
+// When('I select a comment category {string}',  (category) => {
+//     personCommentsPage.addCommentCategoryField().select(category)
+// })
 
-Then('the number of characters remaining is correct {int}', (characters) => {
-    const difference = differenceInCharacters(characters)
-    personCommentsPage.characterCountMessage().should('be.visible')
-    personCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
-})
+// Then('the number of characters remaining is correct {int}', (characters) => {
+//     const difference = differenceInCharacters(characters)
+//     personCommentsPage.characterCountMessage().should('be.visible')
+//     personCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
+// })
 
 Then('the warning message tells me I am over by {int}', (characters) => {
     const difference = differenceInCharacters(characters)
