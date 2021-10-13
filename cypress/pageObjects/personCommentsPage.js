@@ -6,10 +6,18 @@ class PersonCommentsPageObjects {
         cy.injectAxe()
     }
 
+    Commentcheckbox(id){
+        return cy.get(`[id=${id}]`)
+    }
+
     addCommentTitleField() {
         return cy.get('[id="add-comment-title-field"]')
     }
 
+    commentFormDescription (){
+        return cy.get('[data-testid="comment-form:description"]')
+    }
+    
     addCommentForm() {
         return cy.get('[data-testid="add-comment-to-person"]')
     }

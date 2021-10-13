@@ -1,5 +1,6 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
+import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage"
 import TenurePageObjects from "../../pageObjects/tenurePage"
 import PersonPageObjects from "../../pageObjects/personPage"
 import helperText from '../../helpers/inputText'
@@ -8,11 +9,13 @@ import comment from "../../helpers/commentText"
 import category from "../../helpers/commentText"
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
+const personCommentsPage = new PersonCommentsPageObjects()
 const tenurePage = new TenurePageObjects()
 const personPage = new PersonPageObjects()
 const envConfig = require('../../../environment-config')
 
-let tenureId =""
+let tenureId = ""
+let personId = ""
 let uniqueText =(Math.random() + 1).toString(10).substring(5)
 let commentGroup=""
 
@@ -24,7 +27,8 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
             tenureId = id    
             break;
         case "person":
-            //update here later
+            personCommentsPage.visit(id)
+            personId = id
             break;
         default:
             break;
@@ -37,7 +41,7 @@ When('I select a checkbox for {string}', (checkbox) => {
             tenureCommentsPage.Commentcheckbox(checkbox).check()
             break;
         case "person":
-                //update here later
+            personCommentsPage.Commentcheckbox(checkbox).check()
             break;
         default:
             break;
@@ -53,7 +57,10 @@ When('I create a comment', () => {
             tenureCommentsPage.submitCommentButton().click()
             break;
         case "person":
-                //update here later
+            personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
+            personCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
+            personCommentsPage.addCommentCategoryField().select(category.category)
+            personCommentsPage.submitCommentButton().click()
             break;
         default:
             break;
@@ -68,7 +75,9 @@ Then('I can see the same comments in the linked entities', () => {
             personPage.comment().contains(uniqueText)
             break;
         case "person":
-                //update here later
+            personPage.comment().contains(uniqueText)
+            personPage.viewTenureButton().click()
+            tenurePage.comment().contains(uniqueText)
             break;
         default:
             break;

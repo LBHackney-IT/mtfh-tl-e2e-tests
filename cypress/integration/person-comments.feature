@@ -5,40 +5,29 @@ Feature: T&L Person Comment
     Background:
       Given I am logged in
 
-    # @SmokeTest
-    # @Positive
-    # Scenario Outline: I go to create a comment for a person page
-    #   Given I am on the create comment for a person page "<person>"
-    #   Then the create comment for a person components are displayed
-
-    #   Examples:
-    #     | person                               |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
-
-    
     @SmokeTest
     @Positive
-    # TL-100 AC1.1 
-#Given the ‘Add comment to person’ page is displayed
-# And the selected Person record is related to any records in the following entities:
-# This person only 
-# Property
-# Tenure
-# Then the related records from those entities are displayed as checkbox options with the exception of person (will display only selected person for now)
-# And the selected Person record checkbox is pre-selected
-# And I can chose to apply my comment to one or more of the related records displayed 
-    Scenario Outline: Add comment - Relationship between selected record and records in other entities
-      Given I am on the create comment for a person page "<person>"
-      When I select a checkbox "<checkbox>"
-      # And I create a comment
-      # Then the create comment for a person components are displayed
-      # Then I can also see the same comment in the selected entity screen "<entityScreen>"
+    Scenario Outline: I go to create a comment for a person page
+      Given I am on the create comment page for "<commentType>" "<personId>"
+      Then the create comment for a person components are displayed
 
       Examples:
-        | person                               | checkbox | entityScreen|
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |          |             |
-        
-        
+       | commentType  | personId                               |
+       | person       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+
+    # @SmokeTest
+    # @Positive
+    # Scenario Outline: Add comment - Relationship between selected record and records in other entities
+    #   Given I am on the create comment page for "<commentType>" "<id>"
+    #   When I select a checkbox for "<checkbox>"
+    #   And I create a comment
+    #   Then I can see the same comments in the linked entities
+
+    #   # Note: The id under the checkbox is the id for linked enttity e.g. tenure 
+    #   Examples:
+    #     | commentType | id                                   | checkbox                              |
+    #     | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | df5865fb-2e9e-26be-ee14-9fa50d769328  |
+    
     # @device    
     # Scenario Outline: I go to create a comment for a person page on a device
     #   Given I am on the create comment for a person page "<person>"

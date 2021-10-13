@@ -22,7 +22,7 @@ Feature: Tenure Comment
       And I create a comment
       Then I can see the same comments in the linked entities
 
-      # Note: id is an option to select the checkbox. This is the id for linked enttity e.g. person 
+      # Note: The id under the checkbox is the id for linked enttity e.g. person 
       Examples:
         | commentType| id                                   | checkbox                              |
         | tenure     | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | cf518691-4532-6f3d-63f2-2be874caf20f  |

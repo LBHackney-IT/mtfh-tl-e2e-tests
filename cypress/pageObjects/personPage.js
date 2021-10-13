@@ -33,7 +33,7 @@ class PersonPageObjects {
     
     comment(){
         return cy.get('[class="comment__item --center"]')
-      }
+    }
 
     previousPaginationNavigationButton() {
         return cy.get('.pagination__item')
@@ -84,7 +84,8 @@ class PersonPageObjects {
     }
 
     viewTenureButton() {
-        return cy.get('[class="govuk-button lbh-button govuk-secondary lbh-button--secondary"]')
+        //return cy.get('[class="govuk-button lbh-button govuk-secondary lbh-button--secondary"]')
+        return cy.contains('View tenure')
     }
 
     viewPropertyButton() {
