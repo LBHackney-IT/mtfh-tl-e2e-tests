@@ -103,6 +103,7 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
+                              echo "Upstream pipeline = << pipeline.parameters.upstream_pipeline_name >>"
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,mtfh-frontend-,,g')" ;
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
