@@ -1,6 +1,6 @@
 @TenureCommentPage
 Feature: Tenure Comment
-    I want to create and view a tenure's comments
+    I want to create and view tenure's comments
 
     Background:
       Given I am logged in
