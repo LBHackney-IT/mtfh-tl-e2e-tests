@@ -6,8 +6,16 @@ class TenureCommentsPageObjects {
         cy.injectAxe()
     }
 
+    Commentcheckbox(id){
+        return cy.get(`[id=${id}]`)
+    }
+    relationshipIds
+
     addCommentTitleField() {
         return cy.get('[id="add-comment-title-field"]')
+    }
+    commentFormDescription (){
+        return cy.get('[data-testid="comment-form:description"]')
     }
     
     addCommentTitleError()

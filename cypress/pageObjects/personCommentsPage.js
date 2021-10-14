@@ -6,16 +6,33 @@ class PersonCommentsPageObjects {
         cy.injectAxe()
     }
 
+    Commentcheckbox(id){
+        return cy.get(`[id=${id}]`)
+    }
+
     addCommentTitleField() {
         return cy.get('[id="add-comment-title-field"]')
     }
 
+    addCommentTitleError()
+    {
+        return cy.get('[id="add-comment-title-error"]')
+    }
+
+    commentFormDescription (){
+        return cy.get('[data-testid="comment-form:description"]')
+    }
+    
     addCommentForm() {
         return cy.get('[data-testid="add-comment-to-person"]')
     }
 
     addCommentCategoryField(){
         return cy.get('[id="add-comment-category-field"]')
+    }
+    
+    addCommentCategoryError(){
+        return cy.get ('[id ="add-comment-category-error"]')
     }
     
     pageAnnouncementHeader() {

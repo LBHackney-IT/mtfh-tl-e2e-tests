@@ -10,16 +10,11 @@ import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
 import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
-import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage"
 import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
-
-import commentTitle from "../../helpers/personCommentText";
-import validComment from "../../helpers/personCommentText";
-import testGuid from "../../helpers/personCommentText";
 
 import comment from "../../../api/comment";
 import contact from "../../../api/contact";
@@ -37,7 +32,6 @@ const footer = new FooterPageObjects();
 const header = new HeaderPageObjects();
 const modal = new ModalPageObjects();
 const navigation = new NavigationPageObjects();
-const personCommentsPage = new PersonCommentsPageObjects();
 const personContactPage = new PersonContactPageObjects();
 const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
@@ -47,6 +41,7 @@ const tenurePage = new TenurePageObjects();
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
+let tenureId ="";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -181,31 +176,6 @@ Then("the page footer links are visible", () => {
 
 And("the page footer links are correct", () => {
   footer.footerLinksAreCorrect();
-});
-
-// Person Comments shared steps
-
-When("I enter a valid title", () => {
-  personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle);
-});
-
-When("I enter a valid comment", () => {
-  personCommentsPage.commentContainer().type(validComment.validComment);
-});
-
-When('I select a comment category {string}',  (category) => {
-  personCommentsPage.addCommentCategoryField().select(category)
-})
-
-Then("I click the save comment button", () => {
-  personCommentsPage.submitCommentButton().click();
-});
-
-Then("the comment is submitted", () => {
-  personCommentsPage.pageAnnouncementHeader().should("be.visible");
-  personCommentsPage
-    .pageAnnouncementHeader()
-    .contains("Comment successfully saved");
 });
 
 When("I am using a mobile viewport {string}", (device) => {
@@ -541,7 +511,6 @@ And('I click yes on the modal', () => {
 })
 
     // Add person
-
 And('I select a title {string}', (title) => {
   addPersonPage.personTitleSelection().select(title)
 })
