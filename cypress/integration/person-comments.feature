@@ -1,6 +1,6 @@
 @PersonCommentPage
 Feature: T&L Person Comment
-    I want to create and view a person's comments
+    I want to create and view person's comments
 
     Background:
       Given I am logged in
@@ -9,7 +9,7 @@ Feature: T&L Person Comment
     @Positive
     Scenario Outline: I go to create a comment for a person page
       Given I am on the create comment page for "<commentType>" "<personId>"
-      Then the create comment for a person components are displayed
+      Then the create comment component is displayed
 
       Examples:
         | commentType  | personId                               |
@@ -57,7 +57,7 @@ Feature: T&L Person Comment
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-16    | Appointments         |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-note9 | Appointments         |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-s10   | Appointments         |
-   
+           
     @SmokeTest
     @Positive    
     Scenario Outline: I go to create a comment for a person page
