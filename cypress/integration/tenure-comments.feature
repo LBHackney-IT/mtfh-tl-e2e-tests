@@ -1,4 +1,8 @@
-@TenureCommentPage
+@authentication
+@comments
+@common
+@root
+
 Feature: Tenure Comment
     I want to view a tenure's comments
 
@@ -7,13 +11,14 @@ Feature: Tenure Comment
 
     @SmokeTest
     @Positive
+    @Production
     Scenario Outline: I go to create a comment for a tenure page
       Given I am on the create comment for a tenure page "<tenure>"
       Then the create comment for a tenure components are displayed
 
       Examples:
         | tenure                               |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+        | f5995a9d-b227-4e23-0957-2233db537ea9 |
 
     @device    
     Scenario Outline: I go to create a comment for a tenure page on a device
@@ -95,11 +100,11 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               | characters |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 2          |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 2          |
         | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 50         |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 99         |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 99         |
         | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 350        |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 500        |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 500        |
 
     @Negative
     Scenario Outline: Character limit exceeded
@@ -109,7 +114,7 @@ Feature: Tenure Comment
 
       Examples:
         | tenure                               | characters |
-        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 502        |
+        # | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 502        |
         | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | 508        |
 
     @Accessibility

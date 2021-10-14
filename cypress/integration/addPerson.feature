@@ -1,5 +1,9 @@
 @ignore
-@AddPersonPage
+@authentication
+@common
+@personal-details
+@root
+
 Feature: Add a new person to a tenure
   I want to add a person to a tenure
 
@@ -260,6 +264,7 @@ Feature: Add a new person to a tenure
       And have no detectable a11y violations
 
     @SmokeTest
+    @Prod
     Scenario Outline: Navigate to add person via tenure page
       When I view a Tenure "<tenure>"
       Then the tenure information is displayed
@@ -269,4 +274,4 @@ Feature: Add a new person to a tenure
 
       Examples:
           | tenure                               |
-          | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+          | f5995a9d-b227-4e23-0957-2233db537ea9 |

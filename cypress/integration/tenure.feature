@@ -1,4 +1,8 @@
-@TenurePage
+@authentication
+@common
+@root
+@tenure
+
 Feature: Tenure page
 
     Background:

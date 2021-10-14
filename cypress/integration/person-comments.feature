@@ -1,4 +1,8 @@
-@PersonCommentPage
+@authentication
+@comments
+@common
+@root
+
 Feature: T&L Person Comment
     I want to view a person's comments
 
@@ -7,13 +11,14 @@ Feature: T&L Person Comment
 
     @SmokeTest
     @Positive
+    @Production
     Scenario Outline: I go to create a comment for a person page
       Given I am on the create comment for a person page "<person>"
       Then the create comment for a person components are displayed
 
       Examples:
         | person                               |
-        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+        | da05aabb-3757-43c8-3028-c9ecbe72a067 |
         
     @device    
     Scenario Outline: I go to create a comment for a person page on a device
@@ -59,48 +64,48 @@ Feature: T&L Person Comment
         | person                               |  category      |
         | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |  Appointments  |
 
-    # @Positive
-    # Scenario Outline: Character limit counter
-    #   Given I am on the create comment for a person page "<person>"
-    #   When I enter <characters> characters into the comment field
-    #   Then the number of characters remaining is correct <characters>
+    @Positive
+    Scenario Outline: Character limit counter
+      Given I am on the create comment for a person page "<person>"
+      When I enter <characters> characters into the comment field
+      Then the number of characters remaining is correct <characters>
 
-    #   Examples:
-    #     | person                               | characters |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 2          |
-    #     # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 50         |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 99         |
-    #     # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 350        |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 500        |
+      Examples:
+        | person                               | characters |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 2          |
+        # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 50         |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 99         |
+        # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 350        |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 500        |
 
-    # @Negative
-    # Scenario Outline: Character limit exceeded
-    #   Given I am on the create comment for a person page "<person>"
-    #   When I enter <characters> characters into the comment field
-    #   Then the warning message tells me I am over by <characters>
+    @Negative
+    Scenario Outline: Character limit exceeded
+      Given I am on the create comment for a person page "<person>"
+      When I enter <characters> characters into the comment field
+      Then the warning message tells me I am over by <characters>
 
-    #   Examples:
-    #     | person                               | characters |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 502        |
-    #     # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 508        |
+      Examples:
+        | person                               | characters |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 502        |
+        # | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | 508        |
 
-    # @SmokeTest
-    # @Negative  
-    # Scenario Outline: I go to create a comment for a person page
-    #   Given I am on the create comment for a person page "<person>"
-    #   Then I click the save comment button
-    #   Then I click the save comment button
-    #   Then a validation error occurs
+    @SmokeTest
+    @Negative  
+    Scenario Outline: I go to create a comment for a person page
+      Given I am on the create comment for a person page "<person>"
+      Then I click the save comment button
+      Then I click the save comment button
+      Then a validation error occurs
 
-    #   Examples:
-    #     | person                               |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      Examples:
+        | person                               |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
-    # @Accessibility
-    # Scenario Outline: Accessibility Testing
-    #   Given I am on the create comment for a person page "<person>"
-    #   And have no detectable a11y violations
+    @Accessibility
+    Scenario Outline: Accessibility Testing
+      Given I am on the create comment for a person page "<person>"
+      And have no detectable a11y violations
 
-    #   Examples:
-    #     | person                               |
-    #     | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+      Examples:
+        | person                               |
+        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
