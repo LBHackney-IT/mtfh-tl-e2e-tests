@@ -38,7 +38,7 @@ Feature: Tenure Comment
       Then the comment is submitted
 
       Examples:
-      | commentTyope  | tenureId                             | device        | category             |
+      | commentType   | tenureId                             | device        | category             |
       | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-2        | Appointments         |
       | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-mini     | Estate management    |
       | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-3      | Evictions            |
@@ -72,7 +72,6 @@ Feature: Tenure Comment
     
     @SmokeTest
     @Negative
-    #Notes: TL-60 added additional fields - AC2
       Scenario Outline: User cannot submit a comment without mandatory fields
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
@@ -124,7 +123,7 @@ Feature: Tenure Comment
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   | 502        |
         | tenure      |5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 508        |
 
-    # @Accessibility
+    @Accessibility
     Scenario Outline: Accessibility Testing for tenure
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       And have no detectable a11y violations
