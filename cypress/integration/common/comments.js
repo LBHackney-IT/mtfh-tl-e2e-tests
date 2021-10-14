@@ -18,6 +18,7 @@ let tenureId = ""
 let personId = ""
 let uniqueText =(Math.random() + 1).toString(10).substring(5)
 let commentGroup=""
+let validationMessageField = ""
 
 Given('I am on the create comment page for {string} {string}', (commentType, id) => {
     commentGroup = commentType
@@ -179,6 +180,84 @@ When('I enter {int} characters into the comment field', (characters) => {
             break;
     }
 })
+
+When('I do not fill the mandatory fields:{string} {string} {string}',  (commentTitle, commentDescription, commentCategory ) => {
+    
+    switch (commentGroup) {
+        case "tenure":    
+        if (commentTitle === "")
+            {
+                tenureCommentsPage.commentContainer().type(commentDescription);
+                tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+                validationMessageField = "commentTitle"
+                
+            }
+        else if(commentDescription === "")
+            {
+                tenureCommentsPage.addCommentTitleField().type(commentTitle)
+                tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+                validationMessageField = "commentDescription"
+    
+            }
+        else if (commentCategory === "")
+            {
+                tenureCommentsPage.addCommentTitleField().type(commentTitle)
+                tenureCommentsPage.commentContainer().type(commentDescription)
+                validationMessageField = "commentCategory"
+            }
+        break;
+        case "person":
+            if (commentTitle === "")
+            {
+                personCommentsPage.commentContainer().type(commentDescription);
+                personCommentsPage.addCommentCategoryField().select(commentCategory)
+                validationMessageField = "commentTitle"
+                
+            }
+        else if(commentDescription === "")
+            {
+                personCommentsPage.addCommentTitleField().type(commentTitle)
+                personCommentsPage.addCommentCategoryField().select(commentCategory)
+                validationMessageField = "commentDescription"
+    
+            }
+        else if (commentCategory === "") 
+            {
+                personCommentsPage.addCommentTitleField().type(commentTitle)
+                personCommentsPage.commentContainer().type(commentDescription)
+                validationMessageField = "commentCategory"
+            }
+        default:
+            break;
+    }
+    
+    
+    
+    
+    if (commentTitle === "")
+        {
+            tenureCommentsPage.commentContainer().type(commentDescription);
+            tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+            validationMessageField = "commentTitle"
+            
+        }
+    else if(commentDescription === "")
+        {
+            tenureCommentsPage.addCommentTitleField().type(commentTitle)
+            tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+            validationMessageField = "commentDescription"
+  
+        }
+    else if (commentCategory === "")
+        {
+            tenureCommentsPage.addCommentTitleField().type(commentTitle)
+            tenureCommentsPage.commentContainer().type(commentDescription)
+            validationMessageField = "commentCategory"
+        }
+})
+
+
+
 
 Then('the number of characters remaining is correct {int}', (characters) => {
     const difference = differenceInCharacters(characters)

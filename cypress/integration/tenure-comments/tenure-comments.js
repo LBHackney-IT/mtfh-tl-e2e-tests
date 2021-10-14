@@ -38,29 +38,29 @@ When('I select a comment category {string}',  (category) => {
     tenureCommentsPage.addCommentCategoryField().select(category)
 })
 
-When('I do not fill the mandatory fields:{string} {string} {string}',  (commentTitle, commentDescription, commentCategory ) => {
-    if (commentTitle === "")
-        {
-            tenureCommentsPage.commentContainer().type(commentDescription);
-            tenureCommentsPage.addCommentCategoryField().select(commentCategory)
-            validationMessageField = "commentTitle"
+// When('I do not fill the mandatory fields:{string} {string} {string}',  (commentTitle, commentDescription, commentCategory ) => {
+//     if (commentTitle === "")
+//         {
+//             tenureCommentsPage.commentContainer().type(commentDescription);
+//             tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+//             validationMessageField = "commentTitle"
             
-        }
-    else if(commentDescription === "")
-        {
-            tenureCommentsPage.addCommentTitleField().type(commentTitle)
-            tenureCommentsPage.addCommentCategoryField().select(commentCategory)
-            validationMessageField = "commentDescription"
+//         }
+//     else if(commentDescription === "")
+//         {
+//             tenureCommentsPage.addCommentTitleField().type(commentTitle)
+//             tenureCommentsPage.addCommentCategoryField().select(commentCategory)
+//             validationMessageField = "commentDescription"
   
-        }
-    else if (commentCategory === "")
-        {
-            tenureCommentsPage.addCommentTitleField().type(commentTitle)
-            tenureCommentsPage.commentContainer().type(commentDescription)
-            validationMessageField = "commentCategory"
+//         }
+//     else if (commentCategory === "")
+//         {
+//             tenureCommentsPage.addCommentTitleField().type(commentTitle)
+//             tenureCommentsPage.commentContainer().type(commentDescription)
+//             validationMessageField = "commentCategory"
 
-        }
-})
+//         }
+// })
 When('I click the Discard comment link',  () => {
     tenureCommentsPage.discardCommentLink().click()
 })
