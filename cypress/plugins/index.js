@@ -8,10 +8,10 @@ const cucumber = require("cypress-cucumber-preprocessor").default;
 const { getConfiguration } = require("./configuration");
 
 module.exports = async (on, config) => {
-  config.featureToggles = (await getConfiguration(config.env)) || {};
-  on("before:browser:launch", (browser = {}, launchOptions) => {
-  prepareAudit(launchOptions);
-  });
+  // config.featureToggles = (await getConfiguration(config.env)) || {};
+  // // on("before:browser:launch", (browser = {}, launchOptions) => {
+  // prepareAudit(launchOptions);
+  // });
   on("file:preprocessor", cucumber());
   on("task", {
     lighthouse: lighthouse((lighthouseReport) => {
