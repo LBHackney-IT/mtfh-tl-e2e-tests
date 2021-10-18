@@ -4,8 +4,6 @@ Feature: Google Lighthouse audit
     Background: Login
       Given I am logged in
 
-@ignore
-# Failed test. Requires investigation
     Scenario: Home page audit
       Then I perform a Lighthouse audit on the home page
       And have no detectable a11y violations
@@ -14,8 +12,6 @@ Feature: Google Lighthouse audit
       Then I perform a Lighthouse audit on the search page
       And have no detectable a11y violations
 
-@ignore
-# Failed test. Requires investigation
     Scenario Outline: Search results page audit
       When I enter any of the following criteria "<characters>"
       And I click on the search button
@@ -26,8 +22,6 @@ Feature: Google Lighthouse audit
         | characters |
         | James      |
 
-@ignore
-# Failed test. Requires investigation
     Scenario: Person page audit
       Then I perform a Lighthouse audit on the person page
       And have no detectable a11y violations
@@ -44,20 +38,14 @@ Feature: Google Lighthouse audit
       Then I perform a Lighthouse audit on the create person page
       And have no detectable a11y violations
 
-@ignore
-# Failed test. Requires investigation
     Scenario: Contact details page audit
       Then I perform a Lighthouse audit on the contact details page
       And have no detectable a11y violations
 
-@ignore
-# Failed test. Requires investigation
     Scenario: Edit person page audit
       Then I perform a Lighthouse audit on the edit person page
       And have no detectable a11y violations
 
-@ignore
-# Failed test. Requires investigation
     Scenario: Activity history page audit
       Then I perform a Lighthouse audit on the activity history page
       And have no detectable a11y violations
