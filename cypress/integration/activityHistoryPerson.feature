@@ -16,7 +16,6 @@ Feature: Activity History
         | person                               | 
         | 5e4a06d3-9f3b-914a-fd48-3d82c8aa3752 |
 
-    @ignore
     Scenario Outline: Update activity history
       Given I am on the edit person page for "<person>"
       And I select a preferred middle name "<preferredLastName>"

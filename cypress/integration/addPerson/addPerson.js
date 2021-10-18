@@ -1,7 +1,7 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
-import testGuid from '../../helpers/personCommentText'
+import guid from '../../helpers/commentText'
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
@@ -18,8 +18,8 @@ And('the person is added to the tenure page {string} {string} {string}', (title,
     
     for (let index = 0; index < 10;) {
         cy.get('.mtfh-resident-details').then(($residentDetails) => {
-            if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`)) {
-                cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).should('be.visible')
+            if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${guid}`)) {
+                cy.contains(`${title} ${firstName} ${middleName} ${guid}`).should('be.visible')
             } else {
                 cy.wait
                 cy.reload()
@@ -28,10 +28,10 @@ And('the person is added to the tenure page {string} {string} {string}', (title,
         })
     }
     
-    const person = `${title} ${firstName} ${middleName} ${testGuid.testGuid}`
+    const person = `${title} ${firstName} ${middleName} ${guid}`
     for (let i = 0; i < 10; i++) {
         addPersonPage.mainContent().then(($body) => {
-            if ($body.text().includes(testGuid.testGuid)) {
+            if ($body.text().includes(guid)) {
                 cy.contains(person).click()
             } else {
                 cy.wait(1000)
@@ -54,9 +54,9 @@ And('I edit the person {string} {string} {string} {string}', (title, personType,
         etag = req.headers
     })
     if(personType === 'Named tenure holder') {
-        cy.contains(`View ${title} ${firstName} ${middleName} ${testGuid.testGuid}`).click()
+        cy.contains(`View ${title} ${firstName} ${middleName} ${guid}`).click()
     } else {
-        cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).click()
+        cy.contains(`${title} ${firstName} ${middleName} ${guid}`).click()
     }
 })
 
@@ -67,7 +67,7 @@ And('I click the update person button', () => {
 And('the person has been updated {string} {string} {string}', (firstName, middleName, lastName) => {
     addPersonPage.pageAnnouncement().contains('Person updated')
     if(lastName === 'guid') {
-        lastName = testGuid.testGuid
+        lastName = guid
     }
     addPersonPage.mainContent().contains(`${firstName} ${middleName} ${lastName}`)
 })
