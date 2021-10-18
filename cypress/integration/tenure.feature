@@ -4,7 +4,6 @@ Feature: Tenure page
     Background:
       Given I am logged in
 
-    @ignore
     @SmokeTest
     Scenario Outline: View resident details
       When I view a Tenure "<tenure>"
@@ -25,7 +24,6 @@ Feature: Tenure page
           | tenure                               |
           | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
-    @ignore
     @SmokeTest
     Scenario Outline: View individual household members
       When I view a Tenure "<tenure>"
@@ -37,7 +35,6 @@ Feature: Tenure page
           | tenure                               |
           | bba2793e-df7d-aa4a-71df-57d067c21036 |
 
-    @ignore
     @SmokeTest
     Scenario Outline: No named tenure holders
       When I view a Tenure "<tenure>"
@@ -48,7 +45,6 @@ Feature: Tenure page
           | tenure                                |
           | 920d7a09-766d-413c-9ff9-36bd0d86ab1a  |
 
-    @ignore
     @SmokeTest
     Scenario Outline: Navigate to personal details
       When I view a Tenure "<tenure>"
