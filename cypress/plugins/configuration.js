@@ -27,10 +27,10 @@ const getConfiguration = async (env) => {
 
   let featureToggleStore = {};
 
-  response.data.forEach(({ type, featureToggles }) => {
+  response.data.forEach(({ type, ...config }) => {
     featureToggleStore = {
       ...featureToggleStore,
-      [type]: { ...featureToggles },
+      [type]: { ...config },
     };
   });
 
