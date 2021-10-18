@@ -25,6 +25,8 @@ import date from "date-and-time";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import { hasToggle } from "../../helpers/hasToggle";
 
+import { guid } from "../../helpers/commentText";
+
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
 const addPersonPage = new AddPersonPageObjects();
@@ -189,7 +191,7 @@ Given("I am on the search page", () => {
 
 When("I enter any of the following criteria {string}", (searchTerm) => {
   if (searchTerm === "guid") {
-    searchTerm = testGuid.testGuid;
+    searchTerm = guid;
   }
   searchPage.searchContainer().type(searchTerm);
 });
@@ -214,7 +216,7 @@ Then(
   "the search results are displayed by best match {string}",
   (searchTerm) => {
     if (searchTerm === "guid") {
-      searchTerm = testGuid.testGuid;
+      searchTerm = guid;
     }
     searchPage
       .searchResults()
@@ -402,7 +404,7 @@ Given("I create a person for tenure {string}", (record) => {
 
 And("I select a preferred middle name {string}", (preferredMiddleName) => {
   if (preferredMiddleName === "guid") {
-    preferredMiddleName = testGuid.testGuid;
+    preferredMiddleName = guid;
   }
   addPersonPage.preferredMiddleNameContainer().clear();
   addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName);
@@ -410,7 +412,7 @@ And("I select a preferred middle name {string}", (preferredMiddleName) => {
 
 And("I select a preferred last name {string}", (preferredLastName) => {
   if (preferredLastName === "guid") {
-    preferredLastName = testGuid.testGuid;
+    preferredLastName = guid;
   }
   addPersonPage.preferredLastNameContainer().clear();
   addPersonPage.preferredLastNameContainer().type(preferredLastName);
@@ -433,7 +435,7 @@ Given("I am on the edit person page for {string}", (person) => {
 });
 
 Then("the activity history is correct", () => {
-  activityHistory.activityTableRow().eq(0).contains(testGuid.testGuid);
+  activityHistory.activityTableRow().eq(0).contains(guid);
   activityHistory.activityTableRow().eq(0).contains(dateCaptureDay);
   activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
 });
@@ -536,7 +538,7 @@ And('I enter a middle name {string}', (middleName) => {
 
 And('I enter a last name {string}', (lastName) => {
     if(lastName === 'guid') {
-        lastName = testGuid.testGuid
+        lastName = guid
     }
     addPersonPage.lastNameContainer().clear()
     addPersonPage.lastNameContainer().type(lastName)
