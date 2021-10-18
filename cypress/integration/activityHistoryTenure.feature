@@ -31,8 +31,6 @@ Feature: Activity History for Tenure
           | tenure                               | 
           | b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5 |
 
-@ignore
-# Failed test. Requires investigation
   @SmokeTest
   Scenario Outline: Update Tenure 
     Given I edit a tenure "<tenure>" "<tenureType>"
