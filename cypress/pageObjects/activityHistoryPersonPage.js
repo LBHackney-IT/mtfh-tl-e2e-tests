@@ -8,9 +8,6 @@ class ActivityHistoryPageObjects {
 
     activityTable() {
         return cy.get('[data-testid="person-activities"]')
-        
-        //legacy activities
-        // return cy.get('[data-testid="activities"]')
     }
 
     activityTableRow() {
