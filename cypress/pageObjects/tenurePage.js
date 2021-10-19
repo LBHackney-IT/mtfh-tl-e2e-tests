@@ -60,8 +60,9 @@ class TenurePageObjects {
       this.tenureViewSidebar().contains('Start date')
       this.tenureViewSidebar().contains('End date')
       this.tenureViewSidebar().contains('Type')
-      // this.tenureViewSidebar().contains('Property ID')
+      this.tenureViewSidebar().contains('Property ID')
       this.tenureViewSidebar().contains('Status')
+      this.tenureViewSidebar().contains('UPRN')
   }
 
   residentDetailsAccordionInformation() {
