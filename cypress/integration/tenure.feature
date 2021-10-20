@@ -15,6 +15,27 @@ Feature: Tenure page
           | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
 
     @SmokeTest
+    Scenario Outline: Navigate to old tenancy files
+      Given the start date for the selected tenure record is before 31 December 2013 "<tenure>"
+      When I view a Tenure "<tenure>"
+      Then the Scanned historic tenure records button is displayed
+  
+      Examples:
+          | tenure                               |
+          | 7b91950d-0edf-d926-1cf7-2e187160fd06 |     
+
+    
+    @SmokeTest
+    Scenario Outline: Navigate to old tenancy files - button not displayed
+      Given the start date for the selected tenure record is after 31 December 2013 "<tenure>"
+      When I view a Tenure "<tenure>"
+      Then the Scanned historic tenure records button is not displayed
+  
+      Examples:
+          | tenure                               |
+          | af53d98f-79cd-55ba-f0bd-5d58e4eecb8b |     
+
+    @SmokeTest
     Scenario Outline: No household members
       When I view a Tenure "<tenure>"
       Then the tenure information is displayed
