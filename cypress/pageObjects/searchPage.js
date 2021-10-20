@@ -19,7 +19,7 @@ class SearchPageObjects {
     }
 
     searchContainer() {
-        return cy.get("#search-form-searchTerm-field")
+        return cy.get('[id="search-form-searchTerm-field"]')
     }
 
     personRadioButton() {
@@ -87,7 +87,7 @@ class SearchPageObjects {
     }
 
     searchTermError() {
-        return cy.get('#search-form-searchTerm-error')
+        return cy.get('[id="search-form-searchTerm-error"]')
     }
 
     searchResultDateOfBirth() {

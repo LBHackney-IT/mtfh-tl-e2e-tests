@@ -8,6 +8,7 @@ Feature: T&L Search Function
       Given I am logged in
       Given I am on the search page
 
+
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
@@ -18,8 +19,8 @@ Feature: T&L Search Function
     Then the search results are displayed by best match "<characters>"
 
     Examples:
-      | characters | searchType |
-      | An         | Property   |
+      | characters   | searchType |
+      | Anna         | Property   |
 
   @SmokeTest 
   @Positive
@@ -56,6 +57,24 @@ Feature: T&L Search Function
       # | Keith      | Person     |
       # | Trev       | Person     |
       # | Victor     | Person     |
+
+  @SmokeTest 
+  @Positive
+  Scenario Outline: Execute tenure searches
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+    And tenure search results are prefixed correctly
+    Then the page breadcrumb is displayed
+
+    Examples:
+      | characters | searchType |
+      | 12         | Tenure     |
+      | Avenue     | Tenure     |
+      | castle     | Tenure     |
+
 
   @SmokeTest 
   @Positive
@@ -243,3 +262,18 @@ Feature: T&L Search Function
     Examples:
       | firstSearch | secondSearch | searchType |
       | Steve       | Dave         | Person     |
+
+  @SmokeTest
+  @Negative
+  Scenario Outline: Search validation scenario
+    Given I am on the search page
+    When I click on the radio button for "<searchType>"
+    And I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then a warning message is displayed for "<WarningType>"
+
+    Examples:
+      | characters | searchType | WarningType |
+      | A          | Property   | search      |
+      | B          | Person     | search      |
+      | C          | Tenure     | search      |

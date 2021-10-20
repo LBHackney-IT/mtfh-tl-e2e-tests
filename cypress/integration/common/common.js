@@ -23,9 +23,12 @@ import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
+
 import { hasToggle } from "../../helpers/hasToggle";
 
 import { guid } from "../../helpers/commentText";
+
+
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -582,4 +585,20 @@ And('the named tenure holder button is active', () => {
 
 And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
+})
+
+
+//Validation Message
+When('a warning message is displayed for {string}', (WarningType) => {
+  switch (WarningType) {
+      case "search": 
+        cy.wait(500)   
+        searchPage.searchTermError().contains('You must enter at least 2 characters.')
+      break;
+      case "person":
+
+      break;
+      default:
+          break;
+  }
 })
