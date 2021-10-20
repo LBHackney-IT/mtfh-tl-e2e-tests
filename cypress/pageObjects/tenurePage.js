@@ -56,6 +56,10 @@ class TenurePageObjects {
     return cy.get('[class="comment__item --center"]')
   }
 
+  scannedHistoricTenureRecords(){
+    return cy.get('[class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"]')
+  }
+
   tenureDetailsAccordionInformation() {
       this.tenureViewSidebar().contains('Start date')
       this.tenureViewSidebar().contains('End date')
