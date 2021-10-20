@@ -1,12 +1,28 @@
 import { When, Then, Given } from "cypress-cucumber-preprocessor/steps";
 import TenurePageObjects from '../../pageObjects/tenurePage';
+import tenure from "../../../api/tenure";
 
 const tenurePage = new TenurePageObjects
 
 
-Given('the start date for the selected tenure record is before 31 December 2013', () => {
-    //update this
-    console.log('update this')
+Given('the start date for the selected tenure record is before 31 December 2013 {string}', async (tenureId) => {
+    const getResponse = await tenure.getTenure(tenureId)
+    cy.log(`Status code ${getResponse.status} returned`)
+    var startDate =  new Date(getResponse.data.startOfTenureDate)
+    var threshold =  new Date(2013, 12, 31)
+    cy.log('startDate', startDate)
+    cy.log('threshold', threshold)
+    expect(startDate).to.lessThan(threshold)
+})
+
+Given('the start date for the selected tenure record is after 31 December 2013 {string}', async (tenureId) => {
+    const getResponse = await tenure.getTenure(tenureId)
+    cy.log(`Status code ${getResponse.status} returned`)
+    var startDate =  new Date(getResponse.data.startOfTenureDate)
+    var threshold =  new Date(2013, 12, 31)
+    cy.log('startDate', startDate)
+    cy.log('threshold', threshold)
+    expect(startDate).to.greaterThan(threshold)
 })
 
 When('I view a Tenure {string}', (record) => {
@@ -61,5 +77,9 @@ Then('the tenure details accordion information is displayed', () => {
 })
 
 Then('the Scanned historic tenure records button is displayed', () => {
-    tenurePage.scannedHistoricTenureRecords()
+    tenurePage.scannedHistoricTenureRecords().should('be.visible')
+})
+
+Then('the Scanned historic tenure records button is not displayed', () => {
+    tenurePage.scannedHistoricTenureRecords().should('not.exist')
 })

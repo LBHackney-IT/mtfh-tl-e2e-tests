@@ -57,7 +57,7 @@ class TenurePageObjects {
   }
 
   scannedHistoricTenureRecords(){
-    return cy.get('[class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"]')
+    return cy.contains('Scanned historic tenure records')
   }
 
   tenureDetailsAccordionInformation() {
