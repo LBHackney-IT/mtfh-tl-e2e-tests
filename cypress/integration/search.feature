@@ -19,8 +19,8 @@ Feature: T&L Search Function
     Then the search results are displayed by best match "<characters>"
 
     Examples:
-      | characters   | searchType |
-      | Anna         | Property   |
+      | characters | searchType |
+      | An         | Property   |
 
   @SmokeTest 
   @Positive
