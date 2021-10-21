@@ -106,9 +106,9 @@ Feature: Tenure Comment
 
       Examples:
         | commentType | tenureId                              | characters |
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 2          |
+        # | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 2          |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 99         |         
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 350        | 
+        # | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 350        | 
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 500        |
 
     @Negative
@@ -121,7 +121,7 @@ Feature: Tenure Comment
       Examples:
         | commentType | tenureId                               | characters |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   | 502        |
-        | tenure      |5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 508        |
+        # | tenure      |5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 508        |
 
     @Accessibility
     Scenario Outline: Accessibility Testing for tenure
