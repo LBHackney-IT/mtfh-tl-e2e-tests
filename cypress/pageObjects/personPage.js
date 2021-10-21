@@ -30,7 +30,11 @@ class PersonPageObjects {
     commentTable() {
         return cy.get('.comment')
     }
-    
+
+    commentDateTime() {
+        return cy.get('.comment__date-time')
+    }
+
     comment(){
         return cy.get('[class="comment__item --center"]')
     }

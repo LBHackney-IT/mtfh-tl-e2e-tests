@@ -355,6 +355,19 @@ Then('a validation error occurs', () => {
     }
 })
 
+Then('I can see the timestamp for the created comment', () => {
+    switch (commentGroup) {
+        case "tenure":    
+            tenurePage.commentDateTime().should('be.visible')
+            break;
+        case "person":
+            personPage.commentDateTime().should('be.visible')
+            break;
+        default:
+            break;
+    }
+})
+
 function differenceInCharacters(characters) {
     return Math.abs(500-characters)
 }
