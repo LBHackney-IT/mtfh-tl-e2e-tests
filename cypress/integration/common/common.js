@@ -586,18 +586,3 @@ And('the named tenure holder button is active', () => {
 And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
 })
-
-//Validation Message
-When('a warning message is displayed for {string}', (WarningType) => {
-  switch (WarningType) {
-      case "search": 
-        cy.wait(500)   
-        searchPage.searchTermError().contains('You must enter at least 2 characters.')
-      break;
-      case "person":
-      //AddPerson.feature is currently all ignore. MTTL-01801 is in backlog for the task to investigate and refactor.
-      break;
-      default:
-          break;
-  }
-})

@@ -41,3 +41,9 @@ And("property search results are prefixed correctly", () => {
   searchPage.searchResults().contains("Tenure")
   searchPage.searchResults().contains("UPRN")
 })
+
+
+//Validation Message
+When('a warning message is displayed for search field', () => {   
+  searchPage.searchTermError().contains('You must enter at least 2 characters.')
+})
