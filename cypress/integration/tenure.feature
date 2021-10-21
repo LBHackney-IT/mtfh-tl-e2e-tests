@@ -4,7 +4,6 @@ Feature: Tenure page
     Background:
       Given I am logged in
 
-    @ignore
     @SmokeTest
     Scenario Outline: View resident details
       When I view a Tenure "<tenure>"
@@ -16,6 +15,27 @@ Feature: Tenure page
           | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
 
     @SmokeTest
+    Scenario Outline: Navigate to old tenancy files
+      Given the start date for the selected tenure record is before 31 December 2013 "<tenure>"
+      When I view a Tenure "<tenure>"
+      Then the Scanned historic tenure records button is displayed
+  
+      Examples:
+          | tenure                               |
+          | 7b91950d-0edf-d926-1cf7-2e187160fd06 |     
+
+    
+    @SmokeTest
+    Scenario Outline: Navigate to old tenancy files - button not displayed
+      Given the start date for the selected tenure record is after 31 December 2013 "<tenure>"
+      When I view a Tenure "<tenure>"
+      Then the Scanned historic tenure records button is not displayed
+  
+      Examples:
+          | tenure                               |
+          | af53d98f-79cd-55ba-f0bd-5d58e4eecb8b |     
+
+    @SmokeTest
     Scenario Outline: No household members
       When I view a Tenure "<tenure>"
       Then the tenure information is displayed
@@ -25,7 +45,6 @@ Feature: Tenure page
           | tenure                               |
           | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
-    @ignore
     @SmokeTest
     Scenario Outline: View individual household members
       When I view a Tenure "<tenure>"
@@ -37,7 +56,6 @@ Feature: Tenure page
           | tenure                               |
           | bba2793e-df7d-aa4a-71df-57d067c21036 |
 
-    @ignore
     @SmokeTest
     Scenario Outline: No named tenure holders
       When I view a Tenure "<tenure>"
@@ -48,7 +66,6 @@ Feature: Tenure page
           | tenure                                |
           | 920d7a09-766d-413c-9ff9-36bd0d86ab1a  |
 
-    @ignore
     @SmokeTest
     Scenario Outline: Navigate to personal details
       When I view a Tenure "<tenure>"

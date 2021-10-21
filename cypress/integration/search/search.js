@@ -22,8 +22,6 @@ Then("a validation error message is displayed", () => {
   searchPage.searchTermError().should("be.visible");
 });
 
-
-
 Then("there is no filter option", () => {
   searchPage.sortByOption().should("not.exist");
 });
@@ -40,4 +38,8 @@ And("property search results are prefixed correctly", () => {
   searchPage.searchResults().contains("Property type")
   searchPage.searchResults().contains("Tenure")
   searchPage.searchResults().contains("UPRN")
+})
+
+Then('a warning message is displayed for search field', () => {   
+  searchPage.searchTermError().contains('You must enter at least 2 characters.')
 })

@@ -8,8 +8,9 @@ Feature: T&L Search Function
       Given I am logged in
       Given I am on the search page
 
-@ignore
-# This failed. Requires investigation.
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
@@ -24,9 +25,10 @@ Feature: T&L Search Function
       | An         | Property   |
 
 @ignore
-# This failed. Requires investigation.
   @SmokeTest 
   @Positive
+  @flaky
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute property searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -42,10 +44,11 @@ Feature: T&L Search Function
       | Avenue     | Property     |
       | castle     | Property     |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest 
   @Positive
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute person searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -63,10 +66,11 @@ Feature: T&L Search Function
       # | Trev       | Person     |
       # | Victor     | Person     |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest 
   @Positive
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute tenure searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -82,9 +86,31 @@ Feature: T&L Search Function
       | Avenue     | Tenure     |
       | castle     | Tenure     |
 
-@ignore
-# This failed. Requires investigation.
+
+  @SmokeTest 
+  @Positive
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
+  Scenario Outline: Execute tenure searches
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+    And tenure search results are prefixed correctly
+    Then the page breadcrumb is displayed
+
+    Examples:
+      | characters | searchType |
+      | 12         | Tenure     |
+      | Avenue     | Tenure     |
+      | castle     | Tenure     |
+
   @device
+    @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute searches on device
     When I am using a mobile viewport "<device>"
     And I click on the search again button
@@ -115,10 +141,11 @@ Feature: T&L Search Function
       | samsung-note9 | Jodie       | Person     |
       | samsung-s10   | Molly       | Person     |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest    
   @Positive
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Wildcard and partial searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -137,10 +164,11 @@ Feature: T&L Search Function
       # | *ic*       | Tenure     |
       # | te*        | Person     |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest
   @Positive
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Results are not returned
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -170,10 +198,11 @@ Feature: T&L Search Function
       | characters     | searchType |
       | ad e           | Person     |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest
   @Negative
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Insufficient characters
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -194,9 +223,10 @@ Feature: T&L Search Function
   Scenario: Accessibility Testing
     And have no detectable a11y violations
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Filter searches for person
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -213,9 +243,10 @@ Feature: T&L Search Function
       | Bre        | Last name Z-A | 12      | Person     |
       | Chris      | Best match    | 20      | Person     |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Filter searches for tenure
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -231,9 +262,10 @@ Feature: T&L Search Function
       | Bre        | 12      | Tenure     |
       | Chris      | 20      | Tenure     |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Filter searches for property
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -249,9 +281,10 @@ Feature: T&L Search Function
       | Bre        | 12      | Property   |
       | Chris      | 20      | Property   |
 
-@ignore
-# This failed. Requires investigation.
   @SmokeTest
+  @flaky
+  @ignore
+  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Re-execute search
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -267,3 +300,18 @@ Feature: T&L Search Function
     Examples:
       | firstSearch | secondSearch | searchType |
       | Steve       | Dave         | Person     |
+
+  @SmokeTest
+  @Negative
+  Scenario Outline: Search validation scenario
+    Given I am on the search page
+    When I click on the radio button for "<searchType>"
+    And I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then a warning message is displayed for search field
+
+    Examples:
+      | characters | searchType | 
+      | A          | Property   | 
+      | B          | Person     | 
+      | C          | Tenure     | 
