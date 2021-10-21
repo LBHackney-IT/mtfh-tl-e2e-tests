@@ -66,7 +66,8 @@ Feature: T&L Person Comment
       And I enter a valid comment
       And I select a comment category "<category>"
       Then I click the save comment button
-      
+      And I can see the timestamp for the created comment
+
       Examples:
         | commentType | personId                               |  category      |
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   |  Appointments  |

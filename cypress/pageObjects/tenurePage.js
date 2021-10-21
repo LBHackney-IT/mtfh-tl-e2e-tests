@@ -52,6 +52,10 @@ class TenurePageObjects {
     return cy.contains('Add new person to tenure')
   }
 
+  commentDateTime (){
+    return cy.get('[class="comment__date-time"]')
+  }
+
   comment(){
     return cy.get('[class="comment__item --center"]')
   }
@@ -79,8 +83,5 @@ class TenurePageObjects {
     this.tenureResidentsContainer().contains("Date of birth");
     this.tenureResidentsContainer().contains("Type");
   }
-  
-
-
 }
 export default TenurePageObjects;

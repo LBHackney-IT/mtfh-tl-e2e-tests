@@ -65,6 +65,7 @@ Feature: Tenure Comment
       And I select a comment category "<category>"
       Then I click the save comment button
       And the comment is submitted
+      And I can see the timestamp for the created comment
 
       Examples:
         | commentType | tenureId                               | category     |
