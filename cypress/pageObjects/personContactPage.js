@@ -93,6 +93,58 @@ class PersonContactPageObjects {
     contactDetailsHeader() {
         return cy.get('.govuk-fieldset__heading')
     }
+
+    removeCorrespondenceAddressButton() {
+        return cy.contains('Remove a correspondence address')
+    }
+
+    addCorrespondenceAddressButton() {
+        return cy.contains('Add a correspondence address')
+    }
+
+    postcodeLookupField() {
+        return cy.get('#contact-details-correspondence-address-lookup-term-field')
+    }
+
+    postcodeLookupButton() {
+        return cy.contains('Look up')
+    }
+
+    selectAddressField() {
+        return cy.get('#contact-details-correspondence-address-select-field')
+    }
+
+    addressLineOneField() {
+        return cy.get('#contact-details-correspondence-address-line-1-field')
+    }
+
+    addressLineTwoField() {
+        return cy.get('#contact-details-correspondence-address-line-2-field')
+    }
+
+    addressLineThreeField() {
+        return cy.get('#contact-details-correspondence-address-line-3-field')
+    }
+
+    addressLineFourField() {
+        return cy.get('#contact-details-correspondence-address-line-4-field')
+    }
+
+    postcodeField() {
+        return cy.get('#contact-details-correspondence-postcode-field')
+    }
+
+    addressDescriptionField() {
+        return cy.get('#contact-details-correspondence-description-field')
+    }
+
+    saveAddressButton() {
+        return cy.contains('Save correspondence address')
+    }
+
+    postcodeLookupErrorContainer() {
+        return cy.get('#contact-details-correspondence-address-lookup-term-error')
+    }
 }
 
 export default PersonContactPageObjects
