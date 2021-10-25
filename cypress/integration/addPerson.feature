@@ -265,6 +265,7 @@ Feature: Add a new person to a tenure
     Scenario: Accessibility Testing
       And have no detectable a11y violations
 
+    @ignore
     @SmokeTest
     Scenario Outline: Navigate to add person via tenure page
       When I view a Tenure "<tenure>"
