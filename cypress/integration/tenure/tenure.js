@@ -4,7 +4,6 @@ import tenure from "../../../api/tenure";
 
 const tenurePage = new TenurePageObjects
 
-
 Given('the start date for the selected tenure record is before 31 December 2013 {string}', async (tenureId) => {
     const getResponse = await tenure.getTenure(tenureId)
     cy.log(`Status code ${getResponse.status} returned`)

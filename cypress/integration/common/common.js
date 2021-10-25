@@ -99,6 +99,19 @@ Given("I want to create a person", async () => {
   personId = response.data.id;
 });
 
+
+Given("I create a new tenure", async () => {
+  cy.log("Creating new tenure record");
+  const response = await tenure.createTenure();
+  cy.log(`Status code ${response.status} returned`);
+  cy.log('response: ', response)
+});
+
+
+
+
+
+
 Then("I want to view a person", async () => {
   cy.log(`Checking Person record ${personId}`);
   const response = await person.viewPerson(personId);

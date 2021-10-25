@@ -33,8 +33,14 @@ async function patchRequest(endpoint, payload, ifMatch) {
 }
 
 async function postRequest(endpoint, payload) {
+  const postConfig = {
+    headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`,
+               "Access-Control-Allow-Origin": "http://localhost:51893/",
+               'Access-Control-Allow-Headers':'GET,PUT,POST,DELETE,PATCH,OPTIONS',          
+            }
+    };
     try {
-      const response = await axios.post(endpoint, payload, config);
+      const response = await axios.post(endpoint, payload, postConfig);
       cy.log('Sending post request')
       return response
     } catch (error) {
