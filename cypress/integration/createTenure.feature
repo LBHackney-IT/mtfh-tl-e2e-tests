@@ -286,7 +286,7 @@ Feature: Create tenure
         And I click save phone number
         And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
         And I click the done button
-       And the tenure person search is displayed
+        And the tenure person search is displayed
 
         Examples:
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |

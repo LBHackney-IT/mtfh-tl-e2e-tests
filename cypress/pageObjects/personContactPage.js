@@ -145,6 +145,18 @@ class PersonContactPageObjects {
     postcodeLookupErrorContainer() {
         return cy.get('#contact-details-correspondence-address-lookup-term-error')
     }
+
+    addressLineOneErrorContainer() {
+        return cy.get('#contact-details-correspondence-address-line-1-error')
+    }
+
+    postCodeErrorContainer() {
+        return cy.get('#contact-details-correspondence-postcode-error')
+    }
+
+    confirmationMessage() {
+        return cy.get('.lbh-page-announcement')
+    }
 }
 
 export default PersonContactPageObjects
