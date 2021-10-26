@@ -159,7 +159,6 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
-                              echo "This should go away on rollback" ;
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
@@ -169,7 +168,6 @@ jobs:
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;
-
   run-e2e-devices:
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
@@ -196,7 +194,6 @@ jobs:
                         echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                         npm install ;
                         npm run test:cypress:$CYPRESS_ENVIRONMENT:devices ;
-
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
