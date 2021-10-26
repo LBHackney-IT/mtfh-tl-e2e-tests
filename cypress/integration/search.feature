@@ -8,7 +8,6 @@ Feature: T&L Search Function
       Given I am logged in
       Given I am on the search page
 
-
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
@@ -138,7 +137,6 @@ Feature: T&L Search Function
       | *a         | Person     |
       | b*         | Tenure     |
       | *c*        | Property   |
-
       # | ch         | Tenure     |
       # | *ev        | Person     |
       # | *ic*       | Tenure     |
@@ -263,7 +261,6 @@ Feature: T&L Search Function
       | firstSearch | secondSearch | searchType |
       | Steve       | Dave         | Person     |
 
-  @ignore
   @SmokeTest
   @Negative
   Scenario Outline: Search validation scenario
@@ -271,10 +268,10 @@ Feature: T&L Search Function
     When I click on the radio button for "<searchType>"
     And I enter any of the following criteria "<characters>"
     And I click on the search button
-    Then a warning message is displayed for "<WarningType>"
+    Then a warning message is displayed for search field
 
     Examples:
-      | characters | searchType | WarningType |
-      | A          | Property   | search      |
-      | B          | Person     | search      |
-      | C          | Tenure     | search      |
+      | characters | searchType | 
+      | A          | Property   | 
+      | B          | Person     | 
+      | C          | Tenure     | 
