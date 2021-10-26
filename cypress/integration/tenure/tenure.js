@@ -5,14 +5,16 @@ import tenure from "../../../api/tenure";
 const tenurePage = new TenurePageObjects
 let tenureId = ''
 
-// Given("I create a new tenure", async () => {
-//     cy.log("Creating new tenure record");
-//     const response = await tenure.createTenure();
-//     cy.log(`Status code ${response.status} returned`);
-//     cy.log(`Tenure Id for record ${response.data.id} created!`);  
-//     tenureId = response.data.id
-// });
-  
+Given("the start date of the tenure is {string}", async (startOfTenureDate) => {
+    cy.log("Creating new tenure record");
+
+    const response = await tenure.createTenureWithStartDate(startOfTenureDate);
+    cy.log(`Status code ${response.status} returned`);
+    cy.log ('Start of Tenure Date: ',response.data.startOfTenureDate)
+    cy.log(`Tenure Id for record ${response.data.id} created!`);  
+    tenureId = response.data.id
+  });
+
 Given('the start date for the selected tenure record is before 31 December 2013 {string}', async (tenureId) => {
     const getResponse = await tenure.getTenure(tenureId)
     cy.log(`Status code ${getResponse.status} returned`)
@@ -23,20 +25,15 @@ Given('the start date for the selected tenure record is before 31 December 2013 
     expect(startDate).to.lessThan(threshold)
 })
 
-Given('the start date for the selected tenure record is after 31 December 2013 {string}', async (tenureId) => {
+Given('the start date for the tenure record is before 31 December 2013', async () => {
     const getResponse = await tenure.getTenure(tenureId)
     cy.log(`Status code ${getResponse.status} returned`)
     var startDate =  new Date(getResponse.data.startOfTenureDate)
     var threshold =  new Date(2013, 12, 31)
     cy.log('startDate', startDate)
     cy.log('threshold', threshold)
-    expect(startDate).to.greaterThan(threshold)
+    expect(startDate).to.lessThan(threshold)
 })
-
-// When('I view a Tenure {string}', (record) => {
-//     tenurePage.visit(record)
-// })
-
 
 And('there are no household members', () => {
     tenurePage.tenureResidentsContainer().contains('This tenure has no household members')
@@ -45,6 +42,14 @@ And('there are no household members', () => {
 When('I select a household member', () => {
     tenurePage.householdMemberLink().should('have.attr', 'href').and('include', '/person')
     tenurePage.householdMemberLink().eq(0).click()
+})
+
+When('I view this tenure', () => {
+    tenurePage.visit(tenureId)
+})
+
+When('I click the resident details accordion', () => {
+    tenurePage.residentDetailsAccordion().click()
 })
 
 Then('the household member details are displayed', () => {
@@ -68,10 +73,6 @@ And('I click the tenure details accordion', () => {
     tenurePage.tenureDetailsAccordion().click()
 })
 
-When('I click the resident details accordion', () => {
-    tenurePage.residentDetailsAccordion().click()
-})
-
 And('there are no named tenure holders', () => {
     tenurePage.tenureResidentsContainer().contains('This tenure has no named tenure holders')
 })
@@ -91,3 +92,4 @@ Then('the Scanned historic tenure records button is displayed', () => {
 Then('the Scanned historic tenure records button is not displayed', () => {
     tenurePage.scannedHistoricTenureRecords().should('not.exist')
 })
+

@@ -25,10 +25,7 @@ import date from "date-and-time";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 
 import { hasToggle } from "../../helpers/hasToggle";
-
 import { guid } from "../../helpers/commentText";
-
-
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -473,7 +470,6 @@ When('I view a Tenure {string}', (record) => {
 When('I view a Tenure', () => {
   tenurePage.visit(tenureId)
 })
-
 
 Then('the tenure information is displayed', () => {
   tenurePage.tenureDetailsContainer().should("be.visible");

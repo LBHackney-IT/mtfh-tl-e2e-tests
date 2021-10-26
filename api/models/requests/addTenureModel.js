@@ -9,7 +9,7 @@ const createTenureModel = {
         "fullAddress": "E2E test street N18 2UF",
         "uprn": "10008334555"
     },
-    "startOfTenureDate": "2022-01-01"
+    "startOfTenureDate": "2010-01-01"
 }
 
 module.exports = {

@@ -8,8 +8,15 @@ const getTenure = async(tenureId) => {
     return response
 }
 
-const createTenure = async(tenureId, tenureType) => {
+const createTenure = async() => {
     const response = await request.postRequest(`${tenureEndpoint}/tenures/`, createTenureModel.createTenureModel)
+    return response
+}
+
+const createTenureWithStartDate = async(startOfTenureDate) => {
+    const payload = createTenureModel.createTenureModel
+    payload.startOfTenureDate =startOfTenureDate
+    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, payload)
     return response
 }
 
@@ -29,5 +36,6 @@ module.exports = {
     getTenure,
     editTenure,
     deleteTenure,
-    createTenure
+    createTenure,
+    createTenureWithStartDate
 }
