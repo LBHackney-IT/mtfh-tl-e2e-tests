@@ -32,24 +32,11 @@ async function patchRequest(endpoint, payload, ifMatch) {
     }
 }
 
-async function postRequest(endpoint, payload,) {
-  let postConfig = {
-    headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`
-              // "Access-Control-Request-Origin":"*",
-              // "Access-Control-Request-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-              // "Access-Control-Request-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-            }
-    };
+async function postRequest(endpoint, payload,) { 
     try {
       var bearerToken = envConfig.gssoTestKey
       cy.log('bearer token: ', bearerToken)
-      const response = await axios.post(endpoint, payload, config);
-      
-      // response.setHeader("Access-Control-Allow-Origin", "*");
-      // response.setHeader("Access-Control-Allow-Credentials", "true");
-      // response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-      // response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  
+      const response = await axios.post(endpoint, payload, config);  
       cy.log('Sending post request')
       return response
     } catch (error) {

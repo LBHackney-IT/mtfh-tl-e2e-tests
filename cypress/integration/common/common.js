@@ -104,13 +104,18 @@ Given("I create a new tenure", async () => {
   cy.log("Creating new tenure record");
   const response = await tenure.createTenure();
   cy.log(`Status code ${response.status} returned`);
-  cy.log('response: ', response)
+  cy.log(`Tenure Id for record ${response.data.id} created!`);  
+  tenureId = response.data.id
 });
 
-
-
-
-
+Given("I add a person to a tenure", async () => {
+  cy.log("Creating Person record");
+  cy.log('Tenure Id inside person request', tenureId)
+  const response = await person.createPersonWithNewTenure(tenureId);
+  cy.log(`Status code ${response.status} returned`);
+  cy.log(`Person record ${response.data.id} created!`);
+  assert.deepEqual(response.status, 201);
+});
 
 Then("I want to view a person", async () => {
   cy.log(`Checking Person record ${personId}`);
@@ -464,6 +469,11 @@ Then('the add a new person tenure page is correct', () => {
 When('I view a Tenure {string}', (record) => {
   tenurePage.visit(record)
 })
+
+When('I view a Tenure', () => {
+  tenurePage.visit(tenureId)
+})
+
 
 Then('the tenure information is displayed', () => {
   tenurePage.tenureDetailsContainer().should("be.visible");

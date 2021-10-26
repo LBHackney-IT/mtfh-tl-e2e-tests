@@ -5,15 +5,12 @@ Feature: Tenure page
       Given I am logged in
 
     Scenario: View resident details for new tenure
+      # Given I create a new tenure
       Given I create a new tenure
-      # When I view a Tenure "<tenure>"
-      # Then the tenure information is displayed
-      # And the residents information is displayed
+      And I add a person to a tenure
+      When I view a Tenure
+      Then the tenure information is displayed
       
-      # Examples:
-      #     | tenure                               |
-      #     | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-
     # @SmokeTest
     # Scenario Outline: View resident details
     #   When I view a Tenure "<tenure>"
