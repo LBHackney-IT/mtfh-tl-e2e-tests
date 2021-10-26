@@ -24,7 +24,7 @@ Feature: T&L Person Page
 
     Examples:
       | record                               |
-      | da05aabb-3757-43c8-3028-c9ecbe72a067 |
+      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
 
   @device
   Scenario Outline: View person details device view

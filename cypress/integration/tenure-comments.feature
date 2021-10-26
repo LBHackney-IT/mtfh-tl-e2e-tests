@@ -17,12 +17,10 @@ Feature: Tenure Comment
       Then the create comment component is displayed
 
       Examples:
-<<<<<<< HEAD
-        | tenure                               |
-        | f5995a9d-b227-4e23-0957-2233db537ea9 |
-=======
         | commentType | tenureId                             |
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+        | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
+        # | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
+
 
     @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
@@ -35,7 +33,6 @@ Feature: Tenure Comment
       Examples:
         | commentType| tenureId                             | checkbox                             |
         | tenure     | fde50d68-84c3-c166-6338-895c12ebf8fd | 0fb4997e-17a9-4373-6211-40b374f01533 |
->>>>>>> master
 
     @device    
     Scenario Outline: I go to create a comment for a tenure page on a device
