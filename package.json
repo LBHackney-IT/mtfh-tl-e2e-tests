@@ -16,7 +16,7 @@
     "test:cypress:development:comments": "cypress run -e TAGS='@comments and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:common": "cypress run -e TAGS='@common and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:header": "cypress run -e TAGS='@header and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
-    "test:cypress:development:personal-details": "cypress run -e TAGS='@personal-details nd not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
+    "test:cypress:development:personal-details": "cypress run -e TAGS='@personal-details and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:property": "cypress run -e TAGS='@property and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:root": "cypress run -e TAGS='@root and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:search": "cypress run -e TAGS='@search and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
