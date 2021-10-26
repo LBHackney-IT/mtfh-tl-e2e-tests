@@ -103,6 +103,8 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
+                              echo "Upstream pipeline = << pipeline.parameters.upstream_pipeline_name >>"
+                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
@@ -111,19 +113,17 @@ jobs:
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
-                              npm run test:cypress:$CYPRESS_ENVIRONMENT ;
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
                 - run: 
                     name: trigger downstream deployment
                     command: |
+                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               case << parameters.stage >> in
                               (development) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
                               esac
                               case << parameters.stage >> in
                               (staging) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
                               esac
-                              echo deployment environment is $DEPLOYMENT_ENVIRONMENT
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                              echo setting downstream pipeline to to $UPSTREAM_PIPELINE
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
@@ -133,7 +133,6 @@ jobs:
                     name: trigger failure message to parent pipeline
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                              echo setting downstream pipeline to to $UPSTREAM_PIPELINE
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
                               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                               --header 'Content-Type: application/json' \
@@ -160,7 +159,6 @@ jobs:
                 - run:
                     name: Execute e2e tests
                     command: |
-                              echo "This should go away on rollback" ;
                               export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
@@ -170,7 +168,6 @@ jobs:
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;
-
   run-e2e-devices:
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
@@ -197,7 +194,6 @@ jobs:
                         echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                         npm install ;
                         npm run test:cypress:$CYPRESS_ENVIRONMENT:devices ;
-
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>

@@ -1,4 +1,5 @@
 @GoogleLighthouse
+
 Feature: Google Lighthouse audit
 
     Background: Login

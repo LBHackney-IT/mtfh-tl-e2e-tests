@@ -1,4 +1,8 @@
-@PersonPage
+@authentication
+@common
+@personal-details
+@root
+
 Feature: T&L Person Page
   I want to view a person
 
@@ -7,6 +11,7 @@ Feature: T&L Person Page
 
   @SmokeTest
   @Positive
+  @Production
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
     Then the personal details are displayed on the sidebar

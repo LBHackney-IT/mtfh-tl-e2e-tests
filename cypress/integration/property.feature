@@ -1,4 +1,8 @@
-@PropertyPage
+@authentication
+@common
+@property
+@root
+
 Feature: Property Page
 
     View property page

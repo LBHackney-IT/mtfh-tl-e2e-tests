@@ -1,4 +1,8 @@
-@ActivityHistoryPage
+@activity-history
+@authentication
+@common
+@root
+
 Feature: Activity History
   I want to view a person's activity history
 
@@ -6,6 +10,7 @@ Feature: Activity History
     Given I am logged in
     
     @SmokeTest
+    @Production
     Scenario Outline: View activity history
       Given I go to the activity history for "<person>"
       Then the activity history is displayed
@@ -14,7 +19,7 @@ Feature: Activity History
 
       Examples:
         | person                               | 
-        | 5e4a06d3-9f3b-914a-fd48-3d82c8aa3752 |
+        | f0058791-07da-28de-06a3-bd5ca124e160 |
 
     Scenario Outline: Update activity history
       Given I am on the edit person page for "<person>"

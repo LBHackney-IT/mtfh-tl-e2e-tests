@@ -1,4 +1,8 @@
-@SearchPage
+@authentication
+@common
+@root
+@search
+
 Feature: T&L Search Function
     I want to search for a person or tenure
 

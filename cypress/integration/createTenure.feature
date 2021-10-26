@@ -1,4 +1,8 @@
-@CreateTenure
+@authentication
+@common
+@root
+@tenure
+
 Feature: Create tenure
   I want to create a new tenure
 
