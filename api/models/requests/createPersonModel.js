@@ -1,7 +1,7 @@
 const createPersonModel = {
     "firstName": "Add",
     "middleName": "Person",
-    "surname": "API Test",
+    "surname": "API E2E Test",
     "title": "Mr",
     "languages": [],
     "reason": "API test",
