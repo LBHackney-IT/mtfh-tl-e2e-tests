@@ -375,8 +375,6 @@ And("the remove phone number modal is displayed", () => {
   modal.modalBody().should("be.visible");
 });
 
-
-
 // Person page
 And("I click edit person", () => {
   personPage.editPersonButton().click();
