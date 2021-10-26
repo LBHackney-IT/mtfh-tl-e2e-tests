@@ -8,9 +8,6 @@ Feature: T&L Search Function
       Given I am logged in
       Given I am on the search page
 
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
@@ -24,11 +21,8 @@ Feature: T&L Search Function
       | characters | searchType |
       | An         | Property   |
 
-@ignore
   @SmokeTest 
   @Positive
-  @flaky
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute property searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -46,9 +40,6 @@ Feature: T&L Search Function
 
   @SmokeTest 
   @Positive
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute person searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -68,9 +59,6 @@ Feature: T&L Search Function
 
   @SmokeTest 
   @Positive
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute tenure searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -89,9 +77,6 @@ Feature: T&L Search Function
 
   @SmokeTest 
   @Positive
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute tenure searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -108,9 +93,6 @@ Feature: T&L Search Function
       | castle     | Tenure     |
 
   @device
-    @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Execute searches on device
     When I am using a mobile viewport "<device>"
     And I click on the search again button
@@ -143,9 +125,6 @@ Feature: T&L Search Function
 
   @SmokeTest    
   @Positive
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Wildcard and partial searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -158,7 +137,6 @@ Feature: T&L Search Function
       | *a         | Person     |
       | b*         | Tenure     |
       | *c*        | Property   |
-
       # | ch         | Tenure     |
       # | *ev        | Person     |
       # | *ic*       | Tenure     |
@@ -166,9 +144,6 @@ Feature: T&L Search Function
 
   @SmokeTest
   @Positive
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Results are not returned
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -200,9 +175,6 @@ Feature: T&L Search Function
 
   @SmokeTest
   @Negative
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Insufficient characters
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -224,9 +196,6 @@ Feature: T&L Search Function
     And have no detectable a11y violations
 
   @SmokeTest
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Filter searches for person
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -244,9 +213,6 @@ Feature: T&L Search Function
       | Chris      | Best match    | 20      | Person     |
 
   @SmokeTest
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Filter searches for tenure
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -263,9 +229,6 @@ Feature: T&L Search Function
       | Chris      | 20      | Tenure     |
 
   @SmokeTest
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Filter searches for property
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -282,9 +245,6 @@ Feature: T&L Search Function
       | Chris      | 20      | Property   |
 
   @SmokeTest
-  @flaky
-  @ignore
-  # Investigate and refactor ticket is backlog MTTL-1802
   Scenario Outline: Re-execute search
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -301,6 +261,7 @@ Feature: T&L Search Function
       | firstSearch | secondSearch | searchType |
       | Steve       | Dave         | Person     |
 
+  @ignore
   @SmokeTest
   @Negative
   Scenario Outline: Search validation scenario

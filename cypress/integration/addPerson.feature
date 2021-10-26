@@ -1,10 +1,10 @@
-@ignore
 @AddPersonPage
 Feature: Add a new person to a tenure
   I want to add a person to a tenure
 
   Background: 
     Given I am logged in
+    And I delete all of the correspondence addresses for "279bf08c-0c9e-4d81-e24a-8930e8b37a68"
 
   @SmokeTest
   @Regression
@@ -20,6 +20,7 @@ Feature: Add a new person to a tenure
       | tenure                               |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 |
   
+  @ignore
   @SmokeTest
   @Positive
   Scenario Outline: Add a new person to a tenure
@@ -47,6 +48,7 @@ Feature: Add a new person to a tenure
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
 
+  @ignore
   @device
   Scenario Outline: Add a new person to tenure on a device
     Given I create a person for tenure '<tenure>'
@@ -89,6 +91,7 @@ Feature: Add a new person to a tenure
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | samsung-note9 | Miss  | Household member    | samsung-note9 | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | samsung-s10   | Miss  | Named tenure holder | samsung-s10   | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
 
+  @ignore
   @SmokeTest
   @Negative
   Scenario Outline: Validation check
@@ -132,6 +135,7 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | characters |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | guid       |
 
+  @ignore
   @SmokeTest
   @Positive
   Scenario Outline: Person Contact details/Minimum fields
@@ -163,6 +167,7 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
+    @ignore
     @SmokeTest
     @Positive
     Scenario Outline: Edit a person
@@ -259,6 +264,7 @@ Feature: Add a new person to a tenure
     Scenario: Accessibility Testing
       And have no detectable a11y violations
 
+    @ignore
     @SmokeTest
     Scenario Outline: Navigate to add person via tenure page
       When I view a Tenure "<tenure>"
@@ -270,3 +276,47 @@ Feature: Add a new person to a tenure
       Examples:
           | tenure                               |
           | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+
+    @ignore
+    Scenario Outline: Correspondence address using valid postcode lookup details
+      When I edit a person's contact details "<person>"
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter a postcode into the lookup field "<postCode>"
+      And I click look up
+      Then the select address selection box is populated "<postCode>"
+      When I select an address from the selection
+      And I click save correspondence address
+      Then the correspondence address is saved
+
+      Examples:
+          | person                               | postCode |
+          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | E8 2DY   |
+
+    Scenario Outline: Correspondence address using invalid postcode lookup details
+      When I edit a person's contact details "<person>"
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter a postcode into the lookup field "<postCode>"
+      And I click look up
+      Then an invalid postcode error is thrown
+
+      Examples:
+          | person                               | postCode |
+          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | 0        |
+
+    Scenario Outline: Correspondence address using free text fields
+      When I edit a person's contact details "<person>"
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter "<addressOne>" into address line 1
+      When I enter "<addressTwo>" into address line 2
+      When I enter "<addressThree>" into address line 3
+      When I enter "<addressFour>" into address line 4
+      When I enter "<postCode>" into the postcode field
+      And I click save correspondence address
+      Then the correspondence address is saved
+
+      Examples:
+          | person                               | postCode | addressOne | addressTwo | addressThree | addressFour |
+          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | SW1A 1AA | Buckingham | Palace     | London       | England     |
