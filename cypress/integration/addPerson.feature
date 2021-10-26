@@ -6,7 +6,6 @@ Feature: Add a new person to a tenure
     Given I am logged in
     And I delete all of the correspondence addresses for "279bf08c-0c9e-4d81-e24a-8930e8b37a68"
 
-  @ignore
   @SmokeTest
   @Regression
   Scenario Outline: Removed fields are not displayed
@@ -21,7 +20,6 @@ Feature: Add a new person to a tenure
       | tenure                               |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 |
   
-  @ignore
   @SmokeTest
   @Positive
   Scenario Outline: Add a new person to a tenure
@@ -49,7 +47,6 @@ Feature: Add a new person to a tenure
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
 
-  @ignore
   @device
   Scenario Outline: Add a new person to tenure on a device
     Given I create a person for tenure '<tenure>'
@@ -92,7 +89,6 @@ Feature: Add a new person to a tenure
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | samsung-note9 | Miss  | Household member    | samsung-note9 | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
       | e31bd4e3-8639-35ee-9849-47f5ae62ac17 | samsung-s10   | Miss  | Named tenure holder | samsung-s10   | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
 
-  @ignore
   @SmokeTest
   @Negative
   Scenario Outline: Validation check
@@ -136,7 +132,6 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | characters |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | guid       |
 
-  @ignore
   @SmokeTest
   @Positive
   Scenario Outline: Person Contact details/Minimum fields
@@ -168,7 +163,6 @@ Feature: Add a new person to a tenure
         | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | email                     | emailDescription  | phoneNumber | phoneType | phoneDescription  |
         | 957cc50e-2dc4-e782-a013-c0a331884e49 | Mr    | Named tenure holder | Test      | Account    | guid     | 01  | 01    | 1950 | testymctestface@email.com | email description | 01189998    | Other     | phone description |
 
-    @ignore
     @SmokeTest
     @Positive
     Scenario Outline: Edit a person
@@ -265,7 +259,6 @@ Feature: Add a new person to a tenure
     Scenario: Accessibility Testing
       And have no detectable a11y violations
 
-    @ignore
     @SmokeTest
     Scenario Outline: Navigate to add person via tenure page
       When I view a Tenure "<tenure>"

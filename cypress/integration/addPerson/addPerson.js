@@ -194,10 +194,9 @@ And('I delete all of the correspondence addresses for {string}', async (personId
     // GET the list of correspondence addresses for a person
     const getResponse = await contactDetails.getContactDetails(personId)
     cy.log(`Status code ${getResponse.status} returned`)
-    // assert.deepEqual(getResponse.status, 200)
+    assert.deepEqual(getResponse.status, 200)
 
     const correspondenceAddresses = getResponse.data.results;
-    console.log(correspondenceAddresses)
 
     // DELETE any existing correspondence addresses for a person
     for(let i = 0; i < correspondenceAddresses.length; i++) {
@@ -205,10 +204,7 @@ And('I delete all of the correspondence addresses for {string}', async (personId
             cy.log(`id=${correspondenceAddresses[i].id}`)
             cy.log(`tid=${correspondenceAddresses[i].targetId}`)
             const deleteResponse = await contactDetails.deleteContactDetails(correspondenceAddresses[i].id, correspondenceAddresses[i].targetId)
-            // cy.log(`Status code ${deleteResponse.status} returned`)
             assert.deepEqual(deleteResponse.status, 200)
         }
-
     }
-    // cy.log(`${correspondenceAddresses.length} contact details records deleted`)
 })
