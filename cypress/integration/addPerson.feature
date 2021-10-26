@@ -1,4 +1,3 @@
-@ignore
 @authentication
 @common
 @personal-details
