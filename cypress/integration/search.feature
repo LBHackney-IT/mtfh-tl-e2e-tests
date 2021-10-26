@@ -263,6 +263,7 @@ Feature: T&L Search Function
       | firstSearch | secondSearch | searchType |
       | Steve       | Dave         | Person     |
 
+  @ignore
   @SmokeTest
   @Negative
   Scenario Outline: Search validation scenario
