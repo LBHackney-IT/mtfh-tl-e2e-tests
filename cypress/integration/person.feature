@@ -70,18 +70,12 @@ Feature: T&L Person Page
       | dfkkkl |
 
   @SmokeTest
-  Scenario Outline: Add a comment for a person
+  Scenario Outline: Add a comment for a person navigation
+  # Add comment functinality is covered in person-comments.feature
     Given I have loaded a Person record "<record>"
     # Then the body Person details are displayed
     When I click on the add comment button
     Then I am taken to the add comment for person page "<record>"
-    When I enter a valid title
-    When I enter a valid comment
-    And I select a comment category "<category>"
-    Then I click the save comment button
-    Then the comment is submitted
-    Given I have loaded a Person record "<record>"
-    Then the new comment is loaded
 
     Examples:
       | record                               | category     |

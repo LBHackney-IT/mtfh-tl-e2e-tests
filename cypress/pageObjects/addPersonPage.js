@@ -6,6 +6,10 @@ class AddPersonPageObjects {
         cy.injectAxe()
     }
 
+    editPersonContactDetails(record) {
+        cy.visit(`${envConfig.baseUrl}/person/${record}/edit/contact`)
+    }
+
     mainContent() {
         return cy.get('#main-content')
     }

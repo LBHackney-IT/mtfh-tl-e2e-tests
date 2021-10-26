@@ -10,16 +10,11 @@ import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
 import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
-import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage"
 import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
-
-import commentTitle from "../../helpers/personCommentText";
-import validComment from "../../helpers/personCommentText";
-import testGuid from "../../helpers/personCommentText";
 
 import comment from "../../../api/comment";
 import contact from "../../../api/contact";
@@ -28,7 +23,12 @@ import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
+
 import { hasToggle } from "../../helpers/hasToggle";
+
+import { guid } from "../../helpers/commentText";
+
+
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -37,7 +37,6 @@ const footer = new FooterPageObjects();
 const header = new HeaderPageObjects();
 const modal = new ModalPageObjects();
 const navigation = new NavigationPageObjects();
-const personCommentsPage = new PersonCommentsPageObjects();
 const personContactPage = new PersonContactPageObjects();
 const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
@@ -47,6 +46,7 @@ const tenurePage = new TenurePageObjects();
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
+let tenureId ="";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -183,31 +183,6 @@ And("the page footer links are correct", () => {
   footer.footerLinksAreCorrect();
 });
 
-// Person Comments shared steps
-
-When("I enter a valid title", () => {
-  personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle);
-});
-
-When("I enter a valid comment", () => {
-  personCommentsPage.commentContainer().type(validComment.validComment);
-});
-
-When('I select a comment category {string}',  (category) => {
-  personCommentsPage.addCommentCategoryField().select(category)
-})
-
-Then("I click the save comment button", () => {
-  personCommentsPage.submitCommentButton().click();
-});
-
-Then("the comment is submitted", () => {
-  personCommentsPage.pageAnnouncementHeader().should("be.visible");
-  personCommentsPage
-    .pageAnnouncementHeader()
-    .contains("Comment successfully saved");
-});
-
 When("I am using a mobile viewport {string}", (device) => {
   cy.viewport(`${device}`);
 });
@@ -219,7 +194,7 @@ Given("I am on the search page", () => {
 
 When("I enter any of the following criteria {string}", (searchTerm) => {
   if (searchTerm === "guid") {
-    searchTerm = testGuid.testGuid;
+    searchTerm = guid;
   }
   searchPage.searchContainer().type(searchTerm);
 });
@@ -244,7 +219,7 @@ Then(
   "the search results are displayed by best match {string}",
   (searchTerm) => {
     if (searchTerm === "guid") {
-      searchTerm = testGuid.testGuid;
+      searchTerm = guid;
     }
     searchPage
       .searchResults()
@@ -432,7 +407,7 @@ Given("I create a person for tenure {string}", (record) => {
 
 And("I select a preferred middle name {string}", (preferredMiddleName) => {
   if (preferredMiddleName === "guid") {
-    preferredMiddleName = testGuid.testGuid;
+    preferredMiddleName = guid;
   }
   addPersonPage.preferredMiddleNameContainer().clear();
   addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName);
@@ -440,7 +415,7 @@ And("I select a preferred middle name {string}", (preferredMiddleName) => {
 
 And("I select a preferred last name {string}", (preferredLastName) => {
   if (preferredLastName === "guid") {
-    preferredLastName = testGuid.testGuid;
+    preferredLastName = guid;
   }
   addPersonPage.preferredLastNameContainer().clear();
   addPersonPage.preferredLastNameContainer().type(preferredLastName);
@@ -463,7 +438,7 @@ Given("I am on the edit person page for {string}", (person) => {
 });
 
 Then("the activity history is correct", () => {
-  activityHistory.activityTableRow().eq(0).contains(testGuid.testGuid);
+  activityHistory.activityTableRow().eq(0).contains(guid);
   activityHistory.activityTableRow().eq(0).contains(dateCaptureDay);
   activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
 });
@@ -541,7 +516,6 @@ And('I click yes on the modal', () => {
 })
 
     // Add person
-
 And('I select a title {string}', (title) => {
   addPersonPage.personTitleSelection().select(title)
 })
@@ -567,7 +541,7 @@ And('I enter a middle name {string}', (middleName) => {
 
 And('I enter a last name {string}', (lastName) => {
     if(lastName === 'guid') {
-        lastName = testGuid.testGuid
+        lastName = guid
     }
     addPersonPage.lastNameContainer().clear()
     addPersonPage.lastNameContainer().type(lastName)

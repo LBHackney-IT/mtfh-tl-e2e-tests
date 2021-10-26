@@ -66,7 +66,6 @@ Feature: Property Page
       | assetId                              |
       | 49202bdc-5d97-a46c-289c-997df568500f |
 
-
     Scenario Outline: Asset API for invalid FE type
       Given I check the asset API with an invalid assetType "<assetId>"
       When I navigate to the asset page "<assetId>"

@@ -79,6 +79,23 @@ Feature: T&L Search Function
       | castle     | Tenure     |
 
 
+  @SmokeTest 
+  @Positive
+  Scenario Outline: Execute tenure searches
+    And I click on the search again button
+    When I click on the radio button for "<searchType>"
+    When I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then the search results are displayed by best match "<characters>"
+    And tenure search results are prefixed correctly
+    Then the page breadcrumb is displayed
+
+    Examples:
+      | characters | searchType |
+      | 12         | Tenure     |
+      | Avenue     | Tenure     |
+      | castle     | Tenure     |
+
   @device
   Scenario Outline: Execute searches on device
     When I am using a mobile viewport "<device>"
@@ -124,7 +141,6 @@ Feature: T&L Search Function
       | *a         | Person     |
       | b*         | Tenure     |
       | *c*        | Property   |
-
       # | ch         | Tenure     |
       # | *ev        | Person     |
       # | *ic*       | Tenure     |
@@ -248,3 +264,19 @@ Feature: T&L Search Function
     Examples:
       | firstSearch | secondSearch | searchType |
       | Steve       | Dave         | Person     |
+
+  @ignore
+  @SmokeTest
+  @Negative
+  Scenario Outline: Search validation scenario
+    Given I am on the search page
+    When I click on the radio button for "<searchType>"
+    And I enter any of the following criteria "<characters>"
+    And I click on the search button
+    Then a warning message is displayed for search field
+
+    Examples:
+      | characters | searchType | 
+      | A          | Property   | 
+      | B          | Person     | 
+      | C          | Tenure     | 

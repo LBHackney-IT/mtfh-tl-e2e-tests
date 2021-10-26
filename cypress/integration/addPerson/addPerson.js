@@ -1,10 +1,14 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
-import testGuid from '../../helpers/personCommentText'
+import PersonContactPageObjects from '../../pageObjects/personContactPage'
+import guid from '../../helpers/commentText'
+import { getRequest } from "../../../api/requests/requests"
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
+const personContactPage = new PersonContactPageObjects()
+const contactDetails = require('../../../api/contact-details')
 
 Then('the add a new person tenure page is correct', () => {
     addPersonPage.addPersonPageIsDisplayed()
@@ -18,8 +22,8 @@ And('the person is added to the tenure page {string} {string} {string}', (title,
     
     for (let index = 0; index < 10;) {
         cy.get('.mtfh-resident-details').then(($residentDetails) => {
-            if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`)) {
-                cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).should('be.visible')
+            if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${guid}`)) {
+                cy.contains(`${title} ${firstName} ${middleName} ${guid}`).should('be.visible')
             } else {
                 cy.wait
                 cy.reload()
@@ -28,10 +32,10 @@ And('the person is added to the tenure page {string} {string} {string}', (title,
         })
     }
     
-    const person = `${title} ${firstName} ${middleName} ${testGuid.testGuid}`
+    const person = `${title} ${firstName} ${middleName} ${guid}`
     for (let i = 0; i < 10; i++) {
         addPersonPage.mainContent().then(($body) => {
-            if ($body.text().includes(testGuid.testGuid)) {
+            if ($body.text().includes(guid)) {
                 cy.contains(person).click()
             } else {
                 cy.wait(1000)
@@ -54,9 +58,9 @@ And('I edit the person {string} {string} {string} {string}', (title, personType,
         etag = req.headers
     })
     if(personType === 'Named tenure holder') {
-        cy.contains(`View ${title} ${firstName} ${middleName} ${testGuid.testGuid}`).click()
+        cy.contains(`View ${title} ${firstName} ${middleName} ${guid}`).click()
     } else {
-        cy.contains(`${title} ${firstName} ${middleName} ${testGuid.testGuid}`).click()
+        cy.contains(`${title} ${firstName} ${middleName} ${guid}`).click()
     }
 })
 
@@ -67,7 +71,7 @@ And('I click the update person button', () => {
 And('the person has been updated {string} {string} {string}', (firstName, middleName, lastName) => {
     addPersonPage.pageAnnouncement().contains('Person updated')
     if(lastName === 'guid') {
-        lastName = testGuid.testGuid
+        lastName = guid
     }
     addPersonPage.mainContent().contains(`${firstName} ${middleName} ${lastName}`)
 })
@@ -116,4 +120,91 @@ And('there is a merge conflict', () => {
     addPersonPage.updatePersonButton().click()
     cy.wait('@edit')
     editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
+})
+
+When('I edit a person\'s contact details {string}', (person) => {
+    addPersonPage.editPersonContactDetails(person)
+})
+
+And('I click add a correspondence address', () => {
+    personContactPage.addCorrespondenceAddressButton().click()
+})
+
+Then('the correspondence address fields are displayed', () => { 
+    personContactPage.addressLineOneField().should('be.visible')
+    personContactPage.addressLineTwoField().should('be.visible')
+    personContactPage.addressLineThreeField().should('be.visible')
+    personContactPage.addressLineFourField().should('be.visible')
+    personContactPage.postcodeLookupButton().should('be.visible')
+    personContactPage.postcodeLookupField().should('be.visible')
+    personContactPage.postcodeField().should('be.visible')
+})
+
+When('I enter a postcode into the lookup field {string}', (postCode) => {
+    personContactPage.postcodeLookupField().type(postCode)
+})
+
+And('I click look up', () => {
+    personContactPage.postcodeLookupButton().click()
+})
+
+Then('the select address selection box is populated {string}', (postCode) => {
+    personContactPage.addressLineOneField().should('not.be.empty')
+    personContactPage.addressLineTwoField().should('not.be.empty')
+    personContactPage.addressLineThreeField().should('not.be.empty')
+    personContactPage.addressLineFourField().should('not.be.empty')
+    personContactPage.postcodeField().contains(postCode)
+})
+
+Then('an invalid postcode error is thrown', () => {
+    personContactPage.postcodeLookupErrorContainer().should('be.visible')
+    personContactPage.postcodeLookupErrorContainer().contains('Please enter a valid postcode')
+})
+
+When('I enter {string} into address line 1', (address) => {
+    personContactPage.addressLineOneField().type(address)
+})
+
+When('I enter {string} into address line 2', (address) => {
+    personContactPage.addressLineTwoField().type(address)
+})
+
+When('I enter {string} into address line 3', (address) => {
+    personContactPage.addressLineThreeField().type(address)
+})
+
+When('I enter {string} into address line 4', (address) => {
+    personContactPage.addressLineFourField().type(address)
+})
+
+When('I enter {string} into the postcode field', (postCode) => {
+    personContactPage.postcodeField().type(postCode)
+})
+
+And('I click save correspondence address', () => {
+    personContactPage.saveAddressButton().click()
+})
+
+Then('the correspondence address is saved', () => {
+    personContactPage.confirmationMessage().should('be.visible')
+    personContactPage.confirmationMessage().contains('Correspondence address saved')
+})
+
+And('I delete all of the correspondence addresses for {string}', async (personId) => {
+    // GET the list of correspondence addresses for a person
+    const getResponse = await contactDetails.getContactDetails(personId)
+    cy.log(`Status code ${getResponse.status} returned`)
+    assert.deepEqual(getResponse.status, 200)
+
+    const correspondenceAddresses = getResponse.data.results;
+
+    // DELETE any existing correspondence addresses for a person
+    for(let i = 0; i < correspondenceAddresses.length; i++) {
+        if(correspondenceAddresses[i].contactInformation.subType === "correspondenceAddress") {
+            cy.log(`id=${correspondenceAddresses[i].id}`)
+            cy.log(`tid=${correspondenceAddresses[i].targetId}`)
+            const deleteResponse = await contactDetails.deleteContactDetails(correspondenceAddresses[i].id, correspondenceAddresses[i].targetId)
+            assert.deepEqual(deleteResponse.status, 200)
+        }
+    }
 })

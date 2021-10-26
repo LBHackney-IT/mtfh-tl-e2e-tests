@@ -52,12 +52,25 @@ class TenurePageObjects {
     return cy.contains('Add new person to tenure')
   }
 
+  commentDateTime (){
+    return cy.get('[class="comment__date-time"]')
+  }
+
+  comment(){
+    return cy.get('[class="comment__item --center"]')
+  }
+
+  scannedHistoricTenureRecords(){
+    return cy.contains('Scanned historic tenure records')
+  }
+
   tenureDetailsAccordionInformation() {
       this.tenureViewSidebar().contains('Start date')
       this.tenureViewSidebar().contains('End date')
       this.tenureViewSidebar().contains('Type')
-      // this.tenureViewSidebar().contains('Property ID')
+      this.tenureViewSidebar().contains('Property ID')
       this.tenureViewSidebar().contains('Status')
+      this.tenureViewSidebar().contains('UPRN')
   }
 
   residentDetailsAccordionInformation() {

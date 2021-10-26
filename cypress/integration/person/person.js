@@ -38,6 +38,7 @@ Then('the body tenure details are displayed', () => {
     personPage.tenureDetails().contains('Payment ref')
     personPage.tenureDetails().contains('Property ref')
     personPage.tenureDetails().contains('Tenure type')
+    personPage.tenureDetails().contains('UPRN')
 })
 
 When('I click on the add comment button', () => {
