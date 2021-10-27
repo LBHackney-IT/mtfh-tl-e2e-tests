@@ -328,3 +328,13 @@ Feature: Add a new person to a tenure
       Examples:
           | person                               | postCode | addressOne | addressTwo | addressThree | addressFour |
           | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | SW1A 1AA | Buckingham | Palace     | London       | England     |
+
+    Scenario Outline: Maximum contact details reached
+      Given I have the maximum number of "<contactType>" for "<person>"
+      When I edit a person's contact details "<person>"
+      Then I cannot add any more contacts for "<contactType>"
+
+      Examples:
+          | contactType | person                               |
+          | email       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
+          | phone       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
