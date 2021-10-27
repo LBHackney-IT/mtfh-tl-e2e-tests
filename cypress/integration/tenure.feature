@@ -4,64 +4,48 @@ Feature: Tenure page
     Background:
       Given I am logged in
 
-    Scenario: View resident details for new tenure
-      Given I create a new tenure
-      And I add a person to a tenure
-      When I view a Tenure
-      Then the tenure information is displayed
-      And the residents information is displayed
+    # Scenario: View resident details for new tenure
+    #   Given I create a new tenure
+    #   And I add a person to a tenure
+    #   When I view a Tenure
+    #   Then the tenure information is displayed
+    #   And the residents information is displayed
 
-    Scenario Outline: Navigate to old tenancy files
-      Given the start date of the tenure is "<startOfTenureDate>"
-      And the start date for the tenure record is before 31 December 2013
-      When I view this tenure
-      Then the Scanned historic tenure records button is displayed
+    # Scenario Outline: Navigate to old tenancy files
+    #   Given the start date of the tenure is "<startOfTenureDate>"
+    #   And the start date for the tenure record is before 31 December 2013
+    #   When I view this tenure
+    #   Then the Scanned historic tenure records button is displayed
       
-      Examples:
-      | startOfTenureDate  |
-      | 2013-12-31         |
-
-    @SmokeTest
-    Scenario Outline: Navigate to old tenancy files - button not displayed
-      Given the start date of the tenure is "<startOfTenureDate>"
-      And the start date for the tenure record is before 31 December 2013
-      When I view this tenure
-      Then the Scanned historic tenure records button is not displayed
-  
-      Examples:
-      | startOfTenureDate  |
-      | 2014-01-01         |    
+    #   Examples:
+    #   | startOfTenureDate  |
+    #   | 2013-12-31         |
 
     # @SmokeTest
-    # Scenario Outline: No household members
-    #   When I view a Tenure "<tenure>"
-    #   Then the tenure information is displayed
+    # Scenario Outline: Navigate to old tenancy files - button not displayed
+    #   Given the start date of the tenure is "<startOfTenureDate>"
+    #   And the start date for the tenure record is before 31 December 2013
+    #   When I view this tenure
+    #   Then the Scanned historic tenure records button is not displayed
+  
+    #   Examples:
+    #   | startOfTenureDate  |
+    #   | 2014-01-01         |    
+
+    # Scenario: No household members
+    #   Given I create a new tenure
+    #   When I view a Tenure
     #   And there are no household members
 
-    #   Examples:
-    #       | tenure                               |
-    #       | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+    Scenario Outline: View individual household members
+      When I view a Tenure "<tenure>"
+      Then the tenure information is displayed
+      When I select a household member
+      Then the household member details are displayed
 
-    # @SmokeTest
-    # Scenario Outline: View individual household members
-    #   When I view a Tenure "<tenure>"
-    #   Then the tenure information is displayed
-    #   When I select a household member
-    #   Then the household member details are displayed
-
-    #   Examples:
-    #       | tenure                               |
-    #       | bba2793e-df7d-aa4a-71df-57d067c21036 |
-
-    # @SmokeTest
-    # Scenario Outline: No named tenure holders
-    #   When I view a Tenure "<tenure>"
-    #   Then the tenure information is displayed
-    #   And there are no named tenure holders
-
-    #   Examples:
-    #       | tenure                                |
-    #       | 920d7a09-766d-413c-9ff9-36bd0d86ab1a  |
+      Examples:
+          | tenure                               |
+          | bba2793e-df7d-aa4a-71df-57d067c21036 |
 
     # @SmokeTest
     # Scenario Outline: Navigate to personal details
