@@ -1,4 +1,8 @@
-@TenureCommentPage
+@authentication
+@comments
+@common
+@root
+
 Feature: Tenure Comment
     I want to create and view tenure's comments
 
@@ -7,13 +11,16 @@ Feature: Tenure Comment
 
     @SmokeTest
     @Positive
+    @Production
     Scenario Outline: I go to create a comment for a tenure page
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       Then the create comment component is displayed
 
       Examples:
         | commentType | tenureId                             |
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+        | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
+        # | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
+
 
     @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities

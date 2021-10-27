@@ -1,4 +1,8 @@
-@PersonCommentPage
+@authentication
+@comments
+@common
+@root
+
 Feature: T&L Person Comment
     I want to create and view person's comments
 
@@ -7,13 +11,14 @@ Feature: T&L Person Comment
 
     @SmokeTest
     @Positive
+    @Production
     Scenario Outline: I go to create a comment for a person page
       Given I am on the create comment page for "<commentType>" "<personId>"
       Then the create comment component is displayed
 
       Examples:
         | commentType  | personId                               |
-        | person       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   |
+        | person       | da05aabb-3757-43c8-3028-c9ecbe72a067   |
 
     @SmokeTest
     @Positive
