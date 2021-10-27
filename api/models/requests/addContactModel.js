@@ -1,9 +1,9 @@
 const addContactModel = {
-    "targetId": "c88009b5-2d2f-6657-9740-516664dc9418",
+    "targetId": "",
     "targetType": "person",
     "contactInformation": {
-        "contactType": "email",
-        "value": "test@email.com",
+        "contactType": "",
+        "value": "",
         "description": "description"
     },
     "sourceServiceArea": {

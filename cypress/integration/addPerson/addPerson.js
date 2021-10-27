@@ -3,7 +3,6 @@ import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import guid from '../../helpers/commentText'
-import { getRequest } from "../../../api/requests/requests"
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
@@ -206,5 +205,39 @@ And('I delete all of the correspondence addresses for {string}', async (personId
             const deleteResponse = await contactDetails.deleteContactDetails(correspondenceAddresses[i].id, correspondenceAddresses[i].targetId)
             assert.deepEqual(deleteResponse.status, 200)
         }
+    }
+})
+
+Given('I have the maximum number of {string} for {string}', async (contactType, personId) => {
+    const getResponse = await contactDetails.getContactDetails(personId)
+    cy.log(`Status code ${getResponse.status} returned`)
+    assert.deepEqual(getResponse.status, 200)
+
+    const details = getResponse.data.results;
+    let requiredContactType = 0
+
+    for(let i = 0; i < details.length; i++) {
+        if(details[i].contactInformation.contactType === contactType) {
+            requiredContactType++
+        }
+    }
+
+    // POST new contact details if not at maximum
+    for(let i = 0; i < (5-requiredContactType); i++) {
+        const postResponse = await contactDetails.addContactDetails(contactType, personId)
+        assert.deepEqual(postResponse.status, 201)
+    }
+})
+
+Then('I cannot add any more contacts for {string}', (contactType) => {
+
+    if(contactType === "email") {
+        personContactPage.mainContent().contains('You cannot add more than 5 email addresses')
+        personContactPage.addEmailAddressButton().should('be.disabled')
+    }
+
+    if(contactType === "phone") {
+        personContactPage.mainContent().contains("You cannot add more than 5 phone numbers")
+        personContactPage.addPhoneNumberButton().should('be.disabled')
     }
 })
