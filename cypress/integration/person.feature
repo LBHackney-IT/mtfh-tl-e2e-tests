@@ -1,6 +1,7 @@
 @authentication
 @common
 @personal-details
+@processes
 @root
 
 Feature: T&L Person Page
