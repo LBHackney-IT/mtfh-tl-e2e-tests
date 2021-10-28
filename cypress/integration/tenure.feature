@@ -47,43 +47,44 @@ Feature: Tenure page
     #   And I select a household member
     #   Then the household member details are displayed
 
-    @SmokeTest
-    Scenario: Navigate to personal details
+    # @SmokeTest
+    # Scenario: Navigate to personal details
+    #   Given I create a new tenure
+    #   And I add a person to a tenure
+    #   When I view a Tenure
+    #   And I select a resident
+    #   Then the resident details are displayed
+
+    @device
+    Scenario Outline: Mobile view
       Given I create a new tenure
-      And I add a person to a tenure
-      When I view a Tenure
-      And I select a resident
-      Then the resident details are displayed
+      And I view a Tenure
+      When I am using a mobile viewport "<device>"
+      And I click the tenure details accordion
+      Then the tenure details accordion information is displayed
+      When I click the resident details accordion
+      Then the residents details accordion information is displayed
 
-    # @device
-    # Scenario Outline: Mobile view
-    #   When I am using a mobile viewport "<device>"
-    #   When I view a Tenure "<tenure>"
-    #   And I click the tenure details accordion
-    #   Then the tenure details accordion information is displayed
-    #   When I click the resident details accordion
-    #   Then the residents details accordion information is displayed
-
-    #   Examples:
-    #     | device        | tenure                               |
-    #     # | ipad-2        | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     # | ipad-mini     | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-3      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-4      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-5      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-6      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-6+     | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-7      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-8      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-x      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-xr     | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | iphone-se2    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     # | macbook-11    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     # | macbook-13    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     # | macbook-15    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     # | macbook-16    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     # | samsung-note9 | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-    #     | samsung-s10   | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
+      Examples:
+        | device        | 
+        # | ipad-2        | 
+        | ipad-mini   | 
+        | iphone-3      | 
+        | iphone-4      | 
+        | iphone-5      | 
+        | iphone-6      | 
+        | iphone-6+     | 
+        | iphone-7      | 
+        | iphone-8      | 
+        | iphone-x      | 
+        | iphone-xr     | 
+        | iphone-se2    | 
+        # | macbook-11    | 
+        # | macbook-13    | 
+        # | macbook-15    | 
+        # | macbook-16    | 
+        # | samsung-note9 | 
+        | samsung-s10   | 
 
     # @Accessibility
     # Scenario Outline: Accessibility Testing
