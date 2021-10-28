@@ -13,6 +13,11 @@ const createTenure = async() => {
     return response
 }
 
+const createTenureWithMultiHouseholdMembers = async() => {
+    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, createTenureMultiHouseholdMembers.createTenureMultiHouseholdMembers)
+    return response
+}
+
 const createTenureWithStartDate = async(startOfTenureDate) => {
     const payload = createTenureModel.createTenureModel
     payload.startOfTenureDate =startOfTenureDate
@@ -37,5 +42,6 @@ module.exports = {
     editTenure,
     deleteTenure,
     createTenure,
-    createTenureWithStartDate
+    createTenureWithStartDate,
+    createTenureWithMultiHouseholdMembers
 }

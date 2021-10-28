@@ -41,15 +41,11 @@ Feature: Tenure page
     #   When I view a Tenure
     #   And there are no household members
 
-    Scenario Outline: View individual household members
-      When I view a Tenure "<tenure>"
-      Then the tenure information is displayed
-      When I select a household member
+    Scenario: View household member
+      Given I create a new tenure
+      When I view a Tenure
+      And I select a household member
       Then the household member details are displayed
-
-      Examples:
-          | tenure                               |
-          | bba2793e-df7d-aa4a-71df-57d067c21036 |
 
     # @SmokeTest
     # Scenario Outline: Navigate to personal details

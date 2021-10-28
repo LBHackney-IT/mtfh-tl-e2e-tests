@@ -35,6 +35,15 @@ Given('the start date for the tenure record is before 31 December 2013', async (
     expect(startDate).to.lessThan(threshold)
 })
 
+
+Given("A tenure has multiple household members", async () => {
+    cy.log("Creating new tenure record");
+    const response = await tenure.createTenureWithMultiHouseholdMembers();
+    cy.log(`Status code ${response.status} returned`);
+    cy.log(`Tenure Id for record ${response.data.id} created!`);  
+    tenureId = response.data.id
+});
+
 And('there are no household members', () => {
     tenurePage.tenureResidentsContainer().contains('This tenure has no household members')
 })
