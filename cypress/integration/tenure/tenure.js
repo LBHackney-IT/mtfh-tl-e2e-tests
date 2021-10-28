@@ -13,7 +13,7 @@ Given("the start date of the tenure is {string}", async (startOfTenureDate) => {
     cy.log ('Start of Tenure Date: ',response.data.startOfTenureDate)
     cy.log(`Tenure Id for record ${response.data.id} created!`);  
     tenureId = response.data.id
-  });
+});
 
 Given('the start date for the selected tenure record is before 31 December 2013 {string}', async (tenureId) => {
     const getResponse = await tenure.getTenure(tenureId)
@@ -35,16 +35,24 @@ Given('the start date for the tenure record is before 31 December 2013', async (
     expect(startDate).to.lessThan(threshold)
 })
 
-
-Given("A tenure has multiple household members", async () => {
+Given("There are only responsible household members for the tenure", async () => {
     cy.log("Creating new tenure record");
-    const response = await tenure.createTenureWithMultiHouseholdMembers();
+    const response = await tenure.createTenureWithNoOtherResponsibleHouseholdMembers();
+
     cy.log(`Status code ${response.status} returned`);
     cy.log(`Tenure Id for record ${response.data.id} created!`);  
     tenureId = response.data.id
 });
 
-And('there are no household members', () => {
+Given("There are household members for the tenure", async () => {
+    cy.log("Creating new tenure record");
+    const response = await tenure.createTenure();
+    cy.log(`Status code ${response.status} returned`);
+    cy.log(`Tenure Id for record ${response.data.id} created!`);  
+    tenureId = response.data.id
+});
+
+And('A message says this tenure has no household members', () => {
     tenurePage.tenureResidentsContainer().contains('This tenure has no household members')
 })
 
@@ -55,6 +63,11 @@ When('I select a household member', () => {
 
 When('I view this tenure', () => {
     tenurePage.visit(tenureId)
+})
+
+When('I view the Other household members section in the tenure page', () => {
+    tenurePage.visit(tenureId)
+    tenurePage.tenureResidentsContainer().should('exist')
 })
 
 When('I click the resident details accordion', () => {
@@ -101,4 +114,3 @@ Then('the Scanned historic tenure records button is displayed', () => {
 Then('the Scanned historic tenure records button is not displayed', () => {
     tenurePage.scannedHistoricTenureRecords().should('not.exist')
 })
-

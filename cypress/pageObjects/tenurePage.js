@@ -63,6 +63,10 @@ class TenurePageObjects {
   scannedHistoricTenureRecords(){
     return cy.contains('Scanned historic tenure records')
   }
+  
+  residentDetails(){
+    return cy.get ('[class="mtfh-resident-details"]')
+  }
 
   tenureDetailsAccordionInformation() {
       this.tenureViewSidebar().contains('Start date')

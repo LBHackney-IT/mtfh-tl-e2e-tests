@@ -13,15 +13,17 @@ const createTenure = async() => {
     return response
 }
 
-const createTenureWithMultiHouseholdMembers = async() => {
-    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, createTenureMultiHouseholdMembers.createTenureMultiHouseholdMembers)
+const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
+    const requestModel = createTenureModel.createTenureModel
+    requestModel.householdMembers[1].isResponsible = true
+    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, requestModel)
     return response
 }
 
 const createTenureWithStartDate = async(startOfTenureDate) => {
-    const payload = createTenureModel.createTenureModel
-    payload.startOfTenureDate =startOfTenureDate
-    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, payload)
+    const requestModel = createTenureModel.createTenureModel
+    requestModel.startOfTenureDate =startOfTenureDate
+    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, requestModel)
     return response
 }
 
@@ -43,5 +45,5 @@ module.exports = {
     deleteTenure,
     createTenure,
     createTenureWithStartDate,
-    createTenureWithMultiHouseholdMembers
+    createTenureWithNoOtherResponsibleHouseholdMembers
 }

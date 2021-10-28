@@ -5,18 +5,26 @@ const createTenureModel = {
     },
     "householdMembers": [
         {
-        "id": "5270ebf3-7ec5-4825-8273-6843ad7781db",
-        "type": "person",
-        "fullName": "Dolphin Hackney",
-        "isResponsible": true,
-        "dateOfBirth": "1962-05-10",
-        "personTenureType": "Tenant"
+            "id": "5270ebf3-7ec5-4825-8273-6843ad7781db",
+            "type": "person",
+            "fullName": "Dolphin Hackney",
+            "isResponsible": true,
+            "dateOfBirth": "1962-05-10",
+            "personTenureType": "Tenant"
         },
         {
-            "id": "00755752-60fb-4366-ae3a-880bc71545f7",
+            "id": "2e03113a-f404-acdd-fe16-0eb1351526dc",
             "type": "person",
-            "fullName": "Rio Hackney",
+            "fullName": "FAKE_Katy FAKE_Turne",
             "isResponsible": false,
+            "dateOfBirth": "1962-05-10",
+            "personTenureType": "HouseholdMember"
+        },
+        {
+            "id": "1a622732-c9ad-4599-b5ba-4c144728c9f4",
+            "type": "person",
+            "fullName": "Whales Hackney",
+            "isResponsible": true,
             "dateOfBirth": "1962-05-10",
             "personTenureType": "HouseholdMember"
         }
