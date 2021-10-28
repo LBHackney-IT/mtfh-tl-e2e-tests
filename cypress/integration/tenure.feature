@@ -41,21 +41,19 @@ Feature: Tenure page
     #   When I view a Tenure
     #   And there are no household members
 
-    Scenario: View household member
+    # Scenario: View household member
+    #   Given I create a new tenure
+    #   When I view a Tenure
+    #   And I select a household member
+    #   Then the household member details are displayed
+
+    @SmokeTest
+    Scenario: Navigate to personal details
       Given I create a new tenure
+      And I add a person to a tenure
       When I view a Tenure
-      And I select a household member
-      Then the household member details are displayed
-
-    # @SmokeTest
-    # Scenario Outline: Navigate to personal details
-    #   When I view a Tenure "<tenure>"
-    #   And I select a resident
-    #   Then the resident details are displayed
-
-    #   Examples:
-    #       | tenure                                |
-    #       | 68c6896c-16f1-54d2-3504-847cb438a1b1  |
+      And I select a resident
+      Then the resident details are displayed
 
     # @device
     # Scenario Outline: Mobile view
