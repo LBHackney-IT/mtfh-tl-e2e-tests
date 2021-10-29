@@ -32,9 +32,11 @@ async function patchRequest(endpoint, payload, ifMatch) {
     }
 }
 
-async function postRequest(endpoint, payload) {
+async function postRequest(endpoint, payload,) { 
     try {
-      const response = await axios.post(endpoint, payload, config);
+      var bearerToken = envConfig.gssoTestKey
+      cy.log('bearer token: ', bearerToken)
+      const response = await axios.post(endpoint, payload, config);  
       cy.log('Sending post request')
       return response
     } catch (error) {

@@ -1,10 +1,29 @@
 const request = require('./requests/requests')
 const tenureEndpoint = Cypress.env('TENURE_ENDPOINT')
-
+const createTenureModel = require ('./models/requests/addTenureModel')
 const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDate: null}
 
 const getTenure = async(tenureId) => {
     const response = await request.getRequest(`${tenureEndpoint}/tenures/${tenureId}`)
+    return response
+}
+
+const createTenure = async() => {
+    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, createTenureModel.createTenureModel)
+    return response
+}
+
+const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
+    const requestModel = createTenureModel.createTenureModel
+    requestModel.householdMembers[1].isResponsible = true
+    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, requestModel)
+    return response
+}
+
+const createTenureWithStartDate = async(startOfTenureDate) => {
+    const requestModel = createTenureModel.createTenureModel
+    requestModel.startOfTenureDate =startOfTenureDate
+    const response = await request.postRequest(`${tenureEndpoint}/tenures/`, requestModel)
     return response
 }
 
@@ -23,5 +42,8 @@ const deleteTenure = async(tenureId, personId) => {
 module.exports = {
     getTenure,
     editTenure,
-    deleteTenure
+    deleteTenure,
+    createTenure,
+    createTenureWithStartDate,
+    createTenureWithNoOtherResponsibleHouseholdMembers
 }

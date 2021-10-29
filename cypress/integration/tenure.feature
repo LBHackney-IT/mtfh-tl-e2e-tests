@@ -9,113 +9,86 @@ Feature: Tenure page
     Background:
       Given I am logged in
 
-    @SmokeTest
-    Scenario Outline: View resident details
-      When I view a Tenure "<tenure>"
+    Scenario: View resident details for new tenure
+      Given I create a new tenure
+      And I add a person to a tenure
+      When I view a Tenure
       Then the tenure information is displayed
       And the residents information is displayed
+
+    Scenario Outline: Navigate to old tenancy files
+      Given the start date of the tenure is "<startOfTenureDate>"
+      And the start date for the tenure record is before 31 December 2013
+      When I view this tenure
+      Then the Scanned historic tenure records button is displayed
       
       Examples:
-          | tenure                               |
-          | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
+      | startOfTenureDate  |
+      | 2013-12-31         |
 
-    @SmokeTest
-    Scenario Outline: Navigate to old tenancy files
-      Given the start date for the selected tenure record is before 31 December 2013 "<tenure>"
-      When I view a Tenure "<tenure>"
-      Then the Scanned historic tenure records button is displayed
-  
-      Examples:
-          | tenure                               |
-          | 7b91950d-0edf-d926-1cf7-2e187160fd06 |     
-
-    
     @SmokeTest
     Scenario Outline: Navigate to old tenancy files - button not displayed
-      Given the start date for the selected tenure record is after 31 December 2013 "<tenure>"
-      When I view a Tenure "<tenure>"
+      Given the start date of the tenure is "<startOfTenureDate>"
+      And the start date for the tenure record is before 31 December 2013
+      When I view this tenure
       Then the Scanned historic tenure records button is not displayed
   
       Examples:
-          | tenure                               |
-          | af53d98f-79cd-55ba-f0bd-5d58e4eecb8b |     
+      | startOfTenureDate  |
+      | 2014-01-01         |    
 
-    @SmokeTest
-    Scenario Outline: No household members
-      When I view a Tenure "<tenure>"
-      Then the tenure information is displayed
-      And there are no household members
-
-      Examples:
-          | tenure                               |
-          | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
-
-    @SmokeTest
-    Scenario Outline: View individual household members
-      When I view a Tenure "<tenure>"
-      Then the tenure information is displayed
-      When I select a household member
+    Scenario: View household member
+      Given There are household members for the tenure
+      When I view the Other household members section in the tenure page
+      And I select a household member
       Then the household member details are displayed
 
-      Examples:
-          | tenure                               |
-          | bba2793e-df7d-aa4a-71df-57d067c21036 |
+    Scenario: No household members
+      Given There are only responsible household members for the tenure
+      When I view the Other household members section in the tenure page
+      And A message says this tenure has no household members
 
     @SmokeTest
-    Scenario Outline: No named tenure holders
-      When I view a Tenure "<tenure>"
-      Then the tenure information is displayed
-      And there are no named tenure holders
-
-      Examples:
-          | tenure                                |
-          | 920d7a09-766d-413c-9ff9-36bd0d86ab1a  |
-
-    @SmokeTest
-    Scenario Outline: Navigate to personal details
-      When I view a Tenure "<tenure>"
+    Scenario: Navigate to personal details
+      Given I create a new tenure
+      And I add a person to a tenure
+      When I view a Tenure
       And I select a resident
       Then the resident details are displayed
 
-      Examples:
-          | tenure                                |
-          | 68c6896c-16f1-54d2-3504-847cb438a1b1  |
-
     @device
     Scenario Outline: Mobile view
+      Given I create a new tenure
+      And I view a Tenure
       When I am using a mobile viewport "<device>"
-      When I view a Tenure "<tenure>"
       And I click the tenure details accordion
       Then the tenure details accordion information is displayed
       When I click the resident details accordion
       Then the residents details accordion information is displayed
 
       Examples:
-        | device        | tenure                               |
-        # | ipad-2        | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        # | ipad-mini     | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-3      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-4      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-5      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-6      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-6+     | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-7      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-8      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-x      | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-xr     | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | iphone-se2    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        # | macbook-11    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        # | macbook-13    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        # | macbook-15    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        # | macbook-16    | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        # | samsung-note9 | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
-        | samsung-s10   | 68c6896c-16f1-54d2-3504-847cb438a1b1 |
+        | device        | 
+        # | ipad-2        | 
+        # | ipad-mini   | 
+        | iphone-3      | 
+        | iphone-4      | 
+        | iphone-5      | 
+        | iphone-6      | 
+        | iphone-6+     | 
+        | iphone-7      | 
+        | iphone-8      | 
+        | iphone-x      | 
+        | iphone-xr     | 
+        | iphone-se2    | 
+        # | macbook-11    | 
+        # | macbook-13    | 
+        # | macbook-15    | 
+        # | macbook-16    | 
+        # | samsung-note9 | 
+        | samsung-s10   | 
 
     @Accessibility
-    Scenario Outline: Accessibility Testing
-      When I view a Tenure "<tenure>"
+    Scenario: Accessibility Testing
+      Given I create a new tenure
+      When I view a Tenure
       And have no detectable a11y violations
-
-      Examples:
-          | tenure                                |
-          | 68c6896c-16f1-54d2-3504-847cb438a1b1  |

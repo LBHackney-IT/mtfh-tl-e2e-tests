@@ -9,6 +9,14 @@ const createPerson = async () => {
     return response
 }
 
+const createPersonWithNewTenure =async (tenureId) => {
+    const requestModel = createPersonModel.createPersonModel
+    requestModel.tenures.id = tenureId
+    const response = await request.postRequest (url,requestModel)
+    return response
+    
+}
+
 const editPerson = async (personId) => {
     const response = await request.patchRequest(`${url}/${personId}`, editPersonModel.editPersonModel)
     return response
@@ -21,6 +29,7 @@ const viewPerson = (personId) => {
 
 module.exports = {
     createPerson,
+    createPersonWithNewTenure,
     editPerson,
     viewPerson
 }
