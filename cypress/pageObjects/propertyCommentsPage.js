@@ -1,6 +1,6 @@
 const envConfig = require('../../environment-config');
 
-class propertyCommentsPageObjects {
+class PropertyCommentsPageObjects {
     visit(property) {
         cy.visit(`${envConfig.baseUrl}/${envConfig.propertyCommentsUrl}/${property}`)
         cy.injectAxe()
@@ -89,4 +89,4 @@ class propertyCommentsPageObjects {
     }
 }
 
-export default propertyCommentsPageObjects
+export default PropertyCommentsPageObjects

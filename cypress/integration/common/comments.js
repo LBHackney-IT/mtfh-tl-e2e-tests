@@ -1,19 +1,21 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage"
-import propertyCommentsPageObjects from "../../pageObjects/propertyCommentsPage"
+import PropertyCommentsPageObjects from "../../pageObjects/propertyCommentsPage"
 import TenurePageObjects from "../../pageObjects/tenurePage"
 import PersonPageObjects from "../../pageObjects/personPage"
 import helperText from '../../helpers/inputText'
 import commentTitle from "../../helpers/commentText"
 import comment from "../../helpers/commentText"
 import category from "../../helpers/commentText"
+import PropertyPageObjects from "../../pageObjects/propertyPage"
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 const personCommentsPage = new PersonCommentsPageObjects()
-const propertyCommentsPage = new propertyCommentsPageObjects()
+const propertyCommentsPage = new PropertyCommentsPageObjects()
 const tenurePage = new TenurePageObjects()
 const personPage = new PersonPageObjects()
+const propertyPage = new PropertyPageObjects
 const envConfig = require('../../../environment-config')
 
 let tenureId = ""
@@ -464,7 +466,7 @@ Then('I can see the timestamp for the created comment', () => {
             personPage.commentDateTime().should('be.visible')
             break;
         case "property":
-            propertyCommentsPage.commentDateTime().should('be.visible')
+            propertyPage.commentDateTime().should('be.visible')
             break; 
         default:
             break;

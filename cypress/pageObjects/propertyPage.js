@@ -33,6 +33,10 @@ class PropertyPageObjects {
     newProcess(){
         return cy.contains('New Process')
     }
+    
+    commentDateTime() {
+        return cy.get('.comment__date-time')
+    }
 }
 
 export default PropertyPageObjects

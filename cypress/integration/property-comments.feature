@@ -45,7 +45,7 @@ Feature: Property Comment
 
       Examples:
         | commentType   | propertyId                             | device        | category             |
-        | property      | a2d7901a-9895-e86a-f9d3-542222400a3a | ipad-2        | Appointments         |
+        # | property      | a2d7901a-9895-e86a-f9d3-542222400a3a | ipad-2        | Appointments         |
         | property      | a2d7901a-9895-e86a-f9d3-542222400a3a | ipad-mini     | Estate management    |
         | property        | a2d7901a-9895-e86a-f9d3-542222400a3a | iphone-3      | Evictions            |
         | property        | a2d7901a-9895-e86a-f9d3-542222400a3a | iphone-4      | Parking              |
