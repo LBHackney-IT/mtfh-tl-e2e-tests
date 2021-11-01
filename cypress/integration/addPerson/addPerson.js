@@ -134,8 +134,8 @@ Then('the correspondence address fields are displayed', () => {
     personContactPage.addressLineTwoField().should('be.visible')
     personContactPage.addressLineThreeField().should('be.visible')
     personContactPage.addressLineFourField().should('be.visible')
-    personContactPage.postcodeLookupButton().should('be.visible')
-    personContactPage.postcodeLookupField().should('be.visible')
+    // personContactPage.postcodeLookupButton().should('be.visible')
+    // personContactPage.postcodeLookupField().should('be.visible')
     personContactPage.postcodeField().should('be.visible')
 })
 
