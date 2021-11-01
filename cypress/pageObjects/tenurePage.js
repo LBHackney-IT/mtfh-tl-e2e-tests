@@ -67,6 +67,10 @@ class TenurePageObjects {
   residentDetails(){
     return cy.get ('[class="mtfh-resident-details"]')
   }
+  
+  newProcess(){
+    return cy.contains('New Process')
+  }
 
   tenureDetailsAccordionInformation() {
       this.tenureViewSidebar().contains('Start date')

@@ -131,5 +131,10 @@ class PersonPageObjects {
     tenureDetails() {
         return cy.get('[class="mtfh-tenure-details"]')
     }
+
+    newProcess(){
+        return cy.contains('New Process')
+    }
+    
 }
 export default PersonPageObjects
