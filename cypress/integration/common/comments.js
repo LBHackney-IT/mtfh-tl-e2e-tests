@@ -1,6 +1,7 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage"
+import propertyCommentsPageObjects from "../../pageObjects/propertyCommentsPage"
 import TenurePageObjects from "../../pageObjects/tenurePage"
 import PersonPageObjects from "../../pageObjects/personPage"
 import helperText from '../../helpers/inputText'
@@ -10,6 +11,7 @@ import category from "../../helpers/commentText"
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 const personCommentsPage = new PersonCommentsPageObjects()
+const propertyCommentsPage = new propertyCommentsPageObjects()
 const tenurePage = new TenurePageObjects()
 const personPage = new PersonPageObjects()
 const envConfig = require('../../../environment-config')
@@ -31,6 +33,10 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
             personCommentsPage.visit(id)
             personId = id
             break;
+        case "property":
+            propertyCommentsPage.visit(id)
+            personId = id
+            break;   
         default:
             break;
     }
