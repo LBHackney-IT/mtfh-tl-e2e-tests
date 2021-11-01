@@ -10,12 +10,12 @@ So that I can easily record information without the need to keep multiple screen
 Background:
     Given I am logged in
 
-
 @Positive
 Scenario Outline: Display process options for person
     Given I have loaded a Person record "<record>"
     When I select New Process menu "<processType>"
     Then I am directed to the main process landing page
+    And I can see a list of processes
 
         Examples:
         | processType  | record                                 |
@@ -24,9 +24,10 @@ Scenario Outline: Display process options for person
 
 @Positive
 Scenario Outline: Display process options for property
-    Given I have loaded a Person record "<record>"
+    Given I view a property "<record>"
     When I select New Process menu "<processType>"
     Then I am directed to the main process landing page
+    And I can see a list of processes
 
         Examples:
         | processType  | record                                 |

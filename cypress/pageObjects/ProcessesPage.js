@@ -2,9 +2,12 @@ const envConfig = require('../../environment-config')
 
 class ProcessesPageObjects{
     pageTitle(){
-        cy.contains('Processes')
+        return cy.contains('Processes')
     }
 
+    processesMenuList(){
+        return cy.get('[class="mtfh-processes-menu__list"]')
+    }
 }
 
 export default ProcessesPageObjects

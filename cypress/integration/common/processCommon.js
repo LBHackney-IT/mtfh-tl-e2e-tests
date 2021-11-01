@@ -32,4 +32,6 @@ Then ('I am directed to the main process landing page', ()=>{
 
 Then ('I can see a list of processes', ()=>{
     processesPage.processesMenuList().should('be.visible')
+    processesPage.processesMenuList().contains('Changes to a tenancy')
+
 })
