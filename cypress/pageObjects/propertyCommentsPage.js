@@ -24,7 +24,7 @@ class propertyCommentsPageObjects {
     }
 
     addCommentForm() {
-        return cy.get('[data-testid="add-comment-to-tenure"]')
+        return cy.get('[data-testid="add-comment-to-property"]')
     }
 
     addCommentCategoryField(){
