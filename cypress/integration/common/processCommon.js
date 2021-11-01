@@ -9,7 +9,6 @@ const processesPage = new ProcessesPageObjects()
 const tenurePage = new TenurePageObjects()
 const propertyPage = new PropertyPageObjects()
 const envConfig = require('../../../environment-config')
-let process =''
 
 When('I select New Process menu {string}',  (processType) => {
     switch (processType) {
@@ -33,5 +32,4 @@ Then ('I am directed to the main process landing page', ()=>{
 Then ('I can see a list of processes', ()=>{
     processesPage.processesMenuList().should('be.visible')
     processesPage.processesMenuList().contains('Changes to a tenancy')
-
 })
