@@ -29,3 +29,7 @@ When('I select New Process menu {string}',  (processType) => {
 Then ('I am directed to the main process landing page', ()=>{
     processesPage.pageTitle()
 })
+
+Then ('I can see a list of processes', ()=>{
+    processesPage.processesMenuList().should('be.visible')
+})
