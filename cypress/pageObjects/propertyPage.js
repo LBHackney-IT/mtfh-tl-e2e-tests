@@ -29,6 +29,10 @@ class PropertyPageObjects {
     newTenureButton() {
         return cy.contains('New tenure')
     }
+
+    newProcess(){
+        return cy.contains('New Process')
+    }
 }
 
 export default PropertyPageObjects

@@ -22,7 +22,6 @@ Feature: Tenure Comment
         | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
         # | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
 
-
     @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
       Given I am on the create comment page for "<commentType>" "<tenureId>"
