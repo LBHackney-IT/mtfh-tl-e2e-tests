@@ -32,3 +32,9 @@ Scenario Outline: Display process options for property
         Examples:
         | processType  | record                                 |
         | property     | f85e4390-9256-e4dc-0443-2e510b362cac   |
+
+
+# Refactor for stateless tests is WIP. Will update this test once refactoring is completed.
+# @Positive
+# Scenario Outline: Display process options for tenure
+#    
