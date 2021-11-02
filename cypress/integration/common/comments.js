@@ -198,9 +198,11 @@ Then('the create comment component is displayed', () => {
         case "person":
             personCommentsPage.addCommentForm().should('be.visible')
             personCommentsPage.submitCommentButton().should('be.visible')
+            break;
         case "property":
             propertyCommentsPage.addCommentForm().should('be.visible')
             propertyCommentsPage.submitCommentButton().should('be.visible')
+            break;
         default:
             break;
     }  
