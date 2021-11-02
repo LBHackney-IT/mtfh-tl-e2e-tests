@@ -577,7 +577,7 @@ And('I enter a date of birth {string} {string} {string}', (day, month, year) => 
 
 Then('the form error container is displayed', () => {
   addPersonPage.addPersonFormErrorContainer().should('be.visible')
-  addPersonPage.errorSummaryBody().contains('The date cannot be in the future')
+  addPersonPage.errorSummaryBody().contains('This date cannot be in the future')
 })
 
 And('I enter a place of birth {string}', (placeOfBirth) => {

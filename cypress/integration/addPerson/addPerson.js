@@ -9,10 +9,6 @@ const editPersonPage = new EditPersonPageObjects()
 const personContactPage = new PersonContactPageObjects()
 const contactDetails = require('../../../api/contact-details')
 
-Then('the add a new person tenure page is correct', () => {
-    addPersonPage.addPersonPageIsDisplayed()
-})
-
 And('the person has been added to the tenure', () => {
     addPersonPage.pageAnnouncement().contains('Person added to tenure')
 })
@@ -240,4 +236,12 @@ Then('I cannot add any more contacts for {string}', (contactType) => {
         personContactPage.mainContent().contains("You cannot add more than 5 phone numbers")
         personContactPage.addPhoneNumberButton().should('be.disabled')
     }
+})
+
+And('I am on the contact details page', () => {
+    cy.url().should('include', 'contact')
+})
+
+Given('I create a person and then edit them', async (tenureId) => {
+    const postResponse = 
 })
