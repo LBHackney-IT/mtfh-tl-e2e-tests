@@ -180,9 +180,9 @@ Then('I can see the same comments in the linked entities', () => {
             tenurePage.comment().contains(uniqueText)
             break;
         case "property":
-            propertyCommentsPage.comment().contains(uniqueText)
-            propertyCommentsPage.viewTenureButton().click()
-            propertyCommentsPage.comment().contains(uniqueText)
+            propertyPage.comment().contains(uniqueText)
+            propertyPage.viewTenureButton().click()
+            tenurePage.comment().contains(uniqueText)
             break;
         default:
             break;
@@ -234,14 +234,12 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
                 tenureCommentsPage.commentContainer().type(commentDescription);
                 tenureCommentsPage.addCommentCategoryField().select(commentCategory)
                 validationMessageField = "commentTitle"
-                
             }
         else if(commentDescription === "")
             {
                 tenureCommentsPage.addCommentTitleField().type(commentTitle)
                 tenureCommentsPage.addCommentCategoryField().select(commentCategory)
-                validationMessageField = "commentDescription"
-    
+                validationMessageField = "commentDescription" 
             }
         else if (commentCategory === "")
             {
@@ -255,8 +253,7 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
             {
                 personCommentsPage.commentContainer().type(commentDescription);
                 personCommentsPage.addCommentCategoryField().select(commentCategory)
-                validationMessageField = "commentTitle"
-                
+                validationMessageField = "commentTitle"     
             }
         else if(commentDescription === "")
             {
@@ -294,7 +291,6 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
                     validationMessageField = "commentCategory"
                 }
                 break;
-
         default:
             break;
     }
