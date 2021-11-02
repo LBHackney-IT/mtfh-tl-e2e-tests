@@ -1,17 +1,21 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage"
+import PropertyCommentsPageObjects from "../../pageObjects/propertyCommentsPage"
 import TenurePageObjects from "../../pageObjects/tenurePage"
 import PersonPageObjects from "../../pageObjects/personPage"
 import helperText from '../../helpers/inputText'
 import commentTitle from "../../helpers/commentText"
 import comment from "../../helpers/commentText"
 import category from "../../helpers/commentText"
+import PropertyPageObjects from "../../pageObjects/propertyPage"
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 const personCommentsPage = new PersonCommentsPageObjects()
+const propertyCommentsPage = new PropertyCommentsPageObjects()
 const tenurePage = new TenurePageObjects()
 const personPage = new PersonPageObjects()
+const propertyPage = new PropertyPageObjects
 const envConfig = require('../../../environment-config')
 
 let tenureId = ""
@@ -31,6 +35,10 @@ Given('I am on the create comment page for {string} {string}', (commentType, id)
             personCommentsPage.visit(id)
             personId = id
             break;
+        case "property":
+            propertyCommentsPage.visit(id)
+            personId = id
+            break;   
         default:
             break;
     }
@@ -44,6 +52,8 @@ When('I enter a valid title',  () => {
         case "person":
             personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
             break;
+        case "property":
+            propertyCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
         default:
             break;
     }
@@ -56,6 +66,9 @@ When('I select a checkbox for {string}', (checkbox) => {
             break;
         case "person":
             personCommentsPage.Commentcheckbox(checkbox).check()
+            break;
+        case "property":
+            propertyCommentsPage.Commentcheckbox(checkbox).check()
             break;
         default:
             break;
@@ -70,6 +83,9 @@ When('I enter a valid comment', () => {
         case "person":
             personCommentsPage.commentContainer().type(comment.comment);
             break;
+        case "property":
+            propertyCommentsPage.commentContainer().type(comment.comment);
+            break;
         default:
             break;
     }
@@ -83,6 +99,9 @@ When('I select a comment category {string}',  (category) => {
         case "person":
             personCommentsPage.addCommentCategoryField().select(category)
             break;
+        case "property":
+            propertyCommentsPage.addCommentCategoryField().select(category)
+            break;  
         default:
             break;
     }
@@ -102,6 +121,12 @@ When('I create a comment', () => {
             personCommentsPage.addCommentCategoryField().select(category.category)
             personCommentsPage.submitCommentButton().click()
             break;
+        case "property":
+            propertyCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
+            propertyCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
+            propertyCommentsPage.addCommentCategoryField().select(category.category)
+            propertyCommentsPage.submitCommentButton().click()
+            break;
         default:
             break;
     }
@@ -115,6 +140,9 @@ Then('I click the save comment button', () => {
         case "person":
             personCommentsPage.submitCommentButton().click();
             break;
+        case "property":
+            propertyCommentsPage.submitCommentButton().click();
+            break;   
         default:
             break;
     }
@@ -130,6 +158,10 @@ Then('the comment is submitted', () => {
             personCommentsPage.pageAnnouncementHeader().should("be.visible");
             personCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");            
             break;
+        case "property":
+            propertyCommentsPage.pageAnnouncementHeader().should("be.visible");
+            propertyCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");            
+                break;   
         default:
             break;
     }
@@ -147,6 +179,11 @@ Then('I can see the same comments in the linked entities', () => {
             personPage.viewTenureButton().click()
             tenurePage.comment().contains(uniqueText)
             break;
+        case "property":
+            propertyPage.comment().contains(uniqueText)
+            propertyPage.viewTenureButton().click()
+            tenurePage.comment().contains(uniqueText)
+            break;
         default:
             break;
     }
@@ -161,6 +198,11 @@ Then('the create comment component is displayed', () => {
         case "person":
             personCommentsPage.addCommentForm().should('be.visible')
             personCommentsPage.submitCommentButton().should('be.visible')
+            break;
+        case "property":
+            propertyCommentsPage.addCommentForm().should('be.visible')
+            propertyCommentsPage.submitCommentButton().should('be.visible')
+            break;
         default:
             break;
     }  
@@ -176,6 +218,9 @@ When('I enter {int} characters into the comment field', (characters) => {
         case "person":
             personCommentsPage.commentContainer().type(inputText)
             break;
+        case "property":
+            propertyCommentsPage.commentContainer().type(inputText)
+            break;
         default:
             break;
     }
@@ -189,14 +234,12 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
                 tenureCommentsPage.commentContainer().type(commentDescription);
                 tenureCommentsPage.addCommentCategoryField().select(commentCategory)
                 validationMessageField = "commentTitle"
-                
             }
         else if(commentDescription === "")
             {
                 tenureCommentsPage.addCommentTitleField().type(commentTitle)
                 tenureCommentsPage.addCommentCategoryField().select(commentCategory)
-                validationMessageField = "commentDescription"
-    
+                validationMessageField = "commentDescription" 
             }
         else if (commentCategory === "")
             {
@@ -204,14 +247,13 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
                 tenureCommentsPage.commentContainer().type(commentDescription)
                 validationMessageField = "commentCategory"
             }
-        break;
+            break;
         case "person":
             if (commentTitle === "")
             {
                 personCommentsPage.commentContainer().type(commentDescription);
                 personCommentsPage.addCommentCategoryField().select(commentCategory)
-                validationMessageField = "commentTitle"
-                
+                validationMessageField = "commentTitle"     
             }
         else if(commentDescription === "")
             {
@@ -226,6 +268,29 @@ When('I do not fill the mandatory fields:{string} {string} {string}',  (commentT
                 personCommentsPage.commentContainer().type(commentDescription)
                 validationMessageField = "commentCategory"
             }
+            break;
+        case "property":
+                if (commentTitle === "")
+                {
+                    propertyCommentsPage.commentContainer().type(commentDescription);
+                    propertyCommentsPage.addCommentCategoryField().select(commentCategory)
+                    validationMessageField = "commentTitle"
+                    
+                }
+            else if(commentDescription === "")
+                {
+                    propertyCommentsPage.addCommentTitleField().type(commentTitle)
+                    propertyCommentsPage.addCommentCategoryField().select(commentCategory)
+                    validationMessageField = "commentDescription"
+        
+                }
+            else if (commentCategory === "") 
+                {
+                    propertyCommentsPage.addCommentTitleField().type(commentTitle)
+                    propertyCommentsPage.commentContainer().type(commentDescription)
+                    validationMessageField = "commentCategory"
+                }
+                break;
         default:
             break;
     }
@@ -238,6 +303,9 @@ When('I click the Discard comment link',  () => {
             break;
         case "person":
             personCommentsPage.discardCommentLink().click()           
+            break;
+        case "property":
+            propertyCommentsPage.discardCommentLink().click()           
             break;
         default:
             break;
@@ -253,6 +321,9 @@ Then('I can cancel the comment',  () => {
         case "person":
             personCommentsPage.commentContainer().type(inputText)
             break;
+        case "property":
+            propertyCommentsPage.commentContainer().type(inputText)
+            break;   
         default:
             break;
     }
@@ -288,6 +359,20 @@ Then ('I can see a specific validation message for the field {string}',(validati
                 personCommentsPage.addCommentCategoryError().contains(validationMessage)
             }
             break;
+        case "property":
+                if (validationMessageField == "commentTitle") 
+                {
+                    propertyCommentsPage.addCommentTitleError().contains(validationMessage)
+                }
+                else if(validationMessageField == "commentDescription")
+                {
+                    propertyCommentsPage.commentDescriptionError().contains(validationMessage)
+                }
+                else if (validationMessageField == "commentCategory")
+                {
+                    propertyCommentsPage.addCommentCategoryError().contains(validationMessage)
+                }
+                break;
         default:
             break;
     }   
@@ -300,6 +385,9 @@ Then('I can see the cancellation pop up for comment',  () => {
             break;
         case "person":
             personCommentsPage.cancellationPopUpWindow().contains('Are you sure you wish to cancel adding this comment?')
+            break;
+        case "property":
+            propertyCommentsPage.cancellationPopUpWindow().contains('Are you sure you wish to cancel adding this comment?')
             break;
         default:
             break;
@@ -318,6 +406,10 @@ Then('the number of characters remaining is correct {int}', (characters) => {
             personCommentsPage.characterCountMessage().should('be.visible')
             personCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)           
             break;
+        case "property":
+            propertyCommentsPage.characterCountMessage().should('be.visible')
+            propertyCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)           
+            break; 
         default:
             break;
     }
@@ -335,6 +427,10 @@ Then('the warning message tells me I am over by {int}', (characters) => {
             personCommentsPage.characterCountErrorMessage().should('be.visible')
             personCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)          
             break;
+        case "property":
+            propertyCommentsPage.characterCountErrorMessage().should('be.visible')
+            propertyCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)          
+            break;
         default:
             break;
     }
@@ -350,6 +446,10 @@ Then('a validation error occurs', () => {
             personCommentsPage.addCommentsError().should('be.visible')
             personCommentsPage.commentDescriptionError().should('be.visible')          
             break;
+        case "property":
+            propertyCommentsPage.addCommentsError().should('be.visible')
+            propertyCommentsPage.commentDescriptionError().should('be.visible')          
+            break;
         default:
             break;
     }
@@ -363,6 +463,9 @@ Then('I can see the timestamp for the created comment', () => {
         case "person":
             personPage.commentDateTime().should('be.visible')
             break;
+        case "property":
+            propertyPage.commentDateTime().should('be.visible')
+            break; 
         default:
             break;
     }
