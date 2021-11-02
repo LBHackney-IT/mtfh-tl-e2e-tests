@@ -11,8 +11,6 @@ Feature: Tenure Comment
       Given I am logged in
 
     @SmokeTest
-    @Positive
-    @Production
     Scenario Outline: I go to create a comment for a tenure page
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       Then the create comment component is displayed

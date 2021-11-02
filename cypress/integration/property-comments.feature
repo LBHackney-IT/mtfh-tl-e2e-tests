@@ -10,8 +10,6 @@ Feature: Property Comment
       Given I am logged in
 
     @SmokeTest
-    @Positive
-    @Production
     Scenario Outline: I go to create a comment for a property page
       Given I am on the create comment page for "<commentType>" "<propertyId>"
       Then the create comment component is displayed
