@@ -6,20 +6,25 @@ import {
   When,
 } from "cypress-cucumber-preprocessor/steps";
 
+const tenureEndpoint = Cypress.env('DYNAMODB_ENDPOINT')
+const region  = Cypress.env('DYNAMODB_REGION')
+const accessKeyId = Cypress.env('DYNAMODB_REGION')
+const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
+
 
 
 Given("I can access to DynamoDB in AWS", async () => {
   cy.log("Connectingi to DynamoDB....")
   var AWS = require("aws-sdk");
   AWS.config.update({
-    region: "us-west-2",
-    endpoint: "http://localhost:8000",
-    accessKeyId: "localKey",
-    secretAccessKey: "localSecret"
+    region: region,
+    endpoint: tenureEndpoint,
+    accessKeyId: accessKeyId,
+    secretAccessKey: secretAccessKey
   });
-  var tableName = "TenureInformation"
   var docClient = new AWS.DynamoDB.DocumentClient();
-  var id = "60a6c8fc-3267-4c99-ae71-a159f6f87b28"
+  var id = "7fa8cf84-92ba-4a11-890e-b754b0f58a18"
+
   deleteOrder(id)
 
   function deleteOrder(id) {
