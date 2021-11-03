@@ -7,3 +7,4 @@ cypress.env.json
 .vscode/settings.json
 .metals/
 .vscode/launch.json
+docker/dynamodb/shared-local-instance.db
