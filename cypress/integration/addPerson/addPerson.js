@@ -3,6 +3,7 @@ import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import guid from '../../helpers/commentText'
+import { createPerson, createPersonWithNewTenure } from "../../../api/person"
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
@@ -46,17 +47,6 @@ And('the person page is loaded', () => {
 
 And('I am on the tenure page {string}', (tenureId) => {
     cy.url().should('include', `tenure/${tenureId}`)
-})
-
-And('I edit the person {string} {string} {string} {string}', (title, personType, firstName, middleName) => {
-    cy.intercept('GET', '/edit', (req) => {
-        etag = req.headers
-    })
-    if(personType === 'Named tenure holder') {
-        cy.contains(`View ${title} ${firstName} ${middleName} ${guid}`).click()
-    } else {
-        cy.contains(`${title} ${firstName} ${middleName} ${guid}`).click()
-    }
 })
 
 And('I click the update person button', () => {
@@ -242,6 +232,9 @@ And('I am on the contact details page', () => {
     cy.url().should('include', 'contact')
 })
 
-Given('I create a person and then edit them', async (tenureId) => {
-    const postResponse = 
+Given('I create a person and then edit them {string}', async (tenureId) => {
+    const postResponse = await createPersonWithNewTenure(tenureId)
+    const personId = postResponse.data.id
+    editPersonPage.visit(personId)
+
 })
