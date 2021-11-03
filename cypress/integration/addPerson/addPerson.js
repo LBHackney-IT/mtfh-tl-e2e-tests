@@ -3,15 +3,12 @@ import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import guid from '../../helpers/commentText'
+import { createPerson, createPersonWithNewTenure } from "../../../api/person"
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 const personContactPage = new PersonContactPageObjects()
 const contactDetails = require('../../../api/contact-details')
-
-Then('the add a new person tenure page is correct', () => {
-    addPersonPage.addPersonPageIsDisplayed()
-})
 
 And('the person has been added to the tenure', () => {
     addPersonPage.pageAnnouncement().contains('Person added to tenure')
@@ -50,17 +47,6 @@ And('the person page is loaded', () => {
 
 And('I am on the tenure page {string}', (tenureId) => {
     cy.url().should('include', `tenure/${tenureId}`)
-})
-
-And('I edit the person {string} {string} {string} {string}', (title, personType, firstName, middleName) => {
-    cy.intercept('GET', '/edit', (req) => {
-        etag = req.headers
-    })
-    if(personType === 'Named tenure holder') {
-        cy.contains(`View ${title} ${firstName} ${middleName} ${guid}`).click()
-    } else {
-        cy.contains(`${title} ${firstName} ${middleName} ${guid}`).click()
-    }
 })
 
 And('I click the update person button', () => {
@@ -240,4 +226,15 @@ Then('I cannot add any more contacts for {string}', (contactType) => {
         personContactPage.mainContent().contains("You cannot add more than 5 phone numbers")
         personContactPage.addPhoneNumberButton().should('be.disabled')
     }
+})
+
+And('I am on the contact details page', () => {
+    cy.url().should('include', 'contact')
+})
+
+Given('I create a person and then edit them {string}', async (tenureId) => {
+    const postResponse = await createPersonWithNewTenure(tenureId)
+    const personId = postResponse.data.id
+    editPersonPage.visit(personId)
+
 })

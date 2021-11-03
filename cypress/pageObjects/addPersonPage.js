@@ -2,7 +2,7 @@ const envConfig = require('../../environment-config')
 
 class AddPersonPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${record}/add`)
+        cy.visit(`${envConfig.baseUrl}/tenure/${record}/edit/person/new`)
         cy.injectAxe()
     }
 
@@ -47,7 +47,7 @@ class AddPersonPageObjects {
     }
 
     personTitleSelection() {
-        return cy.get('#person-form-title-field')
+        return cy.get('[id="person-form-title-field"]')
     }
 
     firstNameContainer() {
@@ -175,7 +175,7 @@ class AddPersonPageObjects {
     }
 
     addPersonButton() {
-        return cy.get('[type="submit"]')
+        return cy.contains('Add person')
     }
 
     cancelButton() {
@@ -200,7 +200,7 @@ class AddPersonPageObjects {
 
     addPersonPageIsDisplayed() {
         this.addPersonHeader().should('be.visible')
-        this.addPersonHeader().contains('Add new person to tenure')
+        this.addPersonHeader().contains('Edit tenure')
     }
 }
 export default AddPersonPageObjects
