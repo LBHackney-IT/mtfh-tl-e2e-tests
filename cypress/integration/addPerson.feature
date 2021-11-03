@@ -237,7 +237,6 @@ Feature: Add a new person to a tenure
           | person                               | postCode |
           | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | E8 2DY   |
 
-    @ignore
     Scenario Outline: Correspondence address using invalid postcode lookup details
       When I edit a person's contact details "<person>"
       And I click add a correspondence address

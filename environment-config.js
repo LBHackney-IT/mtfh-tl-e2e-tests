@@ -4,6 +4,8 @@ let searchUrl = "search"
 let personUrl = "person"
 let personCommentsUrl = "comment/person"
 let tenureCommentsUrl="comment/tenure"
+let propertyCommentsUrl="comment/property"
+
 let tenureUrl = "tenure"
 let rootComponentPort = "9000"
 let property = "property"
@@ -31,6 +33,7 @@ module.exports = {
     personUrl,
     personCommentsUrl,
     tenureCommentsUrl,
+    propertyCommentsUrl,
     baseUrl,
     tenureUrl,
     property,

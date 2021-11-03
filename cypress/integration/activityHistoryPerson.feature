@@ -11,7 +11,6 @@ Feature: Activity History
     Given I am logged in
     
     @SmokeTest
-    @Production
     Scenario Outline: View activity history
       Given I go to the activity history for "<person>"
       Then the activity history is displayed

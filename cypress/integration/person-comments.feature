@@ -11,8 +11,6 @@ Feature: T&L Person Comment
       Given I am logged in
 
     @SmokeTest
-    @Positive
-    @Production
     Scenario Outline: I go to create a comment for a person page
       Given I am on the create comment page for "<commentType>" "<personId>"
       Then the create comment component is displayed
