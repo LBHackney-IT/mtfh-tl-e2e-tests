@@ -15,6 +15,7 @@ import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage"
 import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
+import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 
 import comment from "../../../api/comment";
 import contact from "../../../api/contact";
@@ -22,7 +23,8 @@ import person from "../../../api/person";
 import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
-import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
+import dynamoDb from "../../../cypress/integration/common/DynamoDb";
+
 
 import { hasToggle } from "../../helpers/hasToggle";
 import { guid } from "../../helpers/commentText";
@@ -604,4 +606,12 @@ And('the named tenure holder button is active', () => {
 
 And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
+})
+
+
+Then('I can delete a created record from DynamoDb {string} {string}',(tableName, id) => {
+  cy.log('table name:', tableName)
+  cy.log('id to be deleted: ', id)
+  dynamoDb.deleteRecordFromDynamoDB(tableName, id)
+
 })

@@ -1,4 +1,4 @@
-import { When, Then, Given } from "cypress-cucumber-preprocessor/steps";
+import { When, Then, Given, After } from "cypress-cucumber-preprocessor/steps";
 import TenurePageObjects from '../../pageObjects/tenurePage';
 import tenure from "../../../api/tenure";
 
