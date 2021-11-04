@@ -8,7 +8,6 @@ const cucumber = require("cypress-cucumber-preprocessor").default;
 const { getConfiguration } = require("./configuration")
 const fs = require('fs')
 
-
 module.exports = async (on, config) => {
   // config.featureToggles = (await getConfiguration(config.env)) || {};
   // on("before:browser:launch", (browser = {}, launchOptions) => {
@@ -16,14 +15,9 @@ module.exports = async (on, config) => {
   // });
   on('task', {
     writeTenureTestFile(id) {
-
-      fs.writeFileSync('./cypress/fixtures/tenureTestData.txt', id)
+      //fs.writeFileSync('./cypress/fixtures/tenureTestData.txt', id)
+      fs.appendFileSync('./cypress/fixtures/tenureTestData.txt', `${id},`)
       return null;
-
-      // if (fs.existsSync(id)) {
-      //   return fs.writeFileSync('./cypress/fixtures/tenureTestData.txt', id)
-      // }
-
     },
 });
 
