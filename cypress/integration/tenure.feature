@@ -94,9 +94,9 @@ Feature: Tenure page
       And have no detectable a11y violations
 
 
-    Scenario Outline: Clean up test data from DynamoDb
-      Then I can delete a created record from DynamoDb "<tableName>" "<id>"
+    # Scenario Outline: Clean up test data from DynamoDb
+    #   Then I can delete a created record from DynamoDb "<tableName>" "<id>"
 
-      Examples:
-      | tableName          | id                                  |
-      | TenureInformation  |97fb2973-b00f-4ec2-a3dd-54d765b1ecbd |
+    #   Examples:
+    #   | tableName          | id                                  |
+    #   | TenureInformation  |97fb2973-b00f-4ec2-a3dd-54d765b1ecbd |

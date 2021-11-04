@@ -105,6 +105,9 @@ Given("I create a new tenure", async () => {
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Tenure Id for record ${response.data.id} created!`);  
   tenureId = response.data.id
+
+  cy.task('writeTenureTestFile', tenureId)
+
 });
 
 Given("I add a person to a tenure", async () => {

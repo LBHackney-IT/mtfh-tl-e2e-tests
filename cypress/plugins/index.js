@@ -5,13 +5,28 @@
 
 const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 const cucumber = require("cypress-cucumber-preprocessor").default;
-const { getConfiguration } = require("./configuration");
+const { getConfiguration } = require("./configuration")
+const fs = require('fs')
+
 
 module.exports = async (on, config) => {
   // config.featureToggles = (await getConfiguration(config.env)) || {};
   // on("before:browser:launch", (browser = {}, launchOptions) => {
   // // prepareAudit(launchOptions);
   // });
+  on('task', {
+    writeTenureTestFile(id) {
+
+      fs.writeFileSync('./cypress/fixtures/tenureTestData.txt', id)
+      return null;
+
+      // if (fs.existsSync(id)) {
+      //   return fs.writeFileSync('./cypress/fixtures/tenureTestData.txt', id)
+      // }
+
+    },
+});
+
   on("file:preprocessor", cucumber());
   on("task", {
     lighthouse: lighthouse((lighthouseReport) => {
@@ -33,3 +48,4 @@ module.exports = async (on, config) => {
   });
   return config;
 };
+
