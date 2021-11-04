@@ -10,3 +10,4 @@ cypress.env.json
 docker/dynamodb/shared-local-instance.db
 cypress/fixtures/tenureTestData.txt
 
+cypress/fixtures/tenureTestData.txt
