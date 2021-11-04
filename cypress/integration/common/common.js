@@ -41,6 +41,9 @@ const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
+const fs = require('fs')
+const readline = require('readline');
+
 
 let dateCaptureDay;
 let dateCaptureTime;
@@ -613,35 +616,50 @@ And('I remove one of the tenure holders', () => {
 })
 
 
-Then('I can delete a created record from DynamoDb {string} {string}',(tableName,id) => {
+// Then('I can delete a created record from DynamoDb {string} {string}',(tableName,id) => {
   
-  cy.log('table name:', tableName)
-  cy.log('id to be deleted: ', id)
-  dynamoDb.deleteRecordFromDynamoDB(tableName, id)
+//   cy.log('table name:', tableName)
+//   cy.log('id to be deleted: ', id)
+//   dynamoDb.deleteRecordFromDynamoDB(tableName, id)
   
+//   // var testData = './cypress/fixtures/tenureTestData.txt'
+//   // for (var i =0; i< testData.length; i++ )
+//   // {
+//   //   var availableId = cy.task('readLineByLineFromFile');
+//   //   cy.log('Available Ids in the test data file: ', availableId);
+//   //   dynamoDb.deleteRecordFromDynamoDB(tableName, availableId)
+
+//   // }
+
+// })
+
+Then('I can delete a created record from DynamoDb {string}',(tableName) => {
+  let fileContent = ''
+
+  cy.readFile('./cypress/fixtures/tenureTestData.txt').then(text => {
+    console.log(fileContent)
+    fileContent =text
+
+    let arrayOfIds = fileContent.split(",")
+    cy.log('Array of Ids', arrayOfIds)
+    
+    for (var i = 0; i < arrayOfIds.length; i++) {
+      console.log(arrayOfIds[i]);
+      dynamoDb.deleteRecordFromDynamoDB(tableName, arrayOfIds[i])
+    }
+  });
+
+//Delete these lines later
+let arrayOfIds = fileContent.split(",")
+cy.log(arrayOfIds)
+
   // var testData = './cypress/fixtures/tenureTestData.txt'
   // for (var i =0; i< testData.length; i++ )
   // {
-  //   var availableId = cy.task('readLineByLineFromFile');
-  //   cy.log('Available Ids in the test data file: ', availableId);
-  //   dynamoDb.deleteRecordFromDynamoDB(tableName, availableId)
+  //   var id= cy.task('readLineByLineFromFile');
+  //   cy.log('Available Ids in the test data file: ', id);
+  //   //dynamoDb.deleteRecordFromDynamoDB(tableName, id)
 
   // }
-
-})
-
-Then('I can delete a created record from DynamoDb {string}',(tableName) => {
-  
-  cy.log('table name:', tableName)
-  //dynamoDb.deleteRecordFromDynamoDB(tableName, id)
-  
-  var testData = './cypress/fixtures/tenureTestData.txt'
-  for (var i =0; i< testData.length; i++ )
-  {
-    var id= cy.task('readLineByLineFromFile');
-    cy.log('Available Ids in the test data file: ', id);
-    //dynamoDb.deleteRecordFromDynamoDB(tableName, id)
-
-  }
 
 })

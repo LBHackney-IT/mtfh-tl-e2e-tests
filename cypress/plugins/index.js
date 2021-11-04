@@ -22,19 +22,35 @@ module.exports = async (on, config) => {
     },
   });
 
-  on('task', {
-    async readLineByLineFromFile() {
+  // on('task', {
+  //   async readLineByLineFromFile() {
     
-      var fileStream = fs.createReadStream('./cypress/fixtures/tenureTestData.txt');
-      var rl = readline.createInterface({
-        input: fileStream,
-        crlfDelay: Infinity
-      });
-      var line
-      for await(line of rl){
-        console.log('Line from file: ', line)
-      }
-      return line
+  //     var fileStream = fs.createReadStream('./cypress/fixtures/tenureTestData.txt');
+  //     var rl = readline.createInterface({
+  //       input: fileStream,
+  //       crlfDelay: Infinity
+  //     });
+  //     var line
+  //     for await(line of rl){
+  //       console.log('Line from file: ', line)
+  //     }
+  //     return line
+  //   },
+  // });
+
+  on('task', {
+     readIdFromFile() {
+      var data = fs.readFile('./cypress/fixtures/tenureTestData.txt');
+      console.log('data from plugin', data);  
+
+
+      // try {  
+      //   var data = fs.readFileSync('./cypress/fixtures/tenureTestData.txt', 'utf8');
+      //   console.log('data from plugin', data);    
+      // } catch(e) {
+      //   cy.log('Error:', e.stack);
+      // }
+      return null;
     },
   });
 
