@@ -87,16 +87,24 @@ Feature: Tenure page
     #     # | samsung-note9 | 
     #     | samsung-s10   | 
 
-    @Accessibility
-    Scenario: Accessibility Testing
-      Given I create a new tenure
-      When I view a Tenure
-      And have no detectable a11y violations
+    # @Accessibility
+    # Scenario: Accessibility Testing
+    #   Given I create a new tenure
+    #   When I view a Tenure
+    #   And have no detectable a11y violations
 
 
-    # Scenario Outline: Clean up test data from DynamoDb
-    #   Then I can delete a created record from DynamoDb "<tableName>" "<id>"
+Scenario Outline: Clean up test data from DynamoDb
+      Then I can delete a created record from DynamoDb "<tableName>" "<id>"
 
-    #   Examples:
-    #   | tableName          | id                                  |
-    #   | TenureInformation  |97fb2973-b00f-4ec2-a3dd-54d765b1ecbd |
+      Examples:
+      | tableName          | id                                   |
+      | TenureInformation  | cfcfbebd-5dda-413d-9cf2-8df052208785 |
+
+
+#  Scenario Outline: Clean up test data from DynamoDb
+#       Then I can delete a created record from DynamoDb "<tableName>"
+
+#       Examples:
+#       | tableName          |
+#       | TenureInformation  |

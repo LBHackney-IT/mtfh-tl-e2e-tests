@@ -3,7 +3,9 @@ const tenureEndpoint = Cypress.env('DYNAMODB_ENDPOINT')
 const region  = Cypress.env('DYNAMODB_REGION')
 const accessKeyId = Cypress.env('DYNAMODB_REGION')
 const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
-// const fs = require('fs')
+
+// const AWS = require('aws-sdk')
+// const docClient = new AWS.DynamoDB.DocumentClient()
 
 const deleteRecordFromDynamoDB = async (tableName, id)=>{
   var AWS = require("aws-sdk");
@@ -13,7 +15,7 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
     accessKeyId: accessKeyId,
     secretAccessKey: secretAccessKey
   });
-  var docClient = new AWS.DynamoDB.DocumentClient();
+ var docClient = new AWS.DynamoDB.DocumentClient();
 
   deleteRecord(id)
 
@@ -38,5 +40,5 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
 }
 
 module.exports = {
-  deleteRecordFromDynamoDB,
+  deleteRecordFromDynamoDB
 }

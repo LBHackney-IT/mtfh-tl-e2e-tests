@@ -7,6 +7,7 @@ const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 const cucumber = require("cypress-cucumber-preprocessor").default;
 const { getConfiguration } = require("./configuration")
 const fs = require('fs')
+const readline = require('readline');
 
 module.exports = async (on, config) => {
   // config.featureToggles = (await getConfiguration(config.env)) || {};
@@ -17,11 +18,28 @@ module.exports = async (on, config) => {
     writeTenureTestFile(id) {
       //fs.writeFileSync('./cypress/fixtures/tenureTestData.txt', id)
       fs.appendFileSync('./cypress/fixtures/tenureTestData.txt', `${id},`)
-      return null;
+      return null
     },
-});
+  });
+
+  on('task', {
+    async readLineByLineFromFile() {
+    
+      var fileStream = fs.createReadStream('./cypress/fixtures/tenureTestData.txt');
+      var rl = readline.createInterface({
+        input: fileStream,
+        crlfDelay: Infinity
+      });
+      var line
+      for await(line of rl){
+        console.log('Line from file: ', line)
+      }
+      return line
+    },
+  });
 
   on("file:preprocessor", cucumber());
+
   on("task", {
     lighthouse: lighthouse((lighthouseReport) => {
       console.log(lighthouseReport);

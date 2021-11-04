@@ -103,10 +103,11 @@ Given("I create a new tenure", async () => {
   cy.log("Creating new tenure record");
   const response = await tenure.createTenure();
   cy.log(`Status code ${response.status} returned`);
-  cy.log(`Tenure Id for record ${response.data.id} created!`);  
+  cy.log(`Tenure Id for record ${response.data.id} created!`);
   tenureId = response.data.id
 
-  cy.task('writeTenureTestFile', tenureId)
+  cy.task('writeTenureTestFile', tenureId);
+  var availableId = cy.task('readLineByLineFromFile');
 
 });
 
@@ -612,9 +613,35 @@ And('I remove one of the tenure holders', () => {
 })
 
 
-Then('I can delete a created record from DynamoDb {string} {string}',(tableName, id) => {
+Then('I can delete a created record from DynamoDb {string} {string}',(tableName,id) => {
+  
   cy.log('table name:', tableName)
   cy.log('id to be deleted: ', id)
   dynamoDb.deleteRecordFromDynamoDB(tableName, id)
+  
+  // var testData = './cypress/fixtures/tenureTestData.txt'
+  // for (var i =0; i< testData.length; i++ )
+  // {
+  //   var availableId = cy.task('readLineByLineFromFile');
+  //   cy.log('Available Ids in the test data file: ', availableId);
+  //   dynamoDb.deleteRecordFromDynamoDB(tableName, availableId)
+
+  // }
+
+})
+
+Then('I can delete a created record from DynamoDb {string}',(tableName) => {
+  
+  cy.log('table name:', tableName)
+  //dynamoDb.deleteRecordFromDynamoDB(tableName, id)
+  
+  var testData = './cypress/fixtures/tenureTestData.txt'
+  for (var i =0; i< testData.length; i++ )
+  {
+    var id= cy.task('readLineByLineFromFile');
+    cy.log('Available Ids in the test data file: ', id);
+    //dynamoDb.deleteRecordFromDynamoDB(tableName, id)
+
+  }
 
 })
