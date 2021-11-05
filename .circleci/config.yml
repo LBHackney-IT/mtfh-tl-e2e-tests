@@ -111,10 +111,13 @@ jobs:
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
+                              export AWS_ACCESS_KEY_ID=ASIAVJ447R6IURBIAGR4 ;
+                              export AWS_SECRET_ACCESS_KEY=$(aws ssm get-parameter --name  <parameter in AWS update here> --query Parameter.Value --output text) ;
+                              export AWS_DEFAULT_REGION=eu-west-2 ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
-                - run: 
+                - run:
                     name: trigger downstream deployment
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
