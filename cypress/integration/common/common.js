@@ -108,10 +108,9 @@ Given("I create a new tenure", async () => {
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Tenure Id for record ${response.data.id} created!`);
   tenureId = response.data.id
-
-  cy.task('writeTenureTestFile', tenureId);
-  var availableId = cy.task('readLineByLineFromFile');
-
+  
+  //Apend a created tenure Id in the specified file. 
+  cy.task('appendTestDataId', tenureId);
 });
 
 Given("I add a person to a tenure", async () => {
@@ -617,18 +616,15 @@ And('I remove one of the tenure holders', () => {
 
 Then('I can delete a created record from DynamoDb {string}',(tableName) => {
   let fileContent = ''
-
   cy.readFile(testDataFile).then(text => {
     console.log(fileContent)
     fileContent =text
-
     let arrayOfIds = fileContent.split(",")
-    cy.log('Array of Ids', arrayOfIds)
-    
     for (var i = 0; i < arrayOfIds.length; i++) {
       console.log(arrayOfIds[i]);
       dynamoDb.deleteRecordFromDynamoDB(tableName, arrayOfIds[i])
     }
   });
+  //Clear contents from the test data file
   cy.writeFile(testDataFile,'')
 })

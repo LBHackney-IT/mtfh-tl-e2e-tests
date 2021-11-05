@@ -15,7 +15,7 @@ module.exports = async (on, config) => {
   // // prepareAudit(launchOptions);
   // });
   on('task', {
-    writeTenureTestFile(id) {
+    appendTestDataId(id) {
       fs.appendFileSync(testDataFile, `${id},`)
       return null
     },
