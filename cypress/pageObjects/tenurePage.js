@@ -6,6 +6,10 @@ class TenurePageObjects {
     cy.injectAxe();
   }
 
+  editTenure(record) {
+    cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${record}/edit`)
+  }
+
   paymentReference() {
     return cy.get("h1");
   }
