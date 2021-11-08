@@ -1,5 +1,6 @@
 @GoogleLighthouse
 
+@ignore
 Feature: Google Lighthouse audit
 
     Background: Login
