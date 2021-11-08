@@ -7,6 +7,7 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
     var docClient = new AWS.DynamoDB.DocumentClient();
   
     AWS.config.update({
+      region: 'eu-west-2',
       accessKeyId: accessKeyId,
       secretAccessKey: secretAccessKey
     });
