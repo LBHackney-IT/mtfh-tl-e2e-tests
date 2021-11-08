@@ -17,7 +17,7 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
       // credentials not loaded
       else {
         console.log("Access key:", AWS.config.credentials.accessKeyId);
-      }ij
+      }
     });
 
   deleteRecord(id)
