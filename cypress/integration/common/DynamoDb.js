@@ -1,6 +1,6 @@
 
-const accessKeyId = Cypress.env('AWS_ACCESS_KEY')
-const secretAccessKey= Cypress.env('AWS_SECRET_ACCESS_KEY')
+const accessKeyId = Cypress.env('CYPRESS_AWS_ACCESS_KEY')
+const secretAccessKey= Cypress.env('CYPRESS_AWS_SECRET_ACCESS_KEY')
 const AWS = require("aws-sdk");
 
 const deleteRecordFromDynamoDB = async (tableName, id)=>{
@@ -15,13 +15,13 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
     console.log("Access key which is set in the enviornment: ", accessKeyId);
     console.log("Secret in pipeline: ", secretAccessKey)
 
-    AWS.config.getCredentials(function(err) {
-      if (err) console.log(err.stack);
-      // credentials not loaded
-      else {
-        console.log("Access key:", AWS.config.credentials.accessKeyId);
-      }
-    });
+    // AWS.config.getCredentials(function(err) {
+    //   if (err) console.log(err.stack);
+    //   // credentials not loaded
+    //   else {
+    //     console.log("Access key:", AWS.config.credentials.accessKeyId);
+    //   }
+    // });
 
   deleteRecord(id)
 
