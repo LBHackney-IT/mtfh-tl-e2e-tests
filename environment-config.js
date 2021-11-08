@@ -15,6 +15,7 @@ let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 const AWS = require("aws-sdk");
 
+const endpoint = Cypress.env('DYNAMODB_ENDPOINT')
 const region  = Cypress.env('DYNAMODB_REGION')
 const accessKeyId = Cypress.env('DYNAMODB_REGION')
 const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
@@ -25,11 +26,10 @@ if (environment === 'local') {
 
     AWS.config.update({
         region: region,
-        endpoint: tenureEndpoint,
+        endpoint: endpoint,
         accessKeyId: accessKeyId,
         secretAccessKey: secretAccessKey
     });
-
 }
 
 if (environment === 'development') {
