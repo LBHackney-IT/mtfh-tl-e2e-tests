@@ -1,6 +1,6 @@
 
-const accessKeyId = Cypress.env('DYNAMODB_ACCESS_KEY')
-const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
+const accessKeyId = Cypress.env('AWS_ACCESS_KEY')
+const secretAccessKey= Cypress.env('AWS_SECRET_ACCESS_KEY')
 const AWS = require("aws-sdk");
 
 const deleteRecordFromDynamoDB = async (tableName, id)=>{
