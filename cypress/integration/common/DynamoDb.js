@@ -12,8 +12,8 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
       secretAccessKey: secretAccessKey
     });
 
-    console.log("Access key which is set in the enviornment: ", AWS.config.credentials.accessKeyId);
-    console.log("Secret in pipeline: ", AWS.config.credentials.secretAccessKey)
+    console.log("Access key which is set in the enviornment: ", accessKeyId);
+    console.log("Secret in pipeline: ", secretAccessKey)
 
     AWS.config.getCredentials(function(err) {
       if (err) console.log(err.stack);
