@@ -1,5 +1,5 @@
 
-const accessKeyId = Cypress.env('DYNAMODB_REGION')
+const accessKeyId = Cypress.env('DYNAMODB_ACCESS_KEY')
 const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
 const AWS = require("aws-sdk");
 
