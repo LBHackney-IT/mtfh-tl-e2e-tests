@@ -111,8 +111,8 @@ jobs:
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
-                              export AWS_SECRET_KEY=$(aws configure get aws_secret_access_key --profile default) ;
-                              export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
+                              export CYPRESS_AWS_SECRET_KEY=$(aws configure get aws_secret_access_key --profile default) ;
+                              export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
@@ -167,8 +167,8 @@ jobs:
                               export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
-                              export AWS_SECRET_KEY=$(aws configure get aws_secret_access_key --profile default) ;
-                              export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
+                              export CYPRESS_AWS_SECRET_KEY=$(aws configure get aws_secret_access_key --profile default) ;
+                              export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;
