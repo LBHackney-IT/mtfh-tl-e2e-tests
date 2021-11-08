@@ -1,6 +1,4 @@
 
-const endpoint = Cypress.env('DYNAMODB_ENDPOINT')
-const region  = Cypress.env('DYNAMODB_REGION')
 const accessKeyId = Cypress.env('DYNAMODB_REGION')
 const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
 const AWS = require("aws-sdk");
@@ -9,8 +7,6 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
     var docClient = new AWS.DynamoDB.DocumentClient();
   
       AWS.config.update({
-        region: region,
-        endpoint: endpoint,
         accessKeyId: accessKeyId,
         secretAccessKey: secretAccessKey
     });
