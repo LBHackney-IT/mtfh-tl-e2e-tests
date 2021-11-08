@@ -11,7 +11,26 @@ let rootComponentPort = "9000"
 let property = "property"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 
+
 let baseUrl = `${rootUrl}:${rootComponentPort}`
+const AWS = require("aws-sdk");
+
+const region  = Cypress.env('DYNAMODB_REGION')
+const accessKeyId = Cypress.env('DYNAMODB_REGION')
+const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
+
+if (environment === 'local') {
+    baseUrl = "http://local.hackney.gov.uk"
+    gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_DEV')
+
+    AWS.config.update({
+        region: region,
+        endpoint: tenureEndpoint,
+        accessKeyId: accessKeyId,
+        secretAccessKey: secretAccessKey
+    });
+
+}
 
 if (environment === 'development') {
     baseUrl = "https://manage-my-home-development.hackney.gov.uk"
