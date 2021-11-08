@@ -1,5 +1,5 @@
 
-const tenureEndpoint = Cypress.env('DYNAMODB_ENDPOINT')
+const endpoint = Cypress.env('DYNAMODB_ENDPOINT')
 const region  = Cypress.env('DYNAMODB_REGION')
 const accessKeyId = Cypress.env('DYNAMODB_REGION')
 const secretAccessKey= Cypress.env('DYNAMODB_SECRET_ACCESS_KEY')
@@ -7,13 +7,20 @@ const AWS = require("aws-sdk");
 
 const deleteRecordFromDynamoDB = async (tableName, id)=>{
     var docClient = new AWS.DynamoDB.DocumentClient();
-    AWS.config.update({region: "eu-west-2"});
+  
+      AWS.config.update({
+        region: region,
+        endpoint: endpoint,
+        accessKeyId: accessKeyId,
+        secretAccessKey: secretAccessKey
+    });
+
     AWS.config.getCredentials(function(err) {
       if (err) console.log(err.stack);
       // credentials not loaded
       else {
         console.log("Access key:", AWS.config.credentials.accessKeyId);
-      }
+      }ij
     });
 
   deleteRecord(id)
