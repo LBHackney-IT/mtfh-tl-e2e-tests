@@ -7,12 +7,21 @@ const AWS = require("aws-sdk");
 
 const deleteRecordFromDynamoDB = async (tableName, id)=>{
     var docClient = new AWS.DynamoDB.DocumentClient();
-    AWS.config.update({
-      region: region,
-      endpoint: tenureEndpoint,
-      accessKeyId: accessKeyId,
-      secretAccessKey: secretAccessKey
+
+    AWS.config.getCredentials(function(err) {
+      if (err) console.log(err.stack);
+      // credentials not loaded
+      else {
+        console.log("Access key:", AWS.config.credentials.accessKeyId);
+      }
     });
+
+    // AWS.config.update({
+    //   region: region,
+    //   endpoint: tenureEndpoint,
+    //   accessKeyId: accessKeyId,
+    //   secretAccessKey: secretAccessKey
+    // });
 
   deleteRecord(id)
 
