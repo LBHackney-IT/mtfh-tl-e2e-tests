@@ -48,7 +48,7 @@ Feature: Add a new person to a tenure
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      # | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
 
   @device
@@ -110,7 +110,7 @@ Feature: Add a new person to a tenure
 
     Examples:
       | tenure                               | personType          | title | firstName | middleName | lastName | day | month | year |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Named tenure holder | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 |
+      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Household member    | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 |
 
     @SmokeTest
     @Positive
@@ -128,7 +128,8 @@ Feature: Add a new person to a tenure
       And I select a preferred middle name "<preferredMiddleName>"
       And I select a preferred last name "<preferredLastName>"
       And I click the update person button
-      And I click the done button
+      And I click the next button
+      And I click the save equality information button
       And I click edit person
       And I enter a first name "<conflictTitle>"
       And there is a merge conflict

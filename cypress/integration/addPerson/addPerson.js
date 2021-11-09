@@ -236,5 +236,8 @@ Given('I create a person and then edit them {string}', async (tenureId) => {
     const postResponse = await createPersonWithNewTenure(tenureId)
     const personId = postResponse.data.id
     editPersonPage.visit(personId)
+})
 
+And('I click the save equality information button', () => {
+    addPersonPage.saveEqualityInformationButton().click()
 })
