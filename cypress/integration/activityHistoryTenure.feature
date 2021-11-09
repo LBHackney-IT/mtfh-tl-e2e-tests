@@ -4,7 +4,6 @@
 @processes
 @root
 
-@ignore
 Feature: Activity History for Tenure
   I want to view a tenure's activity history
 

@@ -4,7 +4,6 @@
 @processes
 @root
 
-@ignore
 Feature: Tenure Comment
     I want to create and view tenure's comments
 

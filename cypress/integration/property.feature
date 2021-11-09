@@ -4,7 +4,6 @@
 @property
 @root
 
-@ignore
 Feature: Property Page
 
     View property page

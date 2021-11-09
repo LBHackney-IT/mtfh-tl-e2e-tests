@@ -5,7 +5,6 @@
 @Production
 @root
 
-@ignore
 Feature: T&L Home page
     I am on the Tenants and Leaseholders Home page
 

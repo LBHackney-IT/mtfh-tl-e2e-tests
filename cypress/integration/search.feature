@@ -4,7 +4,6 @@
 @root
 @search
 
-@ignore
 Feature: T&L Search Function
     I want to search for a person or tenure
 

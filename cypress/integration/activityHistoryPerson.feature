@@ -4,7 +4,6 @@
 @processes
 @root
 
-@ignore
 Feature: Activity History
   I want to view a person's activity history
 
