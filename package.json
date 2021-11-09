@@ -73,6 +73,7 @@
     "ws": ">=6.2.2"
   },
   "dependencies": {
+    "aws-sdk": "^2.1020.0",
     "axios": "^0.21.3",
     "date-and-time": "^1.0.1",
     "uuid": "^8.3.2"

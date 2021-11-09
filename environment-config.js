@@ -10,8 +10,12 @@ let tenureUrl = "tenure"
 let rootComponentPort = "9000"
 let property = "property"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
-
 let baseUrl = `${rootUrl}:${rootComponentPort}`
+
+if (environment === 'local') {
+    baseUrl = "http://local.hackney.gov.uk"
+    gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
+}
 
 if (environment === 'development') {
     baseUrl = "https://manage-my-home-development.hackney.gov.uk"

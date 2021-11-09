@@ -15,6 +15,7 @@ import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage"
 import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
+import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 
 import comment from "../../../api/comment";
 import contact from "../../../api/contact";
@@ -22,7 +23,8 @@ import person from "../../../api/person";
 import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
-import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
+import dynamoDb from "../../../cypress/integration/common/DynamoDb";
+
 
 import { hasToggle } from "../../helpers/hasToggle";
 import { guid } from "../../helpers/commentText";
@@ -39,11 +41,14 @@ const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
+const fs = require('fs')
+const readline = require('readline');
 
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
 let tenureId ="";
+let testDataFile ="./cypress/fixtures/tenureTestData.txt"
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -101,8 +106,11 @@ Given("I create a new tenure", async () => {
   cy.log("Creating new tenure record");
   const response = await tenure.createTenure();
   cy.log(`Status code ${response.status} returned`);
-  cy.log(`Tenure Id for record ${response.data.id} created!`);  
+  cy.log(`Tenure Id for record ${response.data.id} created!`);
   tenureId = response.data.id
+  
+  //Apend a created tenure Id in the specified file. 
+  cy.task('appendTestDataId', tenureId);
 });
 
 Given("I add a person to a tenure", async () => {
@@ -604,4 +612,19 @@ And('the named tenure holder button is active', () => {
 
 And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
+})
+
+Then('I can delete a created record from DynamoDb {string}',(tableName) => {
+  let fileContent = ''
+  cy.readFile(testDataFile).then(text => {
+    console.log(fileContent)
+    fileContent =text
+    let arrayOfIds = fileContent.split(",")
+    for (var i = 0; i < arrayOfIds.length; i++) {
+      console.log(arrayOfIds[i]);
+      dynamoDb.deleteRecordFromDynamoDB(tableName, arrayOfIds[i])
+    }
+  });
+  //Clear contents from the test data file
+  cy.writeFile(testDataFile,'')
 })
