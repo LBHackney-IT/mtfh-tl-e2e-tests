@@ -12,10 +12,14 @@ This sets the environment context. It can be set to `local`, `development`, `sta
 >"E2E_ACCESS_TOKEN_${environment}":
 
 This sets the access token depending upon the environment, you can create one for `local`, `dev`, `staging` and `prod` and set their properties accordingly
->"ASSET_ENDPOINT":
->"CONTACT_DETAILS_ENDPOINT":
->"PERSON_ENDPOINT":
->"TENURE_ENDPOINT":
+
+>"ASSET_ENDPOINT": ${assetEndpoint}
+
+>"CONTACT_DETAILS_ENDPOINT": ${contactDetailsEndpoint}
+
+>"PERSON_ENDPOINT": ${personEndpoint}
+
+>"TENURE_ENDPOINT": ${tenureEndpoint}
 
 These are the API gateways as taken from the AWS parameter store. The properties can be set as follows: `https://${apiGateway}.execute-api.eu-west-2.amazonaws.com/${environment}/api/${apiVersion}`
 
