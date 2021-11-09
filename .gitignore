@@ -8,6 +8,3 @@ cypress.env.json
 .metals/
 .vscode/launch.json
 docker/dynamodb/shared-local-instance.db
-cypress/fixtures/tenureTestData.txt
-
-cypress/fixtures/tenureTestData.txt
