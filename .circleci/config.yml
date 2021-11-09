@@ -169,7 +169,7 @@ jobs:
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
                               export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
-                              echo "AWS SECRET ACCESS KEY and SECRET $AWS_SECRET_ACCESS_KEY : $AWS_ACCESS_KEY_ID " ;
+                              echo "AWS SECRET ACCESS KEY and SECRET $CYPRESS_AWS_SECRET_ACCESS_KEY : $CYPRESS_AWS_ACCESS_KEY_ID " ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;
