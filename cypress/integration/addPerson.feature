@@ -128,7 +128,8 @@ Feature: Add a new person to a tenure
       And I select a preferred middle name "<preferredMiddleName>"
       And I select a preferred last name "<preferredLastName>"
       And I click the update person button
-      And I click the done button
+      And I click the next button
+      And I click the save equality information button
       And I click edit person
       And I enter a first name "<conflictTitle>"
       And there is a merge conflict

@@ -198,6 +198,10 @@ class AddPersonPageObjects {
         return cy.get('.lbh-dialog')
     }
 
+    saveEqualityInformationButton() {
+        return cy.contains('Save equality information')
+    }
+
     addPersonPageIsDisplayed() {
         this.addPersonHeader().should('be.visible')
         this.addPersonHeader().contains('Edit tenure')

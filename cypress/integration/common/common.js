@@ -628,3 +628,7 @@ Then('I can delete a created record from DynamoDb {string}',(tableName) => {
   //Clear contents from the test data file
   cy.writeFile(testDataFile,'')
 })
+
+And('I click the next button', () => {
+  cy.contains('Next').click()
+})
