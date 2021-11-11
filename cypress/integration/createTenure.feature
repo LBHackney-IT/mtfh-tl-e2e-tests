@@ -186,7 +186,7 @@ Feature: Create tenure
 
     Examples:
         | property                             | tenureType | startDay | startMonth | startYear |
-        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
+        | 986a2a9e-9eb4-0966-120a-238689e3e265 | Freehold   | 01       | 01         | 1900      |
 
   @SmokeTest
   Scenario Outline: Create new tenure that with start date that occurs after end date
@@ -202,7 +202,7 @@ Feature: Create tenure
 
     Examples:
         | property                             | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
-        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
+        | 986a2a9e-9eb4-0966-120a-238689e3e265 | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
 
   @ignore
   Scenario Outline: Edit existing tenure
