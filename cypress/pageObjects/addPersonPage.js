@@ -10,6 +10,10 @@ class AddPersonPageObjects {
         cy.visit(`${envConfig.baseUrl}/person/${record}/edit/contact`)
     }
 
+    editPersonEqualityInformation(record) {
+        cy.visit(`${envConfig.baseUrl}/person/${record}/edit/equality-information`)
+    }
+
     mainContent() {
         return cy.get('#main-content')
     }
@@ -196,6 +200,47 @@ class AddPersonPageObjects {
 
     confirmationModal() {
         return cy.get('.lbh-dialog')
+    }
+
+    //Equality information
+    ageGroupSelectionBox() {
+        return cy.get('#equality-information-form-ageGroup-select-field')
+    }
+
+    provideUnpaidCareSelectionField() {
+        return cy.get('#equality-information-form-provideUnpaidCareValue-field')
+    }
+
+    consideredDisabledSelectionField() {
+        return cy.get('#equality-information-form-disabled-field')
+    }
+
+    ethnicitySelectionBox() {
+        return cy.get('#equality-information-form-ethnicGroupValue-select-field')
+    }
+
+    genderSelectionField() {
+        return cy.get('#equality-information-form-gender')
+    }
+
+    preferredGenderTermField() {
+        return cy.get('#equality-information-form-gender-other-field')
+    }
+
+    genderDifferentToBirthSexSelectionField() {
+        return cy.get('#equality-information-form-genderDifferentToBirthSex')
+    }
+
+    religionOrBeliefSelectionBox() {
+        return cy.get('#equality-information-form-religionOrBeliefValue-select-field')
+    }
+
+    sexualOrientationSelectionBox() {
+        return cy.get('#equality-information-form-sexualOrientationValue-select-field')
+    }
+
+    pregnancyOrMaternityLeaveSelectionField() {
+        return cy.get('#equality-information-form-pregnancyOrMaternity-field')
     }
 
     saveEqualityInformationButton() {
