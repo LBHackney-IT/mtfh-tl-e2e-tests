@@ -255,73 +255,73 @@ Feature: Create tenure
         | tenure                               |
         | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
 
-    # @ignore
-    # Scenario Outline: Create person by navigating to new tenure
-    #     Given I delete all existing persons from the tenure "<tenure>"
-    #     When I navigate to a create person for new tenure "<property>" "<tenure>"
-    #     And the tenure person search is displayed
-    #     And the create new person button is not enabled
-    #     When I enter any of the following criteria "<searchTerm>"
-    #     And I click on the search button
-    #     And I click create new person
-    #     And I am on the create new person for a new tenure page
-    #     When I select person type "<personType>"
-    #     And I select a title "<title>"
-    #     And I enter a first name "<firstName>"
-    #     And I enter a middle name "<middleName>"
-    #     And I enter a last name "<lastName>"
-    #     And I enter a date of birth "<day>" "<month>" "<year>"
-    #     And I enter a place of birth "<placeOfBirth>"
-    #     And I select a preferred title "<preferredTitle>"
-    #     And I select a preferred first name "<preferredFirstName>"
-    #     And I select a preferred middle name "<preferredMiddleName>"
-    #     And I select a preferred last name "<preferredLastName>"
-    #     And I enter a reason for creation
-    #     And I click add person
-    #     Then I am on the create contact for a new tenure page
-    #     And I click the add email address button
-    #     And I enter an email address "<email>"
-    #     And I enter an email description "<emailDescription>"
-    #     And I click save email address
-    #     And the email information is captured "<email>" "<emailDescription>"
-    #     And I click the add phone number button
-    #     And I enter a phone number "<phoneNumber>"
-    #     And I select a phone number type "<phoneType>"
-    #     And I enter a phone number description "<phoneDescription>"
-    #     And I click save phone number
-    #     And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
-    #     And I click the done button
-    #     And the tenure person search is displayed
+    @ignore
+    Scenario Outline: Create person by navigating to new tenure
+        Given I delete all existing persons from the tenure "<tenure>"
+        When I navigate to a create person for new tenure "<property>" "<tenure>"
+        And the tenure person search is displayed
+        And the create new person button is not enabled
+        When I enter any of the following criteria "<searchTerm>"
+        And I click on the search button
+        And I click create new person
+        And I am on the create new person for a new tenure page
+        When I select person type "<personType>"
+        And I select a title "<title>"
+        And I enter a first name "<firstName>"
+        And I enter a middle name "<middleName>"
+        And I enter a last name "<lastName>"
+        And I enter a date of birth "<day>" "<month>" "<year>"
+        And I enter a place of birth "<placeOfBirth>"
+        And I select a preferred title "<preferredTitle>"
+        And I select a preferred first name "<preferredFirstName>"
+        And I select a preferred middle name "<preferredMiddleName>"
+        And I select a preferred last name "<preferredLastName>"
+        And I enter a reason for creation
+        And I click add person
+        Then I am on the create contact for a new tenure page
+        And I click the add email address button
+        And I enter an email address "<email>"
+        And I enter an email description "<emailDescription>"
+        And I click save email address
+        And the email information is captured "<email>" "<emailDescription>"
+        And I click the add phone number button
+        And I enter a phone number "<phoneNumber>"
+        And I select a phone number type "<phoneType>"
+        And I enter a phone number description "<phoneDescription>"
+        And I click save phone number
+        And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
+        And I click the done button
+        And the tenure person search is displayed
 
-    #     Examples:
-    #     | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
-    #     | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
+        Examples:
+        | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
+        | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
         
 
-    # @ignore
-    # Scenario Outline: Create person for new tenure validation
-    #     Given I delete all existing persons from the tenure "<tenure>"
-    #     When I navigate to a create person for new tenure "<property>" "<tenure>"
-    #     When I enter any of the following criteria "<searchTerm>"
-    #     And I click on the search button
-    #     When I add 5 named tenure holder
-    #     Then a new tenure error message appears "Max. tenure holders added"
-    #     And I click create new person
-    #     And I am on the create new person for a new tenure page
-    #     And the named tenure holder button is not active
-    #     And I remove one of the tenure holders
-    #     And I click the cancel button
-    #     And I remove one of the tenure holders
-    #     And I click remove person
-    #     Then the person is removed
-    #     When I select person type "Named tenure holder"
-    #     And I select a title "<title>"
-    #     And I enter a first name "<firstName>"
-    #     And I enter a last name "<lastName>"
-    #     And I enter a date of birth "<day>" "<month>" "<year>"
-    #     And I enter a reason for creation
-    #     And I click the done button
+    @ignore
+    Scenario Outline: Create person for new tenure validation
+        Given I delete all existing persons from the tenure "<tenure>"
+        When I navigate to a create person for new tenure "<property>" "<tenure>"
+        When I enter any of the following criteria "<searchTerm>"
+        And I click on the search button
+        When I add 5 named tenure holder
+        Then a new tenure error message appears "Max. tenure holders added"
+        And I click create new person
+        And I am on the create new person for a new tenure page
+        And the named tenure holder button is not active
+        And I remove one of the tenure holders
+        And I click the cancel button
+        And I remove one of the tenure holders
+        And I click remove person
+        Then the person is removed
+        When I select person type "Named tenure holder"
+        And I select a title "<title>"
+        And I enter a first name "<firstName>"
+        And I enter a last name "<lastName>"
+        And I enter a date of birth "<day>" "<month>" "<year>"
+        And I enter a reason for creation
+        And I click the done button
 
-    #     Examples:
-    #     | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
-    #     | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
+        Examples:
+        | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
+        | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
