@@ -255,7 +255,6 @@ Then('the equality information is diplayed', () => {
     addPersonPage.preferredGenderTermField().should('be.visible')
     addPersonPage.genderDifferentToBirthSexSelectionField().should('be.visible')
     addPersonPage.religionOrBeliefSelectionBox().should('be.visible')
-    addPersonPage.sexualOrientationSelectionBox().should('be.visible')
     addPersonPage.pregnancyOrMaternityLeaveSelectionField().should('be.visible')
     addPersonPage.saveEqualityInformationButton().should('be.visible')
 })
@@ -316,4 +315,12 @@ And('I click save equality information', () => {
 
 Then('the equality information is saved {string}', (person) => {
     addPersonPage.mainContent().contains('Person updated')
+})
+
+And('the sexual orientation information is not displayed', () => {
+    addPersonPage.sexualOrientationSelectionBox().should('not.exist')
+})
+
+Then('the sexual orientation information is displayed', () => {
+    addPersonPage.sexualOrientationSelectionBox().should('be.visible')
 })
