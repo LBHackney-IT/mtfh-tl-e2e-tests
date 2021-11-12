@@ -206,3 +206,36 @@ Feature: Add a new person to a tenure
           | contactType | person                               |
           | email       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
           | phone       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
+
+    Scenario Outline: Add equality information
+      Given I edit a person's equality information "<person>"
+      Then the equality information is diplayed
+      And the sexual orientation information is not displayed
+      When I select an age group "<ageGroup>"
+      Then the sexual orientation information is displayed
+      Then I select a carer option "<carerOption>"
+      And I select a disability option "<disabilityOption>"
+      And I select an ethnicity "<ethnicity>"
+      And I select a gender "<gender>"
+      And I enter a preferred term for gender "<preferredGenderTerm>"
+      And I select a gender identity option "<genderIdentityOption>"
+      And I select a religion or belief "<religionOrBelief>"
+      And I select a sexual orientation "<sexualOrientation>"
+      And I select a pregnancy or maternity option "<pregnancyOrMaternityOption>"
+      And I click save equality information
+      Then the equality information is saved "<person>"
+
+      Examples:
+          | person                               | ageGroup | carerOption       | disabilityOption | ethnicity        | gender | preferredGenderTerm | genderIdentityOption | religionOrBelief | sexualOrientation    | pregnancyOrMaternityOption |
+          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | 16-17    | Prefer not to say | Yes              | Mixed background | Female | Gender Term         | No                   | Secular beliefs  | Lesbian or Gay woman | Prefer not to say          |
+
+    Scenario Outline: Sexual orientation is not displayed for under 16s
+      Given I edit a person's equality information "<person>"
+      Then the equality information is diplayed
+      And the sexual orientation information is not displayed
+      When I select an age group "<ageGroup>"
+      And the sexual orientation information is not displayed
+
+      Examples:
+          | person                               | ageGroup |
+          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | Under 16 |

@@ -241,3 +241,86 @@ Given('I create a person and then edit them {string}', async (tenureId) => {
 And('I click the save equality information button', () => {
     addPersonPage.saveEqualityInformationButton().click()
 })
+
+Given('I edit a person\'s equality information {string}', (person) => {
+    addPersonPage.editPersonEqualityInformation(person)
+})
+
+Then('the equality information is diplayed', () => {
+    addPersonPage.ageGroupSelectionBox().should('be.visible')
+    addPersonPage.provideUnpaidCareSelectionField().should('be.visible')
+    addPersonPage.consideredDisabledSelectionField().should('be.visible')
+    addPersonPage.ethnicitySelectionBox().should('be.visible')
+    addPersonPage.genderSelectionField().should('be.visible')
+    addPersonPage.preferredGenderTermField().should('be.visible')
+    addPersonPage.genderDifferentToBirthSexSelectionField().should('be.visible')
+    addPersonPage.religionOrBeliefSelectionBox().should('be.visible')
+    addPersonPage.pregnancyOrMaternityLeaveSelectionField().should('be.visible')
+    addPersonPage.saveEqualityInformationButton().should('be.visible')
+})
+
+When('I select an age group {string}', (ageGroup) => {
+    addPersonPage.ageGroupSelectionBox().select(ageGroup)
+})
+
+Then('I select a carer option {string}', (carerOption) => {
+    addPersonPage.provideUnpaidCareSelectionField().within(() => {
+        return cy.contains(carerOption)
+    }).click()
+})
+
+And('I select a disability option {string}', (disabilityOption) => {
+    addPersonPage.consideredDisabledSelectionField().within(() => {
+        return cy.contains(disabilityOption)
+    }).click()
+})
+
+And('I select an ethnicity {string}', (ethnicity) => {
+    addPersonPage.ethnicitySelectionBox().select(ethnicity)
+})
+
+And('I select a gender {string}', (gender) => {
+    addPersonPage.genderSelectionField().within(() => {
+        return cy.contains(gender)
+    }).click()
+})
+
+And('I enter a preferred term for gender {string}', (preferredGenderTerm) => {
+    addPersonPage.preferredGenderTermField().type(preferredGenderTerm)
+})
+
+And('I select a gender identity option {string}', (genderIdentity) =>{
+    addPersonPage.genderDifferentToBirthSexSelectionField().within(() => {
+        return cy.contains(genderIdentity)
+    }).click()
+})
+
+And('I select a religion or belief {string}', (religionOrBelief) => {
+    addPersonPage.religionOrBeliefSelectionBox().select(religionOrBelief)
+})
+
+And('I select a sexual orientation {string}', (sexualOrientation) => {
+    addPersonPage.sexualOrientationSelectionBox().select(sexualOrientation)
+})
+
+And('I select a pregnancy or maternity option {string}', (pregnancyOrMaternityOption) => {
+    addPersonPage.pregnancyOrMaternityLeaveSelectionField().within(() => {
+        return cy.contains(pregnancyOrMaternityOption)
+    }).click()
+})
+
+And('I click save equality information', () => {
+    addPersonPage.saveEqualityInformationButton().click()
+})
+
+Then('the equality information is saved {string}', (person) => {
+    addPersonPage.mainContent().contains('Person updated')
+})
+
+And('the sexual orientation information is not displayed', () => {
+    addPersonPage.sexualOrientationSelectionBox().should('not.exist')
+})
+
+Then('the sexual orientation information is displayed', () => {
+    addPersonPage.sexualOrientationSelectionBox().should('be.visible')
+})
