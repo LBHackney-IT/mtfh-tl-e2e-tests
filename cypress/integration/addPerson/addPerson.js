@@ -324,3 +324,19 @@ And('the sexual orientation information is not displayed', () => {
 Then('the sexual orientation information is displayed', () => {
     addPersonPage.sexualOrientationSelectionBox().should('be.visible')
 })
+
+And('the review changes option is visible', () => {
+    personContactPage.mainContent().contains('Review unsaved changes before continuing')
+})
+
+And('the next button is disabled', () => {
+    cy.contains('Next').should('be.disabled')
+})
+
+When('I clear address line 1', () => {
+    personContactPage.addressLineOneField().clear()
+})
+
+Then('the next button is enabled', () => {
+    cy.contains('Next').should('be.enabled')
+})
