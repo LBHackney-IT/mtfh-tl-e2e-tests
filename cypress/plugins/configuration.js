@@ -22,6 +22,7 @@ const getConfiguration = async (env) => {
   const response = await axios.get(encodeURI(url), {
     headers: {
       Authorization: `Bearer ${token}`,
+      "x-hackney-user": token
     },
   });
 

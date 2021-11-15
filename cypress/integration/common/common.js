@@ -508,6 +508,7 @@ Then('the property information is displayed', () => {
 })
 
 Then('I can see a list of repairs against that property', () => {
+
   propertyPage.repairsCardList().should('be.visible')
 })
 
