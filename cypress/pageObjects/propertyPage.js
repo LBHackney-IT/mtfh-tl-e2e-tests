@@ -41,6 +41,11 @@ class PropertyPageObjects {
     comment(){
         return cy.get('[class="comment__item --center"]')
     }
+
+    repairsCardList(){
+        return cy.get ('[class ="mtfh-card-list"]')
+    }
+
 }
 
 export default PropertyPageObjects
