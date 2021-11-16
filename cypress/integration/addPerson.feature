@@ -239,3 +239,17 @@ Feature: Add a new person to a tenure
       Examples:
           | person                               | ageGroup |
           | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | Under 16 |
+
+    Scenario Outline: Confirmation alert not shown
+      When I edit a person's contact details "<person>"
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter "Address" into address line 1
+      And the review changes option is visible
+      And the next button is disabled
+      When I clear address line 1
+      Then the next button is enabled
+
+      Examples:
+          | person                               |
+          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
