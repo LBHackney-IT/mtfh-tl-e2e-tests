@@ -207,6 +207,7 @@ Feature: Add a new person to a tenure
           | email       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
           | phone       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
 
+    @ignore
     Scenario Outline: Add equality information
       Given I edit a person's equality information "<person>"
       Then the equality information is diplayed
@@ -229,6 +230,7 @@ Feature: Add a new person to a tenure
           | person                               | ageGroup | carerOption       | disabilityOption | ethnicity        | gender | preferredGenderTerm | genderIdentityOption | religionOrBelief | sexualOrientation    | pregnancyOrMaternityOption |
           | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | 16-17    | Prefer not to say | Yes              | Mixed background | Female | Gender Term         | No                   | Secular beliefs  | Lesbian or Gay woman | Prefer not to say          |
 
+    @ignore
     Scenario Outline: Sexual orientation is not displayed for under 16s
       Given I edit a person's equality information "<person>"
       Then the equality information is diplayed
