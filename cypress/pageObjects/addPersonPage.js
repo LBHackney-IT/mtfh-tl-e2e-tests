@@ -208,7 +208,7 @@ class AddPersonPageObjects {
     }
 
     provideUnpaidCareSelectionField() {
-        return cy.get('#equality-information-form-provideUnpaidCareValue-field')
+        return cy.get('#equality-information-form-provideUnpaidCare-field')
     }
 
     consideredDisabledSelectionField() {
@@ -220,11 +220,11 @@ class AddPersonPageObjects {
     }
 
     genderSelectionField() {
-        return cy.get('#equality-information-form-gender')
+        return cy.get('#equality-information-form-genderValue')
     }
 
     preferredGenderTermField() {
-        return cy.get('#equality-information-form-gender-other-field')
+        return cy.get('#equality-information-form-genderValue-other')
     }
 
     genderDifferentToBirthSexSelectionField() {
