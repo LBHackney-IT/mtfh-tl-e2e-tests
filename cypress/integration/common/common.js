@@ -507,11 +507,6 @@ Then('the property information is displayed', () => {
   propertyPage.propertyViewSidebar().contains('Reference')
 })
 
-Then('I can see a list of repairs against that property', () => {
-
-  propertyPage.repairsCardList().should('be.visible')
-})
-
 Then('I am on the create new tenure page {string}', (tenureId) => {
   cy.url().should('contain', `tenure/${tenureId}/add`)
 })
