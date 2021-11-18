@@ -8,7 +8,7 @@ const getConfiguration = async (env) => {
   console.log(`Checking feature toggle config at ${url}`)
 
   if (env.ENVIRONMENT === "development") {
-    token = env.E2E_ACCESS_TOKEN_DEVELOPMENT;
+    token = env.E2E_ACCESS_TOKEN_DEV;
   }
 
   if (env.ENVIRONMENT === "staging") {
@@ -16,7 +16,7 @@ const getConfiguration = async (env) => {
   }
 
   if (env.ENVIRONMENT === "production") {
-    token = env.E2E_ACCESS_TOKEN_PRODUCTION;
+    token = env.E2E_ACCESS_TOKEN_PROD;
   }
 
   const response = await axios.get(encodeURI(url), {
