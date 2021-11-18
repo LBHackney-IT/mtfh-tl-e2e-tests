@@ -169,6 +169,7 @@ jobs:
                               export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                               export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
                               export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
+                              export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>=$(aws ssm get-parameter --name /housing/tl/<<parameters.stage>>/e2e-testing/token --query Parameter.Value --output text) ;
                               echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT ;

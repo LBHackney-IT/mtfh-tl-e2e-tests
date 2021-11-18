@@ -46,6 +46,13 @@ class PropertyPageObjects {
         return cy.get ('[class ="mtfh-card-list"]')
     }
 
+    repairsSelectionBox() {
+        return cy.get('[data-testid="work-order-list:filter"]')
+    }
+
+    repairsList() {
+        return cy.get('.work-order-list')
+    }
 }
 
 export default PropertyPageObjects
