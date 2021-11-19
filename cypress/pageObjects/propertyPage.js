@@ -53,6 +53,10 @@ class PropertyPageObjects {
     repairsList() {
         return cy.get('.work-order-list')
     }
+
+    repairsCardList() {
+        return cy.get('.mtfh-card-list')
+    }
 }
 
 export default PropertyPageObjects
