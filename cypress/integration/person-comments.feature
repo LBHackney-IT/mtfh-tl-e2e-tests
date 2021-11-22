@@ -4,6 +4,7 @@
 @processes
 @root
 
+@ignore
 Feature: T&L Person Comment
     I want to create and view person's comments
 

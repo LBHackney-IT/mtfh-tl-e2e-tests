@@ -3,6 +3,7 @@
 @personal-details
 @processes
 @root
+@ignore
 
 @AddPersonPage
 Feature: Add a new person to a tenure

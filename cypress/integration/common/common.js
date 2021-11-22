@@ -614,7 +614,7 @@ And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
 })
 
-Then('I can delete a created record from DynamoDb {string}',(tableName) => {
+Then('I can delete a created record from DynamoDb {string}', (tableName) => {
   let fileContent = ''
   cy.readFile(testDataFile).then(text => {
     console.log(fileContent)
@@ -631,4 +631,8 @@ Then('I can delete a created record from DynamoDb {string}',(tableName) => {
 
 And('I click the next button', () => {
   cy.contains('Next').click()
+})
+
+Given('I remove attached tenures from a property {string}', (propertyId) => {
+  dynamoDb.conditionallyRemoveAttachedTenuresFromDynamoDB(propertyId)
 })
