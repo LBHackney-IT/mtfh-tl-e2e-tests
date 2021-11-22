@@ -85,7 +85,6 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
-                          npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
 
 jobs:
   assume-role-development:
@@ -125,6 +124,10 @@ jobs:
                 - checkout
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
+                - run:
+                    name: trigger e2e pipeline tests
+                    command: |
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE
                 - run:
                     name: trigger downstream deployment
                     command: |
@@ -169,6 +172,10 @@ jobs:
                 - checkout
                 - execute-e2e-tests:
                     stage: development
+                - run:
+                    name: trigger e2e pipeline tests
+                    command: |
+                              npm run test:cypress:$CYPRESS_ENVIRONMENT:ci
                 
   run-e2e-devices:
         docker:
@@ -186,8 +193,11 @@ jobs:
           - checkout
           - execute-e2e-tests:
               stage: staging
+          - run:
+              name: trigger e2e pipeline tests
+              command: |
+                        npm run test:cypress:$CYPRESS_ENVIRONMENT:devices
 
-          
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
