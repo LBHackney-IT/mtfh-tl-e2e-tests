@@ -4,7 +4,6 @@
 @property
 @root
 
-@ignore
 Feature: Property Page
 
     View property page
@@ -76,3 +75,25 @@ Feature: Property Page
       Examples:
       | assetId                              |
       | 5372e973-2857-98df-a343-4acfb76af535 |
+
+    # Because we have a dependency on the repairs api
+    # we have no control over the data set(s) they present to us
+    # so these tests are likely to be brittle
+    Scenario Outline: Repairs container is displayed
+      When I view a property "<property>"
+      Then the repairs container is displayed
+      And the repairs card list is displayed "<repairsType>"
+
+      Examples:
+          | property                             | repairsType |
+          | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | In Progress |
+
+    Scenario Outline: Repairs list type is changed
+      When I view a property "<property>"
+      Then I set the the repair type to "<repairsType>"
+      And the repairs card list is displayed "<repairsType>"
+
+      Examples:
+          | property                             | repairsType |
+          | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | Cancelled   |
+          | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | In Progress |

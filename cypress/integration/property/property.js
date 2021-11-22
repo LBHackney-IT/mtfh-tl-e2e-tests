@@ -33,3 +33,16 @@ When('I navigate to the asset page {string}', (assetId) => {
 And('I am shown an error message', () => {
     propertyPage.propertyPage().contains('could not be loaded.')
 })
+
+Then('the repairs container is displayed', () => {
+    propertyPage.repairsSelectionBox().should('be.visible')
+    propertyPage.repairsList().should('be.visible')
+})
+
+Then('I set the the repair type to {string}', (repairType) => {
+    propertyPage.repairsSelectionBox().select(`repairs ${repairType.toLowerCase()}`)
+})
+
+And('the repairs card list is displayed {string}', (repairType) => {
+    propertyPage.repairsCardList().contains(repairType)
+})
