@@ -69,6 +69,8 @@ commands:
         parameters:
           stage:
             type: string
+          context:
+            type: string
         steps:
             - run:
                 name: Execute e2e tests
@@ -85,7 +87,13 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
-
+                          echo $UPSTREAM_PIPELINE
+                          echo <<parameters.context>>
+                          if [ ! -z "$UPSTREAM_PIPELINE" && <<parameters.context>> == "external" ]
+                          then npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE
+                          else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.context>>
+                          fi
+                          
 jobs:
   assume-role-development:
         executor: docker-python
@@ -124,10 +132,7 @@ jobs:
                 - checkout
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
-                - run:
-                    name: trigger e2e pipeline tests
-                    command: |
-                              npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE
+                    context: external
                 - run:
                     name: trigger downstream deployment
                     command: |
@@ -172,10 +177,7 @@ jobs:
                 - checkout
                 - execute-e2e-tests:
                     stage: development
-                - run:
-                    name: trigger e2e pipeline tests
-                    command: |
-                              npm run test:cypress:$CYPRESS_ENVIRONMENT:ci
+                    context: ci
                 
   run-e2e-devices:
         docker:
@@ -193,11 +195,8 @@ jobs:
           - checkout
           - execute-e2e-tests:
               stage: staging
-          - run:
-              name: trigger e2e pipeline tests
-              command: |
-                        npm run test:cypress:$CYPRESS_ENVIRONMENT:devices
-
+              context: devices
+    
 workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
@@ -206,6 +205,7 @@ workflows:
           context: api-assume-role-housing-development-context
       - run-ci-tests:
           stage: development
+          context: ci
           requires:
             - assume-role-development
 
@@ -219,6 +219,7 @@ workflows:
           context: api-assume-role-housing-development-context
       - run-e2e-tests:
           stage: development
+          context:
           requires:
             - assume-role-development
           
