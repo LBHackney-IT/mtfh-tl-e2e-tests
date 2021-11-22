@@ -53,7 +53,7 @@ const conditionallyRemoveAttachedTenuresFromDynamoDB = async (id) => {
       Key: {
         id: id
       },
-      UpdateExpression: "SET tenure = Null",
+      UpdateExpression: "SET tenure =",
       ConditionExpression: "tenure = Null"
     })
     .promise()
