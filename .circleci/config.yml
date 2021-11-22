@@ -89,7 +89,7 @@ commands:
                           npm install ;
                           echo $UPSTREAM_PIPELINE
                           echo <<parameters.trigger-context>>
-                          if [ ! -z "$UPSTREAM_PIPELINE" && <<parameters.trigger-context>> == "external" ]
+                          if [ ! -z "$UPSTREAM_PIPELINE" ] && [ <<parameters.trigger-context>> == "external" ]
                           then npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE
                           else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
                           fi
