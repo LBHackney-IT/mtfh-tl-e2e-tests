@@ -69,7 +69,7 @@ commands:
         parameters:
           stage:
             type: string
-          context:
+          trigger-context:
             type: string
         steps:
             - run:
@@ -88,10 +88,10 @@ commands:
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           echo $UPSTREAM_PIPELINE
-                          echo <<parameters.context>>
-                          if [ ! -z "$UPSTREAM_PIPELINE" && <<parameters.context>> == "external" ]
+                          echo <<parameters.trigger-context>>
+                          if [ ! -z "$UPSTREAM_PIPELINE" && <<parameters.trigger-context>> == "external" ]
                           then npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE
-                          else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.context>>
+                          else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
                           fi
                           
 jobs:
@@ -132,7 +132,7 @@ jobs:
                 - checkout
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
-                    context: external
+                    trigger-context: external
                 - run:
                     name: trigger downstream deployment
                     command: |
@@ -177,7 +177,7 @@ jobs:
                 - checkout
                 - execute-e2e-tests:
                     stage: development
-                    context: ci
+                    trigger-context: ci
                 
   run-e2e-devices:
         docker:
@@ -195,7 +195,7 @@ jobs:
           - checkout
           - execute-e2e-tests:
               stage: staging
-              context: devices
+              trigger-context: devices
     
 workflows:
   run-ci-tests:
@@ -205,7 +205,6 @@ workflows:
           context: api-assume-role-housing-development-context
       - run-ci-tests:
           stage: development
-          context: ci
           requires:
             - assume-role-development
 
@@ -219,7 +218,6 @@ workflows:
           context: api-assume-role-housing-development-context
       - run-e2e-tests:
           stage: development
-          context:
           requires:
             - assume-role-development
           
