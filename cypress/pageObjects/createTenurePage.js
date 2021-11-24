@@ -48,15 +48,15 @@ class CreateTenurePageObjects {
     }
 
     tenureEndDateDayContainer() {
-        return cy.get('[name="startDay"]')
+        return cy.get('[name="endDay"]')
     }
 
     tenureEndDateMonthContainer() {
-        return cy.get('[name="startMonth"]')
+        return cy.get('[name="endMonth"]')
     }
 
     tenureEndDateYearContainer() {
-        return cy.get('[name="startYear"]')
+        return cy.get('[name="endYear"]')
     }
 
     newTenureButton() {
