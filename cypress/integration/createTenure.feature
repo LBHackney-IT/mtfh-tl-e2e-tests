@@ -4,7 +4,6 @@
 @root
 @tenure
 
-@ignore
 Feature: Create tenure
   I want to create a new tenure
 
