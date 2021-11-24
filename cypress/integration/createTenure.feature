@@ -4,7 +4,6 @@
 @root
 @tenure
 
-@ignore
 Feature: Create tenure
   I want to create a new tenure
 
@@ -326,3 +325,34 @@ Feature: Create tenure
         Examples:
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
         | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
+
+    @regression  
+    Scenario Outline: End dates are editable for all tenure types
+      When I edit a Tenure "<tenure>"
+      When I select a tenure type "<tenureType>"
+      Then the tenure end date is editable
+
+      Examples:
+        | tenure                               | tenureType       |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold         |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold (Serv)  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Introductory     |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Leasehold (RTB)  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | License Temp Ac  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Lse 100% Stair   |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Mense Profit Ac  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Non-Secure       |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Private Sale LH  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Rent To Mortgage |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Secure           |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Shared Equity    |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Shared Owners    |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Short Life Lse   |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Annex       |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp B&B         |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Decant      |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Hostel      |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Hostel Lse  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Private Lt  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Traveller   |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Tenant Acc Flat  |
