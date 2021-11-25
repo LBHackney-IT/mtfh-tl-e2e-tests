@@ -117,7 +117,7 @@ jobs:
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
                 - run:
-                    name: trigger downstream deployment
+                    name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_namer>>
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               case << parameters.stage >> in
@@ -132,7 +132,7 @@ jobs:
                               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
                     when: on_success
                 - run:
-                    name: trigger failure message to parent pipeline
+                    name: trigger failure message to parent pipeline <<pipeline.parameters.upstream_pipeline_namer>>
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
