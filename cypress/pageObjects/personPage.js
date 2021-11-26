@@ -87,6 +87,14 @@ class PersonPageObjects {
         return cy.contains('Additional tenures')
     }
 
+    equalityDetailsAccordion() {
+        return cy.contains('Equality information')
+    }
+
+    equalityDetails() {
+        return cy.get('[id="accordion-content-equality-information-details"]')
+    }
+
     viewTenureButton() {
         //return cy.get('[class="govuk-button lbh-button govuk-secondary lbh-button--secondary"]')
         return cy.contains('View tenure')

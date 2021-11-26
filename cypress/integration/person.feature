@@ -21,6 +21,8 @@ Feature: T&L Person Page
     When I click on the more tenure details accordion
     Then the body tenure details are displayed
     When I click on the more tenure details accordion
+    When I click on the equality details accordion
+    Then the equality information is displayed
 
     Examples:
       | record                               |
@@ -37,6 +39,8 @@ Feature: T&L Person Page
     When I click on the more tenure details accordion
     Then the body tenure details are displayed
     When I click on the more tenure details accordion
+    When I click on the equality details accordion
+    Then the equality information is displayed
 
     Examples:
       | device        | record                               |
