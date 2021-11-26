@@ -211,16 +211,16 @@ workflows:
           requires:
             - assume-role-development
 
-  e2e-tests-development- << pipeline.parameters.upstream_pipeline_name >>:
+  e2e-tests-development:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
         - and: [ << pipeline.parameters.development_environment >> ]
     jobs:
       - assume-role-development:
-          name: 
           context: api-assume-role-housing-development-context
       - run-e2e-tests:
+          name: development - << pipeline.parameters.upstream_pipeline_name >>
           stage: development
           requires:
             - assume-role-development
@@ -234,6 +234,7 @@ workflows:
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
       - run-e2e-tests:
+          name: staging - << pipeline.parameters.upstream_pipeline_name >>
           stage: staging
           requires:
             - assume-role-staging
@@ -247,6 +248,7 @@ workflows:
       - assume-role-production:
           context: api-assume-role-housing-production-context
       - run-e2e-tests:
+          name: production - << pipeline.parameters.upstream_pipeline_name >>
           stage: production
           requires: 
             - assume-role-production
