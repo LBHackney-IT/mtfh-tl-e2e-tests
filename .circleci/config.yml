@@ -117,7 +117,7 @@ jobs:
                               npm install ;
                               npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE ;
                 - run:
-                    name: trigger downstream deployment
+                    name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               case << parameters.stage >> in
@@ -132,7 +132,7 @@ jobs:
                               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
                     when: on_success
                 - run:
-                    name: trigger failure message to parent pipeline
+                    name: trigger failure message to parent pipeline <<pipeline.parameters.upstream_pipeline_name>>
                     command: |
                               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
@@ -211,7 +211,7 @@ workflows:
           requires:
             - assume-role-development
 
-  e2e-tests-development:
+  e2e-tests-development-<<pipeline.parameters.upstream_pipeline_namer>>:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
@@ -224,7 +224,7 @@ workflows:
           requires:
             - assume-role-development
           
-  e2e-tests-staging:
+  e2e-tests-staging-<<pipeline.parameters.upstream_pipeline_name>>:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
@@ -237,7 +237,7 @@ workflows:
           requires:
             - assume-role-staging
       
-  e2e-tests-production:
+  e2e-tests-production-<<pipeline.parameters.upstream_pipeline_name>>:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
