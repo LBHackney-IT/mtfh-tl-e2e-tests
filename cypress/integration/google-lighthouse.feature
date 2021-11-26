@@ -1,4 +1,5 @@
 @GoogleLighthouse
+@ignore
 
 Feature: Google Lighthouse audit
 

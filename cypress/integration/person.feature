@@ -81,6 +81,7 @@ Feature: T&L Person Page
       | record                               | category     |
       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | Appointments |
 
+  @ignore
   @Accessibility
   Scenario Outline: Scenario Outline name: Accessibility Testing
     Given I have loaded a Person record "<record>"

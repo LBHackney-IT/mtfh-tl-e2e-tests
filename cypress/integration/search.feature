@@ -98,6 +98,7 @@ Feature: T&L Search Function
       | castle     | Tenure     |
 
   @device
+  @ignore
   Scenario Outline: Execute searches on device
     When I am using a mobile viewport "<device>"
     And I click on the search again button
@@ -197,6 +198,7 @@ Feature: T&L Search Function
       # | !          | Person     |
 
   @Accessibility
+  @ignore
   Scenario: Accessibility Testing
     And have no detectable a11y violations
 

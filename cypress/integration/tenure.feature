@@ -57,6 +57,7 @@ Feature: Tenure page
       Then the resident details are displayed
 
     @device
+    @ignore
     Scenario Outline: Mobile view
       Given I create a new tenure
       And I view a Tenure
@@ -88,6 +89,7 @@ Feature: Tenure page
         | samsung-s10   | 
 
     @Accessibility
+    @ignore
     Scenario: Accessibility Testing
       Given I create a new tenure
       When I view a Tenure

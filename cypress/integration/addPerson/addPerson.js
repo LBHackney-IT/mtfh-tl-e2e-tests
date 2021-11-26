@@ -234,6 +234,7 @@ And('I am on the contact details page', () => {
 
 Given('I create a person and then edit them {string}', async (tenureId) => {
     const postResponse = await createPersonWithNewTenure(tenureId)
+    cy.log(postResponse.data)
     const personId = postResponse.data.id
     editPersonPage.visit(personId)
 })

@@ -9,12 +9,11 @@ const createPerson = async () => {
     return response
 }
 
-const createPersonWithNewTenure =async (tenureId) => {
+const createPersonWithNewTenure = async (tenureId) => {
     const requestModel = createPersonModel.createPersonModel
     requestModel.tenures.id = tenureId
     const response = await request.postRequest (url,requestModel)
     return response
-    
 }
 
 const editPerson = async (personId) => {

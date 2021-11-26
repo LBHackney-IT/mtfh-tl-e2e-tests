@@ -23,6 +23,7 @@ Feature: T&L Home page
     Then the page header is visible
     And the page footer is visible
 
+  @ignore
   @Accessibility
   Scenario: Accessibility Testing
     And have no detectable a11y violations
@@ -34,6 +35,7 @@ Feature: T&L Home page
 
   @SmokeTest
   @device
+  @ignore
   Scenario Outline: Home page device view
     Given I am logged in
     When I am using a mobile viewport "<device>"

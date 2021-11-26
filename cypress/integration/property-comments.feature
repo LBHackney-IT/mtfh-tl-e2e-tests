@@ -31,7 +31,8 @@ Feature: Property Comment
         | commentType | propertyId                           | checkbox                              |
         | property    | f0196e15-de78-d42f-5e17-67b117194cd1 | e5d1be03-d596-4d81-cd91-a88373fd199d  |
     
-    @device    
+    @device
+    @ignore    
     Scenario Outline: I go to create a comment for a property page on a device
       Given I am on the create comment page for "<commentType>" "<propertyId>"
       And I am using a mobile viewport "<device>"
@@ -112,6 +113,7 @@ Feature: Property Comment
       | property      | a2d7901a-9895-e86a-f9d3-542222400a3a |
 
     @Accessibility
+    @ignore
     Scenario Outline: Accessibility Testing
       Given I am on the create comment page for "<commentType>" "<propertyId>"
       And have no detectable a11y violations

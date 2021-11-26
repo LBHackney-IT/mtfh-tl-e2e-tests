@@ -32,7 +32,8 @@ Feature: Tenure Comment
         | commentType| tenureId                             | checkbox                             |
         | tenure     | fde50d68-84c3-c166-6338-895c12ebf8fd | 0fb4997e-17a9-4373-6211-40b374f01533 |
 
-    @device    
+    @device
+    @ignore    
     Scenario Outline: I go to create a comment for a tenure page on a device
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       And I am using a mobile viewport "<device>"
@@ -130,6 +131,7 @@ Feature: Tenure Comment
         # | tenure      |5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 508        |
 
     @Accessibility
+    @ignore
     Scenario Outline: Accessibility Testing for tenure
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       And have no detectable a11y violations
