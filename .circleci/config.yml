@@ -225,7 +225,7 @@ workflows:
           requires:
             - assume-role-development
           
-  e2e-tests-staging- << pipeline.parameters.upstream_pipeline_name >>:
+  e2e-tests-staging:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
@@ -239,7 +239,7 @@ workflows:
           requires:
             - assume-role-staging
       
-  e2e-tests-production- << pipeline.parameters.upstream_pipeline_name >>:
+  e2e-tests-production:
     when:
       and:
         - equal: [ << pipeline.parameters.external_trigger >> ]
