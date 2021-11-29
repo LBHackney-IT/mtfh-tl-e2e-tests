@@ -224,7 +224,7 @@ class AddPersonPageObjects {
     }
 
     preferredGenderTermField() {
-        return cy.get('#equality-information-form-genderValue-other')
+        return cy.get('#equality-information-form-genderValueIfOther-field')
     }
 
     genderDifferentToBirthSexSelectionField() {

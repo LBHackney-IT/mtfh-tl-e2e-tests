@@ -11,6 +11,7 @@ Feature: Add a new person to a tenure
   Background: 
     Given I am logged in
     And I delete all of the correspondence addresses for "279bf08c-0c9e-4d81-e24a-8930e8b37a68"
+    And I reset the equality information for "f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d"
 
   @SmokeTest
   @Regression
@@ -207,7 +208,6 @@ Feature: Add a new person to a tenure
           | email       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
           | phone       | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 |
 
-    @ignore
     Scenario Outline: Add equality information
       Given I edit a person's equality information "<person>"
       Then the equality information is diplayed
@@ -218,7 +218,6 @@ Feature: Add a new person to a tenure
       And I select a disability option "<disabilityOption>"
       And I select an ethnicity "<ethnicity>"
       And I select a gender "<gender>"
-      And I enter a preferred term for gender "<preferredGenderTerm>"
       And I select a gender identity option "<genderIdentityOption>"
       And I select a religion or belief "<religionOrBelief>"
       And I select a sexual orientation "<sexualOrientation>"
@@ -227,20 +226,29 @@ Feature: Add a new person to a tenure
       Then the equality information is saved "<person>"
 
       Examples:
-          | person                               | ageGroup | carerOption       | disabilityOption | ethnicity        | gender | preferredGenderTerm | genderIdentityOption | religionOrBelief | sexualOrientation    | pregnancyOrMaternityOption |
-          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | 16-17    | Prefer not to say | Yes              | Mixed background | Female | Gender Term         | No                   | Secular beliefs  | Lesbian or Gay woman | Prefer not to say          |
+          | person                               | ageGroup | carerOption       | disabilityOption | ethnicity        | gender | genderIdentityOption | religionOrBelief | sexualOrientation    | pregnancyOrMaternityOption |
+          | f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d | 25-34    | Prefer not to say | Yes              | Mixed background | Male   | No                   | Secular beliefs  | Lesbian or Gay woman | Prefer not to say          |
 
-    @ignore
     Scenario Outline: Sexual orientation is not displayed for under 16s
       Given I edit a person's equality information "<person>"
       Then the equality information is diplayed
-      And the sexual orientation information is not displayed
       When I select an age group "<ageGroup>"
       And the sexual orientation information is not displayed
 
       Examples:
           | person                               | ageGroup |
-          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | Under 16 |
+          | f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d | Under 16 |
+
+    Scenario Outline: Preferred term for gender field is displayed when "other" is selected for gender term
+      Given I edit a person's equality information "<person>"
+      Then the equality information is diplayed
+      And I select a gender "<gender>"
+      And the preferred gender term field is displayed
+      And I enter "<genderTerm>" into the gender term field
+
+      Examples:
+          | person                               | gender | genderTerm  |
+          | f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d | Other  | Gender Term |
 
     Scenario Outline: Confirmation alert not shown
       When I edit a person's contact details "<person>"
