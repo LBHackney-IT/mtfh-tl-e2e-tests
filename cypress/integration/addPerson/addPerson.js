@@ -9,6 +9,8 @@ const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 const personContactPage = new PersonContactPageObjects()
 const contactDetails = require('../../../api/contact-details')
+const editEqualityDetails = require('../../../api/equality-information')
+const getEqualityDetails = require('../../../api/equality-information')
 
 And('the person has been added to the tenure', () => {
     addPersonPage.pageAnnouncement().contains('Person added to tenure')
@@ -249,14 +251,36 @@ Given('I edit a person\'s equality information {string}', (person) => {
 Then('the equality information is diplayed', () => {
     addPersonPage.ageGroupSelectionBox().should('be.visible')
     addPersonPage.provideUnpaidCareSelectionField().should('be.visible')
-    addPersonPage.consideredDisabledSelectionField().should('be.visible')
     addPersonPage.ethnicitySelectionBox().should('be.visible')
+    addPersonPage.consideredDisabledSelectionField().should('be.visible')
     addPersonPage.genderSelectionField().should('be.visible')
-    addPersonPage.preferredGenderTermField().should('be.visible')
     addPersonPage.genderDifferentToBirthSexSelectionField().should('be.visible')
     addPersonPage.religionOrBeliefSelectionBox().should('be.visible')
     addPersonPage.pregnancyOrMaternityLeaveSelectionField().should('be.visible')
     addPersonPage.saveEqualityInformationButton().should('be.visible')
+})
+
+Then('the preferred gender term field is displayed', () => {
+    addPersonPage.preferredGenderTermField().should('be.visible')
+})
+
+Then('the preferred gender term field is not displayed', () => {
+    addPersonPage.preferredGenderTermField().should('not.be.visible')
+})
+
+And('I reset the equality information for {string}', async (personId) => {
+    cy.log('Getting etag from the person...')
+    const getResponse = await getEqualityDetails.getEqualityDetails(personId)
+    cy.log(`Status code ${getResponse.status} returned`)
+    assert.deepEqual(getResponse.status, 200)
+    cy.log('etag captured!')
+    cy.log(getResponse.headers.etag)
+
+    cy.log('Updating equality information...')
+    const patchResponse = await editEqualityDetails.editEqualityDetails(getResponse.data.id, getResponse.headers.etag)
+    cy.log(`Status code ${patchResponse.status} returned`)
+    assert.deepEqual(patchResponse.status, 200)
+    cy.log('Equality information updated!')
 })
 
 When('I select an age group {string}', (ageGroup) => {
@@ -280,13 +304,19 @@ And('I select an ethnicity {string}', (ethnicity) => {
 })
 
 And('I select a gender {string}', (gender) => {
-    addPersonPage.genderSelectionField().within(() => {
-        return cy.contains(gender)
-    }).click()
+    if(gender === 'Male') {
+        cy.get('#equality-information-form-radio-genderValue-m').click()
+    }
+    if(gender === 'Female') {
+        cy.get('#equality-information-form-radio-genderValue-f').click()
+    }
+    if(gender === 'Other') {
+        cy.get('#equality-information-form-radio-genderValue-o').click()
+    }
 })
 
-And('I enter a preferred term for gender {string}', (preferredGenderTerm) => {
-    addPersonPage.preferredGenderTermField().type(preferredGenderTerm)
+And('I enter {string} into the gender term field', (genderTerm) => {
+    addPersonPage.preferredGenderTermField().type(genderTerm)
 })
 
 And('I select a gender identity option {string}', (genderIdentity) =>{
