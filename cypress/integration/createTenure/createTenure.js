@@ -154,3 +154,9 @@ And('I click remove person', () => {
 Then('the edit tenure information is displayed {string}', (tenureId) => {
     cy.url().should('include', `tenure/${tenureId}/edit`)
 })
+
+Then('the tenure end date is editable', () => {
+    createTenurePage.tenureEndDateDayContainer().should('be.enabled')
+    createTenurePage.tenureEndDateMonthContainer().should('be.enabled')
+    createTenurePage.tenureEndDateYearContainer().should('be.enabled')
+})

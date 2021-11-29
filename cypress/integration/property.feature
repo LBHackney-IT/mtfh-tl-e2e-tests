@@ -79,6 +79,7 @@ Feature: Property Page
     # Because we have a dependency on the repairs api
     # we have no control over the data set(s) they present to us
     # so these tests are likely to be brittle
+    @ignore
     Scenario Outline: Repairs container is displayed
       When I view a property "<property>"
       Then the repairs container is displayed
@@ -88,6 +89,7 @@ Feature: Property Page
           | property                             | repairsType |
           | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | In Progress |
 
+    @ignore
     Scenario Outline: Repairs list type is changed
       When I view a property "<property>"
       Then I set the the repair type to "<repairsType>"
