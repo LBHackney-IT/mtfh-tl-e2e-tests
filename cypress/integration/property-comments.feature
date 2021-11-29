@@ -83,11 +83,11 @@ Feature: Property Comment
 
       Examples:
         | commentType | propertyId                               | characters |
-        | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 2          |
+        # | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 2          |
         | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 50         |
-        | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 99         |
+        # | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 99         |
         | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 350        |
-        | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 500        |
+        # | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 500        |
 
     @Negative
     Scenario Outline: Character limit exceeded
@@ -97,7 +97,7 @@ Feature: Property Comment
 
       Examples:
         | commentType | propertyId                               | characters |
-        | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 502        |
+        # | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 502        |
         | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 508        |
 
     @SmokeTest
