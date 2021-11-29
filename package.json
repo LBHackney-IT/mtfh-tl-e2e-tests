@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cypress:open": "cypress open",
     "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
-    "test:cypress:development": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
+    "test:cypress:development:ci": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:activity-history": "cypress run -e TAGS='@activity-history and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:authentication": "cypress run -e TAGS='@authentication and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",
     "test:cypress:development:comments": "cypress run -e TAGS='@comments and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'",

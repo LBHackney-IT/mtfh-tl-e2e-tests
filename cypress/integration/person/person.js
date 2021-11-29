@@ -33,6 +33,21 @@ When('I click on the more tenure details accordion', () => {
     personPage.moreTenureDetailsAccordion().click({force: true})
 })
 
+When('I click on the equality details accordion', () => {
+    personPage.equalityDetailsAccordion().click()
+})
+
+Then('the equality information is displayed', () => {
+    personPage.equalityDetails().contains('Age group:')
+    personPage.equalityDetails().contains('Caring for someone:')
+    personPage.equalityDetails().contains('Disabled:')
+    personPage.equalityDetails().contains('Ethnicity:')
+    personPage.equalityDetails().contains('Gender:')
+    personPage.equalityDetails().contains('Religion or belief:')
+    personPage.equalityDetails().contains('Sexual orientation:')
+    personPage.equalityDetails().contains('Pregnant or maternity leave (in the past 2 years):')
+})
+
 Then('the body tenure details are displayed', () => {
     personPage.tenureDetails().contains('Address')
     personPage.tenureDetails().contains('Payment ref')
