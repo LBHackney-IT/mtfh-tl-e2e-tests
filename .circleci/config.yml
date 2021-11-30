@@ -75,7 +75,8 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          echo $(circleci tests glob "cypress/integration/*.feature" | circleci tests split --split-by=timings)
+                          mkdir cypress/tmp
+                          mv $(circleci tests glob "cypress/integration/*.feature" | circleci tests split) cypress/tmp || true      
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
@@ -113,11 +114,11 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        parallelism: 4
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
             environment:
               TERM: xterm
+        parallelism: 4
         environment:
             aws-region: eu-west-2
         parameters:
