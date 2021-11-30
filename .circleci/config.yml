@@ -75,7 +75,7 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          echo $(circleci tests glob "cypress/integration/*.feature" | circleci tests split)
+                          echo $(circleci tests glob "cypress/integration/*.feature" | circleci tests split --split-by=timings)
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
@@ -133,6 +133,8 @@ jobs:
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
                     trigger-context: external
+                - store_test_results:
+                    path: test-results
                 - run:
                     name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
                     command: |
