@@ -75,7 +75,8 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          FEATURE_FILE=$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)
+                          mkdir
+                          FEATURE_FILE=$(circleci tests glob "cypress/integration/*.feature" | circleci tests split --total=15)
                           echo $FEATURE_FILE
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
@@ -90,7 +91,7 @@ commands:
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           # if [ ! -z "$UPSTREAM_PIPELINE" ] && [ <<parameters.trigger-context>> == "external" ]
-                          ./node_modules/.bin/cypress-tags run -g '$FEATURE_FILE' -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           # else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
                           # fi
                           
@@ -118,7 +119,6 @@ jobs:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
             environment:
               TERM: xterm
-        parallelism: 4
         environment:
             aws-region: eu-west-2
         parameters:
