@@ -33,3 +33,21 @@ Then ('I can see a list of processes', ()=>{
     processesPage.processesMenuList().should('be.visible')
     processesPage.processesMenuList().contains('Changes to a tenancy')
 })
+
+And('I select a process {string}', (process) => {
+    processesPage.processOption(process).click()
+})
+
+And('I select a sub process {string}', (subProcess) => {
+    processesPage.subProcessOption(subProcess).click()
+})
+
+Then('I am taken to the landing page for that process', (subProcess) => {
+    let subProcessUrl
+    switch (subProcess) {
+        case "Sole tenant requests a joint tenure":
+            subProcessUrl = "sole-to-joint"
+    }
+    cy.url().contains(subProcessUrl)
+    processesPage.mainContent().contains(subProcess)
+})
