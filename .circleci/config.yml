@@ -75,7 +75,7 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          mkdir
+                          # mkdir
                           FEATURE_FILE=$(circleci tests glob "cypress/integration/*.feature" | circleci tests split --total=15)
                           echo $FEATURE_FILE
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
