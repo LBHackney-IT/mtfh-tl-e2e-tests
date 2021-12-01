@@ -91,7 +91,7 @@ commands:
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           # if [ ! -z "$UPSTREAM_PIPELINE" ] && [ <<parameters.trigger-context>> == "external" ]
-                          ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE"
                           # else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
                           # fi
                           
