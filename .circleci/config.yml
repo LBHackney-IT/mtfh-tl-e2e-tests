@@ -243,6 +243,10 @@ workflows:
           stage: development
           requires:
             - assume-role-development
+      - success:
+          name: This works
+          requires:
+            - run-ci-tests
 
   e2e-tests-development:
     when:
@@ -281,10 +285,6 @@ workflows:
           stage: production
           requires:
             - run-e2e-tests
-      - success:
-          name: This works
-          requires:
-            - execute-e2e-tests
       
   e2e-tests-production:
     when:
