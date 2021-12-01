@@ -75,6 +75,7 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
+                          mkdir reports
                           FEATURE_FILE=$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)
                           echo $FEATURE_FILE
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
@@ -93,6 +94,9 @@ commands:
                           then ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           else ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           fi
+            - store_test_results:
+                path: reports
+
                           
 jobs:
   assume-role-development:
