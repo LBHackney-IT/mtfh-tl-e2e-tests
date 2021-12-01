@@ -179,7 +179,20 @@ jobs:
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
-
+  
+  success:
+        docker:
+          - image: cypress/browsers:node14.16.0-chrome89-ff86
+            environment:
+              TERM: xterm
+        environment:
+            aws-region: eu-west-2
+        steps:
+          - run:
+              command: |
+                        echo Stuff works where it should! ;
+                        exit 0
+                      
   run-ci-tests:
         parallelism: 14
         docker:
@@ -201,7 +214,7 @@ jobs:
                 - execute-e2e-tests:
                     stage: development
                     trigger-context: ci
-                  
+        
   run-e2e-devices:
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
@@ -268,6 +281,10 @@ workflows:
           stage: production
           requires:
             - run-e2e-tests
+      - success:
+          name: This works
+          requires:
+            - execute-e2e-tests
       
   e2e-tests-production:
     when:
