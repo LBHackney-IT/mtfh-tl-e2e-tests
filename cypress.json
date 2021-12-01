@@ -13,5 +13,9 @@
     "openMode": 0
   },
   "chromeWebSecurity": false,
-  "video": false
+  "video": false,
+  "reporter": "mocha-junit-reporter",
+  "reporterOptions": {
+    "mochaFile": "reports/cypress-report.xml"
+  }
 }
