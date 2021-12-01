@@ -1,5 +1,5 @@
 {
-  "testFiles": "/cypress/integration/*.{feature,features}",
+  "testFiles": "**/*.{feature,features}",
   "defaultCommandTimeout": 10000,
   "lighthouse": {
       "performance": 0,
