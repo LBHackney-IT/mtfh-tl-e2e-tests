@@ -11,7 +11,7 @@ class HomePageObjects {
     }
 
     signInButton() {
-        return cy.contains("Sign in using Hackney.gov.uk")
+        return cy.contains("Sign in with Google")
     }
 
     headerLinks() {
