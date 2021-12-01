@@ -75,7 +75,6 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          # mkdir
                           FEATURE_FILE=$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)
                           echo $FEATURE_FILE
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
@@ -90,10 +89,10 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
-                          # if [ ! -z "$UPSTREAM_PIPELINE" ] && [ <<parameters.trigger-context>> == "external" ]
-                          ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
-                          # else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
-                          # fi
+                          if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
+                          ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          else ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          fi
                           
 jobs:
   assume-role-development:
@@ -115,6 +114,7 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
+        parallelism: 14
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
             environment:
@@ -182,7 +182,19 @@ jobs:
                 - execute-e2e-tests:
                     stage: development
                     trigger-context: ci
-                
+                - run:
+                    name: check pass condition is triggered as the result of everything passing
+                    command: |
+                              echo The tests passed! ;
+                              exit 0
+                    when: on_success
+                - run:
+                    name: check fail condition is triggered as the result of a single failure
+                    command: |
+                              echo Some tests failed! ;
+                              exit 0
+                    when: on_fail
+                  
   run-e2e-devices:
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
