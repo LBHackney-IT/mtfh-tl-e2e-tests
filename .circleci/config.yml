@@ -162,7 +162,7 @@ jobs:
                     when: on_fail
 
   run-ci-tests:
-        parallelism: 4
+        parallelism: 14
         docker:
           - image: cypress/browsers:node14.16.0-chrome89-ff86
             environment:
