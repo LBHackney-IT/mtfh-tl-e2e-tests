@@ -89,8 +89,7 @@ commands:
                           npm install ;
                           # if [ ! -z "$UPSTREAM_PIPELINE" ] && [ <<parameters.trigger-context>> == "external" ]
                           mkdir cypress/tmp
-                          mv $(circleci tests glob cypress/integration/examples/*.spec.js | circleci tests split) cypress/tmp || true
-                          [ "$(ls -A cypress/tmp)" ] && ./node_modules/.bin/cypress-tags run -g "root/tmp/tests-to-run" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          mv $(circleci tests glob cypress/integration/examples/*.spec.js | circleci tests split) cypress/tmp || true [ "$(ls -A cypress/tmp)" ] && ./node_modules/.bin/cypress-tags run -g "root/tmp/tests-to-run" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           # else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
                           # fi
                           
