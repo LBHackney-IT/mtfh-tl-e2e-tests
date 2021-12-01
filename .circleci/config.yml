@@ -76,8 +76,8 @@ commands:
                 name: Execute e2e tests
                 command: |
                           # mkdir
-                          FEATURE_FILE=$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)
-                          echo $FEATURE_FILE
+                          FEATURE_FILE=$(circleci tests glob "cypress/integration/*.feature" | circleci tests split > /tmp/tests-to-run)
+                          echo "feature files = $FEATURE_FILE"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;

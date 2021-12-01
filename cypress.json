@@ -1,5 +1,5 @@
 {
-  "testFiles": "**/*.{feature,features}",
+  "testFiles": "/tmp/tests-to-run/*.{feature,features}",
   "defaultCommandTimeout": 10000,
   "lighthouse": {
       "performance": 0,
