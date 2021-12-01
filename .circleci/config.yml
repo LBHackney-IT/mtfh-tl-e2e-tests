@@ -90,7 +90,7 @@ commands:
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
-                          ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          then ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           else ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           fi
                           
