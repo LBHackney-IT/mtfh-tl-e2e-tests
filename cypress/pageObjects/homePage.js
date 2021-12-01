@@ -11,7 +11,7 @@ class HomePageObjects {
     }
 
     signInButton() {
-        return cy.contains("Fail")
+        return cy.contains("Sign in with Google")
     }
 
     headerLinks() {

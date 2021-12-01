@@ -134,30 +134,6 @@ jobs:
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
                     trigger-context: external
-                # - run:
-                #     name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
-                #     command: |
-                #               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                #               case << parameters.stage >> in
-                #               (development) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
-                #               esac
-                #               case << parameters.stage >> in
-                #               (staging) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
-                #               esac
-                #               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
-                #               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                #               --header 'Content-Type: application/json' \
-                #               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
-                #     when: on_success
-                # - run:
-                #     name: trigger failure message to parent pipeline <<pipeline.parameters.upstream_pipeline_name>>
-                #     command: |
-                #               export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                #               curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
-                #               --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                #               --header 'Content-Type: application/json' \
-                #               --data '{ "branch": "main", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
-                #     when: on_fail
 
   trigger-downstream-deployment:
         docker:
@@ -180,19 +156,6 @@ jobs:
                         --header 'Content-Type: application/json' \
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
-  success:
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
-        environment:
-            aws-region: eu-west-2
-        steps:
-          - run:
-              command: |
-                        echo Stuff works where it should! ;
-                        exit 0
-                      
   run-ci-tests:
         parallelism: 14
         docker:
@@ -243,10 +206,6 @@ workflows:
           stage: development
           requires:
             - assume-role-development
-      - success:
-          name: This works
-          requires:
-            - run-ci-tests
 
   e2e-tests-development:
     when:
