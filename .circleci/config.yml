@@ -91,7 +91,7 @@ commands:
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           # if [ ! -z "$UPSTREAM_PIPELINE" ] && [ <<parameters.trigger-context>> == "external" ]
-                          ./node_modules/.bin/cypress-tags run -g "`circleci tests glob "cypress/integration/*.feature" | circleci tests split`"
+                          ./node_modules/.bin/cypress-tags run -g "`circleci tests glob "cypress/integration/*.feature" | circleci tests split`" -e TAGS='not @ignore'
                           # else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
                           # fi
                           
