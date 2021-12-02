@@ -117,10 +117,7 @@ jobs:
 
   run-e2e-tests:
         parallelism: 14
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
