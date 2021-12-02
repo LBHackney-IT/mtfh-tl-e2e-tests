@@ -226,6 +226,7 @@ workflows:
           context: api-assume-role-housing-staging-context
       - run-e2e-tests:
           name: Run acceptance tests against staging environment
+          stage: staging
           requires:
             - assume-role-staging
       - trigger-downstream-deployment:
