@@ -46,6 +46,9 @@ executors:
     docker-python:
         docker:
             - image: circleci/python:3.7
+    cypress-browsers:
+        docker:
+            - image: cypress/browsers:node14.16.0-chrome89-ff86
 
 commands:
     assume-role-and-persist-workspace:
@@ -75,6 +78,7 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
+                          export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
@@ -87,11 +91,11 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
-                          if [ ! -z "$UPSTREAM_PIPELINE" ] && [ <<parameters.trigger-context>> == "external" ]
-                          then npm run test:cypress:$CYPRESS_ENVIRONMENT:$UPSTREAM_PIPELINE
-                          else npm run test:cypress:$CYPRESS_ENVIRONMENT:<<parameters.trigger-context>>
+                          if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
+                          then ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          else ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           fi
-                          
+                       
 jobs:
   assume-role-development:
         executor: docker-python
@@ -112,10 +116,8 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
+        parallelism: 14
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
@@ -131,36 +133,28 @@ jobs:
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
                     trigger-context: external
-                - run:
-                    name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
-                    command: |
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                              case << parameters.stage >> in
-                              (development) export DEPLOYMENT_ENVIRONMENT='run_staging_workflow' ;;
-                              esac
-                              case << parameters.stage >> in
-                              (staging) export DEPLOYMENT_ENVIRONMENT='run_production_workflow' ;;
-                              esac
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
-                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                              --header 'Content-Type: application/json' \
-                              --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
-                    when: on_success
-                - run:
-                    name: trigger failure message to parent pipeline <<pipeline.parameters.upstream_pipeline_name>>
-                    command: |
-                              export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                              curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
-                              --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                              --header 'Content-Type: application/json' \
-                              --data '{ "branch": "main", "parameters": { "run_development_workflow": false, "e2e_test_failure": true } }' ;
-                    when: on_fail
 
+  trigger-downstream-deployment:
+        executor: cypress-browsers
+        environment:
+            aws-region: eu-west-2
+        parameters:
+            stage:
+                type: string
+        steps:
+          - run:
+              name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
+              command: |
+                        export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
+                        export DEPLOYMENT_ENVIRONMENT='run_<< parameters.stage >>_workflow' ;;
+                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
+                        --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                        --header 'Content-Type: application/json' \
+                        --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
+  
   run-ci-tests:
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
+        parallelism: 14
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
@@ -176,12 +170,9 @@ jobs:
                 - execute-e2e-tests:
                     stage: development
                     trigger-context: ci
-                
+        
   run-e2e-devices:
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
@@ -219,6 +210,11 @@ workflows:
           stage: development
           requires:
             - assume-role-development
+      - trigger-downstream-deployment:
+          name: trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
+          stage: staging
+          requires:
+            - run-e2e-tests
           
   e2e-tests-staging:
     when:
@@ -233,6 +229,11 @@ workflows:
           stage: staging
           requires:
             - assume-role-staging
+      - trigger-downstream-deployment:
+          name: trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
+          stage: production
+          requires:
+            - run-e2e-tests
       
   e2e-tests-production:
     when:
