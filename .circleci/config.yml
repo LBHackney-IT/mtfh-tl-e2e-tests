@@ -46,6 +46,9 @@ executors:
     docker-python:
         docker:
             - image: circleci/python:3.7
+    cypress-browsers:
+        docker:
+            - image: cypress/browsers:node14.16.0-chrome89-ff86
 
 commands:
     assume-role-and-persist-workspace:
@@ -135,10 +138,7 @@ jobs:
                     trigger-context: external
 
   trigger-downstream-deployment:
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
@@ -157,10 +157,7 @@ jobs:
   
   run-ci-tests:
         parallelism: 14
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
@@ -178,10 +175,7 @@ jobs:
                     trigger-context: ci
         
   run-e2e-devices:
-        docker:
-          - image: cypress/browsers:node14.16.0-chrome89-ff86
-            environment:
-              TERM: xterm
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
