@@ -146,7 +146,7 @@ jobs:
               name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
               command: |
                         export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                        export DEPLOYMENT_ENVIRONMENT='run_<< parameters.stage >>_workflow' ;;
+                        export DEPLOYMENT_ENVIRONMENT='run_<< parameters.stage >>_workflow' ;
                         curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
