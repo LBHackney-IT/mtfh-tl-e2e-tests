@@ -206,7 +206,7 @@ workflows:
       - assume-role-development:
           context: api-assume-role-housing-development-context
       - run-e2e-tests:
-          name: development - << pipeline.parameters.upstream_pipeline_name >>
+          name: Run acceptance tests against development - << pipeline.parameters.upstream_pipeline_name >>
           stage: development
           requires:
             - assume-role-development
@@ -225,7 +225,7 @@ workflows:
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
       - run-e2e-tests:
-          name: staging - << pipeline.parameters.upstream_pipeline_name >>
+          name: Run acceptance tests against staging environment
           stage: staging
           requires:
             - assume-role-staging
@@ -244,7 +244,7 @@ workflows:
       - assume-role-production:
           context: api-assume-role-housing-production-context
       - run-e2e-tests:
-          name: production - << pipeline.parameters.upstream_pipeline_name >>
+          name: Run acceptance tests against production environment
           stage: production
           requires: 
             - assume-role-production
