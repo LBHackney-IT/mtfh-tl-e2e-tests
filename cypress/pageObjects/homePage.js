@@ -7,7 +7,7 @@ class HomePageObjects {
     }
 
     mainContent() {
-        return cy.get('.main-content')
+        return cy.get('[id="main-content"]')
     }
 
     signInButton() {
