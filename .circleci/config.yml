@@ -78,7 +78,7 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          export UPPER_ENV = "$(echo <<parameters.stage>> tr '[:lower:]' '[:upper:]')"
+                          export UPPER_ENV="$(echo <<parameters.stage>> | tr '[:lower:]' '[:upper:]')"
                           echo "env = $UPPER_ENV"
                           export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$AUTH_TOKEN_$UPPER_ENV"
                           
