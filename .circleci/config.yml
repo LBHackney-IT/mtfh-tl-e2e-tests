@@ -78,12 +78,11 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          if [<<parameters.stage>> == "development"]
-                          then export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
-                          elif [<<parameters.stage>> == "staging"]
+                          if <<parameters.stage>> == "production"
+                          then export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_PRODUCTION
+                          if <<parameters.stage>> == "staging"
                           then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
-                          if [<<parameters.stage>> == "production"]
-                          then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_PRODUCTION
+                          else export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
