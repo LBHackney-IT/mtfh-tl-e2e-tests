@@ -78,7 +78,10 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$(echo ${AUTH_TOKEN_<<parameters.stage>>^^})"
+                          export UPPER_ENV = "$(echo <<parameters.stage>> tr '[:lower:]' '[:upper:]')"
+                          echo "env = $UPPER_ENV"
+                          export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$AUTH_TOKEN_$UPPER_ENV"
+                          
                           echo "e2e token = $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>"
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
