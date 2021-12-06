@@ -80,7 +80,7 @@ commands:
                 command: |
                           export UPPER_ENV="$(echo <<parameters.stage>> | tr '[:lower:]' '[:upper:]')"
                           echo "env = $UPPER_ENV"
-                          export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$AUTH_TOKEN_${UPPER_ENV}"
+                          export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$(echo AUTH_TOKEN_${UPPER_ENV})"
                           echo "token is $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>"
                           
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
