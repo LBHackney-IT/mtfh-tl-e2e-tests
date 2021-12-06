@@ -78,7 +78,9 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
+                          echo "Token = $AUTH_TOKEN_<<parameters.stage>>"
                           export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$AUTH_TOKEN_<<parameters.stage>>"
+                          echo "e2e token = $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>"
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
