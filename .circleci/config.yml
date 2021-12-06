@@ -78,8 +78,9 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$(echo $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>> | tr '[:lower:]' '[:upper:]')"
-                          echo "env is $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>"
+                          export UPPER_ENV="$(echo $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>> | tr '[:lower:]' '[:upper:]')"
+                          echo "env = $UPPER_ENV"
+                          export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="${AUTH_TOKEN}_${UPPER_ENV}"
                           
                           echo "e2e token = <<parameters.stage>>"
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
