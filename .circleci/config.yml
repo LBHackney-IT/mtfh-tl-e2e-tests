@@ -78,7 +78,8 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          echo "Token = $AUTH_TOKEN_<<parameters.stage>>"
+
+                          echo "Token = $AUTH_TOKEN_DEVELOPMENT"
                           export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>="$AUTH_TOKEN_<<parameters.stage>>"
                           echo "e2e token = $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>"
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
