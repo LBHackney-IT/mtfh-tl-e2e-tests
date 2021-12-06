@@ -217,6 +217,7 @@ workflows:
       - trigger-downstream-deployment:
           name: trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: staging
+          context: mtfh-mfe-e2e-tests
           requires:
             - development - << pipeline.parameters.upstream_pipeline_name >>
           
