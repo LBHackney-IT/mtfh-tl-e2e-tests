@@ -78,8 +78,12 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
-                          export CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>=$AUTH_TOKEN_<<parameters.stage>>
-                          echo "token is $CYPRESS_E2E_ACCESS_TOKEN_<<parameters.stage>>"
+                          if [<<parameters.stage>> == "development"]
+                          then export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
+                          elif [<<parameters.stage>> == "staging"]
+                          then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
+                          if [<<parameters.stage>> == "production"]
+                          then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_PRODUCTION
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
@@ -170,7 +174,7 @@ jobs:
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
-                    stage: DEVELOPMENT
+                    stage: development
                     trigger-context: ci
         
   run-e2e-devices:
@@ -185,7 +189,7 @@ jobs:
           - aws-cli/install
           - checkout
           - execute-e2e-tests:
-              stage: STAGING
+              stage: staging
               trigger-context: devices
     
 workflows:
@@ -195,7 +199,7 @@ workflows:
       - assume-role-development:
           context: api-assume-role-housing-development-context
       - run-ci-tests:
-          stage: DEVELOPMENT
+          stage: development
           context: mtfh-mfe-e2e-tests
           requires:
             - assume-role-development
@@ -210,13 +214,13 @@ workflows:
           context: api-assume-role-housing-development-context
       - run-e2e-tests:
           name: Run acceptance tests against development - << pipeline.parameters.upstream_pipeline_name >>
-          stage: DEVELOPMENT
+          stage: development
           context: mtfh-mfe-e2e-tests
           requires:
             - assume-role-development
       - trigger-downstream-deployment:
           name: trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
-          stage: STAGING
+          stage: staging
           context: mtfh-mfe-e2e-tests
           requires:
             - development - << pipeline.parameters.upstream_pipeline_name >>
@@ -231,13 +235,13 @@ workflows:
           context: api-assume-role-housing-staging-context
       - run-e2e-tests:
           name: Run acceptance tests against staging environment
-          stage: STAGING
+          stage: staging
           context: mtfh-mfe-e2e-tests
           requires:
             - assume-role-staging
       - trigger-downstream-deployment:
           name: trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
-          stage: PRODUCTION
+          stage: production
           requires:
             - staging - << pipeline.parameters.upstream_pipeline_name >>
       
@@ -251,7 +255,7 @@ workflows:
           context: api-assume-role-housing-production-context
       - run-e2e-tests:
           name: Run acceptance tests against production environment
-          stage: PRODUCTION
+          stage: production
           context: mtfh-mfe-e2e-tests
           requires: 
             - assume-role-production
@@ -268,7 +272,7 @@ workflows:
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
       - run-e2e-devices:
-          stage: STAGING
+          stage: staging
           context: mtfh-mfe-e2e-tests
           requires:
             - assume-role-staging
