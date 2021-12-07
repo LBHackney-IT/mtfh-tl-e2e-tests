@@ -29,7 +29,7 @@ if (environment === 'staging') {
 
 if (environment === 'production') {
     baseUrl = "https://manage-my-home.hackney.gov.uk"
-    gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_PROD')
+    gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_PRODUCTION')
 }
 
 module.exports = {
