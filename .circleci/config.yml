@@ -213,7 +213,7 @@ workflows:
       - assume-role-development:
           context: api-assume-role-housing-development-context
       - run-e2e-tests:
-          name: Run acceptance tests against development - << pipeline.parameters.upstream_pipeline_name >>
+          name: Run acceptance tests against development
           stage: development
           context: mtfh-mfe-e2e-tests
           requires:
@@ -223,7 +223,7 @@ workflows:
           stage: staging
           context: mtfh-mfe-e2e-tests
           requires:
-            - run-e2e-tests
+            - Run acceptance tests against development
           
   e2e-tests-staging:
     when:
@@ -243,7 +243,7 @@ workflows:
           name: trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: production
           requires:
-            - run-e2e-tests
+            - Run acceptance tests against staging environment
       
   e2e-tests-production:
     when:
