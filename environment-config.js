@@ -5,6 +5,7 @@ let personUrl = "person"
 let personCommentsUrl = "comment/person"
 let tenureCommentsUrl="comment/tenure"
 let propertyCommentsUrl="comment/property"
+let startSoleToJointProcessUrl="processes/soletojoint/start/tenure"
 
 let tenureUrl = "tenure"
 let rootComponentPort = "9000"
@@ -38,6 +39,7 @@ module.exports = {
     personCommentsUrl,
     tenureCommentsUrl,
     propertyCommentsUrl,
+    startSoleToJointProcessUrl,
     baseUrl,
     tenureUrl,
     property,
