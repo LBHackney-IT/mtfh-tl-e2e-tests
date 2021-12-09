@@ -20,6 +20,31 @@ class ProcessesPageObjects{
     subProcessOption(subProcess) {
         return cy.contains(`${subProcess}`)
     }
+
+    tenureDetails(){
+        return cy.get(".entity-summary__tenure-heading")
+    }
+
+    agreementCheckBox(){
+        return cy.get(".govuk-checkboxes__input")
+    }
+
+    startProcessButton(){
+        return cy.get(".start-process__start-button")
+    }
+
+    cancelProcessLink(){
+        return cy.get(".start-process__cancel-link")
+    }
+
+    visit(tenureId){
+        return cy.visit(`${envConfig.baseUrl}/${envConfig.startSoleToJointProcessUrl}/${tenureId}`)
+    }
+
+    backLink(){
+        return cy.get(".lbh-back-link")
+    }
+
 }
 
 export default ProcessesPageObjects
