@@ -53,7 +53,7 @@ Scenario Outline: Initiate sole to joint process from tenure
 
 Scenario Outline: Process landing page loaded
     Given I select to initiate a Sole To Joint process "<tenure>"
-    Then the property address is shown
+    Then the property details are shown
 
         Examples:
         | tenure                               |

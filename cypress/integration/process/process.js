@@ -31,7 +31,7 @@ Then("the start process button is disabled", () => {
 })
 
 When("I click the cancel button", () => {
-    processPage.cancelProcessLink.click()
+    processPage.cancelProcessLink().click()
 })
 
 Then("I am taken back to the processes menu {string}", (tenureId) => {
