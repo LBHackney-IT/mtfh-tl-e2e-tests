@@ -340,7 +340,7 @@ Feature: Create tenure
         | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Leasehold (RTB)  |
         | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | License Temp Ac  |
         | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Lse 100% Stair   |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Mense Profit Ac  |
+        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Mesne Profit Ac  |
         | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Non-Secure       |
         | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Private Sale LH  |
         | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Rent To Mortgage |
