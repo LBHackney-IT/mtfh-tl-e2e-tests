@@ -23,7 +23,7 @@ This sets the access token depending upon the environment, you can create one fo
 
 These are the API gateways as taken from the AWS parameter store. The properties can be set as follows: `https://${apiGateway}.execute-api.eu-west-2.amazonaws.com/${environment}/api/${apiVersion}`
 
-This list is subject to change as the tests start to leverage more of the API's maturing functionality. If in doubt, check the [CircleCI config](https://github.com/LBHackney-IT/mtfh-tl-e2e-tests/blob/ddf2d8b754b35a267c7ca862fdb22ffab2a2fbdd/.circleci/config.yml#L105) to see exactly what endpoints the tests need to run.
+This list is subject to change as the tests start to leverage more of the API's maturing functionality. If in doubt, check the [CircleCI config](https://github.com/LBHackney-IT/mtfh-tl-e2e-tests/blob/83f7a7c8b13124a7d7ecac845ed5a235abe87fd9/.circleci/config.yml#L80) to see exactly what endpoints the tests need to run.
 
 #### Starting the tests
 Start a local test run by using `npm run test:cypress:run`
