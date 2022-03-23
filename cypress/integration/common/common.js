@@ -293,10 +293,8 @@ And("have no detectable a11y violations", () => {
 
 // Person-contact
 And("I click the done button", () => {
-  const now = new Date();
+  captureDateTime();
   personContactPage.doneButton().click();
-  dateCaptureDay = date.format(now, "DD/MM/YY");
-  dateCaptureTime = date.format(now, "HH:mm");
 });
 
 And("I click the add email address button", () => {
@@ -634,8 +632,12 @@ Then('I can delete a created record from DynamoDb {string}',(tableName) => {
 })
 
 And('I click the next button', () => {
+  captureDateTime();
+  cy.contains('Next').click()
+})
+
+const captureDateTime = () => {
   const now = new Date();
   dateCaptureDay = date.format(now, "DD/MM/YY");
   dateCaptureTime = date.format(now, "HH:mm");
-  cy.contains('Next').click()
-})
+}
