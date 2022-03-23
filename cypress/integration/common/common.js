@@ -452,6 +452,10 @@ And("I click add person", () => {
   addPersonPage.addPersonButton().click();
 });
 
+And("I click update person", () => {
+  addPersonPage.updatePersonButton().click();
+});
+
 And("I click cancel", () => {
   addPersonPage.cancelButton().click();
 });
@@ -630,5 +634,8 @@ Then('I can delete a created record from DynamoDb {string}',(tableName) => {
 })
 
 And('I click the next button', () => {
+  const now = new Date();
+  dateCaptureDay = date.format(now, "DD/MM/YY");
+  dateCaptureTime = date.format(now, "HH:mm");
   cy.contains('Next').click()
 })
