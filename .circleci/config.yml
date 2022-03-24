@@ -139,7 +139,6 @@ jobs:
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
                     trigger-context: external
-        post-steps:
           - store_artifacts:
               path: cypress/screenshots
 
