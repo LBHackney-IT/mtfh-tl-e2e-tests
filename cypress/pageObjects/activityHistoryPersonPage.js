@@ -7,7 +7,7 @@ class ActivityHistoryPageObjects {
     }
 
     activityTable() {
-        return cy.get('[data-testid="person-activities"]', {force:true})
+        return cy.get('[data-testid="person-activities"]', { timeout: 30000 }).should('be.visible')
     }
 
     activityTableRow() {
