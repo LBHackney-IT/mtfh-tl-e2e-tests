@@ -1,6 +1,6 @@
 {
   "testFiles": "**/*.{feature,features}",
-  "defaultCommandTimeout": 10000,
+  "defaultCommandTimeout": 1000,
   "lighthouse": {
       "performance": 0,
       "accessibility": 0,
@@ -13,5 +13,5 @@
     "openMode": 0
   },
   "chromeWebSecurity": false,
-  "video": false
+  "video": true
 }
