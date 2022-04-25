@@ -7,7 +7,7 @@ Install the local dependencies using `npm install`
 Create a `cypress.env.json` file with the following keys. You can get the endpoints from the AWS parameter store.
 >"Environment":
 
-This sets the environment context. It can be set to `local`, `development`, `staging` and `production`
+Thissets the environment context. It can be set to `local`, `development`, `staging` and `production`
 
 >"E2E_ACCESS_TOKEN_${environment}":
 
