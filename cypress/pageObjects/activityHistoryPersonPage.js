@@ -3,7 +3,6 @@ const envConfig = require('../../environment-config')
 class ActivityHistoryPageObjects {
     visit(record) {
         cy.visit(`${envConfig.baseUrl}/activities/person/${record}`)
-        cy.injectAxe()
     }
 
     activityTable() {
@@ -25,6 +24,10 @@ class ActivityHistoryPageObjects {
     closeActivityHistory() {
         return cy.contains('Close activity history')
     }
+    savingPerson() {
+        return cy.contains('Saving person');
+    }
+
 }
 
 export default ActivityHistoryPageObjects

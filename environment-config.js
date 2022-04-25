@@ -1,5 +1,5 @@
 const environment = Cypress.env('ENVIRONMENT')
-let rootUrl = "http://local.hackney.gov.uk"
+//let rootUrl = "http://local.hackney.gov.uk"
 let searchUrl = "search"
 let personUrl = "person"
 let personCommentsUrl = "comment/person"
@@ -8,13 +8,15 @@ let propertyCommentsUrl="comment/property"
 let startSoleToJointProcessUrl="processes/soletojoint/start/tenure"
 
 let tenureUrl = "tenure"
-let rootComponentPort = "9000"
+//let rootComponentPort = "9000"
 let property = "property"
-let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
-let baseUrl = `${rootUrl}:${rootComponentPort}`
+//let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
+//let baseUrl = `${rootUrl}:${rootComponentPort}`
+let gssoTestKey;
+let baseUrl;
 
 if (environment === 'local') {
-    baseUrl = "http://local.hackney.gov.uk"
+    baseUrl = "http://local.hackney.gov.uk:9000"
     gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 }
 

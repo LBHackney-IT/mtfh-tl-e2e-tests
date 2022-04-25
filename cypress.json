@@ -9,9 +9,13 @@
       "pwa": 0
     },
   "retries": {
-    "runMode": 2,
+    "runMode": 1,
     "openMode": 0
   },
   "chromeWebSecurity": false,
-  "video": false
+  "video": false,
+  "env": {
+    "ENVIRONMENT": "development",
+    "E2E_ACCESS_TOKEN_DEV":""
+  }
 }

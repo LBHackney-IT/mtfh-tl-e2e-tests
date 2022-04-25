@@ -181,6 +181,9 @@ class AddPersonPageObjects {
     addPersonButton() {
         return cy.contains('Add person')
     }
+    updatePersonButton() {
+        return cy.contains('Update person')
+    }
 
     cancelButton() {
         return cy.contains('Cancel')

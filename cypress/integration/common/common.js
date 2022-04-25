@@ -448,8 +448,12 @@ And("I enter a reason for creation", () => {
   addPersonPage.reasonForCreationContainer().type("This is a test");
 });
 
-And("I click add person", () => {
-  addPersonPage.addPersonButton().click();
+When("I click update person button", () => {
+  addPersonPage.updatePersonButton().click();
+  const now = new Date();
+  // personContactPage.doneButton().click();
+  dateCaptureDay = date.format(now, "DD/MM/YY");
+  dateCaptureTime = date.format(now, "HH:mm");
 });
 
 And("I click cancel", () => {
@@ -462,6 +466,7 @@ Given("I am on the edit person page for {string}", (person) => {
 
 Then("the activity history is correct", () => {
   activityHistory.activityTableRow().eq(0).contains(guid);
+  cy.log(dateCaptureDay);
   activityHistory.activityTableRow().eq(0).contains(dateCaptureDay);
   activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
 });
