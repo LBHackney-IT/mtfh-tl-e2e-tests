@@ -26,11 +26,11 @@ Feature: Activity History
     Scenario Outline: Update activity history
       Given I am on the edit person page for "<person>"
       And I select a preferred middle name "<preferredLastName>"
-      And I click add person
-      And I click the done button
-      Given I go to the activity history for "<person>"
-      Then the activity history is displayed
-      Then the activity history is correct
+#      And I click add person
+#      And I click the done button
+#      Given I go to the activity history for "<person>"
+#      Then the activity history is displayed
+#      Then the activity history is correct
       
       Examples:
         | person                               | preferredLastName |

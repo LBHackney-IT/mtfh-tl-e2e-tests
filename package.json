@@ -58,23 +58,23 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@testing-library/cypress": "^7.0.6",
+    "@testing-library/cypress": "^7.0.7",
     "ansi-regex": ">=5.0.1",
-    "axe-core": "^4.2.1",
-    "browserslist": ">=4.16.5",
-    "cypress": "^8.3.1",
+    "axe-core": "^4.4.1",
+    "browserslist": "^4.20.3",
+    "cypress": "^8.7.0",
     "cypress-audit": "^0.3.0",
     "cypress-axe": "^0.12.2",
-    "cypress-cucumber-preprocessor": "^4.2.0",
-    "cypress-localstorage-commands": "^1.4.4",
-    "cypress-social-logins": "^1.11.3",
-    "glob-parent": ">=5.1.2",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-localstorage-commands": "^1.7.0",
+    "cypress-social-logins": "^1.14.0",
+    "glob-parent": "^6.0.2",
     "set-value": ">=4.0.1",
-    "ws": ">=6.2.2"
+    "ws": "^8.5.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.1020.0",
-    "axios": "^0.21.3",
+    "aws-sdk": "^2.1122.0",
+    "axios": "^0.21.4",
     "date-and-time": "^1.0.1",
     "uuid": "^8.3.2"
   }
