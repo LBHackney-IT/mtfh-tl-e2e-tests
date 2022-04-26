@@ -1,6 +1,6 @@
 {
   "testFiles": "**/*.{feature,features}",
-  "defaultCommandTimeout": 10000,
+  "defaultCommandTimeout": 5000,
   "lighthouse": {
       "performance": 0,
       "accessibility": 0,
