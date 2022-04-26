@@ -1,6 +1,6 @@
 {
   "testFiles": "**/*.{feature,features}",
-  "defaultCommandTimeout": 5000,
+  "defaultCommandTimeout": 10000,
   "lighthouse": {
       "performance": 0,
       "accessibility": 0,
@@ -9,7 +9,7 @@
       "pwa": 0
     },
   "retries": {
-    "runMode": 2,
+    "runMode": 1,
     "openMode": 0
   },
   "chromeWebSecurity": false,
