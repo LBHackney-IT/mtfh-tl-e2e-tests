@@ -9,8 +9,7 @@ Given('I go to the activity history for {string}', (person) => {
 })
 
 Then('the activity history is displayed', () => {
-    cy.wait(10000);
-    activityHistory.activityTable().should('be.visible')
+    activityHistory.activityTable().should('exist')
 })
 
 Then('I click close activity history', () => {
