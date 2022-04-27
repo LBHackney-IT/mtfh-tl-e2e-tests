@@ -23,7 +23,7 @@ class AddPersonPageObjects {
     }
     
     addPersonHeader() {
-        return cy.get('[class="lbh-heading-h1"]')
+        return cy.get('.lbh-heading-h1')
     }
 
     mainContent() {
