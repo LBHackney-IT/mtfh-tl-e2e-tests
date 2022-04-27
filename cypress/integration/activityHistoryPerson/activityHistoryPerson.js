@@ -5,6 +5,7 @@ const activityHistory = new ActivityHistoryPageObjects()
 
 Given('I go to the activity history for {string}', (person) => {
     cy.log(Cypress.env('CONTACT_DETAILS_API_URL'))
+    cy.wait(30000)
     activityHistory.visit(person)
 })
 
