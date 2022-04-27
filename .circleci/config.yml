@@ -139,10 +139,6 @@ jobs:
                 - execute-e2e-tests:
                     stage: <<parameters.stage>>
                     trigger-context: external
-                - store_artifacts:
-                    path: cypress/videos
-                - store_artifacts:
-                    path: cypress/screenshots
 
   trigger-downstream-deployment:
         executor: cypress-browsers
