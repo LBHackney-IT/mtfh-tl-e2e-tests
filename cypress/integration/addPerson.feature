@@ -17,11 +17,11 @@ Feature: Add a new person to a tenure
   @Regression
   Scenario Outline: Removed fields are not displayed
     Given I create a person for tenure '<tenure>'
-#    Then the gender field is not displayed
-#    And the nationality field is not displayed
-#    And the national insurance field is not displayed
-#    And the add language options are not displayed
-#    And the add id options are not displayed
+    Then the gender field is not displayed
+    And the nationality field is not displayed
+    And the national insurance field is not displayed
+    And the add language options are not displayed
+    And the add id options are not displayed
 
     Examples:
       | tenure                               |
