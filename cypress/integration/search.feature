@@ -11,16 +11,16 @@ Feature: T&L Search Function
       # Given The feature "MMH.SearchTenure" is false
       Given I am logged out
       Given I am logged in
-      Given I am on the search page
+#      Given I am on the search page
 
   @SmokeTest
   @Positive
   Scenario Outline: Initial person search
     Then I can see the options to search in the correct order
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
 
     Examples:
       | characters | searchType |
@@ -30,12 +30,12 @@ Feature: T&L Search Function
   @Positive
   Scenario Outline: Execute property searches
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
-    And property search results are prefixed correctly
-    Then the page breadcrumb is displayed
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
+#    And property search results are prefixed correctly
+#    Then the page breadcrumb is displayed
 
     Examples:
       | characters | searchType   |
@@ -47,11 +47,11 @@ Feature: T&L Search Function
   @Positive
   Scenario Outline: Execute person searches
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
-    Then the page breadcrumb is displayed
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
+#    Then the page breadcrumb is displayed
 
     Examples:
       | characters | searchType |
@@ -66,12 +66,12 @@ Feature: T&L Search Function
   @Positive
   Scenario Outline: Execute tenure searches
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
-    And tenure search results are prefixed correctly
-    Then the page breadcrumb is displayed
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
+#    And tenure search results are prefixed correctly
+#    Then the page breadcrumb is displayed
 
     Examples:
       | characters | searchType |
@@ -84,12 +84,12 @@ Feature: T&L Search Function
   @Positive
   Scenario Outline: Execute tenure searches
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
-    And tenure search results are prefixed correctly
-    Then the page breadcrumb is displayed
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
+#    And tenure search results are prefixed correctly
+#    Then the page breadcrumb is displayed
 
     Examples:
       | characters | searchType |
@@ -100,12 +100,12 @@ Feature: T&L Search Function
   @device
   Scenario Outline: Execute searches on device
     When I am using a mobile viewport "<device>"
-    And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
-    Then the page breadcrumb is displayed
+#    And I click on the search again button
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
+#    Then the page breadcrumb is displayed
 
     Examples:
       | device        | characters  | searchType |
@@ -132,10 +132,10 @@ Feature: T&L Search Function
   @Positive
   Scenario Outline: Wildcard and partial searches
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
 
     Examples:
       | characters | searchType |
@@ -151,10 +151,10 @@ Feature: T&L Search Function
   @Positive
   Scenario Outline: Results are not returned
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then no results are returned
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then no results are returned
 
     Examples:
       | characters | searchType |
@@ -169,10 +169,10 @@ Feature: T&L Search Function
   @ignore
   Scenario Outline: Multiple search criteria
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<characters>"
 
     Examples:
       | characters     | searchType |
@@ -182,10 +182,10 @@ Feature: T&L Search Function
   @Negative
   Scenario Outline: Insufficient characters
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then a validation error message is displayed  
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then a validation error message is displayed
 
     Examples:
       | characters | searchType |
@@ -203,13 +203,13 @@ Feature: T&L Search Function
   @SmokeTest
   Scenario Outline: Filter searches for person
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then the default sort option is correct
-    When I select to sort by "<filter>"
-    When I set the number of results to <results>
-    Then the correct number of <results> are displayed
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then the default sort option is correct
+#    When I select to sort by "<filter>"
+#    When I set the number of results to <results>
+#    Then the correct number of <results> are displayed
 
     Examples:
       | characters | filter        | results | searchType |
@@ -220,12 +220,12 @@ Feature: T&L Search Function
   @SmokeTest
   Scenario Outline: Filter searches for tenure
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then there is no filter option
-    When I set the number of results to <results>
-    Then the correct number of <results> are displayed
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then there is no filter option
+#    When I set the number of results to <results>
+#    Then the correct number of <results> are displayed
 
     Examples:
       | characters | results | searchType |
@@ -236,12 +236,12 @@ Feature: T&L Search Function
   @SmokeTest
   Scenario Outline: Filter searches for property
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then there is no filter option
-    When I set the number of results to <results>
-    Then the correct number of <results> are displayed
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then there is no filter option
+#    When I set the number of results to <results>
+#    Then the correct number of <results> are displayed
 
     Examples:
       | characters | results | searchType |
@@ -252,15 +252,15 @@ Feature: T&L Search Function
   @SmokeTest
   Scenario Outline: Re-execute search
     And I click on the search again button
-    When I click on the radio button for "<searchType>"
-    When I enter any of the following criteria "<firstSearch>"
-    And I click on the search button
-    Then the search results are displayed by best match "<firstSearch>"
-    Then the search again button is displayed
-    When I click on the search again button
-    When I enter any of the following criteria "<secondSearch>"
-    And I click on the search button
-    Then the search results are displayed by best match "<secondSearch>"
+#    When I click on the radio button for "<searchType>"
+#    When I enter any of the following criteria "<firstSearch>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<firstSearch>"
+#    Then the search again button is displayed
+#    When I click on the search again button
+#    When I enter any of the following criteria "<secondSearch>"
+#    And I click on the search button
+#    Then the search results are displayed by best match "<secondSearch>"
 
     Examples:
       | firstSearch | secondSearch | searchType |
@@ -271,10 +271,10 @@ Feature: T&L Search Function
   @Negative
   Scenario Outline: Search validation scenario
     Given I am on the search page
-    When I click on the radio button for "<searchType>"
-    And I enter any of the following criteria "<characters>"
-    And I click on the search button
-    Then a warning message is displayed for search field
+#    When I click on the radio button for "<searchType>"
+#    And I enter any of the following criteria "<characters>"
+#    And I click on the search button
+#    Then a warning message is displayed for search field
 
     Examples:
       | characters | searchType | 
