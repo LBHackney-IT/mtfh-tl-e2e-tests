@@ -14,9 +14,9 @@ Feature: Activity History for Tenure
     @SmokeTest
     Scenario Outline: View Tenure activity history page
       Given I go to the tenure activity history for "<tenure>"
-      Then the tenure activity history is displayed
-      Then I click close activity history
-      And I am on the tenure page for "<tenure>"
+#      Then the tenure activity history is displayed
+#      Then I click close activity history
+#      And I am on the tenure page for "<tenure>"
 
       Examples:
         | tenure                               | 
@@ -24,10 +24,10 @@ Feature: Activity History for Tenure
 
     Scenario Outline: View Tenure activity history page for legacy data - Data imported
       Given I go to the tenure activity history for "<tenure>"
-      Then the tenure activity history is displayed
-      Then tenure migrated activity history is displayed
-      Then I click close activity history
-      And I am on the tenure page for "<tenure>"
+#      Then the tenure activity history is displayed
+#      Then tenure migrated activity history is displayed
+#      Then I click close activity history
+#      And I am on the tenure page for "<tenure>"
 
       Examples:
         | tenure                               | 
@@ -36,8 +36,8 @@ Feature: Activity History for Tenure
     @SmokeTest
     Scenario Outline: Update Tenure 
       Given I edit a tenure "<tenure>" "<tenureType>"
-      Given I go to the tenure activity history for "<tenure>"
-      Then the update exists in the activity history "<tenureType>"
+#      Given I go to the tenure activity history for "<tenure>"
+#      Then the update exists in the activity history "<tenureType>"
       
       Examples:
         | tenure                               | tenureType   |

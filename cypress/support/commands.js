@@ -22,3 +22,8 @@ Cypress.Commands.add('logout', () => {
     cy.clearCookies()
     cy.getCookies().should('be.empty')
 })
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    console.log(err);
+    return false;
+})
