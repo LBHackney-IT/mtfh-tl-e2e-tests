@@ -75,6 +75,9 @@ commands:
           trigger-context:
             type: string
         steps:
+            - store_artifacts:
+                path: cypress/videos
+                working_directory: frontend
             - run:
                 name: Execute e2e tests
                 command: |
@@ -103,6 +106,7 @@ commands:
                           fi
                        
 jobs:
+  
   assume-role-development:
         executor: docker-python
         steps:
