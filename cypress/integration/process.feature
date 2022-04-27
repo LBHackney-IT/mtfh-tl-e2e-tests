@@ -14,8 +14,8 @@ Background:
 Scenario Outline: Display process options for person
     Given I have loaded a Person record "<record>"
     When I select New Process menu "<processType>"
-#    Then I am directed to the main process landing page
-#    And I can see a list of processes
+    Then I am directed to the main process landing page
+    And I can see a list of processes
 
         Examples:
         | processType  | record                                 |
