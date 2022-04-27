@@ -452,6 +452,14 @@ And("I click add person", () => {
   addPersonPage.addPersonButton().click();
 });
 
+When("I click update person button", () => {
+  addPersonPage.updatePersonButton().click();
+  const now = new Date();
+  // personContactPage.doneButton().click();
+  dateCaptureDay = date.format(now, "DD/MM/YY");
+  dateCaptureTime = date.format(now, "H:mm");
+});
+
 And("I click cancel", () => {
   addPersonPage.cancelButton().click();
 });
