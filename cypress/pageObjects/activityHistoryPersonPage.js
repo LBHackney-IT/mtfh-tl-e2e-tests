@@ -7,7 +7,7 @@ class ActivityHistoryPageObjects {
     }
 
     activityTable() {
-        return cy.get('[data-testid="person-activities"]').should('be.visible');
+        return cy.get('[data-testid="person-activities"]')
     }
 
     activityTableRow() {
