@@ -31,21 +31,21 @@ Feature: Add a new person to a tenure
   @Positive
   Scenario Outline: Add a new person to a tenure
     Given I create a person for tenure '<tenure>'
-#    Then the add a new person tenure page is correct
-#    When I select person type "<personType>"
-#    And I select a title "<title>"
-#    And I enter a first name "<firstName>"
-#    And I enter a middle name "<middleName>"
-#    And I enter a last name "<lastName>"
-#    And I enter a date of birth "<day>" "<month>" "<year>"
-#    And I enter a place of birth "<placeOfBirth>"
-#    And I select a preferred title "<preferredTitle>"
-#    And I select a preferred first name "<preferredFirstName>"
-#    And I select a preferred middle name "<preferredMiddleName>"
-#    And I select a preferred last name "<preferredLastName>"
-#    And I enter a reason for creation
-#    And I click add person
-#    And I am on the contact details page
+    Then the add a new person tenure page is correct
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a place of birth "<placeOfBirth>"
+    And I select a preferred title "<preferredTitle>"
+    And I select a preferred first name "<preferredFirstName>"
+    And I select a preferred middle name "<preferredMiddleName>"
+    And I select a preferred last name "<preferredLastName>"
+    And I enter a reason for creation
+    And I click add person
+    And I am on the contact details page
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
