@@ -7,7 +7,8 @@ class ActivityHistoryPageObjects {
     }
 
     activityTable() {
-        return cy.get('[data-testid="person-activities"]')
+        return cy.findAllByText('category')
+        // return cy.get('[data-testid="person-activities"]')
     }
 
     activityTableRow() {
