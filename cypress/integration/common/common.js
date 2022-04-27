@@ -404,6 +404,7 @@ And("I click edit person", () => {
 });
 
 Given('I have loaded a Person record {string}', (record) => {
+  cy.wait(20000)
   personPage.visit(record)
 })
 
