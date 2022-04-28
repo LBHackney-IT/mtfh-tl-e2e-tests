@@ -4,8 +4,8 @@ import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPersonP
 const activityHistory = new ActivityHistoryPageObjects()
 
 Given('I go to the activity history for {string}', (person) => {
-    cy.visit('https://www.tesla.com');
-    cy.url().should("eq", 'https://www.tesla.com/');
+    cy.log(Cypress.env('CONTACT_DETAILS_API_URL'))
+    activityHistory.visit(person)
 })
 
 Then('the activity history is displayed', () => {

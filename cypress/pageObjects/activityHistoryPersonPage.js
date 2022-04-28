@@ -3,7 +3,7 @@ const envConfig = require('../../environment-config')
 class ActivityHistoryPageObjects {
     visit(record) {
         cy.visit(`${envConfig.baseUrl}/activities/person/${record}`)
-        cy.injectAxe()
+        // cy.injectAxe()
     }
 
     activityTable() {
