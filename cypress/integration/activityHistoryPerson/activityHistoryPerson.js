@@ -1,17 +1,14 @@
+
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
-import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPersonPage'
 
-const activityHistory = new ActivityHistoryPageObjects()
-
-Given('I go to the activity history for {string}', (person) => {
-    cy.log(Cypress.env('CONTACT_DETAILS_API_URL'))
-    activityHistory.visit(person)
+Given("I navigate to Google Home Page", () => {
+    cy.visit("https://www.google.com/");
+    cy.get('#L2AGLb').click();
 })
-
-Then('the activity history is displayed', () => {
-    activityHistory.activityTable().should('be.visible')
+When("I enter text 'Cypress' in the search box and click on button",()=>{
+    const text = cy.get('[name="q"]');
+    text.type('cypress commands').type('{enter}');
 })
-
-Then('I click close activity history', () => {
-    activityHistory.closeActivityHistory().click()
+Then("I am on the relevant page", ()=>{
+    cy.get('#logo > img').should('be.visible');
 })
