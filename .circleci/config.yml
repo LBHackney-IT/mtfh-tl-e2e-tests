@@ -13,14 +13,4 @@ workflows:
           parallel: true
           parallelism: 1
           group: 1 machine
-      - cypress/run:
-          name: Chrome
-          requires:
-            - cypress/install
-          executor: cypress/browsers-chrome69
-          record: true
-          parallel: true
-          parallelism: 1
-          group: smoke tests
-          browser: chrome
           spec: cypress/integration/activityHistoryPerson.feature
