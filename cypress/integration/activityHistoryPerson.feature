@@ -15,7 +15,7 @@ Feature: Activity History
       Given I go to the activity history for "<person>"
       Then the activity history is displayed
       Then I click close activity history
-      And I am on the person page for "<person>"
+#      And I am on the person page for "<person>"
 
       Examples:
         | person                               | 
