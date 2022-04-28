@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9be794bd-c78b-413e-8979-5fb89fc2d437" name="Changes" comment="" />
+    <list default="true" id="9be794bd-c78b-413e-8979-5fb89fc2d437" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/cypress/integration/activityHistoryPerson.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/activityHistoryPerson.feature" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +52,7 @@
       <updated>1651171983282</updated>
       <workItem from="1651171985178" duration="29000" />
       <workItem from="1651172017428" duration="18000" />
-      <workItem from="1651172112409" duration="2284000" />
+      <workItem from="1651172112409" duration="2618000" />
     </task>
     <servers />
   </component>
