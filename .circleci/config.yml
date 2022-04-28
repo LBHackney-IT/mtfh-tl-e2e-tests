@@ -123,6 +123,7 @@ jobs:
 
   run-e2e-tests:
         parallelism: 14
+        record: true
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
