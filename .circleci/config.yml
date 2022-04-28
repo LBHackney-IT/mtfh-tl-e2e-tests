@@ -198,11 +198,20 @@ workflows:
     jobs:
       - assume-role-development:
           context: api-assume-role-housing-development-context
-      - run-ci-tests:
+#      - run-ci-tests:
+#          stage: development
+#          context: mtfh-mfe-e2e-tests
+#          requires:
+#            - assume-role-development
+      - cypress/run:
           stage: development
           context: mtfh-mfe-e2e-tests
           requires:
             - assume-role-development
+          record: true
+          parallel: true
+          parallelism: 14
+#          start: 'npm run server'
 
   e2e-tests-development:
     when:
