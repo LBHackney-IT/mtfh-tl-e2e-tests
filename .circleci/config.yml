@@ -9,7 +9,7 @@ workflows:
           name: 1 machine
           requires:
             - cypress/install
-          record: true
+          record: false
           parallel: true
           parallelism: 1
           group: 1 machine
