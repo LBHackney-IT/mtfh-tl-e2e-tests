@@ -100,7 +100,7 @@ commands:
                           
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
                           then ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
-                          else DEBUG=cypress:cli,cypress:server:args,cypress:server:specs,cypress:server:project,cypress:server:browsers,cypress:launcher,cypress:server:video,cypress:network:*,cypress:net-stubbing*,cypress:server:reporter,cypress:server:preprocessor,cypress:server:plugins,cypress:server:socket-e2e,cypress:server:task,cypress:server:socket-base,cypress:webpack,cypress:server:fixture,cypress:server:record:ci-info ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          else ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           fi
             - store_artifacts:
                 path: cypress/screenshots
