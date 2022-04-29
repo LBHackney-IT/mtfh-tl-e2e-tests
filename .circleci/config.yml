@@ -4,9 +4,6 @@ orbs:
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   aws-cli: circleci/aws-cli@2.0.3
   cypress: cypress-io/cypress@1
-  browsers-chrome78-ff70:
-    docker:
-      - image: cypress/browsers:node14.16.0-chrome89-ff86
 
 parameters:
   run_workflow_ci:
@@ -46,9 +43,9 @@ executors:
     docker-python:
         docker:
             - image: circleci/python:3.7
-    cypress-browsers:
-        docker:
-            - image: cypress/browsers:node14.16.0-chrome89-ff86
+    node-executor:
+      docker:
+        - image: circleci/node:14.17.6-browsers
 
 commands:
     assume-role-and-persist-workspace:
