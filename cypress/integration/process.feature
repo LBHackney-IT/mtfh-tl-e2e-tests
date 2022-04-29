@@ -13,9 +13,9 @@ Background:
 @Positive
 Scenario Outline: Display process options for person
     Given I have loaded a Person record "<record>"
-#    When I select New Process menu "<processType>"
-#    Then I am directed to the main process landing page
-#    And I can see a list of processes
+    When I select New Process menu "<processType>"
+    Then I am directed to the main process landing page
+    And I can see a list of processes
 
         Examples:
         | processType  | record                                 |
@@ -24,9 +24,9 @@ Scenario Outline: Display process options for person
 @Positive
 Scenario Outline: Display process options for property
     Given I view a property "<record>"
-#    When I select New Process menu "<processType>"
-#    Then I am directed to the main process landing page
-#    And I can see a list of processes
+    When I select New Process menu "<processType>"
+    Then I am directed to the main process landing page
+    And I can see a list of processes
 
         Examples:
         | processType  | record                                 |
@@ -35,12 +35,12 @@ Scenario Outline: Display process options for property
 @Positive
 Scenario Outline: Initiate sole to joint process from tenure
     When I view a Tenure "<tenure>"
-#    Then the tenure information is displayed
-#    When I select New Process menu "<processType>"
-#    Then I am directed to the main process landing page
-#    And I can see a list of processes
-#    And I select a process "<process>"
-#    And I select a sub process "<subProcess>"
+    Then the tenure information is displayed
+    When I select New Process menu "<processType>"
+    Then I am directed to the main process landing page
+    And I can see a list of processes
+    And I select a process "<process>"
+    And I select a sub process "<subProcess>"
     
 
         Examples:
@@ -53,7 +53,7 @@ Scenario Outline: Initiate sole to joint process from tenure
 
 Scenario Outline: Process landing page loaded
     Given I select to initiate a Sole To Joint process "<tenure>"
-#    Then the property details are shown
+    Then the property details are shown
 
         Examples:
         | tenure                               |
@@ -61,9 +61,9 @@ Scenario Outline: Process landing page loaded
 
 Scenario Outline: Tenant has consented to a credit check
     Given I select to initiate a Sole To Joint process "<tenure>"
-#    When I accept the terms and conditions
-#    And I click the start process button
-#    Then the status is set to Awaiting proposed tenant selection
+    When I accept the terms and conditions
+    And I click the start process button
+    Then the status is set to Awaiting proposed tenant selection
 
         Examples:
         | tenure                               |
@@ -71,7 +71,7 @@ Scenario Outline: Tenant has consented to a credit check
 
 Scenario Outline: Tenant has not consented to a credit check
     Given I select to initiate a Sole To Joint process "<tenure>"
-#    Then the start process button is disabled
+    Then the start process button is disabled
 
         Examples:
         | tenure                               |
@@ -79,11 +79,11 @@ Scenario Outline: Tenant has not consented to a credit check
 
 Scenario Outline: Selecting back or cancelling out of the process
     Given I select to initiate a Sole To Joint process "<tenure>"
-#    When I click the cancel button
-#    Then I am taken back to the processes menu "<tenure>"
-#    Given I select to initiate a Sole To Joint process "<tenure>"
-#     When I click the back link
-#    Then I am taken back to the processes menu "<tenure>"
+    When I click the cancel button
+    Then I am taken back to the processes menu "<tenure>"
+    Given I select to initiate a Sole To Joint process "<tenure>"
+     When I click the back link
+    Then I am taken back to the processes menu "<tenure>"
 
         Examples:
         | tenure                               |

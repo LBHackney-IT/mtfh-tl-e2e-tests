@@ -13,11 +13,11 @@ Feature: Property Page
 
     @SmokeTest
     Scenario Outline: View property details
-#      When I view a property "<property>"
-#      Then the page breadcrumb is displayed
-#      Then the property information is displayed
-#      And the tenure information is displayed
-#      And I click on the view tenure button
+      When I view a property "<property>"
+      Then the page breadcrumb is displayed
+      Then the property information is displayed
+      And the tenure information is displayed
+      And I click on the view tenure button
       
       Examples:
           | property                             |
@@ -26,11 +26,11 @@ Feature: Property Page
     @SmokeTest
     Scenario Outline: View property details
       When I view a property "<property>"
-#      Then the page breadcrumb is displayed
-#      Then the property information is displayed
-#      And the tenure information is displayed
-#      And I click on the breadcrumb
-#      Then I am taken to the search page
+      Then the page breadcrumb is displayed
+      Then the property information is displayed
+      And the tenure information is displayed
+      And I click on the breadcrumb
+      Then I am taken to the search page
       
       Examples:
           | property                             |
@@ -39,9 +39,9 @@ Feature: Property Page
     @Regression
     Scenario Outline: View property via tenure
       When I view a Tenure "<tenure>"
-#      Then the tenure information is displayed
-#      And I click on the view property button
-#      Then the property information is displayed
+      Then the tenure information is displayed
+      And I click on the view property button
+      Then the property information is displayed
       
       Examples:
           | tenure                               |
@@ -50,9 +50,9 @@ Feature: Property Page
     @Regression
     Scenario Outline: View property via person
       Given I have loaded a Person record "<record>"
-#      Then the personal details are displayed on the sidebar
-#      And I click on the view property button
-#      Then the property information is displayed
+      Then the personal details are displayed on the sidebar
+      And I click on the view property button
+      Then the property information is displayed
 
       Examples:
           | record                               |
@@ -60,8 +60,8 @@ Feature: Property Page
 
     Scenario Outline: Asset API for valid FE type
       Given I check the asset API with a valid assetType "<assetId>"
-#      When I navigate to the asset page "<assetId>"
-#      Then the property information is displayed
+      When I navigate to the asset page "<assetId>"
+      Then the property information is displayed
 
       Examples:
       | assetId                              |
@@ -69,8 +69,8 @@ Feature: Property Page
 
     Scenario Outline: Asset API for invalid FE type
       Given I check the asset API with an invalid assetType "<assetId>"
-#      When I navigate to the asset page "<assetId>"
-#      And I am shown an error message
+      When I navigate to the asset page "<assetId>"
+      And I am shown an error message
 
       Examples:
       | assetId                              |
@@ -82,8 +82,8 @@ Feature: Property Page
     @ignore
     Scenario Outline: Repairs container is displayed
       When I view a property "<property>"
-#      Then the repairs container is displayed
-#      And the repairs card list is displayed "<repairsType>"
+      Then the repairs container is displayed
+      And the repairs card list is displayed "<repairsType>"
 
       Examples:
           | property                             | repairsType |
@@ -92,8 +92,8 @@ Feature: Property Page
     @ignore
     Scenario Outline: Repairs list type is changed
       When I view a property "<property>"
-#      Then I set the the repair type to "<repairsType>"
-#      And the repairs card list is displayed "<repairsType>"
+      Then I set the the repair type to "<repairsType>"
+      And the repairs card list is displayed "<repairsType>"
 
       Examples:
           | property                             | repairsType |
