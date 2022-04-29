@@ -14,5 +14,5 @@
     "openMode": 0
   },
   "chromeWebSecurity": false,
-  "video": false
+  "video": true
 }
