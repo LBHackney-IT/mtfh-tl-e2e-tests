@@ -1,6 +1,7 @@
 {
   "testFiles": "**/*.{feature,features}",
   "defaultCommandTimeout": 10000,
+  "projectId": "fg82nr",
   "lighthouse": {
       "performance": 0,
       "accessibility": 0,
