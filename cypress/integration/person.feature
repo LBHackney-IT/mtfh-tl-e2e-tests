@@ -14,15 +14,15 @@ Feature: T&L Person Page
   @Positive
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
-#    Then the personal details are displayed on the sidebar
-#    When I click on the more personal details accordion
-#    Then the body Person details are displayed
-#    When I click on the more personal details accordion
-#    When I click on the more tenure details accordion
-#    Then the body tenure details are displayed
-#    When I click on the more tenure details accordion
-#    When I click on the equality details accordion
-#    Then the equality information is displayed
+    Then the personal details are displayed on the sidebar
+    When I click on the more personal details accordion
+    Then the body Person details are displayed
+    When I click on the more personal details accordion
+    When I click on the more tenure details accordion
+    Then the body tenure details are displayed
+    When I click on the more tenure details accordion
+    When I click on the equality details accordion
+    Then the equality information is displayed
 
     Examples:
       | record                               |
@@ -31,16 +31,16 @@ Feature: T&L Person Page
   @device
   Scenario Outline: View person details device view
     Given I have loaded a Person record "<record>"
-#    When I am using a mobile viewport "<device>"
-#    Then the personal details are displayed on the mobile content container
-#    When I click on the more personal details accordion
-#    Then the body Person details are displayed
-#    When I click on the more personal details accordion
-#    When I click on the more tenure details accordion
-#    Then the body tenure details are displayed
-#    When I click on the more tenure details accordion
-#    When I click on the equality details accordion
-#    Then the equality information is displayed
+    When I am using a mobile viewport "<device>"
+    Then the personal details are displayed on the mobile content container
+    When I click on the more personal details accordion
+    Then the body Person details are displayed
+    When I click on the more personal details accordion
+    When I click on the more tenure details accordion
+    Then the body tenure details are displayed
+    When I click on the more tenure details accordion
+    When I click on the equality details accordion
+    Then the equality information is displayed
 
     Examples:
       | device        | record                               |
@@ -66,7 +66,7 @@ Feature: T&L Person Page
   @SmokeTest
   Scenario Outline: Look for record that does not exist
     Given I have loaded an invalid person record "<record>"
-#    Then The person you've requested does not exist error message appears
+    Then The person you've requested does not exist error message appears
 
     Examples:
       | record |
@@ -78,8 +78,8 @@ Feature: T&L Person Page
   # Add comment functinality is covered in person-comments.feature
     Given I have loaded a Person record "<record>"
 #    # Then the body Person details are displayed
-#    When I click on the add comment button
-#    Then I am taken to the add comment for person page "<record>"
+    When I click on the add comment button
+    Then I am taken to the add comment for person page "<record>"
 
     Examples:
       | record                               | category     |
@@ -88,7 +88,7 @@ Feature: T&L Person Page
   @Accessibility
   Scenario Outline: Scenario Outline name: Accessibility Testing
     Given I have loaded a Person record "<record>"
-#    And have no detectable a11y violations
+    And have no detectable a11y violations
 
     Examples:
       | record                               |
