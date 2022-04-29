@@ -102,6 +102,12 @@ commands:
                           then ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           else DEBUG=cypress:cli,cypress:server:args,cypress:server:specs,cypress:server:project,cypress:server:browsers,cypress:launcher,cypress:server:video,cypress:network:*,cypress:net-stubbing*,cypress:server:reporter,cypress:server:preprocessor,cypress:server:plugins,cypress:server:socket-e2e,cypress:server:task,cypress:server:socket-base,cypress:webpack,cypress:server:fixture,cypress:server:record:ci-info ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           fi
+            - store_artifacts:
+                path: cypress/screenshots
+            - store_artifacts:
+                path: cypress/videos
+            - store_artifacts:
+                path: cypress/reports
                        
 jobs:
   assume-role-development:
@@ -132,7 +138,7 @@ jobs:
                 type: string
         steps:
           - when:
-              condition: << pipeline.parameters.external_trigger >> 
+              condition: << pipeline.parameters.external_trigger >>
               steps:
                 - *attach_workspace
                 - aws-cli/install
