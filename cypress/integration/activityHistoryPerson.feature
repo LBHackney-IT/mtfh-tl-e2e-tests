@@ -1,4 +1,4 @@
-#@activity-history
+@activity-history
 @authentication
 @common
 @processes
