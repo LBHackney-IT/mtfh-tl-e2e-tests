@@ -4,6 +4,9 @@ orbs:
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   aws-cli: circleci/aws-cli@2.0.3
   cypress: cypress-io/cypress@1
+  browsers-chrome78-ff70:
+    docker:
+      - image: cypress/browsers:node14.16.0-chrome89-ff86
 
 parameters:
   run_workflow_ci:
@@ -43,9 +46,9 @@ executors:
     docker-python:
         docker:
             - image: circleci/python:3.7
-    node-executor:
-      docker:
-        - image: circleci/node:14.17.6-browsers
+    cypress-browsers:
+        docker:
+            - image: cypress/browsers:node14.16.0-chrome89-ff86
 
 commands:
     assume-role-and-persist-workspace:
@@ -97,7 +100,7 @@ commands:
                           
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
                           then ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
-                          else DEBUG=cypress:cli,cypress:server:args,cypress:server:specs,cypress:server:project,cypress:server:browsers,cypress:launcher,cypress:server:video,cypress:network:*,cypress:net-stubbing*,cypress:server:reporter,cypress:server:preprocessor,cypress:server:plugins,cypress:server:socket-e2e,cypress:server:task,cypress:server:socket-base,cypress:webpack,cypress:server:fixture,cypress:server:record:ci-info ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          else DEBUG=cypress:cli,cypress:server:args,cypress:server:specs,cypress:server:project,cypress:server:browsers,cypress:launcher,cypress:server:video,cypress:network:*,cypress:net-stubbing*,cypress:server:reporter,cypress:server:preprocessor,cypress:server:plugins,cypress:server:socket-e2e,cypress:server:task,cypress:server:socket-base,cypress:webpack,cypress:server:fixture,cypress:server:record:ci-info ./node_modules/.bin/cypress-tags run --record -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           fi
             - store_artifacts:
                 path: cypress/screenshots
