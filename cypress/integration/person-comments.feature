@@ -99,7 +99,7 @@ Feature: T&L Person Comment
       Examples:
         | commentType | personId                               | characters |
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 502        |
-        # | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 508        |
+        | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 508        |
 
     @SmokeTest
     @Negative  
@@ -118,5 +118,5 @@ Feature: T&L Person Comment
       And have no detectable a11y violations
 
       Examples:
-      | commetyType | personId                               |
+      | commentType | personId                               |
       | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   |
