@@ -117,5 +117,5 @@ Feature: Property Comment
       And have no detectable a11y violations
 
       Examples:
-      | commetyType | propertyId                               |
+      | commentType | propertyId                               |
       | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   |
