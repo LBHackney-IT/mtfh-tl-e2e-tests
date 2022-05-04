@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9be794bd-c78b-413e-8979-5fb89fc2d437" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/addPerson.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/addPerson.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/common/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/common/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/tenure-comments.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/tenure-comments.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/tenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/tenure.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/property-comments.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/property-comments.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
