@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/tenure-comments.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/tenure-comments.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/tenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/tenure.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/property-comments.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/property-comments.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +25,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="28e1xaHfhr6dF3Kkf58nxeCdRII" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cypress/integration/google-test" />
@@ -43,6 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1651435139411</updated>
       <workItem from="1651435142240" duration="1185000" />
+      <workItem from="1651562488923" duration="2258000" />
     </task>
     <servers />
   </component>
