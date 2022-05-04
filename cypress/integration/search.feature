@@ -172,7 +172,7 @@ Feature: T&L Search Function
     When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+    Then search results are displayed by the best match "<characters>"
 
     Examples:
       | characters     | searchType |
@@ -270,7 +270,7 @@ Feature: T&L Search Function
   @SmokeTest
   @Negative
   Scenario Outline: Search validation scenario
-    Given I am on the search page
+    And I click on the search again button
     When I click on the radio button for "<searchType>"
     And I enter any of the following criteria "<characters>"
     And I click on the search button

@@ -9,4 +9,6 @@ cypress.env.json
 .vscode/launch.json
 docker/dynamodb/shared-local-instance.db
 .idea/workspace.xml
-cypress.env.json
+package-lock.json
+
+

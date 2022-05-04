@@ -250,6 +250,17 @@ Then(
       .contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
   }
 );
+Then(
+    "search results are displayed by the best match {string}",
+    (searchTerm) => {
+      if (searchTerm === "guid") {
+        searchTerm = guid;
+      }
+      searchPage
+          .searchResults()
+          .contains(searchTerm.replace(/\s/g, ""), { matchCase: false });
+    }
+);
 
 Then("the default sort option is correct", () => {
   searchPage.sortByOption().contains("Best match");
