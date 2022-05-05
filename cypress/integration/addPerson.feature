@@ -17,11 +17,11 @@ Feature: Add a new person to a tenure
   @Regression
   Scenario Outline: Removed fields are not displayed
     Given I create a person for tenure '<tenure>'
-#    Then the gender field is not displayed
-#    And the nationality field is not displayed
-#    And the national insurance field is not displayed
-#    And the add language options are not displayed
-#    And the add id options are not displayed
+    Then the gender field is not displayed
+    And the nationality field is not displayed
+    And the national insurance field is not displayed
+    And the add language options are not displayed
+    And the add id options are not displayed
 
     Examples:
       | tenure                               |
@@ -31,21 +31,21 @@ Feature: Add a new person to a tenure
   @Positive
   Scenario Outline: Add a new person to a tenure
     Given I create a person for tenure '<tenure>'
-#    Then the add a new person tenure page is correct
-#    When I select person type "<personType>"
-#    And I select a title "<title>"
-#    And I enter a first name "<firstName>"
-#    And I enter a middle name "<middleName>"
-#    And I enter a last name "<lastName>"
-#    And I enter a date of birth "<day>" "<month>" "<year>"
-#    And I enter a place of birth "<placeOfBirth>"
-#    And I select a preferred title "<preferredTitle>"
-#    And I select a preferred first name "<preferredFirstName>"
-#    And I select a preferred middle name "<preferredMiddleName>"
-#    And I select a preferred last name "<preferredLastName>"
-#    And I enter a reason for creation
-#    And I click add person
-#    And I am on the contact details page
+    Then the add a new person tenure page is correct
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a place of birth "<placeOfBirth>"
+    And I select a preferred title "<preferredTitle>"
+    And I select a preferred first name "<preferredFirstName>"
+    And I select a preferred middle name "<preferredMiddleName>"
+    And I select a preferred last name "<preferredLastName>"
+    And I enter a reason for creation
+    And I click add person
+    And I am on the contact details page
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
@@ -55,24 +55,24 @@ Feature: Add a new person to a tenure
   @device
   Scenario Outline: Add a new person to tenure on a device
     Given I create a person for tenure '<tenure>'
-#    And I am using a mobile viewport "<device>"
-#    Then the add a new person tenure page is correct
-#    When I select person type "<personType>"
-#    And I select a title "<title>"
-#    And I enter a first name "<firstName>"
-#    And I enter a middle name "<middleName>"
-#    And I enter a last name "<lastName>"
-#    And I enter a date of birth "<day>" "<month>" "<year>"
-#    And I enter a place of birth "<placeOfBirth>"
-#    And I select a preferred title "<preferredTitle>"
-#    And I select a preferred first name "<preferredFirstName>"
-#    And I select a preferred middle name "<preferredMiddleName>"
-#    And I select a preferred last name "<preferredLastName>"
-#    And I enter a reason for creation
-#    And I click add person
-#    And I click the done button
-#    And I am on the tenure page '<tenure>'
-#    And the person has been added to the tenure
+    And I am using a mobile viewport "<device>"
+    Then the add a new person tenure page is correct
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a place of birth "<placeOfBirth>"
+    And I select a preferred title "<preferredTitle>"
+    And I select a preferred first name "<preferredFirstName>"
+    And I select a preferred middle name "<preferredMiddleName>"
+    And I select a preferred last name "<preferredLastName>"
+    And I enter a reason for creation
+    And I click add person
+    And I click the done button
+    And I am on the tenure page '<tenure>'
+    And the person has been added to the tenure
 
     Examples:
       | tenure                               | device        | title | personType          | firstName     | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
@@ -98,16 +98,16 @@ Feature: Add a new person to a tenure
   @Negative
   Scenario Outline: Validation check
     Given I create a person for tenure '<tenure>'
-#    Then the add a new person tenure page is correct
-#    When I select person type "<personType>"
-#    And I select a title "<title>"
-#    And I enter a first name "<firstName>"
-#    And I enter a middle name "<middleName>"
-#    And I enter a last name "<lastName>"
-#    And I enter a date of birth "<day>" "<month>" "<year>"
-#    And I enter a reason for creation
-#    And I click add person
-#    Then the form error container is displayed
+    Then the add a new person tenure page is correct
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a reason for creation
+    And I click add person
+    Then the form error container is displayed
 
     Examples:
       | tenure                               | personType          | title | firstName | middleName | lastName | day | month | year |
@@ -117,23 +117,23 @@ Feature: Add a new person to a tenure
     @Positive
     Scenario Outline: Edit a person
       Given I create a person and then edit them "<tenure>"
-#      And the person type options are not displayed
-#      And I select a title "<title>"
-#      And I enter a first name "<firstName>"
-#      And I enter a middle name "<middleName>"
-#      And I enter a last name "<lastName>"
-#      And I enter a date of birth "<day>" "<month>" "<year>"
-#      And I enter a place of birth "<placeOfBirth>"
-#      And I select a preferred title "<preferredTitle>"
-#      And I select a preferred first name "<preferredFirstName>"
-#      And I select a preferred middle name "<preferredMiddleName>"
-#      And I select a preferred last name "<preferredLastName>"
-#      And I click the update person button
-#      And I click the next button
-#      And I click the save equality information button
-#      And I click edit person
-#      And I enter a first name "<conflictTitle>"
-#      And there is a merge conflict
+      And the person type options are not displayed
+      And I select a title "<title>"
+      And I enter a first name "<firstName>"
+      And I enter a middle name "<middleName>"
+      And I enter a last name "<lastName>"
+      And I enter a date of birth "<day>" "<month>" "<year>"
+      And I enter a place of birth "<placeOfBirth>"
+      And I select a preferred title "<preferredTitle>"
+      And I select a preferred first name "<preferredFirstName>"
+      And I select a preferred middle name "<preferredMiddleName>"
+      And I select a preferred last name "<preferredLastName>"
+      And I click the update person button
+      And I click the next button
+      And I click the save equality information button
+      And I click edit person
+      And I enter a first name "<conflictTitle>"
+      And there is a merge conflict
 
       Examples:
         | tenure                               | title | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | conflictTitle  |
@@ -142,9 +142,9 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Confirmation modal
       Given I create a person and then edit them "<tenure>"
-#      And I click edit person
-#      And I click cancel
-#      Then the confirmation modal is displayed
+      And I click edit person
+      And I click cancel
+      Then the confirmation modal is displayed
 
       Examples:
       | tenure                               | title | personType          | firstName | middleName |
@@ -157,14 +157,14 @@ Feature: Add a new person to a tenure
     @ignore
     Scenario Outline: Correspondence address using valid postcode lookup details
       When I edit a person's contact details "<person>"
-#      And I click add a correspondence address
-#      Then the correspondence address fields are displayed
-#      When I enter a postcode into the lookup field "<postCode>"
-#      And I click look up
-#      Then the select address selection box is populated "<postCode>"
-#      When I select an address from the selection
-#      And I click save correspondence address
-#      Then the correspondence address is saved
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter a postcode into the lookup field "<postCode>"
+      And I click look up
+      Then the select address selection box is populated "<postCode>"
+      When I select an address from the selection
+      And I click save correspondence address
+      Then the correspondence address is saved
 
       Examples:
           | person                               | postCode |
@@ -172,11 +172,11 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Correspondence address using invalid postcode lookup details
       When I edit a person's contact details "<person>"
-#      And I click add a correspondence address
-#      Then the correspondence address fields are displayed
-#      When I enter a postcode into the lookup field "<postCode>"
-#      And I click look up
-#      Then an invalid postcode error is thrown
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter a postcode into the lookup field "<postCode>"
+      And I click look up
+      Then an invalid postcode error is thrown
 
       Examples:
           | person                               | postCode |
@@ -184,15 +184,15 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Correspondence address using free text fields
       When I edit a person's contact details "<person>"
-#      And I click add a correspondence address
-#      Then the correspondence address fields are displayed
-#      When I enter "<addressOne>" into address line 1
-#      When I enter "<addressTwo>" into address line 2
-#      When I enter "<addressThree>" into address line 3
-#      When I enter "<addressFour>" into address line 4
-#      When I enter "<postCode>" into the postcode field
-#      And I click save correspondence address
-#      Then the correspondence address is saved
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter "<addressOne>" into address line 1
+      When I enter "<addressTwo>" into address line 2
+      When I enter "<addressThree>" into address line 3
+      When I enter "<addressFour>" into address line 4
+      When I enter "<postCode>" into the postcode field
+      And I click save correspondence address
+      Then the correspondence address is saved
 
       Examples:
           | person                               | postCode | addressOne | addressTwo | addressThree | addressFour |
@@ -200,8 +200,8 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Maximum contact details reached
       Given I have the maximum number of "<contactType>" for "<person>"
-#      When I edit a person's contact details "<person>"
-#      Then I cannot add any more contacts for "<contactType>"
+      When I edit a person's contact details "<person>"
+      Then I cannot add any more contacts for "<contactType>"
 
       Examples:
           | contactType | person                               |
@@ -210,20 +210,20 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Add equality information
       Given I edit a person's equality information "<person>"
-#      Then the equality information is diplayed
-#      And the sexual orientation information is not displayed
-#      When I select an age group "<ageGroup>"
-#      Then the sexual orientation information is displayed
-#      Then I select a carer option "<carerOption>"
-#      And I select a disability option "<disabilityOption>"
-#      And I select an ethnicity "<ethnicity>"
-#      And I select a gender "<gender>"
-#      And I select a gender identity option "<genderIdentityOption>"
-#      And I select a religion or belief "<religionOrBelief>"
-#      And I select a sexual orientation "<sexualOrientation>"
-#      And I select a pregnancy or maternity option "<pregnancyOrMaternityOption>"
-#      And I click save equality information
-#      Then the equality information is saved "<person>"
+      Then the equality information is diplayed
+      And the sexual orientation information is not displayed
+      When I select an age group "<ageGroup>"
+      Then the sexual orientation information is displayed
+      Then I select a carer option "<carerOption>"
+      And I select a disability option "<disabilityOption>"
+      And I select an ethnicity "<ethnicity>"
+      And I select a gender "<gender>"
+      And I select a gender identity option "<genderIdentityOption>"
+      And I select a religion or belief "<religionOrBelief>"
+      And I select a sexual orientation "<sexualOrientation>"
+      And I select a pregnancy or maternity option "<pregnancyOrMaternityOption>"
+      And I click save equality information
+      Then the equality information is saved "<person>"
 
       Examples:
           | person                               | ageGroup | carerOption       | disabilityOption | ethnicity        | gender | genderIdentityOption | religionOrBelief | sexualOrientation    | pregnancyOrMaternityOption |
@@ -231,9 +231,9 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Sexual orientation is not displayed for under 16s
       Given I edit a person's equality information "<person>"
-#      Then the equality information is diplayed
-#      When I select an age group "<ageGroup>"
-#      And the sexual orientation information is not displayed
+      Then the equality information is diplayed
+      When I select an age group "<ageGroup>"
+      And the sexual orientation information is not displayed
 
       Examples:
           | person                               | ageGroup |
@@ -241,10 +241,10 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Preferred term for gender field is displayed when "other" is selected for gender term
       Given I edit a person's equality information "<person>"
-#      Then the equality information is diplayed
-#      And I select a gender "<gender>"
-#      And the preferred gender term field is displayed
-#      And I enter "<genderTerm>" into the gender term field
+      Then the equality information is diplayed
+      And I select a gender "<gender>"
+      And the preferred gender term field is displayed
+      And I enter "<genderTerm>" into the gender term field
 
       Examples:
           | person                               | gender | genderTerm  |
@@ -252,13 +252,13 @@ Feature: Add a new person to a tenure
 
     Scenario Outline: Confirmation alert not shown
       When I edit a person's contact details "<person>"
-#      And I click add a correspondence address
-#      Then the correspondence address fields are displayed
-#      When I enter "Address" into address line 1
-#      And the review changes option is visible
-#      And the next button is disabled
-#      When I clear address line 1
-#      Then the next button is enabled
+      And I click add a correspondence address
+      Then the correspondence address fields are displayed
+      When I enter "Address" into address line 1
+      And the review changes option is visible
+      And the next button is disabled
+      When I clear address line 1
+      Then the next button is enabled
 
       Examples:
           | person                               |
