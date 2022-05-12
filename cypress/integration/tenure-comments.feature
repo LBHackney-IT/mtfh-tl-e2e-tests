@@ -46,21 +46,21 @@ Feature: Tenure Comment
       | commentType   | tenureId                             | device        | category             |
       | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-2        | Appointments         |
       | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | ipad-mini     | Estate management    |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-3      | Evictions            |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-4      | Parking              |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-5      | Planned maintenance  |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6      | Rehousing            |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6+     | Rents                |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-7      | Repairs              |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-8      | Service charge       |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-xr     | Temporary decant     |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-se2    | Tenure breaches      |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-11    | Tenure management    |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-13    | Voids                |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-15    | Appointments         |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-16    | Appointments         |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-note9 | Appointments         |
-#      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-s10   | Appointments         |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-3      | Evictions            |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-4      | Parking              |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-5      | Planned maintenance  |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6      | Rehousing            |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-6+     | Rents                |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-7      | Repairs              |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-8      | Service charge       |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-xr     | Temporary decant     |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | iphone-se2    | Tenure breaches      |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-11    | Tenure management    |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-13    | Voids                |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-15    | Appointments         |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | macbook-16    | Appointments         |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-note9 | Appointments         |
+      | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-s10   | Appointments         |
 
     @Positive
     Scenario Outline: Save comment for tenure
@@ -75,7 +75,7 @@ Feature: Tenure Comment
       Examples:
         | commentType | tenureId                               | category     |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   | Appointments |
-    
+
     @SmokeTest
     @Negative
       Scenario Outline: User cannot submit a comment without mandatory fields
@@ -102,7 +102,7 @@ Feature: Tenure Comment
       Examples:
         | commentType | tenureId                             |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
-  
+
     @Positive
     @SmokeTest
     Scenario Outline: Character limit counter
