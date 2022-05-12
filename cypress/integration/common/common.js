@@ -182,7 +182,8 @@ And('I click on the breadcrumb', () => {
 })
 
 Then('I am taken to the search page', () => {
-  cy.url().should('contain', "search")
+ // cy.url().should('contain', "search")
+  cy.findAllByText("Search");
 })
 
 And('I click on the view property button', () => {
