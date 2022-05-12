@@ -242,7 +242,6 @@ Feature: Create tenure
         When I view a Tenure "<tenure>"
         Then the tenure information is displayed
         And the edit tenure button is not displayed
-
         Examples:
         | tenure                               |
         | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
