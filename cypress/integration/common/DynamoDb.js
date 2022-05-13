@@ -13,6 +13,7 @@ const deleteRecordFromDynamoDB = async (tableName, id)=>{
     });
 
   deleteRecord(id)
+  //test
 
   function deleteRecord(id) {
     return docClient
