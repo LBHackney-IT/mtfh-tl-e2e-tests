@@ -43,3 +43,11 @@ Because each feature is ran in parallel within separate containers, you will nee
 
 #### Further testing resources
 Further resources around creating tests can be found [here](https://drive.google.com/drive/folders/1XRqzngDYWvpfeJov1hbyJ_vBa88Ex2R4)
+
+#### Additional notes
+When using cypress from the command line to run locally, you will need to set up the local variables:
+
+export CYPRESS_AWS_ACCESS_KEY_ID=''
+export CYPRESS_AWS_SECRET_ACCESS_KEY=''
+
+Both keys may be found in your AWS setup.
