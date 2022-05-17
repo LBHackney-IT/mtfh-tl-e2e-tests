@@ -74,6 +74,7 @@ commands:
             type: string
           trigger-context:
             type: string
+        working_directory: /cypress-artifacts
         steps:
             - run:
                 name: Execute e2e tests
@@ -102,6 +103,11 @@ commands:
                           else DEBUG=cypress:cli,cypress:server:args,cypress:server:specs,cypress:server:project,cypress:server:browsers,cypress:launcher,cypress:server:video,cypress:server:preprocessor,cypress:server:plugins,cypress:server:task,cypress:server:socket-base,cypress:server:fixture,cypress:server:record:ci-info ./node_modules/.bin/cypress-tags run -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
                           fi
                        
+            - store_artifacts:
+                path: /cypress-artifacts/art-1
+                destination: artifact-file
+            - store_artifacts:
+                path: /cypress-artifacts/artifacts
 jobs:
   assume-role-development:
         executor: docker-python
