@@ -74,7 +74,6 @@ commands:
             type: string
           trigger-context:
             type: string
-        working_directory: /cypress-artifacts
         steps:
             - run:
                 name: Execute e2e tests
@@ -104,10 +103,10 @@ commands:
                           fi
                        
             - store_artifacts:
-                path: /cypress-artifacts/art-1
+                path: /tmp/art-1
                 destination: artifact-file
             - store_artifacts:
-                path: /cypress-artifacts/artifacts
+                path: /tmp/artifacts
 jobs:
   assume-role-development:
         executor: docker-python
