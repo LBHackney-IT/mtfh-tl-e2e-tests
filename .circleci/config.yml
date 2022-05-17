@@ -135,7 +135,6 @@ jobs:
         parameters:
             stage:
                 type: string
-        working_directory: /tmp
         steps:
           - when:
               condition: << pipeline.parameters.external_trigger >> 
