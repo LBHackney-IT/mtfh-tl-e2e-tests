@@ -107,6 +107,7 @@ commands:
                 destination: artifact-file
             - store_artifacts:
                 path: /tmp/artifacts
+
 jobs:
   assume-role-development:
         executor: docker-python
@@ -134,6 +135,7 @@ jobs:
         parameters:
             stage:
                 type: string
+        working_directory: /tmp
         steps:
           - when:
               condition: << pipeline.parameters.external_trigger >> 
