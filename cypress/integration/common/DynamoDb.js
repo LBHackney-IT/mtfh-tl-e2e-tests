@@ -1,4 +1,3 @@
-
 const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')
 const secretAccessKey= Cypress.env('AWS_SECRET_ACCESS_KEY')
 const AWS = require("aws-sdk");
