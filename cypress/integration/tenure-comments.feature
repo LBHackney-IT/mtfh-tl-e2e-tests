@@ -27,12 +27,12 @@ Feature: Tenure Comment
       And I create a comment
       Then I can see the same comments in the linked entities
 
-      # Note: The id under the checkbox is the id for linked enttity e.g. person 
+      # Note: The id under the checkbox is the id for linked enttity e.g. person
       Examples:
         | commentType| tenureId                             | checkbox                             |
         | tenure     | fde50d68-84c3-c166-6338-895c12ebf8fd | 0fb4997e-17a9-4373-6211-40b374f01533 |
 
-    @device    
+    @device
     Scenario Outline: I go to create a comment for a tenure page on a device
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       And I am using a mobile viewport "<device>"
@@ -62,8 +62,8 @@ Feature: Tenure Comment
       | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-note9 | Appointments         |
       | tenure        | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | samsung-s10   | Appointments         |
 
-    @Positive  
-    Scenario Outline: Save comment for tenure 
+    @Positive
+    Scenario Outline: Save comment for tenure
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       When I enter a valid title
       And I enter a valid comment
@@ -75,14 +75,14 @@ Feature: Tenure Comment
       Examples:
         | commentType | tenureId                               | category     |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   | Appointments |
-    
+
     @SmokeTest
     @Negative
       Scenario Outline: User cannot submit a comment without mandatory fields
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
       And I click the save comment button
-      Then I can see a specific validation message for the field "<validationMessage>" 
+      Then I can see a specific validation message for the field "<validationMessage>"
 
       Examples:
       | commentType  | tenureId                               | commentTitle | commentDescription | commentCategory | validationMessage                              |
@@ -102,7 +102,7 @@ Feature: Tenure Comment
       Examples:
         | commentType | tenureId                             |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
-  
+
     @Positive
     @SmokeTest
     Scenario Outline: Character limit counter
@@ -112,9 +112,9 @@ Feature: Tenure Comment
 
       Examples:
         | commentType | tenureId                              | characters |
-        # | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 2          |
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 99         |         
-        # | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 350        | 
+         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 2          |
+        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 99         |
+         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 350        |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 500        |
 
     @Negative
@@ -127,7 +127,7 @@ Feature: Tenure Comment
       Examples:
         | commentType | tenureId                               | characters |
         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   | 502        |
-        # | tenure      |5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 508        |
+         | tenure      |5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 508        |
 
     @Accessibility
     Scenario Outline: Accessibility Testing for tenure

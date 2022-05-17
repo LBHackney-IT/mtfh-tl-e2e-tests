@@ -13,9 +13,5 @@
     "openMode": 0
   },
   "chromeWebSecurity": false,
-  "video": false,
-  "env": {
-    "ENVIRONMENT": "development",
-    "E2E_ACCESS_TOKEN_DEV":""
-  }
+  "video": true
 }

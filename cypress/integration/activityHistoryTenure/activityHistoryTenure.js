@@ -11,7 +11,7 @@ Then('tenure migrated activity history is displayed', () => {
     activityHistoryTenure.activityHistoryTenureActivities().contains('Tenure migrated')
 })
 
-Then('I click close activity history', () => {
+When('I click close activity history', () => {
     activityHistoryTenure.closeActivityHistoryButton().click()
 })
 

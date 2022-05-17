@@ -15,7 +15,7 @@ Feature: Activity History for Tenure
     Scenario Outline: View Tenure activity history page
       Given I go to the tenure activity history for "<tenure>"
       Then the tenure activity history is displayed
-      Then I click close activity history
+      When I click close activity history
       And I am on the tenure page for "<tenure>"
 
       Examples:

@@ -21,7 +21,7 @@ Feature: Tenure page
       And the start date for the tenure record is before 31 December 2013
       When I view this tenure
       Then the Scanned historic tenure records button is displayed
-      
+
       Examples:
       | startOfTenureDate  |
       | 2013-12-31         |
@@ -32,10 +32,10 @@ Feature: Tenure page
       And the start date for the tenure record is before 31 December 2013
       When I view this tenure
       Then the Scanned historic tenure records button is not displayed
-  
+
       Examples:
       | startOfTenureDate  |
-      | 2014-01-01         |    
+      | 2014-01-01         |
 
     Scenario: View household member
       Given There are household members for the tenure
@@ -67,25 +67,25 @@ Feature: Tenure page
       Then the residents details accordion information is displayed
 
       Examples:
-        | device        | 
-        # | ipad-2        | 
-        # | ipad-mini   | 
-        | iphone-3      | 
-        | iphone-4      | 
-        | iphone-5      | 
-        | iphone-6      | 
-        | iphone-6+     | 
-        | iphone-7      | 
-        | iphone-8      | 
-        | iphone-x      | 
-        | iphone-xr     | 
-        | iphone-se2    | 
-        # | macbook-11    | 
-        # | macbook-13    | 
-        # | macbook-15    | 
-        # | macbook-16    | 
-        # | samsung-note9 | 
-        | samsung-s10   | 
+        | device        |
+        # | ipad-2        |
+        # | ipad-mini   |
+        | iphone-3      |
+        | iphone-4      |
+        | iphone-5      |
+        | iphone-6      |
+        | iphone-6+     |
+        | iphone-7      |
+        | iphone-8      |
+        | iphone-x      |
+        | iphone-xr     |
+        | iphone-se2    |
+        # | macbook-11    |
+        # | macbook-13    |
+        # | macbook-15    |
+        # | macbook-16    |
+        # | samsung-note9 |
+        | samsung-s10   |
 
     @Accessibility
     Scenario: Accessibility Testing

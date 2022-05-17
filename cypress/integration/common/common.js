@@ -105,6 +105,7 @@ Given("I want to create a person", async () => {
 Given("I create a new tenure", async () => {
   cy.log("Creating new tenure record");
   const response = await tenure.createTenure();
+  //const response = await tenure.createTenureWithStartDate();
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Tenure Id for record ${response.data.id} created!`);
   tenureId = response.data.id
@@ -181,7 +182,8 @@ And('I click on the breadcrumb', () => {
 })
 
 Then('I am taken to the search page', () => {
-  cy.url().should('contain', "search")
+ // cy.url().should('contain', "search")
+  cy.findAllByText("Search");
 })
 
 And('I click on the view property button', () => {
@@ -248,6 +250,17 @@ Then(
       .searchResults()
       .contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
   }
+);
+Then(
+    "search results are displayed by the best match {string}",
+    (searchTerm) => {
+      if (searchTerm === "guid") {
+        searchTerm = guid;
+      }
+      searchPage
+          .searchResults()
+          .contains(searchTerm.replace(/\s/g, ""), { matchCase: false });
+    }
 );
 
 Then("the default sort option is correct", () => {
@@ -454,6 +467,14 @@ When("I click update person button", () => {
   // personContactPage.doneButton().click();
   dateCaptureDay = date.format(now, "DD/MM/YY");
   dateCaptureTime = date.format(now, "HH:mm");
+});
+
+When("I click update person button", () => {
+  addPersonPage.updatePersonButton().click();
+  const now = new Date();
+  // personContactPage.doneButton().click();
+  dateCaptureDay = date.format(now, "DD/MM/YY");
+  dateCaptureTime = date.format(now, "H:mm");
 });
 
 And("I click cancel", () => {

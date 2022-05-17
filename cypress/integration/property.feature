@@ -14,7 +14,7 @@ Feature: Property Page
     @SmokeTest
     Scenario Outline: View property details
       When I view a property "<property>"
-      Then the page breadcrumb is displayed 
+      Then the page breadcrumb is displayed
       Then the property information is displayed
       And the tenure information is displayed
       And I click on the view tenure button
@@ -26,7 +26,7 @@ Feature: Property Page
     @SmokeTest
     Scenario Outline: View property details
       When I view a property "<property>"
-      Then the page breadcrumb is displayed 
+      Then the page breadcrumb is displayed
       Then the property information is displayed
       And the tenure information is displayed
       And I click on the breadcrumb
@@ -70,7 +70,7 @@ Feature: Property Page
     Scenario Outline: Asset API for invalid FE type
       Given I check the asset API with an invalid assetType "<assetId>"
       When I navigate to the asset page "<assetId>"
-      And I am shown an error message 
+      And I am shown an error message
 
       Examples:
       | assetId                              |

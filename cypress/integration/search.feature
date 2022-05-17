@@ -8,7 +8,7 @@ Feature: T&L Search Function
     I want to search for a person or tenure
 
     Background: I am on the search page
-      # Given The feature "MMH.SearchTenure" is false
+       Given The feature "MMH.SearchTenure" is false
       Given I am logged out
       Given I am logged in
       Given I am on the search page
@@ -26,7 +26,7 @@ Feature: T&L Search Function
       | characters | searchType |
       | An         | Property   |
 
-  @SmokeTest 
+  @SmokeTest
   @Positive
   Scenario Outline: Execute property searches
     And I click on the search again button
@@ -43,7 +43,7 @@ Feature: T&L Search Function
       | Avenue     | Property     |
       | castle     | Property     |
 
-  @SmokeTest 
+  @SmokeTest
   @Positive
   Scenario Outline: Execute person searches
     And I click on the search again button
@@ -62,7 +62,7 @@ Feature: T&L Search Function
       # | Trev       | Person     |
       # | Victor     | Person     |
 
-  @SmokeTest 
+  @SmokeTest
   @Positive
   Scenario Outline: Execute tenure searches
     And I click on the search again button
@@ -80,7 +80,7 @@ Feature: T&L Search Function
       | castle     | Tenure     |
 
 
-  @SmokeTest 
+  @SmokeTest
   @Positive
   Scenario Outline: Execute tenure searches
     And I click on the search again button
@@ -109,7 +109,7 @@ Feature: T&L Search Function
 
     Examples:
       | device        | characters  | searchType |
-      | ipad-2        | Andrew      | Person     | 
+      | ipad-2        | Andrew      | Person     |
       | ipad-mini     | Alan        | Person     |
       | iphone-3      | Christopher | Person     |
       | iphone-4      | Jeff        | Person     |
@@ -128,7 +128,7 @@ Feature: T&L Search Function
       | samsung-note9 | Jodie       | Person     |
       | samsung-s10   | Molly       | Person     |
 
-  @SmokeTest    
+  @SmokeTest
   @Positive
   Scenario Outline: Wildcard and partial searches
     And I click on the search again button
@@ -164,7 +164,7 @@ Feature: T&L Search Function
       # | elqsn      | Tenure     |
       # | !!!!!!!    | Person     |
 
-  @SmokeTest     
+  @SmokeTest
   @Positive
   @ignore
   Scenario Outline: Multiple search criteria
@@ -172,7 +172,7 @@ Feature: T&L Search Function
     When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
-    Then the search results are displayed by best match "<characters>"
+    Then search results are displayed by the best match "<characters>"
 
     Examples:
       | characters     | searchType |
@@ -185,7 +185,7 @@ Feature: T&L Search Function
     When I click on the radio button for "<searchType>"
     When I enter any of the following criteria "<characters>"
     And I click on the search button
-    Then a validation error message is displayed  
+    Then a validation error message is displayed
 
     Examples:
       | characters | searchType |
@@ -270,14 +270,14 @@ Feature: T&L Search Function
   @SmokeTest
   @Negative
   Scenario Outline: Search validation scenario
-    Given I am on the search page
+    And I click on the search again button
     When I click on the radio button for "<searchType>"
     And I enter any of the following criteria "<characters>"
     And I click on the search button
     Then a warning message is displayed for search field
 
     Examples:
-      | characters | searchType | 
-      | A          | Property   | 
-      | B          | Person     | 
-      | C          | Tenure     | 
+      | characters | searchType |
+      | A          | Property   |
+      | B          | Person     |
+      | C          | Tenure     |

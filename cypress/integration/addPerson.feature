@@ -26,7 +26,7 @@ Feature: Add a new person to a tenure
     Examples:
       | tenure                               |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 |
-  
+
   @SmokeTest
   @Positive
   Scenario Outline: Add a new person to a tenure

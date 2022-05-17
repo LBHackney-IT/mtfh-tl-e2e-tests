@@ -77,7 +77,7 @@ Feature: T&L Person Page
   Scenario Outline: Add a comment for a person navigation
   # Add comment functinality is covered in person-comments.feature
     Given I have loaded a Person record "<record>"
-    # Then the body Person details are displayed
+    Then the body Person details are displayed
     When I click on the add comment button
     Then I am taken to the add comment for person page "<record>"
 
