@@ -28,40 +28,40 @@ Feature: T&L Person Page
       | record                               |
       | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
 
-  @device
-  Scenario Outline: View person details device view
-    Given I have loaded a Person record "<record>"
-    When I am using a mobile viewport "<device>"
-    Then the personal details are displayed on the mobile content container
-    When I click on the more personal details accordion
-    Then the body Person details are displayed
-    When I click on the more personal details accordion
-    When I click on the more tenure details accordion
-    Then the body tenure details are displayed
-    When I click on the more tenure details accordion
-    When I click on the equality details accordion
-    Then the equality information is displayed
-
-    Examples:
-      | device        | record                               |
-      # | ipad-2        | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | ipad-mini     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-3      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-4      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-5      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-6      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-6+     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-7      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-8      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-x      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-xr     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-se2    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-11    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-13    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-15    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-16    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | samsung-note9 | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | samsung-s10   | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#  @device
+#  Scenario Outline: View person details device view
+#    Given I have loaded a Person record "<record>"
+#    When I am using a mobile viewport "<device>"
+#    Then the personal details are displayed on the mobile content container
+#    When I click on the more personal details accordion
+#    Then the body Person details are displayed
+#    When I click on the more personal details accordion
+#    When I click on the more tenure details accordion
+#    Then the body tenure details are displayed
+#    When I click on the more tenure details accordion
+#    When I click on the equality details accordion
+#    Then the equality information is displayed
+#
+#    Examples:
+#      | device        | record                               |
+#      # | ipad-2        | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      # | ipad-mini     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-3      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-4      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-5      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-6      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-6+     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-7      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-8      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-x      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-xr     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | iphone-se2    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      # | macbook-11    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      # | macbook-13    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      # | macbook-15    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      # | macbook-16    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      # | samsung-note9 | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+#      | samsung-s10   | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
 
   @SmokeTest
   Scenario Outline: Look for record that does not exist
