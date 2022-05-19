@@ -14,6 +14,7 @@ This sets the environment context. It can be set to `local`, `development`, `sta
 This sets the access token depending upon the environment, you can create one for `local`, `dev`, `staging` and `prod` and set their properties accordingly.
 
 >"ASSET_ENDPOINT": ${assetEndpoint}
+> 
 
 >"CONTACT_DETAILS_ENDPOINT": ${contactDetailsEndpoint}
 
