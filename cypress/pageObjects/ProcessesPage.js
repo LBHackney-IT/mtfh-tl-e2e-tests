@@ -45,6 +45,21 @@ class ProcessesPageObjects{
         return cy.get(".lbh-back-link")
     }
 
+    yourName(yourName){
+        return cy.get("#i1");
+    }
+
+    propertyAddress(propertyAddress){
+        return cy.get("#i5");
+    }
+    propertyReference(propertyRef){
+        return cy.get("#i9");
+    }
+    tenancyReference(tenancyRef){
+        return cy.get("#i17");
+    }
+
+
 }
 
 export default ProcessesPageObjects

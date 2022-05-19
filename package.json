@@ -70,7 +70,8 @@
     "cypress-social-logins": "^1.11.3",
     "glob-parent": ">=5.1.2",
     "set-value": ">=4.0.1",
-    "ws": ">=6.2.2"
+    "ws": ">=6.2.2",
+    "cypress-xpath": "^1.6.2"
   },
   "dependencies": {
     "aws-sdk": "^2.1020.0",
