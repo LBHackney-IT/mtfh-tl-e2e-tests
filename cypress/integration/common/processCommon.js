@@ -33,12 +33,23 @@ Then ('I can see a list of processes', ()=>{
     processesPage.processesMenuList().should('be.visible')
 })
 
-And('I select a process {string}', (process) => {
+When('I select a process {string}', (process) => {
     processesPage.processOption(process).click()
 })
 
-And('I select a sub process {string}', (subProcess) => {
-    processesPage.subProcessOption(subProcess).click()
+Then("I am on the google form Tenancy Change and can see the data {string} {string} {string} {string}", (yourName,propertyAddress,propertyReference,tenancyReference) => {
+    cy.findAllByText('Other tenancy changes').invoke('removeAttr', 'target').click()
+    cy.url()
+        .should('include', 'https://docs.google.com/forms/d/e/1FAIpQLSdgJ9DSgGI0Aj7GO1bzLbbrArPabjS8DQwmvwb9ltB-qYYESA/viewform')
+    cy.findAllByText('Tenancy Change');
+
+    // cy.log('cy.xpath("//form[1]//div[1]//div[1]//input[2]").invoke(\'show\')').v
+    // cy.xpath("//form[1]//div[1]//div[1]//input[2]").invoke('show').contains('FAKE_Julie FAKE_Davies')
+
+    // processesPage.propertyAddress().should('contain',propertyAddress);
+    // processesPage.propertyReference().should('contain',propertyReference);
+    // processesPage.tenancyReference().should('contain',tenancyReference);
+
 })
 
 Then('I am taken to the landing page for that process', (subProcess) => {

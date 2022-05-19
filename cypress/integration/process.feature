@@ -39,13 +39,14 @@ Scenario Outline: Initiate sole to joint process from tenure
     When I select New Process menu "<processType>"
     Then I am directed to the main process landing page
     And I can see a list of processes
-    And I select a process "<process>"
-    And I select a sub process "<subProcess>"
-    
+    When I select a process "<process>"
+    # The below line has been commented becoz it needs user authentication to go to the google form
+    #And I select a sub process "<subProcess>"
+    Then I am on the google form Tenancy Change and can see the data "<yourName>" "<propertyAddress>" "<propertyRef>" "<tenancyReference>"
 
         Examples:
-        | tenure                               | processType | process              | subProcess                          |
-        | e832a76f-8bcf-238c-7ad1-6ef1b408b316 | tenure      | Changes to a tenancy | Sole tenant requests a joint tenure |
+        | tenure                               | processType | process               | subProcess                          |  yourName            | propertyAddress       |propertyRef|tenancyReference|
+        | e832a76f-8bcf-238c-7ad1-6ef1b408b316 | tenure      | Other tenancy changes | Sole tenant requests a joint tenure |FAKE_Julie FAKE_Davies|34A Craven Walk N16 6BU|00046299   |FN00046299      |
 
 # Refactor for stateless tests is WIP. Will update this test once refactoring is completed.
 # @Positive
