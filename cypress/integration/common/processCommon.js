@@ -38,7 +38,7 @@ When('I select a process {string}', (process) => {
 })
 
 Then("I am on the google form Tenancy Change and can see the data {string} {string} {string} {string}", (yourName,propertyAddress,propertyReference,tenancyReference) => {
-    cy.findAllByText('Other tenancy changes').invoke('removeAttr', 'target').click()
+    cy.findAllByText('Other tenancy changes').invoke('removeAttr', 'target').click();
     cy.url()
         .should('include', 'https://docs.google.com/forms/d/e/1FAIpQLSdgJ9DSgGI0Aj7GO1bzLbbrArPabjS8DQwmvwb9ltB-qYYESA/viewform')
     cy.findAllByText('Tenancy Change');

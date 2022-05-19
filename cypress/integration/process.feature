@@ -41,8 +41,9 @@ Scenario Outline: Initiate sole to joint process from tenure
     And I can see a list of processes
     When I select a process "<process>"
     # The below line has been commented becoz it needs user authentication to go to the google form
-    #And I select a sub process "<subProcess>"
-    Then I am on the google form Tenancy Change and can see the data "<yourName>" "<propertyAddress>" "<propertyRef>" "<tenancyReference>"
+    # And I select a sub process "<subProcess>"
+    #TO DO -> google form opens and need authorization
+   # Then I am on the google form Tenancy Change and can see the data "<yourName>" "<propertyAddress>" "<propertyRef>" "<tenancyReference>"
 
         Examples:
         | tenure                               | processType | process               | subProcess                          |  yourName            | propertyAddress       |propertyRef|tenancyReference|
