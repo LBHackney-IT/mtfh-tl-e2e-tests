@@ -118,6 +118,10 @@ class CreateTenurePageObjects {
     confirmRemovePersonButton() {
         return cy.contains('Remove person')
     }
+
+    confirmTenureUpdatedText() {
+        return cy.get('.lbh-page-announcement__title');
+    }
 }
 
 export default CreateTenurePageObjects

@@ -555,6 +555,10 @@ Then('the cancel modal is displayed', () => {
   modal.modalBody().should('be.visible')
 })
 
+Then('the warning modal is displayed', () => {
+  modal.modalBody().should('be.visible')
+})
+
 When('I click cancel on the modal', () => {
   modal.cancelButton().click()
 })
