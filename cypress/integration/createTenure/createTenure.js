@@ -130,7 +130,7 @@ When('I navigate to a create person for new tenure {string} {string}', (property
     createTenurePage.createNewPerson(property, tenure)
 })
 
-Given('I delete all existing persons from the new tenure {string}', async (tenureId) => {
+Given('I delete all existing persons from the tenure {string}', async (tenureId) => {
     // GET the list of people from the tenure
     const getResponse = await tenure.getTenure(tenureId)
     cy.log(`Status code ${getResponse.status} returned`)
@@ -159,4 +159,17 @@ Then('the tenure end date is editable', () => {
     createTenurePage.tenureEndDateDayContainer().should('be.enabled')
     createTenurePage.tenureEndDateMonthContainer().should('be.enabled')
     createTenurePage.tenureEndDateYearContainer().should('be.enabled')
+});
+Then("the information text is displayed", () => {
+    modal.modalBody().should('be.visible');
+    modal.modalBody().should('contain', 'Are you sure you want to change the status of the tenure to inactive? The tenure will no longer be editable.' );
+});
+
+When("I enter a tenure end date as {string} {string} {string}", (day, month, year) => {
+    createTenurePage.tenureEndDateDayContainer().clear().type(day);
+    createTenurePage.tenureEndDateMonthContainer().clear().type(month);
+    createTenurePage.tenureEndDateYearContainer().clear().type(year);
+});
+Then("the tenure information is displayed with the page heading Tenure updated", () => {
+    createTenurePage.confirmTenureUpdatedText().should('contain', 'Tenure updated');
 })

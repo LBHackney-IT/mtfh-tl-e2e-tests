@@ -24,7 +24,8 @@ Feature: Create tenure
 
     Examples:
         | property                             | tenureType | startDay | startMonth | startYear |
-        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
+        | 05f2a78d-bc9d-255d-0c1c-98e7add1ca95 | Non-Secure   | 01       | 01         | 2000      |
+     #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
 
   @ignore
   @SmokeTest
@@ -216,8 +217,8 @@ Feature: Create tenure
 
         Examples:
         | tenure                               | tenureType |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold   |
-        # | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Secure     |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
+        # | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Secure     |
 
     Scenario Outline: Edit existing tenure and cancel
         When I view a Tenure "<tenure>"
@@ -236,7 +237,27 @@ Feature: Create tenure
 
         Examples:
         | tenure                               | tenureType |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold   |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
+
+  Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
+    When I view a Tenure "<tenure>"
+    Then the tenure information is displayed
+    And I click edit tenure
+    Then the edit tenure information is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure end date as "<day>" "<month>" "<year>"
+    And I click the next button
+    Then the warning modal is displayed
+    And the information text is displayed
+    When I click cancel on the modal
+    Then the edit tenure information is displayed
+    # When the below steps are executed the test data will be unvailable for the next run as edit tenure button will not be displayed
+    #When I click yes on the modal
+    #Then the tenure information is displayed with the page heading Tenure updated
+
+    Examples:
+      | tenure                               | tenureType | day | month | year |
+      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |  20 |  05   | 2022 |
 
     Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
         When I view a Tenure "<tenure>"
@@ -295,7 +316,7 @@ Feature: Create tenure
         Examples:
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
         | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
-        
+
 
     @ignore
     Scenario Outline: Create person for new tenure validation
@@ -325,7 +346,7 @@ Feature: Create tenure
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
         | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
 
-    @regression  
+    @regression
     Scenario Outline: End dates are editable for all tenure types
       When I edit a Tenure "<tenure>"
       When I select a tenure type "<tenureType>"
@@ -333,25 +354,25 @@ Feature: Create tenure
 
       Examples:
         | tenure                               | tenureType       |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold         |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Freehold (Serv)  |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Introductory     |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Leasehold (RTB)  |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | License Temp Ac  |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Lse 100% Stair   |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Mesne Profit Ac  |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Non-Secure       |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Private Sale LH  |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Rent To Mortgage |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Secure           |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Shared Equity    |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Shared Owners    |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Short Life Lse   |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Annex       |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp B&B         |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Decant      |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Hostel      |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Hostel Lse  |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Private Lt  |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Temp Traveller   |
-        | 4d261cd3-c2d3-88ac-4df3-b0d235414056 | Tenant Acc Flat  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold         |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold (Serv)  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Introductory     |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Leasehold (RTB)  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | License Temp Ac  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Lse 100% Stair   |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Mesne Profit Ac  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Non-Secure       |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Private Sale LH  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Rent To Mortgage |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Secure           |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Shared Equity    |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Shared Owners    |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Short Life Lse   |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Annex       |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp B&B         |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Decant      |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Hostel      |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Hostel Lse  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Private Lt  |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Traveller   |
+        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Tenant Acc Flat  |
