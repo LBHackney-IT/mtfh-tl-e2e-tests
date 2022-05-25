@@ -1,6 +1,7 @@
 # MTFH e2e Tests
 
 #### Getting started:
+
 Install the local dependencies using `npm install`
 
 ### Environment variables
