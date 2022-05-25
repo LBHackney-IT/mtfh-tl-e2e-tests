@@ -29,7 +29,7 @@ Feature: Create tenure
 
 
   @SmokeTest
-  Scenario Outline: Create new tenure search and select resident to test add person
+  Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
     When I view a property "<property>"
     When I click on the new tenure button
     Then I am on the create new tenure page "<property>"
@@ -52,7 +52,7 @@ Feature: Create tenure
 
     Examples:
         | property                             | tenureType | startDay | startMonth | startYear | searchTerm |
-        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        |
+        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 21       | 05         | 2022      | tre        |
 
   @ignore
     @SmokeTest
