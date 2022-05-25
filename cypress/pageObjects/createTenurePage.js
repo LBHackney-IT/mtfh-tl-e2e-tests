@@ -96,7 +96,8 @@ class CreateTenurePageObjects {
     }
 
     pageAnnouncementContainer() {
-        return cy.contains('.lbh-page-announcement__title')
+        //return cy.contains('.lbh-page-announcement__title')
+       return cy.get('.lbh-page-announcement');
     }
 
     addedHouseholdMembersContainer() {

@@ -27,8 +27,35 @@ Feature: Create tenure
         | 05f2a78d-bc9d-255d-0c1c-98e7add1ca95 | Non-Secure   | 01       | 01         | 2000      |
      #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
 
-  @ignore
+
   @SmokeTest
+  Scenario Outline: Create new tenure search and select resident to test add person
+    When I view a property "<property>"
+    When I click on the new tenure button
+    Then I am on the create new tenure page "<property>"
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
+    When I enter any of the following criteria "<searchTerm>"
+    And I click on the search button
+    Then the search results are displayed by best match "<searchTerm>"
+    When I add 1 named tenure holder
+    Then the person is added to the tenure
+      ###   The below 2 steps are throwing an error in UI when adding the same person as householder member'The person is already added'
+#    When I add 1 household member
+#    Then the person is added to the tenure
+#    And I click the done button
+#    Then the message New tenure completed is displayed
+#    Then the tenure information is displayed
+
+    Examples:
+        | property                             | tenureType | startDay | startMonth | startYear | searchTerm |
+        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        |
+
+  @ignore
+    @SmokeTest
   Scenario Outline: Create new tenure search and select resident
     When I view a property "<property>"
     When I click on the new tenure button
@@ -46,12 +73,12 @@ Feature: Create tenure
     When I add 1 household member
     Then the person is added to the tenure
     And I click the done button
-    Then the tenure is complete
+    Then the message New tenure completed is displayed
     Then the tenure information is displayed
 
     Examples:
-        | property                             | tenureType | startDay | startMonth | startYear | searchTerm |
-        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        |
+      | property                             | tenureType | startDay | startMonth | startYear | searchTerm |
+      | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        |
 
   @ignore
   Scenario Outline: Create new tenure and filter search

@@ -7,6 +7,7 @@
       <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure/createTenure.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure/createTenure.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/pageObjects/createTenurePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/createTenurePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/tenurePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/tenurePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +67,7 @@
       <workItem from="1651744853116" duration="1551000" />
       <workItem from="1652870372452" duration="16218000" />
       <workItem from="1653308261836" duration="416000" />
+      <workItem from="1653467882599" duration="5904000" />
     </task>
     <servers />
   </component>

@@ -22,6 +22,10 @@ class TenurePageObjects {
     return cy.get("#tenure-details");
   }
 
+  newTenureCompleted() {
+    return cy.findAllByText('New tenure completed');
+  }
+
   tenureResidentsContainer() {
     return cy.get("#resident-details");
   }
