@@ -4,7 +4,7 @@ class HeaderObjects {
     }
 
     headerServiceName() {
-        return cy.get('.lbh-header__service-name')
+        return cy.get(".lbh-header__service-name");
     }
 
     headerLinks() {
@@ -13,7 +13,7 @@ class HeaderObjects {
 
     headerIsDisplayed() {
         this.headerMain().should('be.visible')
-        this.headerServiceName().contains('Manage my Home')
+        this.headerServiceName().should('contain', 'Manage My home');
     }
 }
 export default HeaderObjects
