@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9be794bd-c78b-413e-8979-5fb89fc2d437" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/cypress/integration/discretionAlert.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/integration/discretionAlert/discretionAlert.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/personPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/personPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/tenurePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/tenurePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +68,7 @@
       <workItem from="1652870372452" duration="16218000" />
       <workItem from="1653308261836" duration="416000" />
       <workItem from="1653467882599" duration="10831000" />
+      <workItem from="1653555646770" duration="2900000" />
     </task>
     <servers />
   </component>

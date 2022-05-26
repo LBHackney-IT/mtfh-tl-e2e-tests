@@ -99,5 +99,8 @@ class TenurePageObjects {
     this.tenureResidentsContainer().contains("Date of birth");
     this.tenureResidentsContainer().contains("Type");
   }
+  tenureAlert() {
+    return cy.get('.lbh-heading-h2 > .mtfh-icon');
+  }
 }
 export default TenurePageObjects;
