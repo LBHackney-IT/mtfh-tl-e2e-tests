@@ -13,5 +13,6 @@
     "openMode": 0
   },
   "chromeWebSecurity": false,
-  "video": true
+  "video": true,
+  "projectId": "fg82nr"
 }
