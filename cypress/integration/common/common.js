@@ -508,6 +508,11 @@ Then('the tenure information is displayed', () => {
   tenurePage.tenureDetailsContainer().contains("Type");
 })
 
+Then('the message New tenure completed is displayed', () => {
+  //tenurePage.newTenureCompleted().should('be.visible');
+  cy.findAllByText('New tenure completed');
+})
+
 And('I click edit tenure', () => {
   tenurePage.editTenureButton().click()
 })

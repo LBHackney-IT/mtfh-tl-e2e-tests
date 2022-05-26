@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9be794bd-c78b-413e-8979-5fb89fc2d437" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/common/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/common/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure/createTenure.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure/createTenure.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/pageObjects/createTenurePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/createTenurePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +62,7 @@
       <workItem from="1651744853116" duration="1551000" />
       <workItem from="1652870372452" duration="16218000" />
       <workItem from="1653308261836" duration="416000" />
+      <workItem from="1653467882599" duration="10831000" />
     </task>
     <servers />
   </component>

@@ -84,8 +84,8 @@ When('I add {int} named tenure holder', (tenureHolders) => {
 })
 
 Then('the person is added to the tenure', () => {
-    createTenurePage.pageAnnouncementContainer().should('be.visible')
-    createTenurePage.pageAnnouncementContainer().contains('Person added to tenure')
+    // createTenurePage.pageAnnouncementContainer().should('be.visible')
+     createTenurePage.pageAnnouncementContainer().should('contain', 'Person added to tenure');
 })
 
 Then('the person is not added to the tenure', () => {
