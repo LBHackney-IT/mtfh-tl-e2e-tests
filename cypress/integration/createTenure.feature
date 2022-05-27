@@ -37,6 +37,7 @@ Feature: Create tenure
 @ignore
   @SmokeTest
   Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
+  #Then I can delete a created record from DynamoDb "<tableName>"
     When I view a property "<property>"
     When I click on the new tenure button
     Then I am on the create new tenure page "<property>"
@@ -50,6 +51,7 @@ Feature: Create tenure
     Then the search results are displayed by best match "<searchTerm>"
     When I add 1 named tenure holder
     Then the person is added to the tenure
+  #Then I can delete a created record from DynamoDb "<tableName>"
       ###   The below 2 steps are throwing an error in UI when adding the same person as householder member'The person is already added'
 #    When I add 1 household member
 #    Then the person is added to the tenure
@@ -58,8 +60,8 @@ Feature: Create tenure
 #    Then the tenure information is displayed
 
     Examples:
-        | property                             | tenureType | startDay | startMonth | startYear | searchTerm |
-        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 21       | 05         | 2022      | tre        |
+        | property                             | tenureType | startDay | startMonth | startYear | searchTerm |tableName          |
+        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 21       | 05         | 2022      | tre        |TenureInformation  |
 
   @ignore
     @SmokeTest

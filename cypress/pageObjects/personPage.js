@@ -143,6 +143,12 @@ class PersonPageObjects {
     newProcess(){
         return cy.contains('New Process')
     }
-    
+
+    discretionAlertPerson() {
+        return cy.get('#accordion-heading-discretion-alert');
+    }
+    personAlert() {
+        return cy.get('.lbh-heading-h4 > .mtfh-icon');
+    }
 }
 export default PersonPageObjects
