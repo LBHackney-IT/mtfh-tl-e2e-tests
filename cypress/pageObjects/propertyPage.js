@@ -30,6 +30,10 @@ class PropertyPageObjects {
         return cy.contains('New tenure')
     }
 
+    tenureStatus(){
+        return cy.contains('Active');
+    }
+
     newProcess(){
         return cy.contains('New Process')
     }

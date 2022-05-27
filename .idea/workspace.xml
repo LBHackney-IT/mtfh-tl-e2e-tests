@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/cypress/integration/createTenure.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/createTenure.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/pageObjects/personPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/personPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/pageObjects/tenurePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/tenurePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/property.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/property.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/property/property.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/property/property.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
