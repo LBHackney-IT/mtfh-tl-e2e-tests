@@ -46,8 +46,8 @@ Then('I set the the repair type to {string}', (repairType) => {
 And('the repairs card list is displayed {string}', (repairType) => {
     propertyPage.repairsCardList().contains(repairType)
 })
- Then("Tenure information displays status as Active", () => {
-    propertyPage.tenureStatus().should('be.visible');
+ Then("Tenure information displays status as Inactive", () => {
+    propertyPage.tenureStatusInactive().should('be.visible');
  });
 Then("New Tenure button should be displayed", () => {
     propertyPage.newTenureButton().should('be.visible');
