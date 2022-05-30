@@ -58,6 +58,50 @@ class ProcessesPageObjects{
     tenancyReference(tenancyRef){
         return cy.get("#i17");
     }
+    headingSoleTenantRequestsAJointTenure(){
+        return cy.findAllByText('Sole tenant requests a joint tenure');
+    };
+    personRadioButton(){
+        return cy.get('.govuk-radios__input');
+    };
+    textAutomaticEligibiltyChecksPassed(){
+        return cy.findAllByText('Passed automatic eligibilty checks');
+    };
+    textAutomaticChecksFailed(){
+        return cy.findAllByText('Not eligible for a sole to joint tenure');
+    };
+    questionNoticeSeekingPossesion(){
+        return cy.get('#person-form-seeking-possesion');
+    };
+    questionTenantRentArrears(){
+        return cy.get('#person-form-rent-arrears');
+    };
+    buttonCloseCase(){
+        return cy.get("[data-testid=soletojoint-CheckEligibility] > .govuk-button");
+    };
+    selectYesFor12Months(){
+        //return cy.get('#person-form-type-tenure-holder');
+        return cy.get(":nth-child(2) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+    };
+    selectNoForOccupyanyOther() {
+        //return cy.get('#person-form-type-household-member');
+        return cy.get(":nth-child(3) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
+    };
+    selectYesForSurvivorOfOne() {
+        return cy.get(":nth-child(4) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+    }
+    selectYesForTenantEvicted() {
+        return cy.get(":nth-child(5) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
+    }
+    selectYesForImmigrationControl () {
+        return cy.get(":nth-child(6) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
+    }
+    selectYesForLiveNotice() {
+        return cy.get("#person-form-seeking-possesion-no");
+    }
+    selectYesForRentArrears() {
+        return cy.get("#person-form-rent-arrears-no");
+    }
 
 
 }

@@ -32,6 +32,9 @@ class PropertyPageObjects {
 
     tenureStatus(){
         return cy.contains('Active');
+    };
+    tenureStatusInactive(){
+        return cy.contains('Inactive');
     }
 
     newProcess(){

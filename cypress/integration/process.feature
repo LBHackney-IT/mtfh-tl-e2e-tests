@@ -41,7 +41,7 @@ Scenario Outline: Initiate sole to joint process from tenure
     And I can see a list of processes
     When I select a process "<process>"
     # The below line has been commented becoz it needs user authentication to go to the google form
-    # And I select a sub process "<subProcess>"
+    #### Delete this line -> And I select a sub process "<subProcess>"
     #TO DO -> google form opens and need authorization
    # Then I am on the google form Tenancy Change and can see the data "<yourName>" "<propertyAddress>" "<propertyRef>" "<tenancyReference>"
 
@@ -90,3 +90,48 @@ Scenario Outline: Selecting back or cancelling out of the process
         Examples:
         | tenure                               |
         | 0d4f614c-32a7-e12b-f652-ceac6677a229 |
+
+ Scenario Outline: Add last 2 questions in the Eligibility Checks
+        Given I select to initiate a Sole To Joint process "<tenure>"
+        When I accept the terms and conditions
+        And I click the start process button
+        Then Sole tenant requests a joint tenure page is displayed
+        When I select a person to add as a joint tenant
+        And I click the next button
+        Then Eligibility checks passed page is displayed
+        And I can see Further eligibility questions
+
+        Examples:
+            | tenure                               |
+            | 730a4a17-28fd-ed21-e164-dbfc21264d75 |
+
+Scenario Outline: Test to verify Automatic checks fail
+    Given I select to initiate a Sole To Joint process "<tenure>"
+    When I accept the terms and conditions
+    And I click the start process button
+    Then Sole tenant requests a joint tenure page is displayed
+    When I select a person to add as a joint tenant
+    And I click the next button
+    Then Automatic Eligibility checks Failed page is displayed
+    And Close case button is displayed
+
+    Examples:
+        | tenure                               |
+        | e9228ada-76db-ee09-29ee-8991c6fc5302 |
+
+  Scenario Outline: Test to verify Automatic checks Pass and Manual Checks Fail
+    Given I select to initiate a Sole To Joint process "<tenure>"
+    When I accept the terms and conditions
+    And I click the start process button
+    Then Sole tenant requests a joint tenure page is displayed
+    When I select a person to add as a joint tenant
+    And I click the next button
+    Then Eligibility checks passed page is displayed
+    And I can see Further eligibility questions
+    When I select the answers for these questions
+    And I click the next button
+    Then the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'
+
+    Examples:
+      | tenure                               |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 |
