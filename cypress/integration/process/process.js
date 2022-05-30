@@ -40,4 +40,39 @@ Then("I am taken back to the processes menu {string}", (tenureId) => {
 
 When("I click the back link", () => {
     processPage.backLink().click()
+});
+Then("Sole tenant requests a joint tenure page is displayed", () => {
+    processPage.headingSoleTenantRequestsAJointTenure().should('be.visible');
+});
+
+When("I select a person to add as a joint tenant", () => {
+    processPage.personRadioButton().click();
+});
+Then("Eligibility checks passed page is displayed", () => {
+    processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
+});
+Then("I can see Further eligibility questions", () => {
+    processPage.questionNoticeSeekingPossesion().should('be.visible');
+    processPage.questionTenantRentArrears().should('be.visible');
+});
+Then("Automatic Eligibility checks Failed page is displayed", () => {
+    processPage.textAutomaticChecksFailed().should('be.visible');
+});
+Then("Close case button is displayed", () => {
+    processPage.buttonCloseCase().contains('Close case');
+});
+When("I select the answers for these questions",
+    () => {
+        //cy.get('input[name="br11"]').contains('Yes (proposed tenant will be asked for proof e.g. marriage certificate)').click();
+        processPage.selectYesFor12Months().click();
+        processPage.selectNoForOccupyanyOther().click();
+        processPage.selectYesForSurvivorOfOne().click();
+        processPage.selectYesForTenantEvicted().click();
+        processPage.selectYesForImmigrationControl().click();
+        processPage.selectYesForLiveNotice().click();
+        processPage.selectYesForRentArrears();
+    });
+Then("the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'", () => {
+    processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
+    processPage.textAutomaticChecksFailed().should('be.visible');
 })
