@@ -126,12 +126,13 @@ Scenario Outline: Test to verify Automatic checks fail
     Then Sole tenant requests a joint tenure page is displayed
     When I select a person to add as a joint tenant
     And I click the next button
-    Then Eligibility checks passed page is displayed
+    Then I can see the text "<tenant>" adding "<proposedTenant>" in the header section
+    And Eligibility checks passed page is displayed
     And I can see Further eligibility questions
     When I select the answers for these questions
     And I click the next button
     Then the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'
 
     Examples:
-      | tenure                               |
-      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 |
+      | tenure                               | tenant                 | proposedTenant         |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 | FAKE_Claire FAKE_Blake | FAKE_Claire FAKE_Blake |
