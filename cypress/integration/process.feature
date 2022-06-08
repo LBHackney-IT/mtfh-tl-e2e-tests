@@ -134,5 +134,5 @@ Scenario Outline: Test to verify Automatic checks fail
     Then the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'
 
     Examples:
-      | tenure                               | tenant                 | proposedTenant         |
-      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 | FAKE_Claire FAKE_Blake | FAKE_Claire FAKE_Blake |
+      | tenure                               | tenant                       | proposedTenant               |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 | Rabbi FAKE_Claire FAKE_Blake | Rabbi FAKE_Claire FAKE_Blake |

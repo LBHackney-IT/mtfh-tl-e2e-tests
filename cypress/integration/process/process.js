@@ -77,5 +77,5 @@ Then("the page is displayed with the text 'Passed automatic eligibilty checks' a
     processPage.textAutomaticChecksFailed().should('be.visible');
 });
 Then("I can see the text {string} adding {string} in the header section", (tenant, proposedTenant) => {
-    cy.get('.lbh-heading-h2 > :nth-child(3)').should('contain', `${tenant} adding ${proposedTenant}`);
+    cy.contains(`${tenant} adding ${proposedTenant}`);
 });

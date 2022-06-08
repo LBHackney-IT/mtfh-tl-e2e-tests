@@ -87,19 +87,40 @@ class ProcessesPageObjects{
         //return cy.get('#person-form-type-household-member');
         return cy.get(":nth-child(3) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
     };
+
+    // selectYesForSurvivorOfOne() {
+    //     return cy.get(":nth-child(4) > #person-form-personType-field > :nth-child(1) > #person-form-type-household-member");
+    // };
+
     selectYesForSurvivorOfOne() {
         return cy.get(":nth-child(4) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
-    }
+    };
+    selectNoForSurvivorOfOne() {
+        return cy.get(":nth-child(4) > #person-form-personType-field > :nth-child(2) > #person-form-type-tenure-holder");
+    };
     selectYesForTenantEvicted() {
-        return cy.get(":nth-child(5) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
+        return cy.get(":nth-child(5) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+    };
+
+    selectNoForTenantEvicted() {
+        return cy.get(":nth-child(5) > #person-form-personType-field > :nth-child(2) > #person-form-type-tenure-holder");
     }
     selectYesForImmigrationControl () {
-        return cy.get(":nth-child(6) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
-    }
+        return cy.get(":nth-child(6) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+    };
+    selectNoForImmigrationControl () {
+        return cy.get(":nth-child(6) > #person-form-personType-field > :nth-child(2) > #person-form-type-tenure-holder");
+    };
     selectYesForLiveNotice() {
+        return cy.get("#person-form-seeking-possesion-yes");
+    };
+    selectNoForLiveNotice() {
         return cy.get("#person-form-seeking-possesion-no");
-    }
+    };
     selectYesForRentArrears() {
+        return cy.get("#person-form-rent-arrears-yes");
+    };
+    selectNoForRentArrears() {
         return cy.get("#person-form-rent-arrears-no");
     }
 
