@@ -58,6 +58,9 @@ class ProcessesPageObjects{
     tenancyReference(tenancyRef){
         return cy.get("#i17");
     }
+    linkSoleToJoint() {
+        return cy.get('.govuk-details__summary');
+    }
     headingSoleTenantRequestsAJointTenure(){
         return cy.findAllByText('Sole tenant requests a joint tenure');
     };
@@ -77,15 +80,15 @@ class ProcessesPageObjects{
         return cy.get('#person-form-rent-arrears');
     };
     buttonCloseCase(){
-        return cy.get("[data-testid=soletojoint-CheckEligibility] > .govuk-button");
+        return cy.contains("Close Case");
     };
     selectYesFor12Months(){
-        //return cy.get('#person-form-type-tenure-holder');
-        return cy.get(":nth-child(2) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+        return cy.get('#person-form-living-together-yes');
+        //return cy.get(":nth-child(2) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
     };
     selectNoForOccupyanyOther() {
-        //return cy.get('#person-form-type-household-member');
-        return cy.get(":nth-child(3) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
+        return cy.get('#person-form-main-home-no');
+        //return cy.get(":nth-child(3) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
     };
 
     // selectYesForSurvivorOfOne() {
@@ -93,26 +96,27 @@ class ProcessesPageObjects{
     // };
 
     selectYesForSurvivorOfOne() {
-        return cy.get(":nth-child(4) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+        return cy.get("#person-form-survivor-yes");
     };
     selectNoForSurvivorOfOne() {
-        return cy.get(":nth-child(4) > #person-form-personType-field > :nth-child(2) > #person-form-type-tenure-holder");
-    };
-    selectYesForTenantEvicted() {
-        return cy.get(":nth-child(5) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+        return cy.get("#person-form-survivor-no");
     };
 
+    selectYesForTenantEvicted() {
+        return cy.get("#person-form-evicted-yes");
+    };
     selectNoForTenantEvicted() {
-        return cy.get(":nth-child(5) > #person-form-personType-field > :nth-child(2) > #person-form-type-tenure-holder");
+        return cy.get("#person-form-evicted-yes");
     }
+
     selectYesForImmigrationControl () {
-        return cy.get(":nth-child(6) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+        return cy.get("#person-form-immigration-yes");
     };
     selectNoForImmigrationControl () {
-        return cy.get(":nth-child(6) > #person-form-personType-field > :nth-child(2) > #person-form-type-tenure-holder");
+        return cy.get("#person-form-immigration-no");
     };
     selectYesForLiveNotice() {
-        return cy.get("#person-form-seeking-possesion-yes");
+        return cy.get("#person-form-seeking-possession-yes");
     };
     selectNoForLiveNotice() {
         return cy.get("#person-form-seeking-possesion-no");

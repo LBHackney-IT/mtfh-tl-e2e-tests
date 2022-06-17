@@ -58,8 +58,8 @@ Then("I can see Further eligibility questions", () => {
 Then("Automatic Eligibility checks Failed page is displayed", () => {
     processPage.textAutomaticChecksFailed().should('be.visible');
 });
-Then("Close case button is displayed", () => {
-    processPage.buttonCloseCase().contains('Close case');
+Then("Close Case button is displayed", () => {
+    processPage.buttonCloseCase().should('exist');
 });
 When("I select the answers for these questions",
     () => {
@@ -70,7 +70,7 @@ When("I select the answers for these questions",
         processPage.selectYesForTenantEvicted().click();
         processPage.selectYesForImmigrationControl().click();
         processPage.selectYesForLiveNotice().click();
-        processPage.selectYesForRentArrears();
+        processPage.selectYesForRentArrears().click();
     });
 Then("the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'", () => {
     processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
