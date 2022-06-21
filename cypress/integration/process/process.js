@@ -72,7 +72,7 @@ When("I select the answers for these questions",
         tenureReqDocsPage.selectYesForTenantEvicted().click();
         tenureReqDocsPage.selectYesForImmigrationControl().click();
         tenureReqDocsPage.selectYesForLiveNotice().click();
-        tenureReqDocsPage.selectYesForRentArrears();
+        tenureReqDocsPage.selectYesForRentArrears().click();
     });
 Then("the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'", () => {
     processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
