@@ -58,9 +58,9 @@ class ProcessesPageObjects{
     tenancyReference(tenancyRef){
         return cy.get("#i17");
     }
-
     linkSoleToJoint() {
         return cy.get('.govuk-details__summary-text');
+
     }
     headingSoleTenantRequestsAJointTenure(){
         return cy.findAllByText('Sole tenant requests a joint tenure');
@@ -81,9 +81,53 @@ class ProcessesPageObjects{
         return cy.get('#person-form-rent-arrears');
     };
     buttonCloseCase(){
-        return cy.get("[data-testid=soletojoint-CheckEligibility] > .govuk-button");
+        return cy.contains("Close Case");
+    };
+    selectYesFor12Months(){
+        return cy.get('#person-form-living-together-yes');
+        //return cy.get(":nth-child(2) > #person-form-personType-field > :nth-child(1) > #person-form-type-tenure-holder");
+    };
+    selectNoForOccupyanyOther() {
+        return cy.get('#person-form-main-home-no');
+        //return cy.get(":nth-child(3) > #person-form-personType-field > :nth-child(2) > #person-form-type-household-member");
     };
 
+    // selectYesForSurvivorOfOne() {
+    //     return cy.get(":nth-child(4) > #person-form-personType-field > :nth-child(1) > #person-form-type-household-member");
+    // };
+
+    selectYesForSurvivorOfOne() {
+        return cy.get("#person-form-survivor-yes");
+    };
+    selectNoForSurvivorOfOne() {
+        return cy.get("#person-form-survivor-no");
+    };
+
+    selectYesForTenantEvicted() {
+        return cy.get("#person-form-evicted-yes");
+    };
+    selectNoForTenantEvicted() {
+        return cy.get("#person-form-evicted-yes");
+    }
+
+    selectYesForImmigrationControl () {
+        return cy.get("#person-form-immigration-yes");
+    };
+    selectNoForImmigrationControl () {
+        return cy.get("#person-form-immigration-no");
+    };
+    selectYesForLiveNotice() {
+        return cy.get("#person-form-seeking-possession-yes");
+    };
+    selectNoForLiveNotice() {
+        return cy.get("#person-form-seeking-possesion-no");
+    };
+    selectYesForRentArrears() {
+        return cy.get("#person-form-rent-arrears-yes");
+    };
+    selectNoForRentArrears() {
+        return cy.get("#person-form-rent-arrears-no");
+    }
 }
 
 export default ProcessesPageObjects

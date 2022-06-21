@@ -60,8 +60,8 @@ Then("I can see Further eligibility questions", () => {
 Then("Automatic Eligibility checks Failed page is displayed", () => {
     processPage.textAutomaticChecksFailed().should('be.visible');
 });
-Then("Close case button is displayed", () => {
-    processPage.buttonCloseCase().contains('Close case');
+Then("Close Case button is displayed", () => {
+    processPage.buttonCloseCase().should('exist');
 });
 When("I select the answers for these questions",
     () => {

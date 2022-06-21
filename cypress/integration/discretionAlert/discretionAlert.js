@@ -10,9 +10,13 @@ const tenurePage = new TenurePageObjects();
 Given('A person {string} has a discretion alert assigned to them', (person) => {
     personPage.visit(person);
 });
-When('I view the persons profile page', () => {
-    cy.findAllByText("Master FAKE_Dorothy FAKE_Ball").should('exist');
-});
+When('I view the persons profile page',
+    () => {
+       const input = cy.get('.lbh-heading-h1');
+       input.should('be.visible').and(($input) => {
+            expect($input).to.have.value('');
+        })
+    });
 Then('I will be able to view a RED bell next to "Discretion alert"', () => {
    personPage.discretionAlertPerson().should('exist');
 });
