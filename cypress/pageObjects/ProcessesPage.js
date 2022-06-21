@@ -59,7 +59,8 @@ class ProcessesPageObjects{
         return cy.get("#i17");
     }
     linkSoleToJoint() {
-        return cy.get('.govuk-details__summary');
+        return cy.get('.govuk-details__summary-text');
+
     }
     headingSoleTenantRequestsAJointTenure(){
         return cy.findAllByText('Sole tenant requests a joint tenure');
@@ -127,8 +128,6 @@ class ProcessesPageObjects{
     selectNoForRentArrears() {
         return cy.get("#person-form-rent-arrears-no");
     }
-
-
 }
 
 export default ProcessesPageObjects
