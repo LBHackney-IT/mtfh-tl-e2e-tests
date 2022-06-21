@@ -77,7 +77,7 @@ class TenurePageObjects {
   }
   
   newProcess(){
-    return cy.contains('New Process')
+    return cy.contains('New Process');
   }
 
   tenureDetailsAccordionInformation() {
