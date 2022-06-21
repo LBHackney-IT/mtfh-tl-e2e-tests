@@ -113,7 +113,7 @@ Scenario Outline: Test to verify Automatic checks fail
     When I select a person to add as a joint tenant
     And I click the next button
     Then Automatic Eligibility checks Failed page is displayed
-    And Close case button is displayed
+    #And Close case button is displayed
 
     Examples:
         | tenure                               |

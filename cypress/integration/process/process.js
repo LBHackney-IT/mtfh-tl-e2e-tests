@@ -1,7 +1,9 @@
 import { When, Then, And, Given } from "cypress-cucumber-preprocessor/steps";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
+import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 
-const processPage = new ProcessesPageObjects()
+const processPage = new ProcessesPageObjects();
+const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 
 Given("I select to initiate a Sole To Joint process {string}", (tenureId) => {
     processPage.visit(tenureId)
@@ -64,13 +66,13 @@ Then("Close case button is displayed", () => {
 When("I select the answers for these questions",
     () => {
         //cy.get('input[name="br11"]').contains('Yes (proposed tenant will be asked for proof e.g. marriage certificate)').click();
-        processPage.selectYesFor12Months().click();
-        processPage.selectNoForOccupyanyOther().click();
-        processPage.selectYesForSurvivorOfOne().click();
-        processPage.selectYesForTenantEvicted().click();
-        processPage.selectYesForImmigrationControl().click();
-        processPage.selectYesForLiveNotice().click();
-        processPage.selectYesForRentArrears();
+        tenureReqDocsPage.selectYesFor12Months().click();
+        tenureReqDocsPage.selectNoForOccupyanyOther().click();
+        tenureReqDocsPage.selectYesForSurvivorOfOne().click();
+        tenureReqDocsPage.selectYesForTenantEvicted().click();
+        tenureReqDocsPage.selectYesForImmigrationControl().click();
+        tenureReqDocsPage.selectYesForLiveNotice().click();
+        tenureReqDocsPage.selectYesForRentArrears();
     });
 Then("the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'", () => {
     processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
