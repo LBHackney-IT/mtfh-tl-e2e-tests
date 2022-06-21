@@ -69,34 +69,7 @@ When("I click on process Sole tenant requests a joint tenure link", () => {
     processPage.linkSoleToJoint().click();
     processPage.headingSoleTenantRequestsAJointTenure().click();
 });
-Then("I am on the Sole tenant request joint tenure Start Process page", () => {
-    tenureReqDocsPage.textHeaderSharingInfoWithThirdParties().should('exist');
-    processPage.agreementCheckBox().click();
-    processPage.startProcessButton().click();
-    cy.url().should("include", "processes/soletojoint/");
-    tenureReqDocsPage.personRadioButton().click();
-    cy.contains('Next').click();
-    processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
-    processPage.selectYesFor12Months().click();
-    processPage.selectNoForOccupyanyOther().click();
-    processPage.selectNoForSurvivorOfOne().click();
-    processPage.selectNoForTenantEvicted().click();
-    processPage.selectNoForImmigrationControl().click();
-    processPage.selectNoForLiveNotice().click();
-    processPage.selectNoForRentArrears().click();
-    cy.contains('Next').click();
-    tenureReqDocsPage.textHeaderNextSteps().should('be.visible');
-    tenureReqDocsPage.textPassInitialEligReqs().should('be.visible');
-    cy.reload();
-    tenureReqDocsPage.textBreachOfTenure().should('be.visible');
-    tenureReqDocsPage.statusBreachOfTenureCheck().should('be.visible');
-    tenureReqDocsPage.statusActiveCheck().should('be.visible');
-    tenureReqDocsPage.statusActiveCheck().should('contain.text','Breach of tenure check');
-    tenureReqDocsPage.tenantLiveNoticeNo().click();
-    tenureReqDocsPage.cautionaryContactNo().click();
-    tenureReqDocsPage.cautionaryContactDenyApp().click();
-    tenureReqDocsPage.successionNo().click();
-});
+
 Given("I am on the Request Documents page for the tenure {string}", (tenureId) => {
     manualChecksPass(tenureId);
 });
