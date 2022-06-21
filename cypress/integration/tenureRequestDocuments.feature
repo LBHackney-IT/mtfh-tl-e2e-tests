@@ -26,7 +26,7 @@ Feature: As an internal Hackney user
 #      | tableName          |
 #      | TenureInformation  |
 
-
+  @SmokeTest
   Scenario Outline: AC1. View Request for Documents page
     Given the application has passed eligibility and the housing officer breach of tenancy checks for the tenure "<tenure>"
     When I click the Next button
@@ -39,6 +39,7 @@ Feature: As an internal Hackney user
       | tenure                               | tenant                |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
 
+  @SmokeTest
   Scenario Outline: AC 1.1 Link to current tenant’s person page from Request Documents Page
     Given I am on the Request Documents page for the tenure "<tenure>"
     When I click on the current tenant’s name in the heading
@@ -59,7 +60,7 @@ Feature: As an internal Hackney user
       | tenure                               | tenant                |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
 
-
+  @SmokeTest
   Scenario Outline: AC3. Request documents via office appointment
     Given I am on the Request Documents page for the tenure "<tenure>"
     When I select that I have made an appointment to check supporting documents
