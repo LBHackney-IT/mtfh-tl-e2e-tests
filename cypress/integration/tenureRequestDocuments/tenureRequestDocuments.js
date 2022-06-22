@@ -103,7 +103,7 @@ And("I input the appointment date and time", () => {
     tenureReqDocsPage.year().clear().type('2022');
     tenureReqDocsPage.hour().clear().type('10');
     tenureReqDocsPage.minute().clear().type('10');
-    tenureReqDocsPage.ampm().clear().type('am');
+    tenureReqDocsPage.ampm().select('AM');
 });
 Then("the option to proceed is enabled", () => {
     tenureReqDocsPage.nextButton().click();

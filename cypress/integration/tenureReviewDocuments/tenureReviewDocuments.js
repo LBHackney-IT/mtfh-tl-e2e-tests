@@ -93,7 +93,7 @@ Then("I can input an appointment date and time", () => {
     tenureReqDocsPage.year().clear().type('2022');
     tenureReqDocsPage.hour().clear().type('11');
     tenureReqDocsPage.minute().clear().type('10');
-    tenureReqDocsPage.ampm().clear().type('am');
+    tenureReqDocsPage.ampm().select('AM');
     tenureReviewDocsPage.buttonBookAppointment().should('be.enabled');
     tenureReviewDocsPage.buttonBookAppointment().click();
 });
