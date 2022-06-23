@@ -47,3 +47,19 @@ Feature: As an internal Hackney user
     Examples:
       | tenure                               |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+
+
+#### Submit Case scenarios below ####
+  Scenario Outline: AC1 Submit the case for Tenure investigation review
+    Given I have completed document upload for Sole to Joint for tenure "<tenure>"
+    Then the Active status should be Submit case
+    And I am shown the expandable accordions of the previously completed steps Eligibility checks passed and Supporting documents approved
+    And I can view the Tenure Investigation disclaimer
+    When I click the Submit case button
+    Then I am on the Next Steps page
+    And the status is Finish
+    And I click on Continue button
+    And I can see the text 'I confirm that the tenure investigation has been completed'
+    Examples:
+      | tenure                               |
+      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |

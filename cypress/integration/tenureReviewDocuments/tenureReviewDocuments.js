@@ -145,3 +145,43 @@ Then("case activity log is recorded with status closed", () => {
     tenureReqDocsPage.activityHistoryButton().click();
     tenureReviewDocsPage.activityHistoryText().should('exist');
 });
+
+Given("I have completed document upload for Sole to Joint for tenure {string}", (tenureId) => {
+    manualChecksPass(tenureId);
+    cy.contains('Next').click();
+    tenureReqDocsPage.requestDocsElectronically().click();
+    cy.contains('Next').click();
+    tenureReviewDocsPage.photoId().click();
+    tenureReviewDocsPage.secondId().click();
+    tenureReviewDocsPage.notImmigrationControl().click();
+    tenureReviewDocsPage.relationshipProof().click();
+    tenureReviewDocsPage.tenantLivingInProperty().click();
+    cy.contains('Next').click();
+});
+Then("the Active status should be Submit case", () => {
+    tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Submit case');
+});
+And("I am shown the expandable accordions of the previously completed steps Eligibility checks passed and Supporting documents approved", () => {
+    cy.contains('Eligibility checks passed').should('exist');
+    cy.contains('Supporting documents approved').should('exist');
+    cy.get('a[href*="processes/soletojoint"]').contains('Show all eligibility checks');
+    cy.get('a[href*="evidence-store"]').contains('View request in Document Evidence Store');
+});
+And("I can view the Tenure Investigation disclaimer", () => {
+    tenureReviewDocsPage.headingTenureInvestigation().should('contain.text', 'Tenure Investigation');
+});
+When("I click the Submit case button", () => {
+    tenureReviewDocsPage.submitButton().click();
+});
+Then("I am on the Next Steps page", () => {
+    tenureReviewDocsPage.headingTenureInvestigation().should('contain.text', 'Next Steps:');
+});
+Then("the status is Finish", () => {
+    tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Finish');
+});
+Then("I click on Continue button", () => {
+    cy.contains('Continue').click();
+});
+Then("I can see the text {string}", (textTenureInvestigation) => {
+    cy.contains(textTenureInvestigation).should('exist');
+})
