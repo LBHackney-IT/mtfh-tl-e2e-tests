@@ -32,6 +32,13 @@ class TenureReviewDocsPageObjects {
     checkboxMakeAnAppointment() {
         return cy.get('#condition');
     };
+    checkboxConfirmOutcomeLetter() {
+        return cy.get('#condition');
+    }
+
+    buttonConfirm(){
+        return cy.contains('Confirm');
+    }
     buttonBookAppointment() {
         return cy.contains('Book Appointment');
     };
@@ -41,8 +48,8 @@ class TenureReviewDocsPageObjects {
     alertCloseCase() {
         return cy.get('[data-testid="close-process-modal-submit"]');
     };
-    activityHistoryText() {
-        return cy.contains('Sole to Joint: closed: Comment');
+        activityHistoryText() {
+        return cy.contains('Sole to Joint closed');
     }
 
 

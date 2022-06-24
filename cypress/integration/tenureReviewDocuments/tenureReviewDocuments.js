@@ -142,6 +142,9 @@ When("I will click on Close case once the rejection is given", () => {
     tenureReviewDocsPage.alertCloseCase().click();
 });
 Then("case activity log is recorded with status closed", () => {
+    tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
+    tenureReviewDocsPage.buttonConfirm().click();
+    cy.contains('Thank you for confirmation');
     tenureReqDocsPage.activityHistoryButton().click();
     tenureReviewDocsPage.activityHistoryText().should('exist');
 });
@@ -165,7 +168,7 @@ And("I am shown the expandable accordions of the previously completed steps Elig
     cy.contains('Eligibility checks passed').should('exist');
     cy.contains('Supporting documents approved').should('exist');
     cy.get('a[href*="processes/soletojoint"]').contains('Show all eligibility checks');
-    cy.get('a[href*="evidence-store"]').contains('View request in Document Evidence Store');
+    cy.get('a[href*="evidence-store"]').contains('View documents on the Document Evidence Store');
 });
 And("I can view the Tenure Investigation disclaimer", () => {
     tenureReviewDocsPage.headingTenureInvestigation().should('contain.text', 'Tenure Investigation');

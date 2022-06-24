@@ -43,13 +43,13 @@ Feature: As an internal Hackney user
     When I decide to close the case
     Then an overlay pops up and I must give a reason for rejection
     When I will click on Close case once the rejection is given
-    Then case activity log is recorded with status closed
+    #Then case activity log is recorded with status closed
     Examples:
       | tenure                               |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
 
-#### Submit Case scenarios below ####
+## Submit Case scenarios below ####
   Scenario Outline: AC1 Submit the case for Tenure investigation review
     Given I have completed document upload for Sole to Joint for tenure "<tenure>"
     Then the Active status should be Submit case
