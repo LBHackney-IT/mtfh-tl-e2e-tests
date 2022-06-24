@@ -32,6 +32,13 @@ class TenureReviewDocsPageObjects {
     checkboxMakeAnAppointment() {
         return cy.get('#condition');
     };
+    checkboxConfirmOutcomeLetter() {
+        return cy.get('#condition');
+    }
+
+    buttonConfirm(){
+        return cy.contains('Confirm');
+    }
     buttonBookAppointment() {
         return cy.contains('Book Appointment');
     };
