@@ -48,8 +48,8 @@ class TenureReviewDocsPageObjects {
     alertCloseCase() {
         return cy.get('[data-testid="close-process-modal-submit"]');
     };
-    activityHistoryText() {
-        return cy.contains('Sole to Joint: closed: Comment');
+        activityHistoryText() {
+        return cy.contains('Sole to Joint closed');
     }
 
 
