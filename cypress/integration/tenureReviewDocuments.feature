@@ -29,6 +29,7 @@ Feature: As an internal Hackney user
       | tenure                               |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
+  @SmokeTest
   Scenario Outline: AC1.2: Confirm documents have been seen (for documents requested via DES)
     Given the documents have been provided by the resident for tenure "<tenure>"
     Then Next button is disabled
@@ -38,6 +39,7 @@ Feature: As an internal Hackney user
       | tenure                               |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
+  @SmokeTest
   Scenario Outline: AC4: Closing the case at the Review Documents stage
     Given the applicant has failed the supporting documents check for tenure "<tenure>"
     When I decide to close the case
@@ -50,6 +52,7 @@ Feature: As an internal Hackney user
 
 
 ## Submit Case scenarios below ####
+  @SmokeTest
   Scenario Outline: AC1 Submit the case for Tenure investigation review
     Given I have completed document upload for Sole to Joint for tenure "<tenure>"
     Then the Active status should be Submit case
