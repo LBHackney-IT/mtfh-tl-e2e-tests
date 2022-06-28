@@ -74,7 +74,7 @@ When("I select the answers for these questions",
         tenureReqDocsPage.selectYesForLiveNotice().click();
         tenureReqDocsPage.selectYesForRentArrears().click();
     });
-Then("the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'", () => {
+Then("the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'", () => {
     processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
     processPage.textAutomaticChecksFailed().should('be.visible');
 });

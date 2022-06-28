@@ -131,7 +131,7 @@ Scenario Outline: Test to verify Automatic checks fail
     And I can see Further eligibility questions
     When I select the answers for these questions
     And I click the next button
-    Then the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'
+    Then the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'
 
     Examples:
       | tenure                               | tenant                       | proposedTenant               |

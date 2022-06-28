@@ -69,7 +69,7 @@ class ProcessesPageObjects{
         return cy.get('.govuk-radios__input');
     };
     textAutomaticEligibiltyChecksPassed(){
-        return cy.findAllByText('Passed automatic eligibilty checks');
+        return cy.findAllByText('Passed automatic eligibility checks');
     };
     textAutomaticChecksFailed(){
         return cy.findAllByText('Not eligible for a sole to joint tenure');
