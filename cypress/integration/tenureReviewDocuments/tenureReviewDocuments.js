@@ -144,7 +144,8 @@ When("I will click on Close case once the rejection is given", () => {
 Then("case activity log is recorded with status closed", () => {
     tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
     tenureReviewDocsPage.buttonConfirm().click();
-    cy.contains('Thank you for confirmation');
+    cy.contains('Sole to joint application closed');
+    cy.contains('Thank you for your confirmation');
     tenureReqDocsPage.activityHistoryButton().click();
     tenureReviewDocsPage.activityHistoryText().should('exist');
 });

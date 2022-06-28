@@ -30,7 +30,7 @@ class TenureRequestDocsPageObjects {
         return cy.get('#breach-form-type-notice-no');
     };
     cautionaryContactYes(){
-        return cy.get('#');
+        return cy.get('#breach-form-type-cautionary-yes');
     };
     cautionaryContactAllowApp(){
         return cy.get('#breach-form-type-cautionary-yes-allow-application');

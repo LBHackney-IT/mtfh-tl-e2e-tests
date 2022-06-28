@@ -1,7 +1,9 @@
 import { When, Then, And, Given } from "cypress-cucumber-preprocessor/steps";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
+import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
 
+const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const processPage = new ProcessesPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 
@@ -80,4 +82,16 @@ Then("the page is displayed with the text 'Passed automatic eligibility checks' 
 });
 Then("I can see the text {string} adding {string} in the header section", (tenant, proposedTenant) => {
     cy.contains(`${tenant} adding ${proposedTenant}`);
+});
+
+When("I select the checkbox 'I confirm that an outcome letter has been sent to the resident'", () => {
+    tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
+});
+When('I click on the confirm button', () => {
+    tenureReviewDocsPage.buttonConfirm().click();
+})
+Then("{string} message is displayed with a link to Return to Home page", (confirmationText) => {
+    cy.contains(confirmationText);
+    cy.contains("This case is now closed and we have record this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
+    cy.contains("a", "Return to home page").should("have.attr", "href");
 });
