@@ -3,6 +3,9 @@ import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
 import tenureRequestDocumentsPage from "../../pageObjects/tenureRequestDocumentsPage";
+import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
+
+const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const tenurePage = new TenurePageObjects();
 const processPage = new ProcessesPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
@@ -121,3 +124,49 @@ Then("I am taken to the current tenant’s person page which will be opened in a
         .should('include', '/person/')
     cy.findAllByText('Date of birth:');
 });
+Given("the application has passed eligibility and failed the breach of tenancy checks for the tenure {string}", (tenureId) => {
+    processPage.visit(tenureId);
+    processPage.agreementCheckBox().click();
+    processPage.startProcessButton().click();
+    cy.url().should("include", "processes/soletojoint/");
+    processPage.personRadioButton().click();
+    cy.contains('Next').click();
+    processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
+    tenureReqDocsPage.selectYesFor12Months().click();
+    tenureReqDocsPage.selectNoForOccupyanyOther().click();
+    tenureReqDocsPage.selectNoForSurvivorOfOne().click();
+    tenureReqDocsPage.selectNoForTenantEvicted().click();
+    tenureReqDocsPage.selectNoForImmigrationControl().click();
+    tenureReqDocsPage.selectNoForLiveNotice().click();
+    tenureReqDocsPage.selectNoForRentArrears().click();
+    cy.contains('Next').click();
+    tenureReqDocsPage.textHeaderNextSteps().should('be.visible');
+    tenureReqDocsPage.textPassInitialEligReqs().should('be.visible');
+    tenureReqDocsPage.continueButton().click();
+    tenureReqDocsPage.textBreachOfTenure().should('be.visible');
+    tenureReqDocsPage.statusBreachOfTenureCheck().should('be.visible');
+    tenureReqDocsPage.statusActiveCheck().should('be.visible');
+    tenureReqDocsPage.statusActiveCheck().should('contain.text','Breach of tenure check');
+    tenureReqDocsPage.tenantLiveNoticeYes().click();
+    tenureReqDocsPage.cautionaryContactYes().click();
+    tenureReqDocsPage.cautionaryContactDenyApp().click();
+    tenureReqDocsPage.successionNo().click();
+});
+When("I click the next button on breach tenure page", () => {
+    cy.contains('Next').click();
+});
+Then("Breach of tenure eligibility checks Failed page is displayed", () => {
+    cy.contains('Failed breach of tenure check:');
+});
+When("I select the checkbox 'I confirm that an outcome letter has been sent to the resident'", () => {
+    tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
+});
+When('I click on the confirm button', () => {
+    tenureReviewDocsPage.buttonConfirm().click();
+});
+Then("{string} message is displayed with a link to Return to Home page", (confirmationText) => {
+    cy.contains(confirmationText);
+    cy.contains("This case is now closed and we have record this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
+    cy.contains("a", "Return to home page").should("have.attr", "href");
+});
+

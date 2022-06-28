@@ -105,7 +105,8 @@ Scenario Outline: Selecting back or cancelling out of the process
             | tenure                               |
             | 730a4a17-28fd-ed21-e164-dbfc21264d75 |
 
-Scenario Outline: Test to verify Automatic checks fail
+
+  Scenario Outline: Verify Automatic checks fail and Close Case Process is initiated
     Given I select to initiate a Sole To Joint process "<tenure>"
     When I accept the terms and conditions
     And I click the start process button
@@ -113,13 +114,15 @@ Scenario Outline: Test to verify Automatic checks fail
     When I select a person to add as a joint tenant
     And I click the next button
     Then Automatic Eligibility checks Failed page is displayed
-    #And Close case button is displayed
+    When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+    And I click on the confirm button
+    Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
 
     Examples:
-        | tenure                               |
-        | e9228ada-76db-ee09-29ee-8991c6fc5302 |
+      | tenure                               |
+      | e9228ada-76db-ee09-29ee-8991c6fc5302 |
 
-  Scenario Outline: Test to verify Automatic checks Pass and Manual Checks Fail
+  Scenario Outline: Verify Automatic checks Pass and Manual Checks Fail and Close case process is initiated
     Given I select to initiate a Sole To Joint process "<tenure>"
     When I accept the terms and conditions
     And I click the start process button
@@ -131,7 +134,10 @@ Scenario Outline: Test to verify Automatic checks fail
     And I can see Further eligibility questions
     When I select the answers for these questions
     And I click the next button
-    Then the page is displayed with the text 'Passed automatic eligibilty checks' and 'Not eligible for a sole to joint tenure'
+    Then the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'
+    When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+    And I click on the confirm button
+    Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
 
     Examples:
       | tenure                               | tenant                       | proposedTenant               |
