@@ -135,9 +135,18 @@ Scenario Outline: Selecting back or cancelling out of the process
     When I select the answers for these questions
     And I click the next button
     Then the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'
+<<<<<<< Updated upstream
     When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
     And I click on the confirm button
     Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
+=======
+<<<<<<< HEAD
+=======
+    When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+    And I click on the confirm button
+    Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
+>>>>>>> 9278908 (Close case process scenarios)
+>>>>>>> Stashed changes
 
     Examples:
       | tenure                               | tenant                       | proposedTenant               |

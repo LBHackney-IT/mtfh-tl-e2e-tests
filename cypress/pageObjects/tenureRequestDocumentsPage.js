@@ -10,7 +10,7 @@ class TenureRequestDocsPageObjects {
     };
     personRadioButton() {
         return cy.get('#select-tenant-field > :nth-child(1) > .govuk-label');
-    }
+    };
     textPassInitialEligReqs() {
         return cy.contains("The current tenant and the applicant have passed the initial eligibility requirements. The next steps are:");
     };
@@ -90,56 +90,56 @@ class TenureRequestDocsPageObjects {
     }
 
     selectYesFor12Months(){
-        return cy.get(' #person-form-living-together-yes');
+        return cy.get('#further-eligibility-living-together-yes');
     };
     selectNoFor12Months(){
-        return cy.get(' #person-form-living-together-no');
+        return cy.get('#further-eligibility-living-together-no');
     };
 
     selectYesForOccupyanyOther() {
-        return cy.get(' #person-form-main-home-yes');
+        return cy.get('#further-eligibility-main-home-yes');
     };
     selectNoForOccupyanyOther() {
-        return cy.get(' #person-form-main-home-no');
+        return cy.get('#further-eligibility-main-home-no');
     };
 
     selectYesForSurvivorOfOne() {
-        return cy.get("#person-form-survivor-yes");
+        return cy.get("#further-eligibility-survivor-yes");
     };
     selectNoForSurvivorOfOne() {
-        return cy.get("#person-form-survivor-no");
+        return cy.get("#further-eligibility-survivor-no");
     };
 
     selectYesForTenantEvicted() {
-        return cy.get("#person-form-evicted-yes");
+        return cy.get("#further-eligibility-evicted-yes");
     };
     selectNoForTenantEvicted() {
-        return cy.get("#person-form-evicted-no");
+        return cy.get("#further-eligibility-evicted-no");
     }
 
     selectYesForImmigrationControl () {
-        return cy.get("#person-form-immigration-yes");
+        return cy.get("#further-eligibility-immigration-yes");
     };
     selectNoForImmigrationControl () {
-        return cy.get("#person-form-immigration-no");
+        return cy.get("#further-eligibility-immigration-no");
     };
 
     selectYesForLiveNotice() {
-        return cy.get("#person-form-seeking-possession-yes");
+        return cy.get("#further-eligibility-seeking-possession-yes");
     };
     selectNoForLiveNotice() {
-        return cy.get("#person-form-seeking-possession-no");
+        return cy.get("#further-eligibility-seeking-possession-no");
     };
 
     selectYesForRentArrears() {
-        return cy.get("#person-form-rent-arrears-yes");
+        return cy.get("#further-eligibility-rent-arrears-yes");
     };
     selectNoForRentArrears() {
-        return cy.get("#person-form-rent-arrears-no");
+        return cy.get("#further-eligibility-rent-arrears-no");
     }
 
     continueButton() {
-        return cy.get("[data-testid=soletojoint-CheckEligibility] > .govuk-button");
+        return cy.get("[data-testid=soletojoint-ManualChecksPassed] > .govuk-button");
     }
 }
 export default TenureRequestDocsPageObjects;

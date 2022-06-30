@@ -99,6 +99,7 @@ Then("I can input an appointment date and time", () => {
 });
 And("I can confirm the appointment has been arranged", () => {
     cy.contains('Office appointment scheduled').should('exist');
+    tenureReviewDocsPage.linkChange().should('exist');
 });
 
 Given("the documents have been provided by the resident for tenure {string}", (tenureId) => {
@@ -145,6 +146,8 @@ Then("case activity log is recorded with status closed", () => {
     tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
     tenureReviewDocsPage.buttonConfirm().click();
     cy.contains('Sole to joint application closed');
+    cy.contains('Reason of close case:');
+    cy.contains('Test reason - photo id not given');
     cy.contains('Thank you for your confirmation');
     tenureReqDocsPage.activityHistoryButton().click();
     tenureReviewDocsPage.activityHistoryText().should('exist');

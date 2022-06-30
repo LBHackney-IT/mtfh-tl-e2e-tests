@@ -10,10 +10,10 @@ class TenureReviewDocsPageObjects {
     };
     continueButton () {
         return cy.get('.govuk-button lbh-button').should('contain', 'Continue');
-    }
-
-
-
+    };
+    linkChange() {
+        return cy.contains('Change');
+    };
     photoId() {
         return cy.get('#seen-photographic-id');
     };
