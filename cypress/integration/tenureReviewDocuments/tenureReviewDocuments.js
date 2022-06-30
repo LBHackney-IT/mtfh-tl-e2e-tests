@@ -139,7 +139,7 @@ Then("an overlay pops up and I must give a reason for rejection", () => {
     });
 });
 When("I will click on Close case once the rejection is given", () => {
-    tenureReviewDocsPage.reasonCloseCase().clear().type('Test reason - photo id not given');
+    tenureReviewDocsPage.reasonCloseCase().clear().type('Test reason for Close case - photo id not given');
     tenureReviewDocsPage.alertCloseCase().click();
 });
 Then("case activity log is recorded with status closed", () => {
@@ -147,7 +147,7 @@ Then("case activity log is recorded with status closed", () => {
     tenureReviewDocsPage.buttonConfirm().click();
     cy.contains('Sole to joint application closed');
     cy.contains('Reason of close case:');
-    cy.contains('Test reason - photo id not given');
+    cy.contains('Test reason for Close case - photo id not given');
     cy.contains('Thank you for your confirmation');
     tenureReqDocsPage.activityHistoryButton().click();
     tenureReviewDocsPage.activityHistoryText().should('exist');
