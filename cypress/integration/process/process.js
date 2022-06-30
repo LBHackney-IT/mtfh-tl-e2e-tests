@@ -56,8 +56,13 @@ Then("Eligibility checks passed page is displayed", () => {
     processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
 });
 Then("I can see Further eligibility questions", () => {
-    processPage.questionNoticeSeekingPossesion().should('be.visible');
-    processPage.questionTenantRentArrears().should('be.visible');
+    tenureReqDocsPage.selectYesFor12Months().should('exist');
+    tenureReqDocsPage.selectNoForOccupyanyOther().should('exist');
+    tenureReqDocsPage.selectYesForSurvivorOfOne().should('exist');
+    tenureReqDocsPage.selectYesForTenantEvicted().should('exist');
+    tenureReqDocsPage.selectYesForImmigrationControl().should('exist');
+    tenureReqDocsPage.selectYesForLiveNotice().should('exist');
+    tenureReqDocsPage.selectYesForRentArrears().should('exist');
 });
 Then("Automatic Eligibility checks Failed page is displayed", () => {
     processPage.textAutomaticChecksFailed().should('be.visible');
