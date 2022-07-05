@@ -146,11 +146,8 @@ Then("case activity log is recorded with status closed", () => {
     tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
     tenureReviewDocsPage.buttonConfirm().click();
     cy.contains('Sole to joint application closed');
-<<<<<<< Updated upstream
     cy.contains('Reason of close case:');
     cy.contains('Test reason for Close case - photo id not given');
-=======
->>>>>>> Stashed changes
     cy.contains('Thank you for your confirmation');
     tenureReqDocsPage.activityHistoryButton().click();
     tenureReviewDocsPage.activityHistoryText().should('exist');
