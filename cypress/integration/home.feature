@@ -15,13 +15,13 @@ Feature: T&L Home page
     Then the page header is visible
     And the page footer is visible
 
-  @SmokeTest
-  Scenario: Home page whilst logged in
-    Given I am logged in
-    When I am on the Home page
-    Then the header link says welcome
-    Then the page header is visible
-    And the page footer is visible
+#  @SmokeTest
+#  Scenario: Home page whilst logged in
+#    Given I am logged in
+#    When I am on the Home page
+#    Then the header link says welcome
+#    Then the page header is visible
+#    And the page footer is visible
 
   @Accessibility
   Scenario: Accessibility Testing

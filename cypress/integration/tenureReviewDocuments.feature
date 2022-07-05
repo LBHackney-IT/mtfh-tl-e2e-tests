@@ -50,6 +50,7 @@ Feature: As an internal Hackney user
 #      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
 
+
 ## Submit Case scenarios below ####
   Scenario Outline: AC1 Submit the case for Tenure investigation review
     Given I have completed document upload for Sole to Joint for tenure "<tenure>"
