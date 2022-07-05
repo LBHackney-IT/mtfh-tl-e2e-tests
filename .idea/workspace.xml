@@ -4,6 +4,10 @@
     <list default="true" id="9be794bd-c78b-413e-8979-5fb89fc2d437" name="Changes" comment="">
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+      <change afterPath="$PROJECT_DIR$/cypress/integration/closeCaseProcessTenure/closeCaseProcessTenure.js" afterDir="false" />
+>>>>>>> Stashed changes
 =======
       <change afterPath="$PROJECT_DIR$/cypress/integration/closeCaseProcessTenure/closeCaseProcessTenure.js" afterDir="false" />
 >>>>>>> Stashed changes
@@ -20,7 +24,10 @@
       <change beforePath="$PROJECT_DIR$/cypress/integration/tenureReviewDocuments/tenureReviewDocuments.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/tenureReviewDocuments/tenureReviewDocuments.js" afterDir="false" />
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/cypress/pageObjects/ProcessesPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/ProcessesPage.js" afterDir="false" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
