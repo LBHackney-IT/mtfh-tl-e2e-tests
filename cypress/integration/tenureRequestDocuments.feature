@@ -48,32 +48,29 @@ Feature: As an internal Hackney user
       | tenure                               | tenant                |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
 
+  Scenario Outline: AC1.2 User has not provided any input and AC2.1 Confirm request of documents electronically via DES
+    Given I am on the Request Documents page for the tenure "<tenure>"
+    When I have not selected any of the radio button options
+    Then the option to proceed to the next step is disabled
+    When I have selected electronically requesting the documents via DES
+    Then I have proceeded to the next step
+    And I am able to see the "Review Documents" state is Active
+    And a case activity log is created
+    Examples:
+      | tenure                               | tenant                |
+      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
 
-    # //TODO commented for 5th July release as this test is failing in pipeline
-#  Scenario Outline: AC1.2 User has not provided any input and AC2.1 Confirm request of documents electronically via DES
-#    Given I am on the Request Documents page for the tenure "<tenure>"
-#    When I have not selected any of the radio button options
-#    Then the option to proceed to the next step is disabled
-#    When I have selected electronically requesting the documents via DES
-#    Then I have proceeded to the next step
-#    And I am able to see the "Review Documents" state is Active
-#    And a case activity log is created
-#    Examples:
-#      | tenure                               | tenant                |
-#      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
-
-    # //TODO commented for 5th July release as this test is failing in pipeline
-#  @SmokeTest
-#  Scenario Outline: AC3. Request documents via office appointment
-#    Given I am on the Request Documents page for the tenure "<tenure>"
-#    When I select that I have made an appointment to check supporting documents
-#    And I input the appointment date and time
-#    Then the option to proceed is enabled
-#    And I am able to see the "Review Documents" state is Active
-#    And a case activity log is created for "Supporting Documents requested via an office appointment"
-#    Examples:
-#      | tenure                               | tenant                |
-#      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
+  @SmokeTest
+  Scenario Outline: AC3. Request documents via office appointment
+    Given I am on the Request Documents page for the tenure "<tenure>"
+    When I select that I have made an appointment to check supporting documents
+    And I input the appointment date and time
+    Then the option to proceed is enabled
+    And I am able to see the "Review Documents" state is Active
+    And a case activity log is created for "Supporting Documents requested via an office appointment"
+    Examples:
+      | tenure                               | tenant                |
+      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
 
   Scenario Outline: AC4. Close case when Breach of tenure checks are failed
     Given the application has passed eligibility and failed the breach of tenancy checks for the tenure "<tenure>"
