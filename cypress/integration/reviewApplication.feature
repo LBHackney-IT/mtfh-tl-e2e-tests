@@ -1,6 +1,6 @@
 Feature: As a Housing Officer
-         I want to confirm a tenure investigation has been completed
-         So that I can make a decision on the sole to joint application
+  I want to confirm a tenure investigation has been completed
+  So that I can make a decision on the sole to joint application
 
   Background:
     Given I am logged in

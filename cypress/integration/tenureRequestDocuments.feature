@@ -1,6 +1,6 @@
 Feature: As an internal Hackney user
-         I want to request relevant supporting documents from both Sole to Joint applicants (the existing tenant and the new tenant)
-         So that I can evidence that the applicant is eligible
+  I want to request relevant supporting documents from both Sole to Joint applicants (the existing tenant and the new tenant)
+  So that I can evidence that the applicant is eligible
 
 
   Background:
@@ -74,17 +74,6 @@ Feature: As an internal Hackney user
 #    Examples:
 #      | tenure                               | tenant                |
 #      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
-
-  Scenario Outline: AC4. Close case when Breach of tenure checks are failed
-    Given the application has passed eligibility and failed the breach of tenancy checks for the tenure "<tenure>"
-    When I click the next button on breach tenure page
-    Then Breach of tenure eligibility checks Failed page is displayed
-    When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
-    And I click on the confirm button
-    Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
-    Examples:
-      | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
   Scenario Outline: AC4. Close case when Breach of tenure checks are failed
     Given the application has passed eligibility and failed the breach of tenancy checks for the tenure "<tenure>"
