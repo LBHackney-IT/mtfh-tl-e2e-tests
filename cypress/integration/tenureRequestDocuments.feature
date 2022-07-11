@@ -86,6 +86,17 @@ Feature: As an internal Hackney user
       | tenure                               |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
+  Scenario Outline: AC4. Close case when Breach of tenure checks are failed
+    Given the application has passed eligibility and failed the breach of tenancy checks for the tenure "<tenure>"
+    When I click the next button on breach tenure page
+    Then Breach of tenure eligibility checks Failed page is displayed
+    When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+    And I click on the confirm button
+    Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
+    Examples:
+      | tenure                               |
+      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+
 
  #######  The below button functionality has not been developed yet
 #  Scenario: AC5. Buttons under the progress indicator

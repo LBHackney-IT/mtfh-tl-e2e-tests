@@ -72,7 +72,6 @@ Then("Close Case button is displayed", () => {
 });
 When("I select the answers for these questions",
     () => {
-        //cy.get('input[name="br11"]').contains('Yes (proposed tenant will be asked for proof e.g. marriage certificate)').click();
         tenureReqDocsPage.selectYesFor12Months().click();
         tenureReqDocsPage.selectNoForOccupyanyOther().click();
         tenureReqDocsPage.selectYesForSurvivorOfOne().click();
@@ -80,6 +79,7 @@ When("I select the answers for these questions",
         tenureReqDocsPage.selectYesForImmigrationControl().click();
         tenureReqDocsPage.selectYesForLiveNotice().click();
         tenureReqDocsPage.selectYesForRentArrears().click();
+        tenureReqDocsPage.selectNoForHoldATenancyElseWhere().click();
     });
 Then("the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'", () => {
     processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
@@ -97,6 +97,6 @@ When('I click on the confirm button', () => {
 })
 Then("{string} message is displayed with a link to Return to Home page", (confirmationText) => {
     cy.contains(confirmationText);
-    cy.contains("This case is now closed and we have record this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
+    cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
     cy.contains("a", "Return to home page").should("have.attr", "href");
 });

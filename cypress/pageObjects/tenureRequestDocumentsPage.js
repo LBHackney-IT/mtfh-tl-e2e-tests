@@ -53,6 +53,9 @@ class TenureRequestDocsPageObjects {
     makeAnAppointToCheckSuppDocs() {
         return cy.get('#requestType-manual');
     };
+    checkboxTenantDeclaration() {
+        return cy.get('#declaration-form-group-field');
+    }
     nextButton() {
         return cy.get('#request-documents-form > .govuk-button');
     };
@@ -136,7 +139,14 @@ class TenureRequestDocsPageObjects {
     };
     selectNoForRentArrears() {
         return cy.get("#further-eligibility-rent-arrears-no");
-    }
+    };
+
+    selectYesForHoldATenancyElseWhere() {
+        return cy.get('#further-eligibility-already-joint-tenant-yes');
+    };
+    selectNoForHoldATenancyElseWhere() {
+        return cy.get('#further-eligibility-already-joint-tenant-no');
+    };
 
     continueButton() {
         return cy.get("[data-testid=soletojoint-ManualChecksPassed] > .govuk-button");
