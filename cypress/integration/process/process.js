@@ -98,6 +98,5 @@ When('I click on the confirm button', () => {
 Then("{string} message is displayed with a link to Return to Home page", (confirmationText) => {
     cy.contains(confirmationText);
     cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
-    cy.contains("This case is now closed and we have record this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
     cy.contains("a", "Return to home page").should("have.attr", "href");
 });
