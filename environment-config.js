@@ -32,7 +32,7 @@ if (environment === 'production') {
     baseUrl = "https://manage-my-home.hackney.gov.uk"
     gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_PRODUCTION')
     cy.log('message')
-    cy.log(gssoTestKey)
+    Cypress.env('E2E_ACCESS_TOKEN_PRODUCTION')
 }
 
 module.exports = {
