@@ -5,6 +5,10 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+      <change afterPath="$PROJECT_DIR$/cypress/integration/closeCaseProcessTenure/closeCaseProcessTenure.js" afterDir="false" />
+>>>>>>> Stashed changes
 =======
       <change afterPath="$PROJECT_DIR$/cypress/integration/closeCaseProcessTenure/closeCaseProcessTenure.js" afterDir="false" />
 >>>>>>> Stashed changes
@@ -25,7 +29,10 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/cypress/pageObjects/ProcessesPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/pageObjects/ProcessesPage.js" afterDir="false" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======

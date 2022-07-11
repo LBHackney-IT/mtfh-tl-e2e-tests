@@ -138,6 +138,9 @@ Scenario Outline: Selecting back or cancelling out of the process
     When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
     And I click on the confirm button
     Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
+    When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+    And I click on the confirm button
+    Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
     Examples:
       | tenure                               | tenant                       | proposedTenant               |
       | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 | Rabbi FAKE_Claire FAKE_Blake | Rabbi FAKE_Claire FAKE_Blake |

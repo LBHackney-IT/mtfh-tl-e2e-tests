@@ -140,7 +140,10 @@ Given("the application has passed eligibility and failed the breach of tenancy c
     tenureReqDocsPage.selectNoForImmigrationControl().click();
     tenureReqDocsPage.selectNoForLiveNotice().click();
     tenureReqDocsPage.selectNoForRentArrears().click();
+<<<<<<< Updated upstream
     tenureReqDocsPage.selectNoForHoldATenancyElseWhere().click();
+=======
+>>>>>>> Stashed changes
     cy.contains('Next').click();
     tenureReqDocsPage.textHeaderNextSteps().should('be.visible');
     tenureReqDocsPage.textPassInitialEligReqs().should('be.visible');
@@ -168,7 +171,11 @@ When('I click on the confirm button', () => {
 });
 Then("{string} message is displayed with a link to Return to Home page", (confirmationText) => {
     cy.contains(confirmationText);
+<<<<<<< Updated upstream
     cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
+=======
+    cy.contains("This case is now closed and we have record this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
+>>>>>>> Stashed changes
     cy.contains("a", "Return to home page").should("have.attr", "href");
 });
 
