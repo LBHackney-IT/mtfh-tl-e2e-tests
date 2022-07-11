@@ -24,6 +24,7 @@ const manualChecksPass = (tenureId) => {
     tenureReqDocsPage.selectNoForImmigrationControl().click();
     tenureReqDocsPage.selectNoForLiveNotice().click();
     tenureReqDocsPage.selectNoForRentArrears().click();
+    tenureReqDocsPage.selectNoForHoldATenancyElseWhere().click();
     cy.contains('Next').click();
     tenureReqDocsPage.textHeaderNextSteps().should('be.visible');
     tenureReqDocsPage.textPassInitialEligReqs().should('be.visible');
@@ -41,6 +42,7 @@ Given("The tenure investigation has been completed for tenure {string}", (tenure
     manualChecksPass(tenureId);
     cy.contains('Next').click();
     tenureReqDocsPage.requestDocsElectronically().click();
+    tenureReqDocsPage.checkboxTenantDeclaration().click();
     cy.contains('Next').click();
     tenureReviewDocsPage.photoId().click();
     tenureReviewDocsPage.secondId().click();

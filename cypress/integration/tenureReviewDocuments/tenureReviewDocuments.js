@@ -22,6 +22,7 @@ const manualChecksPass = (tenureId) => {
     tenureReqDocsPage.selectNoForImmigrationControl().click();
     tenureReqDocsPage.selectNoForLiveNotice().click();
     tenureReqDocsPage.selectNoForRentArrears().click();
+    tenureReqDocsPage.selectNoForHoldATenancyElseWhere().click();
     cy.contains('Next').click();
     tenureReqDocsPage.textHeaderNextSteps().should('be.visible');
     tenureReqDocsPage.textPassInitialEligReqs().should('be.visible');
@@ -39,6 +40,7 @@ Given("I have requested the documents via DES for the tenure {string}", (tenureI
     manualChecksPass(tenureId);
     cy.contains('Next').click();
     tenureReqDocsPage.requestDocsElectronically().click();
+    tenureReqDocsPage.checkboxTenantDeclaration().click();
 });
 
 When("I have proceeded to the next step", () => {
@@ -79,6 +81,7 @@ Given("I would like to check submitted documents in person for tenure {string}",
     manualChecksPass(tenureId);
     cy.contains('Next').click();
     tenureReqDocsPage.requestDocsElectronically().click();
+    tenureReqDocsPage.checkboxTenantDeclaration().click();
     cy.contains('Next').click();
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
 
@@ -106,6 +109,7 @@ Given("the documents have been provided by the resident for tenure {string}", (t
     manualChecksPass(tenureId);
     cy.contains('Next').click();
     tenureReqDocsPage.requestDocsElectronically().click();
+    tenureReqDocsPage.checkboxTenantDeclaration().click();
     cy.contains('Next').click();
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
 });
@@ -157,6 +161,8 @@ Given("I have completed document upload for Sole to Joint for tenure {string}", 
     manualChecksPass(tenureId);
     cy.contains('Next').click();
     tenureReqDocsPage.requestDocsElectronically().click();
+    tenureReqDocsPage.checkboxTenantDeclaration().click();
+
     cy.contains('Next').click();
     tenureReviewDocsPage.photoId().click();
     tenureReviewDocsPage.secondId().click();
