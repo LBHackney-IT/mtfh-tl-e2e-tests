@@ -162,6 +162,7 @@ And("I want to add a comment", async () => {
 // Generic
 Given("I am logged in", () => {
   cy.login();
+  cy.env();
   window.localStorage.setItem(
     "features",
     JSON.stringify(Cypress.config("featureToggles"))
