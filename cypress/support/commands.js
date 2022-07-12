@@ -13,10 +13,10 @@ Cypress.Commands.add('login', () => {
     cy.getCookies().should('be.empty')
 
     if (keyLength > 0) {
-        cy.setCookie('hackneyToken', gssoTestKey)
+        cy.setCookie('hackneyToken', 'test')
     }
     else {
-        cy.setCookie('hackneyToken', 'test')
+        cy.setCookie('hackneyToken', gssoTestKey)
     }
 
     cy.getCookie('hackneyToken').should('have.property', 'value', gssoTestKey)
