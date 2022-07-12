@@ -7,7 +7,7 @@ const environmentConfig = require('../../environment-config')
 
 Cypress.Commands.add('login', () => {
     const gssoTestKey = environmentConfig.gssoTestKey
-    cy.log(gssoTestKey)
+    cy.location(gssoTestKey)
     cy.getCookies().should('be.empty')
 
     cy.setCookie('hackneyToken', gssoTestKey)
