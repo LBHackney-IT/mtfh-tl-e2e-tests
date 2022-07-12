@@ -84,7 +84,7 @@ commands:
                           then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
                           else export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
-                          export test_var=$AUTH_TOKEN_PRODUCTION
+                          export TEST_VAR=$AUTH_TOKEN_PRODUCTION
                           export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
@@ -97,6 +97,7 @@ commands:
                           export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                          echo "Running against $TEST_VAR environment" ;
                           npm install ;
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
                           then ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
