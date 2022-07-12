@@ -7,10 +7,18 @@ const environmentConfig = require('../../environment-config')
 
 Cypress.Commands.add('login', () => {
     const gssoTestKey = environmentConfig.gssoTestKey
-    cy.location(gssoTestKey)
+
+    const keyLength = gssoTestKey.length;
+
     cy.getCookies().should('be.empty')
 
-    cy.setCookie('hackneyToken', gssoTestKey)
+    if (keyLength > 0) {
+        cy.setCookie('hackneyToken', gssoTestKey)
+    }
+    else {
+        cy.setCookie('hackneyToken', 'test')
+    }
+
     cy.getCookie('hackneyToken').should('have.property', 'value', gssoTestKey)
     cy.log(Cypress.config("featureToggles"))
     window.localStorage.setItem(
