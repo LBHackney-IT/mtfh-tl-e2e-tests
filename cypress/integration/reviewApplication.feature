@@ -15,7 +15,8 @@ Feature: As a Housing Officer
     And the progress indicator is still in "Review Application"
     Examples:
       | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+      | dfaab345-18b3-2907-ab75-25b5b5904c93 |
+  #    | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
 #  Scenario Outline: Tenure Investigation recommendation - Approve application
 #    Given The tenure investigation has been completed for tenure "<tenure>"
