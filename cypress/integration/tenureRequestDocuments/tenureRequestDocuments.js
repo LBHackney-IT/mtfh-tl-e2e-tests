@@ -53,9 +53,8 @@ Then("Request Documents page is displayed with success message for {string}", (t
 Then("{string} text is displayed", (textSuppDocs) => {
     cy.contains(textSuppDocs);
 });
-Then("{string} text and Resident's contact details are displayed for the {string}", (textChekingSuppDocs,tenant) => {
+Then("{string} text and Resident's contact details are displayed", (textChekingSuppDocs) => {
     cy.contains(textChekingSuppDocs);
-    cy.contains(tenant);
     cy.get('[data-testid=soletojoint-RequestDocuments] > :nth-child(10)').should('not.be.empty');
     // cy.contains('Phone:').should('have.value','not.be.empty');
     // cy.contains('Email:').should('have.value','not.be.empty');

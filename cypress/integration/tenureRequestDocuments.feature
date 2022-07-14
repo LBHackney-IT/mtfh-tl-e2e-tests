@@ -32,12 +32,12 @@ Feature: As an internal Hackney user
     When I click the Next button
     Then Request Documents page is displayed with success message for "Eligibility checks passed"
     And "Supporting documents" text is displayed
-    And "Checking supporting documents" text and Resident's contact details are displayed for the "<tenant>"
+    And "Checking supporting documents" text and Resident's contact details are displayed
     And a radio button to automatically request the documents on DES is displayed
     And a radio button to make an appointment to review the Supporting documents is displayed
     Examples:
       | tenure                               | tenant                |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
+      | 149685da-174c-bd9f-b9f9-91f5bb0b85f9 | FAKE_Lee FAKE_Pollard |
 
   @SmokeTest
   Scenario Outline: AC 1.1 Link to current tenant’s person page from Request Documents Page
@@ -46,7 +46,7 @@ Feature: As an internal Hackney user
     Then I am taken to the current tenant’s person page which will be opened in a new tab
     Examples:
       | tenure                               | tenant                |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
+      | 149685da-174c-bd9f-b9f9-91f5bb0b85f9 | FAKE_Lee FAKE_Pollard |
 
 
     # //TODO commented for 5th July release as this test is failing in pipeline
@@ -84,7 +84,18 @@ Feature: As an internal Hackney user
     Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
     Examples:
       | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+      | 149685da-174c-bd9f-b9f9-91f5bb0b85f9 |
+
+  Scenario Outline: AC4. Close case when Breach of tenure checks are failed
+    Given the application has passed eligibility and failed the breach of tenancy checks for the tenure "<tenure>"
+    When I click the next button on breach tenure page
+    Then Breach of tenure eligibility checks Failed page is displayed
+    When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+    And I click on the confirm button
+    Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
+    Examples:
+      | tenure                               |
+      | 149685da-174c-bd9f-b9f9-91f5bb0b85f9 |
 
   Scenario Outline: AC4. Close case when Breach of tenure checks are failed
     Given the application has passed eligibility and failed the breach of tenancy checks for the tenure "<tenure>"
