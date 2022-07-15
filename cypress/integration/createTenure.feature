@@ -22,11 +22,11 @@ Feature: Create tenure
     When I view a property "<property>"
     When I click on the new tenure button
     Then I am on the create new tenure page "<property>"
-    Then the new tenure landing page is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the next button
-    And the tenure person search is displayed
+#    Then the new tenure landing page is displayed
+#    When I select a tenure type "<tenureType>"
+#    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+#    And I click the next button
+#    And the tenure person search is displayed
 
     Examples:
         | property                             | tenureType | startDay | startMonth | startYear |
