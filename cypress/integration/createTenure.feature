@@ -11,31 +11,29 @@ Feature: Create tenure
     Given I am logged in
 
 
-#  @ignore
-#  Scenario Outline: Clean up test data from DynamoDb
-#    Then I can delete a created record from DynamoDb "<tableName>"
-#
-#    Examples:
-#      | tableName          |
-#      | TenureInformation  |
-#
-#  @ignore
-#  @SmokeTest
-#  Scenario Outline: Create new tenure
-#    When I view a property "<property>"
-#    When I click on the new tenure button
-#    Then I am on the create new tenure page "<property>"
-#    Then the new tenure landing page is displayed
-#    When I select a tenure type "<tenureType>"
-#    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-#    And I click the next button
-#    And the tenure person search is displayed
-#
-#    Examples:
-#        | property                             | tenureType | startDay | startMonth | startYear |
-#        | 05f2a78d-bc9d-255d-0c1c-98e7add1ca95 | Non-Secure   | 01       | 01         | 2000      |
-#     #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
-#
+  Scenario Outline: Clean up test data from DynamoDb
+    Then I can delete a created record from DynamoDb "<tableName>"
+
+    Examples:
+      | tableName          |
+      | TenureInformation  |
+
+  @SmokeTest
+  Scenario Outline: Create new tenure
+    When I view a property "<property>"
+    When I click on the new tenure button
+    Then I am on the create new tenure page "<property>"
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
+
+    Examples:
+        | property                             | tenureType | startDay | startMonth | startYear |
+        | 05f2a78d-bc9d-255d-0c1c-98e7add1ca95 | Non-Secure   | 01       | 01         | 2000      |
+     #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
+
 #@ignore
 #  @SmokeTest
 #  Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
