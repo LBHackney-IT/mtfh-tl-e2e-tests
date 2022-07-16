@@ -49,8 +49,11 @@ Then("Sole tenant requests a joint tenure page is displayed", () => {
     processPage.headingSoleTenantRequestsAJointTenure().should('be.visible');
 });
 
+// When("I select a person to add as a joint tenant", () => {
+//     processPage.personRadioButton().click();
+// });
 When("I select a person to add as a joint tenant", () => {
-    processPage.personRadioButton().click();
+    cy.get('[type="radio"].govuk-radios__input').first().check();
 });
 Then("Eligibility checks passed page is displayed", () => {
     processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
