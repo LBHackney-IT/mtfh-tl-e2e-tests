@@ -3,8 +3,8 @@ Feature: As an internal Hackney User
           via the person page and tenure page
           So that I can complete a legal change of name for a person
 
-#  Background:
-#    Given I am logged in
+  Background:
+    Given I am logged in
 #
 #  Scenario Outline: AC1 - CoN Process option
 #    Given I am on the MMH home page
