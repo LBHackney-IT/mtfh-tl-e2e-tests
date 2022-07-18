@@ -534,7 +534,8 @@ Then('the property information is displayed', () => {
 })
 
 Then('I am on the create new tenure page {string}', (tenureId) => {
-  cy.url().should('contain', `tenure/${tenureId}/add`)
+  cy.url().should('contain', `tenure/${tenureId}/add`);
+  cy.task('appendTestDataId', tenureId);
 })
 
 When('I click on the new tenure button', () => {
