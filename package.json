@@ -64,7 +64,7 @@
     "browserslist": ">=4.16.5",
     "cypress": "^8.5.0",
     "cypress-audit": "^0.3.0",
-    "cypress-axe": "^0.14.2",
+    "cypress-axe": "^0.12.2",
     "cypress-cucumber-preprocessor": "^4.2.0",
     "cypress-localstorage-commands": "^1.4.4",
     "cypress-social-logins": "^1.11.3",
