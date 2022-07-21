@@ -58,20 +58,27 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@testing-library/cypress": "^7.0.6",
+    "@testing-library/cypress": "^8.0.2",
     "ansi-regex": ">=5.0.1",
     "axe-core": "^4.2.1",
     "browserslist": ">=4.16.5",
-    "cypress": "^8.3.1",
+    "cypress": "^8.5.0",
     "cypress-audit": "^0.3.0",
-    "cypress-axe": "^0.12.2",
-    "cypress-cucumber-preprocessor": "^4.2.0",
+    "cypress-axe": "^0.14.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-localstorage-commands": "^1.4.4",
     "cypress-social-logins": "^1.11.3",
     "glob-parent": ">=5.1.2",
     "set-value": ">=4.0.1",
     "ws": ">=6.2.2",
     "cypress-xpath": "^1.6.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "./cypress/cucumber-json"
+    }
   },
   "dependencies": {
     "aws-sdk": "^2.1020.0",
