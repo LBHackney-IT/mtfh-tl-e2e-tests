@@ -73,6 +73,13 @@
     "ws": ">=6.2.2",
     "cypress-xpath": "^1.6.2"
   },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "./cypress/cucumber-json"
+    }
+  },
   "dependencies": {
     "aws-sdk": "^2.1020.0",
     "axios": "^0.21.3",
