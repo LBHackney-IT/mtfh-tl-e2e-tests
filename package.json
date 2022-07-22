@@ -4,55 +4,20 @@
   "description": "End to end tests for MTFH T&L",
   "main": "index.js",
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "./cypress/cucumber-json"
+    }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cypress:open": "cypress open",
     "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:ci": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:activity-history": "cypress run -e TAGS='@activity-history and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:authentication": "cypress run -e TAGS='@authentication and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:comments": "cypress run -e TAGS='@comments and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:common": "cypress run -e TAGS='@common and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:header": "cypress run -e TAGS='@header and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:personal-details": "cypress run -e TAGS='@personal-details and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:processes": "cypress run -e TAGS='@processes and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:property": "cypress run -e TAGS='@property and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:root": "cypress run -e TAGS='@root and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:search": "cypress run -e TAGS='@search and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:static": "cypress run -e TAGS='@static and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:development:tenure": "cypress run -e TAGS='@tenure and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging:activity-history": "cypress run -e TAGS='not @GoogleLighthouse and not @ignore and not @device'",
-    "test:cypress:staging:authentication": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging:comments": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging:common": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging:header": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging:personal-details": "cypress run -e TAGS='not @GoogleLighthouse and not @ignore and not @device'",
-    "test:cypress:staging:processes": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging:property": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:staging:root": "cypress run -e TAGS='not @GoogleLighthouse and not @ignore and not @device'",
-    "test:cypress:staging:search": "cypress run -e TAGS='not @GoogleLighthouse and not @ignore and not @device'",
-    "test:cypress:staging:static": "cypress run -e TAGS='not @GoogleLighthouse and not @ignore and not @device'",
-    "test:cypress:staging:tenure": "cypress run -e TAGS='not @GoogleLighthouse and not @ignore and not @device'",
     "test:cypress:production": "cypress run -e TAGS='@Production and not @ignore'",
-    "test:cypress:production:activity-history": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:authentication": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:comments": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:common": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:header": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:personal-details": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:processes": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:property": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:root": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:search": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:static": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production:tenure": "cypress run -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
     "test:cypress:accessibility": "cypress run -e TAGS='@Accessibility'",
     "test:cypress:GoogleLighthouse": "cypress run -e TAGS='@GoogleLighthouse'",
     "test:cypress:staging:devices": "cypress run --browser chrome --headless -e TAGS='@device and not @ignore'",
-    "test:cypress:api": "cypress run -e TAGS='@api'",
     "test:cypress:smoke": "cypress run --browser chrome --headless -e TAGS='@SmokeTest and not @ignore'"
   },
   "author": "",
@@ -72,13 +37,6 @@
     "set-value": ">=4.0.1",
     "ws": ">=6.2.2",
     "cypress-xpath": "^1.6.2"
-  },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "./cypress/cucumber-json"
-    }
   },
   "dependencies": {
     "aws-sdk": "^2.1020.0",
