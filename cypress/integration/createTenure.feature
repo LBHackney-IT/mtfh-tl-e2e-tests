@@ -11,14 +11,6 @@ Feature: Create tenure
     Given I am logged in
 
   @ignore
-  Scenario Outline: Clean up test data from DynamoDb
-    Then I can delete a created record from DynamoDb "<tableName>"
-
-    Examples:
-      | tableName          |
-      | TenureInformation  |
-
-  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure
     When I view a property "<property>"
