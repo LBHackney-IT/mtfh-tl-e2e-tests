@@ -218,7 +218,6 @@ Feature: Create tenure
         | property                             | tenureType | startDay | startMonth | startYear |
         | 986a2a9e-9eb4-0966-120a-238689e3e265 | Freehold   | 01       | 01         | 1900      |
 
-  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure that with start date that occurs after end date
     When I view a property "<property>"
