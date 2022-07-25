@@ -6,7 +6,6 @@ Feature: As an internal Hackney user
   Background:
     Given I am logged in
 
-
 #  Scenario: View resident details for new tenure
  #   Given I create a new tenure
 #    #And I add a person to a tenure
@@ -26,7 +25,6 @@ Feature: As an internal Hackney user
 #      | tableName          |
 #      | TenureInformation  |
 
-  @SmokeTest
   Scenario Outline: AC1. View Request for Documents page
     Given the application has passed eligibility and the housing officer breach of tenancy checks for the tenure "<tenure>"
     When I click the Next button
@@ -39,7 +37,6 @@ Feature: As an internal Hackney user
       | tenure                               | tenant                |
       | 149685da-174c-bd9f-b9f9-91f5bb0b85f9 | FAKE_Lee FAKE_Pollard |
 
-  @SmokeTest
   Scenario Outline: AC 1.1 Link to current tenant’s person page from Request Documents Page
     Given I am on the Request Documents page for the tenure "<tenure>"
     When I click on the current tenant’s name in the heading
@@ -63,7 +60,6 @@ Feature: As an internal Hackney user
 #      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | FAKE_Lee FAKE_Pollard |
 
     # //TODO commented for 5th July release as this test is failing in pipeline
-#  @SmokeTest
 #  Scenario Outline: AC3. Request documents via office appointment
 #    Given I am on the Request Documents page for the tenure "<tenure>"
 #    When I select that I have made an appointment to check supporting documents

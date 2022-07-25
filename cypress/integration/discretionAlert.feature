@@ -5,7 +5,6 @@ Feature: As an internal Hackney user (eg. Housing Officer)
   Background:
     Given I am logged in
 
-  @SmokeTest
   Scenario Outline: AC1 - Viewing Discretion alert details on a persons page
     Given A person "<person>" has a discretion alert assigned to them
     When I view the persons profile page
@@ -16,7 +15,6 @@ Feature: As an internal Hackney user (eg. Housing Officer)
     | person                               | alertType    | alertDescription   |
     | 8d027289-0f0e-56a2-6473-980544f46b29 | Verbal Abuse | Tenant was abusive |
 
-  @SmokeTest
   Scenario Outline: AC2 - Viewing Discretion alert details on a property page
     Given A property "<property>" has a person with a discretion alert assigned to them
     When I view a property profile page
@@ -27,7 +25,6 @@ Feature: As an internal Hackney user (eg. Housing Officer)
       | property                             | alertType          | alertDescription                                                                                                                                                                                                                                                                                 |
       | 81385307-ddd2-9699-599c-6aaa94f6f4b7 | Do not visit alone | No Lone Visits - Tenant has violent tendencies - Tenant is care in the community. 2 or 3 Operatives should attend jointly at all times, no works are to commence until Glen Wallker (Risk & Compliance Officer) confirms floor adhesive is free of asbestos and threat level is no longer there. |
 
-  @SmokeTest
   Scenario Outline: AC3 - Viewing Discretion alert details on a tenure page
     Given A tenure "<tenure>" has a person "<person>" with a discretion alert assigned to them
     When I view a tenure profile page

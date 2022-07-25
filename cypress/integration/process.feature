@@ -1,8 +1,3 @@
-@authentication
-@common
-@processes
-@root
-
 Feature: Processes menu for easier navigation
 I want to be able to link directly from any of the 3 Manage My Home entity pages (tenure/person/property) into the google form I use to record information
 So that I can easily record information without the need to keep multiple screens open
@@ -10,7 +5,6 @@ So that I can easily record information without the need to keep multiple screen
 Background:
     Given I am logged in
 
-@Positive
 Scenario Outline: Display process options for person
     Given I have loaded a Person record "<record>"
     When I select New Process menu "<processType>"
@@ -21,7 +15,6 @@ Scenario Outline: Display process options for person
         | processType  | record                                 |
         | person       | da05aabb-3757-43c8-3028-c9ecbe72a067   |
 
-@Positive
 Scenario Outline: Display process options for property
     Given I view a property "<record>"
     When I select New Process menu "<processType>"
@@ -32,7 +25,6 @@ Scenario Outline: Display process options for property
         | processType  | record                                 |
         | property     | f85e4390-9256-e4dc-0443-2e510b362cac   |
 
-@Positive
 Scenario Outline: Initiate sole to joint process from tenure
     When I view a Tenure "<tenure>"
     Then the tenure information is displayed
@@ -50,7 +42,6 @@ Scenario Outline: Initiate sole to joint process from tenure
         | e832a76f-8bcf-238c-7ad1-6ef1b408b316 | tenure      | Other tenancy changes | Sole tenant requests a joint tenure |FAKE_Julie FAKE_Davies|34A Craven Walk N16 6BU|00046299   |FN00046299      |
 
 # Refactor for stateless tests is WIP. Will update this test once refactoring is completed.
-# @Positive
 # Scenario Outline: Display process options for tenure
 
 Scenario Outline: Process landing page loaded

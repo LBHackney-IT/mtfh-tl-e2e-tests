@@ -1,9 +1,3 @@
-@authentication
-@common
-@processes
-@root
-@search
-
 Feature: T&L Search Function
     I want to search for a person or tenure
 
@@ -13,8 +7,6 @@ Feature: T&L Search Function
       Given I am logged in
       Given I am on the search page
 
-  @SmokeTest
-  @Positive
   Scenario Outline: Initial person search
     Then I can see the options to search in the correct order
     When I click on the radio button for "<searchType>"
@@ -26,8 +18,6 @@ Feature: T&L Search Function
       | characters | searchType |
       | An         | Property   |
 
-  @SmokeTest
-  @Positive
   Scenario Outline: Execute property searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -43,8 +33,6 @@ Feature: T&L Search Function
       | Avenue     | Property     |
       | castle     | Property     |
 
-  @SmokeTest
-  @Positive
   Scenario Outline: Execute person searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -58,12 +46,7 @@ Feature: T&L Search Function
       | am         | Person     |
       | Andrew     | Person     |
       | Jeff       | Person     |
-      # | Keith      | Person     |
-      # | Trev       | Person     |
-      # | Victor     | Person     |
 
-  @SmokeTest
-  @Positive
   Scenario Outline: Execute tenure searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -79,9 +62,6 @@ Feature: T&L Search Function
       | Avenue     | Tenure     |
       | castle     | Tenure     |
 
-
-  @SmokeTest
-  @Positive
   Scenario Outline: Execute tenure searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -97,7 +77,6 @@ Feature: T&L Search Function
       | Avenue     | Tenure     |
       | castle     | Tenure     |
 
-  @device
   Scenario Outline: Execute searches on device
     When I am using a mobile viewport "<device>"
     And I click on the search again button
@@ -110,26 +89,13 @@ Feature: T&L Search Function
     Examples:
       | device        | characters  | searchType |
       | ipad-2        | Andrew      | Person     |
-      | ipad-mini     | Alan        | Person     |
-      | iphone-3      | Christopher | Person     |
-      | iphone-4      | Jeff        | Person     |
-      | iphone-5      | Bill        | Person     |
-      | iphone-6      | Jade        | Person     |
-      | iphone-6+     | Callum      | Person     |
-      | iphone-7      | Steve       | Person     |
-      | iphone-8      | Trev        | Person     |
-      | iphone-x      | Keith       | Person     |
-      | iphone-xr     | Anna        | Person     |
       | iphone-se2    | Gill        | Person     |
       | macbook-11    | Emily       | Person     |
       | macbook-13    | Katie       | Person     |
       | macbook-15    | Karen       | Person     |
       | macbook-16    | Sally       | Person     |
-      | samsung-note9 | Jodie       | Person     |
       | samsung-s10   | Molly       | Person     |
 
-  @SmokeTest
-  @Positive
   Scenario Outline: Wildcard and partial searches
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -142,13 +108,7 @@ Feature: T&L Search Function
       | *a         | Person     |
       | b*         | Tenure     |
       | *c*        | Property   |
-      # | ch         | Tenure     |
-      # | *ev        | Person     |
-      # | *ic*       | Tenure     |
-      # | te*        | Person     |
 
-  @SmokeTest
-  @Positive
   Scenario Outline: Results are not returned
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -160,12 +120,7 @@ Feature: T&L Search Function
       | characters | searchType |
       | 98765432   | Person     |
       | AZKQ       | Tenure     |
-      # | dp0        | Person     |
-      # | elqsn      | Tenure     |
-      # | !!!!!!!    | Person     |
 
-  @SmokeTest
-  @Positive
   @ignore
   Scenario Outline: Multiple search criteria
     And I click on the search again button
@@ -178,8 +133,6 @@ Feature: T&L Search Function
       | characters     | searchType |
       | ad e           | Person     |
 
-  @SmokeTest
-  @Negative
   Scenario Outline: Insufficient characters
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -192,15 +145,11 @@ Feature: T&L Search Function
       | b          | Person     |
       | c          | Tenure     |
       | g          | Property   |
-      # | d          | Person     |
-      # | e          | Tenure     |
-      # | !          | Person     |
 
   @Accessibility
   Scenario: Accessibility Testing
     And have no detectable a11y violations
 
-  @SmokeTest
   Scenario Outline: Filter searches for person
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -217,7 +166,6 @@ Feature: T&L Search Function
       | Bre        | Last name Z-A | 12      | Person     |
       | Chris      | Best match    | 20      | Person     |
 
-  @SmokeTest
   Scenario Outline: Filter searches for tenure
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -233,7 +181,6 @@ Feature: T&L Search Function
       | Bre        | 12      | Tenure     |
       | Chris      | 20      | Tenure     |
 
-  @SmokeTest
   Scenario Outline: Filter searches for property
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -249,7 +196,6 @@ Feature: T&L Search Function
       | Bre        | 12      | Property   |
       | Chris      | 20      | Property   |
 
-  @SmokeTest
   Scenario Outline: Re-execute search
     And I click on the search again button
     When I click on the radio button for "<searchType>"
@@ -267,8 +213,6 @@ Feature: T&L Search Function
       | Steve       | Dave         | Person     |
 
   @ignore
-  @SmokeTest
-  @Negative
   Scenario Outline: Search validation scenario
     And I click on the search again button
     When I click on the radio button for "<searchType>"

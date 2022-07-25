@@ -1,9 +1,3 @@
-@authentication
-@common
-@processes
-@root
-@tenure
-
 Feature: Tenure page
 
     Background:
@@ -26,7 +20,6 @@ Feature: Tenure page
       | startOfTenureDate  |
       | 2013-12-31         |
 
-    @SmokeTest
     Scenario Outline: Navigate to old tenancy files - button not displayed
       Given the start date of the tenure is "<startOfTenureDate>"
       And the start date for the tenure record is before 31 December 2013
@@ -48,7 +41,6 @@ Feature: Tenure page
       When I view the Other household members section in the tenure page
       And A message says this tenure has no household members
 
-    @SmokeTest
     Scenario: Navigate to personal details
       Given I create a new tenure
       And I add a person to a tenure
@@ -56,7 +48,6 @@ Feature: Tenure page
       And I select a resident
       Then the resident details are displayed
 
-    @device
     Scenario Outline: Mobile view
       Given I create a new tenure
       And I view a Tenure
@@ -68,23 +59,11 @@ Feature: Tenure page
 
       Examples:
         | device        |
-        # | ipad-2        |
-        # | ipad-mini   |
-        | iphone-3      |
-        | iphone-4      |
-        | iphone-5      |
-        | iphone-6      |
-        | iphone-6+     |
-        | iphone-7      |
-        | iphone-8      |
-        | iphone-x      |
-        | iphone-xr     |
         | iphone-se2    |
-        # | macbook-11    |
-        # | macbook-13    |
-        # | macbook-15    |
-        # | macbook-16    |
-        # | samsung-note9 |
+        | macbook-11    |
+        | macbook-13    |
+        | macbook-15    |
+        | macbook-16    |
         | samsung-s10   |
 
     @Accessibility

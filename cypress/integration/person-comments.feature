@@ -1,16 +1,9 @@
-@authentication
-@comments
-@common
-@processes
-@root
-
 Feature: T&L Person Comment
     I want to create and view person's comments
 
     Background:
       Given I am logged in
 
-    @SmokeTest
     Scenario Outline: I go to create a comment for a person page
       Given I am on the create comment page for "<commentType>" "<personId>"
       Then the create comment component is displayed
@@ -19,8 +12,6 @@ Feature: T&L Person Comment
         | commentType  | personId                               |
         | person       | da05aabb-3757-43c8-3028-c9ecbe72a067   |
 
-    @SmokeTest
-    @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
       Given I am on the create comment page for "<commentType>" "<personId>"
       When I select a checkbox for "<checkbox>"
@@ -46,24 +37,13 @@ Feature: T&L Person Comment
         | commentType   | personId                             | device        | category             |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-2        | Appointments         |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | ipad-mini     | Estate management    |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-3      | Evictions            |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-4      | Parking              |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-5      | Planned maintenance  |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-6      | Rehousing            |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-6+     | Rents                |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-7      | Repairs              |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-8      | Service charge       |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-xr     | Temporary decant     |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | iphone-se2    | Tenure breaches      |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-11    | Tenure management    |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-13    | Voids                |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-15    | Appointments         |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | macbook-16    | Appointments         |
-        | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-note9 | Appointments         |
         | person        | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | samsung-s10   | Appointments         |
            
-    @SmokeTest
-    @Positive    
     Scenario Outline: I go to create a comment for a person page
       Given I am on the create comment page for "<commentType>" "<personId>"
       When I enter a valid title
@@ -76,7 +56,6 @@ Feature: T&L Person Comment
         | commentType | personId                               |  category      |
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   |  Appointments  |
 
-    @Positive
     Scenario Outline: Character limit counter
       Given I am on the create comment page for "<commentType>" "<personId>"
       When I enter <characters> characters into the comment field
@@ -85,12 +64,9 @@ Feature: T&L Person Comment
       Examples:
         | commentType | personId                               | characters |
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 2          |
-        # | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 50         |
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 99         |
-        # | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 350        |
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 500        |
 
-    @Negative
     Scenario Outline: Character limit exceeded
       Given I am on the create comment page for "<commentType>" "<personId>"
       When I enter <characters> characters into the comment field
@@ -101,8 +77,6 @@ Feature: T&L Person Comment
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 502        |
         | person      | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31   | 508        |
 
-    @SmokeTest
-    @Negative  
     Scenario Outline: Validation message is displayed
       Given I am on the create comment page for "<commentType>" "<personId>"
       Then I click the save comment button

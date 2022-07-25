@@ -1,9 +1,3 @@
-@authentication
-@common
-@processes
-@property
-@root
-
 Feature: Property Page
 
     View property page
@@ -11,7 +5,6 @@ Feature: Property Page
     Background:
       Given I am logged in
 
-    @SmokeTest
     Scenario Outline: View property details
       When I view a property "<property>"
       Then the page breadcrumb is displayed
@@ -23,7 +16,6 @@ Feature: Property Page
           | property                             |
           | 37c4e5a2-8893-dd5f-1ff3-9d4b18a9e5e9 |
 
-    @SmokeTest
     Scenario Outline: View property details
       When I view a property "<property>"
       Then the page breadcrumb is displayed
@@ -36,7 +28,6 @@ Feature: Property Page
           | property                             |
           | 37c4e5a2-8893-dd5f-1ff3-9d4b18a9e5e9 |
 
-    @Regression
     Scenario Outline: View property via tenure
       When I view a Tenure "<tenure>"
       Then the tenure information is displayed
@@ -47,7 +38,6 @@ Feature: Property Page
           | tenure                               |
           | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
 
-    @Regression
     Scenario Outline: View property via person
       Given I have loaded a Person record "<record>"
       Then the personal details are displayed on the sidebar
@@ -100,7 +90,6 @@ Feature: Property Page
           | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | Cancelled   |
           | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | In Progress |
 
-  @smoke
     Scenario Outline: 'New tenure' button should be displayed if no tenure information is returned for a given property
       When I view a property "<property>"
       Then Tenure information displays status as Inactive
@@ -109,4 +98,3 @@ Feature: Property Page
       Examples:
         | property                             |
         | b1a64f12-a2f5-b6e9-55c2-bbfa107150a7 |
-       # original - data | e6e224eb-18e8-c2c1-2dc4-f82e67cad1fa |

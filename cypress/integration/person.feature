@@ -1,17 +1,9 @@
-@authentication
-@common
-@personal-details
-@processes
-@root
-
 Feature: T&L Person Page
   I want to view a person
 
   Background:
     Given I am logged in
 
-  @SmokeTest
-  @Positive
   Scenario Outline: View person details web page view
     Given I have loaded a Person record "<record>"
     Then the personal details are displayed on the sidebar
@@ -28,7 +20,6 @@ Feature: T&L Person Page
       | record                               |
       | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
 
-  @device
   Scenario Outline: View person details device view
     Given I have loaded a Person record "<record>"
     When I am using a mobile viewport "<device>"
@@ -44,26 +35,13 @@ Feature: T&L Person Page
 
     Examples:
       | device        | record                               |
-      # | ipad-2        | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | ipad-mini     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-3      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-4      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-5      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-6      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-6+     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-7      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-8      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-x      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      | iphone-xr     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
       | iphone-se2    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-11    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-13    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-15    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | macbook-16    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-      # | samsung-note9 | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | macbook-11    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | macbook-13    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | macbook-15    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      | macbook-16    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
       | samsung-s10   | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
 
-  @SmokeTest
   Scenario Outline: Look for record that does not exist
     Given I have loaded an invalid person record "<record>"
     Then The person you've requested does not exist error message appears
@@ -73,7 +51,6 @@ Feature: T&L Person Page
       | kdfbv  |
       | dfkkkl |
 
-  @SmokeTest
   Scenario Outline: Add a comment for a person navigation
   # Add comment functinality is covered in person-comments.feature
     Given I have loaded a Person record "<record>"

@@ -1,10 +1,3 @@
-@authentication
-@common
-@personal-details
-@processes
-@root
-
-@AddPersonPage
 Feature: Add a new person to a tenure
   I want to add a person to a tenure
 
@@ -13,8 +6,6 @@ Feature: Add a new person to a tenure
     And I delete all of the correspondence addresses for "279bf08c-0c9e-4d81-e24a-8930e8b37a68"
     And I reset the equality information for "f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d"
 
-  @SmokeTest
-  @Regression
   Scenario Outline: Removed fields are not displayed
     Given I create a person for tenure '<tenure>'
     Then the gender field is not displayed
@@ -27,8 +18,6 @@ Feature: Add a new person to a tenure
       | tenure                               |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 |
 
-  @SmokeTest
-  @Positive
   Scenario Outline: Add a new person to a tenure
     Given I create a person for tenure '<tenure>'
     Then the add a new person tenure page is correct
@@ -49,10 +38,8 @@ Feature: Add a new person to a tenure
 
     Examples:
       | tenure                               | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
-      # | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
 
-  @device
   Scenario Outline: Add a new person to tenure on a device
     Given I create a person for tenure '<tenure>'
     And I am using a mobile viewport "<device>"
@@ -78,24 +65,13 @@ Feature: Add a new person to a tenure
       | tenure                               | device        | title | personType          | firstName     | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | ipad-2        | Mr    | Named tenure holder | ipad2         | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | ipad-mini     | Mrs   | Household member    | ipad-mini     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-3      | Mrs   | Named tenure holder | iphone3       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-4      | Miss  | Household member    | iphone4       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-5      | Mrs   | Named tenure holder | iphone5       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-6      | Mr    | Household member    | iphone6       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-6+     | Miss  | Named tenure holder | iphone6+      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-7      | Miss  | Household member    | iphone7       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-8      | Mr    | Named tenure holder | iphone8       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-xr     | Mrs   | Household member    | iphone-xr     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | iphone-se2    | Mrs   | Named tenure holder | iphone-se2    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | macbook-11    | Mr    | Household member    | macbook-11    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | macbook-13    | Miss  | Named tenure holder | macbook-13    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | macbook-15    | Mr    | Household member    | macbook-15    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | macbook-16    | Miss  | Named tenure holder | macbook-17    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-      | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | samsung-note9 | Miss  | Household member    | samsung-note9 | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | samsung-s10   | Miss  | Named tenure holder | samsung-s10   | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
 
-  @SmokeTest
-  @Negative
   Scenario Outline: Validation check
     Given I create a person for tenure '<tenure>'
     Then the add a new person tenure page is correct
@@ -113,8 +89,6 @@ Feature: Add a new person to a tenure
       | tenure                               | personType          | title | firstName | middleName | lastName | day | month | year |
       | 709afdcd-92d2-ae97-7e4b-0df4bcc59613 | Household member    | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 |
 
-    @SmokeTest
-    @Positive
     Scenario Outline: Edit a person
       Given I create a person and then edit them "<tenure>"
       And the person type options are not displayed
