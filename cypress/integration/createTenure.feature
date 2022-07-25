@@ -288,7 +288,6 @@ Feature: Create tenure
       | tenure                               | tenureType | day | month | year |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |  20 |  05   | 2022 |
 
-    @ignore
     Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
         When I view a Tenure "<tenure>"
         Then the tenure information is displayed
