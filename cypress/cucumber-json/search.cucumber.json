@@ -1,0 +1,7004 @@
+[
+  {
+    "description": "    I want to search for a person or tenure",
+    "keyword": "Feature",
+    "name": "T&L Search Function",
+    "line": 7,
+    "id": "t&l-search-function",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@processes",
+        "line": 3
+      },
+      {
+        "name": "@root",
+        "line": 4
+      },
+      {
+        "name": "@search",
+        "line": 5
+      }
+    ],
+    "uri": "search.feature",
+    "elements": [
+      {
+        "id": "t&l-search-function;initial-person-search",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "Initial person search",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 16
+          },
+          {
+            "name": "@Positive",
+            "line": 17
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 618000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 60000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 73000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 2972000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I can see the options to search in the correct order",
+            "result": {
+              "status": "passed",
+              "duration": 3635000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 34000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "I enter any of the following criteria \"An\"",
+            "result": {
+              "status": "passed",
+              "duration": 1008000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 734000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "the search results are displayed by best match \"An\"",
+            "result": {
+              "status": "passed",
+              "duration": 3524000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-property-searches",
+        "keyword": "Scenario",
+        "line": 42,
+        "name": "Execute property searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 29
+          },
+          {
+            "name": "@Positive",
+            "line": 30
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 227000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 32000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 80000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 2008000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 2796000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 10000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I enter any of the following criteria \"12\"",
+            "result": {
+              "status": "passed",
+              "duration": 712000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 502000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "the search results are displayed by best match \"12\"",
+            "result": {
+              "status": "passed",
+              "duration": 394000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "property search results are prefixed correctly",
+            "result": {
+              "status": "passed",
+              "duration": 190000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 102000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-property-searches",
+        "keyword": "Scenario",
+        "line": 43,
+        "name": "Execute property searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 29
+          },
+          {
+            "name": "@Positive",
+            "line": 30
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 230000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 38000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 44000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 855000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 2296000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 10000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I enter any of the following criteria \"Avenue\"",
+            "result": {
+              "status": "passed",
+              "duration": 1088000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 362000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "the search results are displayed by best match \"Avenue\"",
+            "result": {
+              "status": "passed",
+              "duration": 354000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "property search results are prefixed correctly",
+            "result": {
+              "status": "passed",
+              "duration": 84000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 90000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-property-searches",
+        "keyword": "Scenario",
+        "line": 44,
+        "name": "Execute property searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 29
+          },
+          {
+            "name": "@Positive",
+            "line": 30
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 267000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 40000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 56000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 557000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1971000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I enter any of the following criteria \"castle\"",
+            "result": {
+              "status": "passed",
+              "duration": 873000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 396000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "the search results are displayed by best match \"castle\"",
+            "result": {
+              "status": "passed",
+              "duration": 377000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "property search results are prefixed correctly",
+            "result": {
+              "status": "passed",
+              "duration": 167000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 73000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-person-searches",
+        "keyword": "Scenario",
+        "line": 58,
+        "name": "Execute person searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 46
+          },
+          {
+            "name": "@Positive",
+            "line": 47
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 303000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 38000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 37000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 692000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1658000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 50,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 867000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 51,
+            "name": "I enter any of the following criteria \"am\"",
+            "result": {
+              "status": "passed",
+              "duration": 414000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 361000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 53,
+            "name": "the search results are displayed by best match \"am\"",
+            "result": {
+              "status": "passed",
+              "duration": 914000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 75000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-person-searches",
+        "keyword": "Scenario",
+        "line": 59,
+        "name": "Execute person searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 46
+          },
+          {
+            "name": "@Positive",
+            "line": 47
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 157000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 23000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 56000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 496000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1717000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 50,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 655000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 51,
+            "name": "I enter any of the following criteria \"Andrew\"",
+            "result": {
+              "status": "passed",
+              "duration": 468000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 435000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 53,
+            "name": "the search results are displayed by best match \"Andrew\"",
+            "result": {
+              "status": "passed",
+              "duration": 297000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 51000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-person-searches",
+        "keyword": "Scenario",
+        "line": 60,
+        "name": "Execute person searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 46
+          },
+          {
+            "name": "@Positive",
+            "line": 47
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 154000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 63000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 59000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 694000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1823000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 50,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 590000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 51,
+            "name": "I enter any of the following criteria \"Jeff\"",
+            "result": {
+              "status": "passed",
+              "duration": 498000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 467000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 53,
+            "name": "the search results are displayed by best match \"Jeff\"",
+            "result": {
+              "status": "passed",
+              "duration": 381000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 49000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-tenure-searches",
+        "keyword": "Scenario",
+        "line": 96,
+        "name": "Execute tenure searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 83
+          },
+          {
+            "name": "@Positive",
+            "line": 84
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 169000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 67000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 88000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 452000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 86,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1728000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 87,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 693000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 88,
+            "name": "I enter any of the following criteria \"12\"",
+            "result": {
+              "status": "passed",
+              "duration": 353000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 89,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 359000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 90,
+            "name": "the search results are displayed by best match \"12\"",
+            "result": {
+              "status": "passed",
+              "duration": 405000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 91,
+            "name": "tenure search results are prefixed correctly",
+            "result": {
+              "status": "passed",
+              "duration": 30000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 92,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 23000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-tenure-searches",
+        "keyword": "Scenario",
+        "line": 97,
+        "name": "Execute tenure searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 83
+          },
+          {
+            "name": "@Positive",
+            "line": 84
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 124000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 35000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 51000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 571000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 86,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1698000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 87,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 592000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 88,
+            "name": "I enter any of the following criteria \"Avenue\"",
+            "result": {
+              "status": "passed",
+              "duration": 487000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 89,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 407000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 90,
+            "name": "the search results are displayed by best match \"Avenue\"",
+            "result": {
+              "status": "passed",
+              "duration": 355000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 91,
+            "name": "tenure search results are prefixed correctly",
+            "result": {
+              "status": "passed",
+              "duration": 45000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 92,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 53000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-tenure-searches",
+        "keyword": "Scenario",
+        "line": 98,
+        "name": "Execute tenure searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 83
+          },
+          {
+            "name": "@Positive",
+            "line": 84
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 141000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 21000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 158000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 509000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 86,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1725000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 87,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 814000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 88,
+            "name": "I enter any of the following criteria \"castle\"",
+            "result": {
+              "status": "passed",
+              "duration": 562000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 89,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 292000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 90,
+            "name": "the search results are displayed by best match \"castle\"",
+            "result": {
+              "status": "passed",
+              "duration": 368000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 91,
+            "name": "tenure search results are prefixed correctly",
+            "result": {
+              "status": "passed",
+              "duration": 36000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 92,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 74000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 112,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"ipad-2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Andrew\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Andrew\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 113,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"ipad-mini\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 114,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Christopher\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Christopher\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 115,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Jeff\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Jeff\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 116,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Bill\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Bill\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 117,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Jade\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Jade\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 118,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Callum\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Callum\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 119,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 120,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Trev\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Trev\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 121,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-x\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Keith\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Keith\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 122,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Anna\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Anna\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 123,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Gill\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Gill\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 124,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"macbook-11\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Emily\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Emily\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 125,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"macbook-13\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Katie\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Katie\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 126,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"macbook-15\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 127,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"macbook-16\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Sally\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Sally\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 128,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"samsung-note9\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Jodie\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Jodie\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;execute-searches-on-device",
+        "keyword": "Scenario",
+        "line": 129,
+        "name": "Execute searches on device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 100
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I am using a mobile viewport \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I enter any of the following criteria \"Molly\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "the search results are displayed by best match \"Molly\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 108,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;wildcard-and-partial-searches",
+        "keyword": "Scenario",
+        "line": 142,
+        "name": "Wildcard and partial searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 131
+          },
+          {
+            "name": "@Positive",
+            "line": 132
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 7224000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 100000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 80000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 614000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 134,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1592000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 135,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 705000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 136,
+            "name": "I enter any of the following criteria \"*a\"",
+            "result": {
+              "status": "passed",
+              "duration": 382000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 137,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 389000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 138,
+            "name": "the search results are displayed by best match \"*a\"",
+            "result": {
+              "status": "passed",
+              "duration": 447000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;wildcard-and-partial-searches",
+        "keyword": "Scenario",
+        "line": 143,
+        "name": "Wildcard and partial searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 131
+          },
+          {
+            "name": "@Positive",
+            "line": 132
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 128000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 39000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 105000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 469000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 134,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1537000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 135,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 598000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 136,
+            "name": "I enter any of the following criteria \"b*\"",
+            "result": {
+              "status": "passed",
+              "duration": 336000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 137,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 357000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 138,
+            "name": "the search results are displayed by best match \"b*\"",
+            "result": {
+              "status": "passed",
+              "duration": 314000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;wildcard-and-partial-searches",
+        "keyword": "Scenario",
+        "line": 144,
+        "name": "Wildcard and partial searches",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 131
+          },
+          {
+            "name": "@Positive",
+            "line": 132
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 234000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 32000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 42000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 472000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 134,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1481000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 135,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 6000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 136,
+            "name": "I enter any of the following criteria \"*c*\"",
+            "result": {
+              "status": "passed",
+              "duration": 701000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 137,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 332000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 138,
+            "name": "the search results are displayed by best match \"*c*\"",
+            "result": {
+              "status": "passed",
+              "duration": 367000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;results-are-not-returned",
+        "keyword": "Scenario",
+        "line": 161,
+        "name": "Results are not returned",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 150
+          },
+          {
+            "name": "@Positive",
+            "line": 151
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 167000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 31000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 70000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 494000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 153,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1518000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 154,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 615000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 155,
+            "name": "I enter any of the following criteria \"98765432\"",
+            "result": {
+              "status": "passed",
+              "duration": 485000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 156,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 352000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 157,
+            "name": "no results are returned",
+            "result": {
+              "status": "passed",
+              "duration": 386000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;results-are-not-returned",
+        "keyword": "Scenario",
+        "line": 162,
+        "name": "Results are not returned",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 150
+          },
+          {
+            "name": "@Positive",
+            "line": 151
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 137000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 27000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 88000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 588000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 153,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1702000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 154,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 643000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 155,
+            "name": "I enter any of the following criteria \"AZKQ\"",
+            "result": {
+              "status": "passed",
+              "duration": 646000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 156,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 409000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 157,
+            "name": "no results are returned",
+            "result": {
+              "status": "passed",
+              "duration": 341000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;multiple-search-criteria",
+        "keyword": "Scenario",
+        "line": 179,
+        "name": "Multiple search criteria",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 167
+          },
+          {
+            "name": "@Positive",
+            "line": 168
+          },
+          {
+            "name": "@ignore",
+            "line": 169
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 171,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 172,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 173,
+            "name": "I enter any of the following criteria \"ad e\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 174,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 175,
+            "name": "search results are displayed by the best match \"ad e\"",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;insufficient-characters",
+        "keyword": "Scenario",
+        "line": 192,
+        "name": "Insufficient characters",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 181
+          },
+          {
+            "name": "@Negative",
+            "line": 182
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 573000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 43000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 70000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 468000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 184,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 2237000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 185,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 635000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 186,
+            "name": "I enter any of the following criteria \"b\"",
+            "result": {
+              "status": "passed",
+              "duration": 322000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 187,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 238000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 188,
+            "name": "a validation error message is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 40000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;insufficient-characters",
+        "keyword": "Scenario",
+        "line": 193,
+        "name": "Insufficient characters",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 181
+          },
+          {
+            "name": "@Negative",
+            "line": 182
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 65000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 33000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 688000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 184,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 2116000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 185,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 572000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 186,
+            "name": "I enter any of the following criteria \"c\"",
+            "result": {
+              "status": "passed",
+              "duration": 286000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 187,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 227000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 188,
+            "name": "a validation error message is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 67000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;insufficient-characters",
+        "keyword": "Scenario",
+        "line": 194,
+        "name": "Insufficient characters",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 181
+          },
+          {
+            "name": "@Negative",
+            "line": 182
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 145000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 38000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 36000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 448000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 184,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1365000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 185,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 186,
+            "name": "I enter any of the following criteria \"g\"",
+            "result": {
+              "status": "passed",
+              "duration": 691000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 187,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 253000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 188,
+            "name": "a validation error message is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 37000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;accessibility-testing",
+        "keyword": "Scenario",
+        "line": 200,
+        "name": "Accessibility Testing",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@Accessibility",
+            "line": 199
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 201,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-person",
+        "keyword": "Scenario",
+        "line": 216,
+        "name": "Filter searches for person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 203
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 467000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 30000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 34000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 466000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 205,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1288000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 206,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 561000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 207,
+            "name": "I enter any of the following criteria \"Ab\"",
+            "result": {
+              "status": "passed",
+              "duration": 314000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 208,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 251000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 209,
+            "name": "the default sort option is correct",
+            "result": {
+              "status": "passed",
+              "duration": 63000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 210,
+            "name": "I select to sort by \"Last name A-Z\"",
+            "result": {
+              "status": "passed",
+              "duration": 638000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 211,
+            "name": "I set the number of results to 40",
+            "result": {
+              "status": "passed",
+              "duration": 343000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 212,
+            "name": "the correct number of 40 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 508000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-person",
+        "keyword": "Scenario",
+        "line": 217,
+        "name": "Filter searches for person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 203
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 129000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 26000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 49000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 441000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 205,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1648000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 206,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 732000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 207,
+            "name": "I enter any of the following criteria \"Bre\"",
+            "result": {
+              "status": "passed",
+              "duration": 432000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 208,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 332000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 209,
+            "name": "the default sort option is correct",
+            "result": {
+              "status": "passed",
+              "duration": 39000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 210,
+            "name": "I select to sort by \"Last name Z-A\"",
+            "result": {
+              "status": "passed",
+              "duration": 465000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 211,
+            "name": "I set the number of results to 12",
+            "result": {
+              "status": "passed",
+              "duration": 344000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 212,
+            "name": "the correct number of 12 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 389000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-person",
+        "keyword": "Scenario",
+        "line": 218,
+        "name": "Filter searches for person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 203
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 33000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 60000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 440000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 205,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1447000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 206,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 598000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 207,
+            "name": "I enter any of the following criteria \"Chris\"",
+            "result": {
+              "status": "passed",
+              "duration": 431000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 208,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 308000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 209,
+            "name": "the default sort option is correct",
+            "result": {
+              "status": "passed",
+              "duration": 42000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 210,
+            "name": "I select to sort by \"Best match\"",
+            "result": {
+              "status": "passed",
+              "duration": 402000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 211,
+            "name": "I set the number of results to 20",
+            "result": {
+              "status": "passed",
+              "duration": 344000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 212,
+            "name": "the correct number of 20 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 440000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-tenure",
+        "keyword": "Scenario",
+        "line": 232,
+        "name": "Filter searches for tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 220
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 116000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 32000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 87000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 501000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 222,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1474000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 223,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 568000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 224,
+            "name": "I enter any of the following criteria \"Ab\"",
+            "result": {
+              "status": "passed",
+              "duration": 382000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 225,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 320000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 226,
+            "name": "there is no filter option",
+            "result": {
+              "status": "passed",
+              "duration": 30000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 227,
+            "name": "I set the number of results to 40",
+            "result": {
+              "status": "passed",
+              "duration": 480000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 228,
+            "name": "the correct number of 40 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 532000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-tenure",
+        "keyword": "Scenario",
+        "line": 233,
+        "name": "Filter searches for tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 220
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 119000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 22000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 42000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 415000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 222,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1607000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 223,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 638000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 224,
+            "name": "I enter any of the following criteria \"Bre\"",
+            "result": {
+              "status": "passed",
+              "duration": 454000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 225,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 357000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 226,
+            "name": "there is no filter option",
+            "result": {
+              "status": "passed",
+              "duration": 11000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 227,
+            "name": "I set the number of results to 12",
+            "result": {
+              "status": "passed",
+              "duration": 317000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 228,
+            "name": "the correct number of 12 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 474000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-tenure",
+        "keyword": "Scenario",
+        "line": 234,
+        "name": "Filter searches for tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 220
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 122000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 22000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 48000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 484000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 222,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1467000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 223,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 581000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 224,
+            "name": "I enter any of the following criteria \"Chris\"",
+            "result": {
+              "status": "passed",
+              "duration": 401000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 225,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 299000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 226,
+            "name": "there is no filter option",
+            "result": {
+              "status": "passed",
+              "duration": 19000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 227,
+            "name": "I set the number of results to 20",
+            "result": {
+              "status": "passed",
+              "duration": 361000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 228,
+            "name": "the correct number of 20 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 589000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-property",
+        "keyword": "Scenario",
+        "line": 248,
+        "name": "Filter searches for property",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 236
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 140000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 52000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 67000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 566000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 238,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1878000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 239,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 240,
+            "name": "I enter any of the following criteria \"Ab\"",
+            "result": {
+              "status": "passed",
+              "duration": 1382000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 241,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 714000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 242,
+            "name": "there is no filter option",
+            "result": {
+              "status": "passed",
+              "duration": 29000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 243,
+            "name": "I set the number of results to 40",
+            "result": {
+              "status": "passed",
+              "duration": 471000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 244,
+            "name": "the correct number of 40 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 708000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-property",
+        "keyword": "Scenario",
+        "line": 249,
+        "name": "Filter searches for property",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 236
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 136000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 59000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 35000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 553000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 238,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 2692000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 239,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 10000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 240,
+            "name": "I enter any of the following criteria \"Bre\"",
+            "result": {
+              "status": "passed",
+              "duration": 877000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 241,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 355000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 242,
+            "name": "there is no filter option",
+            "result": {
+              "status": "passed",
+              "duration": 12000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 243,
+            "name": "I set the number of results to 12",
+            "result": {
+              "status": "passed",
+              "duration": 438000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 244,
+            "name": "the correct number of 12 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 423000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;filter-searches-for-property",
+        "keyword": "Scenario",
+        "line": 250,
+        "name": "Filter searches for property",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 236
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 133000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 40000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 125000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 465000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 238,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1535000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 239,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 240,
+            "name": "I enter any of the following criteria \"Chris\"",
+            "result": {
+              "status": "passed",
+              "duration": 739000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 241,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 321000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 242,
+            "name": "there is no filter option",
+            "result": {
+              "status": "passed",
+              "duration": 19000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 243,
+            "name": "I set the number of results to 20",
+            "result": {
+              "status": "passed",
+              "duration": 348000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 244,
+            "name": "the correct number of 20 are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 433000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;re-execute-search",
+        "keyword": "Scenario",
+        "line": 267,
+        "name": "Re-execute search",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 252
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "passed",
+              "duration": 116000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "passed",
+              "duration": 34000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 47000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "passed",
+              "duration": 847000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 254,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 1511000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 255,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "passed",
+              "duration": 648000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 256,
+            "name": "I enter any of the following criteria \"Steve\"",
+            "result": {
+              "status": "passed",
+              "duration": 445000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 257,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 322000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 258,
+            "name": "the search results are displayed by best match \"Steve\"",
+            "result": {
+              "status": "passed",
+              "duration": 452000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 259,
+            "name": "the search again button is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 68000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 260,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "passed",
+              "duration": 367000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 261,
+            "name": "I enter any of the following criteria \"Dave\"",
+            "result": {
+              "status": "passed",
+              "duration": 388000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 262,
+            "name": "I click on the search button",
+            "result": {
+              "status": "passed",
+              "duration": 290000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 263,
+            "name": "the search results are displayed by best match \"Dave\"",
+            "result": {
+              "status": "passed",
+              "duration": 340000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;search-validation-scenario",
+        "keyword": "Scenario",
+        "line": 281,
+        "name": "Search validation scenario",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 269
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 270
+          },
+          {
+            "name": "@Negative",
+            "line": 271
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 273,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 274,
+            "name": "I click on the radio button for \"Property\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 275,
+            "name": "I enter any of the following criteria \"A\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 276,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 277,
+            "name": "a warning message is displayed for search field",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;search-validation-scenario",
+        "keyword": "Scenario",
+        "line": 282,
+        "name": "Search validation scenario",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 269
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 270
+          },
+          {
+            "name": "@Negative",
+            "line": 271
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 273,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 274,
+            "name": "I click on the radio button for \"Person\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 275,
+            "name": "I enter any of the following criteria \"B\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 276,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 277,
+            "name": "a warning message is displayed for search field",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-search-function;search-validation-scenario",
+        "keyword": "Scenario",
+        "line": 283,
+        "name": "Search validation scenario",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@search",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 269
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 270
+          },
+          {
+            "name": "@Negative",
+            "line": 271
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "The feature \"MMH.SearchTenure\" is false",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged out",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I am on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 273,
+            "name": "I click on the search again button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 274,
+            "name": "I click on the radio button for \"Tenure\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 275,
+            "name": "I enter any of the following criteria \"C\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 276,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 277,
+            "name": "a warning message is displayed for search field",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

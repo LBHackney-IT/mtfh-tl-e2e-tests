@@ -155,7 +155,7 @@ Feature: Create tenure
         | property                             | tenureType | startDay | startMonth | startYear | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
 
-
+  @ignore
   Scenario Outline: Create new tenure validation
     When I view a property "<property>"
     When I click on the new tenure button

@@ -1,0 +1,230 @@
+[
+  {
+    "description": "  I want to view a tenure's activity history",
+    "keyword": "Feature",
+    "name": "Activity History for Tenure",
+    "line": 7,
+    "id": "activity-history-for-tenure",
+    "tags": [
+      {
+        "name": "@activity-history",
+        "line": 1
+      },
+      {
+        "name": "@authentication",
+        "line": 2
+      },
+      {
+        "name": "@common",
+        "line": 3
+      },
+      {
+        "name": "@processes",
+        "line": 4
+      },
+      {
+        "name": "@root",
+        "line": 5
+      }
+    ],
+    "uri": "activityHistoryTenure.feature",
+    "elements": [
+      {
+        "id": "activity-history-for-tenure;view-tenure-activity-history-page",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "View Tenure activity history page",
+        "tags": [
+          {
+            "name": "@activity-history",
+            "line": 1
+          },
+          {
+            "name": "@authentication",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 14
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 395000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I edit a tenure \"62f6df87-ec33-77db-38ea-647be124af65\" \"Freehold\"",
+            "result": {
+              "status": "passed",
+              "duration": 1186000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "I go to the tenure activity history for \"b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5\"",
+            "result": {
+              "status": "passed",
+              "duration": 4067000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "the tenure activity history is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 3435000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I click close activity history",
+            "result": {
+              "status": "passed",
+              "duration": 1018000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I am on the tenure page for \"b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5\"",
+            "result": {
+              "status": "passed",
+              "duration": 94000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "activity-history-for-tenure;view-tenure-activity-history-page-for-legacy-data---data-imported",
+        "keyword": "Scenario",
+        "line": 34,
+        "name": "View Tenure activity history page for legacy data - Data imported",
+        "tags": [
+          {
+            "name": "@activity-history",
+            "line": 1
+          },
+          {
+            "name": "@authentication",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 529000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I edit a tenure \"62f6df87-ec33-77db-38ea-647be124af65\" \"Freehold\"",
+            "result": {
+              "status": "passed",
+              "duration": 1530000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 26,
+            "name": "I go to the tenure activity history for \"b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5\"",
+            "result": {
+              "status": "passed",
+              "duration": 1631000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the tenure activity history is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2379000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "tenure migrated activity history is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 253000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "I click close activity history",
+            "result": {
+              "status": "passed",
+              "duration": 1289000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "I am on the tenure page for \"b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5\"",
+            "result": {
+              "status": "passed",
+              "duration": 36000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

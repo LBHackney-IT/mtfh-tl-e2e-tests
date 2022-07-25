@@ -1,0 +1,3097 @@
+[
+  {
+    "description": "  I want to create a new tenure",
+    "keyword": "Feature",
+    "name": "Create tenure",
+    "line": 7,
+    "id": "create-tenure",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@processes",
+        "line": 3
+      },
+      {
+        "name": "@root",
+        "line": 4
+      },
+      {
+        "name": "@tenure",
+        "line": 5
+      }
+    ],
+    "uri": "createTenure.feature",
+    "elements": [
+      {
+        "id": "create-tenure;create-new-tenure-that-occurs-before-the-end-date-of-a-previous-tenure",
+        "keyword": "Scenario",
+        "line": 227,
+        "name": "Create new tenure that occurs before the end date of a previous tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 214
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 737000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 216,
+            "name": "I view a property \"986a2a9e-9eb4-0966-120a-238689e3e265\"",
+            "result": {
+              "status": "passed",
+              "duration": 3110000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 217,
+            "name": "I click on the new tenure button",
+            "result": {
+              "status": "passed",
+              "duration": 7604000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 218,
+            "name": "I am on the create new tenure page \"986a2a9e-9eb4-0966-120a-238689e3e265\"",
+            "result": {
+              "status": "passed",
+              "duration": 139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 219,
+            "name": "the new tenure landing page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2220000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 220,
+            "name": "I select a tenure type \"Freehold\"",
+            "result": {
+              "status": "passed",
+              "duration": 696000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 221,
+            "name": "I enter a tenure start date \"01\" \"01\" \"1900\"",
+            "result": {
+              "status": "passed",
+              "duration": 1814000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 222,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 449000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 223,
+            "name": "a create tenure error is triggered",
+            "result": {
+              "status": "passed",
+              "duration": 136000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;create-new-tenure-that-with-start-date-that-occurs-after-end-date",
+        "keyword": "Scenario",
+        "line": 243,
+        "name": "Create new tenure that with start date that occurs after end date",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 229
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 269000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 231,
+            "name": "I view a property \"986a2a9e-9eb4-0966-120a-238689e3e265\"",
+            "result": {
+              "status": "passed",
+              "duration": 1883000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 232,
+            "name": "I click on the new tenure button",
+            "result": {
+              "status": "passed",
+              "duration": 2602000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 233,
+            "name": "I am on the create new tenure page \"986a2a9e-9eb4-0966-120a-238689e3e265\"",
+            "result": {
+              "status": "passed",
+              "duration": 34000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 234,
+            "name": "the new tenure landing page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1342000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 235,
+            "name": "I select a tenure type \"Shared Owners\"",
+            "result": {
+              "status": "passed",
+              "duration": 597000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 236,
+            "name": "I enter a tenure start date \"02\" \"01\" \"2000\"",
+            "result": {
+              "status": "passed",
+              "duration": 1232000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 237,
+            "name": "I enter a tenure end date \"01\" \"01\" \"2000\"",
+            "result": {
+              "status": "passed",
+              "duration": 1263000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 238,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 391000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 239,
+            "name": "a create tenure error is triggered",
+            "result": {
+              "status": "passed",
+              "duration": 118000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;edit-existing-tenure",
+        "keyword": "Scenario",
+        "line": 257,
+        "name": "Edit existing tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 245
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 247,
+            "name": "I view a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 248,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 249,
+            "name": "I click edit tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 250,
+            "name": "the edit tenure information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 251,
+            "name": "I select a tenure type \"Freehold\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 252,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 253,
+            "name": "the edit tenure information is displayed \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;edit-existing-tenure-and-cancel",
+        "keyword": "Scenario",
+        "line": 277,
+        "name": "Edit existing tenure and cancel",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 703000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 261,
+            "name": "I view a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 521000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 262,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2316000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 263,
+            "name": "I click edit tenure",
+            "result": {
+              "status": "passed",
+              "duration": 962000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 264,
+            "name": "the edit tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 308000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 265,
+            "name": "I select a tenure type \"Freehold\"",
+            "result": {
+              "status": "passed",
+              "duration": 390000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 266,
+            "name": "I click the cancel button",
+            "result": {
+              "status": "passed",
+              "duration": 633000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 267,
+            "name": "the cancel modal is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 51000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 268,
+            "name": "I click cancel on the modal",
+            "result": {
+              "status": "passed",
+              "duration": 449000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 269,
+            "name": "the edit tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 137000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 270,
+            "name": "I click the cancel button",
+            "result": {
+              "status": "passed",
+              "duration": 212000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 271,
+            "name": "the cancel modal is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 44000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 272,
+            "name": "I click yes on the modal",
+            "result": {
+              "status": "passed",
+              "duration": 590000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 273,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 231000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;display-confirmation-alert-pop-up-when-ending-a-tenure",
+        "keyword": "Scenario",
+        "line": 297,
+        "name": "Display Confirmation Alert pop up when ending a Tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 296000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 280,
+            "name": "I view a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 449000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 281,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2075000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 282,
+            "name": "I click edit tenure",
+            "result": {
+              "status": "passed",
+              "duration": 879000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 283,
+            "name": "the edit tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1325000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 284,
+            "name": "I select a tenure type \"Freehold\"",
+            "result": {
+              "status": "passed",
+              "duration": 482000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 285,
+            "name": "I enter a tenure end date as \"20\" \"05\" \"2022\"",
+            "result": {
+              "status": "passed",
+              "duration": 2235000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 286,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 572000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 287,
+            "name": "the warning modal is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 38000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 288,
+            "name": "the information text is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 61000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 289,
+            "name": "I click cancel on the modal",
+            "result": {
+              "status": "passed",
+              "duration": 390000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 290,
+            "name": "the edit tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 143000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;edit-tenure-button-is-not-displayed-for-inactive-or-past-tenures",
+        "keyword": "Scenario",
+        "line": 305,
+        "name": "Edit tenure button is not displayed for inactive or past tenures",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 187000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 300,
+            "name": "I view a Tenure \"e832a76f-8bcf-238c-7ad1-6ef1b408b316\"",
+            "result": {
+              "status": "passed",
+              "duration": 485000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 301,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2752000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 302,
+            "name": "the edit tenure button is not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 85000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;cannot-edit-tenure-for-inactive-or-past-tenures",
+        "keyword": "Scenario",
+        "line": 313,
+        "name": "Cannot edit tenure for inactive or past tenures",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 398000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 308,
+            "name": "I edit a Tenure \"e832a76f-8bcf-238c-7ad1-6ef1b408b316\"",
+            "result": {
+              "status": "passed",
+              "duration": 638000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 309,
+            "name": "the tenure cannot be edited warning message is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2521000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;create-person-by-navigating-to-new-tenure",
+        "keyword": "Scenario",
+        "line": 355,
+        "name": "Create person by navigating to new tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 315
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 317,
+            "name": "I delete all existing persons from the tenure \"3a5114c9-1a63-4e15-953d-5b8328e84549\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 318,
+            "name": "I navigate to a create person for new tenure \"58815bed-8996-653d-9e98-ec5d3b68527f\" \"3a5114c9-1a63-4e15-953d-5b8328e84549\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 319,
+            "name": "the tenure person search is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 320,
+            "name": "the create new person button is not enabled",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 321,
+            "name": "I enter any of the following criteria \"tre\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 322,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 323,
+            "name": "I click create new person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 324,
+            "name": "I am on the create new person for a new tenure page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 325,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 326,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 327,
+            "name": "I enter a first name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 328,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 329,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 330,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 331,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 332,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 333,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 334,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 335,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 336,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 337,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 338,
+            "name": "I am on the create contact for a new tenure page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 339,
+            "name": "I click the add email address button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 340,
+            "name": "I enter an email address \"addPersonToNewTenure@email.com\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 341,
+            "name": "I enter an email description \"Add person to new tenure test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 342,
+            "name": "I click save email address",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 343,
+            "name": "the email information is captured \"addPersonToNewTenure@email.com\" \"Add person to new tenure test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 344,
+            "name": "I click the add phone number button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 345,
+            "name": "I enter a phone number \"01189998\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 346,
+            "name": "I select a phone number type \"Other\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 347,
+            "name": "I enter a phone number description \"Add person to new tenure test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 348,
+            "name": "I click save phone number",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 349,
+            "name": "the phone information is captured \"01189998\" \"Other\" \"Add person to new tenure test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 350,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 351,
+            "name": "the tenure person search is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;create-person-for-new-tenure-validation",
+        "keyword": "Scenario",
+        "line": 384,
+        "name": "Create person for new tenure validation",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 358
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 360,
+            "name": "I delete all existing persons from the tenure \"3a5114c9-1a63-4e15-953d-5b8328e84549\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 361,
+            "name": "I navigate to a create person for new tenure \"58815bed-8996-653d-9e98-ec5d3b68527f\" \"3a5114c9-1a63-4e15-953d-5b8328e84549\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 362,
+            "name": "I enter any of the following criteria \"emi\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 363,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 364,
+            "name": "I add 5 named tenure holder",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 365,
+            "name": "a new tenure error message appears \"Max. tenure holders added\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 366,
+            "name": "I click create new person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 367,
+            "name": "I am on the create new person for a new tenure page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 368,
+            "name": "the named tenure holder button is not active",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 369,
+            "name": "I remove one of the tenure holders",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 370,
+            "name": "I click the cancel button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 371,
+            "name": "I remove one of the tenure holders",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 372,
+            "name": "I click remove person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 373,
+            "name": "the person is removed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 374,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 375,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 376,
+            "name": "I enter a first name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 377,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 378,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 379,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 380,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 394,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 1015000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 673000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Freehold\"",
+            "result": {
+              "status": "passed",
+              "duration": 2373000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 59000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 395,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 126000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 520000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Freehold (Serv)\"",
+            "result": {
+              "status": "passed",
+              "duration": 2368000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 78000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 396,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 202000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 410000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Introductory\"",
+            "result": {
+              "status": "passed",
+              "duration": 2271000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 79000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 397,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 214000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 500000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Leasehold (RTB)\"",
+            "result": {
+              "status": "passed",
+              "duration": 2270000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 121000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 398,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 236000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 416000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"License Temp Ac\"",
+            "result": {
+              "status": "passed",
+              "duration": 2994000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 149000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 399,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 200000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 491000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Lse 100% Stair\"",
+            "result": {
+              "status": "passed",
+              "duration": 2571000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 56000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 400,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 147000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 493000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Mesne Profit Ac\"",
+            "result": {
+              "status": "passed",
+              "duration": 2296000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 97000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 401,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 131000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 504000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Non-Secure\"",
+            "result": {
+              "status": "passed",
+              "duration": 2185000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 68000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 402,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 133000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 337000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Private Sale LH\"",
+            "result": {
+              "status": "passed",
+              "duration": 2168000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 62000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 403,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 145000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 592000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Rent To Mortgage\"",
+            "result": {
+              "status": "passed",
+              "duration": 2373000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 72000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 404,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 192000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 530000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Secure\"",
+            "result": {
+              "status": "passed",
+              "duration": 2270000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 160000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 405,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 200000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 477000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Shared Equity\"",
+            "result": {
+              "status": "passed",
+              "duration": 2375000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 102000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 406,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 205000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 610000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Shared Owners\"",
+            "result": {
+              "status": "passed",
+              "duration": 2242000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 60000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 407,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 187000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 449000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Short Life Lse\"",
+            "result": {
+              "status": "passed",
+              "duration": 2461000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 72000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 408,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 143000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 608000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Temp Annex\"",
+            "result": {
+              "status": "passed",
+              "duration": 2934000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 174000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 409,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 204000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 417000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Temp B&B\"",
+            "result": {
+              "status": "passed",
+              "duration": 2335000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 76000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 410,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 171000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 571000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Temp Decant\"",
+            "result": {
+              "status": "passed",
+              "duration": 3656000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 179000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 411,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 195000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 501000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Temp Hostel\"",
+            "result": {
+              "status": "passed",
+              "duration": 4437000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 81000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 412,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 136000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 425000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Temp Hostel Lse\"",
+            "result": {
+              "status": "passed",
+              "duration": 2639000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 68000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 413,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 165000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 358000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Temp Private Lt\"",
+            "result": {
+              "status": "passed",
+              "duration": 2153000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 49000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 414,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 127000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 454000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Temp Traveller\"",
+            "result": {
+              "status": "passed",
+              "duration": 2139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 73000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "create-tenure;end-dates-are-editable-for-all-tenure-types",
+        "keyword": "Scenario",
+        "line": 415,
+        "name": "End dates are editable for all tenure types",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@regression",
+            "line": 386
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 196000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 388,
+            "name": "I edit a Tenure \"aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb\"",
+            "result": {
+              "status": "passed",
+              "duration": 474000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 389,
+            "name": "I select a tenure type \"Tenant Acc Flat\"",
+            "result": {
+              "status": "passed",
+              "duration": 2194000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 390,
+            "name": "the tenure end date is editable",
+            "result": {
+              "status": "passed",
+              "duration": 52000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

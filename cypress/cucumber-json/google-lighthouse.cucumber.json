@@ -1,0 +1,455 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Google Lighthouse audit",
+    "line": 3,
+    "id": "google-lighthouse-audit",
+    "tags": [
+      {
+        "name": "@GoogleLighthouse",
+        "line": 1
+      }
+    ],
+    "uri": "google-lighthouse.feature",
+    "elements": [
+      {
+        "id": "google-lighthouse-audit;home-page-audit",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Home page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I perform a Lighthouse audit on the home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;search-landing-page-audit",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Search landing page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I perform a Lighthouse audit on the search page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;search-results-page-audit",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Search results page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "I enter any of the following criteria \"James\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I click on the search button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I perform a Lighthouse audit on the page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;person-page-audit",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Person page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "I perform a Lighthouse audit on the person page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;person-comment-page-audit",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "Person comment page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "I perform a Lighthouse audit on the person comment page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;tenure-page-audit",
+        "keyword": "Scenario",
+        "line": 34,
+        "name": "Tenure page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "I perform a Lighthouse audit on the tenure page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;create-person-page-audit",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "Create person page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 39,
+            "name": "I perform a Lighthouse audit on the create person page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;contact-details-page-audit",
+        "keyword": "Scenario",
+        "line": 42,
+        "name": "Contact details page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "I perform a Lighthouse audit on the contact details page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 44,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;edit-person-page-audit",
+        "keyword": "Scenario",
+        "line": 46,
+        "name": "Edit person page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 47,
+            "name": "I perform a Lighthouse audit on the edit person page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "google-lighthouse-audit;activity-history-page-audit",
+        "keyword": "Scenario",
+        "line": 50,
+        "name": "Activity history page audit",
+        "tags": [
+          {
+            "name": "@GoogleLighthouse",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 51,
+            "name": "I perform a Lighthouse audit on the activity history page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

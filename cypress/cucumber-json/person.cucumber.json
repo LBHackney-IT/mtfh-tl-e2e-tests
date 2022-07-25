@@ -1,0 +1,2033 @@
+[
+  {
+    "description": "  I want to view a person",
+    "keyword": "Feature",
+    "name": "T&L Person Page",
+    "line": 7,
+    "id": "t&l-person-page",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@personal-details",
+        "line": 3
+      },
+      {
+        "name": "@processes",
+        "line": 4
+      },
+      {
+        "name": "@root",
+        "line": 5
+      }
+    ],
+    "uri": "person.feature",
+    "elements": [
+      {
+        "id": "t&l-person-page;view-person-details-web-page-view",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "View person details web page view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 13
+          },
+          {
+            "name": "@Positive",
+            "line": 14
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 529000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "passed",
+              "duration": 4156000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "the personal details are displayed on the sidebar",
+            "result": {
+              "status": "passed",
+              "duration": 5223000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "passed",
+              "duration": 1313000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 90000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "passed",
+              "duration": 333000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "passed",
+              "duration": 280000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 353000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "passed",
+              "duration": 215000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "passed",
+              "duration": 340000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 544000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 49,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 50,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 51,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 54,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 55,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 56,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-x\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 58,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;view-person-details-device-view",
+        "keyword": "Scenario",
+        "line": 64,
+        "name": "View person details device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have loaded a Person record \"3cd58102-dad6-4ace-fe5d-1400fb1e5c45\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I am using a mobile viewport \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the personal details are displayed on the mobile content container",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 36,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I click on the more personal details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the body tenure details are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I click on the more tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I click on the equality details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the equality information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;look-for-record-that-does-not-exist",
+        "keyword": "Scenario",
+        "line": 73,
+        "name": "Look for record that does not exist",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 66
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 4435000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 68,
+            "name": "I have loaded an invalid person record \"kdfbv\"",
+            "result": {
+              "status": "passed",
+              "duration": 871000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 69,
+            "name": "The person you've requested does not exist error message appears",
+            "result": {
+              "status": "passed",
+              "duration": 2036000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;look-for-record-that-does-not-exist",
+        "keyword": "Scenario",
+        "line": 74,
+        "name": "Look for record that does not exist",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 66
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 174000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 68,
+            "name": "I have loaded an invalid person record \"dfkkkl\"",
+            "result": {
+              "status": "passed",
+              "duration": 464000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 69,
+            "name": "The person you've requested does not exist error message appears",
+            "result": {
+              "status": "passed",
+              "duration": 1077000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;add-a-comment-for-a-person-navigation",
+        "keyword": "Scenario",
+        "line": 86,
+        "name": "Add a comment for a person navigation",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 76
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 166000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 79,
+            "name": "I have loaded a Person record \"aac57a95-11e4-9eeb-954a-c2dd5a0a7f31\"",
+            "result": {
+              "status": "passed",
+              "duration": 432000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 80,
+            "name": "the body Person details are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1202000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 81,
+            "name": "I click on the add comment button",
+            "result": {
+              "status": "passed",
+              "duration": 414000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 82,
+            "name": "I am taken to the add comment for person page \"aac57a95-11e4-9eeb-954a-c2dd5a0a7f31\"",
+            "result": {
+              "status": "passed",
+              "duration": 15000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-person-page;scenario-outline-name:-accessibility-testing",
+        "keyword": "Scenario",
+        "line": 95,
+        "name": "Scenario Outline name: Accessibility Testing",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Accessibility",
+            "line": 88
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 90,
+            "name": "I have loaded a Person record \"aac57a95-11e4-9eeb-954a-c2dd5a0a7f31\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 91,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

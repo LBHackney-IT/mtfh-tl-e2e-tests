@@ -1,0 +1,6509 @@
+[
+  {
+    "description": "  I want to add a person to a tenure",
+    "keyword": "Feature",
+    "name": "Add a new person to a tenure",
+    "line": 8,
+    "id": "add-a-new-person-to-a-tenure",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@personal-details",
+        "line": 3
+      },
+      {
+        "name": "@processes",
+        "line": 4
+      },
+      {
+        "name": "@root",
+        "line": 5
+      },
+      {
+        "name": "@AddPersonPage",
+        "line": 7
+      }
+    ],
+    "uri": "addPerson.feature",
+    "elements": [
+      {
+        "id": "add-a-new-person-to-a-tenure;removed-fields-are-not-displayed",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Removed fields are not displayed",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 16
+          },
+          {
+            "name": "@Regression",
+            "line": 17
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 625000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 389000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 738000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "passed",
+              "duration": 5112000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "the gender field is not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 219000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the nationality field is not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 50000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "the national insurance field is not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 44000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "the add language options are not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 222000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the add id options are not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 101000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-a-tenure",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "Add a new person to a tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 30
+          },
+          {
+            "name": "@Positive",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 568000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 584000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 857000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "passed",
+              "duration": 2917000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "passed",
+              "duration": 5637000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 35,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "passed",
+              "duration": 2479000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "I select a title \"Mrs\"",
+            "result": {
+              "status": "passed",
+              "duration": 1626000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I enter a first name \"Test\"",
+            "result": {
+              "status": "passed",
+              "duration": 2396000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "passed",
+              "duration": 2058000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "passed",
+              "duration": 3027000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "passed",
+              "duration": 6081000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "passed",
+              "duration": 2139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "passed",
+              "duration": 1315000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "passed",
+              "duration": 2137000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 44,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "passed",
+              "duration": 2082000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 45,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "passed",
+              "duration": 2083000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "passed",
+              "duration": 1671000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "I click add person",
+            "result": {
+              "status": "passed",
+              "duration": 1497000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "I am on the contact details page",
+            "result": {
+              "status": "passed",
+              "duration": 5014000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 79,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"ipad-2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"ipad2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 80,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"ipad-mini\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"ipad-mini\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 81,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 82,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Miss\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 83,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 84,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 85,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Miss\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 86,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Miss\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 87,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 88,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 89,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 90,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"macbook-11\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"macbook-11\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 91,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"macbook-13\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Miss\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"macbook-13\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 92,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"macbook-15\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"macbook-15\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 93,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"macbook-16\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Miss\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"macbook-17\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 94,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"samsung-note9\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Miss\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"samsung-note9\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"09\" \"03\" \"1983\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Toronto\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Dr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Karen\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Steve\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Henderson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-a-new-person-to-tenure-on-a-device",
+        "keyword": "Scenario",
+        "line": 95,
+        "name": "Add a new person to tenure on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@device",
+            "line": 55
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I am using a mobile viewport \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I select person type \"Named tenure holder\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "I select a title \"Miss\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I enter a first name \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "I enter a date of birth \"08\" \"05\" \"1969\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I enter a place of birth \"Hospital\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I select a preferred title \"Mrs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "I select a preferred first name \"Alan\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I select a preferred middle name \"Coach Feratu\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a preferred last name \"Jefferson\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 71,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I click add person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I click the done button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I am on the tenure page '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "the person has been added to the tenure",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;validation-check",
+        "keyword": "Scenario",
+        "line": 114,
+        "name": "Validation check",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 97
+          },
+          {
+            "name": "@Negative",
+            "line": 98
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 12728000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 878000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 783000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 100,
+            "name": "I create a person for tenure '709afdcd-92d2-ae97-7e4b-0df4bcc59613'",
+            "result": {
+              "status": "passed",
+              "duration": 610000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 101,
+            "name": "the add a new person tenure page is correct",
+            "result": {
+              "status": "passed",
+              "duration": 3726000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 102,
+            "name": "I select person type \"Household member\"",
+            "result": {
+              "status": "passed",
+              "duration": 1516000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "passed",
+              "duration": 1254000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 104,
+            "name": "I enter a first name \"Testy\"",
+            "result": {
+              "status": "passed",
+              "duration": 2185000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 105,
+            "name": "I enter a middle name \"McTest\"",
+            "result": {
+              "status": "passed",
+              "duration": 2180000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "I enter a last name \"Face\"",
+            "result": {
+              "status": "passed",
+              "duration": 2111000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 107,
+            "name": "I enter a date of birth \"08\" \"05\" \"2099\"",
+            "result": {
+              "status": "passed",
+              "duration": 6752000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 108,
+            "name": "I enter a reason for creation",
+            "result": {
+              "status": "passed",
+              "duration": 1526000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 109,
+            "name": "I click add person",
+            "result": {
+              "status": "passed",
+              "duration": 1341000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 110,
+            "name": "the form error container is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 73000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;edit-a-person",
+        "keyword": "Scenario",
+        "line": 140,
+        "name": "Edit a person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 116
+          },
+          {
+            "name": "@Positive",
+            "line": 117
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 226000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 443000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 789000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 119,
+            "name": "I create a person and then edit them \"709afdcd-92d2-ae97-7e4b-0df4bcc59613\"",
+            "result": {
+              "status": "passed",
+              "duration": 1090000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 120,
+            "name": "the person type options are not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 14000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 121,
+            "name": "I select a title \"Mr\"",
+            "result": {
+              "status": "passed",
+              "duration": 2916000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 122,
+            "name": "I enter a first name \"Modified\"",
+            "result": {
+              "status": "passed",
+              "duration": 711000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 123,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "passed",
+              "duration": 620000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 124,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "passed",
+              "duration": 1376000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 125,
+            "name": "I enter a date of birth \"09\" \"12\" \"1950\"",
+            "result": {
+              "status": "passed",
+              "duration": 1755000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 126,
+            "name": "I enter a place of birth \"Mt. Fuji\"",
+            "result": {
+              "status": "passed",
+              "duration": 681000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 127,
+            "name": "I select a preferred title \"Reverend\"",
+            "result": {
+              "status": "passed",
+              "duration": 313000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 128,
+            "name": "I select a preferred first name \"Pref modified\"",
+            "result": {
+              "status": "passed",
+              "duration": 928000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 129,
+            "name": "I select a preferred middle name \"Mid modified\"",
+            "result": {
+              "status": "passed",
+              "duration": 792000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 130,
+            "name": "I select a preferred last name \"guid\"",
+            "result": {
+              "status": "passed",
+              "duration": 1236000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 131,
+            "name": "I click the update person button",
+            "result": {
+              "status": "passed",
+              "duration": 388000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 132,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 1091000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 133,
+            "name": "I click the save equality information button",
+            "result": {
+              "status": "passed",
+              "duration": 1418000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 134,
+            "name": "I click edit person",
+            "result": {
+              "status": "passed",
+              "duration": 257000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 135,
+            "name": "I enter a first name \"changeConflict\"",
+            "result": {
+              "status": "passed",
+              "duration": 1126000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 136,
+            "name": "there is a merge conflict",
+            "result": {
+              "status": "passed",
+              "duration": 1524000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;edit-a-person",
+        "keyword": "Scenario",
+        "line": 141,
+        "name": "Edit a person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 116
+          },
+          {
+            "name": "@Positive",
+            "line": 117
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 211000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 316000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 627000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 119,
+            "name": "I create a person and then edit them \"709afdcd-92d2-ae97-7e4b-0df4bcc59613\"",
+            "result": {
+              "status": "passed",
+              "duration": 925000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 120,
+            "name": "the person type options are not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 13000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 121,
+            "name": "I select a title \"Mrs\"",
+            "result": {
+              "status": "passed",
+              "duration": 2762000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 122,
+            "name": "I enter a first name \"Modified\"",
+            "result": {
+              "status": "passed",
+              "duration": 665000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 123,
+            "name": "I enter a middle name \"Test\"",
+            "result": {
+              "status": "passed",
+              "duration": 601000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 124,
+            "name": "I enter a last name \"guid\"",
+            "result": {
+              "status": "passed",
+              "duration": 1337000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 125,
+            "name": "I enter a date of birth \"30\" \"06\" \"1988\"",
+            "result": {
+              "status": "passed",
+              "duration": 1634000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 126,
+            "name": "I enter a place of birth \"Crete\"",
+            "result": {
+              "status": "passed",
+              "duration": 659000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 127,
+            "name": "I select a preferred title \"Ms\"",
+            "result": {
+              "status": "passed",
+              "duration": 383000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 128,
+            "name": "I select a preferred first name \"Pref modified\"",
+            "result": {
+              "status": "passed",
+              "duration": 848000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 129,
+            "name": "I select a preferred middle name \"Mid modified\"",
+            "result": {
+              "status": "passed",
+              "duration": 777000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 130,
+            "name": "I select a preferred last name \"guid\"",
+            "result": {
+              "status": "passed",
+              "duration": 1270000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 131,
+            "name": "I click the update person button",
+            "result": {
+              "status": "passed",
+              "duration": 370000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 132,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 1195000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 133,
+            "name": "I click the save equality information button",
+            "result": {
+              "status": "passed",
+              "duration": 1085000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 134,
+            "name": "I click edit person",
+            "result": {
+              "status": "passed",
+              "duration": 441000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 135,
+            "name": "I enter a first name \"changeConflict\"",
+            "result": {
+              "status": "passed",
+              "duration": 819000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 136,
+            "name": "there is a merge conflict",
+            "result": {
+              "status": "passed",
+              "duration": 1192000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;confirmation-modal",
+        "keyword": "Scenario",
+        "line": 151,
+        "name": "Confirmation modal",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 167000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 353000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 634000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 144,
+            "name": "I create a person and then edit them \"709afdcd-92d2-ae97-7e4b-0df4bcc59613\"",
+            "result": {
+              "status": "passed",
+              "duration": 907000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 145,
+            "name": "I click edit person",
+            "result": {
+              "status": "passed",
+              "duration": 1897000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 146,
+            "name": "I click cancel",
+            "result": {
+              "status": "passed",
+              "duration": 496000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 147,
+            "name": "the confirmation modal is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 124000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;accessibility-testing",
+        "keyword": "Scenario",
+        "line": 154,
+        "name": "Accessibility Testing",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@Accessibility",
+            "line": 153
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 155,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;correspondence-address-using-valid-postcode-lookup-details",
+        "keyword": "Scenario",
+        "line": 171,
+        "name": "Correspondence address using valid postcode lookup details",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          },
+          {
+            "name": "@ignore",
+            "line": 157
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 159,
+            "name": "I edit a person's contact details \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 160,
+            "name": "I click add a correspondence address",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 161,
+            "name": "the correspondence address fields are displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 162,
+            "name": "I enter a postcode into the lookup field \"E8 2DY\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 163,
+            "name": "I click look up",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 164,
+            "name": "the select address selection box is populated \"E8 2DY\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 165,
+            "name": "I select an address from the selection",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 166,
+            "name": "I click save correspondence address",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 167,
+            "name": "the correspondence address is saved",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;correspondence-address-using-invalid-postcode-lookup-details",
+        "keyword": "Scenario",
+        "line": 183,
+        "name": "Correspondence address using invalid postcode lookup details",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 838000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 311000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 635000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 174,
+            "name": "I edit a person's contact details \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 319000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 175,
+            "name": "I click add a correspondence address",
+            "result": {
+              "status": "passed",
+              "duration": 1933000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 176,
+            "name": "the correspondence address fields are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 186000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 177,
+            "name": "I enter a postcode into the lookup field \"0\"",
+            "result": {
+              "status": "passed",
+              "duration": 417000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 178,
+            "name": "I click look up",
+            "result": {
+              "status": "passed",
+              "duration": 304000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 179,
+            "name": "an invalid postcode error is thrown",
+            "result": {
+              "status": "passed",
+              "duration": 69000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;correspondence-address-using-free-text-fields",
+        "keyword": "Scenario",
+        "line": 199,
+        "name": "Correspondence address using free text fields",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 219000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 299000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 557000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 186,
+            "name": "I edit a person's contact details \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 238000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 187,
+            "name": "I click add a correspondence address",
+            "result": {
+              "status": "passed",
+              "duration": 1912000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 188,
+            "name": "the correspondence address fields are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 269000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 189,
+            "name": "I enter \"Buckingham\" into address line 1",
+            "result": {
+              "status": "passed",
+              "duration": 583000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 190,
+            "name": "I enter \"Palace\" into address line 2",
+            "result": {
+              "status": "passed",
+              "duration": 484000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 191,
+            "name": "I enter \"London\" into address line 3",
+            "result": {
+              "status": "passed",
+              "duration": 995000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 192,
+            "name": "I enter \"England\" into address line 4",
+            "result": {
+              "status": "passed",
+              "duration": 917000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 193,
+            "name": "I enter \"SW1A 1AA\" into the postcode field",
+            "result": {
+              "status": "passed",
+              "duration": 574000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 194,
+            "name": "I click save correspondence address",
+            "result": {
+              "status": "passed",
+              "duration": 352000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 195,
+            "name": "the correspondence address is saved",
+            "result": {
+              "status": "passed",
+              "duration": 879000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;maximum-contact-details-reached",
+        "keyword": "Scenario",
+        "line": 208,
+        "name": "Maximum contact details reached",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 14408000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 558000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 937000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 202,
+            "name": "I have the maximum number of \"email\" for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 329000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 203,
+            "name": "I edit a person's contact details \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 501000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 204,
+            "name": "I cannot add any more contacts for \"email\"",
+            "result": {
+              "status": "passed",
+              "duration": 2428000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;maximum-contact-details-reached",
+        "keyword": "Scenario",
+        "line": 209,
+        "name": "Maximum contact details reached",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 271000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 595000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 624000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 202,
+            "name": "I have the maximum number of \"phone\" for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 280000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 203,
+            "name": "I edit a person's contact details \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 354000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 204,
+            "name": "I cannot add any more contacts for \"phone\"",
+            "result": {
+              "status": "passed",
+              "duration": 1981000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;add-equality-information",
+        "keyword": "Scenario",
+        "line": 230,
+        "name": "Add equality information",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 170000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 527000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 584000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 212,
+            "name": "I edit a person's equality information \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 244000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 213,
+            "name": "the equality information is diplayed",
+            "result": {
+              "status": "passed",
+              "duration": 1903000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 214,
+            "name": "the sexual orientation information is not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 22000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 215,
+            "name": "I select an age group \"25-34\"",
+            "result": {
+              "status": "passed",
+              "duration": 416000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 216,
+            "name": "the sexual orientation information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 42000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 217,
+            "name": "I select a carer option \"Prefer not to say\"",
+            "result": {
+              "status": "passed",
+              "duration": 300000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 218,
+            "name": "I select a disability option \"Yes\"",
+            "result": {
+              "status": "passed",
+              "duration": 301000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 219,
+            "name": "I select an ethnicity \"Mixed background\"",
+            "result": {
+              "status": "passed",
+              "duration": 413000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 220,
+            "name": "I select a gender \"Male\"",
+            "result": {
+              "status": "passed",
+              "duration": 337000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 221,
+            "name": "I select a gender identity option \"No\"",
+            "result": {
+              "status": "passed",
+              "duration": 313000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 222,
+            "name": "I select a religion or belief \"Secular beliefs\"",
+            "result": {
+              "status": "passed",
+              "duration": 333000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 223,
+            "name": "I select a sexual orientation \"Lesbian or Gay woman\"",
+            "result": {
+              "status": "passed",
+              "duration": 333000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 224,
+            "name": "I select a pregnancy or maternity option \"Prefer not to say\"",
+            "result": {
+              "status": "passed",
+              "duration": 324000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 225,
+            "name": "I click save equality information",
+            "result": {
+              "status": "passed",
+              "duration": 348000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 226,
+            "name": "the equality information is saved \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 922000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;sexual-orientation-is-not-displayed-for-under-16s",
+        "keyword": "Scenario",
+        "line": 240,
+        "name": "Sexual orientation is not displayed for under 16s",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 259000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 533000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 600000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 233,
+            "name": "I edit a person's equality information \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 267000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 234,
+            "name": "the equality information is diplayed",
+            "result": {
+              "status": "passed",
+              "duration": 2076000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 235,
+            "name": "I select an age group \"Under 16\"",
+            "result": {
+              "status": "passed",
+              "duration": 466000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 236,
+            "name": "the sexual orientation information is not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 31000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;preferred-term-for-gender-field-is-displayed-when-\"other\"-is-selected-for-gender-term",
+        "keyword": "Scenario",
+        "line": 251,
+        "name": "Preferred term for gender field is displayed when \"other\" is selected for gender term",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 144000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 771000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 859000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 243,
+            "name": "I edit a person's equality information \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 473000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 244,
+            "name": "the equality information is diplayed",
+            "result": {
+              "status": "passed",
+              "duration": 2889000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 245,
+            "name": "I select a gender \"Other\"",
+            "result": {
+              "status": "passed",
+              "duration": 360000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 246,
+            "name": "the preferred gender term field is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 37000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 247,
+            "name": "I enter \"Gender Term\" into the gender term field",
+            "result": {
+              "status": "passed",
+              "duration": 629000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-a-new-person-to-a-tenure;confirmation-alert-not-shown",
+        "keyword": "Scenario",
+        "line": 265,
+        "name": "Confirmation alert not shown",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@personal-details",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@AddPersonPage",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 172000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I delete all of the correspondence addresses for \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 575000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I reset the equality information for \"f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d\"",
+            "result": {
+              "status": "passed",
+              "duration": 609000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 254,
+            "name": "I edit a person's contact details \"279bf08c-0c9e-4d81-e24a-8930e8b37a68\"",
+            "result": {
+              "status": "passed",
+              "duration": 412000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 255,
+            "name": "I click add a correspondence address",
+            "result": {
+              "status": "passed",
+              "duration": 3062000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 256,
+            "name": "the correspondence address fields are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 271000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 257,
+            "name": "I enter \"Address\" into address line 1",
+            "result": {
+              "status": "passed",
+              "duration": 535000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 258,
+            "name": "the review changes option is visible",
+            "result": {
+              "status": "passed",
+              "duration": 46000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 259,
+            "name": "the next button is disabled",
+            "result": {
+              "status": "passed",
+              "duration": 44000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 260,
+            "name": "I clear address line 1",
+            "result": {
+              "status": "passed",
+              "duration": 254000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 261,
+            "name": "the next button is enabled",
+            "result": {
+              "status": "passed",
+              "duration": 76000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

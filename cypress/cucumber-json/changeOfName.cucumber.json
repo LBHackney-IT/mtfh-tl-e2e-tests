@@ -1,0 +1,423 @@
+[
+  {
+    "description": "          I want to be able to initiate a change of name process from the processes page,\n          via the person page\n          So that I can complete a legal change of name for a person",
+    "keyword": "Feature",
+    "name": "As an internal Hackney User",
+    "line": 1,
+    "id": "as-an-internal-hackney-user",
+    "tags": [],
+    "uri": "changeOfName.feature",
+    "elements": [
+      {
+        "id": "as-an-internal-hackney-user;ac1---con-process-option",
+        "keyword": "Scenario",
+        "line": 44,
+        "name": "AC1 - CoN Process option",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 375000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 26,
+            "name": "I am on the Person page for \"4b260032-8c67-9878-c4db-dc72252a131f\"",
+            "result": {
+              "status": "passed",
+              "duration": 2601000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "I click on 'New Process' button",
+            "result": {
+              "status": "passed",
+              "duration": 6936000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "I select 'Changes to a tenancy' from the processes menu",
+            "result": {
+              "status": "passed",
+              "duration": 914000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "a further sub menu is expanded into view",
+            "result": {
+              "status": "passed",
+              "duration": 122000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 30,
+            "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
+            "result": {
+              "status": "passed",
+              "duration": 664000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "'Change of Name' page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 76000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "Start Process button is disabled",
+            "result": {
+              "status": "passed",
+              "duration": 130000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I select the checkbox 'I have explained to the tenant'",
+            "result": {
+              "status": "passed",
+              "duration": 467000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "Start Process button is enabled",
+            "result": {
+              "status": "passed",
+              "duration": 70000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 35,
+            "name": "I select the button",
+            "result": {
+              "status": "passed",
+              "duration": 741000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "Change of Name edit page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2224000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "Next button is disabled",
+            "result": {
+              "status": "passed",
+              "duration": 77000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "Status Stepper is at Tenant's new name step",
+            "result": {
+              "status": "passed",
+              "duration": 116000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I select Title and enter First and Last name",
+            "result": {
+              "status": "passed",
+              "duration": 2233000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 359000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I am on the supporting documents page",
+            "result": {
+              "status": "passed",
+              "duration": 1289000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac2---field-validation-error-messages-for-title,-firstname-and-lastname",
+        "keyword": "Scenario",
+        "line": 70,
+        "name": "AC2 - Field Validation error messages for Title, FirstName and LastName",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 323000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 47,
+            "name": "I am on the Person page for \"4b260032-8c67-9878-c4db-dc72252a131f\"",
+            "result": {
+              "status": "passed",
+              "duration": 837000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "I click on 'New Process' button",
+            "result": {
+              "status": "passed",
+              "duration": 3780000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "I select 'Changes to a tenancy' from the processes menu",
+            "result": {
+              "status": "passed",
+              "duration": 340000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 50,
+            "name": "a further sub menu is expanded into view",
+            "result": {
+              "status": "passed",
+              "duration": 64000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 51,
+            "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
+            "result": {
+              "status": "passed",
+              "duration": 482000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "'Change of Name' page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 78000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 53,
+            "name": "I select the checkbox 'I have explained to the tenant'",
+            "result": {
+              "status": "passed",
+              "duration": 241000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 54,
+            "name": "I select the button",
+            "result": {
+              "status": "passed",
+              "duration": 353000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "Change of Name edit page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1144000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 56,
+            "name": "I enter Title only",
+            "result": {
+              "status": "passed",
+              "duration": 349000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 57,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 713000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 58,
+            "name": "a validation error message for 'First name' and 'Last name' are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 103000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 59,
+            "name": "I enter 'Title' and 'First name' only",
+            "result": {
+              "status": "passed",
+              "duration": 1404000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 60,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 245000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 61,
+            "name": "a validation error message for 'Last name' is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 44000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 62,
+            "name": "I enter 'Title' and 'Last name' only",
+            "result": {
+              "status": "passed",
+              "duration": 1410000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 63,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 216000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 64,
+            "name": "a validation error message for 'First name' is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 19000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 65,
+            "name": "I enter 'First name' and 'Last name' only",
+            "result": {
+              "status": "passed",
+              "duration": 2127000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 262000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "a validation error message for 'Title' is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 77000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

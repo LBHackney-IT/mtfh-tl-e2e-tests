@@ -1,0 +1,735 @@
+[
+  {
+    "description": "    View property page",
+    "keyword": "Feature",
+    "name": "Property Page",
+    "line": 7,
+    "id": "property-page",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@processes",
+        "line": 3
+      },
+      {
+        "name": "@property",
+        "line": 4
+      },
+      {
+        "name": "@root",
+        "line": 5
+      }
+    ],
+    "uri": "property.feature",
+    "elements": [
+      {
+        "id": "property-page;view-property-details",
+        "keyword": "Scenario",
+        "line": 37,
+        "name": "View property details",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 26
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 1152000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "I view a property \"37c4e5a2-8893-dd5f-1ff3-9d4b18a9e5e9\"",
+            "result": {
+              "status": "passed",
+              "duration": 2187000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "the page breadcrumb is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1876000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "the property information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 223000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 260000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "I click on the breadcrumb",
+            "result": {
+              "status": "passed",
+              "duration": 830000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "I am taken to the search page",
+            "result": {
+              "status": "passed",
+              "duration": 309000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;view-property-via-tenure",
+        "keyword": "Scenario",
+        "line": 48,
+        "name": "View property via tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Regression",
+            "line": 39
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 197000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I view a Tenure \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 516000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1981000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "I click on the view property button",
+            "result": {
+              "status": "passed",
+              "duration": 544000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 44,
+            "name": "the property information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 543000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;view-property-via-person",
+        "keyword": "Scenario",
+        "line": 59,
+        "name": "View property via person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Regression",
+            "line": 50
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 219000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 52,
+            "name": "I have loaded a Person record \"80886abb-eecb-644f-5806-6c01ccc2126b\"",
+            "result": {
+              "status": "passed",
+              "duration": 452000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 53,
+            "name": "the personal details are displayed on the sidebar",
+            "result": {
+              "status": "passed",
+              "duration": 1273000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 54,
+            "name": "I click on the view property button",
+            "result": {
+              "status": "passed",
+              "duration": 856000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "the property information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 479000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;asset-api-for-valid-fe-type",
+        "keyword": "Scenario",
+        "line": 68,
+        "name": "Asset API for valid FE type",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 802000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 62,
+            "name": "I check the asset API with a valid assetType \"49202bdc-5d97-a46c-289c-997df568500f\"",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: expected undefined to deeply equal 200\n    at _callee$ (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:2448:20)\n    at tryCatch (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4815:17)\n    at Generator.eval [as _invoke] (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4795:24)\n    at Generator.eval [as next] (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4846:21)\n    at asyncGeneratorStep (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4640:24)\n    at _next (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4662:9)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I navigate to the asset page \"49202bdc-5d97-a46c-289c-997df568500f\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 64,
+            "name": "the property information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;asset-api-for-invalid-fe-type",
+        "keyword": "Scenario",
+        "line": 77,
+        "name": "Asset API for invalid FE type",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 583000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 71,
+            "name": "I check the asset API with an invalid assetType \"5372e973-2857-98df-a343-4acfb76af535\"",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: expected undefined to deeply equal 200\n    at _callee2$ (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:2476:20)\n    at tryCatch (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4815:17)\n    at Generator.eval [as _invoke] (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4795:24)\n    at Generator.eval [as next] (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4846:21)\n    at asyncGeneratorStep (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4640:24)\n    at _next (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:4662:9)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 72,
+            "name": "I navigate to the asset page \"5372e973-2857-98df-a343-4acfb76af535\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I am shown an error message",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;repairs-container-is-displayed",
+        "keyword": "Scenario",
+        "line": 90,
+        "name": "Repairs container is displayed",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 82
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 84,
+            "name": "I view a property \"2d13b5cb-baf2-91fd-c231-8c5c2ee9548c\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "the repairs container is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 86,
+            "name": "the repairs card list is displayed \"In Progress\"",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;repairs-list-type-is-changed",
+        "keyword": "Scenario",
+        "line": 100,
+        "name": "Repairs list type is changed",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 92
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 94,
+            "name": "I view a property \"2d13b5cb-baf2-91fd-c231-8c5c2ee9548c\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 95,
+            "name": "I set the the repair type to \"Cancelled\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 96,
+            "name": "the repairs card list is displayed \"Cancelled\"",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;repairs-list-type-is-changed",
+        "keyword": "Scenario",
+        "line": 101,
+        "name": "Repairs list type is changed",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@ignore",
+            "line": 92
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 94,
+            "name": "I view a property \"2d13b5cb-baf2-91fd-c231-8c5c2ee9548c\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 95,
+            "name": "I set the the repair type to \"In Progress\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 96,
+            "name": "the repairs card list is displayed \"In Progress\"",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;'new-tenure'-button-should-be-displayed-if-no-tenure-information-is-returned-for-a-given-property",
+        "keyword": "Scenario",
+        "line": 111,
+        "name": "'New tenure' button should be displayed if no tenure information is returned for a given property",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@property",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@smoke",
+            "line": 103
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 1139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 105,
+            "name": "I view a property \"b1a64f12-a2f5-b6e9-55c2-bbfa107150a7\"",
+            "result": {
+              "status": "passed",
+              "duration": 448000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 106,
+            "name": "Tenure information displays status as Inactive",
+            "result": {
+              "status": "passed",
+              "duration": 1260000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 107,
+            "name": "New Tenure button should be displayed",
+            "result": {
+              "status": "passed",
+              "duration": 59000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

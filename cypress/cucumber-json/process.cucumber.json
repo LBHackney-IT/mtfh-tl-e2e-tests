@@ -1,0 +1,1022 @@
+[
+  {
+    "description": "I want to be able to link directly from any of the 3 Manage My Home entity pages (tenure/person/property) into the google form I use to record information\nSo that I can easily record information without the need to keep multiple screens open",
+    "keyword": "Feature",
+    "name": "Processes menu for easier navigation",
+    "line": 6,
+    "id": "processes-menu-for-easier-navigation",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@processes",
+        "line": 3
+      },
+      {
+        "name": "@root",
+        "line": 4
+      }
+    ],
+    "uri": "process.feature",
+    "elements": [
+      {
+        "id": "processes-menu-for-easier-navigation;display-process-options-for-person",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Display process options for person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Positive",
+            "line": 13
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 467000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "I have loaded a Person record \"da05aabb-3757-43c8-3028-c9ecbe72a067\"",
+            "result": {
+              "status": "passed",
+              "duration": 3443000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "I select New Process menu \"person\"",
+            "result": {
+              "status": "passed",
+              "duration": 5470000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I am directed to the main process landing page",
+            "result": {
+              "status": "passed",
+              "duration": 736000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I can see a list of processes",
+            "result": {
+              "status": "passed",
+              "duration": 92000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;display-process-options-for-property",
+        "keyword": "Scenario",
+        "line": 33,
+        "name": "Display process options for property",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Positive",
+            "line": 24
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 247000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 26,
+            "name": "I view a property \"f85e4390-9256-e4dc-0443-2e510b362cac\"",
+            "result": {
+              "status": "passed",
+              "duration": 2384000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "I select New Process menu \"property\"",
+            "result": {
+              "status": "passed",
+              "duration": 5454000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "I am directed to the main process landing page",
+            "result": {
+              "status": "passed",
+              "duration": 332000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "I can see a list of processes",
+            "result": {
+              "status": "passed",
+              "duration": 54000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;initiate-sole-to-joint-process-from-tenure",
+        "keyword": "Scenario",
+        "line": 50,
+        "name": "Initiate sole to joint process from tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Positive",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 264000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 37,
+            "name": "I view a Tenure \"e832a76f-8bcf-238c-7ad1-6ef1b408b316\"",
+            "result": {
+              "status": "passed",
+              "duration": 436000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 2936000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I select New Process menu \"tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 723000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "I am directed to the main process landing page",
+            "result": {
+              "status": "passed",
+              "duration": 54000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I can see a list of processes",
+            "result": {
+              "status": "passed",
+              "duration": 73000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I select a process \"Other tenancy changes\"",
+            "result": {
+              "status": "passed",
+              "duration": 607000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;process-landing-page-loaded",
+        "keyword": "Scenario",
+        "line": 62,
+        "name": "Process landing page loaded",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 750000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
+            "result": {
+              "status": "passed",
+              "duration": 365000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 58,
+            "name": "the property details are shown",
+            "result": {
+              "status": "passed",
+              "duration": 1591000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;tenant-has-consented-to-a-credit-check",
+        "keyword": "Scenario",
+        "line": 72,
+        "name": "Tenant has consented to a credit check",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 189000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 65,
+            "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
+            "result": {
+              "status": "passed",
+              "duration": 321000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I accept the terms and conditions",
+            "result": {
+              "status": "passed",
+              "duration": 1802000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 67,
+            "name": "I click the start process button",
+            "result": {
+              "status": "passed",
+              "duration": 377000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 68,
+            "name": "the status is set to Awaiting proposed tenant selection",
+            "result": {
+              "status": "passed",
+              "duration": 22000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;tenant-has-not-consented-to-a-credit-check",
+        "keyword": "Scenario",
+        "line": 80,
+        "name": "Tenant has not consented to a credit check",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 209000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 75,
+            "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
+            "result": {
+              "status": "passed",
+              "duration": 294000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 76,
+            "name": "the start process button is disabled",
+            "result": {
+              "status": "passed",
+              "duration": 1468000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;selecting-back-or-cancelling-out-of-the-process",
+        "keyword": "Scenario",
+        "line": 92,
+        "name": "Selecting back or cancelling out of the process",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 149000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 83,
+            "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
+            "result": {
+              "status": "passed",
+              "duration": 258000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 84,
+            "name": "I click the cancel button",
+            "result": {
+              "status": "passed",
+              "duration": 2336000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "I am taken back to the processes menu \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
+            "result": {
+              "status": "passed",
+              "duration": 24000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 86,
+            "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
+            "result": {
+              "status": "passed",
+              "duration": 359000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 87,
+            "name": "I click the back link",
+            "result": {
+              "status": "passed",
+              "duration": 2079000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 88,
+            "name": "I am taken back to the processes menu \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
+            "result": {
+              "status": "passed",
+              "duration": 15000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;add-last-2-questions-in-the-eligibility-checks",
+        "keyword": "Scenario",
+        "line": 106,
+        "name": "Add last 2 questions in the Eligibility Checks",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 176000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 95,
+            "name": "I select to initiate a Sole To Joint process \"730a4a17-28fd-ed21-e164-dbfc21264d75\"",
+            "result": {
+              "status": "passed",
+              "duration": 247000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 96,
+            "name": "I accept the terms and conditions",
+            "result": {
+              "status": "passed",
+              "duration": 1543000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 97,
+            "name": "I click the start process button",
+            "result": {
+              "status": "passed",
+              "duration": 246000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 98,
+            "name": "Sole tenant requests a joint tenure page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 109000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 99,
+            "name": "I select a person to add as a joint tenant",
+            "result": {
+              "status": "passed",
+              "duration": 1336000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 100,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 323000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 101,
+            "name": "Eligibility checks passed page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 827000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 102,
+            "name": "I can see Further eligibility questions",
+            "result": {
+              "status": "passed",
+              "duration": 291000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;verify-automatic-checks-fail-and-close-case-process-is-initiated",
+        "keyword": "Scenario",
+        "line": 123,
+        "name": "Verify Automatic checks fail and Close Case Process is initiated",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 254000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 110,
+            "name": "I select to initiate a Sole To Joint process \"e9228ada-76db-ee09-29ee-8991c6fc5302\"",
+            "result": {
+              "status": "passed",
+              "duration": 316000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 111,
+            "name": "I accept the terms and conditions",
+            "result": {
+              "status": "passed",
+              "duration": 1536000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 112,
+            "name": "I click the start process button",
+            "result": {
+              "status": "passed",
+              "duration": 200000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 113,
+            "name": "Sole tenant requests a joint tenure page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 23000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 114,
+            "name": "I select a person to add as a joint tenant",
+            "result": {
+              "status": "passed",
+              "duration": 986000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 115,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 289000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 116,
+            "name": "Automatic Eligibility checks Failed page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 859000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 117,
+            "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
+            "result": {
+              "status": "passed",
+              "duration": 365000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 118,
+            "name": "I click on the confirm button",
+            "result": {
+              "status": "passed",
+              "duration": 239000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 119,
+            "name": "'Thank you for your confirmation' message is displayed with a link to Return to Home page",
+            "result": {
+              "status": "passed",
+              "duration": 732000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "processes-menu-for-easier-navigation;verify-automatic-checks-pass-and-manual-checks-fail-and-close-case-process-is-initiated",
+        "keyword": "Scenario",
+        "line": 143,
+        "name": "Verify Automatic checks Pass and Manual Checks Fail and Close case process is initiated",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 216000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 126,
+            "name": "I select to initiate a Sole To Joint process \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
+            "result": {
+              "status": "passed",
+              "duration": 280000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 127,
+            "name": "I accept the terms and conditions",
+            "result": {
+              "status": "passed",
+              "duration": 1550000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 128,
+            "name": "I click the start process button",
+            "result": {
+              "status": "passed",
+              "duration": 249000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 129,
+            "name": "Sole tenant requests a joint tenure page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 23000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 130,
+            "name": "I select a person to add as a joint tenant",
+            "result": {
+              "status": "passed",
+              "duration": 1003000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 131,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 299000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 132,
+            "name": "I can see the text \"Rabbi FAKE_Claire FAKE_Blake\" adding \"Rabbi FAKE_Claire FAKE_Blake\" in the header section",
+            "result": {
+              "status": "passed",
+              "duration": 682000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 133,
+            "name": "Eligibility checks passed page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 41000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 134,
+            "name": "I can see Further eligibility questions",
+            "result": {
+              "status": "passed",
+              "duration": 324000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 135,
+            "name": "I select the answers for these questions",
+            "result": {
+              "status": "passed",
+              "duration": 3286000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 136,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 335000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 137,
+            "name": "the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'",
+            "result": {
+              "status": "passed",
+              "duration": 717000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 138,
+            "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
+            "result": {
+              "status": "passed",
+              "duration": 224000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 139,
+            "name": "I click on the confirm button",
+            "result": {
+              "status": "passed",
+              "duration": 315000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 140,
+            "name": "'Thank you for your confirmation' message is displayed with a link to Return to Home page",
+            "result": {
+              "status": "passed",
+              "duration": 774000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,243 @@
+[
+  {
+    "description": "  I want to request relevant supporting documents from both Sole to Joint applicants (the existing tenant and the new tenant)\n  So that I can evidence that the applicant is eligible",
+    "keyword": "Feature",
+    "name": "As an internal Hackney user",
+    "line": 1,
+    "id": "as-an-internal-hackney-user",
+    "tags": [],
+    "uri": "tenureRequestDocuments.feature",
+    "elements": [
+      {
+        "id": "as-an-internal-hackney-user;ac1.-view-request-for-documents-page",
+        "keyword": "Scenario",
+        "line": 40,
+        "name": "AC1. View Request for Documents page",
+        "tags": [
+          {
+            "name": "@SmokeTest",
+            "line": 29
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 512000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 31,
+            "name": "the application has passed eligibility and the housing officer breach of tenancy checks for the tenure \"149685da-174c-bd9f-b9f9-91f5bb0b85f9\"",
+            "result": {
+              "status": "passed",
+              "duration": 19685000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "I click the Next button",
+            "result": {
+              "status": "passed",
+              "duration": 304000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "Request Documents page is displayed with success message for \"Eligibility checks passed\"",
+            "result": {
+              "status": "passed",
+              "duration": 946000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "\"Supporting documents\" text is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 79000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "\"Checking supporting documents\" text and Resident's contact details are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 592000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "a radio button to automatically request the documents on DES is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 134000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "a radio button to make an appointment to review the Supporting documents is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 29000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac-1.1-link-to-current-tenant’s-person-page-from-request-documents-page",
+        "keyword": "Scenario",
+        "line": 49,
+        "name": "AC 1.1 Link to current tenant’s person page from Request Documents Page",
+        "tags": [
+          {
+            "name": "@SmokeTest",
+            "line": 42
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 404000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 44,
+            "name": "I am on the Request Documents page for the tenure \"149685da-174c-bd9f-b9f9-91f5bb0b85f9\"",
+            "result": {
+              "status": "passed",
+              "duration": 10496000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 45,
+            "name": "I click on the current tenant’s name in the heading",
+            "result": {
+              "status": "passed",
+              "duration": 371000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 46,
+            "name": "I am taken to the current tenant’s person page which will be opened in a new tab",
+            "result": {
+              "status": "passed",
+              "duration": 6433000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac4.-close-case-when-breach-of-tenure-checks-are-failed",
+        "keyword": "Scenario",
+        "line": 98,
+        "name": "AC4. Close case when Breach of tenure checks are failed",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 171000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 90,
+            "name": "the application has passed eligibility and failed the breach of tenancy checks for the tenure \"149685da-174c-bd9f-b9f9-91f5bb0b85f9\"",
+            "result": {
+              "status": "passed",
+              "duration": 10773000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 91,
+            "name": "I click the next button on breach tenure page",
+            "result": {
+              "status": "passed",
+              "duration": 329000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 92,
+            "name": "Breach of tenure eligibility checks Failed page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 646000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 93,
+            "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
+            "result": {
+              "status": "passed",
+              "duration": 238000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 94,
+            "name": "I click on the confirm button",
+            "result": {
+              "status": "passed",
+              "duration": 251000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 95,
+            "name": "'Thank you for your confirmation' message is displayed with a link to Return to Home page",
+            "result": {
+              "status": "passed",
+              "duration": 638000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,1836 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Tenure page",
+    "line": 7,
+    "id": "tenure-page",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@processes",
+        "line": 3
+      },
+      {
+        "name": "@root",
+        "line": 4
+      },
+      {
+        "name": "@tenure",
+        "line": 5
+      }
+    ],
+    "uri": "tenure.feature",
+    "elements": [
+      {
+        "id": "tenure-page;view-resident-details-for-new-tenure",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "View resident details for new tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 503000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "passed",
+              "duration": 405000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I add a person to a tenure",
+            "result": {
+              "status": "passed",
+              "duration": 374000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "passed",
+              "duration": 3036000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 4708000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "the residents information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 236000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;navigate-to-old-tenancy-files",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "Navigate to old tenancy files",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 490000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 20,
+            "name": "the start date of the tenure is \"2013-12-31\"",
+            "result": {
+              "status": "passed",
+              "duration": 367000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the start date for the tenure record is before 31 December 2013",
+            "result": {
+              "status": "passed",
+              "duration": 258000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "I view this tenure",
+            "result": {
+              "status": "passed",
+              "duration": 2201000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "the Scanned historic tenure records button is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 3674000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;navigate-to-old-tenancy-files---button-not-displayed",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "Navigate to old tenancy files - button not displayed",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 29
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 273000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 31,
+            "name": "the start date of the tenure is \"2014-01-01\"",
+            "result": {
+              "status": "passed",
+              "duration": 374000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "the start date for the tenure record is before 31 December 2013",
+            "result": {
+              "status": "passed",
+              "duration": 251000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I view this tenure",
+            "result": {
+              "status": "passed",
+              "duration": 473000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "the Scanned historic tenure records button is not displayed",
+            "result": {
+              "status": "passed",
+              "duration": 31000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;view-household-member",
+        "keyword": "Scenario",
+        "line": 40,
+        "name": "View household member",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 881000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 41,
+            "name": "There are household members for the tenure",
+            "result": {
+              "status": "passed",
+              "duration": 366000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I view the Other household members section in the tenure page",
+            "result": {
+              "status": "passed",
+              "duration": 3376000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "I select a household member",
+            "result": {
+              "status": "passed",
+              "duration": 949000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 44,
+            "name": "the household member details are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 16000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;no-household-members",
+        "keyword": "Scenario",
+        "line": 46,
+        "name": "No household members",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 375000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 47,
+            "name": "There are only responsible household members for the tenure",
+            "result": {
+              "status": "passed",
+              "duration": 574000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "I view the Other household members section in the tenure page",
+            "result": {
+              "status": "passed",
+              "duration": 2075000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "A message says this tenure has no household members",
+            "result": {
+              "status": "passed",
+              "duration": 72000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;navigate-to-personal-details",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "Navigate to personal details",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 51
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 202000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 53,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "passed",
+              "duration": 438000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 54,
+            "name": "I add a person to a tenure",
+            "result": {
+              "status": "passed",
+              "duration": 336000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 55,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "passed",
+              "duration": 520000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 56,
+            "name": "I select a resident",
+            "result": {
+              "status": "passed",
+              "duration": 2209000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 57,
+            "name": "the resident details are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 31000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 73,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 74,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 75,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 76,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 77,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 78,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 79,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 80,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-x\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 81,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 82,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;mobile-view",
+        "keyword": "Scenario",
+        "line": 88,
+        "name": "Mobile view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 59
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I am using a mobile viewport \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I click the tenure details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the tenure details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "I click the resident details accordion",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the residents details accordion information is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;accessibility-testing",
+        "keyword": "Scenario",
+        "line": 91,
+        "name": "Accessibility Testing",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          },
+          {
+            "name": "@Accessibility",
+            "line": 90
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 92,
+            "name": "I create a new tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 93,
+            "name": "I view a Tenure",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 94,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-page;clean-up-test-data-from-dynamodb",
+        "keyword": "Scenario",
+        "line": 101,
+        "name": "Clean up test data from DynamoDb",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@tenure",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 656000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 97,
+            "name": "I can delete a created record from DynamoDb \"TenureInformation\"",
+            "result": {
+              "status": "failed",
+              "error_message": "CredentialsError: The following error originated from your test code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Missing credentials in config, if using AWS_CONFIG_FILE, set AWS_SDK_LOAD_CONFIG=1\n\nWhen Cypress detects uncaught errors originating from your test code it will automatically fail the current test.\n    at credError (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:233842:40)\n    at Config.getCredentials (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:233883:14)\n    at Request.VALIDATE_CREDENTIALS (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:237644:26)\n    at Request.callListeners (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:243127:18)\n    at Request.emit (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:243103:10)\n    at Request.emit (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:241755:14)\n    at Request.transition (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:241091:10)\n    at AcceptorStateMachine.runTo (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:247146:12)\n    at Request.runTo (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:241475:15)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/tenure.feature:241864:12)"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

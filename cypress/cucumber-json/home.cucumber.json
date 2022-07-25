@@ -1,0 +1,1970 @@
+[
+  {
+    "description": "    I am on the Tenants and Leaseholders Home page",
+    "keyword": "Feature",
+    "name": "T&L Home page",
+    "line": 8,
+    "id": "t&l-home-page",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@common",
+        "line": 2
+      },
+      {
+        "name": "@header",
+        "line": 3
+      },
+      {
+        "name": "@processes",
+        "line": 4
+      },
+      {
+        "name": "@Production",
+        "line": 5
+      },
+      {
+        "name": "@root",
+        "line": 6
+      }
+    ],
+    "uri": "home.feature",
+    "elements": [
+      {
+        "id": "t&l-home-page;home-page-whilst-logged-out",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Home Page whilst logged out",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 11
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "passed",
+              "duration": 4321000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the log in button is visible",
+            "result": {
+              "status": "passed",
+              "duration": 2635000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the page header is visible",
+            "result": {
+              "status": "passed",
+              "duration": 150000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "passed",
+              "duration": 24000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;accessibility-testing",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "Accessibility Testing",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@Accessibility",
+            "line": 26
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;page-footer-links",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Page footer links",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 30
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 32,
+            "name": "the page footer links are visible",
+            "result": {
+              "status": "passed",
+              "duration": 1143000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 33,
+            "name": "the page footer links are correct",
+            "result": {
+              "status": "passed",
+              "duration": 83000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 47,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"ipad-2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 48,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"ipad-mini\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 49,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 50,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 51,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 54,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 55,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 56,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-x\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 58,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 59,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"macbook-11\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 60,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"macbook-13\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 61,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"macbook-15\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 62,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"macbook-16\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 63,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"samsung-note9\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "t&l-home-page;home-page-device-view",
+        "keyword": "Scenario",
+        "line": 64,
+        "name": "Home page device view",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@header",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@Production",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 35
+          },
+          {
+            "name": "@device",
+            "line": 36
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 38,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I am using a mobile viewport \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I am on the Home page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the header link says welcome",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the page header is visible",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the page footer is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

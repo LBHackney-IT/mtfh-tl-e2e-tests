@@ -1,0 +1,119 @@
+[
+  {
+    "description": "  I want to view a person's activity history",
+    "keyword": "Feature",
+    "name": "Activity History",
+    "line": 7,
+    "id": "activity-history",
+    "tags": [
+      {
+        "name": "@activity-history",
+        "line": 1
+      },
+      {
+        "name": "@authentication",
+        "line": 2
+      },
+      {
+        "name": "@common",
+        "line": 3
+      },
+      {
+        "name": "@processes",
+        "line": 4
+      },
+      {
+        "name": "@root",
+        "line": 5
+      }
+    ],
+    "uri": "activityHistoryPerson.feature",
+    "elements": [
+      {
+        "id": "activity-history;view-activity-history",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "View activity history",
+        "tags": [
+          {
+            "name": "@activity-history",
+            "line": 1
+          },
+          {
+            "name": "@authentication",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 13
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 423000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "I go to the activity history for \"f0058791-07da-28de-06a3-bd5ca124e160\"",
+            "result": {
+              "status": "passed",
+              "duration": 4521000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "the activity history is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 3289000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I click close activity history",
+            "result": {
+              "status": "passed",
+              "duration": 1101000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I am on the person page for \"f0058791-07da-28de-06a3-bd5ca124e160\"",
+            "result": {
+              "status": "passed",
+              "duration": 74000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

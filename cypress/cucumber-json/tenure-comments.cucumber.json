@@ -1,0 +1,3010 @@
+[
+  {
+    "description": "    I want to create and view tenure's comments",
+    "keyword": "Feature",
+    "name": "Tenure Comment",
+    "line": 7,
+    "id": "tenure-comment",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@comments",
+        "line": 2
+      },
+      {
+        "name": "@common",
+        "line": 3
+      },
+      {
+        "name": "@processes",
+        "line": 4
+      },
+      {
+        "name": "@root",
+        "line": 5
+      }
+    ],
+    "uri": "tenure-comments.feature",
+    "elements": [
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "I go to create a comment for a tenure page",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 13
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 573000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "I am on the create comment page for \"tenure\" \"f5995a9d-b227-4e23-0957-2233db537ea9\"",
+            "result": {
+              "status": "passed",
+              "duration": 3251000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "the create comment component is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 3992000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;add-comment---relationship-between-selected-record-and-records-in-other-entities",
+        "keyword": "Scenario",
+        "line": 33,
+        "name": "Add comment - Relationship between selected record and records in other entities",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Positive",
+            "line": 23
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 255000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "I am on the create comment page for \"tenure\" \"fde50d68-84c3-c166-6338-895c12ebf8fd\"",
+            "result": {
+              "status": "passed",
+              "duration": 1055000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I select a checkbox for \"0fb4997e-17a9-4373-6211-40b374f01533\"",
+            "result": {
+              "status": "passed",
+              "duration": 5213000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "I create a comment",
+            "result": {
+              "status": "passed",
+              "duration": 3398000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "I can see the same comments in the linked entities",
+            "result": {
+              "status": "passed",
+              "duration": 6434000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 47,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"ipad-2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 48,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"ipad-mini\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Estate management\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 49,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Evictions\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 50,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Parking\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 51,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Planned maintenance\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Rehousing\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Rents\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 54,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Repairs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 55,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Service charge\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 56,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Temporary decant\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Tenure breaches\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 58,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"macbook-11\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Tenure management\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 59,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"macbook-13\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Voids\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 60,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"macbook-15\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 61,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"macbook-16\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 62,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"samsung-note9\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;i-go-to-create-a-comment-for-a-tenure-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 63,
+        "name": "I go to create a comment for a tenure page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@device",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I am using a mobile viewport \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;save-comment-for-tenure",
+        "keyword": "Scenario",
+        "line": 77,
+        "name": "Save comment for tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Positive",
+            "line": 65
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 7203000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 67,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 1574000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 68,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "passed",
+              "duration": 1804000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "passed",
+              "duration": 1105000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "passed",
+              "duration": 294000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 71,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "passed",
+              "duration": 256000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "passed",
+              "duration": 1451000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I can see the timestamp for the created comment",
+            "result": {
+              "status": "passed",
+              "duration": 702000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;user-cannot-submit-a-comment-without-mandatory-fields",
+        "keyword": "Scenario",
+        "line": 89,
+        "name": "User cannot submit a comment without mandatory fields",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 79
+          },
+          {
+            "name": "@Negative",
+            "line": 80
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 357000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 82,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 544000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 83,
+            "name": "I do not fill the mandatory fields:\"\" \"test comment\" \"Rents\"",
+            "result": {
+              "status": "passed",
+              "duration": 1997000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 84,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "passed",
+              "duration": 337000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "I can see a specific validation message for the field \"You must provide a title for this comment\"",
+            "result": {
+              "status": "passed",
+              "duration": 35000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;user-cannot-submit-a-comment-without-mandatory-fields",
+        "keyword": "Scenario",
+        "line": 90,
+        "name": "User cannot submit a comment without mandatory fields",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 79
+          },
+          {
+            "name": "@Negative",
+            "line": 80
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 145000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 82,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 537000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 83,
+            "name": "I do not fill the mandatory fields:\"test title\" \"\" \"Rents\"",
+            "result": {
+              "status": "passed",
+              "duration": 1806000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 84,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "passed",
+              "duration": 305000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "I can see a specific validation message for the field \"You must enter a description for this comment\"",
+            "result": {
+              "status": "passed",
+              "duration": 31000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;user-cannot-submit-a-comment-without-mandatory-fields",
+        "keyword": "Scenario",
+        "line": 91,
+        "name": "User cannot submit a comment without mandatory fields",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 79
+          },
+          {
+            "name": "@Negative",
+            "line": 80
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 142000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 82,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 455000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 83,
+            "name": "I do not fill the mandatory fields:\"test title\" \"test comment\" \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 2084000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 84,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "passed",
+              "duration": 317000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "I can see a specific validation message for the field \"You must select a category for this comment\"",
+            "result": {
+              "status": "passed",
+              "duration": 36000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;cancel-comment-and-pop-up-message",
+        "keyword": "Scenario",
+        "line": 104,
+        "name": "Cancel comment and pop up message",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 93
+          },
+          {
+            "name": "@Positive",
+            "line": 94
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 97,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 508000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 98,
+            "name": "I click the Discard comment link",
+            "result": {
+              "status": "passed",
+              "duration": 1527000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 99,
+            "name": "I can see the cancellation pop up for comment",
+            "result": {
+              "status": "passed",
+              "duration": 41000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 100,
+            "name": "I can cancel the comment",
+            "result": {
+              "status": "passed",
+              "duration": 323000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;character-limit-counter",
+        "keyword": "Scenario",
+        "line": 115,
+        "name": "Character limit counter",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Positive",
+            "line": 106
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 107
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 1104000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 109,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 459000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 110,
+            "name": "I enter 2 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 1462000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 111,
+            "name": "the number of characters remaining is correct 2",
+            "result": {
+              "status": "passed",
+              "duration": 84000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;character-limit-counter",
+        "keyword": "Scenario",
+        "line": 116,
+        "name": "Character limit counter",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Positive",
+            "line": 106
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 107
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 142000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 109,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 482000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 110,
+            "name": "I enter 99 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 3416000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 111,
+            "name": "the number of characters remaining is correct 99",
+            "result": {
+              "status": "passed",
+              "duration": 128000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;character-limit-counter",
+        "keyword": "Scenario",
+        "line": 117,
+        "name": "Character limit counter",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Positive",
+            "line": 106
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 107
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 142000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 109,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 465000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 110,
+            "name": "I enter 350 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 8660000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 111,
+            "name": "the number of characters remaining is correct 350",
+            "result": {
+              "status": "passed",
+              "duration": 186000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;character-limit-counter",
+        "keyword": "Scenario",
+        "line": 118,
+        "name": "Character limit counter",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Positive",
+            "line": 106
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 107
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 169000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 109,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 532000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 110,
+            "name": "I enter 500 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 11928000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 111,
+            "name": "the number of characters remaining is correct 500",
+            "result": {
+              "status": "passed",
+              "duration": 137000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;character-limit-exceeded",
+        "keyword": "Scenario",
+        "line": 129,
+        "name": "Character limit exceeded",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Negative",
+            "line": 120
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 121
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 162000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 123,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 506000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 124,
+            "name": "I enter 502 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 10884000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 125,
+            "name": "the warning message tells me I am over by 502",
+            "result": {
+              "status": "passed",
+              "duration": 138000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;character-limit-exceeded",
+        "keyword": "Scenario",
+        "line": 130,
+        "name": "Character limit exceeded",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Negative",
+            "line": 120
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 121
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 226000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 123,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "passed",
+              "duration": 477000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 124,
+            "name": "I enter 508 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 10813000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 125,
+            "name": "the warning message tells me I am over by 508",
+            "result": {
+              "status": "passed",
+              "duration": 142000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "tenure-comment;accessibility-testing-for-tenure",
+        "keyword": "Scenario",
+        "line": 139,
+        "name": "Accessibility Testing for tenure",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@processes",
+            "line": 4
+          },
+          {
+            "name": "@root",
+            "line": 5
+          },
+          {
+            "name": "@Accessibility",
+            "line": 132
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 134,
+            "name": "I am on the create comment page for \"tenure\" \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 135,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

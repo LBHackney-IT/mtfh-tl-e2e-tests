@@ -1,0 +1,2214 @@
+[
+  {
+    "description": "    I want to create and view property's comments",
+    "keyword": "Feature",
+    "name": "Property Comment",
+    "line": 6,
+    "id": "property-comment",
+    "tags": [
+      {
+        "name": "@authentication",
+        "line": 1
+      },
+      {
+        "name": "@comments",
+        "line": 2
+      },
+      {
+        "name": "@common",
+        "line": 3
+      },
+      {
+        "name": "@root",
+        "line": 4
+      }
+    ],
+    "uri": "property-comments.feature",
+    "elements": [
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page",
+        "keyword": "Scenario",
+        "line": 76,
+        "name": "I go to create a comment for a property page",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 64
+          },
+          {
+            "name": "@Positive",
+            "line": 65
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 6167000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 67,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "passed",
+              "duration": 1691000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 68,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "passed",
+              "duration": 1825000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "passed",
+              "duration": 979000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "passed",
+              "duration": 270000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 71,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "passed",
+              "duration": 244000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "I can see the timestamp for the created comment",
+            "result": {
+              "status": "passed",
+              "duration": 1107000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;add-comment---relationship-between-selected-record-and-records-in-other-entities",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Add comment - Relationship between selected record and records in other entities",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 21
+          },
+          {
+            "name": "@Positive",
+            "line": 22
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 529000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "I am on the create comment page for \"property\" \"f0196e15-de78-d42f-5e17-67b117194cd1\"",
+            "result": {
+              "status": "passed",
+              "duration": 983000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 25,
+            "name": "I select a checkbox for \"e5d1be03-d596-4d81-cd91-a88373fd199d\"",
+            "result": {
+              "status": "passed",
+              "duration": 3043000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "I create a comment",
+            "result": {
+              "status": "passed",
+              "duration": 3674000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "I can see the same comments in the linked entities",
+            "result": {
+              "status": "passed",
+              "duration": 3726000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 47,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"ipad-mini\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Estate management\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 48,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-3\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Evictions\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 49,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-4\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Parking\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 50,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-5\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Planned maintenance\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 51,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-6\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Rehousing\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-6+\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Rents\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-7\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Repairs\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 54,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-8\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Service charge\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 55,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-xr\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Temporary decant\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 56,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"iphone-se2\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Tenure breaches\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"macbook-11\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Tenure management\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 58,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"macbook-13\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Voids\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 59,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"macbook-15\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 60,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"macbook-16\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 61,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"samsung-note9\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;i-go-to-create-a-comment-for-a-property-page-on-a-device",
+        "keyword": "Scenario",
+        "line": 62,
+        "name": "I go to create a comment for a property page on a device",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@device",
+            "line": 34
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "I am using a mobile viewport \"samsung-s10\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid title",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a valid comment",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I select a comment category \"Appointments\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the comment is submitted",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;character-limit-counter",
+        "keyword": "Scenario",
+        "line": 87,
+        "name": "Character limit counter",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Positive",
+            "line": 78
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 350000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 80,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "passed",
+              "duration": 503000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 81,
+            "name": "I enter 50 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 2675000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 82,
+            "name": "the number of characters remaining is correct 50",
+            "result": {
+              "status": "passed",
+              "duration": 56000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;character-limit-counter",
+        "keyword": "Scenario",
+        "line": 89,
+        "name": "Character limit counter",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Positive",
+            "line": 78
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 151000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 80,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "passed",
+              "duration": 662000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 81,
+            "name": "I enter 350 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 9640000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 82,
+            "name": "the number of characters remaining is correct 350",
+            "result": {
+              "status": "passed",
+              "duration": 127000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;character-limit-exceeded",
+        "keyword": "Scenario",
+        "line": 101,
+        "name": "Character limit exceeded",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Negative",
+            "line": 92
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 165000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 94,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "passed",
+              "duration": 540000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 95,
+            "name": "I enter 508 characters into the comment field",
+            "result": {
+              "status": "passed",
+              "duration": 11270000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 96,
+            "name": "the warning message tells me I am over by 508",
+            "result": {
+              "status": "passed",
+              "duration": 165000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;validation-message-is-displayed",
+        "keyword": "Scenario",
+        "line": 112,
+        "name": "Validation message is displayed",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 103
+          },
+          {
+            "name": "@Negative",
+            "line": 104
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 278000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 106,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "passed",
+              "duration": 553000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 107,
+            "name": "I click the save comment button",
+            "result": {
+              "status": "passed",
+              "duration": 1501000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 108,
+            "name": "a validation error occurs",
+            "result": {
+              "status": "passed",
+              "duration": 104000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-comment;accessibility-testing",
+        "keyword": "Scenario",
+        "line": 121,
+        "name": "Accessibility Testing",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@comments",
+            "line": 2
+          },
+          {
+            "name": "@common",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Accessibility",
+            "line": 114
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I am logged in",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 116,
+            "name": "I am on the create comment page for \"property\" \"a2d7901a-9895-e86a-f9d3-542222400a3a\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 117,
+            "name": "have no detectable a11y violations",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

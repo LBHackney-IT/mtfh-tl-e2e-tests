@@ -1,0 +1,103 @@
+[
+  {
+    "description": "  I want to confirm a tenure investigation has been completed\n  So that I can make a decision on the sole to joint application",
+    "keyword": "Feature",
+    "name": "As a Housing Officer",
+    "line": 1,
+    "id": "as-a-housing-officer",
+    "tags": [],
+    "uri": "reviewApplication.feature",
+    "elements": [
+      {
+        "id": "as-a-housing-officer;ac1:-view-the-confirmation-of-completed-tenure-investigation-page",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "AC1: View the Confirmation of completed tenure investigation page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 428000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "The tenure investigation has been completed for tenure \"dfaab345-18b3-2907-ab75-25b5b5904c93\"",
+            "result": {
+              "status": "passed",
+              "duration": 22623000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "I am not able to choose the recommendation until I have ticked the box",
+            "result": {
+              "status": "passed",
+              "duration": 239000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "I tick the box \"I confirm that the tenure investigation has been completed\"",
+            "result": {
+              "status": "passed",
+              "duration": 326000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I am able to choose which recommendation the tenure investigator has given Approve Decline or Appointment",
+            "result": {
+              "status": "passed",
+              "duration": 181000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I can see Next steps Make an appointment or pass the case to Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 15000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "case activity log is recorded",
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the progress indicator is still in \"Review Application\"",
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
