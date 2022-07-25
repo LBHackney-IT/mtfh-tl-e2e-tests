@@ -56,6 +56,7 @@ Feature: Create tenure
         | property                             | tenureType | startDay | startMonth | startYear | searchTerm |tableName          |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 21       | 05         | 2022      | tre        |TenureInformation  |
 
+  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure search and select resident
     When I view a property "<property>"
@@ -81,7 +82,6 @@ Feature: Create tenure
       | property                             | tenureType | startDay | startMonth | startYear | searchTerm |
       | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        |
 
-  @ignore
   Scenario Outline: Create new tenure and filter search
     When I view a property "<property>"
     When I click on the new tenure button
