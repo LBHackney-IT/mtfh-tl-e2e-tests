@@ -27,6 +27,7 @@ Feature: Create tenure
         | 05f2a78d-bc9d-255d-0c1c-98e7add1ca95 | Non-Secure   | 01       | 01         | 2000      |
      #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
 
+  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
   #Then I can delete a created record from DynamoDb "<tableName>"
@@ -55,7 +56,6 @@ Feature: Create tenure
         | property                             | tenureType | startDay | startMonth | startYear | searchTerm |tableName          |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 21       | 05         | 2022      | tre        |TenureInformation  |
 
-  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure search and select resident
     When I view a property "<property>"
