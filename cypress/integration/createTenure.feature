@@ -304,7 +304,6 @@ Feature: Create tenure
         | tenure                               |
         | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
 
-    @ignore
     Scenario Outline: Create person by navigating to new tenure
         Given I delete all existing persons from the tenure "<tenure>"
         When I navigate to a create person for new tenure "<property>" "<tenure>"
