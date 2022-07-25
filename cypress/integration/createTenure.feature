@@ -234,6 +234,7 @@ Feature: Create tenure
         | property                             | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
         | 986a2a9e-9eb4-0966-120a-238689e3e265 | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
 
+  @ignore
   Scenario Outline: Edit existing tenure
         When I view a Tenure "<tenure>"
         Then the tenure information is displayed
