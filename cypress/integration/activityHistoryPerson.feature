@@ -10,7 +10,6 @@ Feature: Activity History
   Background:
     Given I am logged in
 
-  @SmokeTest
   Scenario Outline: View activity history
     Given I go to the activity history for "<person>"
     Then the activity history is displayed
@@ -20,7 +19,6 @@ Feature: Activity History
     Examples:
       | person                               |
       | f0058791-07da-28de-06a3-bd5ca124e160 |
-
 
       # //TODO commented for 5th July release as this test is failing in pipeline
 
@@ -35,4 +33,3 @@ Feature: Activity History
 #      Examples:
 #        | person                               | preferredLastName |
 #        | c9c2e6ab-679e-d83b-d2e4-830b64c509c4 | guid              |
-
