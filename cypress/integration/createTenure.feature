@@ -296,7 +296,6 @@ Feature: Create tenure
         | tenure                               |
         | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
 
-    @ignore
     Scenario Outline: Cannot edit tenure for inactive or past tenures
         When I edit a Tenure "<tenure>"
         Then the tenure cannot be edited warning message is displayed
