@@ -27,7 +27,7 @@ Feature: Create tenure
         | 05f2a78d-bc9d-255d-0c1c-98e7add1ca95 | Non-Secure   | 01       | 01         | 2000      |
      #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
 
-@ignore
+  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
   #Then I can delete a created record from DynamoDb "<tableName>"
@@ -57,7 +57,7 @@ Feature: Create tenure
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 21       | 05         | 2022      | tre        |TenureInformation  |
 
   @ignore
-    @SmokeTest
+  @SmokeTest
   Scenario Outline: Create new tenure search and select resident
     When I view a property "<property>"
     When I click on the new tenure button
@@ -203,6 +203,7 @@ Feature: Create tenure
         | property                             |
         | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 |
 
+  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
     When I view a property "<property>"
@@ -218,6 +219,7 @@ Feature: Create tenure
         | property                             | tenureType | startDay | startMonth | startYear |
         | 986a2a9e-9eb4-0966-120a-238689e3e265 | Freehold   | 01       | 01         | 1900      |
 
+  @ignore
   @SmokeTest
   Scenario Outline: Create new tenure that with start date that occurs after end date
     When I view a property "<property>"
@@ -249,6 +251,7 @@ Feature: Create tenure
         | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
         # | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Secure     |
 
+    @ignore
     Scenario Outline: Edit existing tenure and cancel
         When I view a Tenure "<tenure>"
         Then the tenure information is displayed
@@ -268,6 +271,7 @@ Feature: Create tenure
         | tenure                               | tenureType |
         | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
 
+  @ignore
   Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
     When I view a Tenure "<tenure>"
     Then the tenure information is displayed
@@ -288,6 +292,7 @@ Feature: Create tenure
       | tenure                               | tenureType | day | month | year |
       | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |  20 |  05   | 2022 |
 
+    @ignore
     Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
         When I view a Tenure "<tenure>"
         Then the tenure information is displayed
@@ -296,6 +301,7 @@ Feature: Create tenure
         | tenure                               |
         | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
 
+    @ignore
     Scenario Outline: Cannot edit tenure for inactive or past tenures
         When I edit a Tenure "<tenure>"
         Then the tenure cannot be edited warning message is displayed
@@ -346,7 +352,6 @@ Feature: Create tenure
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
         | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
 
-
     @ignore
     Scenario Outline: Create person for new tenure validation
         Given I delete all existing persons from the tenure "<tenure>"
@@ -375,6 +380,7 @@ Feature: Create tenure
         | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
         | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
 
+    @ignore
     @regression
     Scenario Outline: End dates are editable for all tenure types
       When I edit a Tenure "<tenure>"
