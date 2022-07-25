@@ -249,7 +249,6 @@ Feature: Create tenure
         | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
         # | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Secure     |
 
-
     Scenario Outline: Edit existing tenure and cancel
         When I view a Tenure "<tenure>"
         Then the tenure information is displayed
@@ -269,7 +268,6 @@ Feature: Create tenure
         | tenure                               | tenureType |
         | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
 
-  @ignore
   Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
     When I view a Tenure "<tenure>"
     Then the tenure information is displayed
