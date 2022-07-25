@@ -10,7 +10,7 @@ Feature: Create tenure
   Background:
     Given I am logged in
 
-  @ignore
+
   @SmokeTest
   Scenario Outline: Create new tenure
     When I view a property "<property>"
