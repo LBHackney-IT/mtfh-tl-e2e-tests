@@ -108,10 +108,9 @@ Then("model dialog is displayed", () => {
 When("I select Approve", ()=> {
     addPersonPageObj.confirmationModal().contains('Approve');
     reviewAppPage.confirmationModelApprove().click();
-    cy.contains('Confirm').click();
 });
 Then("Sole to joint application approved text is displayed", () => {
-    cy.contains('Sole to Joint application approved, next steps:');
+    cy.contains('Sole to joint tenure application approved, next steps:');
 });
 Then("Office appointment scheduled message is displayed", () => {
     reviewAppPage.messageHeadingOfficeAppointment().should('contain.text', 'Office appointment scheduled');

@@ -16,6 +16,7 @@ Feature: As a Housing Officer
       | tenure                               |
       | dfaab345-18b3-2907-ab75-25b5b5904c93 |
 #      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+# the above example has been commented as the data clean up is not happening.
 
   Scenario Outline: Tenure Investigation recommendation - Approve, HO Review - Approve application
     Given The tenure investigation has been completed for tenure "<tenure>"
