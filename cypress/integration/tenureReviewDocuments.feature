@@ -18,7 +18,8 @@ Feature: As an internal Hackney user
     And I cannot proceed until all of the check boxes have been ticked
     Examples:
       | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 |
+#      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
   Scenario Outline: AC1.1: Request in person appointment (for documents requested via DES)
     Given I would like to check submitted documents in person for tenure "<tenure>"
@@ -27,7 +28,8 @@ Feature: As an internal Hackney user
     And I can confirm the appointment has been arranged
     Examples:
       | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 |
+#      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
   Scenario Outline: AC1.2: Confirm documents have been seen (for documents requested via DES)
     Given the documents have been provided by the resident for tenure "<tenure>"
@@ -36,7 +38,8 @@ Feature: As an internal Hackney user
     Then Next button is enabled and user can proceed to the next step
     Examples:
       | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 |
+#      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
 
     # //TODO commented for 5th July release as this test is failing in pipeline
@@ -59,7 +62,8 @@ Feature: As an internal Hackney user
    # Then case activity log is recorded with status closed
     Examples:
       | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 |
+#      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
 
 
 ## Submit Case scenarios below ####
@@ -75,4 +79,5 @@ Feature: As an internal Hackney user
     And I can see the text 'I confirm that the tenure investigation has been completed'
     Examples:
       | tenure                               |
-      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
+      | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4 |
+#      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb |
