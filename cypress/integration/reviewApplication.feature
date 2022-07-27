@@ -91,5 +91,8 @@ Feature: As a Housing Officer
 #    And 'Sole to joint application will be closed' text is displayed
 #    And 'I confirm that an outcome letter has been sent to the resident' text is displayed
 #    Examples:
+#
+#      | tenure                               |
+#      | dfaab345-18b3-2907-ab75-25b5b5904c93 |
 #      | tenure                               |
 #      | dfaab345-18b3-2907-ab75-25b5b5904c93 |

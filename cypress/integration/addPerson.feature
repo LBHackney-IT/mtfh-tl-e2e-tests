@@ -13,6 +13,8 @@ Feature: Add a new person to a tenure
     And I delete all of the correspondence addresses for "279bf08c-0c9e-4d81-e24a-8930e8b37a68"
     And I reset the equality information for "f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d"
 
+  #  @SmokeTest
+
 #  @SmokeTest
 #  @Regression
 #  Scenario Outline: Removed fields are not displayed
