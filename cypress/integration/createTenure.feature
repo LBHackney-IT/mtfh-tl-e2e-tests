@@ -10,6 +10,7 @@ Feature: Create tenure
   Background:
     Given I am logged in
 
+
   @ignore
   Scenario Outline: Clean up test data from DynamoDb
     Then I can delete a created record from DynamoDb "<tableName>"
