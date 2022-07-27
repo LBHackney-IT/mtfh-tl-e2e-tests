@@ -1,0 +1,423 @@
+[
+  {
+    "description": "         I want to confirm that all relevant supporting documents have been uploaded for a Sole to Joint application\n         So that I can evidence that the applicant is eligible",
+    "keyword": "Feature",
+    "name": "As an internal Hackney user",
+    "line": 1,
+    "id": "as-an-internal-hackney-user",
+    "tags": [],
+    "uri": "tenureReviewDocuments.feature",
+    "elements": [
+      {
+        "id": "as-an-internal-hackney-user;ac1:-view-review-documents-screen-(documents-requested-via-des)",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "AC1: View review documents screen (documents requested via DES)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 222000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I have requested the documents via DES for the tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
+            "result": {
+              "status": "passed",
+              "duration": 12252000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I have proceeded to the next step",
+            "result": {
+              "status": "passed",
+              "duration": 206000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I view the page",
+            "result": {
+              "status": "passed",
+              "duration": 551000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "a confirmation alert confirming that eligibility checks have been passed",
+            "result": {
+              "status": "passed",
+              "duration": 77000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "a success message for requested documents via DES with a link to DES",
+            "result": {
+              "status": "passed",
+              "duration": 73000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "a checklist of documents that will need to be seen before proceeding",
+            "result": {
+              "status": "passed",
+              "duration": 123000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the option to arrange an in person appointment to view the documents if necessary",
+            "result": {
+              "status": "passed",
+              "duration": 34000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "guidance text about closing the case due to failing the supporting documents check",
+            "result": {
+              "status": "passed",
+              "duration": 52000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "the ability to close the case at this stage of the process",
+            "result": {
+              "status": "passed",
+              "duration": 51000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I cannot proceed until all of the check boxes have been ticked",
+            "result": {
+              "status": "passed",
+              "duration": 44000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac1.1:-request-in-person-appointment-(for-documents-requested-via-des)",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "AC1.1: Request in person appointment (for documents requested via DES)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 281000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "I would like to check submitted documents in person for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
+            "result": {
+              "status": "passed",
+              "duration": 12520000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I tick the checkbox to arrange an in person appointment to view the documents",
+            "result": {
+              "status": "passed",
+              "duration": 228000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "I can input an appointment date and time",
+            "result": {
+              "status": "passed",
+              "duration": 3933000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "I can confirm the appointment has been arranged",
+            "result": {
+              "status": "passed",
+              "duration": 818000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac1.2:-confirm-documents-have-been-seen-(for-documents-requested-via-des)",
+        "keyword": "Scenario",
+        "line": 41,
+        "name": "AC1.2: Confirm documents have been seen (for documents requested via DES)",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 214000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 35,
+            "name": "the documents have been provided by the resident for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
+            "result": {
+              "status": "passed",
+              "duration": 13875000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "Next button is disabled",
+            "result": {
+              "status": "passed",
+              "duration": 168000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 37,
+            "name": "I can complete the checklist of seen supporting documents are correct and valid",
+            "result": {
+              "status": "passed",
+              "duration": 1634000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "Next button is enabled and user can proceed to the next step",
+            "result": {
+              "status": "passed",
+              "duration": 114000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac4:-closing-the-case-at-the-review-documents-stage",
+        "keyword": "Scenario",
+        "line": 65,
+        "name": "AC4: Closing the case at the Review Documents stage",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 405000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 58,
+            "name": "the applicant has failed the supporting documents check for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
+            "result": {
+              "status": "passed",
+              "duration": 12770000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 59,
+            "name": "I decide to close the case",
+            "result": {
+              "status": "passed",
+              "duration": 263000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 60,
+            "name": "an overlay pops up and I must give a reason for rejection",
+            "result": {
+              "status": "passed",
+              "duration": 13000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 61,
+            "name": "I will click on Close case once the rejection is given",
+            "result": {
+              "status": "passed",
+              "duration": 1196000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac1-submit-the-case-for-tenure-investigation-review",
+        "keyword": "Scenario",
+        "line": 82,
+        "name": "AC1 Submit the case for Tenure investigation review",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 230000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 71,
+            "name": "I have completed document upload for Sole to Joint for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
+            "result": {
+              "status": "passed",
+              "duration": 12975000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 72,
+            "name": "the Active status should be Submit case",
+            "result": {
+              "status": "passed",
+              "duration": 689000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I am shown the expandable accordions of the previously completed steps Eligibility checks passed and Supporting documents approved",
+            "result": {
+              "status": "passed",
+              "duration": 671000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "I can view the Tenure Investigation disclaimer",
+            "result": {
+              "status": "passed",
+              "duration": 96000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 75,
+            "name": "I click the Submit case button",
+            "result": {
+              "status": "passed",
+              "duration": 455000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 76,
+            "name": "I am on the Next Steps page",
+            "result": {
+              "status": "passed",
+              "duration": 717000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 77,
+            "name": "the status is Finish",
+            "result": {
+              "status": "passed",
+              "duration": 29000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 78,
+            "name": "I click on Continue button",
+            "result": {
+              "status": "passed",
+              "duration": 206000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 79,
+            "name": "I can see the text 'I confirm that the tenure investigation has been completed'",
+            "result": {
+              "status": "passed",
+              "duration": 59000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
