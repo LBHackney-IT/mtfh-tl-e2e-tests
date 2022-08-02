@@ -10,7 +10,7 @@ Feature: Create tenure
   Background:
     Given I am logged in
 
-    # TODO commented the below as its failing in Dev - record not found in Dev
+    #  commented the below as its failing in Dev - record not found in Dev
 #  @ignore
 #  Scenario Outline: Clean up test data from DynamoDb
 #    Then I can delete a created record from DynamoDb "<tableName>"

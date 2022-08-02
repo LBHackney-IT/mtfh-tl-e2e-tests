@@ -9,7 +9,7 @@ Feature: Property Comment
     Background:
       Given I am logged in
 
-   # TODO commented the below as its failing in Dev - record not found in Dev
+   #  commented the below as its failing in Dev - record not found in Dev
 #    @SmokeTest
 #    Scenario Outline: I go to create a comment for a property page
 #      Given I am on the create comment page for "<commentType>" "<propertyId>"
