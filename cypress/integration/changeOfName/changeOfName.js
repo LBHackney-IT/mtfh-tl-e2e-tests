@@ -76,15 +76,15 @@ When('I enter Title only', () => {
     changeOfName.personTitle().select('Mr');
 });
 Then("a validation error message for 'First name' and 'Last name' are displayed", () => {
-    changeOfName.personFNameError().should('contain.text', 'firstName is a required field');
-    changeOfName.personLNameError().should('contain.text', 'surname is a required field');
+    changeOfName.personFNameError().should('contain.text', 'You must enter the tenant\'s first name');
+    changeOfName.personLNameError().should('contain.text', 'You must enter the tenant\'s last name');
 });
 When("I enter 'Title' and 'First name' only", () => {
     changeOfName.personTitle().select('Mr');
     changeOfName.personFirstName().clear().type('Automation update First Name');
 });
 Then("a validation error message for 'Last name' is displayed", () => {
-    changeOfName.personLNameError().should('contain', 'surname is a required field');
+    changeOfName.personLNameError().should('contain', 'You must enter the tenant\'s last name');
 });
 When("I enter 'Title' and 'Last name' only", () => {
     changeOfName.personTitle().select('Mr');
@@ -92,13 +92,13 @@ When("I enter 'Title' and 'Last name' only", () => {
     changeOfName.personFirstName().clear();
 });
 Then("a validation error message for 'First name' is displayed", () => {
-    changeOfName.personFNameError().should('contain.text', 'firstName is a required field');
+    changeOfName.personFNameError().should('contain.text', 'You must enter the tenant\'s first name');
 });
 When("I enter 'First name' and 'Last name' only", () => {
-    changeOfName.personTitle().select('Select Title');
+    changeOfName.personTitle().select('Select a title');
     changeOfName.personFirstName().clear().type('Automation update First Name');
     changeOfName.personLastName().clear().type('Automation update Last Name');
 });
 Then("a validation error message for 'Title' is displayed", () => {
-    changeOfName.personTitleError().should('contain.text', 'title is a required field');
+    changeOfName.personTitleError().should('contain.text', 'You must select a title to proceed');
 });
