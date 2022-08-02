@@ -120,3 +120,4 @@ Feature: Property Comment
       Examples:
       | commentType | propertyId                               |
       | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   |
+

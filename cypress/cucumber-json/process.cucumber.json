@@ -25,6 +25,86 @@
     ],
     "uri": "process.feature",
     "elements": [
+        "id": "processes-menu-for-easier-navigation;display-process-options-for-person",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Display process options for person",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@root",
+            "line": 4
+          },
+          {
+            "name": "@Positive",
+            "line": 13
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 241000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "I have loaded a Person record \"da05aabb-3757-43c8-3028-c9ecbe72a067\"",
+            "result": {
+              "status": "passed",
+              "duration": 544000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "I select New Process menu \"person\"",
+            "result": {
+              "status": "passed",
+              "duration": 2739000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I am directed to the main process landing page",
+            "result": {
+              "status": "passed",
+              "duration": 445000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I can see a list of processes",
+            "result": {
+              "status": "passed",
+              "duration": 52000000
+            }
+          }
+        ]
+      },
       {
         "id": "processes-menu-for-easier-navigation;display-process-options-for-property",
         "keyword": "Scenario",
@@ -450,7 +530,7 @@
             "name": "I click the cancel button",
             "result": {
               "status": "passed",
-              "duration": 1308000000
+              "duration": 1158000000
             }
           },
           {

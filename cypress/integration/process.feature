@@ -10,8 +10,8 @@ So that I can easily record information without the need to keep multiple screen
 Background:
     Given I am logged in
 
-
    #  commented the below as its failing in Dev - record not found in Dev
+
 #@Positive
 #Scenario Outline: Display process options for person
 #    Given I have loaded a Person record "<record>"
@@ -102,10 +102,9 @@ Scenario Outline: Selecting back or cancelling out of the process
         And I click the next button
         Then Eligibility checks passed page is displayed
         And I can see Further eligibility questions
-
-        Examples:
+   Examples:
             | tenure                               |
-            | 730a4a17-28fd-ed21-e164-dbfc21264d75 |
+            | 1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4|
 
 
   Scenario Outline: Verify Automatic checks fail and Close Case Process is initiated

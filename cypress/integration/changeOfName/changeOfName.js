@@ -127,7 +127,7 @@ When("I enter 'Title' and 'First name' only", () => {
     changeOfName.personFirstName().clear().type('Automation update First Name');
 });
 Then("a validation error message for 'Last name' is displayed", () => {
-    changeOfName.personLNameError().should('contain', 'You must enter a last name for this person');
+    changeOfName.personLNameError().should('contain', 'You must enter the tenant\'s last name');
 });
 When("I enter 'Title' and 'Last name' only", () => {
     changeOfName.personTitle().select('Mr');
@@ -135,7 +135,7 @@ When("I enter 'Title' and 'Last name' only", () => {
     changeOfName.personFirstName().clear();
 });
 Then("a validation error message for 'First name' is displayed", () => {
-    changeOfName.personFNameError().should('contain.text', 'You must enter a first name for this person');
+    changeOfName.personFNameError().should('contain.text', 'You must enter the tenant\'s first name');
 });
 When("I enter 'First name' and 'Last name' only", () => {
     changeOfName.personTitle().select('Select a title');
@@ -144,6 +144,7 @@ When("I enter 'First name' and 'Last name' only", () => {
 });
 Then("a validation error message for 'Title' is displayed", () => {
     changeOfName.personTitleError().should('contain.text', 'You must select a title to proceed');
+
 });
 Then("'Review Documents' page is displayed", () => {
     cy.contains('Use the form below to record the documents you have checked:');

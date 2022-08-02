@@ -200,7 +200,7 @@ class AddPersonPageObjects {
 
     confirmationModal() {
         return cy.get('.lbh-dialog')
-    }
+    };
 
     //Equality information
     ageGroupSelectionBox() {

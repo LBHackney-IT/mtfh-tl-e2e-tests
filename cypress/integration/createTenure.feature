@@ -10,7 +10,7 @@ Feature: Create tenure
   Background:
     Given I am logged in
 
-    #  commented the below as its failing in Dev - record not found in Dev
+#  commented the below as its failing in Dev - record not found in Dev
 #  @ignore
 #  Scenario Outline: Clean up test data from DynamoDb
 #    Then I can delete a created record from DynamoDb "<tableName>"
@@ -276,6 +276,7 @@ Feature: Create tenure
 #        Examples:
 #        | tenure                               | tenureType |
 #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
+
 #
 #  Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
 #    When I view a Tenure "<tenure>"
@@ -414,3 +415,4 @@ Feature: Create tenure
 #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Private Lt  |
 #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Traveller   |
 #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Tenant Acc Flat  |
+

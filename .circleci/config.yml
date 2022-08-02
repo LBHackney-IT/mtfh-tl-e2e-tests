@@ -98,8 +98,8 @@ commands:
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
-                          then ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
-                          else DEBUG=cypress:cli,cypress:server:args,cypress:server:specs,cypress:server:project,cypress:server:browsers,cypress:launcher,cypress:server:video,cypress:server:preprocessor,cypress:server:plugins,cypress:server:task,cypress:server:socket-base,cypress:server:fixture,cypress:server:record:ci-info ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device and not @LongRunning and not @ignoreDev'
+                          then ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'
+                          else ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'
                           fi
                        
             - store_artifacts:
@@ -126,7 +126,7 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        parallelism: 18
+        parallelism: 19
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
@@ -163,7 +163,7 @@ jobs:
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
   run-ci-tests:
-        parallelism: 18
+        parallelism: 19
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2

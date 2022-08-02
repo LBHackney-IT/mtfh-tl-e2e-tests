@@ -131,6 +131,7 @@ Given("the applicant has failed the supporting documents check for tenure {strin
     manualChecksPass(tenureId);
     cy.contains('Next').click();
     tenureReqDocsPage.requestDocsElectronically().click();
+    tenureReqDocsPage.checkboxTenantDeclaration().click();
     cy.contains('Next').click();
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
 });
@@ -149,8 +150,7 @@ When("I will click on Close case once the rejection is given", () => {
 Then("case activity log is recorded with status closed", () => {
     tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
     tenureReviewDocsPage.buttonConfirm().click();
-    cy.contains('Sole to joint application closed');
-    cy.contains('Reason of close case:');
+    cy.contains('Sole to joint application will be closed');
     cy.contains('Test reason for Close case - photo id not given');
     cy.contains('Thank you for your confirmation');
     tenureReqDocsPage.activityHistoryButton().click();
