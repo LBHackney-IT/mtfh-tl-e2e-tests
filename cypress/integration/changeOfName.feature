@@ -8,7 +8,7 @@ Feature: As an internal Hackney User
 
     #######to implement later which can select any peron record and do an E2E test
 
-#  Scenario Outline: AC1 - CoN Process through 'Request Documents electronically'
+#  Scenario Outline: AC1 - CoN Process thr ough 'Request Documents electronically'
 #    Given I am on the MMH home page
 #    When I enter "<personname>" as search criteria
 #    And I select 'Person' and click on search button
