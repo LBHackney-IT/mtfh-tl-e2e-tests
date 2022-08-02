@@ -10,14 +10,15 @@ Feature: T&L Person Comment
     Background:
       Given I am logged in
 
-    @SmokeTest
-    Scenario Outline: I go to create a comment for a person page
-      Given I am on the create comment page for "<commentType>" "<personId>"
-      Then the create comment component is displayed
-
-      Examples:
-        | commentType  | personId                               |
-        | person       | da05aabb-3757-43c8-3028-c9ecbe72a067   |
+#//TODO - record not found in Dev
+#    @SmokeTest
+#    Scenario Outline: I go to create a comment for a person page
+#      Given I am on the create comment page for "<commentType>" "<personId>"
+#      Then the create comment component is displayed
+#
+#      Examples:
+#        | commentType  | personId                               |
+#        | person       | da05aabb-3757-43c8-3028-c9ecbe72a067   |
 
     @SmokeTest
     @Positive
