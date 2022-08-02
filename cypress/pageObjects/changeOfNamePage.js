@@ -1,8 +1,10 @@
+
 const envConfig = require('../../environment-config')
+const baseUrl = require('../../environment-config').baseUrl
 
 class ChangeOfNamePageObjects {
-    visit(homePage) {
-        cy.visit(`${envConfig.baseUrl}`);
+    visitHomePage() {
+        cy.visit(baseUrl)
         cy.injectAxe();
     }
     visit(personId) {
