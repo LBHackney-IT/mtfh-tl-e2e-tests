@@ -3,13 +3,11 @@ import { DynamoDB } from 'aws-sdk'
 const deleteRecordFromDynamoDB = async ({tableName, key}) => {
   const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')
   const secretAccessKey = Cypress.env('AWS_SECRET_ACCESS_KEY')
-  const sessionToken = Cypress.env('AWS_SESSION_TOKEN')
 
   const docClient = new DynamoDB.DocumentClient({
     region: 'eu-west-2',
     accessKeyId: accessKeyId,
-    secretAccessKey: secretAccessKey,
-    sessionToken: sessionToken,
+    secretAccessKey: secretAccessKey
   })
 
   deleteRecord(tableName, key)
