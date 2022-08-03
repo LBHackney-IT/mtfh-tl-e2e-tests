@@ -25,6 +25,10 @@ Cypress.Commands.add('logout', () => {
 
 // fixture data
 
+Cypress.Commands.add('getContactDetailsFixture', () => {
+    cy.readFile('cypress/fixtures/ContactDetails.json')
+})
+
 Cypress.Commands.add('getPersonFixture', () => {
     cy.readFile('cypress/fixtures/Persons.json')
 })
