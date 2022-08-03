@@ -437,14 +437,3 @@ When('I clear address line 1', () => {
 Then('the next button is enabled', () => {
   cy.contains('Next').should('be.enabled')
 })
-
-After(() => {
-    const filename = "cypress/fixtures/recordsToDelete.json";
-    cy.readFile(filename)
-      .then(data => {
-        for (const record of data) {
-            dynamoDb.deleteRecordFromDynamoDB(record)
-        }
-        cy.writeFile(filename, []);
-    });
-})

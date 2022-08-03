@@ -4,6 +4,7 @@ import {
   Given,
   defineParameterType,
   When,
+  After
 } from "cypress-cucumber-preprocessor/steps";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
@@ -660,4 +661,15 @@ Then('I can delete a created record from DynamoDb {string}',(tableName) => {
 
 And('I click the next button', () => {
   cy.contains('Next').click()
+})
+
+After(() => {
+    const filename = "cypress/fixtures/recordsToDelete.json";
+    cy.readFile(filename)
+      .then(data => {
+        for (const record of data) {
+            dynamoDb.deleteRecordFromDynamoDB(record)
+        }
+        cy.writeFile(filename, []);
+    });
 })
