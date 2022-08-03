@@ -1,38 +1,37 @@
-const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')
-const secretAccessKey= Cypress.env('AWS_SECRET_ACCESS_KEY')
-const AWS = require("aws-sdk");
+import { DynamoDB } from 'aws-sdk'
 
-const deleteRecordFromDynamoDB = async (tableName, id)=>{
-    AWS.config.update({
-      region: 'eu-west-2',
-      accessKeyId: accessKeyId,
-      secretAccessKey: secretAccessKey
-    });
+const deleteRecordFromDynamoDB = async ({tableName, key}) => {
+  const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')
+  const secretAccessKey = Cypress.env('AWS_SECRET_ACCESS_KEY')
+  const sessionToken = Cypress.env('AWS_SESSION_TOKEN')
 
-  var docClient = new AWS.DynamoDB.DocumentClient({region: 'eu-west-2'});
+  const docClient = new DynamoDB.DocumentClient({
+    region: 'eu-west-2',
+    accessKeyId: accessKeyId,
+    secretAccessKey: secretAccessKey,
+    sessionToken: sessionToken,
+  })
 
-  deleteRecord(id)
+  deleteRecord(tableName, key)
 
-  function deleteRecord(id) {
-    return docClient
-      .delete({
-      TableName: tableName,
-      Key: {
-        id: id
-      }
-      })
-      .promise()
-      .then(result => {
-      console.log("A record is deleted from DynamoDb: ", result);
-      return result;
-      })
-      .catch(deleteError => {
-      console.log("A record is not deleted: ", deleteError);
-      throw deleteError;
-      });
+  async function deleteRecord(tableName, key) {
+    try {
+        const result_1 = await docClient
+            .delete({
+                    TableName: tableName,
+                    Key: key,
+                    })
+            .promise()
+
+        console.log(`A record has been deleted from DynamoDb table ${tableName}: `, result_1,)
+        return result_1
+    } catch (deleteError) {
+        console.log('A record is not deleted: ', deleteError)
+        throw deleteError
+    }
   }
 }
 
-module.exports = {
-  deleteRecordFromDynamoDB
+export default {
+  deleteRecordFromDynamoDB,
 }

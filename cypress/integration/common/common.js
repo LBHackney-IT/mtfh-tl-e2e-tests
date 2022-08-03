@@ -18,7 +18,7 @@ import TenurePageObjects from "../../pageObjects/tenurePage";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 
 import comment from "../../../api/comment";
-import contact from "../../../api/contact";
+import contactDetails from "../../../api/contact-details";
 import person from "../../../api/person";
 import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
@@ -92,7 +92,7 @@ Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
   cy.log('Tenure updated!')
 })
 
-Given("I want to create a person", async () => {
+Given("I create a new person", async () => {
   cy.log("Creating Person record");
   const response = await person.createPerson();
   cy.log(`Status code ${response.status} returned`);
@@ -109,9 +109,6 @@ Given("I create a new tenure", async () => {
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Tenure Id for record ${response.data.id} created!`);
   tenureId = response.data.id
-  
-  //Apend a created tenure Id in the specified file. 
-  cy.task('appendTestDataId', tenureId);
 });
 
 Given("I add a person to a tenure", async () => {
@@ -144,7 +141,7 @@ And("I want to edit a person", async () => {
 And("I want to add contact details", async () => {
   // TODO: Pass in the personId to the request JSON object
   // cy.log(`Creating contact details for record ${personId}`)
-  const response = await contact.addContact(personId);
+  const response = await contactDetails.addContactDetails(personId);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Contact details for record ${response.data.id} created!`);
   assert.deepEqual(response.status, 201);
@@ -437,8 +434,10 @@ Then('the personal details are displayed on the sidebar' ,() => {
 })
 
 // Create/edit person page
-Given("I create a person for tenure {string}", (record) => {
-  addPersonPage.visit(record);
+Given("I create a person for tenure", () => {
+    cy.getTenureFixture().then((tenure) => {
+        addPersonPage.visit(tenure.id);
+    })
 });
 
 And("I select a preferred middle name {string}", (preferredMiddleName) => {

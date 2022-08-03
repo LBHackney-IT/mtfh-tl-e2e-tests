@@ -23,6 +23,16 @@ Cypress.Commands.add('logout', () => {
     cy.getCookies().should('be.empty')
 })
 
+// fixture data
+
+Cypress.Commands.add('getPersonFixture', () => {
+    cy.readFile('cypress/fixtures/Persons.json')
+})
+
+Cypress.Commands.add('getTenureFixture', () => {
+    cy.readFile('cypress/fixtures/TenureInformation.json')
+})
+
 Cypress.on('uncaught:exception', (err, runnable) => {
     if (err) {
         // tslint:disable: no-console
