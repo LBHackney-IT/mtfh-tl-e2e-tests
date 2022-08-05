@@ -49,7 +49,6 @@ let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
 let tenureId ="";
-let testDataFile ="./cypress/fixtures/tenureTestData.txt"
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -642,21 +641,6 @@ And('the named tenure holder button is active', () => {
 
 And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
-})
-
-Then('I can delete a created record from DynamoDb {string}',(tableName) => {
-  let fileContent = ''
-  cy.readFile(testDataFile).then(text => {
-    console.log(fileContent)
-    fileContent =text
-    let arrayOfIds = fileContent.split(",")
-    for (var i = 0; i < arrayOfIds.length; i++) {
-      console.log(arrayOfIds[i]);
-      dynamoDb.deleteRecordFromDynamoDB(tableName, arrayOfIds[i])
-    }
-  });
-  //Clear contents from the test data file
-  cy.writeFile(testDataFile,'')
 })
 
 And('I click the next button', () => {
