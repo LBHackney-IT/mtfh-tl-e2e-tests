@@ -5,7 +5,7 @@ import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import guid from '../../helpers/commentText'
 import { createPerson, createPersonWithNewTenure } from '../../../api/person'
-import dynamoDb from '../../../cypress/integration/common/DynamoDb'
+import { queueDeletePersonWithId } from "../../../api/helpers"
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
@@ -268,7 +268,12 @@ Then('I cannot add any more contacts for {string}', (contactType) => {
 })
 
 And('I am on the contact details page', () => {
-  cy.url().should('include', 'contact')
+  cy.url()
+    .should('include', 'contact')
+    .then(url => {
+        const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
+        queueDeletePersonWithId(personId);
+  });
 })
 
 Given('I create a person and then edit them', async () => {
