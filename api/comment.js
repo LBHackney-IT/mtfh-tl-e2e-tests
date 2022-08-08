@@ -8,7 +8,7 @@ const addComment = async (targetId) => {
     const response = await request.postRequest(`${url}/${targetId}`, addCommentModel.addCommentModel)
     
     const responseData = response.data;
-    saveFixtureData(tableName, { id: responseData.id }, responseData);
+    saveFixtureData(tableName, { id: responseData.id, targetId: targetId }, responseData);
     return response
 }
 
