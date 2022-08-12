@@ -4,6 +4,7 @@ import {
   Given,
   defineParameterType,
   When,
+  After
 } from "cypress-cucumber-preprocessor/steps";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
@@ -18,7 +19,7 @@ import TenurePageObjects from "../../pageObjects/tenurePage";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 
 import comment from "../../../api/comment";
-import contact from "../../../api/contact";
+import contactDetails from "../../../api/contact-details";
 import person from "../../../api/person";
 import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
@@ -48,7 +49,6 @@ let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
 let tenureId ="";
-let testDataFile ="./cypress/fixtures/tenureTestData.txt"
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -92,7 +92,7 @@ Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
   cy.log('Tenure updated!')
 })
 
-Given("I want to create a person", async () => {
+Given("I create a new person", async () => {
   cy.log("Creating Person record");
   const response = await person.createPerson();
   cy.log(`Status code ${response.status} returned`);
@@ -109,9 +109,6 @@ Given("I create a new tenure", async () => {
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Tenure Id for record ${response.data.id} created!`);
   tenureId = response.data.id
-  
-  //Apend a created tenure Id in the specified file. 
-  cy.task('appendTestDataId', tenureId);
 });
 
 Given("I add a person to a tenure", async () => {
@@ -144,7 +141,7 @@ And("I want to edit a person", async () => {
 And("I want to add contact details", async () => {
   // TODO: Pass in the personId to the request JSON object
   // cy.log(`Creating contact details for record ${personId}`)
-  const response = await contact.addContact(personId);
+  const response = await contactDetails.addContactDetails(personId);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Contact details for record ${response.data.id} created!`);
   assert.deepEqual(response.status, 201);
@@ -437,8 +434,10 @@ Then('the personal details are displayed on the sidebar' ,() => {
 })
 
 // Create/edit person page
-Given("I create a person for tenure {string}", (record) => {
-  addPersonPage.visit(record);
+Given("I create a person for tenure", () => {
+    cy.getTenureFixture().then((tenure) => {
+        addPersonPage.visit(tenure.id);
+    })
 });
 
 And("I select a preferred middle name {string}", (preferredMiddleName) => {
@@ -644,21 +643,17 @@ And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
 })
 
-Then('I can delete a created record from DynamoDb {string}',(tableName) => {
-  let fileContent = ''
-  cy.readFile(testDataFile).then(text => {
-    console.log(fileContent)
-    fileContent =text
-    let arrayOfIds = fileContent.split(",")
-    for (var i = 0; i < arrayOfIds.length; i++) {
-      console.log(arrayOfIds[i]);
-      dynamoDb.deleteRecordFromDynamoDB(tableName, arrayOfIds[i])
-    }
-  });
-  //Clear contents from the test data file
-  cy.writeFile(testDataFile,'')
-})
-
 And('I click the next button', () => {
   cy.contains('Next').click()
+})
+
+After(() => {
+    const filename = "cypress/fixtures/recordsToDelete.json";
+    cy.readFile(filename)
+      .then(data => {
+        for (const record of data) {
+            dynamoDb.deleteRecordFromDynamoDB(record)
+        }
+        cy.writeFile(filename, []);
+    });
 })

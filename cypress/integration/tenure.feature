@@ -92,10 +92,3 @@ Feature: Tenure page
       Given I create a new tenure
       When I view a Tenure
       And have no detectable a11y violations
-
- Scenario Outline: Clean up test data from DynamoDb
-      Then I can delete a created record from DynamoDb "<tableName>"
-
-      Examples:
-      | tableName          |
-      | TenureInformation  |

@@ -10,5 +10,4 @@ cypress.env.json
 docker/dynamodb/shared-local-instance.db
 .idea/workspace.xml
 package-lock.json
-
-
+cypress/fixtures/
