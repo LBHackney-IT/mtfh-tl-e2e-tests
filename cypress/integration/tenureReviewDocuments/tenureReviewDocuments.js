@@ -97,8 +97,7 @@ Then("I can input an appointment date and time", () => {
     tenureReqDocsPage.hour().clear().type('11');
     tenureReqDocsPage.minute().clear().type('10');
     tenureReqDocsPage.ampm().select('AM');
-    tenureReviewDocsPage.buttonBookAppointment().should('be.enabled');
-    tenureReviewDocsPage.buttonBookAppointment().click();
+    cy.contains('Confirm Appointment').click();
 });
 And("I can confirm the appointment has been arranged", () => {
     cy.contains('Office appointment scheduled').should('exist');
