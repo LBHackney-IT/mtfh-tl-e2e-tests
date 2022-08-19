@@ -21,16 +21,18 @@ Background:
 #        | processType  | record                                 |
 #        | person       | da05aabb-3757-43c8-3028-c9ecbe72a067   |
 
-@Positive
-Scenario Outline: Display process options for property
-    Given I view a property "<record>"
-    When I select New Process menu "<processType>"
-    Then I am directed to the main process landing page
-    And I can see a list of processes
 
-        Examples:
-        | processType  | record                                 |
-        | property     | f85e4390-9256-e4dc-0443-2e510b362cac   |
+  #commented this as the record is not found in staging
+#@Positive
+#Scenario Outline: Display process options for property
+#    Given I view a property "<record>"
+#    When I select New Process menu "<processType>"
+#    Then I am directed to the main process landing page
+#    And I can see a list of processes
+#
+#        Examples:
+#        | processType  | record                                 |
+#        | property     | f85e4390-9256-e4dc-0443-2e510b362cac   |
 
 @Positive
 Scenario Outline: Initiate sole to joint process from tenure
