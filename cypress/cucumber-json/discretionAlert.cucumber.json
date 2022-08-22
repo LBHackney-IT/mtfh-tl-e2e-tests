@@ -1,0 +1,153 @@
+[
+  {
+    "description": "         I want to see if a person, property or tenure has a cautionary alert against them\n         So that I can act with caution when interacting with residents at a property",
+    "keyword": "Feature",
+    "name": "As an internal Hackney user (eg. Housing Officer)",
+    "line": 1,
+    "id": "as-an-internal-hackney-user-(eg.-housing-officer)",
+    "tags": [],
+    "uri": "discretionAlert.feature",
+    "elements": [
+      {
+        "id": "as-an-internal-hackney-user-(eg.-housing-officer);ac1---viewing-discretion-alert-details-on-a-persons-page",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "AC1 - Viewing Discretion alert details on a persons page",
+        "tags": [
+          {
+            "name": "@SmokeTest",
+            "line": 8
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 171000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "A person \"8d027289-0f0e-56a2-6473-980544f46b29\" has a discretion alert assigned to them",
+            "result": {
+              "status": "passed",
+              "duration": 526000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "I view the persons profile page",
+            "result": {
+              "status": "passed",
+              "duration": 2304000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I will be able to view a RED bell next to \"Discretion alert\"",
+            "result": {
+              "status": "passed",
+              "duration": 282000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I click on the accordion element",
+            "result": {
+              "status": "passed",
+              "duration": 507000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "discretion type \"Verbal Abuse\" and the description \"Tenant was abusive\" are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 74000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user-(eg.-housing-officer);ac3---viewing-discretion-alert-details-on-a-tenure-page",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "AC3 - Viewing Discretion alert details on a tenure page",
+        "tags": [
+          {
+            "name": "@SmokeTest",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 214000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "A tenure \"ae46a00e-ed68-cc9f-b091-85c452c55a03\" has a person \"8d027289-0f0e-56a2-6473-980544f46b29\" with a discretion alert assigned to them",
+            "result": {
+              "status": "passed",
+              "duration": 479000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I view a tenure profile page",
+            "result": {
+              "status": "passed",
+              "duration": 2934000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "I will be able to see the RED caution bell next to the property name",
+            "result": {
+              "status": "passed",
+              "duration": 177000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "I will be able to see the RED discretion alert next to the person name",
+            "result": {
+              "status": "passed",
+              "duration": 255000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

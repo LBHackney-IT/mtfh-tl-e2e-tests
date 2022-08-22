@@ -1,4 +1,4 @@
-Feature: As an internal Hackney user
+  Feature: As an internal Hackney user
          I want to confirm that all relevant supporting documents have been uploaded for a Sole to Joint application
          So that I can evidence that the applicant is eligible
 
