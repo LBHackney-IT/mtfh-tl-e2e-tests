@@ -25,90 +25,10 @@
     ],
     "uri": "process.feature",
     "elements": [
-        "id": "processes-menu-for-easier-navigation;display-process-options-for-person",
-        "keyword": "Scenario",
-        "line": 22,
-        "name": "Display process options for person",
-        "tags": [
-          {
-            "name": "@authentication",
-            "line": 1
-          },
-          {
-            "name": "@common",
-            "line": 2
-          },
-          {
-            "name": "@processes",
-            "line": 3
-          },
-          {
-            "name": "@root",
-            "line": 4
-          },
-          {
-            "name": "@Positive",
-            "line": 13
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 11,
-            "name": "I am logged in",
-            "result": {
-              "status": "passed",
-              "duration": 241000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 15,
-            "name": "I have loaded a Person record \"da05aabb-3757-43c8-3028-c9ecbe72a067\"",
-            "result": {
-              "status": "passed",
-              "duration": 544000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 16,
-            "name": "I select New Process menu \"person\"",
-            "result": {
-              "status": "passed",
-              "duration": 2739000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 17,
-            "name": "I am directed to the main process landing page",
-            "result": {
-              "status": "passed",
-              "duration": 445000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 18,
-            "name": "I can see a list of processes",
-            "result": {
-              "status": "passed",
-              "duration": 52000000
-            }
-          }
-        ]
-      },
       {
         "id": "processes-menu-for-easier-navigation;display-process-options-for-property",
         "keyword": "Scenario",
-        "line": 33,
+        "line": 35,
         "name": "Display process options for property",
         "tags": [
           {
@@ -129,7 +49,7 @@
           },
           {
             "name": "@Positive",
-            "line": 24
+            "line": 26
           }
         ],
         "type": "scenario",
@@ -141,47 +61,47 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 416000000
+              "duration": 462000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 26,
+            "line": 28,
             "name": "I view a property \"f85e4390-9256-e4dc-0443-2e510b362cac\"",
             "result": {
               "status": "passed",
-              "duration": 940000000
+              "duration": 684000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 27,
+            "line": 29,
             "name": "I select New Process menu \"property\"",
             "result": {
               "status": "passed",
-              "duration": 8795000000
+              "duration": 4694000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 28,
+            "line": 30,
             "name": "I am directed to the main process landing page",
             "result": {
               "status": "passed",
-              "duration": 664000000
+              "duration": 405000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 29,
+            "line": 31,
             "name": "I can see a list of processes",
             "result": {
               "status": "passed",
-              "duration": 102000000
+              "duration": 52000000
             }
           }
         ]
@@ -189,7 +109,7 @@
       {
         "id": "processes-menu-for-easier-navigation;initiate-sole-to-joint-process-from-tenure",
         "keyword": "Scenario",
-        "line": 50,
+        "line": 52,
         "name": "Initiate sole to joint process from tenure",
         "tags": [
           {
@@ -210,7 +130,7 @@
           },
           {
             "name": "@Positive",
-            "line": 35
+            "line": 37
           }
         ],
         "type": "scenario",
@@ -222,67 +142,67 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 301000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 37,
-            "name": "I view a Tenure \"e832a76f-8bcf-238c-7ad1-6ef1b408b316\"",
-            "result": {
-              "status": "passed",
-              "duration": 1224000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 38,
-            "name": "the tenure information is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 2687000000
+              "duration": 194000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 39,
-            "name": "I select New Process menu \"tenure\"",
+            "name": "I view a Tenure \"e832a76f-8bcf-238c-7ad1-6ef1b408b316\"",
             "result": {
               "status": "passed",
-              "duration": 557000000
+              "duration": 439000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 40,
-            "name": "I am directed to the main process landing page",
+            "name": "the tenure information is displayed",
             "result": {
               "status": "passed",
-              "duration": 262000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 41,
-            "name": "I can see a list of processes",
-            "result": {
-              "status": "passed",
-              "duration": 58000000
+              "duration": 2472000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
+            "line": 41,
+            "name": "I select New Process menu \"tenure\"",
+            "result": {
+              "status": "passed",
+              "duration": 357000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
             "line": 42,
+            "name": "I am directed to the main process landing page",
+            "result": {
+              "status": "passed",
+              "duration": 55000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "I can see a list of processes",
+            "result": {
+              "status": "passed",
+              "duration": 34000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 44,
             "name": "I select a process \"Other tenancy changes\"",
             "result": {
               "status": "passed",
-              "duration": 592000000
+              "duration": 462000000
             }
           }
         ]
@@ -290,7 +210,7 @@
       {
         "id": "processes-menu-for-easier-navigation;process-landing-page-loaded",
         "keyword": "Scenario",
-        "line": 62,
+        "line": 64,
         "name": "Process landing page loaded",
         "tags": [
           {
@@ -319,27 +239,27 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 374000000
+              "duration": 159000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 57,
+            "line": 59,
             "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
             "result": {
               "status": "passed",
-              "duration": 272000000
+              "duration": 224000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 58,
+            "line": 60,
             "name": "the property details are shown",
             "result": {
               "status": "passed",
-              "duration": 1267000000
+              "duration": 1533000000
             }
           }
         ]
@@ -347,7 +267,7 @@
       {
         "id": "processes-menu-for-easier-navigation;tenant-has-consented-to-a-credit-check",
         "keyword": "Scenario",
-        "line": 72,
+        "line": 74,
         "name": "Tenant has consented to a credit check",
         "tags": [
           {
@@ -376,47 +296,47 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 341000000
+              "duration": 142000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 65,
+            "line": 67,
             "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
             "result": {
               "status": "passed",
-              "duration": 292000000
+              "duration": 209000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 66,
+            "line": 68,
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 1403000000
+              "duration": 1594000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 67,
+            "line": 69,
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 202000000
+              "duration": 218000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 68,
+            "line": 70,
             "name": "the status is set to Awaiting proposed tenant selection",
             "result": {
               "status": "passed",
-              "duration": 37000000
+              "duration": 61000000
             }
           }
         ]
@@ -424,7 +344,7 @@
       {
         "id": "processes-menu-for-easier-navigation;tenant-has-not-consented-to-a-credit-check",
         "keyword": "Scenario",
-        "line": 80,
+        "line": 82,
         "name": "Tenant has not consented to a credit check",
         "tags": [
           {
@@ -453,27 +373,27 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 157000000
+              "duration": 171000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 75,
+            "line": 77,
             "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
             "result": {
               "status": "passed",
-              "duration": 278000000
+              "duration": 209000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 76,
+            "line": 78,
             "name": "the start process button is disabled",
             "result": {
               "status": "passed",
-              "duration": 3049000000
+              "duration": 676000000
             }
           }
         ]
@@ -481,7 +401,7 @@
       {
         "id": "processes-menu-for-easier-navigation;selecting-back-or-cancelling-out-of-the-process",
         "keyword": "Scenario",
-        "line": 92,
+        "line": 94,
         "name": "Selecting back or cancelling out of the process",
         "tags": [
           {
@@ -510,67 +430,67 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 240000000
+              "duration": 142000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 83,
+            "line": 85,
             "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
             "result": {
               "status": "passed",
-              "duration": 332000000
+              "duration": 625000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 84,
+            "line": 86,
             "name": "I click the cancel button",
             "result": {
               "status": "passed",
-              "duration": 1158000000
+              "duration": 1172000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 85,
+            "line": 87,
             "name": "I am taken back to the processes menu \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 23000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 86,
+            "line": 88,
             "name": "I select to initiate a Sole To Joint process \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
             "result": {
               "status": "passed",
-              "duration": 360000000
+              "duration": 442000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 87,
+            "line": 89,
             "name": "I click the back link",
             "result": {
               "status": "passed",
-              "duration": 1240000000
+              "duration": 1254000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 88,
+            "line": 90,
             "name": "I am taken back to the processes menu \"0d4f614c-32a7-e12b-f652-ceac6677a229\"",
             "result": {
               "status": "passed",
-              "duration": 51000000
+              "duration": 22000000
             }
           }
         ]
@@ -578,7 +498,7 @@
       {
         "id": "processes-menu-for-easier-navigation;add-last-2-questions-in-the-eligibility-checks",
         "keyword": "Scenario",
-        "line": 105,
+        "line": 107,
         "name": "Add last 2 questions in the Eligibility Checks",
         "tags": [
           {
@@ -607,87 +527,87 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 166000000
+              "duration": 104000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 95,
+            "line": 97,
             "name": "I select to initiate a Sole To Joint process \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
             "result": {
               "status": "passed",
-              "duration": 286000000
+              "duration": 168000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 96,
+            "line": 98,
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 975000000
+              "duration": 680000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 97,
+            "line": 99,
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 178000000
+              "duration": 172000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 98,
+            "line": 100,
             "name": "Sole tenant requests a joint tenure page is displayed",
             "result": {
               "status": "passed",
-              "duration": 28000000
+              "duration": 39000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 99,
+            "line": 101,
             "name": "I select a person to add as a joint tenant",
             "result": {
               "status": "passed",
-              "duration": 1222000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 100,
-            "name": "I click the next button",
-            "result": {
-              "status": "passed",
-              "duration": 194000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 101,
-            "name": "Eligibility checks passed page is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 735000000
+              "duration": 865000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 102,
+            "name": "I click the next button",
+            "result": {
+              "status": "passed",
+              "duration": 288000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 103,
+            "name": "Eligibility checks passed page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 623000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 104,
             "name": "I can see Further eligibility questions",
             "result": {
               "status": "passed",
-              "duration": 551000000
+              "duration": 102000000
             }
           }
         ]
@@ -695,7 +615,7 @@
       {
         "id": "processes-menu-for-easier-navigation;verify-automatic-checks-fail-and-close-case-process-is-initiated",
         "keyword": "Scenario",
-        "line": 122,
+        "line": 124,
         "name": "Verify Automatic checks fail and Close Case Process is initiated",
         "tags": [
           {
@@ -724,107 +644,107 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 470000000
+              "duration": 111000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 109,
+            "line": 111,
             "name": "I select to initiate a Sole To Joint process \"e9228ada-76db-ee09-29ee-8991c6fc5302\"",
             "result": {
               "status": "passed",
-              "duration": 480000000
+              "duration": 195000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 110,
+            "line": 112,
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 1223000000
+              "duration": 1520000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 111,
+            "line": 113,
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 169000000
+              "duration": 201000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 112,
+            "line": 114,
             "name": "Sole tenant requests a joint tenure page is displayed",
             "result": {
               "status": "passed",
-              "duration": 42000000
+              "duration": 44000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 113,
+            "line": 115,
             "name": "I select a person to add as a joint tenant",
             "result": {
               "status": "passed",
-              "duration": 1311000000
+              "duration": 743000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 114,
+            "line": 116,
             "name": "I click the next button",
             "result": {
               "status": "passed",
-              "duration": 409000000
+              "duration": 276000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 115,
+            "line": 117,
             "name": "Automatic Eligibility checks Failed page is displayed",
             "result": {
               "status": "passed",
-              "duration": 751000000
+              "duration": 640000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 116,
+            "line": 118,
             "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
             "result": {
               "status": "passed",
-              "duration": 169000000
+              "duration": 151000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 117,
+            "line": 119,
             "name": "I click on the confirm button",
             "result": {
               "status": "passed",
-              "duration": 236000000
+              "duration": 197000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 118,
+            "line": 120,
             "name": "'Thank you for your confirmation' message is displayed with a link to Return to Home page",
             "result": {
               "status": "passed",
-              "duration": 596000000
+              "duration": 590000000
             }
           }
         ]
@@ -832,7 +752,7 @@
       {
         "id": "processes-menu-for-easier-navigation;verify-automatic-checks-pass-and-manual-checks-fail-and-close-case-process-is-initiated",
         "keyword": "Scenario",
-        "line": 142,
+        "line": 144,
         "name": "Verify Automatic checks Pass and Manual Checks Fail and Close case process is initiated",
         "tags": [
           {
@@ -861,157 +781,157 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 190000000
+              "duration": 170000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 125,
+            "line": 127,
             "name": "I select to initiate a Sole To Joint process \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
             "result": {
               "status": "passed",
-              "duration": 307000000
+              "duration": 202000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 126,
+            "line": 128,
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 1481000000
+              "duration": 1694000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 127,
+            "line": 129,
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 244000000
+              "duration": 193000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 128,
+            "line": 130,
             "name": "Sole tenant requests a joint tenure page is displayed",
             "result": {
               "status": "passed",
-              "duration": 69000000
+              "duration": 43000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 129,
+            "line": 131,
             "name": "I select a person to add as a joint tenant",
             "result": {
               "status": "passed",
-              "duration": 901000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 130,
-            "name": "I click the next button",
-            "result": {
-              "status": "passed",
-              "duration": 1095000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 131,
-            "name": "I can see the text \"Rabbi FAKE_Claire FAKE_Blake\" adding \"Rabbi FAKE_Claire FAKE_Blake\" in the header section",
-            "result": {
-              "status": "passed",
-              "duration": 978000000
+              "duration": 770000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 132,
-            "name": "Eligibility checks passed page is displayed",
+            "name": "I click the next button",
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 213000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 133,
+            "name": "I can see the text \"Rabbi FAKE_Claire FAKE_Blake\" adding \"Rabbi FAKE_Claire FAKE_Blake\" in the header section",
+            "result": {
+              "status": "passed",
+              "duration": 618000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 133,
-            "name": "I can see Further eligibility questions",
-            "result": {
-              "status": "passed",
-              "duration": 358000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
             "line": 134,
-            "name": "I select the answers for these questions",
+            "name": "Eligibility checks passed page is displayed",
             "result": {
               "status": "passed",
-              "duration": 1486000000
+              "duration": 27000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 135,
-            "name": "I click the next button",
+            "name": "I can see Further eligibility questions",
             "result": {
               "status": "passed",
-              "duration": 197000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 136,
-            "name": "the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'",
-            "result": {
-              "status": "passed",
-              "duration": 581000000
+              "duration": 129000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 137,
-            "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
+            "line": 136,
+            "name": "I select the answers for these questions",
             "result": {
               "status": "passed",
-              "duration": 182000000
+              "duration": 1573000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 138,
-            "name": "I click on the confirm button",
+            "line": 137,
+            "name": "I click the next button",
             "result": {
               "status": "passed",
-              "duration": 208000000
+              "duration": 240000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
+            "line": 138,
+            "name": "the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'",
+            "result": {
+              "status": "passed",
+              "duration": 628000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
             "line": 139,
+            "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
+            "result": {
+              "status": "passed",
+              "duration": 151000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 140,
+            "name": "I click on the confirm button",
+            "result": {
+              "status": "passed",
+              "duration": 204000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 141,
             "name": "'Thank you for your confirmation' message is displayed with a link to Return to Home page",
             "result": {
-              "status": "failed",
-              "error_message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Thank you for your confirmation' but never did.\n    at ensureExistence (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:148564:25)\n    at $Cy.ensureElExistence (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:148582:12)\n    at ensureExistence (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:136530:23)\n    at onFailFn (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:136568:9)\nFrom previous event:\n    at $Cy.verifyUpcomingAssertions (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:136610:63)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:144735:21\nFrom previous event:\n    at resolveElements (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:144729:52)\n    at tryFn (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:153281:21)\n    at whenStable (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:153319:12)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:152811:16"
+              "status": "passed",
+              "duration": 599000000
             }
           }
         ]

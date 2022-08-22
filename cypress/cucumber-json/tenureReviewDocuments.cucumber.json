@@ -23,7 +23,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 222000000
+              "duration": 171000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I have requested the documents via DES for the tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
             "result": {
               "status": "passed",
-              "duration": 12252000000
+              "duration": 19686000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I have proceeded to the next step",
             "result": {
               "status": "passed",
-              "duration": 206000000
+              "duration": 190000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I view the page",
             "result": {
               "status": "passed",
-              "duration": 551000000
+              "duration": 736000000
             }
           },
           {
@@ -63,7 +63,7 @@
             "name": "a confirmation alert confirming that eligibility checks have been passed",
             "result": {
               "status": "passed",
-              "duration": 77000000
+              "duration": 103000000
             }
           },
           {
@@ -73,7 +73,7 @@
             "name": "a success message for requested documents via DES with a link to DES",
             "result": {
               "status": "passed",
-              "duration": 73000000
+              "duration": 80000000
             }
           },
           {
@@ -83,7 +83,7 @@
             "name": "a checklist of documents that will need to be seen before proceeding",
             "result": {
               "status": "passed",
-              "duration": 123000000
+              "duration": 111000000
             }
           },
           {
@@ -93,7 +93,7 @@
             "name": "the option to arrange an in person appointment to view the documents if necessary",
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 25000000
             }
           },
           {
@@ -103,7 +103,7 @@
             "name": "guidance text about closing the case due to failing the supporting documents check",
             "result": {
               "status": "passed",
-              "duration": 52000000
+              "duration": 38000000
             }
           },
           {
@@ -113,7 +113,7 @@
             "name": "the ability to close the case at this stage of the process",
             "result": {
               "status": "passed",
-              "duration": 51000000
+              "duration": 41000000
             }
           },
           {
@@ -123,7 +123,7 @@
             "name": "I cannot proceed until all of the check boxes have been ticked",
             "result": {
               "status": "passed",
-              "duration": 44000000
+              "duration": 41000000
             }
           }
         ]
@@ -143,7 +143,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 281000000
+              "duration": 310000000
             }
           },
           {
@@ -153,7 +153,7 @@
             "name": "I would like to check submitted documents in person for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
             "result": {
               "status": "passed",
-              "duration": 12520000000
+              "duration": 11186000000
             }
           },
           {
@@ -163,7 +163,7 @@
             "name": "I tick the checkbox to arrange an in person appointment to view the documents",
             "result": {
               "status": "passed",
-              "duration": 228000000
+              "duration": 178000000
             }
           },
           {
@@ -173,7 +173,7 @@
             "name": "I can input an appointment date and time",
             "result": {
               "status": "passed",
-              "duration": 3933000000
+              "duration": 2659000000
             }
           },
           {
@@ -183,7 +183,7 @@
             "name": "I can confirm the appointment has been arranged",
             "result": {
               "status": "passed",
-              "duration": 818000000
+              "duration": 726000000
             }
           }
         ]
@@ -203,7 +203,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 214000000
+              "duration": 200000000
             }
           },
           {
@@ -213,7 +213,7 @@
             "name": "the documents have been provided by the resident for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
             "result": {
               "status": "passed",
-              "duration": 13875000000
+              "duration": 9189000000
             }
           },
           {
@@ -223,7 +223,7 @@
             "name": "Next button is disabled",
             "result": {
               "status": "passed",
-              "duration": 168000000
+              "duration": 55000000
             }
           },
           {
@@ -233,7 +233,7 @@
             "name": "I can complete the checklist of seen supporting documents are correct and valid",
             "result": {
               "status": "passed",
-              "duration": 1634000000
+              "duration": 1040000000
             }
           },
           {
@@ -243,7 +243,7 @@
             "name": "Next button is enabled and user can proceed to the next step",
             "result": {
               "status": "passed",
-              "duration": 114000000
+              "duration": 72000000
             }
           }
         ]
@@ -263,7 +263,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 405000000
+              "duration": 161000000
             }
           },
           {
@@ -273,7 +273,7 @@
             "name": "the applicant has failed the supporting documents check for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
             "result": {
               "status": "passed",
-              "duration": 12770000000
+              "duration": 13111000000
             }
           },
           {
@@ -283,7 +283,7 @@
             "name": "I decide to close the case",
             "result": {
               "status": "passed",
-              "duration": 263000000
+              "duration": 231000000
             }
           },
           {
@@ -293,7 +293,7 @@
             "name": "an overlay pops up and I must give a reason for rejection",
             "result": {
               "status": "passed",
-              "duration": 13000000
+              "duration": 11000000
             }
           },
           {
@@ -303,7 +303,7 @@
             "name": "I will click on Close case once the rejection is given",
             "result": {
               "status": "passed",
-              "duration": 1196000000
+              "duration": 1251000000
             }
           }
         ]
@@ -323,7 +323,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 230000000
+              "duration": 263000000
             }
           },
           {
@@ -333,7 +333,7 @@
             "name": "I have completed document upload for Sole to Joint for tenure \"1f76a9f4-8ece-3b6f-4fb7-7fcf30a619e4\"",
             "result": {
               "status": "passed",
-              "duration": 12975000000
+              "duration": 10943000000
             }
           },
           {
@@ -343,7 +343,7 @@
             "name": "the Active status should be Submit case",
             "result": {
               "status": "passed",
-              "duration": 689000000
+              "duration": 599000000
             }
           },
           {
@@ -353,7 +353,7 @@
             "name": "I am shown the expandable accordions of the previously completed steps Eligibility checks passed and Supporting documents approved",
             "result": {
               "status": "passed",
-              "duration": 671000000
+              "duration": 192000000
             }
           },
           {
@@ -363,7 +363,7 @@
             "name": "I can view the Tenure Investigation disclaimer",
             "result": {
               "status": "passed",
-              "duration": 96000000
+              "duration": 36000000
             }
           },
           {
@@ -373,7 +373,7 @@
             "name": "I click the Submit case button",
             "result": {
               "status": "passed",
-              "duration": 455000000
+              "duration": 185000000
             }
           },
           {
@@ -383,7 +383,7 @@
             "name": "I am on the Next Steps page",
             "result": {
               "status": "passed",
-              "duration": 717000000
+              "duration": 591000000
             }
           },
           {
@@ -393,7 +393,7 @@
             "name": "the status is Finish",
             "result": {
               "status": "passed",
-              "duration": 29000000
+              "duration": 31000000
             }
           },
           {
@@ -403,7 +403,7 @@
             "name": "I click on Continue button",
             "result": {
               "status": "passed",
-              "duration": 206000000
+              "duration": 304000000
             }
           },
           {
@@ -413,7 +413,7 @@
             "name": "I can see the text 'I confirm that the tenure investigation has been completed'",
             "result": {
               "status": "passed",
-              "duration": 59000000
+              "duration": 73000000
             }
           }
         ]
