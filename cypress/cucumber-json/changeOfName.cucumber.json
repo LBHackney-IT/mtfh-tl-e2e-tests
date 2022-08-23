@@ -23,7 +23,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 259000000
+              "duration": 147000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 653000000
+              "duration": 621000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 5669000000
+              "duration": 2362000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "failed",
-              "duration": 443000000,
+              "duration": 240000000,
               "error_message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n    at mouseAction (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149809:76)\n    at Context.click (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149988:14)\n    at Context.<anonymous> (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:169912:23)\nFrom Your Spec Code:\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:919:31)\n    at Context.resolveAndRunStepDefinition (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:264635:29)\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:263956:35)"
             }
           },
@@ -528,6 +528,903 @@
         ]
       },
       {
+        "id": "as-an-internal-hackney-user;ac2---tenure-investigator-approve-the-application-and-ho-or-ahm-decline-the-application",
+        "keyword": "Scenario",
+        "line": 120,
+        "name": "AC2 - Tenure Investigator APPROVE the Application and HO or AHM DECLINE the Application",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 275000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 73,
+            "name": "I am on the MMH home page",
+            "result": {
+              "status": "passed",
+              "duration": 274000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 74,
+            "name": "I enter \"za\" as search criteria",
+            "result": {
+              "status": "passed",
+              "duration": 1643000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "I select 'Person' and click on search button",
+            "result": {
+              "status": "failed",
+              "error_message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n    at mouseAction (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149809:76)\n    at Context.click (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149988:14)\n    at Context.<anonymous> (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:169912:23)\nFrom Your Spec Code:\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:919:31)\n    at Context.resolveAndRunStepDefinition (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:264635:29)\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:263956:35)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 76,
+            "name": "I am on the Person search results page for \"za\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 77,
+            "name": "I select person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 78,
+            "name": "I click on 'New Process' button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 79,
+            "name": "I select 'Changes to a tenancy' from the processes menu",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 80,
+            "name": "a further sub menu is expanded into view",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 81,
+            "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 82,
+            "name": "'Change of Name' page is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 83,
+            "name": "Start Process button is disabled",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 84,
+            "name": "I select the checkbox 'I have explained to the tenant'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "Start Process button is enabled",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 86,
+            "name": "I select the button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 87,
+            "name": "Change of Name edit page is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 88,
+            "name": "Next button is disabled",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 89,
+            "name": "Status Stepper is at \"Tenant's new name\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 90,
+            "name": "I select Title and enter First and Last name",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 91,
+            "name": "I click on Next button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 92,
+            "name": "I am on the supporting documents page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 93,
+            "name": "Status Stepper is at \"Request Documents\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 94,
+            "name": "I select Request Documents electronically and click on Next button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 95,
+            "name": "'Review Documents' page is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 96,
+            "name": "Status Stepper is at \"Review Documents\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 97,
+            "name": "I select all the checkboxes to confirm I have seen all the documents",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 98,
+            "name": "I click on Next button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 99,
+            "name": "I am on the 'Tenure Investigation' page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 100,
+            "name": "Status Stepper is at \"Submit case\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 101,
+            "name": "I select Submit case button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 102,
+            "name": "I am on the 'Next Steps' page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "Status Stepper is at \"Finish\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 104,
+            "name": "I click on 'Continue' button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 105,
+            "name": "I am on the Review Application page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 106,
+            "name": "Status Stepper is at \"Review application\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 107,
+            "name": "I recommend the outcome as 'Decline'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 108,
+            "name": "I select 'I confirm that the tenure investigation has been completed'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 109,
+            "name": "I click on 'Confirm' button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 110,
+            "name": "I am on the 'Tenure investigator recommendation: Decline application' page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 111,
+            "name": "I select the option 'I have passed the case to the Area Housing Manager'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 112,
+            "name": "I select decision as 'Approve'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 113,
+            "name": "I confirm 'I confirm that this is an instruction received by the Area Housing Manager'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 114,
+            "name": "I enter Area Housing Manager name as 'Test Housing Manager'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 115,
+            "name": "I click 'Confirm' button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 116,
+            "name": "a modal dialog box is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 117,
+            "name": "I am on the HO and AHM Declined page",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac2---field-validation-error-messages-for-title,-firstname-and-lastname",
+        "keyword": "Scenario",
+        "line": 146,
+        "name": "AC2 - Field Validation error messages for Title, FirstName and LastName",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 189000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 123,
+            "name": "I am on the Person page for \"4b260032-8c67-9878-c4db-dc72252a131f\"",
+            "result": {
+              "status": "passed",
+              "duration": 225000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 124,
+            "name": "I click on 'New Process' button",
+            "result": {
+              "status": "passed",
+              "duration": 2175000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 125,
+            "name": "I select 'Changes to a tenancy' from the processes menu",
+            "result": {
+              "status": "passed",
+              "duration": 219000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 126,
+            "name": "a further sub menu is expanded into view",
+            "result": {
+              "status": "passed",
+              "duration": 52000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 127,
+            "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
+            "result": {
+              "status": "passed",
+              "duration": 265000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 128,
+            "name": "'Change of Name' page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 50000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 129,
+            "name": "I select the checkbox 'I have explained to the tenant'",
+            "result": {
+              "status": "passed",
+              "duration": 191000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 130,
+            "name": "I select the button",
+            "result": {
+              "status": "passed",
+              "duration": 209000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 131,
+            "name": "Change of Name edit page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1276000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 132,
+            "name": "I enter Title only",
+            "result": {
+              "status": "passed",
+              "duration": 250000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 133,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 209000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 134,
+            "name": "a validation error message for 'First name' and 'Last name' are displayed",
+            "result": {
+              "status": "passed",
+              "duration": 76000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 135,
+            "name": "I enter 'Title' and 'First name' only",
+            "result": {
+              "status": "passed",
+              "duration": 1044000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 136,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 203000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 137,
+            "name": "a validation error message for 'Last name' is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 49000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 138,
+            "name": "I enter 'Title' and 'Last name' only",
+            "result": {
+              "status": "passed",
+              "duration": 1329000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 139,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 211000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 140,
+            "name": "a validation error message for 'First name' is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 47000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 141,
+            "name": "I enter 'First name' and 'Last name' only",
+            "result": {
+              "status": "passed",
+              "duration": 1876000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 142,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 210000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 143,
+            "name": "a validation error message for 'Title' is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 50000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "as-an-internal-hackney-user;ac3---con-process-through-'make-an-appointment-to-check-supporting-documents'",
+        "keyword": "Scenario",
+        "line": 175,
+        "name": "AC3 - CoN Process through 'Make an appointment to check supporting documents'",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 223000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 149,
+            "name": "I am on the MMH home page",
+            "result": {
+              "status": "passed",
+              "duration": 275000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 150,
+            "name": "I enter \"za\" as search criteria",
+            "result": {
+              "status": "passed",
+              "duration": 1451000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 151,
+            "name": "I select 'Person' and click on search button",
+            "result": {
+              "status": "failed",
+              "error_message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n    at mouseAction (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149809:76)\n    at Context.click (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149988:14)\n    at Context.<anonymous> (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:169912:23)\nFrom Your Spec Code:\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:919:31)\n    at Context.resolveAndRunStepDefinition (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:264635:29)\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:263956:35)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 152,
+            "name": "I am on the Person search results page for \"za\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 153,
+            "name": "I select person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 154,
+            "name": "I click on 'New Process' button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 155,
+            "name": "I select 'Changes to a tenancy' from the processes menu",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 156,
+            "name": "a further sub menu is expanded into view",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 157,
+            "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 158,
+            "name": "'Change of Name' page is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 159,
+            "name": "Start Process button is disabled",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 160,
+            "name": "I select the checkbox 'I have explained to the tenant'",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 161,
+            "name": "Start Process button is enabled",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 162,
+            "name": "I select the button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 163,
+            "name": "Change of Name edit page is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 164,
+            "name": "Next button is disabled",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 165,
+            "name": "Status Stepper is at \"Tenant's new name\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 166,
+            "name": "I select Title and enter First and Last name",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 167,
+            "name": "I click on Next button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 168,
+            "name": "I am on the supporting documents page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 169,
+            "name": "Status Stepper is at \"Request Documents\"",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 170,
+            "name": "I select 'I have made an appointment to check supporting documents' and click on Next button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 171,
+            "name": "'Review Documents' page is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 172,
+            "name": "'Office appointment scheduled' message box is displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
         "id": "as-an-internal-hackney-user;ac4---close-case-at-review-documents-stage",
         "keyword": "Scenario",
         "line": 215,
@@ -542,7 +1439,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 601000000
+              "duration": 333000000
             }
           },
           {
@@ -552,7 +1449,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 756000000
+              "duration": 409000000
             }
           },
           {
@@ -561,8 +1458,8 @@
             "line": 179,
             "name": "I enter \"za\" as search criteria",
             "result": {
-              "status": "failed",
-              "error_message": "CypressError: `cy.type()` failed because it targeted a disabled element.\n\nThe element typed into was:\n\n  > <input class=\"govuk-input lbh-input\" name=\"searchText\" id=\"search-form-searchTerm-field\" required=\"\" value=\"\">\n\nEnsure the element does not have an attribute named `disabled` before typing into it.\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:151945:86\nFrom previous event:\n    at onReady (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:151937:14)\n    at runAllChecks (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:147892:14)\n    at retryActionability (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:147901:16)\nFrom previous event:\n    at tryFn (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165383:61)\n    at whenStable (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165422:14)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:164909:18\nFrom previous event:\n    at $Cy.retry (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:164889:80)\n    at retryActionability (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:147904:19)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:147908:12\nFrom previous event:\n    at Object.verify (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:147816:61)\n    at handleFocused (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:151909:77)\n    at $Cy.type (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:151968:12)\n    at $Cy.now (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:169989:89)\n    at callTypeCmd (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:152022:19)\n    at clear (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:152082:14)\nFrom previous event:\n    at Context.clear (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:152085:87)\n    at Context.<anonymous> (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:169912:23)\nFrom Your Spec Code:\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:915:30)\n    at Context.resolveAndRunStepDefinition (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:264635:29)\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:263956:35)"
+              "status": "passed",
+              "duration": 1687000000
             }
           },
           {
@@ -571,7 +1468,8 @@
             "line": 180,
             "name": "I select 'Person' and click on search button",
             "result": {
-              "status": "skipped"
+              "status": "failed",
+              "error_message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n    at mouseAction (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149809:76)\n    at Context.click (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:149988:14)\n    at Context.<anonymous> (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:169912:23)\nFrom Your Spec Code:\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:919:31)\n    at Context.resolveAndRunStepDefinition (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:264635:29)\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/changeOfName.feature:263956:35)"
             }
           },
           {
