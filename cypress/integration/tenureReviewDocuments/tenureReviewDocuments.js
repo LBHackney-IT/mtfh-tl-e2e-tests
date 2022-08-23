@@ -213,6 +213,3 @@ Then("I click on Continue button", () => {
 Then("I can see the text {string}", (textTenureInvestigation) => {
     cy.contains(textTenureInvestigation).should('exist');
 })
-Given(/^I have requested the documents via DES for the tenure "([^"]*)"$/, function() {
-
-});

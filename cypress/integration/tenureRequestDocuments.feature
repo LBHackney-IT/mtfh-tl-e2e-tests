@@ -10,8 +10,8 @@ Feature: As an internal Hackney user
     And I create person and add to a tenure ""
 
 #  Scenario: View resident details for new tenure
- #   Given I create a new tenure
-#    #And I add a person to a tenure
+#    Given I create a new tenure
+#    And I add a person to a tenure
 #    When I view a Tenure
 #    Then the tenure information is displayed
 #    And the residents information is displayed
@@ -19,11 +19,8 @@ Feature: As an internal Hackney user
 #    And I click on process Sole tenant requests a joint tenure link
 #    Then I am on the Sole tenant request joint tenure Start Process page
 #
-#
-#
 #  Scenario Outline: Clean up test data from DynamoDb
 #    Then I can delete a created record from DynamoDb "<tableName>"
-#
 #    Examples:
 #      | tableName          |
 #      | TenureInformation  |
