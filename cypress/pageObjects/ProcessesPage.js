@@ -68,7 +68,7 @@ class ProcessesPageObjects{
     personRadioButton(){
         return cy.get('.govuk-radios__input');
     };
-    textAutomaticEligibiltyChecksPassed(){
+    textAutomaticEligibilityChecksPassed(){
         return cy.findAllByText('Passed automatic eligibility checks');
     };
     textAutomaticChecksFailed(){

@@ -10,7 +10,7 @@ Feature: Add a new person to a tenure
 
   Background: 
     Given I am logged in
-    And I create a new tenure
+    And I create a new "" tenure
     And I create a new person
         And the person has no correspondence addresses
         And the person's equality information is reset

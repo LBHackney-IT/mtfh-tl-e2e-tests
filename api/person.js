@@ -16,14 +16,16 @@ const createPerson = async () => {
     return response;
 }
 
-const createPersonWithNewTenure = async (tenureId) => {
+const createPersonWithNewTenure = async (tenureId, dateOfBirth) => {
     const requestModel = createPersonModel
-    requestModel.tenures.id = tenureId
+    requestModel.dateOfBirth = dateOfBirth || requestModel.dateOfBirth
+    requestModel.tenures[0].id = tenureId
 
     const response = await postRequest(url, requestModel)
     
     const responseData = response.data;
     saveFixtureData(tableName, { id: responseData.id }, responseData);
+    cy.log(responseData.id)
     return response
 }
 
