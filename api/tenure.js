@@ -1,6 +1,7 @@
 import { getRequest, postRequest, patchRequest, deleteRequest } from './requests/requests'
-import { createTenureModel as _createTenureModel } from './models/requests/addTenureModel'
+import { createTenureModel as _createTenureModel, secureTenureModel } from "./models/requests/addTenureModel";
 import { saveFixtureData } from './helpers'
+import person from "./person";
 
 const tenureEndpoint = Cypress.env('TENURE_ENDPOINT')
 const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDate: null}
@@ -11,8 +12,12 @@ const getTenure = async(tenureId) => {
     return response
 }
 
-const createTenure = async() => {
-    const response = await postRequest(`${tenureEndpoint}/tenures/`, _createTenureModel)
+const createTenure = async(tenureTypeCode) => {
+    let tenureModel = _createTenureModel
+    if (tenureTypeCode === "SEC") {
+        tenureModel = secureTenureModel;
+    }
+    const response = await postRequest(`${tenureEndpoint}/tenures/`, tenureModel)
     
     const responseData = response.data;
     saveFixtureData(tableName, { id: responseData.id }, responseData);
@@ -51,7 +56,18 @@ const deleteTenure = async(tenureId, personId) => {
     return response
 }
 
+const addPersonToTenure = async(tenureId, isResponsible, ifMatch) => {
+    const { id: personId, firstName, surname } = (await person.createPersonWithNewTenure(tenureId, "2000-01-01")).data
+    const response = await patchRequest(
+      `${tenureEndpoint}/tenures/${tenureId}/person/${personId}`,
+      { fullName: `${firstName} ${surname}`, personTenureType: "Tenant", isResponsible },
+      ifMatch
+    )
+    return response
+}
+
 export default {
+    addPersonToTenure,
     getTenure,
     editTenure,
     deleteTenure,

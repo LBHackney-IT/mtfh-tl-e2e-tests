@@ -2,19 +2,20 @@ import { When, Then, Given } from "cypress-cucumber-preprocessor/steps";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
+import tenure from "../../../api/tenure";
 
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const processPage = new ProcessesPageObjects();
 
-const manualChecksPass = (tenureId) => {
+const manualChecksPass = ({ id: tenureId, householdMembers}) => {
     processPage.visit(tenureId);
     processPage.agreementCheckBox().click();
     processPage.startProcessButton().click();
     cy.url().should("include", "processes/soletojoint/");
-    processPage.personRadioButton().click();
+    cy.findByLabelText(`${householdMembers[2].fullName}`).click();
     cy.contains('Next').click();
-    processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
+    processPage.textAutomaticEligibilityChecksPassed().should('be.visible');
     tenureReqDocsPage.selectYesFor12Months().click();
     tenureReqDocsPage.selectNoForOccupyanyOther().click();
     tenureReqDocsPage.selectNoForSurvivorOfOne().click();
@@ -36,11 +37,14 @@ const manualChecksPass = (tenureId) => {
     tenureReqDocsPage.successionNo().click();
 
 };
-Given("I have requested the documents via DES for the tenure {string}", (tenureId) => {
-    manualChecksPass(tenureId);
-    cy.contains('Next').click();
-    tenureReqDocsPage.requestDocsElectronically().click();
-    tenureReqDocsPage.checkboxTenantDeclaration().click();
+Given("I have requested the documents via DES for the tenure", () => {
+    cy.getTenureFixture().then(async (tenureInfo) => {
+        const response = await tenure.getTenure(tenureInfo.id);
+        manualChecksPass(response.data);
+        cy.contains('Next').click();
+        tenureReqDocsPage.requestDocsElectronically().click();
+        tenureReqDocsPage.checkboxTenantDeclaration().click();
+    })
 });
 
 When("I have proceeded to the next step", () => {
@@ -77,15 +81,18 @@ And("the ability to close the case at this stage of the process", () => {
     cy.contains('Close Case').should('exist');
 });
 
-Given("I would like to check submitted documents in person for tenure {string}", (tenureId) => {
-    manualChecksPass(tenureId);
-    cy.contains('Next').click();
-    tenureReqDocsPage.requestDocsElectronically().click();
-    tenureReqDocsPage.checkboxTenantDeclaration().click();
-    cy.contains('Next').click();
-    tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
-
+Given("I would like to check submitted documents in person for tenure", () => {
+    cy.getTenureFixture().then(async (tenureInfo) => {
+        const response = await tenure.getTenure(tenureInfo.id);
+        manualChecksPass(response.data);
+        cy.contains('Next').click();
+        tenureReqDocsPage.requestDocsElectronically().click();
+        tenureReqDocsPage.checkboxTenantDeclaration().click();
+        cy.contains('Next').click();
+        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+    })
 });
+
 When("I tick the checkbox to arrange an in person appointment to view the documents", () => {
     tenureReviewDocsPage.checkboxMakeAnAppointment().click();
 
@@ -104,13 +111,16 @@ And("I can confirm the appointment has been arranged", () => {
     tenureReviewDocsPage.linkChange().should('exist');
 });
 
-Given("the documents have been provided by the resident for tenure {string}", (tenureId) => {
-    manualChecksPass(tenureId);
-    cy.contains('Next').click();
-    tenureReqDocsPage.requestDocsElectronically().click();
-    tenureReqDocsPage.checkboxTenantDeclaration().click();
-    cy.contains('Next').click();
-    tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+Given("the documents have been provided by the resident for tenure", () => {
+    cy.getTenureFixture().then(async (tenureInfo) => {
+        const response = await tenure.getTenure(tenureInfo.id);
+        manualChecksPass(response.data);
+        cy.contains('Next').click();
+        tenureReqDocsPage.requestDocsElectronically().click();
+        tenureReqDocsPage.checkboxTenantDeclaration().click();
+        cy.contains('Next').click();
+        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+    })
 });
 When("I can complete the checklist of seen supporting documents are correct and valid", () => {
     tenureReviewDocsPage.photoId().click();
@@ -126,13 +136,16 @@ Then("Next button is disabled", () => {
     cy.contains('Next').should('be.disabled');
 });
 
-Given("the applicant has failed the supporting documents check for tenure {string}", (tenureId) => {
-    manualChecksPass(tenureId);
-    cy.contains('Next').click();
-    tenureReqDocsPage.requestDocsElectronically().click();
-    tenureReqDocsPage.checkboxTenantDeclaration().click();
-    cy.contains('Next').click();
-    tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+Given("the applicant has failed the supporting documents check for tenure", () => {
+    cy.getTenureFixture().then(async (tenureInfo) => {
+        const response = await tenure.getTenure(tenureInfo.id);
+        manualChecksPass(response.data);
+        cy.contains('Next').click();
+        tenureReqDocsPage.requestDocsElectronically().click();
+        tenureReqDocsPage.checkboxTenantDeclaration().click();
+        cy.contains('Next').click();
+        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+    })
 });
 When("I decide to close the case", () => {
     cy.contains('Close Case').click();
@@ -156,19 +169,22 @@ Then("case activity log is recorded with status closed", () => {
     tenureReviewDocsPage.activityHistoryText().should('exist');
 });
 
-Given("I have completed document upload for Sole to Joint for tenure {string}", (tenureId) => {
-    manualChecksPass(tenureId);
-    cy.contains('Next').click();
-    tenureReqDocsPage.requestDocsElectronically().click();
-    tenureReqDocsPage.checkboxTenantDeclaration().click();
+Given("I have completed document upload for Sole to Joint for tenure", () => {
+    cy.getTenureFixture().then(async (tenureInfo) => {
+        const response = await tenure.getTenure(tenureInfo.id);
+        manualChecksPass(response.data);
+        cy.contains('Next').click();
+        tenureReqDocsPage.requestDocsElectronically().click();
+        tenureReqDocsPage.checkboxTenantDeclaration().click();
 
-    cy.contains('Next').click();
-    tenureReviewDocsPage.photoId().click();
-    tenureReviewDocsPage.secondId().click();
-    tenureReviewDocsPage.notImmigrationControl().click();
-    tenureReviewDocsPage.relationshipProof().click();
-    tenureReviewDocsPage.tenantLivingInProperty().click();
-    cy.contains('Next').click();
+        cy.contains('Next').click();
+        tenureReviewDocsPage.photoId().click();
+        tenureReviewDocsPage.secondId().click();
+        tenureReviewDocsPage.notImmigrationControl().click();
+        tenureReviewDocsPage.relationshipProof().click();
+        tenureReviewDocsPage.tenantLivingInProperty().click();
+        cy.contains('Next').click();
+    })
 });
 Then("the Active status should be Submit case", () => {
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Submit case');
@@ -197,3 +213,6 @@ Then("I click on Continue button", () => {
 Then("I can see the text {string}", (textTenureInvestigation) => {
     cy.contains(textTenureInvestigation).should('exist');
 })
+Given(/^I have requested the documents via DES for the tenure "([^"]*)"$/, function() {
+
+});
