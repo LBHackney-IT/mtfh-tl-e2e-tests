@@ -49,7 +49,7 @@ Feature: As an internal Hackney user
     And I have confirmed Tenant Declaration
     Then I have proceeded to the next step
     And I am able to see the "Review Documents" state is Active
-    And a case activity log is created
+#    And a case activity log is created
 
   @SmokeTest
   Scenario: AC3. Request documents via office appointment
@@ -59,7 +59,7 @@ Feature: As an internal Hackney user
     And I have confirmed Tenant Declaration
     Then the option to proceed is enabled
     And I am able to see the "Review Documents" state is Active
-    And a case activity log is created for "Supporting Documents requested via an office appointment"
+#    And a case activity log is created for "Supporting Documents requested via an office appointment"
 
   Scenario: AC4. Close case when Breach of tenure checks are failed
     Given the application has passed eligibility and failed the breach of tenancy checks for the tenure

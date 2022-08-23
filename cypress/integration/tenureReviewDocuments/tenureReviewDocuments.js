@@ -159,12 +159,14 @@ When("I will click on Close case once the rejection is given", () => {
     tenureReviewDocsPage.reasonCloseCase().clear().type('Test reason for Close case - photo id not given');
     tenureReviewDocsPage.alertCloseCase().click();
 });
-Then("case activity log is recorded with status closed", () => {
-    tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
-    tenureReviewDocsPage.buttonConfirm().click();
+Then("I will confirm that the outcome letter has been sent and case will be closed", () => {
     cy.contains('Sole to joint application will be closed');
     cy.contains('Test reason for Close case - photo id not given');
+    tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
+    tenureReviewDocsPage.buttonConfirm().click();
     cy.contains('Thank you for your confirmation');
+})
+And("case activity log is recorded with status closed", () => {
     tenureReqDocsPage.activityHistoryButton().click();
     tenureReviewDocsPage.activityHistoryText().should('exist');
 });
