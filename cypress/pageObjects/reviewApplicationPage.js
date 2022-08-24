@@ -1,16 +1,14 @@
-const envConfig = require('../../environment-config')
-
 class ReviewApplicationPageObjects {
     checkboxConfirmTenureInvest() {
         return cy.get('#tenure-investigation-completed');
     };
-    buttonApprove(){
+    radioApprove(){
         return cy.contains('Approve');
     };
-    buttonAppointment(){
+    radioAppointment(){
         return cy.contains('Appointment');
     };
-    buttonDecline(){
+    radioDecline(){
         return cy.contains('Decline');
     };
     radiobuttonAHMReview() {
@@ -32,7 +30,7 @@ class ReviewApplicationPageObjects {
         return cy.contains('Confirm');
     };
     messageHeadingOfficeAppointment() {
-        return cy.get('.mtfh-status-heading');
+        return cy.get('.mtfh-status-heading__title');
     };
     appointmentDay() {
         return cy.get('[name="day"]');
@@ -53,7 +51,7 @@ class ReviewApplicationPageObjects {
     appointmentAMPM() {
         return cy.get('#amPm');
     };
-    confirmationModelApprove() {
+    confirmationModalApprove() {
         return cy.get('[data-testid=confirm-recommendation-modal-submit]');
     };
     interviewApplicantReason() {
