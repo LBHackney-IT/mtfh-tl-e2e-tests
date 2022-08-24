@@ -6,8 +6,6 @@ Feature: As an internal Hackney User
   Background:
     Given I am logged in
 
-    #######to implement later which can select any peron record and do an E2E test
-
   Scenario Outline: AC1 - CoN Process through 'Request Documents electronically' - APPROVE Application
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
