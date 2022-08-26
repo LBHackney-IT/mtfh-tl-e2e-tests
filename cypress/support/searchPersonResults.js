@@ -1,7 +1,6 @@
 
 const personSearchEndpoint = Cypress.env('HOUSE_SEARCH_ENDPOINT');
-
-const token = Cypress.env('E2E_ACCESS_TOKEN_STAGING' || 'E2E_ACCESS_TOKEN_DEVELOPMENT');
+const token = Cypress.env('E2E_ACCESS_TOKEN_STAGING') || Cypress.env('E2E_ACCESS_TOKEN_DEVELOPMENT');
 
 export const searchPersonResults = (searchPerson) => {
     cy.request({
