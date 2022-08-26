@@ -68,10 +68,6 @@ const createAssetModel = {
       }
     ]
   },
-  "tenure": {
-    "id": "123",
-    "fullAddress": "Test E2E Street"
-  }
 }
 
 module.exports = {

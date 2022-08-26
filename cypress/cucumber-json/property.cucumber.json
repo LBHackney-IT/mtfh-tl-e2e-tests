@@ -34,97 +34,9 @@
     "uri": "property.feature",
     "elements": [
       {
-        "id": "property-page;'new-tenure'-button-should-be-displayed-if-no-tenure-information-is-returned-for-a-given-property",
-        "keyword": "Scenario",
-        "line": 16,
-        "name": "'New tenure' button should be displayed if no tenure information is returned for a given property",
-        "tags": [
-          {
-            "name": "@authentication",
-            "line": 1
-          },
-          {
-            "name": "@common",
-            "line": 2
-          },
-          {
-            "name": "@processes",
-            "line": 3
-          },
-          {
-            "name": "@tenure",
-            "line": 4
-          },
-          {
-            "name": "@property",
-            "line": 5
-          },
-          {
-            "name": "@root",
-            "line": 6
-          },
-          {
-            "name": "@SmokeTest",
-            "line": 15
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 13,
-            "name": "I am logged in",
-            "result": {
-              "status": "passed",
-              "duration": 11109000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 17,
-            "name": "I create a new property",
-            "result": {
-              "status": "passed",
-              "duration": 963000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "I view a property \"\"",
-            "result": {
-              "status": "passed",
-              "duration": 1197000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 19,
-            "name": "No tenure is displayed",
-            "result": {
-              "status": "failed",
-              "error_message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'No tenure' but never did.\n    at Context.eval (http://local.hackney.gov.uk:9000/__cypress/tests?p=cypress/integration/property.feature:3183:6)\n    at Context.resolveAndRunStepDefinition (http://local.hackney.gov.uk:9000/__cypress/tests?p=cypress/integration/property.feature:264870:29)\n    at Context.eval (http://local.hackney.gov.uk:9000/__cypress/tests?p=cypress/integration/property.feature:264191:35)"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 20,
-            "name": "New Tenure button should be displayed",
-            "result": {
-              "status": "skipped"
-            }
-          }
-        ]
-      },
-      {
         "id": "property-page;view-property-details",
         "keyword": "Scenario",
-        "line": 32,
+        "line": 25,
         "name": "View property details",
         "tags": [
           {
@@ -153,7 +65,7 @@
           },
           {
             "name": "@SmokeTest",
-            "line": 31
+            "line": 24
           }
         ],
         "type": "scenario",
@@ -165,77 +77,77 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 548000000
+              "duration": 328000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 33,
+            "line": 26,
             "name": "I create a new property with tenure",
             "result": {
               "status": "passed",
-              "duration": 749000000
+              "duration": 998000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 34,
+            "line": 27,
             "name": "I view a property \"\"",
             "result": {
               "status": "passed",
-              "duration": 155000000
+              "duration": 113000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 35,
+            "line": 28,
             "name": "the page breadcrumb is displayed",
             "result": {
               "status": "passed",
-              "duration": 760000000
+              "duration": 735000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 36,
+            "line": 29,
             "name": "the property information is displayed",
             "result": {
               "status": "passed",
-              "duration": 52000000
+              "duration": 85000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 37,
+            "line": 30,
             "name": "the tenure information is displayed",
             "result": {
               "status": "passed",
-              "duration": 41000000
+              "duration": 75000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 38,
+            "line": 31,
             "name": "I click on the breadcrumb",
             "result": {
               "status": "passed",
-              "duration": 191000000
+              "duration": 137000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 39,
+            "line": 32,
             "name": "I am taken to the search page",
             "result": {
               "status": "passed",
-              "duration": 224000000
+              "duration": 192000000
             }
           }
         ]
@@ -243,7 +155,7 @@
       {
         "id": "property-page;view-property-via-tenure",
         "keyword": "Scenario",
-        "line": 42,
+        "line": 35,
         "name": "View property via tenure",
         "tags": [
           {
@@ -272,7 +184,7 @@
           },
           {
             "name": "@Regression",
-            "line": 41
+            "line": 34
           }
         ],
         "type": "scenario",
@@ -284,44 +196,14 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 286000000
+              "duration": 504000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 43,
+            "line": 36,
             "name": "I create a new property",
-            "result": {
-              "status": "passed",
-              "duration": 888000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 44,
-            "name": "I create a new \"\" tenure",
-            "result": {
-              "status": "passed",
-              "duration": 490000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 45,
-            "name": "I view a tenure \"\"",
-            "result": {
-              "status": "passed",
-              "duration": 154000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 46,
-            "name": "the tenure information is displayed",
             "result": {
               "status": "passed",
               "duration": 1049000000
@@ -330,21 +212,51 @@
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 47,
-            "name": "I click on the view property button",
+            "line": 37,
+            "name": "I create a new \"\" tenure",
             "result": {
               "status": "passed",
-              "duration": 265000000
+              "duration": 617000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I view a tenure \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 141000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 48,
+            "line": 39,
+            "name": "the tenure information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 1024000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I click on the view property button",
+            "result": {
+              "status": "passed",
+              "duration": 175000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
             "name": "the property information is displayed",
             "result": {
               "status": "passed",
-              "duration": 474000000
+              "duration": 488000000
             }
           }
         ]
@@ -352,7 +264,7 @@
       {
         "id": "property-page;view-property-via-person",
         "keyword": "Scenario",
-        "line": 51,
+        "line": 44,
         "name": "View property via person",
         "tags": [
           {
@@ -381,7 +293,7 @@
           },
           {
             "name": "@Regression",
-            "line": 50
+            "line": 43
           }
         ],
         "type": "scenario",
@@ -393,87 +305,87 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 215000000
+              "duration": 161000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 52,
+            "line": 45,
             "name": "I create a new property",
             "result": {
               "status": "passed",
-              "duration": 910000000
+              "duration": 987000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 53,
+            "line": 46,
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 418000000
+              "duration": 478000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 54,
+            "line": 47,
             "name": "I create a person with new tenure",
             "result": {
               "status": "passed",
-              "duration": 391000000
+              "duration": 597000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 55,
+            "line": 48,
             "name": "I want to add contact details \"phone\"",
             "result": {
               "status": "passed",
-              "duration": 570000000
+              "duration": 629000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 56,
+            "line": 49,
             "name": "I want to add contact details \"email\"",
             "result": {
               "status": "passed",
-              "duration": 408000000
+              "duration": 569000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 57,
+            "line": 50,
             "name": "I view a person \"\"",
             "result": {
               "status": "passed",
-              "duration": 162000000
+              "duration": 165000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 58,
+            "line": 51,
             "name": "I click on the view property button",
             "result": {
               "status": "passed",
-              "duration": 1066000000
+              "duration": 1093000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 59,
+            "line": 52,
             "name": "the property information is displayed",
             "result": {
               "status": "passed",
-              "duration": 958000000
+              "duration": 508000000
             }
           }
         ]
@@ -481,7 +393,7 @@
       {
         "id": "property-page;asset-api-for-valid-fe-type",
         "keyword": "Scenario",
-        "line": 69,
+        "line": 62,
         "name": "Asset API for valid FE type",
         "tags": [
           {
@@ -518,47 +430,47 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 308000000
+              "duration": 157000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 62,
+            "line": 55,
             "name": "I create a new property",
             "result": {
               "status": "passed",
-              "duration": 1055000000
+              "duration": 931000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 63,
+            "line": 56,
             "name": "I check the asset API with a valid assetType \"6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6\"",
             "result": {
               "status": "passed",
-              "duration": 337000000
+              "duration": 342000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 64,
+            "line": 57,
             "name": "I view a property \"\"",
             "result": {
               "status": "passed",
-              "duration": 156000000
+              "duration": 118000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 65,
+            "line": 58,
             "name": "the property information is displayed",
             "result": {
               "status": "passed",
-              "duration": 690000000
+              "duration": 827000000
             }
           }
         ]
@@ -566,7 +478,7 @@
       {
         "id": "property-page;asset-api-for-invalid-fe-type",
         "keyword": "Scenario",
-        "line": 79,
+        "line": 72,
         "name": "Asset API for invalid FE type",
         "tags": [
           {
@@ -603,47 +515,47 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 102000000
+              "duration": 140000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 72,
+            "line": 65,
             "name": "I create a new property \"Lift\"",
             "result": {
               "status": "passed",
-              "duration": 2193000000
+              "duration": 1069000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 73,
+            "line": 66,
             "name": "I check the asset API with an invalid assetType \"6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6\"",
             "result": {
               "status": "passed",
-              "duration": 324000000
+              "duration": 334000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 74,
+            "line": 67,
             "name": "I view a property \"\"",
             "result": {
               "status": "passed",
-              "duration": 295000000
+              "duration": 117000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 75,
+            "line": 68,
             "name": "I am shown an error message",
             "result": {
               "status": "passed",
-              "duration": 942000000
+              "duration": 620000000
             }
           }
         ]
