@@ -1,6 +1,6 @@
+import {gssoTestKey} from "../../environment-config";
 
 const personSearchEndpoint = Cypress.env('HOUSE_SEARCH_ENDPOINT');
-const token = Cypress.env('E2E_ACCESS_TOKEN_STAGING') || Cypress.env('E2E_ACCESS_TOKEN_DEVELOPMENT');
 
 export const searchPersonResults = (searchPerson) => {
     cy.request({
@@ -9,7 +9,7 @@ export const searchPersonResults = (searchPerson) => {
 
         failOnStatusCode: false,
         headers:{
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${gssoTestKey}`
         }
     }).then(result=> {
         expect(result.status).to.equal(200);
