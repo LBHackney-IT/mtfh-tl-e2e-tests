@@ -13,13 +13,6 @@ Feature: Property Page
     Given I am logged in
 
   @SmokeTest
-  Scenario: 'New tenure' button should be displayed if no tenure information is returned for a given property
-    Given I create a new property
-    When I view a property ""
-    Then No tenure is displayed
-    And New Tenure button should be displayed
-
-  @SmokeTest
   Scenario: View property details
     Given I create a new property with tenure
     When I view a property ""
@@ -41,7 +34,7 @@ Feature: Property Page
   @Regression
   Scenario: View property via tenure
     Given I create a new property
-    Given I create a new "" tenure
+    And I create a new "" tenure
     When I view a tenure ""
     Then the tenure information is displayed
     And I click on the view property button
@@ -101,3 +94,14 @@ Feature: Property Page
 #        | property                             | repairsType |
 #        | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | Cancelled   |
 #        | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | In Progress |
+
+#  @smoke
+#    Scenario Outline: 'New tenure' button should be displayed if no tenure information is returned for a given property
+#      When I view a property "<property>"
+#      Then Tenure information displays status as Inactive
+#      And New Tenure button should be displayed
+#
+#      Examples:
+#        | property                             |
+#        | b1a64f12-a2f5-b6e9-55c2-bbfa107150a7 |
+#       # original - data | e6e224eb-18e8-c2c1-2dc4-f82e67cad1fa |

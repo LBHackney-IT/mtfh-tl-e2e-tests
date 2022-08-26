@@ -21,6 +21,10 @@ const createProperty = async(type) => {
 
 const createPropertyWithTenure = async() => {
   let propertyModel = createAssetModel
+  createAssetModel.tenure = {
+    "id": "123",
+      "fullAddress": "Test E2E Street"
+  }
   const response = await postRequest(`${assetEndpoint}/assets/`, propertyModel)
 
   saveFixtureData(tableName, { id: response.data.id }, response.data);
