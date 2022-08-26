@@ -67,6 +67,10 @@ const createAssetModel = {
         "name": "Stone Bridge Estate"
       }
     ]
+  },
+  "tenure": {
+    "id": "123",
+    "fullAddress": "Test E2E Street"
   }
 }
 
