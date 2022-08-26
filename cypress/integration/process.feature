@@ -39,7 +39,7 @@ Background:
 
 @Positive
 Scenario Outline: Initiate sole to joint process from tenure
-  When I view a Tenure "<tenure>"
+  When I view a tenure "<tenure>"
   Then the tenure information is displayed
   When I select New Process menu "<processType>"
   Then I am directed to the main process landing page

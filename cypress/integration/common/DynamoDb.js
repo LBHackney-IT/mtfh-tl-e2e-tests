@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+import property from "../../../api/property";
 
 const deleteRecordFromDynamoDB = async ({tableName, key}) => {
   const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')
@@ -13,17 +14,26 @@ const deleteRecordFromDynamoDB = async ({tableName, key}) => {
   });
   
   const docClient = new AWS.DynamoDB.DocumentClient({region: 'eu-west-2'});
-
     try {
-        const result = await docClient.delete({ TableName: tableName, Key: key })
-                                      .promise();
+      if (tableName === "Assets") {
+        const response = await property.getProperty(key.id)
+        const asset = response.data;
+        if (asset && asset.tenure) {
+          const result = await docClient.delete({ TableName: "TenureInformation", Key: { id: asset.tenure.id } })
+            .promise();
+          console.log(`A record has been deleted from DynamoDb table ${tableName}: `, result)
+        }
+      }
 
-        console.log(`A record has been deleted from DynamoDb table ${tableName}: `, result)
-        return result;
+      const result = await docClient.delete({ TableName: tableName, Key: key })
+        .promise();
+
+      console.log(`A record has been deleted from DynamoDb table ${tableName}: `, result)
+      return result;
 
     } catch (deleteError) {
-        console.log('A record is not deleted: ', deleteError)
-        throw deleteError
+      console.log('A record is not deleted: ', deleteError)
+      throw deleteError
     }
 }
 
