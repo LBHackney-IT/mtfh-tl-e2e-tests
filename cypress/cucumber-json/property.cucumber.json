@@ -1,9 +1,9 @@
 [
   {
-    "description": "    View property page",
+    "description": "  View property page",
     "keyword": "Feature",
     "name": "Property Page",
-    "line": 7,
+    "line": 8,
     "id": "property-page",
     "tags": [
       {
@@ -19,20 +19,112 @@
         "line": 3
       },
       {
-        "name": "@property",
+        "name": "@tenure",
         "line": 4
       },
       {
-        "name": "@root",
+        "name": "@property",
         "line": 5
+      },
+      {
+        "name": "@root",
+        "line": 6
       }
     ],
     "uri": "property.feature",
     "elements": [
       {
+        "id": "property-page;'new-tenure'-button-should-be-displayed-if-no-tenure-information-is-returned-for-a-given-property",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "'New tenure' button should be displayed if no tenure information is returned for a given property",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@tenure",
+            "line": 4
+          },
+          {
+            "name": "@property",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          },
+          {
+            "name": "@SmokeTest",
+            "line": 15
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 11109000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "I create a new property",
+            "result": {
+              "status": "passed",
+              "duration": 963000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I view a property \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 1197000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "No tenure is displayed",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'No tenure' but never did.\n    at Context.eval (http://local.hackney.gov.uk:9000/__cypress/tests?p=cypress/integration/property.feature:3183:6)\n    at Context.resolveAndRunStepDefinition (http://local.hackney.gov.uk:9000/__cypress/tests?p=cypress/integration/property.feature:264870:29)\n    at Context.eval (http://local.hackney.gov.uk:9000/__cypress/tests?p=cypress/integration/property.feature:264191:35)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "New Tenure button should be displayed",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
         "id": "property-page;view-property-details",
         "keyword": "Scenario",
-        "line": 37,
+        "line": 32,
         "name": "View property details",
         "tags": [
           {
@@ -48,16 +140,20 @@
             "line": 3
           },
           {
-            "name": "@property",
+            "name": "@tenure",
             "line": 4
           },
           {
-            "name": "@root",
+            "name": "@property",
             "line": 5
           },
           {
+            "name": "@root",
+            "line": 6
+          },
+          {
             "name": "@SmokeTest",
-            "line": 26
+            "line": 31
           }
         ],
         "type": "scenario",
@@ -65,71 +161,81 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
+            "line": 13,
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 1162000000
+              "duration": 548000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I create a new property with tenure",
+            "result": {
+              "status": "passed",
+              "duration": 749000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 28,
-            "name": "I view a property \"37c4e5a2-8893-dd5f-1ff3-9d4b18a9e5e9\"",
+            "line": 34,
+            "name": "I view a property \"\"",
             "result": {
               "status": "passed",
-              "duration": 514000000
+              "duration": 155000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 29,
+            "line": 35,
             "name": "the page breadcrumb is displayed",
             "result": {
               "status": "passed",
-              "duration": 1573000000
+              "duration": 760000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 30,
+            "line": 36,
             "name": "the property information is displayed",
             "result": {
               "status": "passed",
-              "duration": 130000000
+              "duration": 52000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 31,
+            "line": 37,
             "name": "the tenure information is displayed",
             "result": {
               "status": "passed",
-              "duration": 157000000
+              "duration": 41000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 32,
+            "line": 38,
             "name": "I click on the breadcrumb",
             "result": {
               "status": "passed",
-              "duration": 570000000
+              "duration": 191000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 33,
+            "line": 39,
             "name": "I am taken to the search page",
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 224000000
             }
           }
         ]
@@ -137,7 +243,7 @@
       {
         "id": "property-page;view-property-via-tenure",
         "keyword": "Scenario",
-        "line": 48,
+        "line": 42,
         "name": "View property via tenure",
         "tags": [
           {
@@ -153,16 +259,20 @@
             "line": 3
           },
           {
-            "name": "@property",
+            "name": "@tenure",
             "line": 4
           },
           {
-            "name": "@root",
+            "name": "@property",
             "line": 5
           },
           {
+            "name": "@root",
+            "line": 6
+          },
+          {
             "name": "@Regression",
-            "line": 39
+            "line": 41
           }
         ],
         "type": "scenario",
@@ -170,51 +280,71 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
+            "line": 13,
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 694000000
+              "duration": 286000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 43,
+            "name": "I create a new property",
+            "result": {
+              "status": "passed",
+              "duration": 888000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 44,
+            "name": "I create a new \"\" tenure",
+            "result": {
+              "status": "passed",
+              "duration": 490000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 41,
-            "name": "I view a Tenure \"5d576bff-59e4-9baf-3f80-0b9cc53d8a97\"",
+            "line": 45,
+            "name": "I view a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1524000000
+              "duration": 154000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 42,
+            "line": 46,
             "name": "the tenure information is displayed",
             "result": {
               "status": "passed",
-              "duration": 1350000000
+              "duration": 1049000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 43,
+            "line": 47,
             "name": "I click on the view property button",
             "result": {
               "status": "passed",
-              "duration": 554000000
+              "duration": 265000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 44,
+            "line": 48,
             "name": "the property information is displayed",
             "result": {
               "status": "passed",
-              "duration": 500000000
+              "duration": 474000000
             }
           }
         ]
@@ -222,7 +352,7 @@
       {
         "id": "property-page;view-property-via-person",
         "keyword": "Scenario",
-        "line": 59,
+        "line": 51,
         "name": "View property via person",
         "tags": [
           {
@@ -238,12 +368,16 @@
             "line": 3
           },
           {
-            "name": "@property",
+            "name": "@tenure",
             "line": 4
           },
           {
-            "name": "@root",
+            "name": "@property",
             "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
           },
           {
             "name": "@Regression",
@@ -255,51 +389,176 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
+            "line": 13,
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 379000000
+              "duration": 215000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 52,
-            "name": "I have loaded a Person record \"80886abb-eecb-644f-5806-6c01ccc2126b\"",
+            "name": "I create a new property",
             "result": {
               "status": "passed",
-              "duration": 360000000
+              "duration": 910000000
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "And ",
             "line": 53,
-            "name": "the personal details are displayed on the sidebar",
+            "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 3646000000
+              "duration": 418000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 54,
+            "name": "I create a person with new tenure",
+            "result": {
+              "status": "passed",
+              "duration": 391000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "I want to add contact details \"phone\"",
+            "result": {
+              "status": "passed",
+              "duration": 570000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 56,
+            "name": "I want to add contact details \"email\"",
+            "result": {
+              "status": "passed",
+              "duration": 408000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 57,
+            "name": "I view a person \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 162000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
             "name": "I click on the view property button",
             "result": {
               "status": "passed",
-              "duration": 545000000
+              "duration": 1066000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 55,
+            "line": 59,
             "name": "the property information is displayed",
             "result": {
               "status": "passed",
-              "duration": 463000000
+              "duration": 958000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "property-page;asset-api-for-valid-fe-type",
+        "keyword": "Scenario",
+        "line": 69,
+        "name": "Asset API for valid FE type",
+        "tags": [
+          {
+            "name": "@authentication",
+            "line": 1
+          },
+          {
+            "name": "@common",
+            "line": 2
+          },
+          {
+            "name": "@processes",
+            "line": 3
+          },
+          {
+            "name": "@tenure",
+            "line": 4
+          },
+          {
+            "name": "@property",
+            "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 308000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 62,
+            "name": "I create a new property",
+            "result": {
+              "status": "passed",
+              "duration": 1055000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I check the asset API with a valid assetType \"6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6\"",
+            "result": {
+              "status": "passed",
+              "duration": 337000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "I view a property \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 156000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the property information is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 690000000
             }
           }
         ]
@@ -323,12 +582,16 @@
             "line": 3
           },
           {
-            "name": "@property",
+            "name": "@tenure",
             "line": 4
           },
           {
-            "name": "@root",
+            "name": "@property",
             "line": 5
+          },
+          {
+            "name": "@root",
+            "line": 6
           }
         ],
         "type": "scenario",
@@ -336,339 +599,51 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
+            "line": 13,
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 419000000
+              "duration": 102000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 73,
-            "name": "I check the asset API with an invalid assetType \"5372e973-2857-98df-a343-4acfb76af535\"",
+            "line": 72,
+            "name": "I create a new property \"Lift\"",
             "result": {
-              "status": "failed",
-              "error_message": "AssertionError: expected undefined to deeply equal 200\n    at Context.stepTest (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:263696:6)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:263724:22)\nat Array.forEach (<anonymous>)\n    at Context.eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/integration/property.feature:263723:24)"
+              "status": "passed",
+              "duration": 2193000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 74,
-            "name": "I navigate to the asset page \"5372e973-2857-98df-a343-4acfb76af535\"",
+            "line": 73,
+            "name": "I check the asset API with an invalid assetType \"6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 324000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
+            "line": 74,
+            "name": "I view a property \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 295000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
             "line": 75,
             "name": "I am shown an error message",
             "result": {
-              "status": "skipped"
-            }
-          }
-        ]
-      },
-      {
-        "id": "property-page;repairs-container-is-displayed",
-        "keyword": "Scenario",
-        "line": 92,
-        "name": "Repairs container is displayed",
-        "tags": [
-          {
-            "name": "@authentication",
-            "line": 1
-          },
-          {
-            "name": "@common",
-            "line": 2
-          },
-          {
-            "name": "@processes",
-            "line": 3
-          },
-          {
-            "name": "@property",
-            "line": 4
-          },
-          {
-            "name": "@root",
-            "line": 5
-          },
-          {
-            "name": "@ignore",
-            "line": 84
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "I am logged in",
-            "result": {
               "status": "passed",
-              "duration": 321000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 86,
-            "name": "I view a property \"2d13b5cb-baf2-91fd-c231-8c5c2ee9548c\"",
-            "result": {
-              "status": "passed",
-              "duration": 369000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 87,
-            "name": "the repairs container is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 986000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 88,
-            "name": "the repairs card list is displayed \"In Progress\"",
-            "result": {
-              "status": "passed",
-              "duration": 459000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "property-page;repairs-list-type-is-changed",
-        "keyword": "Scenario",
-        "line": 102,
-        "name": "Repairs list type is changed",
-        "tags": [
-          {
-            "name": "@authentication",
-            "line": 1
-          },
-          {
-            "name": "@common",
-            "line": 2
-          },
-          {
-            "name": "@processes",
-            "line": 3
-          },
-          {
-            "name": "@property",
-            "line": 4
-          },
-          {
-            "name": "@root",
-            "line": 5
-          },
-          {
-            "name": "@ignore",
-            "line": 94
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "I am logged in",
-            "result": {
-              "status": "passed",
-              "duration": 176000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 96,
-            "name": "I view a property \"2d13b5cb-baf2-91fd-c231-8c5c2ee9548c\"",
-            "result": {
-              "status": "passed",
-              "duration": 346000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 97,
-            "name": "I set the the repair type to \"Cancelled\"",
-            "result": {
-              "status": "passed",
-              "duration": 1030000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 98,
-            "name": "the repairs card list is displayed \"Cancelled\"",
-            "result": {
-              "status": "passed",
-              "duration": 5631000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "property-page;repairs-list-type-is-changed",
-        "keyword": "Scenario",
-        "line": 103,
-        "name": "Repairs list type is changed",
-        "tags": [
-          {
-            "name": "@authentication",
-            "line": 1
-          },
-          {
-            "name": "@common",
-            "line": 2
-          },
-          {
-            "name": "@processes",
-            "line": 3
-          },
-          {
-            "name": "@property",
-            "line": 4
-          },
-          {
-            "name": "@root",
-            "line": 5
-          },
-          {
-            "name": "@ignore",
-            "line": 94
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "I am logged in",
-            "result": {
-              "status": "passed",
-              "duration": 339000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 96,
-            "name": "I view a property \"2d13b5cb-baf2-91fd-c231-8c5c2ee9548c\"",
-            "result": {
-              "status": "passed",
-              "duration": 350000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 97,
-            "name": "I set the the repair type to \"In Progress\"",
-            "result": {
-              "status": "passed",
-              "duration": 1050000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 98,
-            "name": "the repairs card list is displayed \"In Progress\"",
-            "result": {
-              "status": "passed",
-              "duration": 210000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "property-page;'new-tenure'-button-should-be-displayed-if-no-tenure-information-is-returned-for-a-given-property",
-        "keyword": "Scenario",
-        "line": 113,
-        "name": "'New tenure' button should be displayed if no tenure information is returned for a given property",
-        "tags": [
-          {
-            "name": "@authentication",
-            "line": 1
-          },
-          {
-            "name": "@common",
-            "line": 2
-          },
-          {
-            "name": "@processes",
-            "line": 3
-          },
-          {
-            "name": "@property",
-            "line": 4
-          },
-          {
-            "name": "@root",
-            "line": 5
-          },
-          {
-            "name": "@smoke",
-            "line": 105
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "I am logged in",
-            "result": {
-              "status": "passed",
-              "duration": 223000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 107,
-            "name": "I view a property \"b1a64f12-a2f5-b6e9-55c2-bbfa107150a7\"",
-            "result": {
-              "status": "passed",
-              "duration": 395000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 108,
-            "name": "Tenure information displays status as Inactive",
-            "result": {
-              "status": "passed",
-              "duration": 1461000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 109,
-            "name": "New Tenure button should be displayed",
-            "result": {
-              "status": "passed",
-              "duration": 52000000
+              "duration": 942000000
             }
           }
         ]

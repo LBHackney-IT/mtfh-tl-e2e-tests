@@ -10,7 +10,16 @@ const getProperty = async(propertyId) => {
   return response
 }
 
-const createProperty = async() => {
+const createProperty = async(type) => {
+  let propertyModel = createAssetModel
+  propertyModel.assetType = type || propertyModel.assetType
+  const response = await postRequest(`${assetEndpoint}/assets/`, propertyModel)
+
+  saveFixtureData(tableName, { id: response.data.id }, response.data);
+  return response;
+}
+
+const createPropertyWithTenure = async() => {
   let propertyModel = createAssetModel
   const response = await postRequest(`${assetEndpoint}/assets/`, propertyModel)
 
@@ -20,5 +29,6 @@ const createProperty = async() => {
 
 export default {
   createProperty,
+  createPropertyWithTenure,
   getProperty
 }

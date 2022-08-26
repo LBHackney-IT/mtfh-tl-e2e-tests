@@ -61,7 +61,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 257000000
+              "duration": 136000000
             }
           },
           {
@@ -71,7 +71,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 451000000
+              "duration": 457000000
             }
           },
           {
@@ -81,7 +81,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1216000000
+              "duration": 1422000000
             }
           },
           {
@@ -91,17 +91,17 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1202000000
+              "duration": 1155000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 42,
-            "name": "I view a Tenure \"e832a76f-8bcf-238c-7ad1-6ef1b408b316\"",
+            "name": "I view a tenure \"e832a76f-8bcf-238c-7ad1-6ef1b408b316\"",
             "result": {
               "status": "passed",
-              "duration": 2377000000
+              "duration": 1077000000
             }
           },
           {
@@ -111,7 +111,7 @@
             "name": "the tenure information is displayed",
             "result": {
               "status": "passed",
-              "duration": 4244000000
+              "duration": 3293000000
             }
           },
           {
@@ -121,7 +121,7 @@
             "name": "I select New Process menu \"tenure\"",
             "result": {
               "status": "passed",
-              "duration": 1094000000
+              "duration": 732000000
             }
           },
           {
@@ -131,7 +131,7 @@
             "name": "I am directed to the main process landing page",
             "result": {
               "status": "passed",
-              "duration": 150000000
+              "duration": 243000000
             }
           },
           {
@@ -141,7 +141,7 @@
             "name": "I can see a list of processes",
             "result": {
               "status": "passed",
-              "duration": 52000000
+              "duration": 44000000
             }
           },
           {
@@ -151,7 +151,7 @@
             "name": "I select a process \"Other tenancy changes\"",
             "result": {
               "status": "passed",
-              "duration": 347000000
+              "duration": 260000000
             }
           }
         ]
@@ -188,7 +188,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 964000000
+              "duration": 367000000
             }
           },
           {
@@ -198,7 +198,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 456000000
+              "duration": 511000000
             }
           },
           {
@@ -208,7 +208,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1441000000
+              "duration": 1213000000
             }
           },
           {
@@ -218,7 +218,7 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1274000000
+              "duration": 1169000000
             }
           },
           {
@@ -228,7 +228,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 277000000
+              "duration": 828000000
             }
           },
           {
@@ -238,7 +238,7 @@
             "name": "the property details are shown",
             "result": {
               "status": "passed",
-              "duration": 1609000000
+              "duration": 989000000
             }
           }
         ]
@@ -275,7 +275,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 318000000
+              "duration": 197000000
             }
           },
           {
@@ -285,7 +285,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 451000000
+              "duration": 360000000
             }
           },
           {
@@ -295,7 +295,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1130000000
+              "duration": 1219000000
             }
           },
           {
@@ -305,7 +305,7 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1231000000
+              "duration": 1092000000
             }
           },
           {
@@ -315,7 +315,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 153000000
+              "duration": 111000000
             }
           },
           {
@@ -325,7 +325,7 @@
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 906000000
+              "duration": 700000000
             }
           },
           {
@@ -335,7 +335,7 @@
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 231000000
+              "duration": 238000000
             }
           },
           {
@@ -345,7 +345,7 @@
             "name": "the status is set to Awaiting proposed tenant selection",
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 3000000
             }
           }
         ]
@@ -382,7 +382,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 149000000
+              "duration": 64000000
             }
           },
           {
@@ -392,7 +392,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 384000000
+              "duration": 451000000
             }
           },
           {
@@ -402,7 +402,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1067000000
+              "duration": 1088000000
             }
           },
           {
@@ -412,7 +412,7 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1896000000
+              "duration": 966000000
             }
           },
           {
@@ -422,7 +422,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 148000000
+              "duration": 178000000
             }
           },
           {
@@ -432,7 +432,7 @@
             "name": "the start process button is disabled",
             "result": {
               "status": "passed",
-              "duration": 813000000
+              "duration": 534000000
             }
           }
         ]
@@ -469,7 +469,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 361000000
+              "duration": 93000000
             }
           },
           {
@@ -479,7 +479,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 370000000
+              "duration": 315000000
             }
           },
           {
@@ -489,7 +489,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1193000000
+              "duration": 988000000
             }
           },
           {
@@ -499,7 +499,7 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1268000000
+              "duration": 1003000000
             }
           },
           {
@@ -509,7 +509,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 149000000
+              "duration": 124000000
             }
           },
           {
@@ -519,7 +519,7 @@
             "name": "I click the cancel button",
             "result": {
               "status": "passed",
-              "duration": 589000000
+              "duration": 730000000
             }
           },
           {
@@ -529,7 +529,7 @@
             "name": "I am taken back to the processes menu",
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 10000000
             }
           },
           {
@@ -539,7 +539,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 234000000
+              "duration": 94000000
             }
           },
           {
@@ -549,7 +549,7 @@
             "name": "I click the back link",
             "result": {
               "status": "passed",
-              "duration": 611000000
+              "duration": 917000000
             }
           },
           {
@@ -559,7 +559,7 @@
             "name": "I am taken back to the processes menu",
             "result": {
               "status": "passed",
-              "duration": 101000000
+              "duration": 34000000
             }
           }
         ]
@@ -596,7 +596,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 397000000
+              "duration": 221000000
             }
           },
           {
@@ -606,7 +606,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 414000000
+              "duration": 349000000
             }
           },
           {
@@ -616,7 +616,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1244000000
+              "duration": 1005000000
             }
           },
           {
@@ -626,7 +626,7 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1230000000
+              "duration": 980000000
             }
           },
           {
@@ -636,7 +636,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 94000000
+              "duration": 84000000
             }
           },
           {
@@ -646,7 +646,7 @@
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 917000000
+              "duration": 703000000
             }
           },
           {
@@ -656,7 +656,7 @@
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 185000000
+              "duration": 122000000
             }
           },
           {
@@ -666,7 +666,7 @@
             "name": "Sole tenant requests a joint tenure page is displayed",
             "result": {
               "status": "passed",
-              "duration": 59000000
+              "duration": 9000000
             }
           },
           {
@@ -676,7 +676,7 @@
             "name": "I select a person to add as a joint tenant \"Add API E2E Test\"",
             "result": {
               "status": "passed",
-              "duration": 902000000
+              "duration": 957000000
             }
           },
           {
@@ -686,7 +686,7 @@
             "name": "I click the next button",
             "result": {
               "status": "passed",
-              "duration": 175000000
+              "duration": 199000000
             }
           },
           {
@@ -696,7 +696,7 @@
             "name": "Eligibility checks passed page is displayed",
             "result": {
               "status": "passed",
-              "duration": 995000000
+              "duration": 931000000
             }
           },
           {
@@ -706,7 +706,7 @@
             "name": "I can see Further eligibility questions",
             "result": {
               "status": "passed",
-              "duration": 111000000
+              "duration": 146000000
             }
           }
         ]
@@ -743,7 +743,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 149000000
+              "duration": 193000000
             }
           },
           {
@@ -753,7 +753,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 415000000
+              "duration": 310000000
             }
           },
           {
@@ -763,7 +763,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1171000000
+              "duration": 980000000
             }
           },
           {
@@ -773,7 +773,7 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1335000000
+              "duration": 991000000
             }
           },
           {
@@ -783,7 +783,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 122000000
             }
           },
           {
@@ -793,7 +793,7 @@
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 635000000
+              "duration": 656000000
             }
           },
           {
@@ -803,7 +803,7 @@
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 183000000
+              "duration": 175000000
             }
           },
           {
@@ -813,7 +813,7 @@
             "name": "Sole tenant requests a joint tenure page is displayed",
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 6000000
             }
           },
           {
@@ -823,7 +823,7 @@
             "name": "I select a person to add as a joint tenant \"FAKE_Katy FAKE_Turne\"",
             "result": {
               "status": "passed",
-              "duration": 786000000
+              "duration": 951000000
             }
           },
           {
@@ -833,7 +833,7 @@
             "name": "I click the next button",
             "result": {
               "status": "passed",
-              "duration": 174000000
+              "duration": 169000000
             }
           },
           {
@@ -843,7 +843,7 @@
             "name": "Automatic Eligibility checks Failed page is displayed",
             "result": {
               "status": "passed",
-              "duration": 688000000
+              "duration": 822000000
             }
           },
           {
@@ -853,7 +853,7 @@
             "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
             "result": {
               "status": "passed",
-              "duration": 139000000
+              "duration": 225000000
             }
           },
           {
@@ -863,7 +863,7 @@
             "name": "I click on the confirm button",
             "result": {
               "status": "passed",
-              "duration": 168000000
+              "duration": 176000000
             }
           },
           {
@@ -873,7 +873,7 @@
             "name": "'Thank you for your confirmation' message is displayed with a link to Return to Home page",
             "result": {
               "status": "passed",
-              "duration": 768000000
+              "duration": 789000000
             }
           }
         ]
@@ -910,7 +910,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 128000000
+              "duration": 175000000
             }
           },
           {
@@ -920,7 +920,7 @@
             "name": "I create a new \"SEC\" tenure",
             "result": {
               "status": "passed",
-              "duration": 451000000
+              "duration": 422000000
             }
           },
           {
@@ -930,7 +930,7 @@
             "name": "I create person and add to a tenure \"true\"",
             "result": {
               "status": "passed",
-              "duration": 1265000000
+              "duration": 1042000000
             }
           },
           {
@@ -940,7 +940,7 @@
             "name": "I create person and add to a tenure \"\"",
             "result": {
               "status": "passed",
-              "duration": 1306000000
+              "duration": 966000000
             }
           },
           {
@@ -950,7 +950,7 @@
             "name": "I select to initiate a Sole To Joint process",
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 108000000
             }
           },
           {
@@ -960,7 +960,7 @@
             "name": "I accept the terms and conditions",
             "result": {
               "status": "passed",
-              "duration": 649000000
+              "duration": 999000000
             }
           },
           {
@@ -970,7 +970,7 @@
             "name": "I click the start process button",
             "result": {
               "status": "passed",
-              "duration": 184000000
+              "duration": 167000000
             }
           },
           {
@@ -980,7 +980,7 @@
             "name": "Sole tenant requests a joint tenure page is displayed",
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 19000000
             }
           },
           {
@@ -990,7 +990,7 @@
             "name": "I select a person to add as a joint tenant \"Add API E2E Test\"",
             "result": {
               "status": "passed",
-              "duration": 822000000
+              "duration": 940000000
             }
           },
           {
@@ -1000,7 +1000,7 @@
             "name": "I click the next button",
             "result": {
               "status": "passed",
-              "duration": 149000000
+              "duration": 191000000
             }
           },
           {
@@ -1010,7 +1010,7 @@
             "name": "I can see the text \"Add API E2E Test\" adding \"Add API E2E Test\" in the header section",
             "result": {
               "status": "passed",
-              "duration": 685000000
+              "duration": 689000000
             }
           },
           {
@@ -1020,7 +1020,7 @@
             "name": "Eligibility checks passed page is displayed",
             "result": {
               "status": "passed",
-              "duration": 24000000
+              "duration": 22000000
             }
           },
           {
@@ -1030,7 +1030,7 @@
             "name": "I can see Further eligibility questions",
             "result": {
               "status": "passed",
-              "duration": 113000000
+              "duration": 121000000
             }
           },
           {
@@ -1040,7 +1040,7 @@
             "name": "I select the answers for these questions",
             "result": {
               "status": "passed",
-              "duration": 1472000000
+              "duration": 1504000000
             }
           },
           {
@@ -1050,7 +1050,7 @@
             "name": "I click the next button",
             "result": {
               "status": "passed",
-              "duration": 182000000
+              "duration": 189000000
             }
           },
           {
@@ -1060,7 +1060,7 @@
             "name": "the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'",
             "result": {
               "status": "passed",
-              "duration": 689000000
+              "duration": 683000000
             }
           },
           {
@@ -1070,7 +1070,7 @@
             "name": "I select the checkbox 'I confirm that an outcome letter has been sent to the resident'",
             "result": {
               "status": "passed",
-              "duration": 138000000
+              "duration": 169000000
             }
           },
           {
@@ -1080,7 +1080,7 @@
             "name": "I click on the confirm button",
             "result": {
               "status": "passed",
-              "duration": 175000000
+              "duration": 197000000
             }
           },
           {
@@ -1090,7 +1090,7 @@
             "name": "'Thank you for your confirmation' message is displayed with a link to Return to Home page",
             "result": {
               "status": "passed",
-              "duration": 741000000
+              "duration": 738000000
             }
           }
         ]
