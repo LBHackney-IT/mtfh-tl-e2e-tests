@@ -29,6 +29,7 @@ import dynamoDb from "../../../cypress/integration/common/DynamoDb";
 
 import { hasToggle } from "../../helpers/hasToggle";
 import { guid } from "../../helpers/commentText";
+import property from "../../../api/property";
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -48,7 +49,8 @@ const readline = require('readline');
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
-let tenureId ="";
+let tenureId = "";
+let propertyId = "";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -233,7 +235,7 @@ When("I enter any of the following criteria {string}", (searchTerm) => {
   if (searchTerm === "guid") {
     searchTerm = guid;
   }
-  searchPage.searchContainer().type(searchTerm);
+  searchPage.searchContainer().clear().type(searchTerm);
 });
 
 When("I click on the radio button for {string}", (searchType) => {
@@ -505,13 +507,9 @@ Then('the add a new person tenure page is correct', () => {
   addPersonPage.addPersonPageIsDisplayed()
 })
 
-  // Tenure page
-When('I view a Tenure {string}', (record) => {
-  tenurePage.visit(record)
-})
-
-When('I view a Tenure', () => {
-  tenurePage.visit(tenureId)
+// Tenure page
+When('I view a tenure {string}', (id) => {
+  tenurePage.visit(id || tenureId)
 })
 
 Then('the tenure information is displayed', () => {
@@ -535,9 +533,19 @@ And('the edit tenure button is not displayed', () => {
   tenurePage.editTenureButton().should('not.exist')
 })
 
-  // Property page
-When("I view a property {string}", (propertyId) => {
-  propertyPage.visit(propertyId);
+// Property page
+Given("I create a new property", async () => {
+  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
+  await dynamoDb.deleteRecordFromDynamoDB(record)
+  cy.log("Creating Property record");
+  const response = await property.createProperty();
+  cy.log(`Status code ${response.status} returned`);
+  assert.deepEqual(response.status, 201);
+  cy.log(`Property record ${response.data.id} created`);
+  propertyId = response.data.id;
+})
+When("I view a property {string}", (id) => {
+  propertyPage.visit(id || propertyId);
 });
 
 Then('the property information is displayed', () => {
@@ -547,8 +555,8 @@ Then('the property information is displayed', () => {
   propertyPage.propertyViewSidebar().contains('Reference')
 })
 
-Then('I am on the create new tenure page {string}', (tenureId) => {
-  cy.url().should('contain', `tenure/${tenureId}/add`)
+Then('I am on the create new tenure page {string}', (id) => {
+  cy.url().should('contain', `tenure/${id || propertyId}/add`)
 })
 
 When('I click on the new tenure button', () => {
@@ -563,11 +571,11 @@ When('I click on the add new person to tenure button', () => {
 })
 
 And('I click the modal cancel button', () => {
-  modal.cancelButton().click()
+  modal.cancelButton().click({force: true})
 })
 
 And('I click the confirm button', () => {
-  modal.confirmationButton().within().click({force: true})
+  modal.confirmationButton().click({force: true})
 })
 
 Then('the cancel modal is displayed', () => {

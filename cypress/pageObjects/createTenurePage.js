@@ -92,7 +92,7 @@ class CreateTenurePageObjects {
     }
 
     addAsHousholdMember() {
-        return cy.contains('Add as household member')
+        return cy.get('Add as household member')
     }
 
     pageAnnouncementContainer() {
@@ -101,7 +101,7 @@ class CreateTenurePageObjects {
     }
 
     addedHouseholdMembersContainer() {
-        return cy.get('[testid="household-members-container"]')
+        return cy.get('[data-testid="household-members-container"]')
     }
 
     createNewPersonButton() {
