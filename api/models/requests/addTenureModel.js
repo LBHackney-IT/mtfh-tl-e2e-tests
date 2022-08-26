@@ -38,6 +38,32 @@ const createTenureModel = {
     "startOfTenureDate": "2010-01-01"
 }
 
+const secureTenureModel = {
+    "tenureType": {
+        "code": "SEC",
+        "description": "Secure"
+    },
+    "paymentReference": "9156853502",
+    "householdMembers": [
+        {
+            "id": "2e03113a-f404-acdd-fe16-0eb1351526dc",
+            "type": "person",
+            "fullName": "FAKE_Katy FAKE_Turne",
+            "isResponsible": false,
+            "dateOfBirth": "1962-05-10",
+            "personTenureType": "HouseholdMember"
+        }
+    ],
+    "tenuredAsset": {
+        "id": "667c6809-d27b-40c6-a263-48670e253b2f",
+        "type": "Dwelling",
+        "fullAddress": "ROOM 106 CAPE HOUSE 39 Dalston Lane E8 3DF",
+        "uprn": "10008334555"
+    },
+    "startOfTenureDate": "2010-01-01"
+}
+
 module.exports = {
-    createTenureModel
+    createTenureModel,
+    secureTenureModel
 }

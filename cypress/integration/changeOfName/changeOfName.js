@@ -239,7 +239,7 @@ Then("a modal dialog box is displayed", () => {
     modal.modalBody().should('be.visible');
     modal.modalBody().should('contain', 'Approve change of name application?');
     modal.modalReason().type('I approve this application because the documents are sufficient');
-    reviewAppPage.confirmationModelApprove().click();
+    reviewAppPage.confirmationModalApprove().click();
 });
 Then("I am on the HO and AHM Declined page", () => {
     cy.contains('Supporting documents approved');

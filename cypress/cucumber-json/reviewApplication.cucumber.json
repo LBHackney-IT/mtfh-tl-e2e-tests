@@ -11,7 +11,7 @@
       {
         "id": "as-a-housing-officer;ac1:-view-the-confirmation-of-completed-tenure-investigation-page",
         "keyword": "Scenario",
-        "line": 17,
+        "line": 11,
         "name": "AC1: View the Confirmation of completed tenure investigation page",
         "tags": [],
         "type": "scenario",
@@ -23,67 +23,77 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 222000000
+              "duration": 235000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I create a new \"SEC\" tenure",
+            "result": {
+              "status": "passed",
+              "duration": 591000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I create person and add to a tenure \"true\"",
+            "result": {
+              "status": "passed",
+              "duration": 1192000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I create person and add to a tenure \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 1254000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 9,
-            "name": "The tenure investigation has been completed for tenure \"dfaab345-18b3-2907-ab75-25b5b5904c93\"",
+            "line": 12,
+            "name": "The tenure investigation has been completed for tenure",
             "result": {
               "status": "passed",
-              "duration": 14074000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 10,
-            "name": "I am not able to choose the recommendation until I have ticked the box",
-            "result": {
-              "status": "passed",
-              "duration": 164000000
+              "duration": 18760000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 11,
+            "line": 13,
             "name": "I tick the box \"I confirm that the tenure investigation has been completed\"",
             "result": {
               "status": "passed",
-              "duration": 291000000
+              "duration": 505000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 12,
+            "line": 14,
             "name": "I am able to choose which recommendation the tenure investigator has given Approve Decline or Appointment",
             "result": {
               "status": "passed",
-              "duration": 152000000
+              "duration": 320000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 13,
-            "name": "case activity log is recorded",
-            "result": {
-              "status": "passed",
-              "duration": 8000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
+            "line": 15,
             "name": "the progress indicator is still in \"Review Application\"",
             "result": {
               "status": "passed",
-              "duration": 40000000
+              "duration": 88000000
             }
           }
         ]
@@ -91,7 +101,7 @@
       {
         "id": "as-a-housing-officer;tenure-investigation-recommendation---approve,-ho-review---approve-application",
         "keyword": "Scenario",
-        "line": 37,
+        "line": 17,
         "name": "Tenure Investigation recommendation - Approve, HO Review - Approve application",
         "tags": [],
         "type": "scenario",
@@ -103,137 +113,157 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 262000000
+              "duration": 949000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I create a new \"SEC\" tenure",
+            "result": {
+              "status": "passed",
+              "duration": 564000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I create person and add to a tenure \"true\"",
+            "result": {
+              "status": "passed",
+              "duration": 1286000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I create person and add to a tenure \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 1304000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 22,
-            "name": "The tenure investigation has been completed for tenure \"dfaab345-18b3-2907-ab75-25b5b5904c93\"",
+            "line": 18,
+            "name": "The tenure investigation has been completed for tenure",
             "result": {
               "status": "passed",
-              "duration": 13590000000
+              "duration": 11961000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 23,
+            "line": 19,
             "name": "I tick the box \"I confirm that the tenure investigation has been completed\"",
             "result": {
               "status": "passed",
-              "duration": 280000000
+              "duration": 315000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "I select the recommendation as 'Approve'",
+            "result": {
+              "status": "passed",
+              "duration": 1191000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I select the option pass the case to Area Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 203000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "the decision is selected as 'Approve'",
+            "result": {
+              "status": "passed",
+              "duration": 181000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "I confirm the instruction is received by Area Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 309000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 24,
-            "name": "I select the recommendation as 'Approve'",
+            "name": "I enter Area Housing Manager's name",
             "result": {
               "status": "passed",
-              "duration": 1073000000
+              "duration": 956000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 25,
-            "name": "I select the option pass the case to Area Housing Manager",
+            "name": "I click on Confirm button",
             "result": {
               "status": "passed",
-              "duration": 195000000
+              "duration": 292000000
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
+            "keyword": "Then ",
             "line": 26,
-            "name": "the decision is selected as 'Approve'",
+            "name": "Sole to joint application approved text is displayed",
             "result": {
               "status": "passed",
-              "duration": 179000000
+              "duration": 952000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 27,
-            "name": "I confirm the instruction is received by Area Housing Manager",
+            "name": "\"Approve\" status box is displayed \"\"",
             "result": {
               "status": "passed",
-              "duration": 192000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 28,
-            "name": "I enter Area Housing Manager's name",
-            "result": {
-              "status": "passed",
-              "duration": 1115000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 29,
-            "name": "I click on Confirm button",
-            "result": {
-              "status": "passed",
-              "duration": 217000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 30,
-            "name": "model dialog is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 35000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 31,
-            "name": "I select Approve",
-            "result": {
-              "status": "passed",
-              "duration": 219000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 32,
-            "name": "Sole to joint application approved text is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 609000000
+              "duration": 47000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 33,
+            "line": 28,
             "name": "I enter data and time and click Continue button",
             "result": {
               "status": "passed",
-              "duration": 1994000000
+              "duration": 2245000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 34,
+            "line": 29,
             "name": "Office appointment scheduled message is displayed",
             "result": {
               "status": "passed",
-              "duration": 621000000
+              "duration": 873000000
             }
           }
         ]
@@ -241,7 +271,7 @@
       {
         "id": "as-a-housing-officer;tenure-investigation-recommendation---appointment,-ho-review---approve-application",
         "keyword": "Scenario",
-        "line": 57,
+        "line": 48,
         "name": "Tenure Investigation recommendation - Appointment, HO Review - Approve application",
         "tags": [],
         "type": "scenario",
@@ -253,64 +283,114 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 231000000
+              "duration": 423000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I create a new \"SEC\" tenure",
+            "result": {
+              "status": "passed",
+              "duration": 513000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I create person and add to a tenure \"true\"",
+            "result": {
+              "status": "passed",
+              "duration": 1212000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I create person and add to a tenure \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 1218000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 40,
-            "name": "The tenure investigation has been completed for tenure \"dfaab345-18b3-2907-ab75-25b5b5904c93\"",
+            "line": 32,
+            "name": "The tenure investigation has been completed for tenure",
             "result": {
               "status": "passed",
-              "duration": 13237000000
+              "duration": 10344000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 41,
+            "line": 33,
             "name": "I tick the box \"I confirm that the tenure investigation has been completed\"",
             "result": {
               "status": "passed",
-              "duration": 309000000
+              "duration": 149000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 42,
+            "line": 34,
             "name": "I select the recommendation as 'Appointment'",
             "result": {
               "status": "passed",
-              "duration": 807000000
+              "duration": 903000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 43,
+            "line": 35,
             "name": "I select the option pass the case to Area Housing Manager",
             "result": {
               "status": "passed",
-              "duration": 217000000
+              "duration": 136000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 44,
+            "line": 36,
             "name": "the decision is selected as 'Approve'",
             "result": {
               "status": "passed",
-              "duration": 208000000
+              "duration": 131000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 45,
+            "line": 37,
             "name": "I confirm the instruction is received by Area Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 148000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "I enter Area Housing Manager's name",
+            "result": {
+              "status": "passed",
+              "duration": 683000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I click on Confirm button",
             "result": {
               "status": "passed",
               "duration": 201000000
@@ -318,92 +398,62 @@
           },
           {
             "arguments": [],
-            "keyword": "And ",
-            "line": 46,
-            "name": "I enter Area Housing Manager's name",
-            "result": {
-              "status": "passed",
-              "duration": 757000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 47,
-            "name": "I click on Confirm button",
-            "result": {
-              "status": "passed",
-              "duration": 208000000
-            }
-          },
-          {
-            "arguments": [],
             "keyword": "Then ",
-            "line": 48,
+            "line": 40,
             "name": "model dialog is displayed with message 'Tenure investigator recommendation: Interview Applicant'",
             "result": {
               "status": "passed",
-              "duration": 58000000
+              "duration": 36000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 49,
-            "name": "I enter Reason for Approval",
+            "line": 41,
+            "name": "I enter \"Reason for Approval\" \"I have checked the documents and approving this application\"",
             "result": {
               "status": "passed",
-              "duration": 1388000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 50,
-            "name": "I select Approve",
-            "result": {
-              "status": "passed",
-              "duration": 250000000
+              "duration": 1728000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 51,
+            "line": 42,
             "name": "Sole to joint application approved text is displayed",
             "result": {
               "status": "passed",
-              "duration": 604000000
+              "duration": 707000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "\"Approve\" status box is displayed \"I have checked the documents and approving this application\"",
+            "result": {
+              "status": "passed",
+              "duration": 78000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 52,
+            "line": 44,
             "name": "I enter data and time and click Continue button",
             "result": {
               "status": "passed",
-              "duration": 2261000000
+              "duration": 2136000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 53,
+            "line": 45,
             "name": "Office appointment scheduled message is displayed",
             "result": {
               "status": "passed",
-              "duration": 605000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 54,
-            "name": "Office appointment scheduled message is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 53000000
+              "duration": 836000000
             }
           }
         ]
@@ -411,7 +461,7 @@
       {
         "id": "as-a-housing-officer;tenure-investigation-recommendation---decline,-ho-review---approve-application",
         "keyword": "Scenario",
-        "line": 76,
+        "line": 67,
         "name": "Tenure Investigation recommendation - Decline, HO Review - Approve application",
         "tags": [],
         "type": "scenario",
@@ -423,147 +473,177 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 224000000
+              "duration": 510000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I create a new \"SEC\" tenure",
+            "result": {
+              "status": "passed",
+              "duration": 496000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I create person and add to a tenure \"true\"",
+            "result": {
+              "status": "passed",
+              "duration": 1250000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I create person and add to a tenure \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 1351000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 60,
-            "name": "The tenure investigation has been completed for tenure \"dfaab345-18b3-2907-ab75-25b5b5904c93\"",
+            "line": 51,
+            "name": "The tenure investigation has been completed for tenure",
             "result": {
               "status": "passed",
-              "duration": 13149000000
+              "duration": 13260000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 61,
+            "line": 52,
             "name": "I tick the box \"I confirm that the tenure investigation has been completed\"",
             "result": {
               "status": "passed",
-              "duration": 220000000
+              "duration": 329000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 53,
+            "name": "I select the recommendation as 'Decline'",
+            "result": {
+              "status": "passed",
+              "duration": 1204000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 54,
+            "name": "I select the option pass the case to Area Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 176000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "the decision is selected as 'Approve'",
+            "result": {
+              "status": "passed",
+              "duration": 182000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 56,
+            "name": "I confirm the instruction is received by Area Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 186000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 57,
+            "name": "I enter Area Housing Manager's name",
+            "result": {
+              "status": "passed",
+              "duration": 761000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I click on Confirm button",
+            "result": {
+              "status": "passed",
+              "duration": 226000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "model dialog is displayed with message 'Tenure investigator recommendation: Decline application'",
+            "result": {
+              "status": "passed",
+              "duration": 68000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 60,
+            "name": "I enter \"Reason for Approval\" \"I have checked the documents and approving this application\"",
+            "result": {
+              "status": "passed",
+              "duration": 1447000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 61,
+            "name": "Sole to joint application approved text is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 857000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 62,
-            "name": "I select the recommendation as 'Decline'",
+            "name": "\"Approve\" status box is displayed \"I have checked the documents and approving this application\"",
             "result": {
               "status": "passed",
-              "duration": 1078000000
+              "duration": 85000000
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
+            "keyword": "When ",
             "line": 63,
-            "name": "I select the option pass the case to Area Housing Manager",
-            "result": {
-              "status": "passed",
-              "duration": 200000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 64,
-            "name": "the decision is selected as 'Approve'",
-            "result": {
-              "status": "passed",
-              "duration": 207000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 65,
-            "name": "I confirm the instruction is received by Area Housing Manager",
-            "result": {
-              "status": "passed",
-              "duration": 185000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 66,
-            "name": "I enter Area Housing Manager's name",
-            "result": {
-              "status": "passed",
-              "duration": 779000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 67,
-            "name": "I click on Confirm button",
-            "result": {
-              "status": "passed",
-              "duration": 215000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 68,
-            "name": "model dialog is displayed with message 'Tenure investigator recommendation: Decline application'",
-            "result": {
-              "status": "passed",
-              "duration": 55000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 69,
-            "name": "I enter Reason for Approval",
-            "result": {
-              "status": "passed",
-              "duration": 1273000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 70,
-            "name": "I select Approve",
-            "result": {
-              "status": "passed",
-              "duration": 216000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 71,
-            "name": "Sole to joint application approved text is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 646000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 72,
             "name": "I enter data and time and click Continue button",
             "result": {
               "status": "passed",
-              "duration": 1911000000
+              "duration": 1889000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 73,
+            "line": 64,
             "name": "Office appointment scheduled message is displayed",
             "result": {
               "status": "passed",
-              "duration": 561000000
+              "duration": 770000000
             }
           }
         ]
@@ -571,7 +651,7 @@
       {
         "id": "as-a-housing-officer;tenure-investigation-recommendation---approve,-ho-review---decline-application",
         "keyword": "Scenario",
-        "line": 95,
+        "line": 86,
         "name": "Tenure Investigation recommendation - Approve, HO Review - Decline application",
         "tags": [],
         "type": "scenario",
@@ -583,147 +663,177 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 256000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 79,
-            "name": "The tenure investigation has been completed for tenure \"dfaab345-18b3-2907-ab75-25b5b5904c93\"",
-            "result": {
-              "status": "passed",
-              "duration": 12442000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 80,
-            "name": "I tick the box \"I confirm that the tenure investigation has been completed\"",
-            "result": {
-              "status": "passed",
-              "duration": 201000000
+              "duration": 326000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 81,
+            "line": 7,
+            "name": "I create a new \"SEC\" tenure",
+            "result": {
+              "status": "passed",
+              "duration": 476000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I create person and add to a tenure \"true\"",
+            "result": {
+              "status": "passed",
+              "duration": 1208000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I create person and add to a tenure \"\"",
+            "result": {
+              "status": "passed",
+              "duration": 1183000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 70,
+            "name": "The tenure investigation has been completed for tenure",
+            "result": {
+              "status": "passed",
+              "duration": 11004000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 71,
+            "name": "I tick the box \"I confirm that the tenure investigation has been completed\"",
+            "result": {
+              "status": "passed",
+              "duration": 167000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
             "name": "I select the recommendation as 'Approve'",
             "result": {
               "status": "passed",
-              "duration": 991000000
+              "duration": 966000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 73,
+            "name": "I select the option pass the case to Area Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "the decision is selected as 'Decline'",
+            "result": {
+              "status": "passed",
+              "duration": 159000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 75,
+            "name": "I confirm the instruction is received by Area Housing Manager",
+            "result": {
+              "status": "passed",
+              "duration": 132000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 76,
+            "name": "I enter Area Housing Manager's name",
+            "result": {
+              "status": "passed",
+              "duration": 660000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 77,
+            "name": "I click on Confirm button",
+            "result": {
+              "status": "passed",
+              "duration": 165000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 78,
+            "name": "model dialog is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 24000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 79,
+            "name": "I enter \"Reason for Rejection\" \"I disagree with the Tenure Officer approval as the docs are not original\"",
+            "result": {
+              "status": "passed",
+              "duration": 1686000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 80,
+            "name": "I click Decline button",
+            "result": {
+              "status": "passed",
+              "duration": 224000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 81,
+            "name": "\"Decline\" status box is displayed \"I disagree with the Tenure Officer approval as the docs are not original\"",
+            "result": {
+              "status": "passed",
+              "duration": 627000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 82,
-            "name": "I select the option pass the case to Area Housing Manager",
+            "name": "'Sole to joint application will be closed' text is displayed",
             "result": {
               "status": "passed",
-              "duration": 193000000
+              "duration": 47000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 83,
-            "name": "the decision is selected as 'Decline'",
-            "result": {
-              "status": "passed",
-              "duration": 213000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 84,
-            "name": "I confirm the instruction is received by Area Housing Manager",
-            "result": {
-              "status": "passed",
-              "duration": 189000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 85,
-            "name": "I enter Area Housing Manager's name",
-            "result": {
-              "status": "passed",
-              "duration": 800000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 86,
-            "name": "I click on Confirm button",
-            "result": {
-              "status": "passed",
-              "duration": 200000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 87,
-            "name": "model dialog is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 48000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 88,
-            "name": "I enter Reason for Rejection",
-            "result": {
-              "status": "passed",
-              "duration": 1580000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 89,
-            "name": "I click Decline button",
-            "result": {
-              "status": "passed",
-              "duration": 183000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 90,
-            "name": "'Sole to joint tenure application declined' text is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 424000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 91,
-            "name": "'Sole to joint application will be closed' text is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 39000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 92,
             "name": "'I confirm that an outcome letter has been sent to the resident' text is displayed",
             "result": {
               "status": "passed",
-              "duration": 39000000
+              "duration": 50000000
             }
           }
         ]

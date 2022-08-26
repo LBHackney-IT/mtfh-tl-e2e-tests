@@ -7,8 +7,10 @@ const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const processPage = new ProcessesPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 
-Given("I select to initiate a Sole To Joint process {string}", (tenureId) => {
-    processPage.visit(tenureId)
+Given("I select to initiate a Sole To Joint process", () => {
+  cy.getTenureFixture().then(async (tenureInfo) => {
+    processPage.visit(tenureInfo.id)
+  })
 })
 
 Then("the property details are shown", () => {
@@ -38,8 +40,10 @@ When("I click the cancel button", () => {
     processPage.cancelProcessLink().click()
 })
 
-Then("I am taken back to the processes menu {string}", (tenureId) => {
-    cy.url().should("include", `processes/tenure/${tenureId}`)
+Then("I am taken back to the processes menu", () => {
+  cy.getTenureFixture().then(async (tenureInfo) => {
+    cy.url().should("include", `processes/tenure/${tenureInfo.id}`)
+  })
 })
 
 When("I click the back link", () => {
@@ -52,11 +56,11 @@ Then("Sole tenant requests a joint tenure page is displayed", () => {
 // When("I select a person to add as a joint tenant", () => {
 //     processPage.personRadioButton().click();
 // });
-When("I select a person to add as a joint tenant", () => {
-    cy.get('[type="radio"].govuk-radios__input').first().check();
+When("I select a person to add as a joint tenant {string}", (fullName) => {
+  cy.findByLabelText(fullName).click();
 });
 Then("Eligibility checks passed page is displayed", () => {
-    processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
+    processPage.textAutomaticEligibilityChecksPassed().should('be.visible');
 });
 Then("I can see Further eligibility questions", () => {
     tenureReqDocsPage.selectYesFor12Months().should('exist');
@@ -85,7 +89,7 @@ When("I select the answers for these questions",
         tenureReqDocsPage.selectNoForHoldATenancyElseWhere().click();
     });
 Then("the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'", () => {
-    processPage.textAutomaticEligibiltyChecksPassed().should('be.visible');
+    processPage.textAutomaticEligibilityChecksPassed().should('be.visible');
     processPage.textAutomaticChecksFailed().should('be.visible');
 });
 Then("I can see the text {string} adding {string} in the header section", (tenant, proposedTenant) => {

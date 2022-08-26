@@ -5,6 +5,8 @@
   "main": "index.js",
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/integration",
+    "commonPath": "cypress/integration/common",
     "cucumberJson": {
       "generate": true,
       "outputFolder": "./cypress/cucumber-json"

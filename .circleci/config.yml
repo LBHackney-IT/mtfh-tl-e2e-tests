@@ -96,6 +96,7 @@ commands:
                           export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                           export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
+                          export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
