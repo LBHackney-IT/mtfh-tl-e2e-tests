@@ -16,6 +16,7 @@ Feature: As an internal Hackney user (eg. Housing Officer)
     | person                               | alertType    | alertDescription   |
     | 8d027289-0f0e-56a2-6473-980544f46b29 | Verbal Abuse | Tenant was abusive |
 
+    # commented the below as its failing in Dev - record not found in Dev
 #  @SmokeTest
 #  Scenario Outline: AC2 - Viewing Discretion alert details on a property page
 #    Given A property "<property>" has a person with a discretion alert assigned to them

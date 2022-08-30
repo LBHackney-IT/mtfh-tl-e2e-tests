@@ -1,8 +1,10 @@
+
 const envConfig = require('../../environment-config')
+const baseUrl = require('../../environment-config').baseUrl
 
 class ChangeOfNamePageObjects {
-    visit(homePage) {
-        cy.visit(`${envConfig.baseUrl}`);
+    visitHomePage() {
+        cy.visit(baseUrl)
         cy.injectAxe();
     }
     visit(personId) {
@@ -20,11 +22,7 @@ class ChangeOfNamePageObjects {
     searchButton() {
         //return cy.get('.govuk-button lbh-button');
         //return cy.get('button[title="Search"]');
-        return cy.get('.govuk-button');
-    };
-    searchPerson() {
-        //return cy.findAllByText('Active');
-        return cy.get('.mtfh-link-box mtfh-search-person').contains('Active');
+        return cy.get('#search-form > .govuk-button');
     };
     newProcessButton() {
         return cy.contains('New Process');
@@ -37,6 +35,24 @@ class ChangeOfNamePageObjects {
     };
     checkBoxTenantInfo() {
         return cy.get('#condition');
+    };
+    checkBoxTenantDeclaration() {
+        return cy.get('#declaration-form-group-field');
+    };
+    checkBoxValidExampleOfOne() {
+        return cy.get('#confirmation-for-valid-documents');
+    };
+    errorTenantDeclaration() {
+        return cy.get('#declaration-form-group-error');
+    };
+    errorMessage() {
+            return cy.get('.govuk-error-message lbh-error-message');
+    };
+    errorReviewDocuments() {
+        return cy.get('#review-documents-form-group-error');
+    };
+    linkDes(){
+        return cy.findByRole('link', {name:/View documents on the Document Evidence Store/i});
     };
     buttonStartProcess() {
         return cy.contains('Start process');
@@ -65,12 +81,41 @@ class ChangeOfNamePageObjects {
     personLNameError() {
         return cy.get('#person-form-surname-error');
     }
-    statusStepper() {
-        return cy.get('#mtfh-stepper__circle-inner');
-    };
     statusActiveCheck(){
         return cy.get('.mtfh-stepper__step--active');
     };
-
+    outcomeTenureApprove(){
+        return cy.get('#tenure-investigation-recommendation-approve');
+    }
+    outcomeTenureDecline(){
+        return cy.get('#tenure-investigation-recommendation-decline');
+    }
+    outcomeTenureAppointment(){
+        return cy.get('#tenure-investigation-recommendation-appointment');
+    };
+    checkboxConfirmTenureInvest(){
+        return cy.get("#tenure-investigation-completed-field");
+    };
+    optionAHMReview() {
+        return cy.get('#ho-review');
+    };
+    ahmDecisionApprove(){
+        return cy.get('#ho-review-approve');
+    };
+    ahmDecisionDecline(){
+        return cy.get('#ho-review-decline');
+    };
+    ahmConfirmBox() {
+        return cy.get('#confirm-form-group-field');
+    };
+    ahmNameInput() {
+        return cy.get('#area-housing-manager-name-form-group-field');
+    };
+    buttonSubmitCase(){
+        return cy.get('.mtfh-layout__main > :nth-child(6)');
+    };
+    errorAreaHousingManagerName() {
+        return cy.get('#area-housing-manager-name-form-group-error')
+    };
 }
 export default ChangeOfNamePageObjects;
