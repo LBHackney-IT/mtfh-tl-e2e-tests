@@ -117,8 +117,12 @@ Feature: As an internal Hackney User
       |personname|
       |   za     |
 
-  Scenario Outline: AC2 - Field Validation error messages for Title, FirstName and LastName
-    Given I am on the Person page for "<personid>"
+  Scenario Outline: AC3 - Field Validation error messages for Title, FirstName and LastName
+    Given I am on the MMH home page
+    When I enter "<personname>" as search criteria
+    And I select 'Person' and click on search button
+    Then I am on the Person search results page for "<personname>"
+    When I select person
     When I click on 'New Process' button
     And I select 'Changes to a tenancy' from the processes menu
     Then a further sub menu is expanded into view
@@ -140,10 +144,10 @@ Feature: As an internal Hackney User
     And I click on Next button
     Then a validation error message for 'Title' is displayed
     Examples:
-      | personname | personid                             |
-      | za         | 4b260032-8c67-9878-c4db-dc72252a131f |
+      | personname |
+      | za         |
 
-  Scenario Outline: AC3 - CoN Process through 'Make an appointment to check supporting documents'
+  Scenario Outline: AC4 - CoN Process through 'Make an appointment to check supporting documents'
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
     And I select 'Person' and click on search button
@@ -172,7 +176,7 @@ Feature: As an internal Hackney User
       |personname|
       |   za     |
 
-  Scenario Outline: AC4 - Close case at Review Documents stage
+  Scenario Outline: AC5 - Close case at Review Documents stage
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
     And I select 'Person' and click on search button
@@ -207,7 +211,6 @@ Feature: As an internal Hackney User
     Then I can see the Case details recorded for 'Process closed'
     When I click Close activity history button
     Then 'Thank you for your confirmation' message is displayed
-
     Examples:
       |personname|
       |   za     |

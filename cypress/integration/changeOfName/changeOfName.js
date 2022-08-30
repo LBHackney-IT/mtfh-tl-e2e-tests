@@ -29,6 +29,7 @@ When("I select 'Person' and click on search button", () => {
 });
 Then("I am on the Person search results page for {string}", (personSearch) => {
     cy.findAllByText('Search Results').should('exist');
+    cy.get('#limit-field').select('40 items').click;
     searchPersonResults(personSearch);
 });
 
@@ -36,20 +37,20 @@ When("I select person", () => {
     cy.get('@searchPersonResult').then(res => {
             for (let i = 0; i < res.results.persons.length; i++) {
                 let person = res.results.persons[i];
-                if (person.tenures[0].type === "Secure" && person.tenures[0].isActive === true) {
-                    cy.log(person.firstname);
-                    let title;
-                    if(person.title === 'Ms' || person.title === 'Mrs')
-                    {
-                        title = person.title + "."
+                if (person.tenures.length === 1) {
+                    if (person.tenures[0].type === "Secure" && person.tenures[0].isActive === true) {
+                        cy.log(person.firstname);
+                        let title;
+                        if (person.title === 'Ms' || person.title === 'Mrs') {
+                            title = person.title + "."
+                        } else title = person.title;
+                        let fullname = title + " " + person.firstname + " " + person.surname;
+                        cy.findByRole('link', {name: fullname}).click();
+                        break;
+                    } else {
+                        i++;
                     }
-                    else title = person.title;
-                    let fullname = title + " " + person.firstname + " " + person.surname;
-                    cy.findByRole('link', {name:fullname}).click();
-                    break;
-                } else {
-                    i++;
-                }
+                } else i++;
             }
     });
 
@@ -58,6 +59,7 @@ When("I select person", () => {
 
 When("I click on 'New Process' button", (personID) => {
     changeOfName.newProcessButton().click();
+
 });
 When("I select 'Changes to a tenancy' from the processes menu", () => {
     changeOfName.changeToATenancyLink().click();
