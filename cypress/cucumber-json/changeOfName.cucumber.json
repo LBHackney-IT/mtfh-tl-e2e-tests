@@ -23,7 +23,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 218000000
+              "duration": 227000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 572000000
+              "duration": 700000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 2729000000
+              "duration": 2151000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 445000000
+              "duration": 1066000000
             }
           },
           {
@@ -63,7 +63,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 438000000
+              "duration": 558000000
             }
           },
           {
@@ -72,9 +72,8 @@
             "line": 14,
             "name": "I select person",
             "result": {
-              "status": "failed",
-              "duration": 10314000000,
-              "error_message": "TestingLibraryElementError: Timed out retrying after 10000ms: Unable to find an accessible element with the role \"link\" and name \"Miss FAKE_Suzanne FAKE_Cook\"\n\nHere are the accessible roles:\n\n  document:\n\n  Name \"\":\n  <body\n    class=\"govuk-template__body js-enabled\"\n  />\n\n  --------------------------------------------------\n  link:\n\n  Name \"Skip to main content\":\n  <a\n    class=\"govuk-skip-link lbh-skip-link\"\n    href=\"#content\"\n  />\n\n  Name \"Hackney Hackney Manage My Home\":\n  <a\n    class=\"lbh-header__title-link\"\n    href=\"/\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"suggest a new feature\":\n  <a\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"Home\":\n  <a\n    class=\"govuk-back-link lbh-back-link lbh-link--no-visited-state\"\n    href=\"/\"\n  />\n\n  Name \"Dr. ABCABElizabeth FAKE_Brown\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/cfe7f73a-9076-7e55-1d6b-425adb8654ae\"\n  />\n\n  Name \"Other ABCSuzanne 123Woods\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/80edc9ef-18ed-105f-d523-ece83c335187\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Arnold\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/842be5c2-5553-8652-8be1-b18b358410ea\"\n  />\n\n  Name \"Mr. FAKE_Elizabeth FAKE_Henderson\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/637c52cc-c05e-05ad-ef5a-65e70da92307\"\n  />\n\n  Name \"Mrs. FAKE_Suzanne FAKE_Macdonald\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/8b2192cc-de5c-ee4f-94e4-622dc0475a8a\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Allen\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/0e1345d3-df3b-01c9-7ddf-1dc3735d49b6\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Norman\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f7ac0700-1675-8266-3c8b-498e27016117\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Perkins\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/b4e686cd-fb82-85d4-f7ad-35357f41d601\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Hughes\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/6b7848f7-f2c2-4201-c6cf-fc4966cecc9c\"\n  />\n\n  Name \"Other FAKE_Suzanne FAKE_Henry\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f29482f7-06d7-f49a-f1d2-5f390247c64b\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Law\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/ab401a81-30b3-85b4-190b-50b92ae0df38\"\n  />\n\n  Name \"Mr. FAKE_Suzanne FAKE_Lee\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/3097633a-691c-3bce-c964-7d49796b363d\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Make a suggestion\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Accessibility statement\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://drive.google.com/file/d/19VOGIul60kxv79VuSu9CEZfnJR-HB0hY/view?usp=sharing\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  --------------------------------------------------\n  banner:\n\n  Name \"\":\n  <header />\n\n  --------------------------------------------------\n  navigation:\n\n  Name \"header navigation\":\n  <nav\n    aria-label=\"header navigation\"\n    class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n  />\n\n  Name \"\":\n  <nav\n    class=\"lbh-pagination\"\n    role=\"navigation\"\n  />\n\n  --------------------------------------------------\n  button:\n\n  Name \"Sign out\":\n  <button\n    class=\"govuk-link lbh-link lbh-link--no-visited-state lbh-signout\"\n  />\n\n  Name \"Search again\":\n  <button\n    class=\"govuk-button lbh-button\"\n    type=\"button\"\n  />\n\n  Name \"Page 1\":\n  <button\n    aria-current=\"page\"\n    aria-label=\"Page 1\"\n    class=\"lbh-pagination__link lbh-pagination__link--current\"\n  />\n\n  Name \"Page 2\":\n  <button\n    aria-label=\"Page 2\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 3\":\n  <button\n    aria-label=\"Page 3\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 4\":\n  <button\n    aria-label=\"Page 4\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 5\":\n  <button\n    aria-label=\"Page 5\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Next\":\n  <button\n    class=\"lbh-pagination__link lbh-pagination__link--next\"\n    rel=\"next\"\n  />\n\n  --------------------------------------------------\n  main:\n\n  Name \"\":\n  <main\n    class=\"mtfh-main-wrapper\"\n    id=\"main-content\"\n  />\n\n  --------------------------------------------------\n  heading:\n\n  Name \"Search Results\":\n  <h1\n    class=\"lbh-heading-h1\"\n  />\n\n  Name \"Person: za\":\n  <h2\n    class=\"lbh-heading-h2\"\n  />\n\n  --------------------------------------------------\n  region:\n\n  Name \"\":\n  <div\n    aria-live=\"polite\"\n    class=\"mtfh-search-controls__status\"\n    role=\"region\"\n  />\n\n  --------------------------------------------------\n  combobox:\n\n  Name \"Sort by:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"sortBy-field\"\n  />\n\n  Name \"Show:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"limit-field\"\n  />\n\n  --------------------------------------------------\n  option:\n\n  Name \"Best match\":\n  <option\n    value=\"best\"\n  />\n\n  Name \"Last name A-Z\":\n  <option\n    value=\"surname-asc\"\n  />\n\n  Name \"Last name Z-A\":\n  <option\n    value=\"surname-desc\"\n  />\n\n  Name \"12 items\":\n  <option\n    value=\"12\"\n  />\n\n  Name \"20 items\":\n  <option\n    value=\"20\"\n  />\n\n  Name \"40 items\":\n  <option\n    value=\"40\"\n  />\n\n  --------------------------------------------------\n  list:\n\n  Name \"\":\n  <ul\n    class=\"lbh-pagination__list\"\n  />\n\n  Name \"\":\n  <ul\n    class=\"mtfh-footer__menu\"\n  />\n\n  --------------------------------------------------\n  listitem:\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  --------------------------------------------------\n  contentinfo:\n\n  Name \"\":\n  <footer\n    class=\"mtfh-footer\"\n  />\n\n  --------------------------------------------------\n\nIgnored nodes: comments, <script />, <style />\n<html\n  lang=\"en\"\n>\n  <head>\n     \n    <meta\n      charset=\"UTF-8\"\n    />\n    <meta\n      content=\"width=device-width,initial-scale=1\"\n      name=\"viewport\"\n    />\n    <meta\n      content=\"ie=edge\"\n      http-equiv=\"X-UA-Compatible\"\n    />\n    <title>\n      Manage my Home - Hackney Council\n    </title>\n    <meta\n      content=\"systemjs-importmap\"\n      name=\"importmap-type\"\n    />\n    <link\n      href=\"https://cdnjs.cloudflare.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"https://fonts.googleapis.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"/root-config.e831073799f1e9e46457.css\"\n      rel=\"stylesheet\"\n    />\n    <template\n      id=\"single-spa-layout-authorised\"\n    />\n    <template\n      id=\"single-spa-layout-public\"\n    />\n    <template\n      id=\"single-spa-layout-header\"\n    />\n    <template\n      id=\"single-spa-layout-footer\"\n    />\n  </head>\n  <body\n    class=\"govuk-template__body js-enabled\"\n  >\n    <a\n      class=\"govuk-skip-link lbh-skip-link\"\n      href=\"#content\"\n    >\n      Skip to main content\n    </a>\n    <header>\n      <div\n        id=\"single-spa-application:@mtfh/header\"\n      >\n        <div\n          class=\"lbh-header\"\n        >\n          <div\n            class=\"lbh-header__main\"\n          >\n            <nav\n              aria-label=\"header navigation\"\n              class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n            >\n              <div\n                class=\"mtfh-header__section\"\n              >\n                <div\n                  class=\"lbh-header__title\"\n                >\n                  <a\n                    class=\"lbh-header__title-link\"\n                    href=\"/\"\n                  >\n                    <svg\n                      class=\"lbh-header__logo\"\n                      focusable=\"false\"\n                      height=\"37px\"\n                      viewBox=\"0 0 208 37\"\n                      width=\"208px\"\n                      xmlns=\"http://www.w3.org/2000/svg\"\n                    >\n                      <title>\n                        Hackney\n                      </title>\n                      <g\n                        fill=\"currentColor\"\n                        fill-rule=\"evenodd\"\n                        stroke=\"none\"\n                      >\n                        <path\n                          d=\"M36,15.9985404 C36,9.03922642 32.0578091,3.00529101 26.2909886,0 L26.2909886,12.0328407 L9.70901142,12.0328407 L9.70901142,0 C3.94073354,3.00529101 0,9.03922642 0,15.9985404 C0,22.9607736 3.94073354,28.9961686 9.70901142,32 L9.70901142,19.9671593 L26.2909886,19.9671593 L26.2909886,32 C32.0578091,28.9961686 36,22.959314 36,15.9985404\"\n                        />\n                        <polyline\n                          points=\"42 1 50.8590247 1 50.8590247 11.1301668 59.1380971 11.1301668 59.1380971 1 68 1 68 30 59.1380971 30 59.1380971 18.5708703 50.8590247 18.5708703 50.8590247 30 42 30 42 1\"\n                        />\n                        <path\n                          d=\"M91.0145371,16.1849059 C91.0145371,12.1530391 91.0951926,8 80.9296736,8 C75.887975,8 70.2303622,8.96793653 69.9854629,14.8548948 L77.5274802,14.8548948 C77.5700077,13.9417743 78.0612726,12.6824471 80.5615914,12.6824471 C81.8711426,12.6824471 83.2246876,13.2089699 83.2246876,14.6327454 C83.2246876,15.9728542 82.1175083,16.2974231 81.0117955,16.5008196 C76.870505,17.2725723 69,17.028785 69,23.6889384 C69,28.0756672 72.4021933,30 76.5038893,30 C79.1259245,30 81.6247768,29.4359714 83.346404,27.5145236 L83.4299923,27.5145236 C83.3874649,28.0367189 83.5121143,28.8849256 83.7159526,29.4489542 L92,29.4489542 C91.0951926,28.116058 91.0145371,26.3403056 91.0145371,24.7679496 L91.0145371,16.1849059 Z M83.2246876,21.986755 C83.1015047,24.1635303 81.6687707,25.2526392 79.8224943,25.2526392 C78.3486993,25.2526392 77.2811145,24.2832601 77.2811145,23.3167661 C77.2811145,21.9059734 78.2255164,21.4631172 80.027799,21.0606518 C81.1335119,20.8197495 82.2406912,20.5355714 83.2246876,20.053767 L83.2246876,21.986755 L83.2246876,21.986755 Z\"\n                        />\n                        <path\n                          d=\"M106.908596,16.4807453 C106.823548,15.6320934 106.532598,14.9465328 105.989491,14.5149905 C105.489653,14.0719019 104.780928,13.8308732 103.905092,13.8308732 C100.735971,13.8308732 100.274927,16.4865184 100.274927,19.0223709 C100.274927,21.5567802 100.735971,24.1691268 103.905092,24.1691268 C105.697048,24.1691268 106.948881,22.7604802 107.115991,21.1136915 L115,21.1136915 C114.206228,26.8074526 109.577879,30 103.737982,30 C97.2236782,30 92,25.6383914 92,19.0165978 C92,12.4020206 97.2236782,8 103.737982,8 C109.409277,8 114.249497,10.7061602 114.749335,16.4807453 L106.908596,16.4807453\"\n                        />\n                        <polyline\n                          points=\"115 1 123.245818 1 123.245818 15.0160369 128.483831 8.93525108 137.794201 8.93525108 130.104448 16.8806756 139 30 129.106802 30 124.7014 22.3510574 123.245818 23.8959607 123.245818 30 115 30 115 1\"\n                        />\n                        <path\n                          d=\"M139,8.55177515 L146.79367,8.55177515 L146.79367,11.2677515 L146.873792,11.2677515 C148.375712,9.1183432 150.528804,8 153.736591,8 C157.531453,8 161,10.3579882 161,15.285503 L161,30 L152.920805,30 L152.920805,18.7559172 C152.920805,16.2781065 152.63528,14.5414201 150.284068,14.5414201 C148.904516,14.5414201 147.077738,15.2426036 147.077738,18.6745562 L147.077738,30 L139,30 L139,8.55177515\"\n                          id=\"Fill-18\"\n                        />\n                        <path\n                          d=\"M185,20.7649334 C185,12.6088781 181.402905,8 173.076217,8 C166.446107,8 162,12.9305619 162,19.0338994 C162,26.0618976 167.055025,30 173.763237,30 C178.531883,30 182.938938,27.9097764 184.557414,23.411973 L177.076846,23.411973 C176.436109,24.4130877 175.020123,24.9064324 173.727078,24.9064324 C171.219092,24.9064324 169.845051,23.1811684 169.641114,20.7649334 L185,20.7649334 Z M169.684505,16.621992 C170.046095,14.3485673 171.420136,13.0906826 173.802289,13.0906826 C175.864797,13.0906826 177.318388,14.6731362 177.318388,16.621992 L169.684505,16.621992 L169.684505,16.621992 Z\"\n                        />\n                        <path\n                          d=\"M200.955311,28.5221077 C200.298901,30.3958684 199.56337,32.7989483 198.29304,34.3912803 C196.164103,37.0407925 192.887912,37 189.733333,37 L186.048352,37 L186.048352,30.5577263 L187.92967,30.5577263 C188.750183,30.5577263 189.813919,30.6408425 190.389744,30.3550393 C190.880586,30.1115234 191.1663,29.7032331 191.1663,28.7670818 C191.1663,27.7463561 188.054212,19.964052 187.604396,18.7406393 L184,9 L192.681319,9 L196.082051,21.1451774 L196.164103,21.1451774 L199.604396,9 L208,9 L200.955311,28.5221077\"\n                        />\n                      </g>\n                    </svg>\n                    <span\n                      class=\"lbh-header__logo-text\"\n                    >\n                    ...\n    at Object.getElementError (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:541:19)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3050:38)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3022:17)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3071:19)\n    at baseCommandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:200:16)\n    at commandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:203:40)\n    at getValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:227:23)\n    at resolveValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:267:35)\nFrom previous event:\n    at tryFn (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165383:61)\n    at whenStable (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165422:14)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:164909:18"
+              "status": "passed",
+              "duration": 378000000
             }
           },
           {
@@ -83,7 +82,8 @@
             "line": 15,
             "name": "I click on 'New Process' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 2472000000
             }
           },
           {
@@ -92,7 +92,8 @@
             "line": 16,
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 322000000
             }
           },
           {
@@ -101,7 +102,8 @@
             "line": 17,
             "name": "a further sub menu is expanded into view",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 90000000
             }
           },
           {
@@ -110,7 +112,8 @@
             "line": 18,
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 501000000
             }
           },
           {
@@ -119,7 +122,8 @@
             "line": 19,
             "name": "'Change of Name' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 70000000
             }
           },
           {
@@ -128,7 +132,8 @@
             "line": 20,
             "name": "Start Process button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 66000000
             }
           },
           {
@@ -137,7 +142,8 @@
             "line": 21,
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 247000000
             }
           },
           {
@@ -146,7 +152,8 @@
             "line": 22,
             "name": "Start Process button is enabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 74000000
             }
           },
           {
@@ -155,7 +162,8 @@
             "line": 23,
             "name": "I select the button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 277000000
             }
           },
           {
@@ -164,7 +172,8 @@
             "line": 24,
             "name": "Change of Name edit page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1037000000
             }
           },
           {
@@ -173,7 +182,8 @@
             "line": 25,
             "name": "Next button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 63000000
             }
           },
           {
@@ -182,7 +192,8 @@
             "line": 26,
             "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 76000000
             }
           },
           {
@@ -191,7 +202,8 @@
             "line": 27,
             "name": "I select Title and enter First and Last name",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 2116000000
             }
           },
           {
@@ -200,7 +212,8 @@
             "line": 28,
             "name": "I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 212000000
             }
           },
           {
@@ -209,7 +222,8 @@
             "line": 29,
             "name": "I am on the supporting documents page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 693000000
             }
           },
           {
@@ -218,7 +232,8 @@
             "line": 30,
             "name": "Status Stepper is at \"Request Documents\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 63000000
             }
           },
           {
@@ -227,7 +242,8 @@
             "line": 31,
             "name": "I do not confirm the Tenant declaration checkbox and I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 439000000
             }
           },
           {
@@ -236,7 +252,8 @@
             "line": 32,
             "name": "Tenant declaration validation message is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 43000000
             }
           },
           {
@@ -245,7 +262,8 @@
             "line": 33,
             "name": "I select Request Documents electronically and click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 628000000
             }
           },
           {
@@ -254,7 +272,8 @@
             "line": 34,
             "name": "'Review Documents' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 554000000
             }
           },
           {
@@ -263,7 +282,8 @@
             "line": 35,
             "name": "Status Stepper is at \"Review Documents\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 72000000
             }
           },
           {
@@ -272,7 +292,8 @@
             "line": 36,
             "name": "I select only the first option to confirm I have seen all the documents",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 221000000
             }
           },
           {
@@ -281,7 +302,8 @@
             "line": 37,
             "name": "I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 243000000
             }
           },
           {
@@ -290,7 +312,8 @@
             "line": 38,
             "name": "a validation error message is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 53000000
             }
           },
           {
@@ -299,7 +322,8 @@
             "line": 39,
             "name": "I select all the checkboxes to confirm I have seen all the documents",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 823000000
             }
           },
           {
@@ -308,7 +332,8 @@
             "line": 40,
             "name": "I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 310000000
             }
           },
           {
@@ -317,7 +342,8 @@
             "line": 41,
             "name": "I am on the 'Tenure Investigation' page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 564000000
             }
           },
           {
@@ -326,7 +352,8 @@
             "line": 42,
             "name": "Status Stepper is at \"Submit case\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 66000000
             }
           },
           {
@@ -335,7 +362,8 @@
             "line": 43,
             "name": "I select Submit case button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 203000000
             }
           },
           {
@@ -344,7 +372,8 @@
             "line": 44,
             "name": "I am on the 'Next Steps' page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 600000000
             }
           },
           {
@@ -353,7 +382,8 @@
             "line": 45,
             "name": "Status Stepper is at \"Finish\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 66000000
             }
           },
           {
@@ -362,7 +392,8 @@
             "line": 46,
             "name": "I click on 'Continue' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 259000000
             }
           },
           {
@@ -371,7 +402,8 @@
             "line": 47,
             "name": "I am on the Review Application page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 63000000
             }
           },
           {
@@ -380,7 +412,8 @@
             "line": 48,
             "name": "Status Stepper is at \"Review application\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 70000000
             }
           },
           {
@@ -389,7 +422,8 @@
             "line": 49,
             "name": "I recommend the outcome as 'Approve'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 202000000
             }
           },
           {
@@ -398,7 +432,8 @@
             "line": 50,
             "name": "I select 'I confirm that the tenure investigation has been completed'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 197000000
             }
           },
           {
@@ -407,7 +442,8 @@
             "line": 51,
             "name": "I click on 'Confirm' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 213000000
             }
           },
           {
@@ -416,7 +452,8 @@
             "line": 52,
             "name": "I am on the 'Tenure investigator recommendation: Approve application' page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 598000000
             }
           },
           {
@@ -425,7 +462,8 @@
             "line": 53,
             "name": "I select the option 'I have passed the case to the Area Housing Manager'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 197000000
             }
           },
           {
@@ -434,7 +472,8 @@
             "line": 54,
             "name": "I select decision as 'Approve'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 207000000
             }
           },
           {
@@ -443,7 +482,8 @@
             "line": 55,
             "name": "I confirm 'I confirm that this is an instruction received by the Area Housing Manager'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 196000000
             }
           },
           {
@@ -452,7 +492,8 @@
             "line": 56,
             "name": "I click 'Confirm' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 215000000
             }
           },
           {
@@ -461,7 +502,8 @@
             "line": 57,
             "name": "a validation error message for AHM \"You must enter manager's name\" is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 43000000
             }
           },
           {
@@ -470,7 +512,8 @@
             "line": 58,
             "name": "I enter Area Housing Manager name as 'Test Housing Manager'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 627000000
             }
           },
           {
@@ -479,7 +522,8 @@
             "line": 59,
             "name": "I click 'Confirm' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 217000000
             }
           },
           {
@@ -488,7 +532,8 @@
             "line": 60,
             "name": "I am on the HO and AHM approved page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 578000000
             }
           },
           {
@@ -497,7 +542,8 @@
             "line": 61,
             "name": "I select the Case activity history button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 256000000
             }
           },
           {
@@ -506,7 +552,8 @@
             "line": 62,
             "name": "I can see the Case details recorded",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1090000000
             }
           },
           {
@@ -515,7 +562,8 @@
             "line": 63,
             "name": "I click Close activity history button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 289000000
             }
           },
           {
@@ -524,7 +572,8 @@
             "line": 64,
             "name": "I am on the HO and AHM approved page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 127000000
             }
           }
         ]
@@ -544,7 +593,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 270000000
+              "duration": 395000000
             }
           },
           {
@@ -554,7 +603,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 386000000
+              "duration": 395000000
             }
           },
           {
@@ -564,7 +613,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 2025000000
+              "duration": 2101000000
             }
           },
           {
@@ -574,7 +623,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 455000000
+              "duration": 403000000
             }
           },
           {
@@ -584,7 +633,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 653000000
+              "duration": 368000000
             }
           },
           {
@@ -593,8 +642,8 @@
             "line": 75,
             "name": "I select person",
             "result": {
-              "status": "failed",
-              "error_message": "TestingLibraryElementError: Timed out retrying after 10000ms: Unable to find an accessible element with the role \"link\" and name \"Miss FAKE_Suzanne FAKE_Cook\"\n\nHere are the accessible roles:\n\n  document:\n\n  Name \"\":\n  <body\n    class=\"govuk-template__body js-enabled\"\n  />\n\n  --------------------------------------------------\n  link:\n\n  Name \"Skip to main content\":\n  <a\n    class=\"govuk-skip-link lbh-skip-link\"\n    href=\"#content\"\n  />\n\n  Name \"Hackney Hackney Manage My Home\":\n  <a\n    class=\"lbh-header__title-link\"\n    href=\"/\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"suggest a new feature\":\n  <a\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"Home\":\n  <a\n    class=\"govuk-back-link lbh-back-link lbh-link--no-visited-state\"\n    href=\"/\"\n  />\n\n  Name \"Dr. ABCABElizabeth FAKE_Brown\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/cfe7f73a-9076-7e55-1d6b-425adb8654ae\"\n  />\n\n  Name \"Other ABCSuzanne 123Woods\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/80edc9ef-18ed-105f-d523-ece83c335187\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Arnold\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/842be5c2-5553-8652-8be1-b18b358410ea\"\n  />\n\n  Name \"Mr. FAKE_Elizabeth FAKE_Henderson\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/637c52cc-c05e-05ad-ef5a-65e70da92307\"\n  />\n\n  Name \"Mrs. FAKE_Suzanne FAKE_Macdonald\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/8b2192cc-de5c-ee4f-94e4-622dc0475a8a\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Allen\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/0e1345d3-df3b-01c9-7ddf-1dc3735d49b6\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Norman\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f7ac0700-1675-8266-3c8b-498e27016117\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Perkins\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/b4e686cd-fb82-85d4-f7ad-35357f41d601\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Hughes\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/6b7848f7-f2c2-4201-c6cf-fc4966cecc9c\"\n  />\n\n  Name \"Other FAKE_Suzanne FAKE_Henry\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f29482f7-06d7-f49a-f1d2-5f390247c64b\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Law\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/ab401a81-30b3-85b4-190b-50b92ae0df38\"\n  />\n\n  Name \"Mr. FAKE_Suzanne FAKE_Lee\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/3097633a-691c-3bce-c964-7d49796b363d\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Make a suggestion\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Accessibility statement\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://drive.google.com/file/d/19VOGIul60kxv79VuSu9CEZfnJR-HB0hY/view?usp=sharing\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  --------------------------------------------------\n  banner:\n\n  Name \"\":\n  <header />\n\n  --------------------------------------------------\n  navigation:\n\n  Name \"header navigation\":\n  <nav\n    aria-label=\"header navigation\"\n    class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n  />\n\n  Name \"\":\n  <nav\n    class=\"lbh-pagination\"\n    role=\"navigation\"\n  />\n\n  --------------------------------------------------\n  button:\n\n  Name \"Sign out\":\n  <button\n    class=\"govuk-link lbh-link lbh-link--no-visited-state lbh-signout\"\n  />\n\n  Name \"Search again\":\n  <button\n    class=\"govuk-button lbh-button\"\n    type=\"button\"\n  />\n\n  Name \"Page 1\":\n  <button\n    aria-current=\"page\"\n    aria-label=\"Page 1\"\n    class=\"lbh-pagination__link lbh-pagination__link--current\"\n  />\n\n  Name \"Page 2\":\n  <button\n    aria-label=\"Page 2\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 3\":\n  <button\n    aria-label=\"Page 3\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 4\":\n  <button\n    aria-label=\"Page 4\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 5\":\n  <button\n    aria-label=\"Page 5\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Next\":\n  <button\n    class=\"lbh-pagination__link lbh-pagination__link--next\"\n    rel=\"next\"\n  />\n\n  --------------------------------------------------\n  main:\n\n  Name \"\":\n  <main\n    class=\"mtfh-main-wrapper\"\n    id=\"main-content\"\n  />\n\n  --------------------------------------------------\n  heading:\n\n  Name \"Search Results\":\n  <h1\n    class=\"lbh-heading-h1\"\n  />\n\n  Name \"Person: za\":\n  <h2\n    class=\"lbh-heading-h2\"\n  />\n\n  --------------------------------------------------\n  region:\n\n  Name \"\":\n  <div\n    aria-live=\"polite\"\n    class=\"mtfh-search-controls__status\"\n    role=\"region\"\n  />\n\n  --------------------------------------------------\n  combobox:\n\n  Name \"Sort by:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"sortBy-field\"\n  />\n\n  Name \"Show:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"limit-field\"\n  />\n\n  --------------------------------------------------\n  option:\n\n  Name \"Best match\":\n  <option\n    value=\"best\"\n  />\n\n  Name \"Last name A-Z\":\n  <option\n    value=\"surname-asc\"\n  />\n\n  Name \"Last name Z-A\":\n  <option\n    value=\"surname-desc\"\n  />\n\n  Name \"12 items\":\n  <option\n    value=\"12\"\n  />\n\n  Name \"20 items\":\n  <option\n    value=\"20\"\n  />\n\n  Name \"40 items\":\n  <option\n    value=\"40\"\n  />\n\n  --------------------------------------------------\n  list:\n\n  Name \"\":\n  <ul\n    class=\"lbh-pagination__list\"\n  />\n\n  Name \"\":\n  <ul\n    class=\"mtfh-footer__menu\"\n  />\n\n  --------------------------------------------------\n  listitem:\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  --------------------------------------------------\n  contentinfo:\n\n  Name \"\":\n  <footer\n    class=\"mtfh-footer\"\n  />\n\n  --------------------------------------------------\n\nIgnored nodes: comments, <script />, <style />\n<html\n  lang=\"en\"\n>\n  <head>\n     \n    <meta\n      charset=\"UTF-8\"\n    />\n    <meta\n      content=\"width=device-width,initial-scale=1\"\n      name=\"viewport\"\n    />\n    <meta\n      content=\"ie=edge\"\n      http-equiv=\"X-UA-Compatible\"\n    />\n    <title>\n      Manage my Home - Hackney Council\n    </title>\n    <meta\n      content=\"systemjs-importmap\"\n      name=\"importmap-type\"\n    />\n    <link\n      href=\"https://cdnjs.cloudflare.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"https://fonts.googleapis.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"/root-config.e831073799f1e9e46457.css\"\n      rel=\"stylesheet\"\n    />\n    <template\n      id=\"single-spa-layout-authorised\"\n    />\n    <template\n      id=\"single-spa-layout-public\"\n    />\n    <template\n      id=\"single-spa-layout-header\"\n    />\n    <template\n      id=\"single-spa-layout-footer\"\n    />\n  </head>\n  <body\n    class=\"govuk-template__body js-enabled\"\n  >\n    <a\n      class=\"govuk-skip-link lbh-skip-link\"\n      href=\"#content\"\n    >\n      Skip to main content\n    </a>\n    <header>\n      <div\n        id=\"single-spa-application:@mtfh/header\"\n      >\n        <div\n          class=\"lbh-header\"\n        >\n          <div\n            class=\"lbh-header__main\"\n          >\n            <nav\n              aria-label=\"header navigation\"\n              class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n            >\n              <div\n                class=\"mtfh-header__section\"\n              >\n                <div\n                  class=\"lbh-header__title\"\n                >\n                  <a\n                    class=\"lbh-header__title-link\"\n                    href=\"/\"\n                  >\n                    <svg\n                      class=\"lbh-header__logo\"\n                      focusable=\"false\"\n                      height=\"37px\"\n                      viewBox=\"0 0 208 37\"\n                      width=\"208px\"\n                      xmlns=\"http://www.w3.org/2000/svg\"\n                    >\n                      <title>\n                        Hackney\n                      </title>\n                      <g\n                        fill=\"currentColor\"\n                        fill-rule=\"evenodd\"\n                        stroke=\"none\"\n                      >\n                        <path\n                          d=\"M36,15.9985404 C36,9.03922642 32.0578091,3.00529101 26.2909886,0 L26.2909886,12.0328407 L9.70901142,12.0328407 L9.70901142,0 C3.94073354,3.00529101 0,9.03922642 0,15.9985404 C0,22.9607736 3.94073354,28.9961686 9.70901142,32 L9.70901142,19.9671593 L26.2909886,19.9671593 L26.2909886,32 C32.0578091,28.9961686 36,22.959314 36,15.9985404\"\n                        />\n                        <polyline\n                          points=\"42 1 50.8590247 1 50.8590247 11.1301668 59.1380971 11.1301668 59.1380971 1 68 1 68 30 59.1380971 30 59.1380971 18.5708703 50.8590247 18.5708703 50.8590247 30 42 30 42 1\"\n                        />\n                        <path\n                          d=\"M91.0145371,16.1849059 C91.0145371,12.1530391 91.0951926,8 80.9296736,8 C75.887975,8 70.2303622,8.96793653 69.9854629,14.8548948 L77.5274802,14.8548948 C77.5700077,13.9417743 78.0612726,12.6824471 80.5615914,12.6824471 C81.8711426,12.6824471 83.2246876,13.2089699 83.2246876,14.6327454 C83.2246876,15.9728542 82.1175083,16.2974231 81.0117955,16.5008196 C76.870505,17.2725723 69,17.028785 69,23.6889384 C69,28.0756672 72.4021933,30 76.5038893,30 C79.1259245,30 81.6247768,29.4359714 83.346404,27.5145236 L83.4299923,27.5145236 C83.3874649,28.0367189 83.5121143,28.8849256 83.7159526,29.4489542 L92,29.4489542 C91.0951926,28.116058 91.0145371,26.3403056 91.0145371,24.7679496 L91.0145371,16.1849059 Z M83.2246876,21.986755 C83.1015047,24.1635303 81.6687707,25.2526392 79.8224943,25.2526392 C78.3486993,25.2526392 77.2811145,24.2832601 77.2811145,23.3167661 C77.2811145,21.9059734 78.2255164,21.4631172 80.027799,21.0606518 C81.1335119,20.8197495 82.2406912,20.5355714 83.2246876,20.053767 L83.2246876,21.986755 L83.2246876,21.986755 Z\"\n                        />\n                        <path\n                          d=\"M106.908596,16.4807453 C106.823548,15.6320934 106.532598,14.9465328 105.989491,14.5149905 C105.489653,14.0719019 104.780928,13.8308732 103.905092,13.8308732 C100.735971,13.8308732 100.274927,16.4865184 100.274927,19.0223709 C100.274927,21.5567802 100.735971,24.1691268 103.905092,24.1691268 C105.697048,24.1691268 106.948881,22.7604802 107.115991,21.1136915 L115,21.1136915 C114.206228,26.8074526 109.577879,30 103.737982,30 C97.2236782,30 92,25.6383914 92,19.0165978 C92,12.4020206 97.2236782,8 103.737982,8 C109.409277,8 114.249497,10.7061602 114.749335,16.4807453 L106.908596,16.4807453\"\n                        />\n                        <polyline\n                          points=\"115 1 123.245818 1 123.245818 15.0160369 128.483831 8.93525108 137.794201 8.93525108 130.104448 16.8806756 139 30 129.106802 30 124.7014 22.3510574 123.245818 23.8959607 123.245818 30 115 30 115 1\"\n                        />\n                        <path\n                          d=\"M139,8.55177515 L146.79367,8.55177515 L146.79367,11.2677515 L146.873792,11.2677515 C148.375712,9.1183432 150.528804,8 153.736591,8 C157.531453,8 161,10.3579882 161,15.285503 L161,30 L152.920805,30 L152.920805,18.7559172 C152.920805,16.2781065 152.63528,14.5414201 150.284068,14.5414201 C148.904516,14.5414201 147.077738,15.2426036 147.077738,18.6745562 L147.077738,30 L139,30 L139,8.55177515\"\n                          id=\"Fill-18\"\n                        />\n                        <path\n                          d=\"M185,20.7649334 C185,12.6088781 181.402905,8 173.076217,8 C166.446107,8 162,12.9305619 162,19.0338994 C162,26.0618976 167.055025,30 173.763237,30 C178.531883,30 182.938938,27.9097764 184.557414,23.411973 L177.076846,23.411973 C176.436109,24.4130877 175.020123,24.9064324 173.727078,24.9064324 C171.219092,24.9064324 169.845051,23.1811684 169.641114,20.7649334 L185,20.7649334 Z M169.684505,16.621992 C170.046095,14.3485673 171.420136,13.0906826 173.802289,13.0906826 C175.864797,13.0906826 177.318388,14.6731362 177.318388,16.621992 L169.684505,16.621992 L169.684505,16.621992 Z\"\n                        />\n                        <path\n                          d=\"M200.955311,28.5221077 C200.298901,30.3958684 199.56337,32.7989483 198.29304,34.3912803 C196.164103,37.0407925 192.887912,37 189.733333,37 L186.048352,37 L186.048352,30.5577263 L187.92967,30.5577263 C188.750183,30.5577263 189.813919,30.6408425 190.389744,30.3550393 C190.880586,30.1115234 191.1663,29.7032331 191.1663,28.7670818 C191.1663,27.7463561 188.054212,19.964052 187.604396,18.7406393 L184,9 L192.681319,9 L196.082051,21.1451774 L196.164103,21.1451774 L199.604396,9 L208,9 L200.955311,28.5221077\"\n                        />\n                      </g>\n                    </svg>\n                    <span\n                      class=\"lbh-header__logo-text\"\n                    >\n                    ...\n    at Object.getElementError (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:541:19)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3050:38)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3022:17)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3071:19)\n    at baseCommandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:200:16)\n    at commandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:203:40)\n    at getValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:227:23)\n    at resolveValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:267:35)\nFrom previous event:\n    at tryFn (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165383:61)\n    at whenStable (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165422:14)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:164909:18"
+              "status": "passed",
+              "duration": 238000000
             }
           },
           {
@@ -603,7 +652,8 @@
             "line": 76,
             "name": "I click on 'New Process' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1887000000
             }
           },
           {
@@ -612,7 +662,8 @@
             "line": 77,
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 333000000
             }
           },
           {
@@ -621,7 +672,8 @@
             "line": 78,
             "name": "a further sub menu is expanded into view",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 86000000
             }
           },
           {
@@ -630,7 +682,8 @@
             "line": 79,
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 285000000
             }
           },
           {
@@ -639,7 +692,8 @@
             "line": 80,
             "name": "'Change of Name' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 64000000
             }
           },
           {
@@ -648,7 +702,8 @@
             "line": 81,
             "name": "Start Process button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 64000000
             }
           },
           {
@@ -657,7 +712,8 @@
             "line": 82,
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 218000000
             }
           },
           {
@@ -666,7 +722,8 @@
             "line": 83,
             "name": "Start Process button is enabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 74000000
             }
           },
           {
@@ -675,7 +732,8 @@
             "line": 84,
             "name": "I select the button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 243000000
             }
           },
           {
@@ -684,7 +742,8 @@
             "line": 85,
             "name": "Change of Name edit page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 951000000
             }
           },
           {
@@ -693,7 +752,8 @@
             "line": 86,
             "name": "Next button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 73000000
             }
           },
           {
@@ -702,7 +762,8 @@
             "line": 87,
             "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 73000000
             }
           },
           {
@@ -711,7 +772,8 @@
             "line": 88,
             "name": "I select Title and enter First and Last name",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1872000000
             }
           },
           {
@@ -720,7 +782,8 @@
             "line": 89,
             "name": "I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 248000000
             }
           },
           {
@@ -729,7 +792,8 @@
             "line": 90,
             "name": "I am on the supporting documents page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 774000000
             }
           },
           {
@@ -738,7 +802,8 @@
             "line": 91,
             "name": "Status Stepper is at \"Request Documents\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 72000000
             }
           },
           {
@@ -747,7 +812,8 @@
             "line": 92,
             "name": "I select Request Documents electronically and click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 947000000
             }
           },
           {
@@ -756,7 +822,8 @@
             "line": 93,
             "name": "'Review Documents' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 582000000
             }
           },
           {
@@ -765,7 +832,8 @@
             "line": 94,
             "name": "Status Stepper is at \"Review Documents\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 64000000
             }
           },
           {
@@ -774,7 +842,8 @@
             "line": 95,
             "name": "I select all the checkboxes to confirm I have seen all the documents",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 635000000
             }
           },
           {
@@ -783,7 +852,8 @@
             "line": 96,
             "name": "I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 212000000
             }
           },
           {
@@ -792,7 +862,8 @@
             "line": 97,
             "name": "I am on the 'Tenure Investigation' page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 588000000
             }
           },
           {
@@ -801,7 +872,8 @@
             "line": 98,
             "name": "Status Stepper is at \"Submit case\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 67000000
             }
           },
           {
@@ -810,7 +882,8 @@
             "line": 99,
             "name": "I select Submit case button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 205000000
             }
           },
           {
@@ -819,7 +892,8 @@
             "line": 100,
             "name": "I am on the 'Next Steps' page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 637000000
             }
           },
           {
@@ -828,7 +902,8 @@
             "line": 101,
             "name": "Status Stepper is at \"Finish\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 74000000
             }
           },
           {
@@ -837,7 +912,8 @@
             "line": 102,
             "name": "I click on 'Continue' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 257000000
             }
           },
           {
@@ -846,7 +922,8 @@
             "line": 103,
             "name": "I am on the Review Application page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 47000000
             }
           },
           {
@@ -855,7 +932,8 @@
             "line": 104,
             "name": "Status Stepper is at \"Review application\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 67000000
             }
           },
           {
@@ -864,7 +942,8 @@
             "line": 105,
             "name": "I recommend the outcome as 'Decline'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 214000000
             }
           },
           {
@@ -873,7 +952,8 @@
             "line": 106,
             "name": "I select 'I confirm that the tenure investigation has been completed'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 206000000
             }
           },
           {
@@ -882,7 +962,8 @@
             "line": 107,
             "name": "I click on 'Confirm' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 219000000
             }
           },
           {
@@ -891,7 +972,8 @@
             "line": 108,
             "name": "I am on the 'Tenure investigator recommendation: Decline application' page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 582000000
             }
           },
           {
@@ -900,7 +982,8 @@
             "line": 109,
             "name": "I select the option 'I have passed the case to the Area Housing Manager'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 193000000
             }
           },
           {
@@ -909,7 +992,8 @@
             "line": 110,
             "name": "I select decision as 'Approve'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 198000000
             }
           },
           {
@@ -918,7 +1002,8 @@
             "line": 111,
             "name": "I confirm 'I confirm that this is an instruction received by the Area Housing Manager'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 211000000
             }
           },
           {
@@ -927,7 +1012,8 @@
             "line": 112,
             "name": "I enter Area Housing Manager name as 'Test Housing Manager'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 666000000
             }
           },
           {
@@ -936,7 +1022,8 @@
             "line": 113,
             "name": "I click 'Confirm' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 231000000
             }
           },
           {
@@ -945,7 +1032,8 @@
             "line": 114,
             "name": "a modal dialog box is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1453000000
             }
           },
           {
@@ -954,7 +1042,8 @@
             "line": 115,
             "name": "I am on the HO and AHM Declined page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 664000000
             }
           }
         ]
@@ -974,7 +1063,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 233000000
+              "duration": 381000000
             }
           },
           {
@@ -984,7 +1073,7 @@
             "name": "I am on the Person page for \"4b260032-8c67-9878-c4db-dc72252a131f\"",
             "result": {
               "status": "passed",
-              "duration": 328000000
+              "duration": 341000000
             }
           },
           {
@@ -994,7 +1083,7 @@
             "name": "I click on 'New Process' button",
             "result": {
               "status": "passed",
-              "duration": 4270000000
+              "duration": 1980000000
             }
           },
           {
@@ -1004,7 +1093,7 @@
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
               "status": "passed",
-              "duration": 198000000
+              "duration": 281000000
             }
           },
           {
@@ -1014,7 +1103,7 @@
             "name": "a further sub menu is expanded into view",
             "result": {
               "status": "passed",
-              "duration": 68000000
+              "duration": 72000000
             }
           },
           {
@@ -1024,7 +1113,7 @@
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
               "status": "passed",
-              "duration": 298000000
+              "duration": 234000000
             }
           },
           {
@@ -1034,7 +1123,7 @@
             "name": "'Change of Name' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 86000000
+              "duration": 52000000
             }
           },
           {
@@ -1044,7 +1133,7 @@
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
               "status": "passed",
-              "duration": 623000000
+              "duration": 179000000
             }
           },
           {
@@ -1054,7 +1143,7 @@
             "name": "I select the button",
             "result": {
               "status": "passed",
-              "duration": 244000000
+              "duration": 194000000
             }
           },
           {
@@ -1064,7 +1153,7 @@
             "name": "Change of Name edit page is displayed",
             "result": {
               "status": "passed",
-              "duration": 1267000000
+              "duration": 1045000000
             }
           },
           {
@@ -1074,7 +1163,7 @@
             "name": "I enter Title only",
             "result": {
               "status": "passed",
-              "duration": 235000000
+              "duration": 266000000
             }
           },
           {
@@ -1084,7 +1173,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 281000000
+              "duration": 202000000
             }
           },
           {
@@ -1104,7 +1193,7 @@
             "name": "I enter 'Title' and 'First name' only",
             "result": {
               "status": "passed",
-              "duration": 1066000000
+              "duration": 1031000000
             }
           },
           {
@@ -1114,7 +1203,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 206000000
+              "duration": 196000000
             }
           },
           {
@@ -1124,7 +1213,7 @@
             "name": "a validation error message for 'Last name' is displayed",
             "result": {
               "status": "passed",
-              "duration": 56000000
+              "duration": 49000000
             }
           },
           {
@@ -1134,7 +1223,7 @@
             "name": "I enter 'Title' and 'Last name' only",
             "result": {
               "status": "passed",
-              "duration": 1267000000
+              "duration": 1292000000
             }
           },
           {
@@ -1144,7 +1233,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 219000000
+              "duration": 205000000
             }
           },
           {
@@ -1154,7 +1243,7 @@
             "name": "a validation error message for 'First name' is displayed",
             "result": {
               "status": "passed",
-              "duration": 49000000
+              "duration": 50000000
             }
           },
           {
@@ -1164,7 +1253,7 @@
             "name": "I enter 'First name' and 'Last name' only",
             "result": {
               "status": "passed",
-              "duration": 1876000000
+              "duration": 1825000000
             }
           },
           {
@@ -1174,7 +1263,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 200000000
+              "duration": 195000000
             }
           },
           {
@@ -1184,7 +1273,7 @@
             "name": "a validation error message for 'Title' is displayed",
             "result": {
               "status": "passed",
-              "duration": 46000000
+              "duration": 48000000
             }
           }
         ]
@@ -1204,7 +1293,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 216000000
+              "duration": 236000000
             }
           },
           {
@@ -1214,7 +1303,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 245000000
+              "duration": 396000000
             }
           },
           {
@@ -1224,7 +1313,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 1249000000
+              "duration": 2172000000
             }
           },
           {
@@ -1234,7 +1323,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 393000000
+              "duration": 386000000
             }
           },
           {
@@ -1244,7 +1333,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 399000000
+              "duration": 340000000
             }
           },
           {
@@ -1253,8 +1342,8 @@
             "line": 151,
             "name": "I select person",
             "result": {
-              "status": "failed",
-              "error_message": "TestingLibraryElementError: Timed out retrying after 10000ms: Unable to find an accessible element with the role \"link\" and name \"Miss FAKE_Suzanne FAKE_Cook\"\n\nHere are the accessible roles:\n\n  document:\n\n  Name \"\":\n  <body\n    class=\"govuk-template__body js-enabled\"\n  />\n\n  --------------------------------------------------\n  link:\n\n  Name \"Skip to main content\":\n  <a\n    class=\"govuk-skip-link lbh-skip-link\"\n    href=\"#content\"\n  />\n\n  Name \"Hackney Hackney Manage My Home\":\n  <a\n    class=\"lbh-header__title-link\"\n    href=\"/\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"suggest a new feature\":\n  <a\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"Home\":\n  <a\n    class=\"govuk-back-link lbh-back-link lbh-link--no-visited-state\"\n    href=\"/\"\n  />\n\n  Name \"Dr. ABCABElizabeth FAKE_Brown\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/cfe7f73a-9076-7e55-1d6b-425adb8654ae\"\n  />\n\n  Name \"Other ABCSuzanne 123Woods\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/80edc9ef-18ed-105f-d523-ece83c335187\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Arnold\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/842be5c2-5553-8652-8be1-b18b358410ea\"\n  />\n\n  Name \"Mr. FAKE_Elizabeth FAKE_Henderson\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/637c52cc-c05e-05ad-ef5a-65e70da92307\"\n  />\n\n  Name \"Mrs. FAKE_Suzanne FAKE_Macdonald\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/8b2192cc-de5c-ee4f-94e4-622dc0475a8a\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Allen\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/0e1345d3-df3b-01c9-7ddf-1dc3735d49b6\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Norman\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f7ac0700-1675-8266-3c8b-498e27016117\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Perkins\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/b4e686cd-fb82-85d4-f7ad-35357f41d601\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Hughes\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/6b7848f7-f2c2-4201-c6cf-fc4966cecc9c\"\n  />\n\n  Name \"Other FAKE_Suzanne FAKE_Henry\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f29482f7-06d7-f49a-f1d2-5f390247c64b\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Law\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/ab401a81-30b3-85b4-190b-50b92ae0df38\"\n  />\n\n  Name \"Mr. FAKE_Suzanne FAKE_Lee\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/3097633a-691c-3bce-c964-7d49796b363d\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Make a suggestion\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Accessibility statement\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://drive.google.com/file/d/19VOGIul60kxv79VuSu9CEZfnJR-HB0hY/view?usp=sharing\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  --------------------------------------------------\n  banner:\n\n  Name \"\":\n  <header />\n\n  --------------------------------------------------\n  navigation:\n\n  Name \"header navigation\":\n  <nav\n    aria-label=\"header navigation\"\n    class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n  />\n\n  Name \"\":\n  <nav\n    class=\"lbh-pagination\"\n    role=\"navigation\"\n  />\n\n  --------------------------------------------------\n  button:\n\n  Name \"Sign out\":\n  <button\n    class=\"govuk-link lbh-link lbh-link--no-visited-state lbh-signout\"\n  />\n\n  Name \"Search again\":\n  <button\n    class=\"govuk-button lbh-button\"\n    type=\"button\"\n  />\n\n  Name \"Page 1\":\n  <button\n    aria-current=\"page\"\n    aria-label=\"Page 1\"\n    class=\"lbh-pagination__link lbh-pagination__link--current\"\n  />\n\n  Name \"Page 2\":\n  <button\n    aria-label=\"Page 2\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 3\":\n  <button\n    aria-label=\"Page 3\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 4\":\n  <button\n    aria-label=\"Page 4\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 5\":\n  <button\n    aria-label=\"Page 5\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Next\":\n  <button\n    class=\"lbh-pagination__link lbh-pagination__link--next\"\n    rel=\"next\"\n  />\n\n  --------------------------------------------------\n  main:\n\n  Name \"\":\n  <main\n    class=\"mtfh-main-wrapper\"\n    id=\"main-content\"\n  />\n\n  --------------------------------------------------\n  heading:\n\n  Name \"Search Results\":\n  <h1\n    class=\"lbh-heading-h1\"\n  />\n\n  Name \"Person: za\":\n  <h2\n    class=\"lbh-heading-h2\"\n  />\n\n  --------------------------------------------------\n  region:\n\n  Name \"\":\n  <div\n    aria-live=\"polite\"\n    class=\"mtfh-search-controls__status\"\n    role=\"region\"\n  />\n\n  --------------------------------------------------\n  combobox:\n\n  Name \"Sort by:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"sortBy-field\"\n  />\n\n  Name \"Show:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"limit-field\"\n  />\n\n  --------------------------------------------------\n  option:\n\n  Name \"Best match\":\n  <option\n    value=\"best\"\n  />\n\n  Name \"Last name A-Z\":\n  <option\n    value=\"surname-asc\"\n  />\n\n  Name \"Last name Z-A\":\n  <option\n    value=\"surname-desc\"\n  />\n\n  Name \"12 items\":\n  <option\n    value=\"12\"\n  />\n\n  Name \"20 items\":\n  <option\n    value=\"20\"\n  />\n\n  Name \"40 items\":\n  <option\n    value=\"40\"\n  />\n\n  --------------------------------------------------\n  list:\n\n  Name \"\":\n  <ul\n    class=\"lbh-pagination__list\"\n  />\n\n  Name \"\":\n  <ul\n    class=\"mtfh-footer__menu\"\n  />\n\n  --------------------------------------------------\n  listitem:\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  --------------------------------------------------\n  contentinfo:\n\n  Name \"\":\n  <footer\n    class=\"mtfh-footer\"\n  />\n\n  --------------------------------------------------\n\nIgnored nodes: comments, <script />, <style />\n<html\n  lang=\"en\"\n>\n  <head>\n     \n    <meta\n      charset=\"UTF-8\"\n    />\n    <meta\n      content=\"width=device-width,initial-scale=1\"\n      name=\"viewport\"\n    />\n    <meta\n      content=\"ie=edge\"\n      http-equiv=\"X-UA-Compatible\"\n    />\n    <title>\n      Manage my Home - Hackney Council\n    </title>\n    <meta\n      content=\"systemjs-importmap\"\n      name=\"importmap-type\"\n    />\n    <link\n      href=\"https://cdnjs.cloudflare.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"https://fonts.googleapis.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"/root-config.e831073799f1e9e46457.css\"\n      rel=\"stylesheet\"\n    />\n    <template\n      id=\"single-spa-layout-authorised\"\n    />\n    <template\n      id=\"single-spa-layout-public\"\n    />\n    <template\n      id=\"single-spa-layout-header\"\n    />\n    <template\n      id=\"single-spa-layout-footer\"\n    />\n  </head>\n  <body\n    class=\"govuk-template__body js-enabled\"\n  >\n    <a\n      class=\"govuk-skip-link lbh-skip-link\"\n      href=\"#content\"\n    >\n      Skip to main content\n    </a>\n    <header>\n      <div\n        id=\"single-spa-application:@mtfh/header\"\n      >\n        <div\n          class=\"lbh-header\"\n        >\n          <div\n            class=\"lbh-header__main\"\n          >\n            <nav\n              aria-label=\"header navigation\"\n              class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n            >\n              <div\n                class=\"mtfh-header__section\"\n              >\n                <div\n                  class=\"lbh-header__title\"\n                >\n                  <a\n                    class=\"lbh-header__title-link\"\n                    href=\"/\"\n                  >\n                    <svg\n                      class=\"lbh-header__logo\"\n                      focusable=\"false\"\n                      height=\"37px\"\n                      viewBox=\"0 0 208 37\"\n                      width=\"208px\"\n                      xmlns=\"http://www.w3.org/2000/svg\"\n                    >\n                      <title>\n                        Hackney\n                      </title>\n                      <g\n                        fill=\"currentColor\"\n                        fill-rule=\"evenodd\"\n                        stroke=\"none\"\n                      >\n                        <path\n                          d=\"M36,15.9985404 C36,9.03922642 32.0578091,3.00529101 26.2909886,0 L26.2909886,12.0328407 L9.70901142,12.0328407 L9.70901142,0 C3.94073354,3.00529101 0,9.03922642 0,15.9985404 C0,22.9607736 3.94073354,28.9961686 9.70901142,32 L9.70901142,19.9671593 L26.2909886,19.9671593 L26.2909886,32 C32.0578091,28.9961686 36,22.959314 36,15.9985404\"\n                        />\n                        <polyline\n                          points=\"42 1 50.8590247 1 50.8590247 11.1301668 59.1380971 11.1301668 59.1380971 1 68 1 68 30 59.1380971 30 59.1380971 18.5708703 50.8590247 18.5708703 50.8590247 30 42 30 42 1\"\n                        />\n                        <path\n                          d=\"M91.0145371,16.1849059 C91.0145371,12.1530391 91.0951926,8 80.9296736,8 C75.887975,8 70.2303622,8.96793653 69.9854629,14.8548948 L77.5274802,14.8548948 C77.5700077,13.9417743 78.0612726,12.6824471 80.5615914,12.6824471 C81.8711426,12.6824471 83.2246876,13.2089699 83.2246876,14.6327454 C83.2246876,15.9728542 82.1175083,16.2974231 81.0117955,16.5008196 C76.870505,17.2725723 69,17.028785 69,23.6889384 C69,28.0756672 72.4021933,30 76.5038893,30 C79.1259245,30 81.6247768,29.4359714 83.346404,27.5145236 L83.4299923,27.5145236 C83.3874649,28.0367189 83.5121143,28.8849256 83.7159526,29.4489542 L92,29.4489542 C91.0951926,28.116058 91.0145371,26.3403056 91.0145371,24.7679496 L91.0145371,16.1849059 Z M83.2246876,21.986755 C83.1015047,24.1635303 81.6687707,25.2526392 79.8224943,25.2526392 C78.3486993,25.2526392 77.2811145,24.2832601 77.2811145,23.3167661 C77.2811145,21.9059734 78.2255164,21.4631172 80.027799,21.0606518 C81.1335119,20.8197495 82.2406912,20.5355714 83.2246876,20.053767 L83.2246876,21.986755 L83.2246876,21.986755 Z\"\n                        />\n                        <path\n                          d=\"M106.908596,16.4807453 C106.823548,15.6320934 106.532598,14.9465328 105.989491,14.5149905 C105.489653,14.0719019 104.780928,13.8308732 103.905092,13.8308732 C100.735971,13.8308732 100.274927,16.4865184 100.274927,19.0223709 C100.274927,21.5567802 100.735971,24.1691268 103.905092,24.1691268 C105.697048,24.1691268 106.948881,22.7604802 107.115991,21.1136915 L115,21.1136915 C114.206228,26.8074526 109.577879,30 103.737982,30 C97.2236782,30 92,25.6383914 92,19.0165978 C92,12.4020206 97.2236782,8 103.737982,8 C109.409277,8 114.249497,10.7061602 114.749335,16.4807453 L106.908596,16.4807453\"\n                        />\n                        <polyline\n                          points=\"115 1 123.245818 1 123.245818 15.0160369 128.483831 8.93525108 137.794201 8.93525108 130.104448 16.8806756 139 30 129.106802 30 124.7014 22.3510574 123.245818 23.8959607 123.245818 30 115 30 115 1\"\n                        />\n                        <path\n                          d=\"M139,8.55177515 L146.79367,8.55177515 L146.79367,11.2677515 L146.873792,11.2677515 C148.375712,9.1183432 150.528804,8 153.736591,8 C157.531453,8 161,10.3579882 161,15.285503 L161,30 L152.920805,30 L152.920805,18.7559172 C152.920805,16.2781065 152.63528,14.5414201 150.284068,14.5414201 C148.904516,14.5414201 147.077738,15.2426036 147.077738,18.6745562 L147.077738,30 L139,30 L139,8.55177515\"\n                          id=\"Fill-18\"\n                        />\n                        <path\n                          d=\"M185,20.7649334 C185,12.6088781 181.402905,8 173.076217,8 C166.446107,8 162,12.9305619 162,19.0338994 C162,26.0618976 167.055025,30 173.763237,30 C178.531883,30 182.938938,27.9097764 184.557414,23.411973 L177.076846,23.411973 C176.436109,24.4130877 175.020123,24.9064324 173.727078,24.9064324 C171.219092,24.9064324 169.845051,23.1811684 169.641114,20.7649334 L185,20.7649334 Z M169.684505,16.621992 C170.046095,14.3485673 171.420136,13.0906826 173.802289,13.0906826 C175.864797,13.0906826 177.318388,14.6731362 177.318388,16.621992 L169.684505,16.621992 L169.684505,16.621992 Z\"\n                        />\n                        <path\n                          d=\"M200.955311,28.5221077 C200.298901,30.3958684 199.56337,32.7989483 198.29304,34.3912803 C196.164103,37.0407925 192.887912,37 189.733333,37 L186.048352,37 L186.048352,30.5577263 L187.92967,30.5577263 C188.750183,30.5577263 189.813919,30.6408425 190.389744,30.3550393 C190.880586,30.1115234 191.1663,29.7032331 191.1663,28.7670818 C191.1663,27.7463561 188.054212,19.964052 187.604396,18.7406393 L184,9 L192.681319,9 L196.082051,21.1451774 L196.164103,21.1451774 L199.604396,9 L208,9 L200.955311,28.5221077\"\n                        />\n                      </g>\n                    </svg>\n                    <span\n                      class=\"lbh-header__logo-text\"\n                    >\n                    ...\n    at Object.getElementError (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:541:19)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3050:38)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3022:17)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3071:19)\n    at baseCommandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:200:16)\n    at commandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:203:40)\n    at getValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:227:23)\n    at resolveValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:267:35)\nFrom previous event:\n    at tryFn (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165383:61)\n    at whenStable (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165422:14)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:164909:18"
+              "status": "passed",
+              "duration": 221000000
             }
           },
           {
@@ -1263,7 +1352,8 @@
             "line": 152,
             "name": "I click on 'New Process' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1232000000
             }
           },
           {
@@ -1272,7 +1362,8 @@
             "line": 153,
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 305000000
             }
           },
           {
@@ -1281,7 +1372,8 @@
             "line": 154,
             "name": "a further sub menu is expanded into view",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 68000000
             }
           },
           {
@@ -1290,7 +1382,8 @@
             "line": 155,
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 241000000
             }
           },
           {
@@ -1299,7 +1392,8 @@
             "line": 156,
             "name": "'Change of Name' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 59000000
             }
           },
           {
@@ -1308,7 +1402,8 @@
             "line": 157,
             "name": "Start Process button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 66000000
             }
           },
           {
@@ -1317,7 +1412,8 @@
             "line": 158,
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 192000000
             }
           },
           {
@@ -1326,7 +1422,8 @@
             "line": 159,
             "name": "Start Process button is enabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 77000000
             }
           },
           {
@@ -1335,7 +1432,8 @@
             "line": 160,
             "name": "I select the button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 194000000
             }
           },
           {
@@ -1344,7 +1442,8 @@
             "line": 161,
             "name": "Change of Name edit page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 856000000
             }
           },
           {
@@ -1353,7 +1452,8 @@
             "line": 162,
             "name": "Next button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 60000000
             }
           },
           {
@@ -1362,7 +1462,8 @@
             "line": 163,
             "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 74000000
             }
           },
           {
@@ -1371,7 +1472,8 @@
             "line": 164,
             "name": "I select Title and enter First and Last name",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1752000000
             }
           },
           {
@@ -1380,7 +1482,8 @@
             "line": 165,
             "name": "I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 214000000
             }
           },
           {
@@ -1389,7 +1492,8 @@
             "line": 166,
             "name": "I am on the supporting documents page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 605000000
             }
           },
           {
@@ -1398,7 +1502,8 @@
             "line": 167,
             "name": "Status Stepper is at \"Request Documents\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 65000000
             }
           },
           {
@@ -1407,7 +1512,8 @@
             "line": 168,
             "name": "I select 'I have made an appointment to check supporting documents' and click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 2391000000
             }
           },
           {
@@ -1416,7 +1522,8 @@
             "line": 169,
             "name": "'Review Documents' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 537000000
             }
           },
           {
@@ -1425,7 +1532,8 @@
             "line": 170,
             "name": "'Office appointment scheduled' message box is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 98000000
             }
           }
         ]
@@ -1445,7 +1553,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 285000000
+              "duration": 233000000
             }
           },
           {
@@ -1455,7 +1563,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 359000000
+              "duration": 348000000
             }
           },
           {
@@ -1465,7 +1573,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 3086000000
+              "duration": 1053000000
             }
           },
           {
@@ -1475,7 +1583,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 449000000
+              "duration": 405000000
             }
           },
           {
@@ -1485,7 +1593,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 378000000
+              "duration": 328000000
             }
           },
           {
@@ -1494,8 +1602,8 @@
             "line": 180,
             "name": "I select person",
             "result": {
-              "status": "failed",
-              "error_message": "TestingLibraryElementError: Timed out retrying after 10000ms: Unable to find an accessible element with the role \"link\" and name \"Miss FAKE_Suzanne FAKE_Cook\"\n\nHere are the accessible roles:\n\n  document:\n\n  Name \"\":\n  <body\n    class=\"govuk-template__body js-enabled\"\n  />\n\n  --------------------------------------------------\n  link:\n\n  Name \"Skip to main content\":\n  <a\n    class=\"govuk-skip-link lbh-skip-link\"\n    href=\"#content\"\n  />\n\n  Name \"Hackney Hackney Manage My Home\":\n  <a\n    class=\"lbh-header__title-link\"\n    href=\"/\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"suggest a new feature\":\n  <a\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noreferrer\"\n    target=\"_blank\"\n  />\n\n  Name \"Home\":\n  <a\n    class=\"govuk-back-link lbh-back-link lbh-link--no-visited-state\"\n    href=\"/\"\n  />\n\n  Name \"Dr. ABCABElizabeth FAKE_Brown\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/cfe7f73a-9076-7e55-1d6b-425adb8654ae\"\n  />\n\n  Name \"Other ABCSuzanne 123Woods\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/80edc9ef-18ed-105f-d523-ece83c335187\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Arnold\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/842be5c2-5553-8652-8be1-b18b358410ea\"\n  />\n\n  Name \"Mr. FAKE_Elizabeth FAKE_Henderson\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/637c52cc-c05e-05ad-ef5a-65e70da92307\"\n  />\n\n  Name \"Mrs. FAKE_Suzanne FAKE_Macdonald\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/8b2192cc-de5c-ee4f-94e4-622dc0475a8a\"\n  />\n\n  Name \"Ms. FAKE_Suzanne FAKE_Allen\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/0e1345d3-df3b-01c9-7ddf-1dc3735d49b6\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Norman\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f7ac0700-1675-8266-3c8b-498e27016117\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Perkins\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/b4e686cd-fb82-85d4-f7ad-35357f41d601\"\n  />\n\n  Name \"Dr. FAKE_Suzanne FAKE_Hughes\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/6b7848f7-f2c2-4201-c6cf-fc4966cecc9c\"\n  />\n\n  Name \"Other FAKE_Suzanne FAKE_Henry\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/f29482f7-06d7-f49a-f1d2-5f390247c64b\"\n  />\n\n  Name \"Miss FAKE_Elizabeth FAKE_Law\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/ab401a81-30b3-85b4-190b-50b92ae0df38\"\n  />\n\n  Name \"Mr. FAKE_Suzanne FAKE_Lee\":\n  <a\n    class=\"govuk-link lbh-link lbh-link--text-colour lbh-link--no-visited-state\"\n    href=\"/person/3097633a-691c-3bce-c964-7d49796b363d\"\n  />\n\n  Name \"Report an issue\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/5kUGcRYFwwaZWrGs8\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Make a suggestion\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://forms.gle/yM7zCKYZcuVzSXkC6\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  Name \"Accessibility statement\":\n  <a\n    class=\"lbh-link\"\n    href=\"https://drive.google.com/file/d/19VOGIul60kxv79VuSu9CEZfnJR-HB0hY/view?usp=sharing\"\n    rel=\"noopener\"\n    target=\"_blank\"\n  />\n\n  --------------------------------------------------\n  banner:\n\n  Name \"\":\n  <header />\n\n  --------------------------------------------------\n  navigation:\n\n  Name \"header navigation\":\n  <nav\n    aria-label=\"header navigation\"\n    class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n  />\n\n  Name \"\":\n  <nav\n    class=\"lbh-pagination\"\n    role=\"navigation\"\n  />\n\n  --------------------------------------------------\n  button:\n\n  Name \"Sign out\":\n  <button\n    class=\"govuk-link lbh-link lbh-link--no-visited-state lbh-signout\"\n  />\n\n  Name \"Search again\":\n  <button\n    class=\"govuk-button lbh-button\"\n    type=\"button\"\n  />\n\n  Name \"Page 1\":\n  <button\n    aria-current=\"page\"\n    aria-label=\"Page 1\"\n    class=\"lbh-pagination__link lbh-pagination__link--current\"\n  />\n\n  Name \"Page 2\":\n  <button\n    aria-label=\"Page 2\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 3\":\n  <button\n    aria-label=\"Page 3\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 4\":\n  <button\n    aria-label=\"Page 4\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Page 5\":\n  <button\n    aria-label=\"Page 5\"\n    class=\"lbh-pagination__link\"\n  />\n\n  Name \"Next\":\n  <button\n    class=\"lbh-pagination__link lbh-pagination__link--next\"\n    rel=\"next\"\n  />\n\n  --------------------------------------------------\n  main:\n\n  Name \"\":\n  <main\n    class=\"mtfh-main-wrapper\"\n    id=\"main-content\"\n  />\n\n  --------------------------------------------------\n  heading:\n\n  Name \"Search Results\":\n  <h1\n    class=\"lbh-heading-h1\"\n  />\n\n  Name \"Person: za\":\n  <h2\n    class=\"lbh-heading-h2\"\n  />\n\n  --------------------------------------------------\n  region:\n\n  Name \"\":\n  <div\n    aria-live=\"polite\"\n    class=\"mtfh-search-controls__status\"\n    role=\"region\"\n  />\n\n  --------------------------------------------------\n  combobox:\n\n  Name \"Sort by:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"sortBy-field\"\n  />\n\n  Name \"Show:\":\n  <select\n    class=\"govuk-select lbh-select\"\n    id=\"limit-field\"\n  />\n\n  --------------------------------------------------\n  option:\n\n  Name \"Best match\":\n  <option\n    value=\"best\"\n  />\n\n  Name \"Last name A-Z\":\n  <option\n    value=\"surname-asc\"\n  />\n\n  Name \"Last name Z-A\":\n  <option\n    value=\"surname-desc\"\n  />\n\n  Name \"12 items\":\n  <option\n    value=\"12\"\n  />\n\n  Name \"20 items\":\n  <option\n    value=\"20\"\n  />\n\n  Name \"40 items\":\n  <option\n    value=\"40\"\n  />\n\n  --------------------------------------------------\n  list:\n\n  Name \"\":\n  <ul\n    class=\"lbh-pagination__list\"\n  />\n\n  Name \"\":\n  <ul\n    class=\"mtfh-footer__menu\"\n  />\n\n  --------------------------------------------------\n  listitem:\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"lbh-pagination__item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  Name \"\":\n  <li\n    class=\"mtfh-footer__menu-item\"\n  />\n\n  --------------------------------------------------\n  contentinfo:\n\n  Name \"\":\n  <footer\n    class=\"mtfh-footer\"\n  />\n\n  --------------------------------------------------\n\nIgnored nodes: comments, <script />, <style />\n<html\n  lang=\"en\"\n>\n  <head>\n     \n    <meta\n      charset=\"UTF-8\"\n    />\n    <meta\n      content=\"width=device-width,initial-scale=1\"\n      name=\"viewport\"\n    />\n    <meta\n      content=\"ie=edge\"\n      http-equiv=\"X-UA-Compatible\"\n    />\n    <title>\n      Manage my Home - Hackney Council\n    </title>\n    <meta\n      content=\"systemjs-importmap\"\n      name=\"importmap-type\"\n    />\n    <link\n      href=\"https://cdnjs.cloudflare.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"https://fonts.googleapis.com\"\n      rel=\"preconnect\"\n    />\n    <link\n      href=\"/root-config.e831073799f1e9e46457.css\"\n      rel=\"stylesheet\"\n    />\n    <template\n      id=\"single-spa-layout-authorised\"\n    />\n    <template\n      id=\"single-spa-layout-public\"\n    />\n    <template\n      id=\"single-spa-layout-header\"\n    />\n    <template\n      id=\"single-spa-layout-footer\"\n    />\n  </head>\n  <body\n    class=\"govuk-template__body js-enabled\"\n  >\n    <a\n      class=\"govuk-skip-link lbh-skip-link\"\n      href=\"#content\"\n    >\n      Skip to main content\n    </a>\n    <header>\n      <div\n        id=\"single-spa-application:@mtfh/header\"\n      >\n        <div\n          class=\"lbh-header\"\n        >\n          <div\n            class=\"lbh-header__main\"\n          >\n            <nav\n              aria-label=\"header navigation\"\n              class=\"container-max-width lbh-header__wrapper lbh-header__wrapper--stacked\"\n            >\n              <div\n                class=\"mtfh-header__section\"\n              >\n                <div\n                  class=\"lbh-header__title\"\n                >\n                  <a\n                    class=\"lbh-header__title-link\"\n                    href=\"/\"\n                  >\n                    <svg\n                      class=\"lbh-header__logo\"\n                      focusable=\"false\"\n                      height=\"37px\"\n                      viewBox=\"0 0 208 37\"\n                      width=\"208px\"\n                      xmlns=\"http://www.w3.org/2000/svg\"\n                    >\n                      <title>\n                        Hackney\n                      </title>\n                      <g\n                        fill=\"currentColor\"\n                        fill-rule=\"evenodd\"\n                        stroke=\"none\"\n                      >\n                        <path\n                          d=\"M36,15.9985404 C36,9.03922642 32.0578091,3.00529101 26.2909886,0 L26.2909886,12.0328407 L9.70901142,12.0328407 L9.70901142,0 C3.94073354,3.00529101 0,9.03922642 0,15.9985404 C0,22.9607736 3.94073354,28.9961686 9.70901142,32 L9.70901142,19.9671593 L26.2909886,19.9671593 L26.2909886,32 C32.0578091,28.9961686 36,22.959314 36,15.9985404\"\n                        />\n                        <polyline\n                          points=\"42 1 50.8590247 1 50.8590247 11.1301668 59.1380971 11.1301668 59.1380971 1 68 1 68 30 59.1380971 30 59.1380971 18.5708703 50.8590247 18.5708703 50.8590247 30 42 30 42 1\"\n                        />\n                        <path\n                          d=\"M91.0145371,16.1849059 C91.0145371,12.1530391 91.0951926,8 80.9296736,8 C75.887975,8 70.2303622,8.96793653 69.9854629,14.8548948 L77.5274802,14.8548948 C77.5700077,13.9417743 78.0612726,12.6824471 80.5615914,12.6824471 C81.8711426,12.6824471 83.2246876,13.2089699 83.2246876,14.6327454 C83.2246876,15.9728542 82.1175083,16.2974231 81.0117955,16.5008196 C76.870505,17.2725723 69,17.028785 69,23.6889384 C69,28.0756672 72.4021933,30 76.5038893,30 C79.1259245,30 81.6247768,29.4359714 83.346404,27.5145236 L83.4299923,27.5145236 C83.3874649,28.0367189 83.5121143,28.8849256 83.7159526,29.4489542 L92,29.4489542 C91.0951926,28.116058 91.0145371,26.3403056 91.0145371,24.7679496 L91.0145371,16.1849059 Z M83.2246876,21.986755 C83.1015047,24.1635303 81.6687707,25.2526392 79.8224943,25.2526392 C78.3486993,25.2526392 77.2811145,24.2832601 77.2811145,23.3167661 C77.2811145,21.9059734 78.2255164,21.4631172 80.027799,21.0606518 C81.1335119,20.8197495 82.2406912,20.5355714 83.2246876,20.053767 L83.2246876,21.986755 L83.2246876,21.986755 Z\"\n                        />\n                        <path\n                          d=\"M106.908596,16.4807453 C106.823548,15.6320934 106.532598,14.9465328 105.989491,14.5149905 C105.489653,14.0719019 104.780928,13.8308732 103.905092,13.8308732 C100.735971,13.8308732 100.274927,16.4865184 100.274927,19.0223709 C100.274927,21.5567802 100.735971,24.1691268 103.905092,24.1691268 C105.697048,24.1691268 106.948881,22.7604802 107.115991,21.1136915 L115,21.1136915 C114.206228,26.8074526 109.577879,30 103.737982,30 C97.2236782,30 92,25.6383914 92,19.0165978 C92,12.4020206 97.2236782,8 103.737982,8 C109.409277,8 114.249497,10.7061602 114.749335,16.4807453 L106.908596,16.4807453\"\n                        />\n                        <polyline\n                          points=\"115 1 123.245818 1 123.245818 15.0160369 128.483831 8.93525108 137.794201 8.93525108 130.104448 16.8806756 139 30 129.106802 30 124.7014 22.3510574 123.245818 23.8959607 123.245818 30 115 30 115 1\"\n                        />\n                        <path\n                          d=\"M139,8.55177515 L146.79367,8.55177515 L146.79367,11.2677515 L146.873792,11.2677515 C148.375712,9.1183432 150.528804,8 153.736591,8 C157.531453,8 161,10.3579882 161,15.285503 L161,30 L152.920805,30 L152.920805,18.7559172 C152.920805,16.2781065 152.63528,14.5414201 150.284068,14.5414201 C148.904516,14.5414201 147.077738,15.2426036 147.077738,18.6745562 L147.077738,30 L139,30 L139,8.55177515\"\n                          id=\"Fill-18\"\n                        />\n                        <path\n                          d=\"M185,20.7649334 C185,12.6088781 181.402905,8 173.076217,8 C166.446107,8 162,12.9305619 162,19.0338994 C162,26.0618976 167.055025,30 173.763237,30 C178.531883,30 182.938938,27.9097764 184.557414,23.411973 L177.076846,23.411973 C176.436109,24.4130877 175.020123,24.9064324 173.727078,24.9064324 C171.219092,24.9064324 169.845051,23.1811684 169.641114,20.7649334 L185,20.7649334 Z M169.684505,16.621992 C170.046095,14.3485673 171.420136,13.0906826 173.802289,13.0906826 C175.864797,13.0906826 177.318388,14.6731362 177.318388,16.621992 L169.684505,16.621992 L169.684505,16.621992 Z\"\n                        />\n                        <path\n                          d=\"M200.955311,28.5221077 C200.298901,30.3958684 199.56337,32.7989483 198.29304,34.3912803 C196.164103,37.0407925 192.887912,37 189.733333,37 L186.048352,37 L186.048352,30.5577263 L187.92967,30.5577263 C188.750183,30.5577263 189.813919,30.6408425 190.389744,30.3550393 C190.880586,30.1115234 191.1663,29.7032331 191.1663,28.7670818 C191.1663,27.7463561 188.054212,19.964052 187.604396,18.7406393 L184,9 L192.681319,9 L196.082051,21.1451774 L196.164103,21.1451774 L199.604396,9 L208,9 L200.955311,28.5221077\"\n                        />\n                      </g>\n                    </svg>\n                    <span\n                      class=\"lbh-header__logo-text\"\n                    >\n                    ...\n    at Object.getElementError (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:541:19)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3050:38)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3022:17)\n    at eval (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:3071:19)\n    at baseCommandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:200:16)\n    at commandImpl (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:203:40)\n    at getValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:227:23)\n    at resolveValue (https://manage-my-home-development.hackney.gov.uk/__cypress/tests?p=cypress/support/index.js:267:35)\nFrom previous event:\n    at tryFn (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165383:61)\n    at whenStable (https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:165422:14)\n    at https://manage-my-home-development.hackney.gov.uk/__cypress/runner/cypress_runner.js:164909:18"
+              "status": "passed",
+              "duration": 311000000
             }
           },
           {
@@ -1504,7 +1612,8 @@
             "line": 181,
             "name": "I click on 'New Process' button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 797000000
             }
           },
           {
@@ -1513,7 +1622,8 @@
             "line": 182,
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 273000000
             }
           },
           {
@@ -1522,7 +1632,8 @@
             "line": 183,
             "name": "a further sub menu is expanded into view",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 78000000
             }
           },
           {
@@ -1531,7 +1642,8 @@
             "line": 184,
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 213000000
             }
           },
           {
@@ -1540,7 +1652,8 @@
             "line": 185,
             "name": "'Change of Name' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 57000000
             }
           },
           {
@@ -1549,7 +1662,8 @@
             "line": 186,
             "name": "Start Process button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 68000000
             }
           },
           {
@@ -1558,7 +1672,8 @@
             "line": 187,
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 208000000
             }
           },
           {
@@ -1567,7 +1682,8 @@
             "line": 188,
             "name": "Start Process button is enabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 70000000
             }
           },
           {
@@ -1576,7 +1692,8 @@
             "line": 189,
             "name": "I select the button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 205000000
             }
           },
           {
@@ -1585,7 +1702,8 @@
             "line": 190,
             "name": "Change of Name edit page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 937000000
             }
           },
           {
@@ -1594,7 +1712,8 @@
             "line": 191,
             "name": "Next button is disabled",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 265000000
             }
           },
           {
@@ -1603,7 +1722,8 @@
             "line": 192,
             "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 101000000
             }
           },
           {
@@ -1612,7 +1732,8 @@
             "line": 193,
             "name": "I select Title and enter First and Last name",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1831000000
             }
           },
           {
@@ -1621,7 +1742,8 @@
             "line": 194,
             "name": "I click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 214000000
             }
           },
           {
@@ -1630,7 +1752,8 @@
             "line": 195,
             "name": "I am on the supporting documents page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 828000000
             }
           },
           {
@@ -1639,7 +1762,8 @@
             "line": 196,
             "name": "Status Stepper is at \"Request Documents\"",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 76000000
             }
           },
           {
@@ -1648,7 +1772,8 @@
             "line": 197,
             "name": "I select 'I have made an appointment to check supporting documents' and click on Next button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 2395000000
             }
           },
           {
@@ -1657,7 +1782,8 @@
             "line": 198,
             "name": "'Review Documents' page is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1014000000
             }
           },
           {
@@ -1666,7 +1792,8 @@
             "line": 199,
             "name": "'Office appointment scheduled' message box is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 750000000
             }
           },
           {
@@ -1675,7 +1802,8 @@
             "line": 200,
             "name": "I click on Close Case button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1329000000
             }
           },
           {
@@ -1684,7 +1812,8 @@
             "line": 201,
             "name": "modal dialog is displayed with 'Reason for close case'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 72000000
             }
           },
           {
@@ -1693,7 +1822,8 @@
             "line": 202,
             "name": "I enter the reason and I click on Close case button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 1875000000
             }
           },
           {
@@ -1702,7 +1832,8 @@
             "line": 203,
             "name": "'Review Documents' page is displayed with message 'Change of name application will be closed' and reason",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 70000000
             }
           },
           {
@@ -1711,7 +1842,8 @@
             "line": 204,
             "name": "I select checkbox to confirm outcome letter and I click on Confirm button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 390000000
             }
           },
           {
@@ -1720,7 +1852,8 @@
             "line": 205,
             "name": "'Thank you for your confirmation' message is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 677000000
             }
           },
           {
@@ -1729,7 +1862,8 @@
             "line": 206,
             "name": "I select the Case activity history button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 258000000
             }
           },
           {
@@ -1738,7 +1872,8 @@
             "line": 207,
             "name": "I can see the Case details recorded for 'Process closed'",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 650000000
             }
           },
           {
@@ -1747,7 +1882,8 @@
             "line": 208,
             "name": "I click Close activity history button",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 339000000
             }
           },
           {
@@ -1756,7 +1892,8 @@
             "line": 209,
             "name": "'Thank you for your confirmation' message is displayed",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 53000000
             }
           }
         ]
