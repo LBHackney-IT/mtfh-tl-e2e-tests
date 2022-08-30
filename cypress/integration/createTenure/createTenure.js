@@ -1,8 +1,10 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
 import CreateTenurePageObjects from "../../pageObjects/createTenurePage"
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
+import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 
 const createTenurePage = new CreateTenurePageObjects()
+const addPersonPage = new AddPersonPageObjects()
 const modal = new ModalPageObjects()
 const tenure = require('../../../api/tenure')
 
@@ -27,17 +29,13 @@ And('I enter a tenure end date {string} {string} {string}', (day, month, year) =
     createTenurePage.tenureEndDateYearContainer().type(year)
 })
 
-And('I click the next button', () => {
-    createTenurePage.nextButton().click()
-})
-
 And('I click the cancel button', () => {
     createTenurePage.cancelButton().click({force: true})
 })
 
-Then('a create tenure error is triggered', () => {
+Then('a create tenure error is triggered {string}', (error) => {
     createTenurePage.errorContainer().should('be.visible')
-    createTenurePage.errorBody().contains('Start date must occur after the end date of the previous tenure')
+    createTenurePage.errorBody().contains(error)
 })
 
 And('the person search is displayed', () => {
@@ -62,14 +60,27 @@ Then('the edit tenure information is displayed', () => {
     createTenurePage.tenureStartDateDayContainer().should('be.visible')
     createTenurePage.tenureStartDateMonthContainer().should('be.visible')
     createTenurePage.tenureStartDateYearContainer().should('be.visible')
+    cy.getTenureFixture(({id: tenureId}) => {
+        cy.url().should('include', `tenure/${tenureId}/edit`)
+    })
 })
 
 And('I click the done button', () => {
     createTenurePage.doneButton().click()
 })
 
-When('I edit a Tenure {string}', (tenureId) => {
-    createTenurePage.editTenure(tenureId)
+And('I click the save equality information button', () => {
+    addPersonPage.saveEqualityInformationButton().click()
+})
+
+When('I edit a Tenure {string}', (id) => {
+    if (id) {
+        createTenurePage.editTenure(id)
+        return;
+    }
+    cy.getTenureFixture().then(async (tenureInfo) => {
+        createTenurePage.editTenure(tenureInfo.id)
+    })
 })
 
 Then('the tenure cannot be edited warning message is displayed', () => {
@@ -100,7 +111,7 @@ When('I add {int} household member', (householdMembers) => {
 })
 
 Then('a new tenure error message appears {string}', (error) => {
-    createTenurePage.pageAnnouncementContainer.should('be.visible')
+    createTenurePage.pageAnnouncementContainer().should('be.visible')
     createTenurePage.pageAnnouncementContainer().contains(error)
 })
 
@@ -121,9 +132,9 @@ Then('I am on the create contact for a new tenure page', () => {
     cy.url().should('include', '/contact')
 })
 
-And('the person is added to the list of tenures {string} {string} {string} {string} {string} {string}', (title, firstName, lastName, day, month, year) => {
-    createTenurePage.addAsHousholdMember().contains(`${title} ${firstName} ${lastName}`)
-    createTenurePage.addAsHousholdMember().contains(`${day}/${month}/${year},`)
+And('the person is added to the list of tenures {string} {string} {string} {string} {string} {string} {string}', (title, firstName, middleName, lastName, day, month, year) => {
+    createTenurePage.addedHouseholdMembersContainer().contains(`${title} ${firstName} ${middleName} ${lastName}`)
+    createTenurePage.addedHouseholdMembersContainer().contains(`${day}/${month}/${year},`)
 })
 
 When('I navigate to a create person for new tenure {string} {string}', (property, tenure) => {
@@ -149,10 +160,6 @@ Given('I delete all existing persons from the tenure {string}', async (tenureId)
 
 And('I click remove person', () => {
     createTenurePage.confirmRemovePersonButton().click()
-})
-
-Then('the edit tenure information is displayed {string}', (tenureId) => {
-    cy.url().should('include', `tenure/${tenureId}/edit`)
 })
 
 Then('the tenure end date is editable', () => {

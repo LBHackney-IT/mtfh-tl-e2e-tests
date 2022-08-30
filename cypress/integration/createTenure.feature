@@ -115,11 +115,80 @@ Feature: Create tenure
 #        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
 #        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
 #
+  @SmokeTest
+  Scenario Outline: Create new tenure
+    Given I create a new property
+    When I view a property ""
+    When I click on the new tenure button
+    Then I am on the create new tenure page ""
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
+
+    Examples:
+      | tenureType | startDay | startMonth | startYear |
+      | Non-Secure   | 01       | 01         | 2000      |
+
+  @SmokeTest
+  Scenario Outline: Create new tenure search and select resident
+    Given I create a new property
+    When I view a property ""
+    When I click on the new tenure button
+    Then I am on the create new tenure page ""
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
+    When I enter any of the following criteria "<searchTerm>"
+    And I click on the search button
+    Then the search results are displayed by best match "<searchTerm>"
+    When I add 1 named tenure holder
+    Then the person is added to the tenure
+    When I enter any of the following criteria "<searchTerm2>"
+    And I click on the search button
+    When I add 1 household member
+    Then the person is added to the tenure
+    And I click the done button
+    Then the message New tenure completed is displayed
+    Then the tenure information is displayed
+
+    Examples:
+      | tenureType | startDay | startMonth | startYear | searchTerm | searchTerm2 |
+      | Freehold   | 01       | 01         | 2000      | tre        | sar         |
+
+  Scenario Outline: Create new tenure and filter search
+    Given I create a new property
+    When I view a property ""
+    When I click on the new tenure button
+    Then I am on the create new tenure page ""
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
+    When I enter any of the following criteria "<searchTerm>"
+    And I click on the search button
+    Then the search results are displayed by best match "<searchTerm>"
+    Then the default sort option is correct
+    When I select to sort by "<filter>"
+    When I set the number of results to <results>
+    Then the correct number of <results> are displayed
+
+    Examples:
+      | tenureType | startDay | startMonth | startYear | searchTerm | filter        | results |
+      | Freehold   | 01       | 01         | 2000      | tre        | Last name A-Z | 40      |
+      | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
+      | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
+
 #  @ignore
 #  Scenario Outline: Create new tenure and add new person
-#    When I view a property "<property>"
+#    Given I create a new property
+#    When I view a property ""
 #    When I click on the new tenure button
-#    Then I am on the create new tenure page "<property>"
+#    Then I am on the create new tenure page ""
 #    Then the new tenure landing page is displayed
 #    When I select a tenure type "<tenureType>"
 #    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
@@ -143,8 +212,9 @@ Feature: Create tenure
 #    And I select a preferred last name "<preferredLastName>"
 #    And I enter a reason for creation
 #    And I click add person
-#    Then I am on the create contact for a new tenure page
-#    And I click the add email address button
+#    Then the person is added to the tenure
+#    And I am on the create contact for a new tenure page
+#    Then I click the add email address button
 #    And I enter an email address "<email>"
 #    And I enter an email description "<emailDescription>"
 #    And I click save email address
@@ -155,9 +225,9 @@ Feature: Create tenure
 #    And I enter a phone number description "<phoneDescription>"
 #    And I click save phone number
 #    And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
-#    And I click the done button
-#    Then the person is added to the tenure
-#    And the person is added to the list of tenures "<title>" "<firstName>" "<lastName>" "<day>" "<month>" "<year>"
+#    And I click the next button
+#    And I click the save equality information button
+#    And the person is added to the list of tenures "<title>" "<firstName>" "<middleName>" "<lastName>" "<day>" "<month>" "<year>"
 #    And the tenure person search is displayed
 #
 #        Examples:
@@ -166,9 +236,10 @@ Feature: Create tenure
 #
 #  @ignore
 #  Scenario Outline: Create new tenure validation
-#    When I view a property "<property>"
+#    Given I create a new property
+#    When I view a property ""
 #    When I click on the new tenure button
-#    Then I am on the create new tenure page "<property>"
+#    Then I am on the create new tenure page ""
 #    Then the new tenure landing page is displayed
 #    When I select a tenure type "<tenureType>"
 #    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
@@ -180,7 +251,9 @@ Feature: Create tenure
 #    When I add 1 named tenure holder
 #    Then the person is added to the tenure
 #    When I add 1 named tenure holder
-#    Then a tenure error message appears "The person is already added"
+#    Then a new tenure error message appears "The person is already added"
+#    When I enter any of the following criteria "<searchTerm2>"
+#    And I click on the search button
 #    When I add 1 household member
 #    Then the person is added to the tenure
 #    When I add 1 household member
@@ -416,3 +489,186 @@ Feature: Create tenure
 #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Traveller   |
 #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Tenant Acc Flat  |
 
+
+#      | tenureType | startDay | startMonth | startYear | searchTerm | searchTerm2 |
+#      | Freehold   | 01       | 01         | 2000      | tre        | sar         |
+
+  @SmokeTest
+  Scenario: Create new tenure and cancel
+    Given I create a new property
+    When I view a property ""
+    When I click on the new tenure button
+    Then I am on the create new tenure page ""
+    Then the new tenure landing page is displayed
+    And I click the cancel button
+    Then the cancel confirmation modal is displayed
+    And I click the modal cancel button
+    Then the new tenure landing page is displayed
+    And I click the cancel button
+    Then the cancel confirmation modal is displayed
+    And I click the confirm button
+    Then the property information is displayed
+
+  @SmokeTest
+  Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
+    When I view a property "<property>"
+    When I click on the new tenure button
+    Then I am on the create new tenure page "<property>"
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    Then a create tenure error is triggered "Start date must occur after the end date of the previous tenure"
+
+    Examples:
+      | property                             | tenureType | startDay | startMonth | startYear |
+      | 9db41416-a919-308f-4d7e-9fd25baf0c5b | Freehold   | 01       | 01         | 1900      |
+
+  @SmokeTest
+  Scenario Outline: Create new tenure with start date that occurs after end date
+    Given I create a new property
+    When I view a property ""
+    When I click on the new tenure button
+    Then I am on the create new tenure page ""
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
+    And I click the next button
+    Then a create tenure error is triggered "End date must occur after start date"
+
+    Examples:
+      | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
+      | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
+
+  Scenario Outline: Edit existing tenure
+    Given I create a new "" tenure
+    When I view a tenure ""
+    Then the tenure information is displayed
+    And I click edit tenure
+    Then the edit tenure information is displayed
+    When I select a tenure type "<tenureType>"
+    And I click the next button
+    Then the edit tenure information is displayed
+
+    Examples:
+      | tenureType |
+      | Freehold   |
+
+  Scenario Outline: Edit existing tenure and cancel
+    Given I create a new "" tenure
+    When I view a tenure ""
+    Then the tenure information is displayed
+    And I click edit tenure
+    Then the edit tenure information is displayed
+    When I select a tenure type "<tenureType>"
+    And I click the cancel button
+    Then the cancel modal is displayed
+    When I click the modal cancel button
+    Then the edit tenure information is displayed
+    And I click the cancel button
+    Then the cancel modal is displayed
+    And I click the confirm button
+    Then the tenure information is displayed
+
+    Examples:
+      | tenureType |
+      | Freehold   |
+
+  Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
+    Given I create a new "" tenure
+    When I view a tenure ""
+    Then the tenure information is displayed
+    And I click edit tenure
+    Then the edit tenure information is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure end date as "<day>" "<month>" "<year>"
+    And I click the next button
+    Then the warning modal is displayed
+    And the information text is displayed
+    When I click the modal cancel button
+    Then the edit tenure information is displayed
+    When I click the next button
+    Then the warning modal is displayed
+    When I click yes on the modal
+    Then the tenure information is displayed with the page heading Tenure updated
+
+    Examples:
+      | tenureType | day | month | year |
+      | Freehold   |  20 |  05   | 2022 |
+
+  Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
+    When I view a tenure "<tenure>"
+    Then the tenure information is displayed
+    And the edit tenure button is not displayed
+    Examples:
+      | tenure                               |
+      | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
+
+  Scenario Outline: Cannot edit tenure for inactive or past tenures
+    When I edit a Tenure "<tenure>"
+    Then the tenure cannot be edited warning message is displayed
+
+    Examples:
+      | tenure                               |
+      | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
+
+#  @ignore
+#  Scenario Outline: Create person for new tenure validation
+#    Given I create a new "" tenure
+#    When I navigate to a create person for new tenure "<property>" "<tenure>"
+#    When I enter any of the following criteria "<searchTerm>"
+#    And I click on the search button
+#    When I add 5 named tenure holder
+#    Then a new tenure error message appears "Max. tenure holders added"
+#    And I click create new person
+#    And I am on the create new person for a new tenure page
+#    And the named tenure holder button is not active
+#    And I remove one of the tenure holders
+#    And I click the cancel button
+#    And I remove one of the tenure holders
+#    And I click remove person
+#    Then the person is removed
+#    When I select person type "Named tenure holder"
+#    And I select a title "<title>"
+#    And I enter a first name "<firstName>"
+#    And I enter a last name "<lastName>"
+#    And I enter a date of birth "<day>" "<month>" "<year>"
+#    And I enter a reason for creation
+#    And I click the done button
+#
+#    Examples:
+#      | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
+#      | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
+
+  @regression
+  Scenario Outline: End dates are editable for all tenure types
+    Given I create a new "" tenure
+    When I edit a Tenure ""
+    When I select a tenure type "<tenureType>"
+    Then the tenure end date is editable
+
+    Examples:
+      | tenureType       |
+      | Freehold         |
+      | Freehold (Serv)  |
+      | Introductory     |
+      | Leasehold (RTB)  |
+      | License Temp Ac  |
+      | Lse 100% Stair   |
+      | Mesne Profit Ac  |
+      | Non-Secure       |
+      | Private Sale LH  |
+      | Rent To Mortgage |
+      | Secure           |
+      | Shared Equity    |
+      | Shared Owners    |
+      | Short Life Lse   |
+      | Temp Annex       |
+      | Temp B&B         |
+      | Temp Decant      |
+      | Temp Hostel      |
+      | Temp Hostel Lse  |
+      | Temp Private Lt  |
+      | Temp Traveller   |
+      | Tenant Acc Flat  |

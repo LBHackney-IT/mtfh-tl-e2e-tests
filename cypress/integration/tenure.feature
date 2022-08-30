@@ -12,7 +12,7 @@ Feature: Tenure page
     Scenario: View resident details for new tenure
       Given I create a new "" tenure
       And I create a person with new tenure
-      When I view a Tenure
+      When I view a tenure ""
       Then the tenure information is displayed
       And the residents information is displayed
 
@@ -52,14 +52,14 @@ Feature: Tenure page
     Scenario: Navigate to personal details
       Given I create a new "" tenure
       And I create a person with new tenure
-      When I view a Tenure
+      When I view a tenure ""
       And I select a resident
       Then the resident details are displayed
 
     @device
     Scenario Outline: Mobile view
       Given I create a new "" tenure
-      And I view a Tenure
+      And I view a tenure ""
       When I am using a mobile viewport "<device>"
       And I click the tenure details accordion
       Then the tenure details accordion information is displayed
@@ -90,5 +90,5 @@ Feature: Tenure page
     @Accessibility
     Scenario: Accessibility Testing
       Given I create a new "" tenure
-      When I view a Tenure
+      When I view a tenure ""
       And have no detectable a11y violations
