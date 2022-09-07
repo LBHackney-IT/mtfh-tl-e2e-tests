@@ -11,7 +11,7 @@
       {
         "id": "as-an-internal-hackney-user;ac1---con-process-through-'request-documents-electronically'---approve-application",
         "keyword": "Scenario",
-        "line": 67,
+        "line": 68,
         "name": "AC1 - CoN Process through 'Request Documents electronically' - APPROVE Application",
         "tags": [],
         "type": "scenario",
@@ -23,7 +23,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 221000000
+              "duration": 163000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 500000000
+              "duration": 755000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 5291000000
+              "duration": 2410000000
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 466000000
+              "duration": 434000000
             }
           },
           {
@@ -63,7 +63,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 3272000000
+              "duration": 778000000
             }
           },
           {
@@ -73,7 +73,7 @@
             "name": "I select person",
             "result": {
               "status": "passed",
-              "duration": 267000000
+              "duration": 279000000
             }
           },
           {
@@ -83,7 +83,7 @@
             "name": "I click on 'New Process' button",
             "result": {
               "status": "passed",
-              "duration": 3463000000
+              "duration": 1277000000
             }
           },
           {
@@ -93,7 +93,7 @@
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
               "status": "passed",
-              "duration": 232000000
+              "duration": 288000000
             }
           },
           {
@@ -103,7 +103,7 @@
             "name": "a further sub menu is expanded into view",
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 64000000
             }
           },
           {
@@ -113,7 +113,7 @@
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
               "status": "passed",
-              "duration": 247000000
+              "duration": 245000000
             }
           },
           {
@@ -123,7 +123,7 @@
             "name": "'Change of Name' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 92000000
             }
           },
           {
@@ -133,7 +133,7 @@
             "name": "Start Process button is disabled",
             "result": {
               "status": "passed",
-              "duration": 58000000
+              "duration": 65000000
             }
           },
           {
@@ -143,7 +143,7 @@
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
               "status": "passed",
-              "duration": 213000000
+              "duration": 205000000
             }
           },
           {
@@ -153,7 +153,7 @@
             "name": "Start Process button is enabled",
             "result": {
               "status": "passed",
-              "duration": 75000000
+              "duration": 61000000
             }
           },
           {
@@ -163,7 +163,7 @@
             "name": "I select the button",
             "result": {
               "status": "passed",
-              "duration": 209000000
+              "duration": 216000000
             }
           },
           {
@@ -173,7 +173,7 @@
             "name": "Change of Name edit page is displayed",
             "result": {
               "status": "passed",
-              "duration": 3845000000
+              "duration": 3477000000
             }
           },
           {
@@ -183,7 +183,7 @@
             "name": "Next button is disabled",
             "result": {
               "status": "passed",
-              "duration": 56000000
+              "duration": 67000000
             }
           },
           {
@@ -193,7 +193,7 @@
             "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
               "status": "passed",
-              "duration": 68000000
+              "duration": 78000000
             }
           },
           {
@@ -203,7 +203,7 @@
             "name": "I select Title and enter First and Last name",
             "result": {
               "status": "passed",
-              "duration": 1829000000
+              "duration": 1854000000
             }
           },
           {
@@ -213,7 +213,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 236000000
+              "duration": 246000000
             }
           },
           {
@@ -223,7 +223,7 @@
             "name": "I am on the supporting documents page",
             "result": {
               "status": "passed",
-              "duration": 738000000
+              "duration": 739000000
             }
           },
           {
@@ -233,7 +233,7 @@
             "name": "Status Stepper is at \"Request Documents\"",
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 67000000
             }
           },
           {
@@ -243,7 +243,7 @@
             "name": "I do not confirm the Tenant declaration checkbox and I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 924000000
+              "duration": 561000000
             }
           },
           {
@@ -253,7 +253,7 @@
             "name": "Tenant declaration validation message is displayed",
             "result": {
               "status": "passed",
-              "duration": 74000000
+              "duration": 48000000
             }
           },
           {
@@ -263,7 +263,7 @@
             "name": "I select Request Documents electronically and click on Next button",
             "result": {
               "status": "passed",
-              "duration": 687000000
+              "duration": 703000000
             }
           },
           {
@@ -273,7 +273,7 @@
             "name": "'Review Documents' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 567000000
+              "duration": 605000000
             }
           },
           {
@@ -283,7 +283,7 @@
             "name": "Status Stepper is at \"Review Documents\"",
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 69000000
             }
           },
           {
@@ -293,7 +293,7 @@
             "name": "I select only the first option to confirm I have seen all the documents",
             "result": {
               "status": "passed",
-              "duration": 216000000
+              "duration": 227000000
             }
           },
           {
@@ -303,7 +303,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 242000000
+              "duration": 284000000
             }
           },
           {
@@ -313,7 +313,7 @@
             "name": "a validation error message is displayed",
             "result": {
               "status": "passed",
-              "duration": 56000000
+              "duration": 58000000
             }
           },
           {
@@ -323,7 +323,7 @@
             "name": "I select all the checkboxes to confirm I have seen all the documents",
             "result": {
               "status": "passed",
-              "duration": 799000000
+              "duration": 966000000
             }
           },
           {
@@ -333,7 +333,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 222000000
+              "duration": 235000000
             }
           },
           {
@@ -343,7 +343,7 @@
             "name": "I am on the 'Tenure Investigation' page",
             "result": {
               "status": "passed",
-              "duration": 704000000
+              "duration": 657000000
             }
           },
           {
@@ -353,7 +353,7 @@
             "name": "Status Stepper is at \"Submit case\"",
             "result": {
               "status": "passed",
-              "duration": 67000000
+              "duration": 71000000
             }
           },
           {
@@ -363,7 +363,7 @@
             "name": "I select Submit case button",
             "result": {
               "status": "passed",
-              "duration": 193000000
+              "duration": 219000000
             }
           },
           {
@@ -373,7 +373,7 @@
             "name": "I am on the 'Next Steps' page",
             "result": {
               "status": "passed",
-              "duration": 769000000
+              "duration": 634000000
             }
           },
           {
@@ -383,7 +383,7 @@
             "name": "Status Stepper is at \"Finish\"",
             "result": {
               "status": "passed",
-              "duration": 74000000
+              "duration": 78000000
             }
           },
           {
@@ -393,7 +393,7 @@
             "name": "I click on 'Continue' button",
             "result": {
               "status": "passed",
-              "duration": 248000000
+              "duration": 253000000
             }
           },
           {
@@ -403,7 +403,7 @@
             "name": "I am on the Review Application page",
             "result": {
               "status": "passed",
-              "duration": 43000000
+              "duration": 42000000
             }
           },
           {
@@ -413,7 +413,7 @@
             "name": "Status Stepper is at \"Review application\"",
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 71000000
             }
           },
           {
@@ -423,7 +423,7 @@
             "name": "I recommend the outcome as 'Approve'",
             "result": {
               "status": "passed",
-              "duration": 215000000
+              "duration": 218000000
             }
           },
           {
@@ -433,7 +433,7 @@
             "name": "I select 'I confirm that the tenure investigation has been completed'",
             "result": {
               "status": "passed",
-              "duration": 217000000
+              "duration": 210000000
             }
           },
           {
@@ -443,7 +443,7 @@
             "name": "I click on 'Confirm' button",
             "result": {
               "status": "passed",
-              "duration": 227000000
+              "duration": 226000000
             }
           },
           {
@@ -453,7 +453,7 @@
             "name": "I am on the 'Tenure investigator recommendation: Approve application' page",
             "result": {
               "status": "passed",
-              "duration": 734000000
+              "duration": 667000000
             }
           },
           {
@@ -463,7 +463,7 @@
             "name": "I select the option 'I have passed the case to the Area Housing Manager'",
             "result": {
               "status": "passed",
-              "duration": 198000000
+              "duration": 216000000
             }
           },
           {
@@ -473,7 +473,7 @@
             "name": "I select decision as 'Approve'",
             "result": {
               "status": "passed",
-              "duration": 223000000
+              "duration": 212000000
             }
           },
           {
@@ -483,7 +483,7 @@
             "name": "I confirm 'I confirm that this is an instruction received by the Area Housing Manager'",
             "result": {
               "status": "passed",
-              "duration": 209000000
+              "duration": 199000000
             }
           },
           {
@@ -493,7 +493,7 @@
             "name": "I click 'Confirm' button",
             "result": {
               "status": "passed",
-              "duration": 230000000
+              "duration": 228000000
             }
           },
           {
@@ -503,7 +503,7 @@
             "name": "a validation error message for AHM \"You must enter manager's name\" is displayed",
             "result": {
               "status": "passed",
-              "duration": 58000000
+              "duration": 49000000
             }
           },
           {
@@ -513,7 +513,7 @@
             "name": "I enter Area Housing Manager name as 'Test Housing Manager'",
             "result": {
               "status": "passed",
-              "duration": 668000000
+              "duration": 667000000
             }
           },
           {
@@ -523,7 +523,7 @@
             "name": "I click 'Confirm' button",
             "result": {
               "status": "passed",
-              "duration": 233000000
+              "duration": 240000000
             }
           },
           {
@@ -533,7 +533,7 @@
             "name": "I am on the HO and AHM approved page",
             "result": {
               "status": "passed",
-              "duration": 596000000
+              "duration": 661000000
             }
           },
           {
@@ -543,37 +543,27 @@
             "name": "I select the Case activity history button",
             "result": {
               "status": "passed",
-              "duration": 260000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 62,
-            "name": "I can see the Case details recorded",
-            "result": {
-              "status": "passed",
-              "duration": 2754000000
+              "duration": 294000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 63,
+            "line": 64,
             "name": "I click Close activity history button",
             "result": {
               "status": "passed",
-              "duration": 332000000
+              "duration": 642000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 64,
+            "line": 65,
             "name": "I am on the HO and AHM approved page",
             "result": {
               "status": "passed",
-              "duration": 114000000
+              "duration": 125000000
             }
           }
         ]
@@ -581,7 +571,7 @@
       {
         "id": "as-an-internal-hackney-user;ac2---tenure-investigator-approve-the-application-and-ho-or-ahm-decline-the-application",
         "keyword": "Scenario",
-        "line": 118,
+        "line": 119,
         "name": "AC2 - Tenure Investigator APPROVE the Application and HO or AHM DECLINE the Application",
         "tags": [],
         "type": "scenario",
@@ -593,84 +583,114 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 438000000
+              "duration": 444000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 71,
+            "line": 72,
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 415000000
+              "duration": 402000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 72,
+            "line": 73,
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 1948000000
+              "duration": 2102000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 73,
+            "line": 74,
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 417000000
+              "duration": 472000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 74,
+            "line": 75,
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 875000000
+              "duration": 3297000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 75,
+            "line": 76,
             "name": "I select person",
             "result": {
               "status": "passed",
-              "duration": 265000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 76,
-            "name": "I click on 'New Process' button",
-            "result": {
-              "status": "passed",
-              "duration": 1157000000
+              "duration": 256000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 77,
+            "name": "I click on 'New Process' button",
+            "result": {
+              "status": "passed",
+              "duration": 1132000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 78,
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
               "status": "passed",
-              "duration": 263000000
+              "duration": 242000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 78,
+            "line": 79,
             "name": "a further sub menu is expanded into view",
+            "result": {
+              "status": "passed",
+              "duration": 68000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 80,
+            "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
+            "result": {
+              "status": "passed",
+              "duration": 272000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 81,
+            "name": "'Change of Name' page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 62000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 82,
+            "name": "Start Process button is disabled",
             "result": {
               "status": "passed",
               "duration": 67000000
@@ -679,58 +699,8 @@
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 79,
-            "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
-            "result": {
-              "status": "passed",
-              "duration": 248000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 80,
-            "name": "'Change of Name' page is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 59000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 81,
-            "name": "Start Process button is disabled",
-            "result": {
-              "status": "passed",
-              "duration": 62000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 82,
-            "name": "I select the checkbox 'I have explained to the tenant'",
-            "result": {
-              "status": "passed",
-              "duration": 219000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
             "line": 83,
-            "name": "Start Process button is enabled",
-            "result": {
-              "status": "passed",
-              "duration": 75000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 84,
-            "name": "I select the button",
+            "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
               "status": "passed",
               "duration": 229000000
@@ -739,18 +709,8 @@
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 85,
-            "name": "Change of Name edit page is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 790000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 86,
-            "name": "Next button is disabled",
+            "line": 84,
+            "name": "Start Process button is enabled",
             "result": {
               "status": "passed",
               "duration": 61000000
@@ -758,79 +718,29 @@
           },
           {
             "arguments": [],
+            "keyword": "When ",
+            "line": 85,
+            "name": "I select the button",
+            "result": {
+              "status": "passed",
+              "duration": 255000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 86,
+            "name": "Change of Name edit page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 4314000000
+            }
+          },
+          {
+            "arguments": [],
             "keyword": "And ",
             "line": 87,
-            "name": "Status Stepper is at \"Tenant's new name\"",
-            "result": {
-              "status": "passed",
-              "duration": 72000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 88,
-            "name": "I select Title and enter First and Last name",
-            "result": {
-              "status": "passed",
-              "duration": 1851000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 89,
-            "name": "I click on Next button",
-            "result": {
-              "status": "passed",
-              "duration": 228000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 90,
-            "name": "I am on the supporting documents page",
-            "result": {
-              "status": "passed",
-              "duration": 826000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 91,
-            "name": "Status Stepper is at \"Request Documents\"",
-            "result": {
-              "status": "passed",
-              "duration": 62000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 92,
-            "name": "I select Request Documents electronically and click on Next button",
-            "result": {
-              "status": "passed",
-              "duration": 653000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 93,
-            "name": "'Review Documents' page is displayed",
-            "result": {
-              "status": "passed",
-              "duration": 536000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 94,
-            "name": "Status Stepper is at \"Review Documents\"",
+            "name": "Next button is disabled",
             "result": {
               "status": "passed",
               "duration": 63000000
@@ -838,19 +748,129 @@
           },
           {
             "arguments": [],
-            "keyword": "When ",
-            "line": 95,
-            "name": "I select all the checkboxes to confirm I have seen all the documents",
+            "keyword": "And ",
+            "line": 88,
+            "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
               "status": "passed",
-              "duration": 621000000
+              "duration": 79000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 89,
+            "name": "I select Title and enter First and Last name",
+            "result": {
+              "status": "passed",
+              "duration": 1771000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 96,
+            "line": 90,
             "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 234000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 91,
+            "name": "I am on the supporting documents page",
+            "result": {
+              "status": "passed",
+              "duration": 1236000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 92,
+            "name": "Status Stepper is at \"Request Documents\"",
+            "result": {
+              "status": "passed",
+              "duration": 69000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 93,
+            "name": "I select Request Documents electronically and click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 875000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 94,
+            "name": "'Review Documents' page is displayed",
+            "result": {
+              "status": "passed",
+              "duration": 547000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 95,
+            "name": "Status Stepper is at \"Review Documents\"",
+            "result": {
+              "status": "passed",
+              "duration": 77000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 96,
+            "name": "I select all the checkboxes to confirm I have seen all the documents",
+            "result": {
+              "status": "passed",
+              "duration": 655000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 97,
+            "name": "I click on Next button",
+            "result": {
+              "status": "passed",
+              "duration": 238000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 98,
+            "name": "I am on the 'Tenure Investigation' page",
+            "result": {
+              "status": "passed",
+              "duration": 660000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 99,
+            "name": "Status Stepper is at \"Submit case\"",
+            "result": {
+              "status": "passed",
+              "duration": 76000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 100,
+            "name": "I select Submit case button",
             "result": {
               "status": "passed",
               "duration": 215000000
@@ -859,108 +879,138 @@
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 97,
-            "name": "I am on the 'Tenure Investigation' page",
-            "result": {
-              "status": "passed",
-              "duration": 682000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 98,
-            "name": "Status Stepper is at \"Submit case\"",
-            "result": {
-              "status": "passed",
-              "duration": 75000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 99,
-            "name": "I select Submit case button",
-            "result": {
-              "status": "passed",
-              "duration": 190000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 100,
+            "line": 101,
             "name": "I am on the 'Next Steps' page",
             "result": {
               "status": "passed",
-              "duration": 667000000
+              "duration": 629000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 101,
+            "line": 102,
             "name": "Status Stepper is at \"Finish\"",
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 83000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 102,
+            "line": 103,
             "name": "I click on 'Continue' button",
             "result": {
               "status": "passed",
-              "duration": 227000000
+              "duration": 261000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 103,
+            "line": 104,
             "name": "I am on the Review Application page",
             "result": {
               "status": "passed",
-              "duration": 48000000
+              "duration": 53000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 104,
+            "line": 105,
             "name": "Status Stepper is at \"Review application\"",
             "result": {
               "status": "passed",
-              "duration": 56000000
+              "duration": 87000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 105,
+            "line": 106,
             "name": "I recommend the outcome as 'Decline'",
             "result": {
               "status": "passed",
-              "duration": 201000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 106,
-            "name": "I select 'I confirm that the tenure investigation has been completed'",
-            "result": {
-              "status": "passed",
-              "duration": 206000000
+              "duration": 245000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 107,
+            "name": "I select 'I confirm that the tenure investigation has been completed'",
+            "result": {
+              "status": "passed",
+              "duration": 244000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 108,
             "name": "I click on 'Confirm' button",
+            "result": {
+              "status": "passed",
+              "duration": 295000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 109,
+            "name": "I am on the 'Tenure investigator recommendation: Decline application' page",
+            "result": {
+              "status": "passed",
+              "duration": 742000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 110,
+            "name": "I select the option 'I have passed the case to the Area Housing Manager'",
+            "result": {
+              "status": "passed",
+              "duration": 226000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 111,
+            "name": "I select decision as 'Approve'",
+            "result": {
+              "status": "passed",
+              "duration": 705000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 112,
+            "name": "I confirm 'I confirm that this is an instruction received by the Area Housing Manager'",
+            "result": {
+              "status": "passed",
+              "duration": 426000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 113,
+            "name": "I enter Area Housing Manager name as 'Test Housing Manager'",
+            "result": {
+              "status": "passed",
+              "duration": 769000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 114,
+            "name": "I click 'Confirm' button",
             "result": {
               "status": "passed",
               "duration": 224000000
@@ -969,90 +1019,30 @@
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 108,
-            "name": "I am on the 'Tenure investigator recommendation: Decline application' page",
-            "result": {
-              "status": "passed",
-              "duration": 691000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 109,
-            "name": "I select the option 'I have passed the case to the Area Housing Manager'",
-            "result": {
-              "status": "passed",
-              "duration": 217000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 110,
-            "name": "I select decision as 'Approve'",
-            "result": {
-              "status": "passed",
-              "duration": 229000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 111,
-            "name": "I confirm 'I confirm that this is an instruction received by the Area Housing Manager'",
-            "result": {
-              "status": "passed",
-              "duration": 226000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 112,
-            "name": "I enter Area Housing Manager name as 'Test Housing Manager'",
-            "result": {
-              "status": "passed",
-              "duration": 670000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 113,
-            "name": "I click 'Confirm' button",
-            "result": {
-              "status": "passed",
-              "duration": 249000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 114,
+            "line": 115,
             "name": "a modal dialog box is displayed",
             "result": {
               "status": "passed",
-              "duration": 1940000000
+              "duration": 1425000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 115,
+            "line": 116,
             "name": "I am on the HO and AHM Declined page",
             "result": {
               "status": "passed",
-              "duration": 710000000
+              "duration": 799000000
             }
           }
         ]
       },
       {
-        "id": "as-an-internal-hackney-user;ac2---field-validation-error-messages-for-title,-firstname-and-lastname",
+        "id": "as-an-internal-hackney-user;ac3---field-validation-error-messages-for-title,-firstname-and-lastname",
         "keyword": "Scenario",
         "line": 149,
-        "name": "AC2 - Field Validation error messages for Title, FirstName and LastName",
+        "name": "AC3 - Field Validation error messages for Title, FirstName and LastName",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -1063,7 +1053,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 1069000000
+              "duration": 310000000
             }
           },
           {
@@ -1073,7 +1063,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 489000000
+              "duration": 439000000
             }
           },
           {
@@ -1083,7 +1073,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 2070000000
+              "duration": 1805000000
             }
           },
           {
@@ -1093,7 +1083,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 399000000
+              "duration": 401000000
             }
           },
           {
@@ -1103,7 +1093,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 785000000
+              "duration": 729000000
             }
           },
           {
@@ -1113,7 +1103,7 @@
             "name": "I select person",
             "result": {
               "status": "passed",
-              "duration": 1507000000
+              "duration": 248000000
             }
           },
           {
@@ -1123,7 +1113,7 @@
             "name": "I click on 'New Process' button",
             "result": {
               "status": "passed",
-              "duration": 1195000000
+              "duration": 1177000000
             }
           },
           {
@@ -1133,7 +1123,7 @@
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
               "status": "passed",
-              "duration": 296000000
+              "duration": 314000000
             }
           },
           {
@@ -1143,7 +1133,7 @@
             "name": "a further sub menu is expanded into view",
             "result": {
               "status": "passed",
-              "duration": 77000000
+              "duration": 57000000
             }
           },
           {
@@ -1153,7 +1143,7 @@
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
               "status": "passed",
-              "duration": 224000000
+              "duration": 470000000
             }
           },
           {
@@ -1163,7 +1153,7 @@
             "name": "'Change of Name' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 59000000
+              "duration": 66000000
             }
           },
           {
@@ -1173,7 +1163,7 @@
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
               "status": "passed",
-              "duration": 193000000
+              "duration": 310000000
             }
           },
           {
@@ -1183,7 +1173,7 @@
             "name": "I select the button",
             "result": {
               "status": "passed",
-              "duration": 209000000
+              "duration": 219000000
             }
           },
           {
@@ -1193,7 +1183,7 @@
             "name": "Change of Name edit page is displayed",
             "result": {
               "status": "passed",
-              "duration": 773000000
+              "duration": 879000000
             }
           },
           {
@@ -1203,7 +1193,7 @@
             "name": "I enter Title only",
             "result": {
               "status": "passed",
-              "duration": 287000000
+              "duration": 306000000
             }
           },
           {
@@ -1213,7 +1203,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 226000000
+              "duration": 227000000
             }
           },
           {
@@ -1223,7 +1213,7 @@
             "name": "a validation error message for 'First name' and 'Last name' are displayed",
             "result": {
               "status": "passed",
-              "duration": 81000000
+              "duration": 86000000
             }
           },
           {
@@ -1233,7 +1223,7 @@
             "name": "I enter 'Title' and 'First name' only",
             "result": {
               "status": "passed",
-              "duration": 1032000000
+              "duration": 1097000000
             }
           },
           {
@@ -1253,7 +1243,7 @@
             "name": "a validation error message for 'Last name' is displayed",
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 56000000
             }
           },
           {
@@ -1263,7 +1253,7 @@
             "name": "I enter 'Title' and 'Last name' only",
             "result": {
               "status": "passed",
-              "duration": 1314000000
+              "duration": 1349000000
             }
           },
           {
@@ -1273,7 +1263,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 355000000
+              "duration": 230000000
             }
           },
           {
@@ -1283,7 +1273,7 @@
             "name": "a validation error message for 'First name' is displayed",
             "result": {
               "status": "passed",
-              "duration": 45000000
+              "duration": 57000000
             }
           },
           {
@@ -1293,7 +1283,7 @@
             "name": "I enter 'First name' and 'Last name' only",
             "result": {
               "status": "passed",
-              "duration": 1990000000
+              "duration": 1936000000
             }
           },
           {
@@ -1303,7 +1293,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 358000000
+              "duration": 226000000
             }
           },
           {
@@ -1313,16 +1303,16 @@
             "name": "a validation error message for 'Title' is displayed",
             "result": {
               "status": "passed",
-              "duration": 84000000
+              "duration": 55000000
             }
           }
         ]
       },
       {
-        "id": "as-an-internal-hackney-user;ac3---con-process-through-'make-an-appointment-to-check-supporting-documents'",
+        "id": "as-an-internal-hackney-user;ac4---con-process-through-'make-an-appointment-to-check-supporting-documents'",
         "keyword": "Scenario",
         "line": 178,
-        "name": "AC3 - CoN Process through 'Make an appointment to check supporting documents'",
+        "name": "AC4 - CoN Process through 'Make an appointment to check supporting documents'",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -1333,7 +1323,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 320000000
+              "duration": 238000000
             }
           },
           {
@@ -1343,7 +1333,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 351000000
+              "duration": 412000000
             }
           },
           {
@@ -1353,7 +1343,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 2036000000
+              "duration": 1936000000
             }
           },
           {
@@ -1363,7 +1353,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 413000000
+              "duration": 397000000
             }
           },
           {
@@ -1373,7 +1363,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 773000000
+              "duration": 776000000
             }
           },
           {
@@ -1383,7 +1373,7 @@
             "name": "I select person",
             "result": {
               "status": "passed",
-              "duration": 498000000
+              "duration": 308000000
             }
           },
           {
@@ -1393,7 +1383,7 @@
             "name": "I click on 'New Process' button",
             "result": {
               "status": "passed",
-              "duration": 1204000000
+              "duration": 1113000000
             }
           },
           {
@@ -1403,7 +1393,7 @@
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
               "status": "passed",
-              "duration": 225000000
+              "duration": 307000000
             }
           },
           {
@@ -1413,7 +1403,7 @@
             "name": "a further sub menu is expanded into view",
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 78000000
             }
           },
           {
@@ -1423,7 +1413,7 @@
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
               "status": "passed",
-              "duration": 241000000
+              "duration": 231000000
             }
           },
           {
@@ -1433,7 +1423,7 @@
             "name": "'Change of Name' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 59000000
             }
           },
           {
@@ -1443,7 +1433,7 @@
             "name": "Start Process button is disabled",
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 65000000
             }
           },
           {
@@ -1453,7 +1443,7 @@
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
               "status": "passed",
-              "duration": 202000000
+              "duration": 208000000
             }
           },
           {
@@ -1463,7 +1453,7 @@
             "name": "Start Process button is enabled",
             "result": {
               "status": "passed",
-              "duration": 71000000
+              "duration": 74000000
             }
           },
           {
@@ -1473,7 +1463,7 @@
             "name": "I select the button",
             "result": {
               "status": "passed",
-              "duration": 210000000
+              "duration": 212000000
             }
           },
           {
@@ -1483,7 +1473,7 @@
             "name": "Change of Name edit page is displayed",
             "result": {
               "status": "passed",
-              "duration": 881000000
+              "duration": 727000000
             }
           },
           {
@@ -1493,7 +1483,7 @@
             "name": "Next button is disabled",
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 69000000
             }
           },
           {
@@ -1503,7 +1493,7 @@
             "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
               "status": "passed",
-              "duration": 66000000
+              "duration": 68000000
             }
           },
           {
@@ -1513,7 +1503,7 @@
             "name": "I select Title and enter First and Last name",
             "result": {
               "status": "passed",
-              "duration": 1773000000
+              "duration": 1772000000
             }
           },
           {
@@ -1523,7 +1513,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 221000000
+              "duration": 217000000
             }
           },
           {
@@ -1533,7 +1523,7 @@
             "name": "I am on the supporting documents page",
             "result": {
               "status": "passed",
-              "duration": 718000000
+              "duration": 698000000
             }
           },
           {
@@ -1543,7 +1533,7 @@
             "name": "Status Stepper is at \"Request Documents\"",
             "result": {
               "status": "passed",
-              "duration": 74000000
+              "duration": 70000000
             }
           },
           {
@@ -1553,7 +1543,7 @@
             "name": "I select 'I have made an appointment to check supporting documents' and click on Next button",
             "result": {
               "status": "passed",
-              "duration": 2382000000
+              "duration": 2504000000
             }
           },
           {
@@ -1563,7 +1553,7 @@
             "name": "'Review Documents' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 702000000
+              "duration": 603000000
             }
           },
           {
@@ -1573,16 +1563,16 @@
             "name": "'Office appointment scheduled' message box is displayed",
             "result": {
               "status": "passed",
-              "duration": 261000000
+              "duration": 111000000
             }
           }
         ]
       },
       {
-        "id": "as-an-internal-hackney-user;ac4---close-case-at-review-documents-stage",
+        "id": "as-an-internal-hackney-user;ac5---close-case-at-review-documents-stage",
         "keyword": "Scenario",
         "line": 218,
-        "name": "AC4 - Close case at Review Documents stage",
+        "name": "AC5 - Close case at Review Documents stage",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -1593,7 +1583,7 @@
             "name": "I am logged in",
             "result": {
               "status": "passed",
-              "duration": 286000000
+              "duration": 287000000
             }
           },
           {
@@ -1603,7 +1593,7 @@
             "name": "I am on the MMH home page",
             "result": {
               "status": "passed",
-              "duration": 381000000
+              "duration": 255000000
             }
           },
           {
@@ -1613,7 +1603,7 @@
             "name": "I enter \"za\" as search criteria",
             "result": {
               "status": "passed",
-              "duration": 2102000000
+              "duration": 1348000000
             }
           },
           {
@@ -1623,7 +1613,7 @@
             "name": "I select 'Person' and click on search button",
             "result": {
               "status": "passed",
-              "duration": 457000000
+              "duration": 435000000
             }
           },
           {
@@ -1633,7 +1623,7 @@
             "name": "I am on the Person search results page for \"za\"",
             "result": {
               "status": "passed",
-              "duration": 708000000
+              "duration": 676000000
             }
           },
           {
@@ -1643,7 +1633,7 @@
             "name": "I select person",
             "result": {
               "status": "passed",
-              "duration": 367000000
+              "duration": 404000000
             }
           },
           {
@@ -1653,7 +1643,7 @@
             "name": "I click on 'New Process' button",
             "result": {
               "status": "passed",
-              "duration": 1190000000
+              "duration": 640000000
             }
           },
           {
@@ -1663,7 +1653,7 @@
             "name": "I select 'Changes to a tenancy' from the processes menu",
             "result": {
               "status": "passed",
-              "duration": 328000000
+              "duration": 241000000
             }
           },
           {
@@ -1673,7 +1663,7 @@
             "name": "a further sub menu is expanded into view",
             "result": {
               "status": "passed",
-              "duration": 73000000
+              "duration": 153000000
             }
           },
           {
@@ -1683,7 +1673,7 @@
             "name": "I select 'Change of Name' to initiate the change of name process for the selected person",
             "result": {
               "status": "passed",
-              "duration": 250000000
+              "duration": 514000000
             }
           },
           {
@@ -1693,7 +1683,7 @@
             "name": "'Change of Name' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 71000000
+              "duration": 50000000
             }
           },
           {
@@ -1703,7 +1693,7 @@
             "name": "Start Process button is disabled",
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 59000000
             }
           },
           {
@@ -1713,7 +1703,7 @@
             "name": "I select the checkbox 'I have explained to the tenant'",
             "result": {
               "status": "passed",
-              "duration": 220000000
+              "duration": 187000000
             }
           },
           {
@@ -1723,7 +1713,7 @@
             "name": "Start Process button is enabled",
             "result": {
               "status": "passed",
-              "duration": 83000000
+              "duration": 67000000
             }
           },
           {
@@ -1733,7 +1723,7 @@
             "name": "I select the button",
             "result": {
               "status": "passed",
-              "duration": 212000000
+              "duration": 213000000
             }
           },
           {
@@ -1743,7 +1733,7 @@
             "name": "Change of Name edit page is displayed",
             "result": {
               "status": "passed",
-              "duration": 788000000
+              "duration": 818000000
             }
           },
           {
@@ -1763,7 +1753,7 @@
             "name": "Status Stepper is at \"Tenant's new name\"",
             "result": {
               "status": "passed",
-              "duration": 76000000
+              "duration": 59000000
             }
           },
           {
@@ -1773,7 +1763,7 @@
             "name": "I select Title and enter First and Last name",
             "result": {
               "status": "passed",
-              "duration": 1771000000
+              "duration": 1673000000
             }
           },
           {
@@ -1783,7 +1773,7 @@
             "name": "I click on Next button",
             "result": {
               "status": "passed",
-              "duration": 227000000
+              "duration": 205000000
             }
           },
           {
@@ -1793,7 +1783,7 @@
             "name": "I am on the supporting documents page",
             "result": {
               "status": "passed",
-              "duration": 644000000
+              "duration": 597000000
             }
           },
           {
@@ -1803,7 +1793,7 @@
             "name": "Status Stepper is at \"Request Documents\"",
             "result": {
               "status": "passed",
-              "duration": 69000000
+              "duration": 57000000
             }
           },
           {
@@ -1813,7 +1803,7 @@
             "name": "I select 'I have made an appointment to check supporting documents' and click on Next button",
             "result": {
               "status": "passed",
-              "duration": 2457000000
+              "duration": 2367000000
             }
           },
           {
@@ -1823,7 +1813,7 @@
             "name": "'Review Documents' page is displayed",
             "result": {
               "status": "passed",
-              "duration": 574000000
+              "duration": 558000000
             }
           },
           {
@@ -1833,7 +1823,7 @@
             "name": "'Office appointment scheduled' message box is displayed",
             "result": {
               "status": "passed",
-              "duration": 127000000
+              "duration": 90000000
             }
           },
           {
@@ -1843,7 +1833,7 @@
             "name": "I click on Close Case button",
             "result": {
               "status": "passed",
-              "duration": 248000000
+              "duration": 198000000
             }
           },
           {
@@ -1853,7 +1843,7 @@
             "name": "modal dialog is displayed with 'Reason for close case'",
             "result": {
               "status": "passed",
-              "duration": 71000000
+              "duration": 52000000
             }
           },
           {
@@ -1863,7 +1853,7 @@
             "name": "I enter the reason and I click on Close case button",
             "result": {
               "status": "passed",
-              "duration": 1927000000
+              "duration": 1911000000
             }
           },
           {
@@ -1873,7 +1863,7 @@
             "name": "'Review Documents' page is displayed with message 'Change of name application will be closed' and reason",
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 76000000
             }
           },
           {
@@ -1883,7 +1873,7 @@
             "name": "I select checkbox to confirm outcome letter and I click on Confirm button",
             "result": {
               "status": "passed",
-              "duration": 418000000
+              "duration": 412000000
             }
           },
           {
@@ -1893,7 +1883,7 @@
             "name": "'Thank you for your confirmation' message is displayed",
             "result": {
               "status": "passed",
-              "duration": 550000000
+              "duration": 541000000
             }
           },
           {
@@ -1903,37 +1893,27 @@
             "name": "I select the Case activity history button",
             "result": {
               "status": "passed",
-              "duration": 287000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 212,
-            "name": "I can see the Case details recorded for 'Process closed'",
-            "result": {
-              "status": "passed",
-              "duration": 553000000
+              "duration": 215000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 213,
+            "line": 214,
             "name": "I click Close activity history button",
             "result": {
               "status": "passed",
-              "duration": 456000000
+              "duration": 525000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 214,
+            "line": 215,
             "name": "'Thank you for your confirmation' message is displayed",
             "result": {
               "status": "passed",
-              "duration": 139000000
+              "duration": 56000000
             }
           }
         ]

@@ -27,20 +27,20 @@ Feature: Property Comment
 #      And I create a comment
 #      Then I can see the same comments in the linked entities
 
-      # Note: The id under the checkbox is the id for linked enttity e.g. tenure 
+      # Note: The id under the checkbox is the id for linked enttity e.g. tenure
 #      Examples:
 #        | commentType | propertyId                           | checkbox                              |
 #        | property    | f0196e15-de78-d42f-5e17-67b117194cd1 | e5d1be03-d596-4d81-cd91-a88373fd199d  |
-    
-    @device    
+
+    @device
     Scenario Outline: I go to create a comment for a property page on a device
       Given I am on the create comment page for "<commentType>" "<propertyId>"
       And I am using a mobile viewport "<device>"
       When I enter a valid title
       And I enter a valid comment
       And I select a comment category "<category>"
-      Then I click the save comment button
-      Then the comment is submitted
+      Then I click the save comment button "<commentType>"
+      Then the comment is submitted "<commentType>"
 
       Examples:
         | commentType   | propertyId                             | device        | category             |
@@ -61,16 +61,16 @@ Feature: Property Comment
         | property        | a2d7901a-9895-e86a-f9d3-542222400a3a | macbook-16    | Appointments         |
         | property        | a2d7901a-9895-e86a-f9d3-542222400a3a | samsung-note9 | Appointments         |
         | property        | a2d7901a-9895-e86a-f9d3-542222400a3a | samsung-s10   | Appointments         |
-           
+
     @SmokeTest
-    @Positive    
+    @Positive
     Scenario Outline: I go to create a comment for a property page
       Given I am on the create comment page for "<commentType>" "<propertyId>"
       When I enter a valid title
       And I enter a valid comment
       And I select a comment category "<category>"
-      Then I click the save comment button
-      And I can see the timestamp for the created comment
+      Then I click the save comment button "<commentType>"
+      And I can see the timestamp for the created comment "<commentType>"
 
       Examples:
         | commentType | propertyId                               |  category      |
@@ -79,8 +79,8 @@ Feature: Property Comment
     @Positive
     Scenario Outline: Character limit counter
       Given I am on the create comment page for "<commentType>" "<propertyId>"
-      When I enter <characters> characters into the comment field
-      Then the number of characters remaining is correct <characters>
+      When I enter <characters> characters into the comment field "<commentType>"
+      Then the number of characters remaining is correct <characters> "<commentType>"
 
       Examples:
         | commentType | propertyId                               | characters |
@@ -93,21 +93,19 @@ Feature: Property Comment
     @Negative
     Scenario Outline: Character limit exceeded
       Given I am on the create comment page for "<commentType>" "<propertyId>"
-      When I enter <characters> characters into the comment field
+      When I enter <characters> characters into the comment field "<commentType>"
       Then the warning message tells me I am over by <characters>
-
       Examples:
         | commentType | propertyId                               | characters |
         # | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 502        |
         | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   | 508        |
 
     @SmokeTest
-    @Negative  
+    @Negative
     Scenario Outline: Validation message is displayed
       Given I am on the create comment page for "<commentType>" "<propertyId>"
-      Then I click the save comment button
-      And a validation error occurs
-
+      Then I click the save comment button "<commentType>"
+      And a validation error occurs "<commentType>"
       Examples:
       | commentType | propertyId                             |
       | property      | a2d7901a-9895-e86a-f9d3-542222400a3a |

@@ -46,6 +46,15 @@ class PersonCommentsPageObjects {
     addCommentsError() {
         return cy.get('#add-comments-error')
     }
+    addCommentsTitleError() {
+        return cy.get('#add-comment-title-error');
+    };
+    addCommentsDescriptionError() {
+        return cy.get('#add-comment-description-error');
+    };
+    addCommentsCategoryError() {
+        return cy.get('#add-comment-category-error');
+    };
 
     commentDescriptionError() {
         return cy.get('#add-comment-description-error')
