@@ -710,10 +710,23 @@ When("I select person", () => {
     }
   });
 });
+// When("I select person and click on checkbox", () => {
+//   cy.get('@searchPersonResult').then(res => {
+//     for (let i = 0; i < res.results.persons.length; i++) {
+//       let person = res.results.persons[i];
+//       let title;
+//       if (person.title === 'Ms' || person.title === 'Mrs') {
+//         title = person.title + "."
+//       } else title = person.title;
+//       let fullname = title + " " + person.firstname + " " + person.surname;
+//       cy.findByRole('link', {name: fullname}).click();
+//       break;
+//     }
+//   });
+// })
 When("I select person and click on checkbox", () => {
   cy.get('@searchPersonResult').then(res => {
-    for (let i = 0; i < res.results.persons.length; i++) {
-      let person = res.results.persons[i];
+    for (const person of res.results.persons) {
       let title;
       if (person.title === 'Ms' || person.title === 'Mrs') {
         title = person.title + "."
