@@ -13,50 +13,6 @@ const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const reviewAppPage = new ReviewApplicationPageObjects();
 
 
-Given("I am on the MMH home page", () => {
-    changeOfName.visitHomePage();
-});
-Given("I am on the Person page for {string}", (personId) => {
-    changeOfName.visit(personId);
-})
-When("I enter {string} as search criteria", (personSearch) => {
-    changeOfName.textSearch().should('exist');
-    changeOfName.searchField().clear().type(personSearch);
-});
-When("I select 'Person' and click on search button", () => {
-    changeOfName.radiobuttonPerson().click();
-    changeOfName.searchButton().click();
-});
-Then("I am on the Person search results page for {string}", (personSearch) => {
-    cy.findAllByText('Search Results').should('exist');
-    cy.get('#limit-field').select('40 items').click;
-    searchPersonResults(personSearch);
-});
-
-When("I select person", () => {
-    cy.get('@searchPersonResult').then(res => {
-            for (let i = 0; i < res.results.persons.length; i++) {
-                let person = res.results.persons[i];
-                if (person.tenures.length === 1) {
-                    if (person.tenures[0].type === "Secure" && person.tenures[0].isActive === true) {
-                        cy.log(person.firstname);
-                        let title;
-                        if (person.title === 'Ms' || person.title === 'Mrs') {
-                            title = person.title + "."
-                        } else title = person.title;
-                        let fullname = title + " " + person.firstname + " " + person.surname;
-                        cy.findByRole('link', {name: fullname}).click();
-                        break;
-                    } else {
-                        i++;
-                    }
-                } else i++;
-            }
-    });
-
-})
-
-
 When("I click on 'New Process' button", (personID) => {
     changeOfName.newProcessButton().click();
 

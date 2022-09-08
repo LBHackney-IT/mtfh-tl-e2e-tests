@@ -17,6 +17,7 @@ import PropertyPageObjects from "../../pageObjects/propertyPage"
 import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
+import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 
 import comment from "../../../api/comment";
 import contactDetails from "../../../api/contact-details";
@@ -30,6 +31,7 @@ import dynamoDb from "../../../cypress/integration/common/DynamoDb";
 import { hasToggle } from "../../helpers/hasToggle";
 import { guid } from "../../helpers/commentText";
 import property from "../../../api/property";
+import {searchPersonResults} from "../../support/searchPersonResults";
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -43,6 +45,7 @@ const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
+const changeOfNamePage = new ChangeOfNamePageObjects();
 const fs = require('fs')
 const readline = require('readline');
 
@@ -668,6 +671,60 @@ And('I remove one of the tenure holders', () => {
 
 And('I click the next button', () => {
   cy.contains('Next').click()
+});
+
+Given("I am on the MMH home page", () => {
+  changeOfNamePage.visitHomePage();
+});
+When("I enter {string} as search criteria", (personSearch) => {
+  changeOfNamePage.textSearch().should('exist');
+  changeOfNamePage.searchField().clear().type(personSearch);
+});
+When("I select 'Person' and click on search button", () => {
+  changeOfNamePage.radiobuttonPerson().click();
+  changeOfNamePage.searchButton().click();
+});
+Then("I am on the Person search results page for {string}", (personSearch) => {
+  cy.findAllByText('Search Results').should('exist');
+  cy.get('#limit-field').select('40 items').click;
+  searchPersonResults(personSearch);
+});
+When("I select person", () => {
+  cy.get('@searchPersonResult').then(res => {
+    for (let i = 0; i < res.results.persons.length; i++) {
+      let person = res.results.persons[i];
+      if (person.tenures.length === 1) {
+        if (person.tenures[0].type === "Secure" && person.tenures[0].isActive === true) {
+          cy.log(person.firstname);
+          let title;
+          if (person.title === 'Ms' || person.title === 'Mrs') {
+            title = person.title + "."
+          } else title = person.title;
+          let fullname = title + " " + person.firstname + " " + person.surname;
+          cy.findByRole('link', {name: fullname}).click();
+          break;
+        } else {
+          i++;
+        }
+      } else i++;
+    }
+  });
+});
+When("I select person and click on checkbox", () => {
+  cy.get('@searchPersonResult').then(res => {
+    for (const person of res.results.persons) {
+      let title = person.title;
+      if (['Ms', 'Mrs'].includes(title)) {
+        title = title + ".";
+      }
+      const fullname = `${title} ${person.firstname} ${person.surname}`;
+      cy.findByRole('link', {name: fullname}).click();
+      break;
+    }
+  });
+})
+Then("I can see the same comments in the Person details page", () => {
+  cy.contains('Test Comment 123');
 })
 
 After(() => {

@@ -39,8 +39,8 @@ Feature: Tenure Comment
       When I enter a valid title
       And I enter a valid comment
       And I select a comment category "<category>"
-      Then I click the save comment button
-      Then the comment is submitted
+      Then I click the save comment button "<commentType>"
+      Then the comment is submitted "<commentType>"
 
       Examples:
       | commentType   | tenureId                             | device        | category             |
@@ -68,9 +68,9 @@ Feature: Tenure Comment
       When I enter a valid title
       And I enter a valid comment
       And I select a comment category "<category>"
-      Then I click the save comment button
-      And the comment is submitted
-      And I can see the timestamp for the created comment
+      Then I click the save comment button "<commentType>"
+      And the comment is submitted "<commentType>"
+      And I can see the timestamp for the created comment "<commentType>"
 
       Examples:
         | commentType | tenureId                               | category     |
@@ -81,7 +81,7 @@ Feature: Tenure Comment
       Scenario Outline: User cannot submit a comment without mandatory fields
       Given I am on the create comment page for "<commentType>" "<tenureId>"
       When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
-      And I click the save comment button
+      And I click the save comment button "<commentType>"
       Then I can see a specific validation message for the field "<validationMessage>"
 
       Examples:
@@ -107,8 +107,8 @@ Feature: Tenure Comment
     @SmokeTest
     Scenario Outline: Character limit counter
       Given I am on the create comment page for "<commentType>" "<tenureId>"
-      When I enter <characters> characters into the comment field
-      Then the number of characters remaining is correct <characters>
+      When I enter <characters> characters into the comment field "<commentType>"
+      Then the number of characters remaining is correct <characters> "<commentType>"
 
       Examples:
         | commentType | tenureId                              | characters |
@@ -121,7 +121,7 @@ Feature: Tenure Comment
     @SmokeTest
     Scenario Outline: Character limit exceeded
       Given I am on the create comment page for "<commentType>" "<tenureId>"
-      When I enter <characters> characters into the comment field
+      When I enter <characters> characters into the comment field "<commentType>"
       Then the warning message tells me I am over by <characters>
 
       Examples:

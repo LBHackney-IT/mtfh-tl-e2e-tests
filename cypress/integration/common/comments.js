@@ -132,7 +132,7 @@ When('I create a comment', () => {
     }
 })
 
-Then('I click the save comment button', () => {
+Then('I click the save comment button {string}', (commentGroup) => {
     switch (commentGroup) {
         case "tenure":    
             tenureCommentsPage.submitCommentButton().click();
@@ -148,7 +148,7 @@ Then('I click the save comment button', () => {
     }
 })
 
-Then('the comment is submitted', () => {
+Then('the comment is submitted {string}', (commentGroup) => {
     switch (commentGroup) {
         case "tenure":    
             tenureCommentsPage.pageAnnouncementHeader().should("be.visible");
@@ -209,7 +209,7 @@ Then('the create comment component is displayed', () => {
 })
 
 // Field validation related steps
-When('I enter {int} characters into the comment field', (characters) => {
+When('I enter {int} characters into the comment field {string}', (characters,commentGroup) => {
     const inputText = truncateString(helperText.helperText, characters)
     switch (commentGroup) {
         case "tenure":    
@@ -394,7 +394,7 @@ Then('I can see the cancellation pop up for comment',  () => {
     }
 })
 
-Then('the number of characters remaining is correct {int}', (characters) => {
+Then('the number of characters remaining is correct {int} {string}', (characters,commentGroup) => {
     const difference = differenceInCharacters(characters)
 
     switch (commentGroup) {
@@ -436,15 +436,17 @@ Then('the warning message tells me I am over by {int}', (characters) => {
     }
 })
 
-Then('a validation error occurs', () => {
+Then('a validation error occurs {string}', (commentGroup) => {
     switch (commentGroup) {
         case "tenure":    
             tenureCommentsPage.addCommentsError().should('be.visible')
             tenureCommentsPage.commentDescriptionError().should('be.visible')   
             break;
         case "person":
-            personCommentsPage.addCommentsError().should('be.visible')
-            personCommentsPage.commentDescriptionError().should('be.visible')          
+            personCommentsPage.addCommentsError().should('be.visible');
+            personCommentsPage.addCommentsTitleError().should('be.visible');
+            personCommentsPage.addCommentsDescriptionError().should('be.visible');
+            personCommentsPage.addCommentsCategoryError().should('be.visible');
             break;
         case "property":
             propertyCommentsPage.addCommentsError().should('be.visible')
@@ -455,7 +457,7 @@ Then('a validation error occurs', () => {
     }
 })
 
-Then('I can see the timestamp for the created comment', () => {
+Then('I can see the timestamp for the created comment {string}', (commentGroup) => {
     switch (commentGroup) {
         case "tenure":    
             tenurePage.commentDateTime().should('be.visible')
@@ -469,6 +471,22 @@ Then('I can see the timestamp for the created comment', () => {
         default:
             break;
     }
+})
+
+Then("I am on the Person details page", () => {
+    cy.contains('Date of birth:');
+})
+Then("Add comment button is displayed", () => {
+    personPage.addCommentButton().should('exist');
+})
+When("I click on Add comment button", () => {
+    personPage.addCommentButton().click();
+});
+And("I create a comment for test", () => {
+    cy.get('#add-comment-title-field').type("Test Comment 123");
+    cy.get('#add-comment-description-field').type("This is a demo and adding a test comment description");
+    cy.get('#add-comment-category-field').select('Parking');
+    cy.contains('Save comment').click();
 })
 
 function differenceInCharacters(characters) {
