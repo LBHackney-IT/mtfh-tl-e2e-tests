@@ -19,6 +19,9 @@ class ChangeOfNamePageObjects {
     radiobuttonPerson() {
         return cy.get('#search-form-type-persons');
     };
+    radiobuttonProperty() {
+        return cy.get('#search-form-type-assets');
+    }
     searchButton() {
         //return cy.get('.govuk-button lbh-button');
         //return cy.get('button[title="Search"]');
