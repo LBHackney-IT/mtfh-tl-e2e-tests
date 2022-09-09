@@ -90,7 +90,7 @@ Feature: T&L Person Comment
       Then the number of characters remaining is correct <characters> "<commentType>"
       Examples:
         | personname | characters | commentType |
-        | za         | 100        | person     |
+        | za         | 100        | person      |
 
     @Negative
     Scenario Outline: Character limit exceeded

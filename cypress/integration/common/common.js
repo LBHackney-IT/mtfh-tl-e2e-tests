@@ -32,6 +32,7 @@ import { hasToggle } from "../../helpers/hasToggle";
 import { guid } from "../../helpers/commentText";
 import property from "../../../api/property";
 import {searchPersonResults} from "../../support/searchPersonResults";
+import {searchPropertyResults} from "../../support/searchPropertyResults";
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -676,19 +677,36 @@ And('I click the next button', () => {
 Given("I am on the MMH home page", () => {
   changeOfNamePage.visitHomePage();
 });
-When("I enter {string} as search criteria", (personSearch) => {
+When("I enter {string} as search criteria", (textSearch) => {
   changeOfNamePage.textSearch().should('exist');
-  changeOfNamePage.searchField().clear().type(personSearch);
+  changeOfNamePage.searchField().clear().type(textSearch);
 });
-When("I select 'Person' and click on search button", () => {
-  changeOfNamePage.radiobuttonPerson().click();
-  changeOfNamePage.searchButton().click();
+When("I select {string} and click on search button", (entity) => {
+  switch (entity){
+    case 'Person':
+      changeOfNamePage.radiobuttonPerson().click();
+      changeOfNamePage.searchButton().click();
+      break;
+    case 'property':
+      changeOfNamePage.radiobuttonProperty().click();
+      changeOfNamePage.searchButton().click();
+      break;
+    case 'Tenure':
+
+      break;
+  }
+
 });
 Then("I am on the Person search results page for {string}", (personSearch) => {
   cy.findAllByText('Search Results').should('exist');
   cy.get('#limit-field').select('40 items').click;
   searchPersonResults(personSearch);
 });
+Then("I am on the Property search results page for {string}", (propertySearch) => {
+  cy.findAllByText('Search Results').should('exist');
+  cy.get('#limit-field').select('40 items').click;
+  searchPropertyResults(propertySearch);
+})
 When("I select person", () => {
   cy.get('@searchPersonResult').then(res => {
     for (let i = 0; i < res.results.persons.length; i++) {
@@ -723,7 +741,15 @@ When("I select person and click on checkbox", () => {
     }
   });
 })
+When("I select property", () => {
+  cy.get(':nth-child(1) > .mtfh-search-card > .mtfh-link-overlay > .govuk-link').click();
+
+})
 Then("I can see the same comments in the Person details page", () => {
+  cy.contains('Test Comment 123');
+})
+
+Then("I can see the same comments in the Property details page", () => {
   cy.contains('Test Comment 123');
 })
 

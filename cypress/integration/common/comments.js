@@ -476,6 +476,10 @@ Then('I can see the timestamp for the created comment {string}', (commentGroup) 
 Then("I am on the Person details page", () => {
     cy.contains('Date of birth:');
 })
+
+Then("I am on the Property details page", () => {
+    cy.contains('UPRN');
+})
 Then("Add comment button is displayed", () => {
     personPage.addCommentButton().should('exist');
 })
