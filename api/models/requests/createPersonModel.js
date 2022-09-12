@@ -16,7 +16,7 @@ const createPersonModel = {
             "startDate": "2004-09-20T00:00:00",
             "endDate": "2015-07-19T00:00:00",
             "assetFullAddress": "23 Brunswick House  Thurtle Road E2 8PJ",
-            "assetId": "99f16a78-4a57-f179-28c6-dacf35a0b805",
+            "assetId": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
             "uprn": "100022991794",
             "isActive": false,
             "type": "Secure"

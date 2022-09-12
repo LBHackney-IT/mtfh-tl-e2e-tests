@@ -67,7 +67,7 @@ const createAssetModel = {
         "name": "Stone Bridge Estate"
       }
     ]
-  }
+  },
 }
 
 module.exports = {

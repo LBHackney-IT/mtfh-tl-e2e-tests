@@ -123,6 +123,7 @@ Given("I create a person with new tenure", async () => {
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Person record ${response.data.id} created!`);
   assert.deepEqual(response.status, 201);
+  personId = response.data.id
 });
 
 Given("I create person and add to a tenure {string}", async (isResponsible) => {
@@ -159,10 +160,9 @@ And("I want to edit a person", async () => {
   assert.deepEqual(response.status, 204);
 });
 
-And("I want to add contact details", async () => {
-  // TODO: Pass in the personId to the request JSON object
-  // cy.log(`Creating contact details for record ${personId}`)
-  const response = await contactDetails.addContactDetails(personId);
+And("I want to add contact details {string}", async (type) => {
+  cy.log(`Creating contact details for record ${personId}`)
+  const response = await contactDetails.addContactDetails(type, personId);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Contact details for record ${response.data.id} created!`);
   assert.deepEqual(response.status, 201);
@@ -434,8 +434,8 @@ And("I click edit person", () => {
   personPage.editPersonButton().click();
 });
 
-Given('I have loaded a Person record {string}', (record) => {
-  personPage.visit(record)
+Given('I view a person {string}', (id) => {
+  personPage.visit(id || personId)
 })
 
 And("I am on the person page for {string}", (person) => {
@@ -451,7 +451,6 @@ Then('the personal details are displayed on the sidebar' ,() => {
   personPage.sidebar().contains('Phone 1')
   personPage.sidebar().contains('Email 1')
   personPage.sidebar().contains('Correspondence address 1')
-  
 })
 
 // Create/edit person page
@@ -543,6 +542,28 @@ Given("I create a new property", async () => {
   await dynamoDb.deleteRecordFromDynamoDB(record)
   cy.log("Creating Property record");
   const response = await property.createProperty();
+  cy.log(`Status code ${response.status} returned`);
+  assert.deepEqual(response.status, 201);
+  cy.log(`Property record ${response.data.id} created`);
+  propertyId = response.data.id;
+})
+
+Given("I create a new property {string}", async (type) => {
+  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
+  await dynamoDb.deleteRecordFromDynamoDB(record)
+  cy.log("Creating Property record");
+  const response = await property.createProperty(type);
+  cy.log(`Status code ${response.status} returned`);
+  assert.deepEqual(response.status, 201);
+  cy.log(`Property record ${response.data.id} created`);
+  propertyId = response.data.id;
+})
+
+Given("I create a new property with tenure", async () => {
+  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
+  await dynamoDb.deleteRecordFromDynamoDB(record)
+  cy.log("Creating Property record");
+  const response = await property.createPropertyWithTenure();
   cy.log(`Status code ${response.status} returned`);
   assert.deepEqual(response.status, 201);
   cy.log(`Property record ${response.data.id} created`);

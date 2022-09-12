@@ -20,6 +20,7 @@ const createPersonWithNewTenure = async (tenureId, dateOfBirth) => {
     const requestModel = createPersonModel
     requestModel.dateOfBirth = dateOfBirth || requestModel.dateOfBirth
     requestModel.tenures[0].id = tenureId
+    requestModel.tenures[0].endDate = "2100-07-19T00:00:00"
 
     const response = await postRequest(url, requestModel)
     
