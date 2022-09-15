@@ -63,6 +63,9 @@ class PropertyPageObjects {
 
     repairsCardList() {
         return cy.get('.mtfh-card-list')
+    };
+    selectFirstRecord() {
+        return cy.get(':nth-child(1) > .mtfh-search-card > .mtfh-link-overlay > .govuk-link');
     }
 }
 
