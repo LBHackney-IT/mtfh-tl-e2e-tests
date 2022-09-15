@@ -2,13 +2,17 @@ import { When, Then, And } from "cypress-cucumber-preprocessor/steps";
 import asset from '../../../api/asset'
 import { property } from "../../../environment-config";
 import PropertyPageObjects from "../../pageObjects/propertyPage";
+import PersonPageObjects from "../../pageObjects/personPage";
 
 const propertyPage = new PropertyPageObjects();
+const personPage = new PersonPageObjects();
 
-And("I click on the view tenure button", () => {
+When("I click on the view tenure button", () => {
   propertyPage.viewTenureButton().click();
-  cy.url().should("include", "tenure");
 });
+Then("tenure page is displayed", () => {
+    cy.url().should("include", "tenure");
+})
 
 const assetModel = require('../../../api/models/responses/assets/assetModel')
 
@@ -55,3 +59,17 @@ Then("No tenure is displayed", () => {
 Then("New Tenure button should be displayed", () => {
     propertyPage.newTenureButton().should('be.visible');
 });
+
+Then("I am on the Tenure search results page for {string}", (tenure) => {
+    cy.findAllByText('Search Results').should('exist');
+});
+When("I select tenure", () => {
+    propertyPage.selectFirstRecord().click();
+});
+Then('the personal details are displayed' ,() => {
+    personPage.sidebar().contains('Date of birth');
+    personPage.sidebar().contains('Correspondence address 1');
+});
+When("I select a property", () => {
+    propertyPage.selectFirstRecord().click();
+})

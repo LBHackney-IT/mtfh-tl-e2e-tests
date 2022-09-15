@@ -21,6 +21,9 @@ class ChangeOfNamePageObjects {
     };
     radiobuttonProperty() {
         return cy.get('#search-form-type-assets');
+    };
+    radiobuttonTenure() {
+        return cy.get('#search-form-type-tenures');
     }
     searchButton() {
         //return cy.get('.govuk-button lbh-button');

@@ -201,12 +201,23 @@ And('I click on the breadcrumb', () => {
 
 Then('I am taken to the search page', () => {
  // cy.url().should('contain', "search")
-  cy.findAllByText("Search");
+  cy.findAllByText("Search Results");
 })
 
 And('I click on the view property button', () => {
-  navigation.viewPropertyButton().click()
-})
+    navigation.viewPropertyButton().click();
+});
+
+And("I click on the view property button for a person", () => {
+  cy.get(".mtfh-layout__aside").then($body => {
+    if ($body.find('#accordion-heading-additional-tenure-details').length > 0) {
+      cy.get('#accordion-heading-additional-tenure-details').click();
+      navigation.viewPropertyButton().click();
+    } else {
+      navigation.viewPropertyButton().click();
+    }
+  });
+});
 
 // Page Header shared steps
 Then("the page header is visible", () => {
@@ -713,7 +724,8 @@ When("I select {string} and click on search button", (entity) => {
       changeOfNamePage.searchButton().click();
       break;
     case 'Tenure':
-
+      changeOfNamePage.radiobuttonTenure().click();
+      changeOfNamePage.searchButton().click();
       break;
   }
 
@@ -749,6 +761,8 @@ When("I select person", () => {
     }
   });
 });
+//property
+
 When("I select person and click on checkbox", () => {
   cy.get('@searchPersonResult').then(res => {
     for (const person of res.results.persons) {
@@ -764,7 +778,6 @@ When("I select person and click on checkbox", () => {
 })
 When("I select property", () => {
   cy.get(':nth-child(1) > .mtfh-search-card > .mtfh-link-overlay > .govuk-link').click();
-
 })
 Then("I can see the same comments in the Person details page", () => {
   cy.contains('Test Comment 123');
