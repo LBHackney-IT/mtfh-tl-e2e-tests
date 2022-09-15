@@ -59,8 +59,6 @@ Feature: Property Page
         | personName | Type   |
         | lon        | Person |
 
-
-    #  Commenting the below scenario as this is failing in pipeline api 500 error
     Scenario Outline: Asset API for valid FE type
       Given I check the asset API with a valid assetType "<assetId>"
       When I navigate to the asset page "<assetId>"
