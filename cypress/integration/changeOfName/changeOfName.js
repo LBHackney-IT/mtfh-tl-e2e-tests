@@ -238,5 +238,11 @@ Then("{string} message is displayed", (text) => {
 });
 Then("I can see the Case details recorded for 'Process closed'", () => {
     cy.contains('Change of Name closed:');
+});
+Then("I am on the Processes list page", () => {
+    cy.contains("Processes");
+});
+Then("I am not able to see the Change Of Name process listed", () => {
+    changeOfName.changeToATenancyLink().should('not.exist');
 })
 

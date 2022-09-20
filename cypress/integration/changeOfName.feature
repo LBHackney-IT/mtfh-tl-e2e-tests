@@ -218,4 +218,17 @@ Feature: As an internal Hackney User
       |   za     |
 
 
+  Scenario Outline: AC6 - Processes list page InActive Persons
+    Given I am on the MMH home page
+    When I enter "<personname>" as search criteria
+    And I select 'Person' and click on search button
+    Then I am on the Person search results page for "<personname>"
+    When I select person who is InActive
+    And I click on 'New Process' button
+    Then I am on the Processes list page
+    And I am not able to see the Change Of Name process listed
+    Examples:
+      |personname|
+      |   za     |
+
 

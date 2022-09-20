@@ -761,6 +761,28 @@ When("I select person", () => {
     }
   });
 });
+
+When("I select person who is InActive", () => {
+  cy.get('@searchPersonResult').then(res => {
+    for (let i = 0; i < res.results.persons.length; i++) {
+      let person = res.results.persons[i];
+      if (person.tenures.length === 1) {
+        if (person.tenures[0].type === "Secure" && person.tenures[0].isActive === false) {
+          cy.log(person.firstname);
+          let title;
+          if (person.title === 'Ms' || person.title === 'Mrs') {
+            title = person.title + "."
+          } else title = person.title;
+          let fullname = title + " " + person.firstname + " " + person.surname;
+          cy.findByRole('link', {name: fullname}).click();
+          break;
+        } else {
+          i++;
+        }
+      } else i++;
+    }
+  });
+});
 //property
 
 When("I select person and click on checkbox", () => {
