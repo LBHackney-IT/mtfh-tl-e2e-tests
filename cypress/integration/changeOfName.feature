@@ -9,7 +9,7 @@ Feature: As an internal Hackney User
   Scenario Outline: AC1 - CoN Process through 'Request Documents electronically' - APPROVE Application
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
-    And I select 'Person' and click on search button
+    And I select "Person" and click on search button
     Then I am on the Person search results page for "<personname>"
     When I select person
     And I click on 'New Process' button
@@ -38,10 +38,10 @@ Feature: As an internal Hackney User
     Then a validation error message is displayed
     When I select all the checkboxes to confirm I have seen all the documents
     And I click on Next button
-    Then I am on the 'Tenure Investigation' page
+    Then I am on the "Tenure Investigation" page
     And Status Stepper is at "Submit case"
     When I select Submit case button
-    Then I am on the 'Next Steps' page
+    Then I am on the "Next Steps" page
     And Status Stepper is at "Finish"
     When I click on 'Continue' button
     Then I am on the Review Application page
@@ -49,7 +49,7 @@ Feature: As an internal Hackney User
     When I recommend the outcome as 'Approve'
     And I select 'I confirm that the tenure investigation has been completed'
     And I click on 'Confirm' button
-    Then I am on the 'Tenure investigator recommendation: Approve application' page
+    Then I am on the "Tenure investigator recommendation: Approve application" page
     When I select the option 'I have passed the case to the Area Housing Manager'
     And I select decision as 'Approve'
     And I confirm 'I confirm that this is an instruction received by the Area Housing Manager'
@@ -57,11 +57,6 @@ Feature: As an internal Hackney User
     Then a validation error message for AHM "You must enter manager's name" is displayed
     When I enter Area Housing Manager name as 'Test Housing Manager'
     And I click 'Confirm' button
-    Then I am on the HO and AHM approved page
-    When I select the Case activity history button
-        # commented the below line as in pipeline there is no Activity history
-   # Then I can see the Case details recorded
-    When I click Close activity history button
     Then I am on the HO and AHM approved page
     Examples:
     |personname|
@@ -71,7 +66,7 @@ Feature: As an internal Hackney User
   Scenario Outline: AC2 - Tenure Investigator APPROVE the Application and HO or AHM DECLINE the Application
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
-    And I select 'Person' and click on search button
+    And I select "Person" and click on search button
     Then I am on the Person search results page for "<personname>"
     When I select person
     And I click on 'New Process' button
@@ -95,10 +90,10 @@ Feature: As an internal Hackney User
     And Status Stepper is at "Review Documents"
     When I select all the checkboxes to confirm I have seen all the documents
     And I click on Next button
-    Then I am on the 'Tenure Investigation' page
+    Then I am on the "Tenure Investigation" page
     And Status Stepper is at "Submit case"
     When I select Submit case button
-    Then I am on the 'Next Steps' page
+    Then I am on the "Next Steps" page
     And Status Stepper is at "Finish"
     When I click on 'Continue' button
     Then I am on the Review Application page
@@ -106,7 +101,7 @@ Feature: As an internal Hackney User
     When I recommend the outcome as 'Decline'
     And I select 'I confirm that the tenure investigation has been completed'
     And I click on 'Confirm' button
-    Then I am on the 'Tenure investigator recommendation: Decline application' page
+    Then I am on the "Tenure investigator recommendation: Decline application" page
     When I select the option 'I have passed the case to the Area Housing Manager'
     And I select decision as 'Approve'
     And I confirm 'I confirm that this is an instruction received by the Area Housing Manager'
@@ -121,7 +116,7 @@ Feature: As an internal Hackney User
   Scenario Outline: AC3 - Field Validation error messages for Title, FirstName and LastName
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
-    And I select 'Person' and click on search button
+    And I select "Person" and click on search button
     Then I am on the Person search results page for "<personname>"
     When I select person
     When I click on 'New Process' button
@@ -151,7 +146,7 @@ Feature: As an internal Hackney User
   Scenario Outline: AC4 - CoN Process through 'Make an appointment to check supporting documents'
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
-    And I select 'Person' and click on search button
+    And I select "Person" and click on search button
     Then I am on the Person search results page for "<personname>"
     When I select person
     And I click on 'New Process' button
@@ -180,7 +175,7 @@ Feature: As an internal Hackney User
   Scenario Outline: AC5 - Close case at Review Documents stage
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
-    And I select 'Person' and click on search button
+    And I select "Person" and click on search button
     Then I am on the Person search results page for "<personname>"
     When I select person
     And I click on 'New Process' button
@@ -207,12 +202,7 @@ Feature: As an internal Hackney User
     When I enter the reason and I click on Close case button
     Then 'Review Documents' page is displayed with message 'Change of name application will be closed' and reason
     When I select checkbox to confirm outcome letter and I click on Confirm button
-    Then 'Thank you for your confirmation' message is displayed
-    When I select the Case activity history button
-    # commented the below line as in pipeline there is no Activity history
-   # Then I can see the Case details recorded for 'Process closed'
-    When I click Close activity history button
-    Then 'Thank you for your confirmation' message is displayed
+    Then "Thank you for your confirmation" message is displayed
     Examples:
       |personname|
       |   za     |
@@ -221,7 +211,7 @@ Feature: As an internal Hackney User
   Scenario Outline: AC6 - Processes list page InActive Persons
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
-    And I select 'Person' and click on search button
+    And I select "Person" and click on search button
     Then I am on the Person search results page for "<personname>"
     When I select person who is InActive
     And I click on 'New Process' button
@@ -230,5 +220,3 @@ Feature: As an internal Hackney User
     Examples:
       |personname|
       |   za     |
-
-
