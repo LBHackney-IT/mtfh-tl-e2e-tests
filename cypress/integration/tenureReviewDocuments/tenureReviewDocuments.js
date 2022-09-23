@@ -55,7 +55,7 @@ Then("I view the page", () => {
 });
 And("a confirmation alert confirming that eligibility checks have been passed", () => {
     cy.contains('Eligibility checks passed').should('exist');
-    cy.get('a[href*="processes/soletojoint"]').contains('Show all eligibility checks');
+    cy.contains('Show all eligibility checks');
 });
 And("a success message for requested documents via DES with a link to DES", () => {
     cy.contains('Documents requested').should('exist');
@@ -194,7 +194,7 @@ Then("the Active status should be Submit case", () => {
 And("I am shown the expandable accordions of the previously completed steps Eligibility checks passed and Supporting documents approved", () => {
     cy.contains('Eligibility checks passed').should('exist');
     cy.contains('Supporting documents approved').should('exist');
-    cy.get('a[href*="processes/soletojoint"]').contains('Show all eligibility checks');
+    cy.contains('Show all eligibility checks');
     cy.get('a[href*="evidence-store"]').contains('View documents on the Document Evidence Store');
 });
 And("I can view the Tenure Investigation disclaimer", () => {
