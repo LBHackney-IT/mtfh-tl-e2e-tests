@@ -106,7 +106,7 @@ Feature: T&L Person Comment
       Then the warning message tells me I am over by <characters>
       Examples:
         | personname | characters | commentType |
-        | za         | 502        | person      |
+        | za         | 1002        | person      |
 
 
 

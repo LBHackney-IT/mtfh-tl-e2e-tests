@@ -209,7 +209,8 @@ Then('the create comment component is displayed', () => {
 })
 
 // Field validation related steps
-When('I enter {int} characters into the comment field {string}', (characters,commentGroup) => {
+When('I enter {int} characters into the comment field {string}', (characters,commentType) => {
+    commentGroup = commentType
     const inputText = truncateString(helperText.helperText, characters)
     switch (commentGroup) {
         case "tenure":    
@@ -494,7 +495,7 @@ And("I create a comment for test", () => {
 })
 
 function differenceInCharacters(characters) {
-    return Math.abs(500-characters)
+    return Math.abs(1000-characters)
 }
 
 function truncateString(str, num) {

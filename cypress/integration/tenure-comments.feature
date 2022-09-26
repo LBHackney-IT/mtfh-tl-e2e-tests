@@ -18,7 +18,6 @@ Feature: Tenure Comment
       Examples:
         | commentType | tenureId                             |
         | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
-        # | tenure      | f5995a9d-b227-4e23-0957-2233db537ea9 |
 
     @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
@@ -27,7 +26,7 @@ Feature: Tenure Comment
       And I create a comment
       Then I can see the same comments in the linked entities
 
-      # Note: The id under the checkbox is the id for linked enttity e.g. person
+      # Note: The id under the checkbox is the id for linked entity e.g. person
       Examples:
         | commentType| tenureId                             | checkbox                             |
         | tenure     | fde50d68-84c3-c166-6338-895c12ebf8fd | 0fb4997e-17a9-4373-6211-40b374f01533 |
@@ -85,7 +84,7 @@ Feature: Tenure Comment
       Then I can see a specific validation message for the field "<validationMessage>"
 
       Examples:
-      | commentType  | tenureId                               | commentTitle | commentDescription | commentCategory | validationMessage                              |
+      | commentType  | tenureId                             | commentTitle | commentDescription | commentCategory | validationMessage                              |
       | tenure       | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |              | test comment       |  Rents          | You must provide a title for this comment        |
       | tenure       | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   |                    |  Rents          | You must enter a description for this comment    |
       | tenure       | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   | test comment       |                 | You must select a category for this comment      |
@@ -112,10 +111,7 @@ Feature: Tenure Comment
 
       Examples:
         | commentType | tenureId                              | characters |
-         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 2          |
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 99         |
-         | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 350        |
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 500        |
+        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 350        |
 
     @Negative
     @SmokeTest
@@ -126,8 +122,7 @@ Feature: Tenure Comment
 
       Examples:
         | commentType | tenureId                               | characters |
-        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   | 502        |
-         | tenure      |5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 508        |
+        | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 1008        |
 
     @Accessibility
     Scenario Outline: Accessibility Testing for tenure
