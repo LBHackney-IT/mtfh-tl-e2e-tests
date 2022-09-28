@@ -74,7 +74,7 @@ Feature: Property Comment
       Then the warning message tells me I am over by <characters>
       Examples:
         |propertyName|commentType|characters|
-        |   lon      |property   |   505    |
+        |   lon      |property   |   1005    |
 
 
     @device
@@ -111,7 +111,7 @@ Feature: Property Comment
     Scenario Outline: Accessibility Testing
       Given I am on the create comment page for "<commentType>" "<propertyId>"
       And have no detectable a11y violations
-    Examples:
-      | commentType | propertyId                               |
-      | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   |
+      Examples:
+        | commentType | propertyId                               |
+        | property      | a2d7901a-9895-e86a-f9d3-542222400a3a   |
 
