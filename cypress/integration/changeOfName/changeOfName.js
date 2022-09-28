@@ -11,6 +11,8 @@ const changeOfName = new ChangeOfNamePageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const reviewAppPage = new ReviewApplicationPageObjects();
+const emailAdd = 'AutomationTest@test.com';
+const phoneNumber = '07788123456';
 
 
 When("I click on 'New Process' button", (personID) => {
@@ -76,11 +78,7 @@ When("I select 'I have made an appointment to check supporting documents' and cl
     tenureReqDocsPage.ampm().select('AM');
     changeOfName.checkBoxTenantDeclaration().click();
     cy.contains('Next').click();
-})
-Then("Status Stepper is at {string}", (status) => {
-    changeOfName.statusActiveCheck().should('be.visible');
-    changeOfName.statusActiveCheck().should('contain.text', status);
-})
+});
 When('I enter Title only', () => {
     changeOfName.personTitle().select('Mr');
 });
@@ -244,5 +242,5 @@ Then("I am on the Processes list page", () => {
 });
 Then("I am not able to see the Change Of Name process listed", () => {
     changeOfName.changeToATenancyLink().should('not.exist');
-})
+});
 

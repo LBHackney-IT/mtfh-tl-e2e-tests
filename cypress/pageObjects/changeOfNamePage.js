@@ -123,5 +123,11 @@ class ChangeOfNamePageObjects {
     errorAreaHousingManagerName() {
         return cy.get('#area-housing-manager-name-form-group-error')
     };
+    buttonReturnToApplication() {
+        return cy.get('[data-testid=close-update-contact-details-modal]');
+    };
+    emailAddress() {
+        return cy.get('#contact-details-email-address-field');
+    }
 }
 export default ChangeOfNamePageObjects;

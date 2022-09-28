@@ -6,6 +6,7 @@ Feature: As an internal Hackney User
   Background:
     Given I am logged in
 
+  @SmokeTest
   Scenario Outline: AC1 - CoN Process through 'Request Documents electronically' - APPROVE Application
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
@@ -62,7 +63,7 @@ Feature: As an internal Hackney User
     |personname|
     |   za     |
 
-
+  @SmokeTest
   Scenario Outline: AC2 - Tenure Investigator APPROVE the Application and HO or AHM DECLINE the Application
     Given I am on the MMH home page
     When I enter "<personname>" as search criteria
@@ -217,6 +218,67 @@ Feature: As an internal Hackney User
     And I click on 'New Process' button
     Then I am on the Processes list page
     And I am not able to see the Change Of Name process listed
+    Examples:
+      |personname|
+      |   za     |
+
+  @SmokeTest
+  Scenario Outline: AC7 - Update Contact Details in Request Documents Page
+      Given I am on the MMH home page
+      When I enter "<personname>" as search criteria
+      And I select "Person" and click on search button
+      Then I am on the Person search results page for "<personname>"
+      When I select person
+      And I click on 'New Process' button
+      And I select 'Changes to a tenancy' from the processes menu
+      Then a further sub menu is expanded into view
+      When I select 'Change of Name' to initiate the change of name process for the selected person
+      Then 'Change of Name' page is displayed
+      When I select the checkbox 'I have explained to the tenant'
+      When I select the button
+      Then Change of Name edit page is displayed
+      And Status Stepper is at "Tenant's new name"
+      When I select Title and enter First and Last name
+      And I click on Next button
+      Then I am on the supporting documents page
+      And Status Stepper is at "Request Documents"
+      When I click on the link 'the contact details'
+      Then "Update contact details" modal dialog is displayed
+      When I enter data email address and phone number
+      Then I am on the supporting documents page
+      And the details email address and phone number are displayed
+      When I click on the link 'the contact details'
+      And I click on Remove email address and Remove phone number
+      Then email address and phone number are null
+      Examples:
+        |personname|
+        |   za     |
+
+  Scenario Outline: AC7 - Error Validation in Update Contact Details Modal Dialog
+    Given I am on the MMH home page
+    When I enter "<personname>" as search criteria
+    And I select "Person" and click on search button
+    Then I am on the Person search results page for "<personname>"
+    When I select person
+    And I click on 'New Process' button
+    And I select 'Changes to a tenancy' from the processes menu
+    Then a further sub menu is expanded into view
+    When I select 'Change of Name' to initiate the change of name process for the selected person
+    Then 'Change of Name' page is displayed
+    When I select the checkbox 'I have explained to the tenant'
+    When I select the button
+    Then Change of Name edit page is displayed
+    And Status Stepper is at "Tenant's new name"
+    When I select Title and enter First and Last name
+    And I click on Next button
+    Then I am on the supporting documents page
+    And Status Stepper is at "Request Documents"
+    When I click on the link 'the contact details'
+    Then "Update contact details" modal dialog is displayed
+    When I click on Save email address without entering any data
+    Then Validation error message is displayed for email address
+    When I click on Save Phone number without entering any data
+    Then Validation error message is displayed for phone number
     Examples:
       |personname|
       |   za     |
