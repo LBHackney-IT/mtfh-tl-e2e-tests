@@ -103,7 +103,6 @@ And("I am able to see the {string} state is Active", (state) =>{
 });
 And("a case activity log is created", () => {
     tenureReqDocsPage.activityHistoryButton().click();
-    //tenureReqDocsPage.acitivityHistorySupportingDocs().should('exist');
 });
 When("I select that I have made an appointment to check supporting documents", () => {
     cy.contains('Next').click();
@@ -122,7 +121,6 @@ Then("the option to proceed is enabled", () => {
 });
 And("a case activity log is created for {string}", (text) => {
     tenureReqDocsPage.activityHistoryButton().click();
-   // cy.contains(text);
 });
 When("I click on the current tenant’s name in the heading", () => {
     tenureReqDocsPage.personLink().click();
