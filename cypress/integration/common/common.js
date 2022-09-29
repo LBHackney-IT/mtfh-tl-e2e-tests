@@ -19,6 +19,7 @@ import TenurePageObjects from "../../pageObjects/tenurePage";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 
+
 import comment from "../../../api/comment";
 import contactDetails from "../../../api/contact-details";
 import person from "../../../api/person";
@@ -47,8 +48,11 @@ const propertyPage = new PropertyPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
+const changeOfName = new ChangeOfNamePageObjects();
 const fs = require('fs')
 const readline = require('readline');
+const emailAdd = 'AutomationTest@test.com';
+const phoneNumber = '07788123456';
 
 let dateCaptureDay;
 let dateCaptureTime;
@@ -807,7 +811,74 @@ Then("I can see the same comments in the Person details page", () => {
 
 Then("I can see the same comments in the Property details page", () => {
   cy.contains('Test Comment 123');
+});
+
+When("I click on Save email address without entering any data", () => {
+  cy.get('.mtfh-fieldset__content > :nth-child(1) > .govuk-button').click();
+  cy.contains('Save email address').click();
+});
+Then("Validation error message is displayed for email address", () => {
+  cy.get('#contact-details-email-address-error').should('contain','You must enter an email address to proceed');
+});
+When("I click on Save Phone number without entering any data", () => {
+  cy.get('.mtfh-fieldset__content > :nth-child(2) > .govuk-button').click();
+  cy.contains('Save phone number').click();
+});
+Then("Validation error message is displayed for phone number", () => {
+  cy.get('#contact-details-phone-number-error').should('contain', 'You must enter a phone number to proceed');
+  cy.get('#contact-details-phone-type-error').should('contain', 'You must select an option to proceed');
+  cy.get('.lbh-dialog__close > svg').click();
+});
+When("I click on the link 'the contact details'", () => {
+  cy.contains('the contact details,').click();
+});
+
+Then("{string} modal dialog is displayed", (header) => {
+  modal.modalBody().should('contain',header);
+  modal.modalBody().should('contain','Add an email address');
+  changeOfName.buttonReturnToApplication().should('exist');
+});
+When("I select Return to Application", () => {
+  changeOfName.buttonReturnToApplication().click();
+});
+Then("modal dialog is closed and I am on the supporting documents page", () => {
+  changeOfName.statusActiveCheck().should('contain.text', "Request Documents");
+});
+When("I enter data email address and phone number", () => {
+  cy.get('.mtfh-fieldset__content > :nth-child(1) > .govuk-button').click();
+  changeOfName.emailAddress().clear().type(emailAdd);
+  cy.contains('Save email address').click();
+  //cy.contains(`Email address: ${emailAdd}`);
+  cy.contains('Add a phone number').click();
+  cy.get('#contact-details-phone-number-field').type(phoneNumber);
+  cy.get('#contact-details-phone-type-mobile').click();
+  cy.contains('Save phone number').click();
+  changeOfName.buttonReturnToApplication().click();
+});
+And("I click on Remove email address and Remove phone number" , () => {
+  cy.contains('Remove email address').click();
+  cy.get('.lbh-dialog__actions > .govuk-button').click();
+  cy.contains('Remove phone number').click();
+  cy.get('.lbh-dialog__actions > .govuk-button').click();
+  changeOfName.buttonReturnToApplication().click();
+});
+Then("email address and phone number are null", () => {
+  cy.contains(emailAdd).should('not.exist');
+  cy.contains(phoneNumber).should('not.exist');
 })
+
+And("the details email address and phone number are displayed", () => {
+  cy.contains(emailAdd);
+  cy.contains(phoneNumber);
+});
+Then("Status Stepper is at {string}", (status) => {
+  changeOfName.statusActiveCheck().should('be.visible');
+  changeOfName.statusActiveCheck().should('contain.text', status);
+});
+And("I can see the text add the contact details", () => {
+  cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
+})
+
 
 After(() => {
     const filename = "cypress/fixtures/recordsToDelete.json";
