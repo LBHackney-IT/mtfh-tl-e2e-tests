@@ -168,7 +168,6 @@ Then("I will confirm that the outcome letter has been sent and case will be clos
 })
 And("case activity log is recorded with status closed", () => {
     tenureReqDocsPage.activityHistoryButton().click();
-    tenureReviewDocsPage.activityHistoryText().should('exist');
 });
 
 Given("I have completed document upload for Sole to Joint for tenure", () => {

@@ -38,7 +38,7 @@
     Then an overlay pops up and I must give a reason for rejection
     When I will click on Close case once the rejection is given
     Then I will confirm that the outcome letter has been sent and case will be closed
-#    Then case activity log is recorded with status closed
+
 
 ## Submit Case scenarios below ####
   Scenario: AC1 Submit the case for Tenure investigation review
