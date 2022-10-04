@@ -111,7 +111,7 @@ When("I select that I have made an appointment to check supporting documents", (
 And("I input the appointment date and time", () => {
     tenureReqDocsPage.day().clear().type('01');
     tenureReqDocsPage.month().clear().type('10');
-    tenureReqDocsPage.year().clear().type('2022');
+    tenureReqDocsPage.year().clear().type('2025');
     tenureReqDocsPage.hour().clear().type('10');
     tenureReqDocsPage.minute().clear().type('10');
     tenureReqDocsPage.ampm().select('AM');
