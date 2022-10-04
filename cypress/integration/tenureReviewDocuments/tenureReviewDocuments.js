@@ -100,7 +100,7 @@ When("I tick the checkbox to arrange an in person appointment to view the docume
 Then("I can input an appointment date and time", () => {
     tenureReqDocsPage.day().clear().type('02');
     tenureReqDocsPage.month().clear().type('10');
-    tenureReqDocsPage.year().clear().type('2022');
+    tenureReqDocsPage.year().clear().type('2025');
     tenureReqDocsPage.hour().clear().type('11');
     tenureReqDocsPage.minute().clear().type('10');
     tenureReqDocsPage.ampm().select('AM');
