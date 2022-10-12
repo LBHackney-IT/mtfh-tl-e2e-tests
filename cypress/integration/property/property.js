@@ -1,4 +1,4 @@
-import { When, Then, And } from "cypress-cucumber-preprocessor/steps";
+import {Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor";
 import asset from '../../../api/asset'
 import { property } from "../../../environment-config";
 import PropertyPageObjects from "../../pageObjects/propertyPage";

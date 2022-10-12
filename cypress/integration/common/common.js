@@ -5,7 +5,7 @@ import {
   defineParameterType,
   When,
   After
-} from "cypress-cucumber-preprocessor/steps";
+} from "@badeball/cypress-cucumber-preprocessor";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
 import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
@@ -47,8 +47,8 @@ const propertyPage = new PropertyPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
-const fs = require('fs')
-const readline = require('readline');
+// const fs = require('fs')
+// const readline = require('readline');
 
 let dateCaptureDay;
 let dateCaptureTime;

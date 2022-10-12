@@ -1,4 +1,4 @@
-import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor"
 import TenureCommentsPageObjects from '../../pageObjects/tenureCommentsPage'
 import PersonCommentsPageObjects from "../../pageObjects/personCommentsPage"
 import PropertyCommentsPageObjects from "../../pageObjects/propertyCommentsPage"
@@ -487,7 +487,7 @@ Then("Add comment button is displayed", () => {
 When("I click on Add comment button", () => {
     personPage.addCommentButton().click();
 });
-And("I create a comment for test", () => {
+Then("I create a comment for test", () => {
     cy.get('#add-comment-title-field').type("Test Comment 123");
     cy.get('#add-comment-description-field').type("This is a demo and adding a test comment description");
     cy.get('#add-comment-category-field').select('Parking');

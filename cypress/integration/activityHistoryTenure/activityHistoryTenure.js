@@ -1,4 +1,4 @@
-import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
+import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
 import ActivityHistoryTenurePageObjects from '../../pageObjects/activityHistoryTenurePage'
 
 const activityHistoryTenure = new ActivityHistoryTenurePageObjects()

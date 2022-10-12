@@ -5,7 +5,7 @@
   "main": "index.js",
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "cypress/integration",
+    "stepDefinitions": "cypress/integration/**/*.{js,ts}",
     "commonPath": "cypress/integration/common",
     "cucumberJson": {
       "generate": true,
@@ -25,6 +25,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^12.2.0",
+    "@cypress/webpack-preprocessor": "^5.14.0",
     "@testing-library/cypress": "^8.0.2",
     "ansi-regex": ">=5.0.1",
     "axe-core": "^4.2.1",
@@ -32,7 +34,6 @@
     "cypress": "^8.5.0",
     "cypress-audit": "^0.3.0",
     "cypress-axe": "^0.14.0",
-    "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-localstorage-commands": "^1.4.4",
     "cypress-social-logins": "^1.11.3",
     "cypress-xpath": "^1.6.2",

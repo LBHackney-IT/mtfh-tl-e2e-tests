@@ -1,4 +1,4 @@
-import { When, Then, And, Given } from "cypress-cucumber-preprocessor/steps";
+import { When, Then, And, Given } from "@badeball/cypress-cucumber-preprocessor";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";

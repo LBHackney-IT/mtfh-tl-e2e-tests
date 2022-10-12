@@ -1,4 +1,4 @@
-import { Given } from "cypress-cucumber-preprocessor/steps";
+import { Given, Then } from "@badeball/cypress-cucumber-preprocessor";
 import HomePageObjects from '../../pageObjects/homePage';
 
 const homePage = new HomePageObjects()
@@ -8,10 +8,10 @@ Given('I am on the Home page', () => {
     homePage.iAmOnTheHomePage()
 })
 
-Then ('the log in button is visible', () => {
+Then('the log in button is visible', () => {
   homePage.signInButton().should('be.visible')
 })
 
-Then ('the header link says welcome', () => {
+Then('the header link says welcome', () => {
   homePage.headerLinks().contains('Welcome')
 })

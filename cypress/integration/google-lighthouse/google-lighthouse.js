@@ -1,4 +1,4 @@
-import { Then } from "cypress-cucumber-preprocessor/steps"
+import { Then } from "@badeball/cypress-cucumber-preprocessor"
 import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPersonPage'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'

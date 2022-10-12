@@ -20,7 +20,7 @@ Feature: T&L Person Comment
     Then I am on the Person details page
     And Add comment button is displayed
     When I click on Add comment button
-    And I create a comment for test
+    Then I create a comment for test
     Then I can see the same comments in the Person details page
     And I can see the timestamp for the created comment "<commentType>"
     Examples:

@@ -1,4 +1,4 @@
-import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps"
+import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
 import SearchPageObjects from '../../pageObjects/searchPage'
 import PersonPageObjects from '../../pageObjects/personPage'
 import NavigationObjects from '../../pageObjects/sharedComponents/navigation'
