@@ -25,7 +25,7 @@ import person from "../../../api/person";
 import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
-import dynamoDb from "../../../cypress/integration/common/DynamoDb";
+import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
 
 
 import { hasToggle } from "../../helpers/hasToggle";
