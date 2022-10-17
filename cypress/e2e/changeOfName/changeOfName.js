@@ -44,9 +44,6 @@ When("I select the button", () => {
 Then("Change of Name edit page is displayed", () => {
     cy.contains("Enter tenant's new name").should('be.visible');
 });
-Then("Next button is disabled", () => {
-    changeOfName.buttonNext().should('be.disabled');
-});
 When("I select Title and enter First and Last name", () => {
     changeOfName.personTitle().select('Mr');
     changeOfName.personFirstName().type('Automation Test Edit First Name');
@@ -122,7 +119,7 @@ Then("'Office appointment scheduled' message box is displayed", () => {
 When("I select only the first option to confirm I have seen all the documents", () => {
     tenureReviewDocsPage.photoId().click();
 });
-Then("a validation error message is displayed", () => {
+Then("a review documents validation error message is displayed", () => {
     changeOfName.errorReviewDocuments().should('exist');
 });
 Then("a validation error message for AHM {string} is displayed", (errorMessg) => {
