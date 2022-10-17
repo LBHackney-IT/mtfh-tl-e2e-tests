@@ -6,6 +6,7 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "stepDefinitions": "cypress/e2e/**/*.{js,ts}",
+    "filterSpecs": true,
     "commonPath": "cypress/e2e/common",
     "cucumberJson": {
       "generate": true,
