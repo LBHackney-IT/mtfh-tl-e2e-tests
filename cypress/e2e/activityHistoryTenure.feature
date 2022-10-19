@@ -9,7 +9,6 @@ Feature: Activity History for Tenure
 
   Background:
     Given I am logged in
-    Given I edit a tenure "62f6df87-ec33-77db-38ea-647be124af65" "Freehold"
 
   @SmokeTest
   Scenario Outline: View Tenure activity history page
