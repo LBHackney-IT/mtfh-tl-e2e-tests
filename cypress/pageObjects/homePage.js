@@ -20,6 +20,17 @@ class HomePageObjects {
 
     iAmOnTheHomePage() {
         this.mainContent().should('be.visible')
+    };
+
+    yourTasksText() {
+        return cy.get('.lbh-heading-h1').should('contain', 'Your tasks');
+    };
+
+    processesText() {
+        return cy.contains('Processes');
+    };
+    patchesText() {
+        return cy.contains('Patch');
     }
 }
 export default HomePageObjects
