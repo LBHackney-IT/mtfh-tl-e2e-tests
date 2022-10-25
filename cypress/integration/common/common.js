@@ -18,6 +18,8 @@ import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
+import HomePageObjects from "../../pageObjects/homePage";
+import WorkTrayPageObjects from "../../pageObjects/workTrayPage";
 
 
 import comment from "../../../api/comment";
@@ -49,6 +51,8 @@ const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
 const changeOfName = new ChangeOfNamePageObjects();
+const homePage = new HomePageObjects();
+const workTrayPO = new WorkTrayPageObjects();
 const fs = require('fs')
 const readline = require('readline');
 const emailAdd = 'AutomationTest@test.com';
@@ -736,12 +740,12 @@ When("I select {string} and click on search button", (entity) => {
 });
 Then("I am on the Person search results page for {string}", (personSearch) => {
   cy.findAllByText('Search Results').should('exist');
-  cy.get('#limit-field').select('40 items').click;
+  cy.get('#limit-field').select('40 items');//.click();
   searchPersonResults(personSearch);
 });
 Then("I am on the Property search results page for {string}", (propertySearch) => {
   cy.findAllByText('Search Results').should('exist');
-  cy.get('#limit-field').select('40 items').click;
+  cy.get('#limit-field').select('40 items');//.click();
   searchPropertyResults(propertySearch);
 })
 When("I select person", () => {
@@ -855,13 +859,41 @@ When("I enter data email address and phone number", () => {
   cy.contains('Save phone number').click();
   changeOfName.buttonReturnToApplication().click();
 });
-And("I click on Remove email address and Remove phone number" , () => {
-  cy.contains('Remove email address').click();
-  cy.get('.lbh-dialog__actions > .govuk-button').click();
-  cy.contains('Remove phone number').click();
-  cy.get('.lbh-dialog__actions > .govuk-button').click();
-  changeOfName.buttonReturnToApplication().click();
-});
+ And("I click on Remove email address and Remove phone number" , () => {
+   cy.get('[data-testid=button-remove-email]').click();
+   cy.get('[data-testid=button-confirm-remove-email]').click();
+   cy.get('[data-testid=button-remove-phone]').click();
+   cy.get('[data-testid=button-confirm-remove-phone]').click();
+   changeOfName.buttonReturnToApplication().click();
+// contactDetails.getContactDetails(personId).then(getResponse => {
+//   cy.log(`Status code ${getResponse.status} returned`)
+//   if (getResponse.status === 200) {
+//     const results = getResponse.data.results
+//     results.forEach(({id, targetId, contactInformation }) => {
+//       if (contactInformation.contactType === "phone") {
+//         cy.log(`id=${id}`)
+//         cy.log(`tid=${targetId}`)
+//         contactDetails.deleteContactDetails(
+//             id,
+//             targetId,
+//         ).then(deleteResponse => {
+//           assert.deepEqual(deleteResponse.status, 200)
+//
+//         })
+//       }
+//     })
+//   }
+// })
+  });
+ // And("I click on Remove phone number" , () => {
+ //   let phoneBtn = cy.get('[data-testid=button-remove-phone]');
+ //   for(let i = 0; i < phoneBtn.length; i++) {
+ //    phoneBtn[i].click();
+ //     cy.get('[data-testid=button-confirm-remove-phone]').click();
+ //   }
+ //   changeOfName.buttonReturnToApplication().click();
+ // });
+
 Then("email address and phone number are null", () => {
   cy.contains(emailAdd).should('not.exist');
   cy.contains(phoneNumber).should('not.exist');
@@ -877,7 +909,8 @@ Then("Status Stepper is at {string}", (status) => {
 });
 And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
-})
+});
+
 
 
 After(() => {
