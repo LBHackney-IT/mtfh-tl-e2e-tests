@@ -4,7 +4,6 @@ import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 
 const createTenurePage = new CreateTenurePageObjects()
-const addPersonPage = new AddPersonPageObjects()
 const modal = new ModalPageObjects()
 const tenure = require('../../../api/tenure')
 
@@ -67,10 +66,6 @@ Then('the edit tenure information is displayed', () => {
 
 And('I click the done button', () => {
     createTenurePage.doneButton().click()
-})
-
-And('I click the save equality information button', () => {
-    addPersonPage.saveEqualityInformationButton().click()
 })
 
 When('I edit a Tenure {string}', (id) => {

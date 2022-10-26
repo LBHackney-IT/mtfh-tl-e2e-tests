@@ -5,13 +5,9 @@ const config = {
     headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
 };
 
-
-
 async function getRequest(endpoint) {
     try {
-      const response = await axios.get(endpoint, config);
-      cy.log('Sending get request')
-      return response
+      return axios.get(endpoint, config);
     } catch (error) {
       console.error(error);
       return error
@@ -34,11 +30,11 @@ async function patchRequest(endpoint, payload, ifMatch) {
 
 async function postRequest(endpoint, payload,) { 
     try {
-      var bearerToken = envConfig.gssoTestKey
-      cy.log('bearer token: ', bearerToken)
-      const response = await axios.post(endpoint, payload, config);  
-      cy.log('Sending post request')
-      return response
+      return new Promise((resolve, reject) => {
+        axios.post(endpoint, payload, config).then(response => {
+          resolve(response)
+        });
+      });
     } catch (error) {
       console.error(error);
       return error

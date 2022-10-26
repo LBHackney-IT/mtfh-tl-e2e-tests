@@ -8,7 +8,7 @@
 Feature: Add a new person to a tenure
   I want to add a person to a tenure
 
-  Background: 
+  Background:
     Given I am logged in
     And I create a new "" tenure
     And I create a new person
@@ -137,19 +137,15 @@ Feature: Add a new person to a tenure
      And there is a merge conflict
 
      Examples:
-       | title | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | conflictTitle  |
-       | Mr    | Modified  | Test       | guid     | 09  | 12    | 1950 | Mt. Fuji     | Reverend       | Pref modified      | Mid modified        | guid              | testytest@test.com     | This is an email | 0118999     | Other     | This is a phone  | changeConflict |
-       | Mrs   | Modified  | Test       | guid     | 30  | 06    | 1988 | Crete        | Ms             | Pref modified      | Mid modified        | guid              | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone  | changeConflict |
+       | title | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | conflictTitle  |
+       | Mr    | Modified  | Test       | guid     | 09  | 12    | 1950 | Mt. Fuji     | Reverend       | Pref modified      | Mid modified        | guid              | changeConflict |
+       | Mrs   | Modified  | Test       | guid     | 30  | 06    | 1988 | Crete        | Ms             | Pref modified      | Mid modified        | guid              | changeConflict |
 
-   Scenario Outline: Confirmation modal
+   Scenario: Confirmation modal
      Given I create a person and then edit them
      And I click edit person
      And I click cancel
      Then the confirmation modal is displayed
-
-     Examples:
-     | title | personType          | firstName | middleName |
-     | Mr    | Named tenure holder | Original  | Test       |
 
    @Accessibility
    Scenario: Accessibility Testing

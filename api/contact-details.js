@@ -1,4 +1,4 @@
-import { getRequest, deleteRequest, postRequest } from './requests/requests'
+import { deleteRequest } from './requests/requests'
 import { saveFixtureData } from './helpers'
 
 const endpoint = Cypress.env('CONTACT_DETAILS_ENDPOINT')
@@ -6,9 +6,12 @@ import { addContactModel } from './models/requests/addContactModel'
 
 const tableName = "ContactDetails";
 
-const getContactDetails = async (personId) => {
-    const response = await getRequest(`${endpoint}/contactDetails?targetId=${personId}`)
-    return response
+const getContactDetails = (personId) => {
+    return new Promise((resolve, reject) => {
+        cy.getRequest(`${endpoint}/contactDetails?targetId=${personId}`).then(response => {
+            resolve(response);
+        })
+    });
 }
 
 const deleteContactDetails = async (contactDetailsId, targetId) => {
@@ -18,21 +21,22 @@ const deleteContactDetails = async (contactDetailsId, targetId) => {
 
 const addContactDetails = async (contactType, targetId) => {
     let value
-    if(contactType === "phone") {
+    if (contactType === "phone") {
         value = "011899988199"
     }
-    if(contactType === "email") {
+    if (contactType === "email") {
         value = "test.email@hackney.gov.uk"
     }
     addContactModel.targetId = targetId
     addContactModel.contactInformation.contactType = contactType
     addContactModel.contactInformation.value = value
 
-    const response = await postRequest(`${endpoint}/contactDetails`, addContactModel)
-    
-    const responseData = response.data;
-    saveFixtureData(tableName, {id: responseData.id, targetId: responseData.targetId }, responseData);
-    return response
+    return new Promise((resolve, reject) => {
+        cy.postRequest(`${endpoint}/contactDetails`, addContactModel).then(response => {
+            saveFixtureData(tableName, { id: response.data.id, targetId }, response.data);
+            resolve(response);
+        })
+    });
 }
 
 export default {

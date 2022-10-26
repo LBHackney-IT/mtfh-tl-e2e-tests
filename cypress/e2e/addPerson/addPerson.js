@@ -1,18 +1,14 @@
-import { Given, Then, When, And, After } from '@badeball/cypress-cucumber-preprocessor'
+import { Given, Then, When, And } from '@badeball/cypress-cucumber-preprocessor'
 
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import guid from '../../helpers/commentText'
-import { createPerson, createPersonWithNewTenure } from '../../../api/person'
 import { queueDeletePersonWithId } from "../../../api/helpers"
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 const personContactPage = new PersonContactPageObjects()
-const contactDetails = require('../../../api/contact-details')
-const editEqualityDetails = require('../../../api/equality-information')
-const getEqualityDetails = require('../../../api/equality-information')
 
 And('the person has been added to the tenure', () => {
   addPersonPage.pageAnnouncement().contains('Person added to tenure')
@@ -117,11 +113,7 @@ And('there is a merge conflict', () => {
   editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
 })
 
-When("I edit a person's contact details", () => {
-  cy.getPersonFixture().then(async (person) => {
-    addPersonPage.editPersonContactDetails(person.id)
-  })
-})
+
 
 And('I click add a correspondence address', () => {
   personContactPage.addCorrespondenceAddressButton().click()
@@ -191,65 +183,8 @@ Then('the correspondence address is saved', () => {
     .contains('Correspondence address saved')
 })
 
-Given('the person has no correspondence addresses', async () => {
-  cy.getPersonFixture().then(async (person) => {
-    const personId = person.id
 
-    // GET the list of correspondence addresses for a person
-    const getResponse = await contactDetails.getContactDetails(personId)
-    cy.log(`Status code ${getResponse.status} returned`)
 
-    if (getResponse.status === 200) {
-      const correspondenceAddresses = getResponse.data.results
-
-      // DELETE any existing correspondence addresses for a person
-      for (let i = 0; i < correspondenceAddresses.length; i++) {
-        if (
-          correspondenceAddresses[i].contactInformation.subType ===
-          'correspondenceAddress'
-        ) {
-          cy.log(`id=${correspondenceAddresses[i].id}`)
-          cy.log(`tid=${correspondenceAddresses[i].targetId}`)
-          const deleteResponse = await contactDetails.deleteContactDetails(
-            correspondenceAddresses[i].id,
-            correspondenceAddresses[i].targetId,
-          )
-          assert.deepEqual(deleteResponse.status, 200)
-        }
-      }
-    }
-  })
-})
-
-Given('I have the maximum number of {string} for a person', async (contactType) => {
-    cy.getPersonFixture().then(async (person) => {
-        const personId = person.id;
-
-        const getResponse = await contactDetails.getContactDetails(personId)
-        cy.log(`Status code ${getResponse.status} returned`)
-
-        let requiredContactType = 0
-        
-        if(getResponse.status === 200) {
-            const details = getResponse.data.results
-            for (let i = 0; i < details.length; i++) {
-                if (details[i].contactInformation.contactType === contactType) {
-                    requiredContactType++
-                }
-            }
-        }
-        
-        // POST new contact details if not at maximum
-        for (let i = 0; i < 5 - requiredContactType; i++) {
-            const postResponse = await contactDetails.addContactDetails(
-                contactType,
-                personId,
-            )
-        assert.deepEqual(postResponse.status, 201)
-        }
-    })
-  },
-)
 
 Then('I cannot add any more contacts for {string}', (contactType) => {
   if (contactType === 'email') {
@@ -274,14 +209,6 @@ And('I am on the contact details page', () => {
         const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
         queueDeletePersonWithId(personId);
   });
-})
-
-Given('I create a person and then edit them', async () => {
-  cy.getTenureFixture().then(async (tenure) => {
-    const postResponse = await createPersonWithNewTenure(tenure.id)
-    const personId = postResponse.data.id
-    editPersonPage.visit(personId)
-  })
 })
 
 And('I click the save equality information button', () => {
@@ -314,29 +241,6 @@ Then('the preferred gender term field is not displayed', () => {
   addPersonPage.preferredGenderTermField().should('not.be.visible')
 })
 
-Given("the person's equality information is reset", async () => {
-  cy.getPersonFixture().then(async (person) => {
-    const personId = person.id
-
-    cy.log('Getting etag from the person...')
-    const getResponse = await getEqualityDetails.getEqualityDetails(personId)
-    
-    cy.log(`Status code ${getResponse.status} returned`)
-    if(getResponse.status === 200){
-        cy.log('etag captured!')
-        cy.log(getResponse.headers.etag)
-    
-        cy.log('Updating equality information...')
-        const patchResponse = await editEqualityDetails.editEqualityDetails(
-          getResponse.data.id,
-          getResponse.headers.etag,
-        )
-        cy.log(`Status code ${patchResponse.status} returned`)
-        assert.deepEqual(patchResponse.status, 200)
-        cy.log('Equality information updated!')
-    }
-  })
-})
 
 When('I select an age group {string}', (ageGroup) => {
   addPersonPage.ageGroupSelectionBox().select(ageGroup)

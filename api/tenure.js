@@ -17,11 +17,12 @@ const createTenure = async(tenureTypeCode) => {
     if (tenureTypeCode === "SEC") {
         tenureModel = secureTenureModel;
     }
-    const response = await postRequest(`${tenureEndpoint}/tenures/`, tenureModel)
-    
-    const responseData = response.data;
-    saveFixtureData(tableName, { id: responseData.id }, responseData);
-    return response;
+    return new Promise((resolve, reject) => {
+        cy.postRequest(`${tenureEndpoint}/tenures/`, tenureModel).then(response => {
+            saveFixtureData(tableName, { id: response.data.id }, response.data);
+            resolve(response);
+        })
+    });
 }
 
 const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {

@@ -21,18 +21,20 @@ import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 
 import comment from "../../../api/comment";
 import contactDetails from "../../../api/contact-details";
-import person from "../../../api/person";
+import person, { createPersonWithNewTenure } from "../../../api/person";
 import tenure from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
 import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
 
+import * as equalityDetails from '../../../api/equality-information'
 
 import { hasToggle } from "../../helpers/hasToggle";
 import { guid } from "../../helpers/commentText";
 import property from "../../../api/property";
 import {searchPersonResults} from "../../support/searchPersonResults";
 import {searchPropertyResults} from "../../support/searchPropertyResults";
+import EditPersonPageObjects from "../../pageObjects/editPersonPage";
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -47,6 +49,7 @@ const propertyPage = new PropertyPageObjects();
 const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
+const editPersonPage = new EditPersonPageObjects()
 // const fs = require('fs')
 // const readline = require('readline');
 
@@ -100,20 +103,128 @@ Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
 
 Given("I create a new person", async () => {
   cy.log("Creating Person record");
-  const response = await person.createPerson();
-  cy.log(`Status code ${response.status} returned`);
-  cy.log(`Person record ${response.data.id} created!`);
-  assert.deepEqual(response.status, 201);
-  personId = response.data.id;
+  await person.createPerson().then(response => {
+    cy.log(`Status code ${response.status} returned`);
+    cy.log(`Person record ${response.data.id} created!`);
+    assert.deepEqual(response.status, 201);
+    personId = response.data.id;
+  });
 });
 
+Given('the person has no correspondence addresses', async () => {
+    console.log("PERSON", personId)
+    // GET the list of correspondence addresses for a person
+    contactDetails.getContactDetails(personId).then(getResponse => {
+      cy.log(`Status code ${getResponse.status} returned`)
+
+      if (getResponse.status === 200) {
+        const correspondenceAddresses = getResponse.data.results
+
+        // DELETE any existing correspondence addresses for a person
+        for (let i = 0; i < correspondenceAddresses.length; i++) {
+          if (
+            correspondenceAddresses[i].contactInformation.subType ===
+            'correspondenceAddress'
+          ) {
+            cy.log(`id=${correspondenceAddresses[i].id}`)
+            cy.log(`tid=${correspondenceAddresses[i].targetId}`)
+            contactDetails.deleteContactDetails(
+              correspondenceAddresses[i].id,
+              correspondenceAddresses[i].targetId,
+            ).then(deleteResponse => {
+              assert.deepEqual(deleteResponse.status, 200)
+            })
+          }
+        }
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+})
+
+
+
+
+Given("the person's equality information is reset", async () => {
+  cy.log('Getting etag from the person...')
+  equalityDetails.getEqualityDetails(personId).then(getResponse => {
+      cy.log(`Status code ${getResponse.status} returned`)
+      if(getResponse.status === 200){
+        cy.log('etag captured!')
+        cy.log(getResponse.headers.etag)
+
+        cy.log('Updating equality information...')
+        equalityDetails.editEqualityDetails(
+          getResponse.data.id,
+          getResponse.headers.etag,
+        ).then(patchResponse => {
+          cy.log(`Status code ${patchResponse.status} returned`)
+          assert.deepEqual(patchResponse.status, 200)
+          cy.log('Equality information updated!')
+        })
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+})
+
+Given('I create a person and then edit them', async () => {
+  createPersonWithNewTenure(tenureId).then(response => {
+    personId = response.data.id;
+    editPersonPage.visit(personId)
+  })
+})
+
+Given('I have the maximum number of {string} for a person', async (contactType) => {
+  contactDetails.getContactDetails(personId).then(getResponse => {
+    cy.log(`Status code ${getResponse.status} returned`)
+    let requiredContactType = 0
+
+    if(getResponse.status === 200) {
+      const details = getResponse.data.results
+      for (let i = 0; i < details.length; i++) {
+        if (details[i].contactInformation.contactType === contactType) {
+          requiredContactType++
+        }
+      }
+    }
+
+    // POST new contact details if not at maximum
+    for (let i = 0; i < 5 - requiredContactType; i++) {
+      contactDetails.addContactDetails(
+        contactType,
+        personId,
+      ).then(postResponse => {
+        assert.deepEqual(postResponse.status, 201)
+      })
+    }
+  }).catch((err, config, code) => {
+    if (err.response.status === 404) {
+      let requiredContactType = 0
+
+      for (let i = 0; i < 5 - requiredContactType; i++) {
+        contactDetails.addContactDetails(
+          contactType,
+          personId,
+        ).then(postResponse => {
+          assert.deepEqual(postResponse.status, 201)
+        })
+      }
+    }
+  })
+})
+
+When("I edit a person's contact details", () => {
+  addPersonPage.editPersonContactDetails(personId)
+})
 
 Given("I create a new {string} tenure", async (tenureTypeCode) => {
   cy.log("Creating new tenure record");
-  const response = await tenure.createTenure(tenureTypeCode);
-  cy.log(`Status code ${response.status} returned`);
-  cy.log(`Tenure Id for record ${response.data.id} created!`);
-  tenureId = response.data.id
+  tenure.createTenure(tenureTypeCode).then(response => {
+    cy.log(`Status code ${response.status} returned`);
+    cy.log(`Tenure Id for record ${response.data.id} created!`);
+    tenureId = response.data.id
+  });
 });
 
 Given("I create a person with new tenure", async () => {

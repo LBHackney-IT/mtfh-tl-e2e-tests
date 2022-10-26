@@ -2,6 +2,7 @@ import '@testing-library/cypress/add-commands';
 import 'cypress-axe'
 import 'cypress-audit/commands'
 import "cypress-localstorage-commands"
+import * as requests from "../../api/requests/requests"
 
 const environmentConfig = require('../../environment-config')
 
@@ -35,6 +36,26 @@ Cypress.Commands.add('getPersonFixture', () => {
 
 Cypress.Commands.add('getTenureFixture', () => {
     cy.readFile('cypress/fixtures/TenureInformation.json')
+})
+
+Cypress.Commands.add("getRequest", (endpoint) => {
+    return new Cypress.Promise((resolve, reject) => {
+         requests.getRequest(endpoint).then((data) => {
+             resolve(data);
+          })
+           .catch(err => {
+               resolve(err.response)
+           })
+    });
+})
+
+Cypress.Commands.add("postRequest", (endpoint, payload) => {
+    return new Cypress.Promise((resolve, reject) => {
+        requests.postRequest(endpoint, payload)
+          .then((data) => {
+              resolve(data);
+          })
+    });
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => {
