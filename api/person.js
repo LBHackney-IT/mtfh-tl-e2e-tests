@@ -3,6 +3,7 @@ import { saveFixtureData } from './helpers'
 
 import { createPersonModel } from './models/requests/createPersonModel'
 import { editPersonModel } from './models/requests/editPersonModel'
+import envConfig from "../environment-config";
 
 const personEndpoint =  Cypress.env('PERSON_ENDPOINT')
 const url = `${personEndpoint}/persons`
@@ -22,12 +23,17 @@ const createPersonWithNewTenure = async (tenureId, dateOfBirth) => {
     requestModel.tenures[0].id = tenureId
     requestModel.tenures[0].endDate = "2100-07-19T00:00:00"
 
-    const response = await postRequest(url, requestModel)
-    
-    const responseData = response.data;
-    saveFixtureData(tableName, { id: responseData.id }, responseData);
-    cy.log(responseData.id)
-    return response
+    return new Promise((resolve, reject) => {
+        cy.request({
+            method: 'POST',
+            body: requestModel,
+            url,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+        }).then((response) => {
+            saveFixtureData(tableName, { id: response.body.id }, response.body);
+            resolve(response);
+        })
+    });
 }
 
 const editPerson = async (personId) => {
