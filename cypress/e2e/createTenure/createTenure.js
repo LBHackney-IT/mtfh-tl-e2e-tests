@@ -28,7 +28,7 @@ And('I enter a tenure end date {string} {string} {string}', (day, month, year) =
     createTenurePage.tenureEndDateYearContainer().type(year)
 })
 
-And('I click the cancel button', () => {
+And('I click cancel button', () => {
     createTenurePage.cancelButton().click({force: true})
 })
 
@@ -64,7 +64,7 @@ Then('the edit tenure information is displayed', () => {
     })
 })
 
-And('I click the done button', () => {
+And('I click the done button on New Tenure page', () => {
     createTenurePage.doneButton().click()
 })
 

@@ -1,4 +1,4 @@
-export const saveFixtureData = (tableName, keys, fixtureData) => {
+export const saveFixtureData = (tableName, keys, fixtureData) => new Cypress.Promise((resolve, reject) => {
     const filename = "cypress/fixtures/recordsToDelete.json";
 
     cy.readFile(filename).then((list) => {
@@ -8,7 +8,7 @@ export const saveFixtureData = (tableName, keys, fixtureData) => {
 
     if(fixtureData)
         cy.writeFile(`cypress/fixtures/${tableName}.json`, fixtureData)
-}
+})
 
 export const queueDeletePersonWithId = (id) => {
     saveFixtureData("Persons", { id: id })

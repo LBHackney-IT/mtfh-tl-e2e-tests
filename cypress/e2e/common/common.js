@@ -659,15 +659,18 @@ And('the edit tenure button is not displayed', () => {
 })
 
 // Property page
-Given("I create a new property", async () => {
-  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
-  await dynamoDb.deleteRecordFromDynamoDB(record)
+Given("I create a new property", () => {
   cy.log("Creating Property record");
-  const response = await property.createProperty();
-  cy.log(`Status code ${response.status} returned`);
-  assert.deepEqual(response.status, 201);
-  cy.log(`Property record ${response.data.id} created`);
-  propertyId = response.data.id;
+
+  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
+  cy.delete(record).then(() => {
+    property.createProperty().then(response => {
+      cy.log(`Status code ${response.status} returned`);
+      assert.deepEqual(response.status, 201);
+      cy.log(`Property record ${response.data.id} created`);
+      propertyId = response.data.id;
+    });
+  })
 })
 
 Given("I create a new property {string}", async (type) => {
@@ -692,7 +695,9 @@ Given("I create a new property with tenure", async () => {
   propertyId = response.data.id;
 })
 When("I view a property {string}", (id) => {
-  propertyPage.visit(id || propertyId);
+  cy.getPropertyFixture().then(({ id: propertyId }) => {
+    propertyPage.visit(id || propertyId);
+  })
 });
 
 Then('the property information is displayed', () => {
@@ -703,7 +708,9 @@ Then('the property information is displayed', () => {
 })
 
 Then('I am on the create new tenure page {string}', (id) => {
-  cy.url().should('contain', `tenure/${id || propertyId}/add`)
+  cy.getPropertyFixture().then(({ id: propertyId }) => {
+    cy.url().should('contain', `tenure/${id || propertyId}/add`)
+  })
 })
 
 When('I click on the new tenure button', () => {

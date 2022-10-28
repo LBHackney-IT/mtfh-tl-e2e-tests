@@ -16,12 +16,16 @@ const deleteRecordFromDynamoDB = async ({tableName, key}) => {
   const docClient = new AWS.DynamoDB.DocumentClient({region: 'eu-west-2'});
     try {
       if (tableName === "Assets") {
-        const response = await property.getProperty(key.id)
-        const asset = response.data;
-        if (asset && asset.tenure) {
-          const result = await docClient.delete({ TableName: "TenureInformation", Key: { id: asset.tenure.id } })
-            .promise();
-          console.log(`A record has been deleted from DynamoDb table ${tableName}: `, result)
+        try {
+          const response = await property.getProperty(key.id)
+          const asset = response.data;
+          if (asset && asset.tenure) {
+            const result = await docClient.delete({ TableName: "TenureInformation", Key: { id: asset.tenure.id } })
+              .promise();
+            console.log(`A record has been deleted from DynamoDb table ${tableName}: `, result)
+          }
+        } catch (err) {
+          console.log(err)
         }
       }
 

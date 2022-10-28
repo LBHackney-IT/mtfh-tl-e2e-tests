@@ -3,6 +3,7 @@ import 'cypress-axe'
 import 'cypress-audit/commands'
 import "cypress-localstorage-commands"
 import * as requests from "../../api/requests/requests"
+import DynamoDb from "../e2e/common/DynamoDb";
 
 const environmentConfig = require('../../environment-config')
 
@@ -38,6 +39,10 @@ Cypress.Commands.add('getTenureFixture', () => {
     cy.readFile('cypress/fixtures/TenureInformation.json')
 })
 
+Cypress.Commands.add('getPropertyFixture', () => {
+    cy.readFile('cypress/fixtures/Assets.json')
+})
+
 Cypress.Commands.add("getRequest", (endpoint) => {
     return new Cypress.Promise((resolve, reject) => {
          requests.getRequest(endpoint).then((data) => {
@@ -55,6 +60,14 @@ Cypress.Commands.add("postRequest", (endpoint, payload) => {
           .then((data) => {
               resolve(data);
           })
+    });
+})
+
+Cypress.Commands.add("delete", (record) => {
+    return new Cypress.Promise((resolve, reject) => {
+        DynamoDb.deleteRecordFromDynamoDB(record).then(() => {
+            resolve();
+        })
     });
 })
 
