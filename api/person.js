@@ -17,7 +17,7 @@ const createPerson = async () => {
     return response;
 }
 
-const createPersonWithNewTenure = async (tenureId, dateOfBirth) => {
+const createPersonWithNewTenure = (tenureId, dateOfBirth) => {
     const requestModel = createPersonModel
     requestModel.dateOfBirth = dateOfBirth || requestModel.dateOfBirth
     requestModel.tenures[0].id = tenureId

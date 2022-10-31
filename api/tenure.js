@@ -68,7 +68,7 @@ const deleteTenure = async(tenureId, personId) => {
     return response
 }
 
-const addPersonToTenure = async(tenureId, isResponsible, ifMatch) => {
+const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
     return new Cypress.Promise((resolve, reject) => {
         person.createPersonWithNewTenure(tenureId, "2000-01-01").then(({ body }) => {
             cy.log("Person created => PATCH")
