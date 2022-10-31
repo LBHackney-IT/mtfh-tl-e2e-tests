@@ -31,7 +31,6 @@ const createPersonWithNewTenure = (tenureId, dateOfBirth) => {
             headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
         }).then((response) => {
             saveFixtureData(tableName, { id: response.body.id }, response.body, response).then((response) => {
-                cy.log("FIxTURE saved")
                 resolve(response)
             });
         })

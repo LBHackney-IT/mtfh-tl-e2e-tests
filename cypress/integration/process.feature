@@ -77,48 +77,47 @@ Scenario Outline: Process landing page loaded
     | tenant           | proposedTenant   |
     | Add API E2E Test | Add API E2E Test |
 
-#  Scenario: Selecting back or cancelling out of the process
-#  Given I select to initiate a Sole To Joint process
-#  When I click the cancel button
-#  Then I am taken back to the processes menu
-#  Given I select to initiate a Sole To Joint process
-#  When I click the back link
-#  Then I am taken back to the processes menu
-#
-#Scenario Outline: Verify Automatic checks fail and Close Case Process is initiated
-#  Given I select to initiate a Sole To Joint process
-#  When I accept the terms and conditions
-#  And I click the start process button
-#  Then Sole tenant requests a joint tenure page is displayed
-#  When I select a person to add as a joint tenant "<tenant>"
-#  And I click the next button
-#  Then Automatic Eligibility checks Failed page is displayed
-#  When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
-#  And I click on the confirm button
-#  Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
-#
-#  Examples:
-#    | tenant               |
-#    | FAKE_Katy FAKE_Turne |
-#
-#
-#Scenario Outline: Verify Automatic checks Pass and Manual Checks Fail and Close case process is initiated
-#  Given I select to initiate a Sole To Joint process
-#  When I accept the terms and conditions
-#  And I click the start process button
-#  Then Sole tenant requests a joint tenure page is displayed
-#  When I select a person to add as a joint tenant "<tenant>"
-#  And I click the next button
-#  Then I can see the text "<tenant>" adding "<proposedTenant>" in the header section
-#  And Eligibility checks passed page is displayed
-#  And I can see Further eligibility questions
-#  When I select the answers for these questions
-#  And I click the next button
-#  Then the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'
-#  When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
-#  And I click on the confirm button
-#  Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
-#
-#  Examples:
-#    | tenant           | proposedTenant   |
-#    | Add API E2E Test | Add API E2E Test |
+  Scenario: Selecting back or cancelling out of the process
+  Given I select to initiate a Sole To Joint process
+  When I click the cancel button
+  Then I am taken back to the processes menu
+  Given I select to initiate a Sole To Joint process
+  When I click the back link
+  Then I am taken back to the processes menu
+
+Scenario Outline: Verify Automatic checks fail and Close Case Process is initiated
+  Given I select to initiate a Sole To Joint process
+  When I accept the terms and conditions
+  And I click the start process button
+  Then Sole tenant requests a joint tenure page is displayed
+  When I select a person to add as a joint tenant "<tenant>"
+  And I click the next button
+  Then Automatic Eligibility checks Failed page is displayed
+  When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+  And I click on the confirm button
+  Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
+
+  Examples:
+    | tenant               |
+    | FAKE_Katy FAKE_Turne |
+
+Scenario Outline: Verify Automatic checks Pass and Manual Checks Fail and Close case process is initiated
+  Given I select to initiate a Sole To Joint process
+  When I accept the terms and conditions
+  And I click the start process button
+  Then Sole tenant requests a joint tenure page is displayed
+  When I select a person to add as a joint tenant "<tenant>"
+  And I click the next button
+  Then I can see the text "<tenant>" adding "<proposedTenant>" in the header section
+  And Eligibility checks passed page is displayed
+  And I can see Further eligibility questions
+  When I select the answers for these questions
+  And I click the next button
+  Then the page is displayed with the text 'Passed automatic eligibility checks' and 'Not eligible for a sole to joint tenure'
+  When I select the checkbox 'I confirm that an outcome letter has been sent to the resident'
+  And I click on the confirm button
+  Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
+
+  Examples:
+    | tenant           | proposedTenant   |
+    | Add API E2E Test | Add API E2E Test |
