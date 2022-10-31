@@ -9,7 +9,7 @@ const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDat
 const tableName = "TenureInformation";
 
 const getTenure = async(tenureId) => {
-    return new Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve, reject) => {
         cy.request({
             method: 'GET',
             url: `${tenureEndpoint}/tenures/${tenureId}`,
@@ -26,7 +26,7 @@ const createTenure = async (tenureTypeCode) => {
         tenureModel = secureTenureModel;
     }
 
-    return new Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve, reject) => {
         cy.request({
             method: 'POST',
             body: tenureModel,
@@ -72,7 +72,7 @@ const deleteTenure = async(tenureId, personId) => {
 }
 
 const addPersonToTenure = async(tenureId, isResponsible, ifMatch) => {
-    return new Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve, reject) => {
         person.createPersonWithNewTenure(tenureId, "2000-01-01").then(({ body }) => {
             const { id: personId, firstName, surname } = body;
             cy.request({

@@ -23,7 +23,7 @@ const createPersonWithNewTenure = async (tenureId, dateOfBirth) => {
     requestModel.tenures[0].id = tenureId
     requestModel.tenures[0].endDate = "2100-07-19T00:00:00"
 
-    return new Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve, reject) => {
         cy.request({
             method: 'POST',
             body: requestModel,
