@@ -118,10 +118,11 @@ Given("I create a new person", async () => {
 
 Given("I create a new {string} tenure",  (tenureTypeCode) => {
   cy.log("Creating new tenure record");
-  tenure.createTenure(tenureTypeCode).then(response => {
-    cy.log(`Status code ${response.status} returned`);
-    cy.log(`Tenure Id for record ${response.body.id} created!`);
+  tenure.createTenure(tenureTypeCode).then(() => {
+    cy.log(`Tenure created`);
   })
+
+  // cy.log(`Tenure Id for record ${response.body.id} created!`);
 });
 
 Given("I create a person with new tenure", async () => {
@@ -138,15 +139,12 @@ Given("I create person and add to a tenure {string}", (isResponsible) => {
   cy.getTenureFixture().then(({ id: tenureId }) => {
     cy.log('Getting etag from the tenure...')
     tenure.getTenure(tenureId).then(response => {
-      cy.log(`Status code ${response.status} returned`)
-      assert.deepEqual(response.status, 200)
-      cy.log('etag captured!')
+      cy.log(`Tenure received`)
 
       cy.log("Creating Person record");
       cy.log('Tenure Id inside person request', tenureId)
       tenure.addPersonToTenure(tenureId, isResponsible === "true", response.headers.etag).then(response => {
-        cy.log(`Status code ${response.status} returned`);
-        assert.deepEqual(response.status, 204);
+        cy.log(`Person added`);
       });
     })
   })

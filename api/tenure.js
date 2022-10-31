@@ -8,7 +8,7 @@ const tenureEndpoint = Cypress.env('TENURE_ENDPOINT')
 const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDate: null}
 const tableName = "TenureInformation";
 
-const getTenure = async(tenureId) => {
+const getTenure = (tenureId) => {
     return new Cypress.Promise((resolve, reject) => {
         cy.request({
             method: 'GET',
@@ -20,22 +20,19 @@ const getTenure = async(tenureId) => {
     });
 }
 
-const createTenure = async (tenureTypeCode) => {
+const createTenure = (tenureTypeCode) => {
     let tenureModel = _createTenureModel
     if (tenureTypeCode === "SEC") {
         tenureModel = secureTenureModel;
     }
 
-    return new Cypress.Promise((resolve, reject) => {
-        cy.request({
-            method: 'POST',
-            body: tenureModel,
-            url: `${tenureEndpoint}/tenures/`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
-        }).then(response => {
-            saveFixtureData(tableName, { id: response.body.id }, response.body);
-            resolve(response)
-        })
+    return cy.request({
+        method: 'POST',
+        body: tenureModel,
+        url: `${tenureEndpoint}/tenures/`,
+        headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+    }).then(response => {
+        saveFixtureData(tableName, { id: response.body.id }, response.body);
     })
 }
 
@@ -74,6 +71,7 @@ const deleteTenure = async(tenureId, personId) => {
 const addPersonToTenure = async(tenureId, isResponsible, ifMatch) => {
     return new Cypress.Promise((resolve, reject) => {
         person.createPersonWithNewTenure(tenureId, "2000-01-01").then(({ body }) => {
+            cy.log("Person created => PATCH")
             const { id: personId, firstName, surname } = body;
             cy.request({
                 method: 'PATCH',
@@ -81,10 +79,10 @@ const addPersonToTenure = async(tenureId, isResponsible, ifMatch) => {
                 url: `${tenureEndpoint}/tenures/${tenureId}/person/${personId}`,
                 headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
             }).then(response => {
-                resolve(response);
+                resolve(response)
             })
         })
-    });
+    })
 }
 
 export default {
