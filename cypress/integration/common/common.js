@@ -119,6 +119,7 @@ Given("I create a new person", async () => {
 Given("I create a new {string} tenure", async (tenureTypeCode) => {
   cy.log("Creating new tenure record");
   const response = await tenure.createTenure(tenureTypeCode);
+  console.log(response)
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Tenure Id for record ${response.data.id} created!`);
   tenureId = response.data.id
