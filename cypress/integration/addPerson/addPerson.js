@@ -118,7 +118,7 @@ And('there is a merge conflict', () => {
 })
 
 When("I edit a person's contact details", () => {
-  cy.getPersonFixture().then(async (person) => {
+  cy.getPersonFixture().then((person) => {
     addPersonPage.editPersonContactDetails(person.id)
   })
 })
@@ -196,7 +196,7 @@ Given('the person has no correspondence addresses', () => {
 
     // GET the list of correspondence addresses for a person
     contactDetails.getContactDetails(personId).then(getResponse => {
-      cy.log(`Status code ${getResponse.status} returned`)
+      // cy.log(`Status code ${getResponse.status} returned`)
 
       if (getResponse.status === 200) {
         const correspondenceAddresses = getResponse.body.results
@@ -224,31 +224,31 @@ Given('the person has no correspondence addresses', () => {
 
 })
 
-Given('I have the maximum number of {string} for a person', async (contactType) => {
+Given('I have the maximum number of {string} for a person', (contactType) => {
     cy.getPersonFixture().then(({ id: personId }) => {
         contactDetails.getContactDetails(personId).then(getResponse => {
-        cy.log(`Status code ${getResponse.status} returned`)
+          // cy.log(`Status code ${getResponse.status} returned`)
 
-        let requiredContactType = 0
-        
-        if(getResponse.status === 200) {
-            const details = getResponse.body.results
-            for (let i = 0; i < details.length; i++) {
-                if (details[i].contactInformation.contactType === contactType) {
-                    requiredContactType++
-                }
-            }
-        }
-        
-        // POST new contact details if not at maximum
-        for (let i = 0; i < 5 - requiredContactType; i++) {
-            contactDetails.addContactDetails(
-                contactType,
-                personId,
-            ).then(postResponse => {
-              assert.deepEqual(postResponse.status, 201)
-            })
-        }
+          let requiredContactType = 0
+
+          if(getResponse.status === 200) {
+              const details = getResponse.body.results
+              for (let i = 0; i < details.length; i++) {
+                  if (details[i].contactInformation.contactType === contactType) {
+                      requiredContactType++
+                  }
+              }
+          }
+
+          // POST new contact details if not at maximum
+          for (let i = 0; i < 5 - requiredContactType; i++) {
+              contactDetails.addContactDetails(
+                  contactType,
+                  personId,
+              ).then(postResponse => {
+                assert.deepEqual(postResponse.status, 201)
+              })
+          }
         })
 
     })
@@ -280,7 +280,7 @@ And('I am on the contact details page', () => {
   });
 })
 
-Given('I create a person and then edit them', async () => {
+Given('I create a person and then edit them', () => {
   cy.getTenureFixture().then((tenure) => {
     createPersonWithNewTenure(tenure.id).then(postResponse => {
       const { id: personId } = postResponse.body

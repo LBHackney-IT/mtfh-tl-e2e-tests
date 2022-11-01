@@ -51,7 +51,7 @@ const addContactDetails = async (contactType, targetId) => {
             url: `${endpoint}/contactDetails`,
             headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
         }).then(response => {
-            saveFixtureData(tableName, {id: response.body.id, targetId: response.body.targetId }, response.body).then((response) => {
+            saveFixtureData(tableName, {id: response.body.id, targetId: response.body.targetId }, response.body, response).then((response) => {
                 resolve(response)
             });
         })

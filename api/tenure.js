@@ -33,7 +33,7 @@ const createTenure = (tenureTypeCode) => {
             url: `${tenureEndpoint}/tenures/`,
             headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
         }).then(response => {
-            saveFixtureData(tableName, { id: response.body.id }, response.body).then((response) => {
+            saveFixtureData(tableName, { id: response.body.id }, response.body, response).then((response) => {
                 resolve(response)
             });
         })
@@ -61,7 +61,7 @@ const createTenureWithStartDate = async(startOfTenureDate) => {
             url: `${tenureEndpoint}/tenures/`,
             headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
         }).then(response => {
-            saveFixtureData(tableName, { id: response.body.id }, response.body).then((response) => {
+            saveFixtureData(tableName, { id: response.body.id }, response.body, response).then((response) => {
                 resolve(response)
             });
         })
