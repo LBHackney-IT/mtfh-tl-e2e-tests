@@ -191,7 +191,7 @@ Then('the correspondence address is saved', () => {
     .contains('Correspondence address saved')
 })
 
-Given('the person has no correspondence addresses', async () => {
+Given('the person has no correspondence addresses', () => {
   cy.getPersonFixture().then(({ id: personId }) => {
 
 
@@ -320,7 +320,7 @@ Then('the preferred gender term field is not displayed', () => {
   addPersonPage.preferredGenderTermField().should('not.be.visible')
 })
 
-Given("the person's equality information is reset", async () => {
+Given("the person's equality information is reset", () => {
   cy.getPersonFixture().then(({ id: personId }) => {
     cy.log('Getting etag from the person...')
     getEqualityDetails.getEqualityDetails(personId).then(getResponse => {

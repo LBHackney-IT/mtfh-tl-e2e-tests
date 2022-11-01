@@ -68,7 +68,7 @@ const createTenureWithStartDate = async(startOfTenureDate) => {
     })
 }
 
-const editTenure = async(tenureId, tenureType, ifMatch) => {
+const editTenure = (tenureId, tenureType, ifMatch) => {
     editTenureModel.tenureType.code = tenureType.substring(0,2).toUpperCase()
     editTenureModel.tenureType.description = tenureType
 
