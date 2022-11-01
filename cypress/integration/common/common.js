@@ -94,16 +94,18 @@ Given(
 
 Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
   cy.log('Getting etag from the tenure...')
-  const getResponse = await tenure.getTenure(tenureId)
-  cy.log(`Status code ${getResponse.status} returned`)
-  assert.deepEqual(getResponse.status, 200)
-  cy.log('etag captured!')
+  tenure.getTenure(tenureId).then(response => {
+    cy.log(`Status code ${response.status} returned`)
+    assert.deepEqual(response.status, 200)
+    cy.log('etag captured!')
 
-  cy.log('Updating tenure...')
-  const patchResponse = await tenure.editTenure(tenureId, tenureType, getResponse.headers.etag)
-  cy.log(`Status code ${patchResponse.status} returned`)
-  assert.deepEqual(patchResponse.status, 204)
-  cy.log('Tenure updated!')
+    cy.log('Updating tenure...')
+    tenure.editTenure(tenureId, tenureType, response.headers.etag).then(response => {
+      cy.log(`Status code ${response.status} returned`)
+      assert.deepEqual(response.status, 204)
+      cy.log('Tenure updated!')
+    })
+  })
 })
 
 Given("I create a new person", async () => {

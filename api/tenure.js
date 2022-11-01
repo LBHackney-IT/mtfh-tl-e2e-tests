@@ -59,8 +59,17 @@ const createTenureWithStartDate = async(startOfTenureDate) => {
 const editTenure = async(tenureId, tenureType, ifMatch) => {
     editTenureModel.tenureType.code = tenureType.substring(0,2).toUpperCase()
     editTenureModel.tenureType.description = tenureType
-    const response = await patchRequest(`${tenureEndpoint}/tenures/${tenureId}`, editTenureModel, ifMatch)
-    return response
+
+    return new Cypress.Promise((resolve, reject) => {
+        cy.request({
+            method: 'PATCH',
+            body: editTenureModel,
+            url: `${tenureEndpoint}/tenures/${tenureId}`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
+        }).then(response => {
+            resolve(response)
+        })
+    })
 }
 
 const deleteTenure = async(tenureId, personId) => {
