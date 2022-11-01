@@ -194,7 +194,6 @@ Then('the correspondence address is saved', () => {
 Given('the person has no correspondence addresses', () => {
   cy.getPersonFixture().then(({ id: personId }) => {
 
-
     // GET the list of correspondence addresses for a person
     contactDetails.getContactDetails(personId).then(getResponse => {
       cy.log(`Status code ${getResponse.status} returned`)

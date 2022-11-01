@@ -18,7 +18,7 @@ const getEqualityDetails = (targetId) => {
     });
 }
 
-const editEqualityDetails = async (targetId, ifMatch) => {
+const editEqualityDetails = (targetId, ifMatch) => {
     return new Cypress.Promise((resolve, reject) => {
         cy.request({
             method: 'PATCH',
