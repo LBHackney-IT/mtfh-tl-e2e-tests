@@ -1,4 +1,3 @@
-import { getRequest, deleteRequest, postRequest } from './requests/requests'
 import { saveFixtureData } from './helpers'
 
 const endpoint = Cypress.env('CONTACT_DETAILS_ENDPOINT')
@@ -8,7 +7,7 @@ import envConfig from "../environment-config";
 const tableName = "ContactDetails";
 
 const getContactDetails = (personId) => {
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
             url: `${endpoint}/contactDetails?targetId=${personId}`,
@@ -21,7 +20,7 @@ const getContactDetails = (personId) => {
 }
 
 const deleteContactDetails = (contactDetailsId, targetId) => {
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'DELETE',
             url: `${endpoint}/contactDetails?id=${contactDetailsId}&targetId=${targetId}`,
@@ -34,24 +33,29 @@ const deleteContactDetails = (contactDetailsId, targetId) => {
 
 const addContactDetails = (contactType, targetId) => {
     let value
-    if(contactType === "phone") {
+    if (contactType === "phone") {
         value = "011899988199"
     }
-    if(contactType === "email") {
+    if (contactType === "email") {
         value = "test.email@hackney.gov.uk"
     }
     addContactModel.targetId = targetId
     addContactModel.contactInformation.contactType = contactType
     addContactModel.contactInformation.value = value
 
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'POST',
             body: addContactModel,
             url: `${endpoint}/contactDetails`,
             headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
         }).then(response => {
-            saveFixtureData(tableName, {id: response.body.id, targetId: response.body.targetId }, response.body, response).then((response) => {
+            saveFixtureData(
+                tableName,
+                {id: response.body.id, targetId: response.body.targetId },
+                response.body,
+                response
+            ).then((response) => {
                 resolve(response)
             });
         })

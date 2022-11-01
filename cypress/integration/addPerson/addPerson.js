@@ -1,4 +1,4 @@
-import { Given, Then, When, And, After } from 'cypress-cucumber-preprocessor/steps'
+import { Given, Then, When, And } from 'cypress-cucumber-preprocessor/steps'
 
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
@@ -196,7 +196,7 @@ Given('the person has no correspondence addresses', () => {
 
     // GET the list of correspondence addresses for a person
     contactDetails.getContactDetails(personId).then(getResponse => {
-      // cy.log(`Status code ${getResponse.status} returned`)
+      cy.log(`Status code ${getResponse.status} returned`)
 
       if (getResponse.status === 200) {
         const correspondenceAddresses = getResponse.body.results
@@ -220,50 +220,20 @@ Given('the person has no correspondence addresses', () => {
       }
     })
   })
-
-
 })
 
 Given('I have the maximum number of {string} for a person', (contactType) => {
-    cy.getPersonFixture().then(({ id: personId }) => {
+  cy.getPersonFixture().then(({ id: personId }) => {
+    for (let i = 0; i < 5; i++) {
       contactDetails.addContactDetails(
         contactType,
         personId,
       ).then(postResponse => {
-        cy.log("CREATED CONTACT 1")
         assert.deepEqual(postResponse.status, 201)
       })
-      contactDetails.addContactDetails(
-        contactType,
-        personId,
-      ).then(postResponse => {
-        cy.log("CREATED CONTACT 2")
-        assert.deepEqual(postResponse.status, 201)
-      })
-      contactDetails.addContactDetails(
-        contactType,
-        personId,
-      ).then(postResponse => {
-        cy.log("CREATED CONTACT 3")
-        assert.deepEqual(postResponse.status, 201)
-      })
-      contactDetails.addContactDetails(
-        contactType,
-        personId,
-      ).then(postResponse => {
-        cy.log("CREATED CONTACT 4")
-        assert.deepEqual(postResponse.status, 201)
-      })
-      contactDetails.addContactDetails(
-        contactType,
-        personId,
-      ).then(postResponse => {
-        cy.log("CREATED CONTACT 5")
-        assert.deepEqual(postResponse.status, 201)
-      })
-    })
-  },
-)
+    }
+  });
+})
 
 Then('I cannot add any more contacts for {string}', (contactType) => {
   if (contactType === 'email') {

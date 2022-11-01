@@ -51,10 +51,6 @@ const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
 const changeOfName = new ChangeOfNamePageObjects();
-const homePage = new HomePageObjects();
-const workTrayPO = new WorkTrayPageObjects();
-const fs = require('fs')
-const readline = require('readline');
 const emailAdd = 'AutomationTest@test.com';
 const phoneNumber = '07788123456';
 
@@ -95,14 +91,14 @@ Given(
 Given("I edit a tenure {string} {string}", (tenureId, tenureType) => {
   cy.log('Getting etag from the tenure...')
   tenure.getTenure(tenureId).then(response => {
-    cy.log(`98 Status code ${response.status} returned`)
-    // assert.deepEqual(response.status, 200)
-    cy.log('100 etag captured!')
+    cy.log(`Status code ${response.status} returned`)
+    assert.deepEqual(response.status, 200)
+    cy.log('etag captured!')
 
     cy.log('Updating tenure...')
     tenure.editTenure(tenureId, tenureType, response.headers.etag).then(response => {
-      cy.log(`104 Status code ${response.status} returned`)
-      // assert.deepEqual(response.status, 204)
+      cy.log(`Status code ${response.status} returned`)
+      assert.deepEqual(response.status, 204)
       cy.log('Tenure updated!')
     })
   })
@@ -111,8 +107,8 @@ Given("I edit a tenure {string} {string}", (tenureId, tenureType) => {
 Given("I create a new person", () => {
   cy.log("Creating Person record");
   person.createPerson().then(response => {
-    cy.log(`114 Status code ${response.status} returned`);
-    cy.log(`115 Person record ${response.body.id} created!`);
+    cy.log(`Status code ${response.status} returned`);
+    cy.log(`Person record ${response.body.id} created!`);
     assert.deepEqual(response.status, 201);
     personId = response.body.id;
   });
@@ -121,11 +117,11 @@ Given("I create a new person", () => {
 
 Given("I create a new {string} tenure",  (tenureTypeCode) => {
   cy.log("Creating new tenure record");
-  tenure.createTenure(tenureTypeCode).then(() => {
-    cy.log(`Tenure created`);
+  tenure.createTenure(tenureTypeCode).then((response) => {
+    cy.log(`Status code ${response.status} returned`);
+    cy.log(`Tenure Id for record ${response.body.id} created!`);
+    tenureId = response.body.id
   })
-
-  // cy.log(`Tenure Id for record ${response.body.id} created!`);
 });
 
 Given("I create a person with new tenure", () => {
@@ -133,8 +129,8 @@ Given("I create a person with new tenure", () => {
   cy.getTenureFixture().then(({ id: tenureId }) => {
     cy.log('Tenure Id inside person request', tenureId)
     person.createPersonWithNewTenure(tenureId).then(response => {
-      cy.log(`134 Status code ${response.status} returned`);
-      cy.log(`135 Person record ${response.body.id} created!`);
+      cy.log(`Status code ${response.status} returned`);
+      cy.log(`Person record ${response.body.id} created!`);
       assert.deepEqual(response.status, 201);
       personId = response.body.id
     });
@@ -147,11 +143,14 @@ Given("I create person and add to a tenure {string}", (isResponsible) => {
     cy.log('Getting etag from the tenure...')
     tenure.getTenure(tenureId).then(response => {
       cy.log(`Tenure received`)
+      assert.deepEqual(response.status, 200)
 
       cy.log("Creating Person record");
       cy.log('Tenure Id inside person request', tenureId)
       tenure.addPersonToTenure(tenureId, isResponsible === "true", response.headers.etag).then(response => {
-        cy.log(`Person added`);
+        cy.log(`Status code ${response.status} returned`);
+        assert.deepEqual(response.status, 204);
+        cy.log(`Person added!`);
       });
     })
   })

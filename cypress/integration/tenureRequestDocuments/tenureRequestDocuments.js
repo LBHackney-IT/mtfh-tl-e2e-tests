@@ -41,7 +41,7 @@ const manualChecksPass = ({ id: tenureId, householdMembers }) => {
 };
 
 Given("the application has passed eligibility and the housing officer breach of tenancy checks for the tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
+    cy.getTenureFixture().then((tenureInfo) => {
         tenure.getTenure(tenureInfo.id).then(response => {
             manualChecksPass(response.body);
         });

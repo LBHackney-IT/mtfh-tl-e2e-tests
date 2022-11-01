@@ -1,4 +1,4 @@
-import { getRequest, postRequest, patchRequest, deleteRequest } from './requests/requests'
+import { postRequest, deleteRequest } from './requests/requests'
 import { createTenureModel as _createTenureModel, secureTenureModel } from "./models/requests/addTenureModel";
 import { saveFixtureData } from './helpers'
 import person from "./person";
@@ -9,7 +9,7 @@ const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDat
 const tableName = "TenureInformation";
 
 const getTenure = (tenureId) => {
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
             url: `${tenureEndpoint}/tenures/${tenureId}`,
@@ -26,14 +26,19 @@ const createTenure = (tenureTypeCode) => {
         tenureModel = secureTenureModel;
     }
 
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'POST',
             body: tenureModel,
             url: `${tenureEndpoint}/tenures/`,
             headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
         }).then(response => {
-            saveFixtureData(tableName, { id: response.body.id }, response.body, response).then((response) => {
+            saveFixtureData(
+                tableName,
+                { id: response.body.id },
+                response.body,
+                response
+            ).then((response) => {
                 resolve(response)
             });
         })
@@ -54,14 +59,19 @@ const createTenureWithStartDate = (startOfTenureDate) => {
     const requestModel = _createTenureModel
     requestModel.startOfTenureDate = startOfTenureDate
 
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'POST',
             body: requestModel,
             url: `${tenureEndpoint}/tenures/`,
             headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
         }).then(response => {
-            saveFixtureData(tableName, { id: response.body.id }, response.body, response).then((response) => {
+            saveFixtureData(
+                tableName,
+                { id: response.body.id },
+                response.body,
+                response
+            ).then((response) => {
                 resolve(response)
             });
         })
@@ -72,7 +82,7 @@ const editTenure = (tenureId, tenureType, ifMatch) => {
     editTenureModel.tenureType.code = tenureType.substring(0,2).toUpperCase()
     editTenureModel.tenureType.description = tenureType
 
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'PATCH',
             body: editTenureModel,
@@ -90,9 +100,8 @@ const deleteTenure = async(tenureId, personId) => {
 }
 
 const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         person.createPersonWithNewTenure(tenureId, "2000-01-01").then(({ body }) => {
-            cy.log("Person created => PATCH")
             const { id: personId, firstName, surname } = body;
             cy.request({
                 method: 'PATCH',

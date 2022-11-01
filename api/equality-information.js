@@ -1,12 +1,10 @@
-const request = require('./requests/requests')
-const equalityDetailsModel = require('./models/requests/equalityDetailsModel')
 const envConfig = require("../environment-config");
-const { saveFixtureData } = require("./helpers");
+const equalityDetailsModel = require('./models/requests/equalityDetailsModel')
 const equalityDetailsEndpoint = Cypress.env('EQUALITY_DETAILS_ENDPOINT')
 const url = `${equalityDetailsEndpoint}/equality-information`
 
 const getEqualityDetails = (targetId) => {
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
             url: `${url}?targetId=${targetId}`,
@@ -19,7 +17,7 @@ const getEqualityDetails = (targetId) => {
 }
 
 const editEqualityDetails = (targetId, ifMatch) => {
-    return new Cypress.Promise((resolve, reject) => {
+    return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'PATCH',
             body: equalityDetailsModel.equalityDetailsModel,
