@@ -35,15 +35,16 @@ const manualChecksPass = ({ id: tenureId, householdMembers}) => {
     tenureReqDocsPage.tenantLiveNoticeNo().click();
     tenureReqDocsPage.cautionaryContactNo().click();
     tenureReqDocsPage.successionNo().click();
-
 };
+
 Given("I have requested the documents via DES for the tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        manualChecksPass(response.data);
-        cy.contains('Next').click();
-        tenureReqDocsPage.requestDocsElectronically().click();
-        tenureReqDocsPage.checkboxTenantDeclaration().click();
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body);
+            cy.contains('Next').click();
+            tenureReqDocsPage.requestDocsElectronically().click();
+            tenureReqDocsPage.checkboxTenantDeclaration().click();
+        });
     })
 });
 
@@ -82,14 +83,15 @@ And("the ability to close the case at this stage of the process", () => {
 });
 
 Given("I would like to check submitted documents in person for tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        manualChecksPass(response.data);
-        cy.contains('Next').click();
-        tenureReqDocsPage.requestDocsElectronically().click();
-        tenureReqDocsPage.checkboxTenantDeclaration().click();
-        cy.contains('Next').click();
-        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body);
+            cy.contains('Next').click();
+            tenureReqDocsPage.requestDocsElectronically().click();
+            tenureReqDocsPage.checkboxTenantDeclaration().click();
+            cy.contains('Next').click();
+            tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+        });
     })
 });
 
@@ -112,14 +114,15 @@ And("I can confirm the appointment has been arranged", () => {
 });
 
 Given("the documents have been provided by the resident for tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        manualChecksPass(response.data);
-        cy.contains('Next').click();
-        tenureReqDocsPage.requestDocsElectronically().click();
-        tenureReqDocsPage.checkboxTenantDeclaration().click();
-        cy.contains('Next').click();
-        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body);
+            cy.contains('Next').click();
+            tenureReqDocsPage.requestDocsElectronically().click();
+            tenureReqDocsPage.checkboxTenantDeclaration().click();
+            cy.contains('Next').click();
+            tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+        });
     })
 });
 When("I can complete the checklist of seen supporting documents are correct and valid", () => {
@@ -137,14 +140,15 @@ Then("Next button is disabled", () => {
 });
 
 Given("the applicant has failed the supporting documents check for tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        manualChecksPass(response.data);
-        cy.contains('Next').click();
-        tenureReqDocsPage.requestDocsElectronically().click();
-        tenureReqDocsPage.checkboxTenantDeclaration().click();
-        cy.contains('Next').click();
-        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body)
+            cy.contains('Next').click();
+            tenureReqDocsPage.requestDocsElectronically().click();
+            tenureReqDocsPage.checkboxTenantDeclaration().click();
+            cy.contains('Next').click();
+            tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
+        });
     })
 });
 When("I decide to close the case", () => {
@@ -171,20 +175,21 @@ And("case activity log is recorded with status closed", () => {
 });
 
 Given("I have completed document upload for Sole to Joint for tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        manualChecksPass(response.data);
-        cy.contains('Next').click();
-        tenureReqDocsPage.requestDocsElectronically().click();
-        tenureReqDocsPage.checkboxTenantDeclaration().click();
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body);
+            cy.contains('Next').click();
+            tenureReqDocsPage.requestDocsElectronically().click();
+            tenureReqDocsPage.checkboxTenantDeclaration().click();
 
-        cy.contains('Next').click();
-        tenureReviewDocsPage.photoId().click();
-        tenureReviewDocsPage.secondId().click();
-        tenureReviewDocsPage.notImmigrationControl().click();
-        tenureReviewDocsPage.relationshipProof().click();
-        tenureReviewDocsPage.tenantLivingInProperty().click();
-        cy.contains('Next').click();
+            cy.contains('Next').click();
+            tenureReviewDocsPage.photoId().click();
+            tenureReviewDocsPage.secondId().click();
+            tenureReviewDocsPage.notImmigrationControl().click();
+            tenureReviewDocsPage.relationshipProof().click();
+            tenureReviewDocsPage.tenantLivingInProperty().click();
+            cy.contains('Next').click();
+        });
     })
 });
 Then("the Active status should be Submit case", () => {
