@@ -14,7 +14,7 @@ let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 
 if (environment === 'local') {
-    baseUrl = "http://local.hackney.gov.uk"
+    baseUrl = "http://local.hackney.gov.uk:9000"
     gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 }
 
