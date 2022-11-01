@@ -9,12 +9,19 @@ const personEndpoint =  Cypress.env('PERSON_ENDPOINT')
 const url = `${personEndpoint}/persons`
 const tableName = "Persons";
 
-const createPerson = async () => {
-    const response = await postRequest(url, createPersonModel);
-
-    const responseData = response.data;
-    saveFixtureData(tableName, { id: responseData.id }, responseData);
-    return response;
+const createPerson = () => {
+    return new Cypress.Promise((resolve, reject) => {
+        cy.request({
+            method: 'POST',
+            body: createPersonModel,
+            url,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+        }).then(response => {
+            saveFixtureData(tableName, { id: response.body.id }, response.body).then((response) => {
+                resolve(response)
+            });
+        })
+    })
 }
 
 const createPersonWithNewTenure = (tenureId, dateOfBirth) => {

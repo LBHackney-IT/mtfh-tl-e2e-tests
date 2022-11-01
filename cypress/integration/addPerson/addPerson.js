@@ -192,46 +192,48 @@ Then('the correspondence address is saved', () => {
 })
 
 Given('the person has no correspondence addresses', async () => {
-  cy.getPersonFixture().then(async (person) => {
-    const personId = person.id
+  cy.getPersonFixture().then(({ id: personId }) => {
+
 
     // GET the list of correspondence addresses for a person
-    const getResponse = await contactDetails.getContactDetails(personId)
-    cy.log(`Status code ${getResponse.status} returned`)
+    contactDetails.getContactDetails(personId).then(getResponse => {
+      cy.log(`Status code ${getResponse.status} returned`)
 
-    if (getResponse.status === 200) {
-      const correspondenceAddresses = getResponse.data.results
+      if (getResponse.status === 200) {
+        const correspondenceAddresses = getResponse.body.results
 
-      // DELETE any existing correspondence addresses for a person
-      for (let i = 0; i < correspondenceAddresses.length; i++) {
-        if (
-          correspondenceAddresses[i].contactInformation.subType ===
-          'correspondenceAddress'
-        ) {
-          cy.log(`id=${correspondenceAddresses[i].id}`)
-          cy.log(`tid=${correspondenceAddresses[i].targetId}`)
-          const deleteResponse = await contactDetails.deleteContactDetails(
-            correspondenceAddresses[i].id,
-            correspondenceAddresses[i].targetId,
-          )
-          assert.deepEqual(deleteResponse.status, 200)
+        // DELETE any existing correspondence addresses for a person
+        for (let i = 0; i < correspondenceAddresses.length; i++) {
+          if (
+            correspondenceAddresses[i].contactInformation.subType ===
+            'correspondenceAddress'
+          ) {
+            cy.log(`id=${correspondenceAddresses[i].id}`)
+            cy.log(`tid=${correspondenceAddresses[i].targetId}`)
+            contactDetails.deleteContactDetails(
+              correspondenceAddresses[i].id,
+              correspondenceAddresses[i].targetId,
+            ).then(deleteResponse => {
+              assert.deepEqual(deleteResponse.status, 200)
+            })
+          }
         }
       }
-    }
+    })
   })
+
+
 })
 
 Given('I have the maximum number of {string} for a person', async (contactType) => {
-    cy.getPersonFixture().then(async (person) => {
-        const personId = person.id;
-
-        const getResponse = await contactDetails.getContactDetails(personId)
+    cy.getPersonFixture().then(({ id: personId }) => {
+        contactDetails.getContactDetails(personId).then(getResponse => {
         cy.log(`Status code ${getResponse.status} returned`)
 
         let requiredContactType = 0
         
         if(getResponse.status === 200) {
-            const details = getResponse.data.results
+            const details = getResponse.body.results
             for (let i = 0; i < details.length; i++) {
                 if (details[i].contactInformation.contactType === contactType) {
                     requiredContactType++
@@ -241,12 +243,15 @@ Given('I have the maximum number of {string} for a person', async (contactType) 
         
         // POST new contact details if not at maximum
         for (let i = 0; i < 5 - requiredContactType; i++) {
-            const postResponse = await contactDetails.addContactDetails(
+            contactDetails.addContactDetails(
                 contactType,
                 personId,
-            )
-        assert.deepEqual(postResponse.status, 201)
+            ).then(postResponse => {
+              assert.deepEqual(postResponse.status, 201)
+            })
         }
+        })
+
     })
   },
 )
@@ -277,10 +282,11 @@ And('I am on the contact details page', () => {
 })
 
 Given('I create a person and then edit them', async () => {
-  cy.getTenureFixture().then(async (tenure) => {
-    const postResponse = await createPersonWithNewTenure(tenure.id)
-    const personId = postResponse.data.id
-    editPersonPage.visit(personId)
+  cy.getTenureFixture().then((tenure) => {
+    createPersonWithNewTenure(tenure.id).then(postResponse => {
+      const { id: personId } = postResponse.body
+      editPersonPage.visit(personId)
+    })
   })
 })
 
@@ -289,8 +295,8 @@ And('I click the save equality information button', () => {
 })
 
 Given("I edit a person's equality information", () => {
-  cy.getPersonFixture().then(async (person) => {
-    addPersonPage.editPersonEqualityInformation(person.id)
+  cy.getPersonFixture().then(({ id }) => {
+    addPersonPage.editPersonEqualityInformation(id)
   })
 })
 
@@ -315,26 +321,25 @@ Then('the preferred gender term field is not displayed', () => {
 })
 
 Given("the person's equality information is reset", async () => {
-  cy.getPersonFixture().then(async (person) => {
-    const personId = person.id
-
+  cy.getPersonFixture().then(({ id: personId }) => {
     cy.log('Getting etag from the person...')
-    const getResponse = await getEqualityDetails.getEqualityDetails(personId)
-    
-    cy.log(`Status code ${getResponse.status} returned`)
-    if(getResponse.status === 200){
+    getEqualityDetails.getEqualityDetails(personId).then(getResponse => {
+      cy.log(`Status code ${getResponse.status} returned`)
+      if(getResponse.status === 200){
         cy.log('etag captured!')
         cy.log(getResponse.headers.etag)
-    
+
         cy.log('Updating equality information...')
-        const patchResponse = await editEqualityDetails.editEqualityDetails(
+        editEqualityDetails.editEqualityDetails(
           getResponse.data.id,
           getResponse.headers.etag,
-        )
-        cy.log(`Status code ${patchResponse.status} returned`)
-        assert.deepEqual(patchResponse.status, 200)
-        cy.log('Equality information updated!')
-    }
+        ).then(patchResponse => {
+          cy.log(`Status code ${patchResponse.status} returned`)
+          assert.deepEqual(patchResponse.status, 200)
+          cy.log('Equality information updated!')
+        })
+      }
+    })
   })
 })
 

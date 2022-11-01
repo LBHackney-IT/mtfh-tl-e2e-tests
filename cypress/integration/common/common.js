@@ -108,13 +108,14 @@ Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
   })
 })
 
-Given("I create a new person", async () => {
+Given("I create a new person", () => {
   cy.log("Creating Person record");
-  const response = await person.createPerson();
-  cy.log(`Status code ${response.status} returned`);
-  cy.log(`Person record ${response.data.id} created!`);
-  assert.deepEqual(response.status, 201);
-  personId = response.data.id;
+  person.createPerson().then(response => {
+    cy.log(`114 Status code ${response.status} returned`);
+    cy.log(`115 Person record ${response.body.id} created!`);
+    assert.deepEqual(response.status, 201);
+    personId = response.body.id;
+  });
 });
 
 

@@ -1,16 +1,34 @@
 const request = require('./requests/requests')
 const equalityDetailsModel = require('./models/requests/equalityDetailsModel')
+const envConfig = require("../environment-config");
+const { saveFixtureData } = require("./helpers");
 const equalityDetailsEndpoint = Cypress.env('EQUALITY_DETAILS_ENDPOINT')
 const url = `${equalityDetailsEndpoint}/equality-information`
 
-const getEqualityDetails = async (targetId) => {
-    const response = await request.getRequest(`${url}?targetId=${targetId}`)
-    return response
+const getEqualityDetails = (targetId) => {
+    return new Cypress.Promise((resolve, reject) => {
+        cy.request({
+            method: 'GET',
+            url: `${url}?targetId=${targetId}`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` },
+            failOnStatusCode: false
+        }).then(response => {
+            resolve(response)
+        })
+    });
 }
 
-const editEqualityDetails = async (targetId, etag) => {
-    const response = await request.patchRequest(`${url}/${targetId}`, equalityDetailsModel.equalityDetailsModel, etag)
-    return response
+const editEqualityDetails = async (targetId, ifMatch) => {
+    return new Cypress.Promise((resolve, reject) => {
+        cy.request({
+            method: 'PATCH',
+            body: equalityDetailsModel.equalityDetailsModel,
+            url: `${url}/${targetId}`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
+        }).then((response) => {
+            resolve(response)
+        })
+    });
 }
 
 module.exports = {
