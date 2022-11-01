@@ -26,13 +26,17 @@ const createTenure = (tenureTypeCode) => {
         tenureModel = secureTenureModel;
     }
 
-    return cy.request({
-        method: 'POST',
-        body: tenureModel,
-        url: `${tenureEndpoint}/tenures/`,
-        headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
-    }).then(response => {
-        saveFixtureData(tableName, { id: response.body.id }, response.body);
+    return new Cypress.Promise((resolve, reject) => {
+        cy.request({
+            method: 'POST',
+            body: tenureModel,
+            url: `${tenureEndpoint}/tenures/`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+        }).then(response => {
+            saveFixtureData(tableName, { id: response.body.id }, response.body).then((response) => {
+                resolve(response)
+            });
+        })
     })
 }
 
@@ -49,11 +53,19 @@ const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
 const createTenureWithStartDate = async(startOfTenureDate) => {
     const requestModel = _createTenureModel
     requestModel.startOfTenureDate =startOfTenureDate
-    const response = await postRequest(`${tenureEndpoint}/tenures/`, requestModel)
-    
-    const responseData = response.data;
-    saveFixtureData(tableName, { id: responseData.id }, responseData);
-    return response
+
+    return new Cypress.Promise((resolve, reject) => {
+        cy.request({
+            method: 'POST',
+            body: requestModel,
+            url: `${tenureEndpoint}/tenures/`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+        }).then(response => {
+            saveFixtureData(tableName, { id: response.body.id }, response.body).then((response) => {
+                resolve(response)
+            });
+        })
+    })
 }
 
 const editTenure = async(tenureId, tenureType, ifMatch) => {

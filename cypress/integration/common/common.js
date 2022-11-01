@@ -127,14 +127,18 @@ Given("I create a new {string} tenure",  (tenureTypeCode) => {
   // cy.log(`Tenure Id for record ${response.body.id} created!`);
 });
 
-Given("I create a person with new tenure", async () => {
+Given("I create a person with new tenure", () => {
   cy.log("Creating Person record");
-  cy.log('Tenure Id inside person request', tenureId)
-  const response = await person.createPersonWithNewTenure(tenureId);
-  cy.log(`Status code ${response.status} returned`);
-  cy.log(`Person record ${response.data.id} created!`);
-  assert.deepEqual(response.status, 201);
-  personId = response.data.id
+  cy.getTenureFixture().then(({ id: tenureId }) => {
+    cy.log('Tenure Id inside person request', tenureId)
+    person.createPersonWithNewTenure(tenureId).then(response => {
+      cy.log(`134 Status code ${response.status} returned`);
+      cy.log(`135 Person record ${response.body.id} created!`);
+      assert.deepEqual(response.status, 201);
+      personId = response.body.id
+    });
+  })
+
 });
 
 Given("I create person and add to a tenure {string}", (isResponsible) => {
@@ -533,7 +537,9 @@ Then('the add a new person tenure page is correct', () => {
 
 // Tenure page
 When('I view a tenure {string}', (id) => {
-  tenurePage.visit(id || tenureId)
+  cy.getTenureFixture().then(({id: tenureId }) => {
+    tenurePage.visit(id || tenureId)
+  })
 })
 
 Then('the tenure information is displayed', () => {
