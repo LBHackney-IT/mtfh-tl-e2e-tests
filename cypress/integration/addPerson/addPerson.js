@@ -226,31 +226,41 @@ Given('the person has no correspondence addresses', () => {
 
 Given('I have the maximum number of {string} for a person', (contactType) => {
     cy.getPersonFixture().then(({ id: personId }) => {
-        contactDetails.getContactDetails(personId).then(getResponse => {
-          // cy.log(`Status code ${getResponse.status} returned`)
-
-          let requiredContactType = 0
-
-          if(getResponse.status === 200) {
-              const details = getResponse.body.results
-              for (let i = 0; i < details.length; i++) {
-                  if (details[i].contactInformation.contactType === contactType) {
-                      requiredContactType++
-                  }
-              }
-          }
-
-          // POST new contact details if not at maximum
-          for (let i = 0; i < 5 - requiredContactType; i++) {
-              contactDetails.addContactDetails(
-                  contactType,
-                  personId,
-              ).then(postResponse => {
-                assert.deepEqual(postResponse.status, 201)
-              })
-          }
-        })
-
+      contactDetails.addContactDetails(
+        contactType,
+        personId,
+      ).then(postResponse => {
+        cy.log("CREATED CONTACT 1")
+        assert.deepEqual(postResponse.status, 201)
+      })
+      contactDetails.addContactDetails(
+        contactType,
+        personId,
+      ).then(postResponse => {
+        cy.log("CREATED CONTACT 2")
+        assert.deepEqual(postResponse.status, 201)
+      })
+      contactDetails.addContactDetails(
+        contactType,
+        personId,
+      ).then(postResponse => {
+        cy.log("CREATED CONTACT 3")
+        assert.deepEqual(postResponse.status, 201)
+      })
+      contactDetails.addContactDetails(
+        contactType,
+        personId,
+      ).then(postResponse => {
+        cy.log("CREATED CONTACT 4")
+        assert.deepEqual(postResponse.status, 201)
+      })
+      contactDetails.addContactDetails(
+        contactType,
+        personId,
+      ).then(postResponse => {
+        cy.log("CREATED CONTACT 5")
+        assert.deepEqual(postResponse.status, 201)
+      })
     })
   },
 )

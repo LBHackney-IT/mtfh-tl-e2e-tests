@@ -50,9 +50,9 @@ const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
     return response
 }
 
-const createTenureWithStartDate = async(startOfTenureDate) => {
+const createTenureWithStartDate = (startOfTenureDate) => {
     const requestModel = _createTenureModel
-    requestModel.startOfTenureDate =startOfTenureDate
+    requestModel.startOfTenureDate = startOfTenureDate
 
     return new Cypress.Promise((resolve, reject) => {
         cy.request({

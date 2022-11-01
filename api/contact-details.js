@@ -7,7 +7,7 @@ import envConfig from "../environment-config";
 
 const tableName = "ContactDetails";
 
-const getContactDetails = async (personId) => {
+const getContactDetails = (personId) => {
     return new Cypress.Promise((resolve, reject) => {
         cy.request({
             method: 'GET',
@@ -20,7 +20,7 @@ const getContactDetails = async (personId) => {
     });
 }
 
-const deleteContactDetails = async (contactDetailsId, targetId) => {
+const deleteContactDetails = (contactDetailsId, targetId) => {
     return new Cypress.Promise((resolve, reject) => {
         cy.request({
             method: 'DELETE',
@@ -32,7 +32,7 @@ const deleteContactDetails = async (contactDetailsId, targetId) => {
     });
 }
 
-const addContactDetails = async (contactType, targetId) => {
+const addContactDetails = (contactType, targetId) => {
     let value
     if(contactType === "phone") {
         value = "011899988199"
