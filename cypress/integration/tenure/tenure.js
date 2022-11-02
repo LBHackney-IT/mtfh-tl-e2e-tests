@@ -5,14 +5,14 @@ import tenure from "../../../api/tenure";
 const tenurePage = new TenurePageObjects
 let tenureId = ''
 
-Given("the start date of the tenure is {string}", async (startOfTenureDate) => {
+Given("the start date of the tenure is {string}", (startOfTenureDate) => {
     cy.log("Creating new tenure record");
-
-    const response = await tenure.createTenureWithStartDate(startOfTenureDate);
-    cy.log(`Status code ${response.status} returned`);
-    cy.log ('Start of Tenure Date: ',response.data.startOfTenureDate)
-    cy.log(`Tenure Id for record ${response.data.id} created!`);  
-    tenureId = response.data.id
+    tenure.createTenureWithStartDate(startOfTenureDate).then(response => {
+        cy.log(`Status code ${response.status} returned`);
+        cy.log ('Start of Tenure Date: ',response.body.startOfTenureDate)
+        cy.log(`Tenure Id for record ${response.body.id} created!`);
+        tenureId = response.body.id
+    });
 });
 
 Given('the start date for the selected tenure record is before 31 December 2013 {string}', async (tenureId) => {
@@ -25,14 +25,15 @@ Given('the start date for the selected tenure record is before 31 December 2013 
     expect(startDate).to.lessThan(threshold)
 })
 
-Given('the start date for the tenure record is before 31 December 2013', async () => {
-    const getResponse = await tenure.getTenure(tenureId)
-    cy.log(`Status code ${getResponse.status} returned`)
-    var startDate =  new Date(getResponse.data.startOfTenureDate)
-    var threshold =  new Date(2013, 12, 31)
-    cy.log('startDate', startDate)
-    cy.log('threshold', threshold)
-    expect(startDate).to.lessThan(threshold)
+Given('the start date for the tenure record is before 31 December 2013', () => {
+    tenure.getTenure(tenureId).then(response => {
+        cy.log(`Status code ${response.status} returned`)
+        const startDate =  new Date(response.body.startOfTenureDate)
+        const threshold =  new Date(2013, 12, 31)
+        cy.log('startDate', startDate)
+        cy.log('threshold', threshold)
+        expect(startDate).to.lessThan(threshold)
+    })
 })
 
 Given("There are only responsible household members for the tenure", async () => {
@@ -44,12 +45,13 @@ Given("There are only responsible household members for the tenure", async () =>
     tenureId = response.data.id
 });
 
-Given("There are household members for the tenure", async () => {
+Given("There are household members for the tenure", () => {
     cy.log("Creating new tenure record");
-    const response = await tenure.createTenure();
-    cy.log(`Status code ${response.status} returned`);
-    cy.log(`Tenure Id for record ${response.data.id} created!`);  
-    tenureId = response.data.id
+    tenure.createTenure().then(response => {
+        cy.log(`Status code ${response.status} returned`);
+        cy.log(`Tenure Id for record ${response.body.id} created!`);
+        tenureId = response.body.id
+    });
 });
 
 And('A message says this tenure has no household members', () => {
@@ -66,7 +68,6 @@ When('I view this tenure', () => {
 })
 
 When('I view the Other household members section in the tenure page', () => {
-    tenurePage.visit(tenureId)
     tenurePage.tenureResidentsContainer().should('exist')
 })
 

@@ -42,23 +42,24 @@ const manualChecksPass = ({ id: tenureId, householdMembers }) => {
 };
 
 Given("The tenure investigation has been completed for tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id)
-        manualChecksPass(response.data);
-        cy.contains('Next').click();
-        tenureReqDocsPage.requestDocsElectronically().click();
-        tenureReqDocsPage.checkboxTenantDeclaration().click();
-        cy.contains('Next').click();
-        tenureReviewDocsPage.photoId().click();
-        tenureReviewDocsPage.secondId().click();
-        tenureReviewDocsPage.notImmigrationControl().click();
-        tenureReviewDocsPage.relationshipProof().click();
-        tenureReviewDocsPage.tenantLivingInProperty().click();
-        cy.contains('Next').click();
-        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Submit case');
-        tenureReviewDocsPage.submitButton().click();
-        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Finish');
-        cy.contains('Continue').click();
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body);
+            cy.contains('Next').click();
+            tenureReqDocsPage.requestDocsElectronically().click();
+            tenureReqDocsPage.checkboxTenantDeclaration().click();
+            cy.contains('Next').click();
+            tenureReviewDocsPage.photoId().click();
+            tenureReviewDocsPage.secondId().click();
+            tenureReviewDocsPage.notImmigrationControl().click();
+            tenureReviewDocsPage.relationshipProof().click();
+            tenureReviewDocsPage.tenantLivingInProperty().click();
+            cy.contains('Next').click();
+            tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Submit case');
+            tenureReviewDocsPage.submitButton().click();
+            tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Finish');
+            cy.contains('Continue').click();
+        })
     });
 });
 Then("I can see Next steps Make an appointment or pass the case to Area Housing Manager", () => {

@@ -19,7 +19,7 @@ Feature: Tenure page
     Scenario Outline: Navigate to old tenancy files
       Given the start date of the tenure is "<startOfTenureDate>"
       And the start date for the tenure record is before 31 December 2013
-      When I view this tenure
+      When I view a tenure ""
       Then the Scanned historic tenure records button is displayed
 
       Examples:
@@ -30,7 +30,7 @@ Feature: Tenure page
     Scenario Outline: Navigate to old tenancy files - button not displayed
       Given the start date of the tenure is "<startOfTenureDate>"
       And the start date for the tenure record is before 31 December 2013
-      When I view this tenure
+      When I view a tenure ""
       Then the Scanned historic tenure records button is not displayed
 
       Examples:
@@ -39,12 +39,14 @@ Feature: Tenure page
 
     Scenario: View household member
       Given There are household members for the tenure
+      When I view a tenure ""
       When I view the Other household members section in the tenure page
       And I select a household member
       Then the household member details are displayed
 
     Scenario: No household members
       Given There are only responsible household members for the tenure
+      When I view a tenure ""
       When I view the Other household members section in the tenure page
       And A message says this tenure has no household members
 

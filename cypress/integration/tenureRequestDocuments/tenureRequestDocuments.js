@@ -41,9 +41,10 @@ const manualChecksPass = ({ id: tenureId, householdMembers }) => {
 };
 
 Given("the application has passed eligibility and the housing officer breach of tenancy checks for the tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        manualChecksPass(response.data);
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body);
+        });
     });
 });
 
@@ -77,9 +78,10 @@ When("I click on process Sole tenant requests a joint tenure link", () => {
 });
 
 Given("I am on the Request Documents page for the tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        manualChecksPass(response.data);
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            manualChecksPass(response.body);
+        });
     });
 })
 When("I have not selected any of the radio button options", () => {
@@ -132,36 +134,37 @@ Then("I am taken to the current tenant’s person page which will be opened in a
     cy.findAllByText('Date of birth:');
 });
 Given("the application has passed eligibility and failed the breach of tenancy checks for the tenure", () => {
-    cy.getTenureFixture().then(async (tenureInfo) => {
-        const response = await tenure.getTenure(tenureInfo.id);
-        const { id: tenureId, householdMembers } = response.data;
-        processPage.visit(tenureId);
-        processPage.agreementCheckBox().click();
-        processPage.startProcessButton().click();
-        cy.url().should("include", "processes/soletojoint/");
-        cy.findByLabelText(`${householdMembers[1].fullName}`).click();
-        cy.contains('Next').click();
-        processPage.textAutomaticEligibilityChecksPassed().should('be.visible');
-        tenureReqDocsPage.selectYesFor12Months().click();
-        tenureReqDocsPage.selectNoForOccupyanyOther().click();
-        tenureReqDocsPage.selectNoForSurvivorOfOne().click();
-        tenureReqDocsPage.selectNoForTenantEvicted().click();
-        tenureReqDocsPage.selectNoForImmigrationControl().click();
-        tenureReqDocsPage.selectNoForLiveNotice().click();
-        tenureReqDocsPage.selectNoForRentArrears().click();
-        tenureReqDocsPage.selectNoForHoldATenancyElseWhere().click();
-        cy.contains('Next').click();
-        tenureReqDocsPage.textHeaderNextSteps().should('be.visible');
-        tenureReqDocsPage.textPassInitialEligReqs().should('be.visible');
-        tenureReqDocsPage.continueButton().click();
-        tenureReqDocsPage.textBreachOfTenure().should('be.visible');
-        tenureReqDocsPage.statusBreachOfTenureCheck().should('be.visible');
-        tenureReqDocsPage.statusActiveCheck().should('be.visible');
-        tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Breach of tenure check');
-        tenureReqDocsPage.tenantLiveNoticeYes().click();
-        tenureReqDocsPage.cautionaryContactYes().click();
-        tenureReqDocsPage.cautionaryContactDenyApp().click();
-        tenureReqDocsPage.successionNo().click();
+    cy.getTenureFixture().then((tenureInfo) => {
+        tenure.getTenure(tenureInfo.id).then(response => {
+            const { id: tenureId, householdMembers } = response.body;
+            processPage.visit(tenureId);
+            processPage.agreementCheckBox().click();
+            processPage.startProcessButton().click();
+            cy.url().should("include", "processes/soletojoint/");
+            cy.findByLabelText(`${householdMembers[1].fullName}`).click();
+            cy.contains('Next').click();
+            processPage.textAutomaticEligibilityChecksPassed().should('be.visible');
+            tenureReqDocsPage.selectYesFor12Months().click();
+            tenureReqDocsPage.selectNoForOccupyanyOther().click();
+            tenureReqDocsPage.selectNoForSurvivorOfOne().click();
+            tenureReqDocsPage.selectNoForTenantEvicted().click();
+            tenureReqDocsPage.selectNoForImmigrationControl().click();
+            tenureReqDocsPage.selectNoForLiveNotice().click();
+            tenureReqDocsPage.selectNoForRentArrears().click();
+            tenureReqDocsPage.selectNoForHoldATenancyElseWhere().click();
+            cy.contains('Next').click();
+            tenureReqDocsPage.textHeaderNextSteps().should('be.visible');
+            tenureReqDocsPage.textPassInitialEligReqs().should('be.visible');
+            tenureReqDocsPage.continueButton().click();
+            tenureReqDocsPage.textBreachOfTenure().should('be.visible');
+            tenureReqDocsPage.statusBreachOfTenureCheck().should('be.visible');
+            tenureReqDocsPage.statusActiveCheck().should('be.visible');
+            tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Breach of tenure check');
+            tenureReqDocsPage.tenantLiveNoticeYes().click();
+            tenureReqDocsPage.cautionaryContactYes().click();
+            tenureReqDocsPage.cautionaryContactDenyApp().click();
+            tenureReqDocsPage.successionNo().click();
+        });
     })
 });
 When("I click the next button on breach tenure page", () => {

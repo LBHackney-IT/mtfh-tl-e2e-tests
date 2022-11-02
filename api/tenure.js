@@ -1,27 +1,48 @@
-import { getRequest, postRequest, patchRequest, deleteRequest } from './requests/requests'
+import { postRequest, deleteRequest } from './requests/requests'
 import { createTenureModel as _createTenureModel, secureTenureModel } from "./models/requests/addTenureModel";
 import { saveFixtureData } from './helpers'
 import person from "./person";
+import envConfig from "../environment-config";
 
 const tenureEndpoint = Cypress.env('TENURE_ENDPOINT')
 const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDate: null}
 const tableName = "TenureInformation";
 
-const getTenure = async(tenureId) => {
-    const response = await getRequest(`${tenureEndpoint}/tenures/${tenureId}`)
-    return response
+const getTenure = (tenureId) => {
+    return new Cypress.Promise((resolve) => {
+        cy.request({
+            method: 'GET',
+            url: `${tenureEndpoint}/tenures/${tenureId}`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+        }).then(response => {
+            resolve(response)
+        })
+    });
 }
 
-const createTenure = async(tenureTypeCode) => {
+const createTenure = (tenureTypeCode) => {
     let tenureModel = _createTenureModel
     if (tenureTypeCode === "SEC") {
         tenureModel = secureTenureModel;
     }
-    const response = await postRequest(`${tenureEndpoint}/tenures/`, tenureModel)
-    
-    const responseData = response.data;
-    saveFixtureData(tableName, { id: responseData.id }, responseData);
-    return response;
+
+    return new Cypress.Promise((resolve) => {
+        cy.request({
+            method: 'POST',
+            body: tenureModel,
+            url: `${tenureEndpoint}/tenures/`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+        }).then(response => {
+            saveFixtureData(
+                tableName,
+                { id: response.body.id },
+                response.body,
+                response
+            ).then((response) => {
+                resolve(response)
+            });
+        })
+    })
 }
 
 const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
@@ -34,21 +55,43 @@ const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
     return response
 }
 
-const createTenureWithStartDate = async(startOfTenureDate) => {
+const createTenureWithStartDate = (startOfTenureDate) => {
     const requestModel = _createTenureModel
-    requestModel.startOfTenureDate =startOfTenureDate
-    const response = await postRequest(`${tenureEndpoint}/tenures/`, requestModel)
-    
-    const responseData = response.data;
-    saveFixtureData(tableName, { id: responseData.id }, responseData);
-    return response
+    requestModel.startOfTenureDate = startOfTenureDate
+
+    return new Cypress.Promise((resolve) => {
+        cy.request({
+            method: 'POST',
+            body: requestModel,
+            url: `${tenureEndpoint}/tenures/`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+        }).then(response => {
+            saveFixtureData(
+                tableName,
+                { id: response.body.id },
+                response.body,
+                response
+            ).then((response) => {
+                resolve(response)
+            });
+        })
+    })
 }
 
-const editTenure = async(tenureId, tenureType, ifMatch) => {
+const editTenure = (tenureId, tenureType, ifMatch) => {
     editTenureModel.tenureType.code = tenureType.substring(0,2).toUpperCase()
     editTenureModel.tenureType.description = tenureType
-    const response = await patchRequest(`${tenureEndpoint}/tenures/${tenureId}`, editTenureModel, ifMatch)
-    return response
+
+    return new Cypress.Promise((resolve) => {
+        cy.request({
+            method: 'PATCH',
+            body: editTenureModel,
+            url: `${tenureEndpoint}/tenures/${tenureId}`,
+            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
+        }).then(response => {
+            resolve(response)
+        })
+    })
 }
 
 const deleteTenure = async(tenureId, personId) => {
@@ -56,14 +99,20 @@ const deleteTenure = async(tenureId, personId) => {
     return response
 }
 
-const addPersonToTenure = async(tenureId, isResponsible, ifMatch) => {
-    const { id: personId, firstName, surname } = (await person.createPersonWithNewTenure(tenureId, "2000-01-01")).data
-    const response = await patchRequest(
-      `${tenureEndpoint}/tenures/${tenureId}/person/${personId}`,
-      { fullName: `${firstName} ${surname}`, personTenureType: "Tenant", isResponsible },
-      ifMatch
-    )
-    return response
+const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
+    return new Cypress.Promise((resolve) => {
+        person.createPersonWithNewTenure(tenureId, "2000-01-01").then(({ body }) => {
+            const { id: personId, firstName, surname } = body;
+            cy.request({
+                method: 'PATCH',
+                body: { fullName: `${firstName} ${surname}`, personTenureType: "Tenant", isResponsible },
+                url: `${tenureEndpoint}/tenures/${tenureId}/person/${personId}`,
+                headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
+            }).then(response => {
+                resolve(response)
+            })
+        })
+    })
 }
 
 export default {

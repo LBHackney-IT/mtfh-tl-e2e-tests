@@ -51,10 +51,6 @@ const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
 const changeOfName = new ChangeOfNamePageObjects();
-const homePage = new HomePageObjects();
-const workTrayPO = new WorkTrayPageObjects();
-const fs = require('fs')
-const readline = require('readline');
 const emailAdd = 'AutomationTest@test.com';
 const phoneNumber = '07788123456';
 
@@ -92,61 +88,71 @@ Given(
   }
 );
 
-Given("I edit a tenure {string} {string}", async (tenureId, tenureType) => {
+Given("I edit a tenure {string} {string}", (tenureId, tenureType) => {
   cy.log('Getting etag from the tenure...')
-  const getResponse = await tenure.getTenure(tenureId)
-  cy.log(`Status code ${getResponse.status} returned`)
-  assert.deepEqual(getResponse.status, 200)
-  cy.log('etag captured!')
-
-  cy.log('Updating tenure...')
-  const patchResponse = await tenure.editTenure(tenureId, tenureType, getResponse.headers.etag)
-  cy.log(`Status code ${patchResponse.status} returned`)
-  assert.deepEqual(patchResponse.status, 204)
-  cy.log('Tenure updated!')
-})
-
-Given("I create a new person", async () => {
-  cy.log("Creating Person record");
-  const response = await person.createPerson();
-  cy.log(`Status code ${response.status} returned`);
-  cy.log(`Person record ${response.data.id} created!`);
-  assert.deepEqual(response.status, 201);
-  personId = response.data.id;
-});
-
-
-Given("I create a new {string} tenure", async (tenureTypeCode) => {
-  cy.log("Creating new tenure record");
-  const response = await tenure.createTenure(tenureTypeCode);
-  cy.log(`Status code ${response.status} returned`);
-  cy.log(`Tenure Id for record ${response.data.id} created!`);
-  tenureId = response.data.id
-});
-
-Given("I create a person with new tenure", async () => {
-  cy.log("Creating Person record");
-  cy.log('Tenure Id inside person request', tenureId)
-  const response = await person.createPersonWithNewTenure(tenureId);
-  cy.log(`Status code ${response.status} returned`);
-  cy.log(`Person record ${response.data.id} created!`);
-  assert.deepEqual(response.status, 201);
-  personId = response.data.id
-});
-
-Given("I create person and add to a tenure {string}", async (isResponsible) => {
-  cy.getTenureFixture().then(async ({ id: tenureId }) => {
-    cy.log('Getting etag from the tenure...')
-    const getResponse = await tenure.getTenure(tenureId)
-    cy.log(`Status code ${getResponse.status} returned`)
-    assert.deepEqual(getResponse.status, 200)
+  tenure.getTenure(tenureId).then(response => {
+    cy.log(`Status code ${response.status} returned`)
+    assert.deepEqual(response.status, 200)
     cy.log('etag captured!')
 
-    cy.log("Creating Person record");
-    cy.log('Tenure Id inside person request', tenureId)
-    const response = await tenure.addPersonToTenure(tenureId, isResponsible === "true", getResponse.headers.etag);
+    cy.log('Updating tenure...')
+    tenure.editTenure(tenureId, tenureType, response.headers.etag).then(response => {
+      cy.log(`Status code ${response.status} returned`)
+      assert.deepEqual(response.status, 204)
+      cy.log('Tenure updated!')
+    })
+  })
+})
+
+Given("I create a new person", () => {
+  cy.log("Creating Person record");
+  person.createPerson().then(response => {
     cy.log(`Status code ${response.status} returned`);
-    assert.deepEqual(response.status, 204);
+    cy.log(`Person record ${response.body.id} created!`);
+    assert.deepEqual(response.status, 201);
+    personId = response.body.id;
+  });
+});
+
+
+Given("I create a new {string} tenure",  (tenureTypeCode) => {
+  cy.log("Creating new tenure record");
+  tenure.createTenure(tenureTypeCode).then((response) => {
+    cy.log(`Status code ${response.status} returned`);
+    cy.log(`Tenure Id for record ${response.body.id} created!`);
+    tenureId = response.body.id
+  })
+});
+
+Given("I create a person with new tenure", () => {
+  cy.log("Creating Person record");
+  cy.getTenureFixture().then(({ id: tenureId }) => {
+    cy.log('Tenure Id inside person request', tenureId)
+    person.createPersonWithNewTenure(tenureId).then(response => {
+      cy.log(`Status code ${response.status} returned`);
+      cy.log(`Person record ${response.body.id} created!`);
+      assert.deepEqual(response.status, 201);
+      personId = response.body.id
+    });
+  })
+
+});
+
+Given("I create person and add to a tenure {string}", (isResponsible) => {
+  cy.getTenureFixture().then(({ id: tenureId }) => {
+    cy.log('Getting etag from the tenure...')
+    tenure.getTenure(tenureId).then(response => {
+      cy.log(`Tenure received`)
+      assert.deepEqual(response.status, 200)
+
+      cy.log("Creating Person record");
+      cy.log('Tenure Id inside person request', tenureId)
+      tenure.addPersonToTenure(tenureId, isResponsible === "true", response.headers.etag).then(response => {
+        cy.log(`Status code ${response.status} returned`);
+        assert.deepEqual(response.status, 204);
+        cy.log(`Person added!`);
+      });
+    })
   })
 });
 
@@ -531,7 +537,9 @@ Then('the add a new person tenure page is correct', () => {
 
 // Tenure page
 When('I view a tenure {string}', (id) => {
-  tenurePage.visit(id || tenureId)
+  cy.getTenureFixture().then(({id: tenureId }) => {
+    tenurePage.visit(id || tenureId)
+  })
 })
 
 Then('the tenure information is displayed', () => {
