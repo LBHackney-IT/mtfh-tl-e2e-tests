@@ -70,6 +70,14 @@ const createAssetModel = {
   },
 }
 
+const asset = (patch) => {
+  return {
+    ...createAssetModel,
+    patches: [patch]
+  }
+}
+
 module.exports = {
+  asset,
   createAssetModel
 }

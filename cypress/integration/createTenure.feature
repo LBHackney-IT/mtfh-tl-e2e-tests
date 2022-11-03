@@ -117,7 +117,7 @@ Feature: Create tenure
 
   @SmokeTest
   Scenario Outline: Create new tenure
-    Given I create a new property
+    Given I seeded the database
     When I view a property ""
     When I click on the new tenure button
     Then I am on the create new tenure page ""
@@ -133,7 +133,7 @@ Feature: Create tenure
 
   @SmokeTest
   Scenario Outline: Create new tenure search and select resident
-    Given I create a new property
+    Given I seeded the database
     When I view a property ""
     When I click on the new tenure button
     Then I am on the create new tenure page ""
@@ -160,7 +160,7 @@ Feature: Create tenure
       | Freehold   | 01       | 01         | 2000      | tre        | sar         |
 
   Scenario Outline: Create new tenure and filter search
-    Given I create a new property
+    Given I seeded the database
     When I view a property ""
     When I click on the new tenure button
     Then I am on the create new tenure page ""
@@ -495,7 +495,7 @@ Feature: Create tenure
 
   @SmokeTest
   Scenario: Create new tenure and cancel
-    Given I create a new property
+    Given I seeded the database
     When I view a property ""
     When I click on the new tenure button
     Then I am on the create new tenure page ""
@@ -526,7 +526,7 @@ Feature: Create tenure
 
   @SmokeTest
   Scenario Outline: Create new tenure with start date that occurs after end date
-    Given I create a new property
+    Given I seeded the database
     When I view a property ""
     When I click on the new tenure button
     Then I am on the create new tenure page ""
@@ -542,7 +542,7 @@ Feature: Create tenure
       | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
 
   Scenario Outline: Edit existing tenure
-    Given I create a new "" tenure
+    Given I seeded the database
     When I view a tenure ""
     Then the tenure information is displayed
     And I click edit tenure
@@ -556,7 +556,7 @@ Feature: Create tenure
       | Freehold   |
 
   Scenario Outline: Edit existing tenure and cancel
-    Given I create a new "" tenure
+    Given I seeded the database
     When I view a tenure ""
     Then the tenure information is displayed
     And I click edit tenure
@@ -576,7 +576,7 @@ Feature: Create tenure
       | Freehold   |
 
   Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
-    Given I create a new "" tenure
+    Given I seeded the database
     When I view a tenure ""
     Then the tenure information is displayed
     And I click edit tenure
@@ -643,7 +643,7 @@ Feature: Create tenure
 
   @regression
   Scenario Outline: End dates are editable for all tenure types
-    Given I create a new "" tenure
+    Given I seeded the database
     When I edit a Tenure ""
     When I select a tenure type "<tenureType>"
     Then the tenure end date is editable

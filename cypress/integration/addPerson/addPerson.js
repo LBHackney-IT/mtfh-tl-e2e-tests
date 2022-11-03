@@ -261,11 +261,8 @@ And('I am on the contact details page', () => {
 })
 
 Given('I create a person and then edit them', () => {
-  cy.getTenureFixture().then((tenure) => {
-    createPersonWithNewTenure(tenure.id).then(postResponse => {
-      const { id: personId } = postResponse.body
-      editPersonPage.visit(personId)
-    })
+  cy.getPersonFixture().then(({ id: personId}) => {
+    editPersonPage.visit(personId)
   })
 })
 

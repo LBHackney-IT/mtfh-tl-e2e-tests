@@ -1,12 +1,10 @@
-const envConfig = require('../../environment-config')
-
 class TenureReviewDocsPageObjects {
 
     headingTenureInvestigation() {
         return cy.get('.lbh-heading-h2');
     };
     submitButton () {
-        return cy.get('.mtfh-layout__main > :nth-child(7)');
+        return cy.get('.mtfh-layout__main > :nth-child(6)');
     };
     continueButton () {
         return cy.get('.govuk-button lbh-button').should('contain', 'Continue');

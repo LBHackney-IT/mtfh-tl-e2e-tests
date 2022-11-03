@@ -4,7 +4,7 @@ import {
   Given,
   defineParameterType,
   When,
-  After
+  After,
 } from "cypress-cucumber-preprocessor/steps";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
@@ -18,14 +18,12 @@ import SearchPageObjects from "../../pageObjects/searchPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
-import HomePageObjects from "../../pageObjects/homePage";
-import WorkTrayPageObjects from "../../pageObjects/workTrayPage";
 
 
 import comment from "../../../api/comment";
 import contactDetails from "../../../api/contact-details";
-import person from "../../../api/person";
-import tenure from "../../../api/tenure";
+import { createPersonDB } from "../../../api/person";
+import { getTenure, editTenure, createTenure } from "../../../api/tenure";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
 import dynamoDb from "../../../cypress/integration/common/DynamoDb";
@@ -36,6 +34,12 @@ import { guid } from "../../helpers/commentText";
 import property from "../../../api/property";
 import {searchPersonResults} from "../../support/searchPersonResults";
 import {searchPropertyResults} from "../../support/searchPropertyResults";
+import DynamoDb from "./DynamoDb";
+
+import { patch } from "../../../api/models/requests/patchModel"
+import { asset } from "../../../api/models/requests/createAssetModel"
+import { person } from "../../../api/models/requests/createPersonModel"
+import { tenure } from "../../../api/models/requests/addTenureModel"
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -90,13 +94,13 @@ Given(
 
 Given("I edit a tenure {string} {string}", (tenureId, tenureType) => {
   cy.log('Getting etag from the tenure...')
-  tenure.getTenure(tenureId).then(response => {
+  getTenure(tenureId).then(response => {
     cy.log(`Status code ${response.status} returned`)
     assert.deepEqual(response.status, 200)
     cy.log('etag captured!')
 
     cy.log('Updating tenure...')
-    tenure.editTenure(tenureId, tenureType, response.headers.etag).then(response => {
+    editTenure(tenureId, tenureType, response.headers.etag).then(response => {
       cy.log(`Status code ${response.status} returned`)
       assert.deepEqual(response.status, 204)
       cy.log('Tenure updated!')
@@ -116,11 +120,10 @@ Given("I create a new person", () => {
 
 
 Given("I create a new {string} tenure",  (tenureTypeCode) => {
-  cy.log("Creating new tenure record");
-  tenure.createTenure(tenureTypeCode).then((response) => {
-    cy.log(`Status code ${response.status} returned`);
-    cy.log(`Tenure Id for record ${response.body.id} created!`);
-    tenureId = response.body.id
+  cy.log("Creating new tenure record").then(() => {
+    return tenure.createTenure(tenureTypeCode).then((response) => {
+      cy.log(`Tenure created!`);
+    })
   })
 });
 
@@ -597,7 +600,9 @@ Given("I create a new property with tenure", async () => {
   propertyId = response.data.id;
 })
 When("I view a property {string}", (id) => {
-  propertyPage.visit(id || propertyId);
+  cy.getAssetFixture().then(({ id: propertyId}) => {
+    propertyPage.visit(id || propertyId);
+  })
 });
 
 Then('the property information is displayed', () => {
@@ -608,7 +613,9 @@ Then('the property information is displayed', () => {
 })
 
 Then('I am on the create new tenure page {string}', (id) => {
-  cy.url().should('contain', `tenure/${id || propertyId}/add`)
+  cy.getAssetFixture().then(({id: propertyId}) => {
+    cy.url().should('contain', `tenure/${id || propertyId}/add`)
+  })
 })
 
 When('I click on the new tenure button', () => {
@@ -919,15 +926,64 @@ And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
 });
 
+Given("I seeded the database",() => {
+  cy.log("Seeding database").then(() => {
+    const patchModel = patch;
+    const assetModel = asset(patchModel);
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
 
+    const personTenure = {
+      id: tenureModel.id,
+      startDate: tenureModel.startOfTenureDate,
+      endDate: tenureModel.endOfTenureDate,
+      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+      assetId: tenureModel.tenuredAsset.id,
+      uprn: tenureModel.tenuredAsset.uprn,
+      isActive: false,
+      type: tenureModel.tenureType.description,
+    }
+
+    personModel1.tenures.push(personTenure);
+    personModel2.tenures.push(personTenure);
+
+    assetModel.tenure = {
+      endOfTenureDate: tenureModel.endOfTenureDate,
+      id: tenureModel.id,
+      paymentReference: tenureModel.paymentReference,
+      startOfTenureDate: tenureModel.startOfTenureDate,
+      type: tenureModel.tenureType.description,
+    }
+
+    return new Cypress.Promise((resolve, reject) => {
+      Promise.all([
+        DynamoDb.createRecord("PatchesAndAreas", patchModel),
+        DynamoDb.createRecord("Assets", assetModel),
+        DynamoDb.createRecord("TenureInformation", tenureModel),
+        DynamoDb.createRecord("Persons", personModel1),
+        DynamoDb.createRecord("Persons", personModel2),
+      ]).then(() => {
+        resolve()
+      })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
+})
 
 After(() => {
     const filename = "cypress/fixtures/recordsToDelete.json";
     cy.readFile(filename)
       .then(data => {
-        for (const record of data) {
-            dynamoDb.deleteRecordFromDynamoDB(record)
-        }
-        cy.writeFile(filename, []);
+        return new Cypress.Promise((resolve) => {
+          Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
+            .then(() => {
+              resolve()
+            })
+        }).then(() => {
+          cy.writeFile(filename, []);
+          cy.log("Database cleared!")
+        })
     });
 })

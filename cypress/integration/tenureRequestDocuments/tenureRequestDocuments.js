@@ -15,7 +15,7 @@ const manualChecksPass = ({ id: tenureId, householdMembers }) => {
     processPage.agreementCheckBox().click();
     processPage.startProcessButton().click();
     cy.url().should("include", "processes/soletojoint/");
-    cy.findByLabelText(`${householdMembers[2].fullName}`).click();
+    cy.findByLabelText(`${householdMembers[0].fullName}`).click();
     cy.contains('Next').click();
     processPage.textAutomaticEligibilityChecksPassed().should('be.visible');
     tenureReqDocsPage.selectYesFor12Months().click();

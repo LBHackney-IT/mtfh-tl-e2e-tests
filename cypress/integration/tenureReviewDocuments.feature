@@ -4,9 +4,7 @@
 
   Background:
     Given I am logged in
-    And I create a new "SEC" tenure
-    And I create person and add to a tenure "true"
-    And I create person and add to a tenure ""
+    And I seeded the database
 
   Scenario: AC1: View review documents screen (documents requested via DES)
     Given I have requested the documents via DES for the tenure
