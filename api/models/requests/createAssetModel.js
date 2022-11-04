@@ -1,3 +1,4 @@
+const { faker } = require("@faker-js/faker");
 const createAssetModel = {
   "id": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
   "assetId": "12876875",
@@ -73,6 +74,7 @@ const createAssetModel = {
 const asset = (patch) => {
   return {
     ...createAssetModel,
+    id: faker.datatype.uuid(),
     patches: [patch]
   }
 }
