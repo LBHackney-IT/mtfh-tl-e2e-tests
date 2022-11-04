@@ -1,3 +1,4 @@
+const { faker } = require("@faker-js/faker");
 const createTenureModel = {
     "tenureType": {
         "code": "FRS",
@@ -78,7 +79,7 @@ const tenure = (data, asset, householdMembers) => {
         })
     }
     return {
-        id: "123c6809-d27b-40c6-a263-48670e253b2f",
+        id: faker.datatype.uuid(),
         tenureType: {
             code: "SEC",
             description: "Secure"
