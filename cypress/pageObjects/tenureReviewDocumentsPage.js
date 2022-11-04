@@ -4,7 +4,7 @@ class TenureReviewDocsPageObjects {
         return cy.get('.lbh-heading-h2');
     };
     submitButton () {
-        return cy.get('.mtfh-layout__main > :nth-child(6)');
+        return cy.get('.mtfh-layout__main > :nth-child(7)');
     };
     continueButton () {
         return cy.get('.govuk-button lbh-button').should('contain', 'Continue');
