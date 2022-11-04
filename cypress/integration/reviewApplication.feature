@@ -4,9 +4,7 @@ Feature: As a Housing Officer
 
   Background:
     Given I am logged in
-    And I create a new "SEC" tenure
-    And I create person and add to a tenure "true"
-    And I create person and add to a tenure ""
+    And I seeded the database
 
   Scenario: AC1: View the Confirmation of completed tenure investigation page
     Given The tenure investigation has been completed for tenure

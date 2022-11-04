@@ -1,5 +1,3 @@
-const envConfig = require('../../environment-config')
-
 class TenureReviewDocsPageObjects {
 
     headingTenureInvestigation() {

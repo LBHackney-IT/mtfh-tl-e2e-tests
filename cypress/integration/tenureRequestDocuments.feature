@@ -5,10 +5,7 @@ Feature: As an internal Hackney user
 
   Background:
     Given I am logged in
-    And I create a new "SEC" tenure
-    And I create person and add to a tenure "true"
-    And I create person and add to a tenure ""
-
+    And I seeded the database
 
   @SmokeTest
   Scenario: AC1. View Request for Documents page

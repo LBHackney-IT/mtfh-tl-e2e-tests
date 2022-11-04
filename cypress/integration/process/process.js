@@ -8,15 +8,18 @@ const processPage = new ProcessesPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 
 Given("I select to initiate a Sole To Joint process", () => {
-  cy.getTenureFixture().then(async (tenureInfo) => {
+  cy.getTenureFixture().then((tenureInfo) => {
     processPage.visit(tenureInfo.id)
   })
 })
 
 Then("the property details are shown", () => {
+  cy.getAssetFixture().then((asset) => {
+    const { assetAddress } = asset;
     processPage.tenureDetails().should("be.visible")
     processPage.tenureDetails().contains("Tenure payment ref 9156853502")
-    processPage.tenureDetails().contains("ROOM 106 CAPE HOUSE 39 Dalston Lane E8 3DF")
+    processPage.tenureDetails().contains(`${assetAddress.addressLine1} ${assetAddress.addressLine2} ${assetAddress.addressLine3} ${assetAddress.postCode}`)
+  })
 })
 
 

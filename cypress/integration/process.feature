@@ -9,12 +9,9 @@ So that I can easily record information without the need to keep multiple screen
 
 Background:
   Given I am logged in
-  And I create a new "SEC" tenure
-  And I create person and add to a tenure "true"
-  And I create person and add to a tenure ""
+  And I seeded the database
 
-   #  commented the below as its failing in Dev - record not found in Dev
-
+#  commented the below as its failing in Dev - record not found in Dev
 #@Positive
 #Scenario Outline: Display process options for person
 #    Given I have loaded a Person record "<record>"

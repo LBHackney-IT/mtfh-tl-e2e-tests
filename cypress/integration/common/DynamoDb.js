@@ -1,19 +1,22 @@
 import AWS from 'aws-sdk';
 import property from "../../../api/property";
+import { saveFixtureData } from "../../../api/helpers";
 
-const deleteRecordFromDynamoDB = async ({tableName, key}) => {
-  const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')
-  const secretAccessKey = Cypress.env('AWS_SECRET_ACCESS_KEY')
-  const sessionToken = Cypress.env('AWS_SESSION_TOKEN')
+const REGION = "eu-west-2"
+const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')
+const secretAccessKey = Cypress.env('AWS_SECRET_ACCESS_KEY')
+const sessionToken = Cypress.env('AWS_SESSION_TOKEN')
 
-  AWS.config.update({
-    region: 'eu-west-2',
-    accessKeyId: accessKeyId,
-    secretAccessKey: secretAccessKey,
-    sessionToken: sessionToken
-  });
-  
-  const docClient = new AWS.DynamoDB.DocumentClient({region: 'eu-west-2'});
+AWS.config.update({
+  region: REGION,
+  accessKeyId: accessKeyId,
+  secretAccessKey: secretAccessKey,
+  sessionToken: sessionToken
+});
+
+const docClient = new AWS.DynamoDB.DocumentClient({region: REGION});
+
+const deleteRecord = async ({tableName, key}) => {
     try {
       if (tableName === "Assets") {
         const response = await property.getProperty(key.id)
@@ -37,6 +40,26 @@ const deleteRecordFromDynamoDB = async ({tableName, key}) => {
     }
 }
 
+const createRecord = (tableName, item) => new Promise((resolve, reject) => {
+  docClient.put({
+    TableName: tableName,
+    Item: item
+  }, (err, data) => {
+    if (err) {
+      reject(err);
+    } else {
+      saveFixtureData(
+        tableName,
+        { id: item.id },
+        item,
+      ).then((data) => {
+        resolve(data)
+      });
+    }
+  })
+})
+
 export default {
-  deleteRecordFromDynamoDB
+  deleteRecord,
+  createRecord,
 }

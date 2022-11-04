@@ -37,6 +37,14 @@ Cypress.Commands.add('getTenureFixture', () => {
     cy.readFile('cypress/fixtures/TenureInformation.json')
 })
 
+Cypress.Commands.add('getPatchFixture', () => {
+    cy.readFile('cypress/fixtures/PatchesAndAreas.json')
+})
+
+Cypress.Commands.add('getAssetFixture', () => {
+    cy.readFile('cypress/fixtures/Assets.json')
+})
+
 Cypress.on('uncaught:exception', (err, runnable) => {
     if (err) {
         // tslint:disable: no-console

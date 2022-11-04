@@ -6,11 +6,13 @@ export const saveFixtureData = (tableName, keys, fixtureData, response) => new C
         cy.writeFile(filename, list)
     })
 
-    if(fixtureData)
+    if (fixtureData)
         cy.writeFile(`cypress/fixtures/${tableName}.json`, fixtureData)
 
     if (response)
         resolve(response)
+
+    resolve(fixtureData)
 })
 
 export const queueDeletePersonWithId = (id) => {
