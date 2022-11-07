@@ -1,4 +1,4 @@
-import { Given, Then } from "@badeball/cypress-cucumber-preprocessor"
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import ActivityHistoryPageObjects from '../../pageObjects/activityHistoryPersonPage'
 
 const activityHistory = new ActivityHistoryPageObjects()
@@ -10,4 +10,8 @@ Given('I go to the activity history for {string}', (person) => {
 
 Then('the activity history is displayed', () => {
     activityHistory.activityTable().should('be.visible')
+})
+
+When('I click close activity history', () => {
+    activityHistory.closeActivityHistory().click()
 })

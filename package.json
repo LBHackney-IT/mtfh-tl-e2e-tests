@@ -4,14 +4,11 @@
   "description": "End to end tests for MTFH T&L",
   "main": "index.js",
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "cypress/e2e/**/*.{js,ts}",
-    "filterSpecs": true,
-    "commonPath": "cypress/e2e/common",
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "./cypress/cucumber-json"
-    }
+    "stepDefinitions": [
+      "cypress/e2e/[filepath]/*.{js,ts}",
+      "cypress/e2e/common/*.{js,ts}"
+    ],
+    "filterSpecs": true
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
