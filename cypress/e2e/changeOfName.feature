@@ -36,7 +36,7 @@ Feature: As an internal Hackney User
     And Status Stepper is at "Review Documents"
     When I select only the first option to confirm I have seen all the documents
     And I click on Next button
-    Then validation error message is displayed
+    Then a validation error message is displayed
     When I select all the checkboxes to confirm I have seen all the documents
     And I click on Next button
     Then I am on the "Tenure Investigation" page

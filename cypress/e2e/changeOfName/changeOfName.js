@@ -1,7 +1,5 @@
-import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor"
+import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import ChangeOfNamePageObjects from '../../pageObjects/changeOfNamePage';
-import homePage from "../../pageObjects/homePage";
-import {searchPersonResults} from "../../support/searchPersonResults";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
 import ReviewApplicationPageObjects from "../../pageObjects/reviewApplicationPage";
@@ -11,11 +9,9 @@ const changeOfName = new ChangeOfNamePageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const reviewAppPage = new ReviewApplicationPageObjects();
-const emailAdd = 'AutomationTest@test.com';
-const phoneNumber = '07788123456';
 
 
-When("I click on 'New Process' button", (personID) => {
+When("I click on 'New Process' button", () => {
     changeOfName.newProcessButton().click();
 
 });
@@ -45,6 +41,9 @@ When("I select the button", () => {
 });
 Then("Change of Name edit page is displayed", () => {
     cy.contains("Enter tenant's new name").should('be.visible');
+});
+Then("Next button is disabled", () => {
+    changeOfName.buttonNext().should('be.disabled');
 });
 When("I select Title and enter First and Last name", () => {
     changeOfName.personTitle().select('Mr');
@@ -117,7 +116,7 @@ Then("'Office appointment scheduled' message box is displayed", () => {
 When("I select only the first option to confirm I have seen all the documents", () => {
     tenureReviewDocsPage.photoId().click();
 });
-Then("validation error message is displayed", () => {
+Then("a validation error message is displayed", () => {
     changeOfName.errorReviewDocuments().should('exist');
 });
 Then("a validation error message for AHM {string} is displayed", (errorMessg) => {

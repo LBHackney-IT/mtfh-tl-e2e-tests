@@ -2,7 +2,6 @@ import { When, Then, Given, And } from "@badeball/cypress-cucumber-preprocessor"
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
-import tenure from "../../../api/tenure";
 
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();

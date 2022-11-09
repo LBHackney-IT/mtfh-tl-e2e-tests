@@ -3,7 +3,6 @@ import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenurePageObjects from "../../pageObjects/tenurePage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
-import tenure from "../../../api/tenure";
 
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const tenurePage = new TenurePageObjects();
@@ -49,6 +48,9 @@ Given("the application has passed eligibility and the housing officer breach of 
 When("I click the Next button", () => {
     cy.contains('Next').click();
 });
+Then("{string} text is displayed", (textSuppDocs) => {
+    cy.contains(textSuppDocs);
+});
 Then("Request Documents page is displayed with success message for {string}", (textChecksPassed) => {
     cy.contains(textChecksPassed);
 });
@@ -90,7 +92,10 @@ When("I have selected electronically requesting the documents via DES", () =>{
 And("I have confirmed Tenant Declaration", () =>{
     tenureReqDocsPage.checkboxTenantDeclaration().click();
 });
-And("I am able to see the {string} state is Active", (state) =>{
+Then("I have proceeded to the next step", () => {
+    tenureReqDocsPage.nextButton().click();
+});
+And("I am able to see the {string} state is Active", () =>{
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
 });
 And("a case activity log is created", () => {
@@ -111,7 +116,7 @@ And("I input the appointment date and time", () => {
 Then("the option to proceed is enabled", () => {
     tenureReqDocsPage.nextButton().click();
 });
-And("a case activity log is created for {string}", (text) => {
+And("a case activity log is created for {string}", () => {
     tenureReqDocsPage.activityHistoryButton().click();
 });
 When("I click on the current tenant’s name in the heading", () => {
@@ -120,7 +125,7 @@ When("I click on the current tenant’s name in the heading", () => {
 Then("I am taken to the current tenant’s person page which will be opened in a new tab", () => {
     tenureReqDocsPage.personLink().invoke('removeAttr', 'target').click();
     cy.url()
-        .should('include', '/person/')
+      .should('include', '/person/')
     cy.findAllByText('Date of birth:');
 });
 Given("the application has passed eligibility and failed the breach of tenancy checks for the tenure", () => {
@@ -160,5 +165,16 @@ When("I click the next button on breach tenure page", () => {
 });
 Then("Breach of tenure eligibility checks Failed page is displayed", () => {
     cy.contains('Failed breach of tenure check:');
+});
+When("I select the checkbox 'I confirm that an outcome letter has been sent to the resident'", () => {
+    tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
+});
+When('I click on the confirm button', () => {
+    tenureReviewDocsPage.buttonConfirm().click();
+});
+Then("{string} message is displayed with a link to Return to Home page", (confirmationText) => {
+    cy.contains(confirmationText);
+    cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
+    cy.contains("a", "Return to home page").should("have.attr", "href");
 });
 
