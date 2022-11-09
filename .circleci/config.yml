@@ -48,7 +48,7 @@ executors:
             - image: circleci/python:3.7
     cypress-browsers:
         docker:
-            - image: cypress/browsers:node14.16.0-chrome89-ff86
+            - image: cypress/browsers:node16.13.2-chrome100-ff98
 
 commands:
     assume-role-and-persist-workspace:
@@ -97,7 +97,6 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-                          npm install -g npm@8.19.3 ;
                           npm install ;
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
                           then ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
