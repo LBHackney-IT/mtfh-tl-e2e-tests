@@ -107,8 +107,8 @@ const tenure = (data, asset, householdMembers) => {
             fullAddress: "ROOM 106 CAPE HOUSE 39 Dalston Lane E8 3DF",
             uprn: "10008334555"
         },
-        startOfTenureDate: "2010-01-01",
         ...data,
+        startOfTenureDate: data.startOfTenureData || "2010-01-01",
     }
 }
 

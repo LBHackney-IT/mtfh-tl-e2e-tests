@@ -8,7 +8,7 @@ const tenureEndpoint = Cypress.env('TENURE_ENDPOINT')
 const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDate: null}
 const tableName = "TenureInformation";
 
-const getTenure = (tenureId) => {
+export const getTenure = (tenureId) => {
     return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
@@ -20,7 +20,7 @@ const getTenure = (tenureId) => {
     });
 }
 
-const createTenure = (tenureTypeCode) => {
+export const createTenure = (tenureTypeCode) => {
     let tenureModel = _createTenureModel
     if (tenureTypeCode === "SEC") {
         tenureModel = secureTenureModel;
@@ -45,7 +45,7 @@ const createTenure = (tenureTypeCode) => {
     })
 }
 
-const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
+export const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
     const requestModel = _createTenureModel
     requestModel.householdMembers[1].isResponsible = true
     const response = await postRequest(`${tenureEndpoint}/tenures/`, requestModel)
@@ -78,7 +78,7 @@ const createTenureWithStartDate = (startOfTenureDate) => {
     })
 }
 
-const editTenure = (tenureId, tenureType, ifMatch) => {
+export const editTenure = (tenureId, tenureType, ifMatch) => {
     editTenureModel.tenureType.code = tenureType.substring(0,2).toUpperCase()
     editTenureModel.tenureType.description = tenureType
 
@@ -94,12 +94,12 @@ const editTenure = (tenureId, tenureType, ifMatch) => {
     })
 }
 
-const deleteTenure = async(tenureId, personId) => {
+export const deleteTenure = async(tenureId, personId) => {
     const response = await deleteRequest(`${tenureEndpoint}/tenures/${tenureId}/person/${personId}`)
     return response
 }
 
-const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
+export const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
     return new Cypress.Promise((resolve) => {
         person.createPersonWithNewTenure(tenureId, "2000-01-01").then(({ body }) => {
             const { id: personId, firstName, surname } = body;
@@ -113,14 +113,4 @@ const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
             })
         })
     })
-}
-
-export default {
-    addPersonToTenure,
-    getTenure,
-    editTenure,
-    deleteTenure,
-    createTenure,
-    createTenureWithStartDate,
-    createTenureWithNoOtherResponsibleHouseholdMembers
 }

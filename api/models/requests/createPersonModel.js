@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-const createPersonModel = {
+export const createPersonModel = {
     "firstName": "Add",
     "middleName": "Person",
     "surname": "API E2E Test",
@@ -27,7 +27,7 @@ const createPersonModel = {
     "nationalInsuranceNo": null
 }
 
-const person = (tenure) => {
+export const person = (tenure) => {
     return {
         id: faker.datatype.uuid(),
         title: "Mr",
@@ -49,9 +49,4 @@ const person = (tenure) => {
             type: tenure.tenureType.description,
         }] : [],
     }
-}
-
-module.exports = {
-    createPersonModel,
-    person
 }

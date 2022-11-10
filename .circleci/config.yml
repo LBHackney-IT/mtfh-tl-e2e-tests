@@ -48,7 +48,7 @@ executors:
             - image: circleci/python:3.7
     cypress-browsers:
         docker:
-            - image: cypress/browsers:node14.16.0-chrome89-ff86
+            - image: cypress/browsers:node16.13.2-chrome100-ff98
 
 commands:
     assume-role-and-persist-workspace:
@@ -84,7 +84,6 @@ commands:
                           then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
                           else export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
-                          export FEATURE_FILE="$(circleci tests glob "cypress/integration/*.feature" | circleci tests split)"
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
@@ -100,8 +99,8 @@ commands:
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           npm install ;
                           if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
-                          then ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'
-                          else ./node_modules/.bin/cypress-tags run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -g "$FEATURE_FILE" -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'
+                          then ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
+                          else ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
                           fi
                        
             - store_artifacts:
@@ -128,7 +127,7 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        parallelism: 19
+        parallelism: 11
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
@@ -165,7 +164,7 @@ jobs:
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
   run-ci-tests:
-        parallelism: 19
+        parallelism: 11
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2

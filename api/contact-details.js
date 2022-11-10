@@ -6,7 +6,7 @@ import envConfig from "../environment-config";
 
 const tableName = "ContactDetails";
 
-const getContactDetails = (personId) => {
+export const getContactDetails = (personId) => {
     return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
@@ -19,7 +19,7 @@ const getContactDetails = (personId) => {
     });
 }
 
-const deleteContactDetails = (contactDetailsId, targetId) => {
+export const deleteContactDetails = (contactDetailsId, targetId) => {
     return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'DELETE',
@@ -31,7 +31,7 @@ const deleteContactDetails = (contactDetailsId, targetId) => {
     });
 }
 
-const addContactDetails = (contactType, targetId) => {
+export const addContactDetails = (contactType, targetId) => {
     let value
     if (contactType === "phone") {
         value = "011899988199"
@@ -60,10 +60,4 @@ const addContactDetails = (contactType, targetId) => {
             });
         })
     })
-}
-
-export default {
-    getContactDetails,
-    deleteContactDetails,
-    addContactDetails
 }
