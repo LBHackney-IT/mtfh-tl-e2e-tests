@@ -28,8 +28,8 @@ When("I click on Filter by", () => {
     workTrayPO.filterBy().click();
 })
 And("I can see all the Processes", () => {
-
-
+    workTrayPO.checkboxSoleToJoint().should('exist');
+    workTrayPO.checkboxChangeOfName().should('exist');
 });
 And("I can see all the Patches", () => {
     workTrayPO.textPatches().should('contain.text', 'Patches');
@@ -94,21 +94,11 @@ When("I click the process name", () => {
     //cy.contains('')
     cy.go('back');
 });
-Then("I see processes belonging to me in order of urgency of cases", () => {
-
+Then("I am taken to the selected process page where I can continue my journey", () => {
+    cy.url().should('contain', '/processes/soletojoint/');
+    cy.go('back');
 });
-When("I click patch name", () => {
 
-});
-Then("I see all property addresses in that patch sorted in order of urgency of cases", () => {
-
-});
-When("I click next", () => {
-
-});
-Then("I am taken to the next page of my work tray list", () => {
-
-});
 And("I can see the panel title", () => {
     workTrayPO.filterBy().click();
     workTrayPO.textProcesses().should('exist');
@@ -132,7 +122,6 @@ When("I click on Select All link in Processes", () => {
     workTrayPO.processesSelectAll().click()
 });
 Then("I can see Remove All link", () => {
-    //workTrayPO.removeAll().should('exist');
     cy.contains('Remove All');
 })
 And("by default the process filter will select ALL processes", () => {
@@ -167,8 +156,8 @@ And("there will be pagination displayed", () => {
     workTrayPO.pagination().should('contain', 'Showing');
 });
 And("I can see the Name or Address of the Tenant", () => {
-    workTrayPO.headerNameAddress().should('exist');
-    // workTrayPO.headerNameAddress().should('contain','');
+    workTrayPO.personLink().should('exist');
+    workTrayPO.propertyLink().should('exist');
 });
 And("type of process", () => {
     workTrayPO.headerProcess().should('exist');
@@ -198,22 +187,28 @@ Then("the default filter will be pre-selected to ALL available process", () => {
     workTrayPO.checkboxChangeOfName().click();
 });
 And("pre-selected to ALL available status", () => {
-    //workTrayPO.processCompleted().should('be.selected');
     workTrayPO.processCompleted().click();
-    // workTrayPO.reqSuppDoc().should('be.selected');
-    // workTrayPO.submitForTenureInvest().should('be.selected');
     workTrayPO.reqSuppDoc().click();
-     workTrayPO.submitForTenureInvest().click();
+    workTrayPO.submitForTenureInvest().click();
 });
 When("I select the checkbox options within the process filter", () => {
     workTrayPO.filterBy().click();
     workTrayPO.checkboxSoleToJoint().click();
     workTrayPO.checkboxChangeOfName().click();
 });
+When("I select the checkbox option within the process filter for Sole to joint", () => {
+    workTrayPO.filterBy().click();
+    workTrayPO.checkboxSoleToJoint().click();
+});
+When("I select the checkbox option within the process filter for Change of Name", () => {
+    workTrayPO.filterBy().click();
+    workTrayPO.checkboxChangeOfName().click();
+});
+
 And("I click 'Apply filters' action button to apply my selected filters", () => {
     workTrayPO.applyFilters().click();
 });
-Then("I can see all the jobs refined within my selected parameters under that process listing displayed in order based on process status urgency", () => {
+Then("I can see all the jobs refined within my selected parameters for Sole to joint based on urgency", () => {
     workTrayPO.personLink().should('exist');
     workTrayPO.propertyLink().should('exist');
 });
@@ -234,13 +229,12 @@ And("the info icon is on display next to process status", () => {
     workTrayPO.iconProcessStatus().should('exist');
 });
 When("I click on the information icon it will open up to show the additional status information", () => {
-    //workTrayPO.iconProcessStatus().realHover();
     workTrayPO.iconProcessStatus().trigger('mouseover');
     cy.get('#process-status-info').should('exist');
 });
-When("I select the checkbox options within the Patch filter", () => {
+When("I select the radio button options within the Patch filter", () => {
     workTrayPO.filterBy().click();
-    workTrayPO.patchesSelectAll().click();
+    workTrayPO.patchesShowAll().click();
 });
 Then("I can see all the jobs refined within my selected parameters under that Patch", ()=> {
 
@@ -253,7 +247,8 @@ Then("I can see all the jobs refined within my selected parameters under that Pr
 
 });
 When("there is more than one listing option available within a filter", () => {
-
+    workTrayPO.checkboxSoleToJoint().should('exist');
+    workTrayPO.checkboxChangeOfName().should('exist');
 });
 Then("it will display 'Select All' feature in a link", () => {
     workTrayPO.filterBy().click();

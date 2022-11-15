@@ -1,14 +1,4 @@
 class WorkTrayPageObjects {
-    headingYourTasks() {
-        return cy.get('.lbh-heading-h1');
-    };
-    buttonClass() {
-        return cy.get('.select-all lbh-link lbh-link--no-visited-state');
-    }
-
-    filterDetails() {
-        return cy.get('#mtfh-details');
-    };
     clearFilters() {
         return cy.get('.worktray-filters__clear-filters');
     };
@@ -16,7 +6,7 @@ class WorkTrayPageObjects {
         return cy.get('.worktray-filters__actions > .govuk-button');
     };
     pagination() {
-        return cy.get('.lbh-pagination__summary');
+        return cy.get('.lbh-pagination');
     };
 
     filterBy() {
@@ -31,14 +21,11 @@ class WorkTrayPageObjects {
     textProcesses() {
         return cy.get(':nth-child(1) > .filter-header > .lbh-body-m');
     };
-    // processesSelectAll() {
-    //     return cy.get(':nth-child(1) > .filter-header > [data-testid=filter-box-select-all]');
-    // };
     checkboxSoleToJoint(){
-        return cy.get('#soletojoint');
+        return cy.get('[data-testid=filter-option-soletojoint]');
     }
     checkboxChangeOfName(){
-        return cy.get('#changeofname');
+        return cy.get('[data-testid=filter-option-changeofname]');
     }
     textPatches() {
         return cy.get(':nth-child(2) > .filter-header > .lbh-body-m');
@@ -49,24 +36,17 @@ class WorkTrayPageObjects {
     textProcessStatus() {
         return cy.get(':nth-child(3) > .filter-header > .lbh-body-m');
     };
-    // processStatusSelectAll() {
-    //     return cy.get(':nth-child(3) > .filter-header > [data-testid=filter-box-select-all]');
-    // };
-    headerNameAddress(){
-        return cy.get('.govuk-table__cell govuk-table__header').should('contain.text', 'Name / Address');
-    };
-
-    headerProcess(){
-        return cy.get('.govuk-table__cell govuk-table__header').should('contain.text', 'Name / Address');
+   headerProcess(){
+        return cy.get('.govuk-table__row > :nth-child(2) > .select-all').should('contain.text', 'Process');
     };
     headerPatch(){
-        return cy.get('.govuk-table__cell govuk-table__header').should('contain.text', 'Name / Address');
+        return cy.get('.govuk-table__row > :nth-child(3) > .select-all').should('contain.text', 'Patch');
     };
     headerState(){
-        return cy.get('.govuk-table__cell govuk-table__header').should('contain.text', 'Name / Address');
+        return cy.get('.govuk-table__row > :nth-child(4) > .select-all').should('contain.text', 'State');
     };
     headerTimeLeftFullProcess() {
-        return cy.get(':nth-child(5) > .select-all');
+        return cy.get('.govuk-table__row > :nth-child(5) > .select-all');
     };
     headerProcessStatus(){
         return cy.get('.govuk-table__head > .govuk-table__row > :nth-child(6)');
@@ -93,26 +73,21 @@ class WorkTrayPageObjects {
      processRemoveAll() {
          return cy.xpath('/html/body/main/div/div[2]/div/div[2]/div/details/div/div[1]/div[1]/div[1]/button');
      };
-     patchesSelectAll(){
-         return cy.xpath('/html/body/main/div/div[2]/div/div[2]/div/details/div/div[1]/div[2]/div[1]/button');
-     };
-    patchesRemoveAll(){
-       // return cy.
-    };
+
     processStatusSelectAll(){
         return cy.xpath('/html/body/main/div/div[2]/div/div[2]/div/details/div/div[1]/div[3]/div[1]/button');
     };
-    // processStatusRemoveAll(){
-    //     return cy.xpath('/html/body/main/div/div[2]/div/div[2]/div/details/div/div[1]/div[3]/div[1]/button');
-    // };
     personLink(){
         return cy.get('[data-testid="person-link"]');
     };
     propertyLink(){
         return cy.get('[data-testid="property-link"]');
+    };
+    dataProcess(){
+        return cy.get(':nth-child(1) > .--processName > .govuk-link');
+    };
+    patchesShowAll(){
+        return cy.get('#show-all');
     }
-
 }
-
-
     export default WorkTrayPageObjects;
