@@ -117,7 +117,6 @@ Feature: As an internal Hackney User eg. HO, AHM
    Given I am viewing my work tray
    When I click tenant name then I am taken to the person page on a new tab
    When I click property address then I am taken to the property detail page on a new tab
-   When I click the process name
-   Then I am taken to the selected process page where I can continue my journey
+   When I click the process name then I am taken to the selected process page where I can continue my journey
 
 

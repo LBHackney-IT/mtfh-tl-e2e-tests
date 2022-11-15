@@ -89,12 +89,8 @@ When("I click property address then I am taken to the property detail page on a 
     cy.go('back');
 });
 
-When("I click the process name", () => {
+When("I click the process name then I am taken to the selected process page where I can continue my journey", () => {
     cy.get(':nth-child(1) > .--processName > .govuk-link').invoke('removeAttr', 'target').click();
-    //cy.contains('')
-    cy.go('back');
-});
-Then("I am taken to the selected process page where I can continue my journey", () => {
     cy.url().should('contain', '/processes/soletojoint/');
     cy.go('back');
 });
