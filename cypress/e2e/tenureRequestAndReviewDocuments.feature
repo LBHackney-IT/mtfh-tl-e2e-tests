@@ -22,7 +22,7 @@ Feature: As an internal Hackney user
     And I click on Next button in request documents page
     Then error message is displayed
     When I have selected electronically requesting the documents via DES
-    And I have confirmed Tenant Declaration
+    #And I have confirmed Tenant Declaration
     Then I have proceeded to the next step
     And I am able to see the "Review Documents" state is Active
     And a case activity log is created
