@@ -82,6 +82,9 @@ Given("I am on the Request Documents page for the tenure", () => {
 When("I have not selected any of the radio button options but selected Tenant declaration", () => {
     tenureReqDocsPage.checkboxTenantDeclaration().click();
 });
+When("I click on Next button in request documents page", () => {
+   cy.contains('Next').click();
+});
 Then("error message is displayed", () => {
     cy.get('#request-type-form-group-error').should('contain.text', 'You must select an option to proceed');
 });
@@ -91,9 +94,7 @@ When("I have selected electronically requesting the documents via DES", () =>{
 And("I have confirmed Tenant Declaration", () =>{
     tenureReqDocsPage.checkboxTenantDeclaration().click();
 });
-// Then("I have proceeded to the next step", () => {
-//     tenureReqDocsPage.nextButton().click();
-// });
+
 And("I am able to see the {string} state is Active", () =>{
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
 });

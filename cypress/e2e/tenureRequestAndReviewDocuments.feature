@@ -19,7 +19,7 @@ Feature: As an internal Hackney user
     And a radio button to automatically request the documents on DES is displayed
     And a radio button to make an appointment to review the Supporting documents is displayed
     When I have not selected any of the radio button options but selected Tenant declaration
-    And I click on Next button
+    And I click on Next button in request documents page
     Then error message is displayed
     When I have selected electronically requesting the documents via DES
     And I have confirmed Tenant Declaration
