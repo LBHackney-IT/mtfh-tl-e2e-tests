@@ -18,8 +18,9 @@ Feature: As an internal Hackney user
     And "Checking supporting documents" text and Resident's contact details are displayed
     And a radio button to automatically request the documents on DES is displayed
     And a radio button to make an appointment to review the Supporting documents is displayed
-    When I have not selected any of the radio button options
-    Then the option to proceed to the next step is disabled
+    When I have not selected any of the radio button options but selected Tenant declaration
+    And I click on Next button
+    Then error message is displayed
     When I have selected electronically requesting the documents via DES
     And I have confirmed Tenant Declaration
     Then I have proceeded to the next step
