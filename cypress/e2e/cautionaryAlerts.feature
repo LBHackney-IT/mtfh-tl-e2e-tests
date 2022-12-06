@@ -16,7 +16,7 @@ Feature: Create Cautionary Alerts
     Then I am on Check and confirm cautionary alert page
     And the Cautionary alert details are displayed
     When I click on Save cautionary alert button
-    Then I am on the Person details page
+    Then I am on the Person details page for Alerts
     And I can see the section Cautionary Alerts with a Red bell icon
     And I can see the Cautionary Alert type
 
