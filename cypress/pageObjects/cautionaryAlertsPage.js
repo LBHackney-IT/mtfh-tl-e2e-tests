@@ -16,8 +16,8 @@ class CautionaryAlertsPageObjects {
     typeOfCaution() {
         return cy.get('#type-of-caution-field-field');
     };
-    descriptionOfIncident() {
-        return cy.get('#add-comment-description-field');
+        descriptionOfIncident() {
+        return cy.get('#add-cautionary-alert-description-field');
     };
     assureReferenceFieldErrorMessg(){
         return cy.get('#assure-reference-field-error');
@@ -29,7 +29,7 @@ class CautionaryAlertsPageObjects {
         return cy.get('#type-of-caution-field-error');
     };
     descriptionOfIncidentFieldErrorMessg(){
-        return cy.get('#add-comment-description-error');
+        return cy.get('#add-cautionary-alert-description-error');
     };
     redBellIconAlert(){
         return cy.get('[data-testid="alert-icon"]');
