@@ -76,7 +76,7 @@ When("I enter Future date", () => {
     tenureReqDocsPO.month().clear().type('06');
     tenureReqDocsPO.year().clear().type('2040');
 });
-Then("Validation error message is displayed", () => {
+Then("Validation error message is displayed for Future date", () => {
     cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text','Date of incident must be today or in the past');
 });
 Then("I am on Check and confirm cautionary alert page", () => {
@@ -97,7 +97,10 @@ When("I click on Save cautionary alert button", () => {
 });
 And("I can see the section Cautionary Alerts with a Red bell icon", () => {
     cautionaryAlertPO.redBellIconAlert().should('exist');
-})
+});
 And('I can see the Cautionary Alert type', () => {
     cy.contains('Verbal Abuse');
+});
+And("I can see the Red Bell icon next to the person name", () => {
+
 })

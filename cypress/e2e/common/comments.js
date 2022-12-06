@@ -478,7 +478,6 @@ Then('I can see the timestamp for the created comment {string}', (commentGroup) 
 Then("I am on the Person details page for Alerts", () => {
     cy.getPersonFixture().then(({ id: personId}) => {
         personPage.visit(personId);
-       // cy.contains('Date of birth:');
     })
 });
 Then("I am on the Person details page", () => {
