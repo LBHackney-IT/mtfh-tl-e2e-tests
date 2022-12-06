@@ -9,6 +9,7 @@ import commentTitle from "../../helpers/commentText"
 import comment from "../../helpers/commentText"
 import category from "../../helpers/commentText"
 import PropertyPageObjects from "../../pageObjects/propertyPage"
+import editPersonPage from "../../pageObjects/editPersonPage";
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 const personCommentsPage = new PersonCommentsPageObjects()
@@ -474,8 +475,14 @@ Then('I can see the timestamp for the created comment {string}', (commentGroup) 
     }
 })
 
+Then("I am on the Person details page for Alerts", () => {
+    cy.getPersonFixture().then(({ id: personId}) => {
+        personPage.visit(personId);
+       // cy.contains('Date of birth:');
+    })
+});
 Then("I am on the Person details page", () => {
-    cy.contains('Date of birth:');
+        cy.contains('Date of birth:');
 })
 
 Then("I am on the Property details page", () => {

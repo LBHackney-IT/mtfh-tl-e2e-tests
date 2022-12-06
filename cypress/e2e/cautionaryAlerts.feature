@@ -4,13 +4,13 @@ Feature: Create Cautionary Alerts
     Given I am logged in
     And I seeded the database
 
-  Scenario Outline: Add cautionary alert
-    Given I am on the MMH home page
-    When I enter "<personname>" as search criteria
-    And I select 'Person' and click on search button
-    Then I am on the Person search results page for "<personname>"
-    When I select person and click on checkbox
-    Then I am on the Person details page
+  Scenario Outline: Add cautionary alert for a Person
+#    Given I am on the MMH home page
+#    When I enter "<personname>" as search criteria
+#    And I select 'Person' and click on search button
+#    Then I am on the Person search results page for "<personname>"
+#    When I select person and click on checkbox
+    Then I am on the Person details page for Alerts
     When I click on Add cautionary alert link
     Then I am taken to the Add cautionary alert page
     When I enter Assure reference

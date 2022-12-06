@@ -98,11 +98,13 @@ const tenure = (data, asset, householdMembers) => {
         ],
         tenuredAsset: asset ? {
             id: assetId,
+            propertyReference: asset.assetId,
             type: assetType,
             uprn: assetAddress.uprn,
             fullAddress: `${assetAddress.addressLine1} ${assetAddress.addressLine2} ${assetAddress.addressLine3} ${assetAddress.postCode}`
         } : {
             id: "667c6809-d27b-40c6-a263-48670e253b2f",
+            propertyReference: "1234567",
             type: "Dwelling",
             fullAddress: "ROOM 106 CAPE HOUSE 39 Dalston Lane E8 3DF",
             uprn: "10008334555"
