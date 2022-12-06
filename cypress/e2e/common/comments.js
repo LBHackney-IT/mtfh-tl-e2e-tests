@@ -172,7 +172,8 @@ Then('I can see the same comments in the linked entities', () => {
     switch (commentGroup) {
         case "tenure":    
             tenurePage.comment().contains(uniqueText)
-            tenurePage.viewResidentButton().click()
+            //tenurePage.viewResidentButton().click()
+            tenurePage.viewResidentButtonforPerson().click()
             personPage.comment().contains(uniqueText)
             break;
         case "person":
