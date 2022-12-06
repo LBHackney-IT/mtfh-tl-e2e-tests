@@ -940,6 +940,7 @@ Given("I seeded the database",() => {
       uprn: tenureModel.tenuredAsset.uprn,
       isActive: false,
       type: tenureModel.tenureType.description,
+      propertyReference: tenureModel.tenuredAsset.propertyReference,
     }
 
     personModel1.tenures.push(personTenure);
