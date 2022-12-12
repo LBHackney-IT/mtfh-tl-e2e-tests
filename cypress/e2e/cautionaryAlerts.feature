@@ -15,10 +15,50 @@ Feature: Create Cautionary Alerts
     And I click on Save and Continue button
     Then I am on Check and confirm cautionary alert page
     And the Cautionary alert details are displayed
-    When I click on Save cautionary alert button
+#    When I click on Save cautionary alert button
+#    Then I am on the Person details page
+#    And I can see the section Cautionary Alerts with a Red bell icon
+#    And I can see the Cautionary Alert type
+
+  Scenario: 'Update cautionary alert' on Check and confirm Cautionary alert page by clicking on the 'Change link'
     Then I am on the Person details page for Alerts
-    And I can see the section Cautionary Alerts with a Red bell icon
-    And I can see the Cautionary Alert type
+    When I click on Add cautionary alert link
+    Then I am taken to the Add cautionary alert page
+    When I enter Assure reference
+    And I enter Date of Incident as Day Month and Year
+    And select Type of Caution
+    And I enter Description of Incident
+    And I click on Save and Continue button
+    Then I am on Check and confirm cautionary alert page
+    And the Cautionary alert details are displayed
+    When I click on Change link for 'Assurance reference number'
+    Then I am taken to the Add cautionary alert page
+    When I update the 'Assurance reference number' with a new value
+    And I click on Save and Continue button
+    Then I am on Check and confirm cautionary alert page
+    And I can see the 'Assurance reference number' is updated with the new value
+    When I click on Change link for 'Date of incident'
+    Then I am taken to the Add cautionary alert page
+    When I update the 'Date of incident' with a new value
+    And I click on Save and Continue button
+    Then I am on Check and confirm cautionary alert page
+    And I can see the 'Date of incident' is updated with the new value
+    When I click on Change link for 'Type of caution'
+    Then I am taken to the Add cautionary alert page
+    When I update the 'Type of caution' with a new value
+    And I click on Save and Continue button
+    Then I am on Check and confirm cautionary alert page
+    And I can see the 'Type of caution' is updated with the new value
+    When I click on Change link for 'Description'
+    Then I am taken to the Add cautionary alert page
+    When I update the 'Description' with a new value
+    And I click on Save and Continue button
+    Then I am on Check and confirm cautionary alert page
+    And I can see the 'Description' is updated with the new value
+#    When I click on Save cautionary alert button
+#    Then I am on the Person details page
+#    And I can see the section Cautionary Alerts with a Red bell icon
+#    And I can see the Cautionary Alert type with the new value
 
 
   Scenario: Verify Validation error messages in Add Cautionary Alerts page
@@ -54,6 +94,7 @@ Feature: Create Cautionary Alerts
     When I enter Future date
     And I click on Save and Continue button
     Then Validation error message is displayed for Future date
+
 
 
 

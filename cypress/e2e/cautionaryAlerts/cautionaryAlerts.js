@@ -20,7 +20,8 @@ And("I enter Date of Incident as Day Month and Year", () => {
     tenureReqDocsPO.year().clear().type('2022');
 });
 And("select Type of Caution", () => {
-    cautionaryAlertPO.typeOfCaution().select('Verbal Abuse');
+   // cautionaryAlertPO.typeOfCaution().select('Verbal abuse');
+    cautionaryAlertPO.typeOfCaution().select('Do not visit alone');
 });
 And("I enter Description of Incident", () => {
     cautionaryAlertPO.descriptionOfIncident().clear().type('This is a test incident for verbal abuse happened on the date above')
@@ -88,7 +89,8 @@ And("the Cautionary alert details are displayed", () => {
     cy.contains('Date of incident');
     cy.get(':nth-child(2) > .govuk-summary-list__value').should('contain.text','01 12 2022');
     cy.contains('Type of caution');
-    cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Verbal Abuse');
+    //cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Verbal Abuse');
+    cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Do not visit alone');
     cy.contains('Description');
     cy.get(':nth-child(4) > .govuk-summary-list__value').should('contain.text','This is a test incident for verbal abuse happened on the date above');
 });
@@ -98,12 +100,89 @@ When("I click on Save cautionary alert button", () => {
 And("I can see the section Cautionary Alerts with a Red bell icon", () => {
     cautionaryAlertPO.redBellIconAlert().should('exist');
 });
+And("I can see the Cautionary Alert type with the new value", () => {
+  cy.contains('Beware of aggressive pets');
+})
 And('I can see the Cautionary Alert type', () => {
-    cy.contains('Verbal Abuse');
+    // cy.contains('Verbal Abuse');
+    cy.contains('Do not visit alone');
 });
 And("I can see the Red Bell icon next to the person name", () => {
 
 });
+
+When("I click on Change link for {string}", (text) => {
+    switch (text)
+    {
+        case 'Assurance reference number': {
+
+            break;
+        }
+        case 'Date of incident': {
+            break;
+        }
+        case 'Type of caution': {
+            break;
+        }
+        case 'Description': {
+            break;
+        }
+
+    }
+
+});
+When("I update the {string} with a new value", (text) => {
+    switch (text)
+    {
+        case 'Assurance reference number': {
+            cautionaryAlertPO.assureReference().type('34343434');
+            break;
+        }
+        case 'Date of incident': {
+            tenureReqDocsPO.day().clear().type('02');
+            tenureReqDocsPO.month().clear().type('02');
+            tenureReqDocsPO.year().clear().type('2022');
+            break;
+        }
+        case 'Type of caution': {
+            cautionaryAlertPO.typeOfCaution().select('Beware of aggressive pets');
+            break;
+        }
+        case 'Description': {
+            cautionaryAlertPO.descriptionOfIncident().clear().type('This is an update to the previous test incident');
+            break;
+        }
+    }
+
+});
+
+
+And("I can see the {string} is updated with the new value", (text) => {
+    switch (text)
+    {
+        case 'Assurance reference number': {
+            cy.contains('Assurance Reference');
+            cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text',34343434);
+            break;
+        }
+        case 'Date of incident': {
+            cy.contains('Date of incident');
+            cy.get(':nth-child(2) > .govuk-summary-list__value').should('contain.text','02 02 2022');
+            break;
+        }
+        case 'Type of caution': {
+            cy.contains('Type of caution');
+            cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Beware of aggressive pets');
+            break;
+        }
+        case 'Description': {
+            cy.contains('Description');
+            cy.get(':nth-child(4) > .govuk-summary-list__value').should('contain.text','This is an update to the previous test incident');
+            break;
+        }
+    }
+
+})
 
 
 

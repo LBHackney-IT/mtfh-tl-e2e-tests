@@ -482,7 +482,7 @@ Then("I am on the Person details page for Alerts", () => {
     })
 });
 Then("I am on the Person details page", () => {
-        cy.contains('Date of birth:');
+        cy.contains('Cautionary Alerts');
 })
 
 Then("I am on the Property details page", () => {

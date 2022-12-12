@@ -11,6 +11,8 @@ docker/dynamodb/shared-local-instance.db
 .idea/workspace.xml
 cypress/cucumber-json/
 cucumber-messages.ndjson
+package.json
+package-lock.json
 
 
 cypress/fixtures/

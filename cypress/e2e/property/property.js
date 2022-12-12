@@ -8,7 +8,8 @@ const propertyPage = new PropertyPageObjects();
 const personPage = new PersonPageObjects();
 
 When("I click on the view tenure button", () => {
-  propertyPage.viewTenureButton().click();
+  //propertyPage.viewTenureButton().click();
+    cy.get('a').contains('Tenure').click();
 });
 Then("tenure page is displayed", () => {
     cy.url().should("include", "tenure");
