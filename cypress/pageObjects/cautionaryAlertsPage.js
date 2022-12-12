@@ -33,6 +33,18 @@ class CautionaryAlertsPageObjects {
     };
     redBellIconAlert(){
         return cy.get('[data-testid="alert-icon"]');
+    };
+    changeLinkAssuranceRef(){
+        return cy.get('[data-testid="change:assure-ref"]');
+    };
+    changeLinkDateOfIncident(){
+        return cy.get('[data-testid="change:incident-date"]');
+    };
+    changeLinkTypeOfCaution(){
+        return cy.get('[data-testid="change:caution-type"]');
+    };
+    changeLinkDescription(){
+        return cy.get('[data-testid="change:description"]');
     }
 
     };

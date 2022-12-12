@@ -115,16 +115,19 @@ When("I click on Change link for {string}", (text) => {
     switch (text)
     {
         case 'Assurance reference number': {
-
+                cautionaryAlertPO.changeLinkAssuranceRef().click();
             break;
         }
         case 'Date of incident': {
+            cautionaryAlertPO.changeLinkDateOfIncident().click();
             break;
         }
         case 'Type of caution': {
+            cautionaryAlertPO.changeLinkTypeOfCaution().click();
             break;
         }
         case 'Description': {
+            cautionaryAlertPO.changeLinkDescription().click();
             break;
         }
 
