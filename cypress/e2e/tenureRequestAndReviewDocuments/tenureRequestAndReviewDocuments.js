@@ -35,7 +35,6 @@ const manualChecksPass = ({ id: tenureId, householdMembers }) => {
     tenureReqDocsPage.statusActiveCheck().should('contain.text','Breach of tenure check');
     tenureReqDocsPage.tenantLiveNoticeNo().click();
     tenureReqDocsPage.cautionaryContactNo().click();
-    //tenureReqDocsPage.cautionaryContactDenyApp().click();
     tenureReqDocsPage.successionNo().click();
 };
 
@@ -57,8 +56,6 @@ Then("Request Documents page is displayed with success message for {string}", (t
 Then("{string} text and Resident's contact details are displayed", (textChekingSuppDocs) => {
     cy.contains(textChekingSuppDocs);
     cy.get('[data-testid=soletojoint-RequestDocuments] > :nth-child(10)').should('not.be.empty');
-    // cy.contains('Phone:').should('have.value','not.be.empty');
-    // cy.contains('Email:').should('have.value','not.be.empty');
 });
 Then("a radio button to automatically request the documents on DES is displayed", () => {
     tenureReqDocsPage.requestDocsElectronically().should('exist');

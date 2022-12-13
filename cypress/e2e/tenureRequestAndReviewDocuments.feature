@@ -33,15 +33,6 @@ Feature: As an internal Hackney user
     When I click on the current tenant’s name in the heading
     Then I am taken to the current tenant’s person page which will be opened in a new tab
 
-#  Scenario: AC1.2 User has not provided any input and AC2.1 Confirm request of documents electronically via DES
-#    Given I am on the Request Documents page for the tenure
-#    When I have not selected any of the radio button options
-#    Then the option to proceed to the next step is disabled
-#    When I have selected electronically requesting the documents via DES
-#    And I have confirmed Tenant Declaration
-#    Then I have proceeded to the next step
-#    And I am able to see the "Review Documents" state is Active
-#    And a case activity log is created
 
   @SmokeTest
   Scenario: AC3. Request documents via office appointment

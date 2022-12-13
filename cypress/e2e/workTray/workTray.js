@@ -7,7 +7,6 @@ import changeOfNamePage from "../../pageObjects/changeOfNamePage";
 const homePagePO = new homePage()
 const workTrayPO = new workTrayPage();
 const changeOfNamePagePO = new changeOfNamePage();
-const modal = new ModalPageObjects();
 
 const applyFiltersFunc = () => {
     changeOfNamePagePO.visitHomePage();
@@ -52,7 +51,6 @@ When("I select 'Clear filters'", () => {
 Then("ALL the checkboxes within ALL filter listing will be removed", () => {
     workTrayPO.checkboxSoleToJoint().should('not.be.checked');
     workTrayPO.checkboxChangeOfName().should('not.be.checked');
-   // workTrayPO.processCompleted().should('not.be.checked');
 });
 And("the existing listing display will REMAIN unchanged", () => {
 
@@ -100,7 +98,6 @@ And("I can see the panel title", () => {
     workTrayPO.textProcesses().should('exist');
 });
 And("a Processes filter in a list with checkbox", () => {
-   // workTrayPO.filterBy().click();
     workTrayPO.checkboxSoleToJoint().should('exist');
 });
 
@@ -161,24 +158,18 @@ And("type of process", () => {
 });
 And("Patch", () => {
     workTrayPO.headerPatch().should('exist');
-    // workTrayPO.headerPatch().should('contain','');
 });
 And("state of the process", () => {
     workTrayPO.headerState().should('exist');
-    // workTrayPO.headerState().should('contain','');
 });
 And("time remaining for a process", () => {
     workTrayPO.headerTimeLeftFullProcess().should('exist');
-    // workTrayPO.headerTimeLeftFullProcess().should('contain','');
 });
 And("process status", () => {
     workTrayPO.headerProcessStatus().should('exist');
-    // workTrayPO.headerProcessStatus().should('contain','');
 });
 Then("the default filter will be pre-selected to ALL available process", () => {
     workTrayPO.filterBy().click();
-    // workTrayPO.checkboxSoleToJoint().should('be.selected');
-    // workTrayPO.checkboxChangeOfName().should('be.selected');
     workTrayPO.checkboxSoleToJoint().click();
     workTrayPO.checkboxChangeOfName().click();
 });
@@ -215,12 +206,7 @@ Then("I can see all the jobs are displayed", () => {
     workTrayPO.personLink().should('exist');
     workTrayPO.propertyLink().should('exist');
 })
-// When("I select 'Remove All' for Patches", () => {
-//
-// });
-// When("I select 'Remove All' for Process Status", () => {
-//
-// });
+
 And("the info icon is on display next to process status", () => {
     workTrayPO.iconProcessStatus().should('exist');
 });

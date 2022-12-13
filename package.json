@@ -30,7 +30,6 @@
     "ansi-regex": ">=5.0.1",
     "axe-core": "^4.2.1",
     "browserslist": ">=4.16.5",
-    "cypress": "^10.10.0",
     "cypress-audit": "^0.3.0",
     "cypress-axe": "^1.0.0",
     "cypress-localstorage-commands": "^1.4.4",
@@ -44,6 +43,7 @@
   "dependencies": {
     "aws-sdk": "^2.1020.0",
     "axios": "^0.21.3",
+    "cypress": "^10.10.0",
     "cypress-real-events": "^1.7.1",
     "date-and-time": "^1.0.1",
     "uuid": "^8.3.2"

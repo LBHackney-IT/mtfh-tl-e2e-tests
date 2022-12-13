@@ -71,8 +71,9 @@ Then('the household member details are displayed', () => {
 })
 
 And('I select a resident', () => {
-    tenurePage.viewResidentButton().should('have.attr', 'href').and('include', '/person')
-    tenurePage.viewResidentButton().eq(0).click()
+    // tenurePage.viewResidentButton().should('have.attr', 'href').and('include', '/person')
+    // tenurePage.viewResidentButton().eq(0).click()
+    tenurePage.viewResidentButtonforPerson().click();
 })
 
 Then('the resident details are displayed', () => {

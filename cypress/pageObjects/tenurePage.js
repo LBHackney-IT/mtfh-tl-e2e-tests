@@ -31,9 +31,10 @@ class TenurePageObjects {
   }
 
   viewResidentButton() {
-    return cy.get(
-      '[class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary view-person-button"]'
-    );
+    return cy.get('[class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary view-person-button"]');
+  };
+  viewResidentButtonforPerson() {
+    return cy.get('.lbh-heading-h4 > .govuk-link');
   }
 
   otherHouseholdMembersContainer() {
@@ -41,7 +42,8 @@ class TenurePageObjects {
   }
 
   householdMemberLink() {
-    return cy.get('[class="govuk-link lbh-link lbh-link--no-visited-state"]');
+    //return cy.get('.govuk-link lbh-link lbh-link--no-visited-state');
+    return cy.get(':nth-child(4) > .govuk-link');
   }
 
   tenureDetailsAccordion() {

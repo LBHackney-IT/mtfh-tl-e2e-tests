@@ -9,6 +9,7 @@ import commentTitle from "../../helpers/commentText"
 import comment from "../../helpers/commentText"
 import category from "../../helpers/commentText"
 import PropertyPageObjects from "../../pageObjects/propertyPage"
+import editPersonPage from "../../pageObjects/editPersonPage";
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 const personCommentsPage = new PersonCommentsPageObjects()
@@ -171,7 +172,8 @@ Then('I can see the same comments in the linked entities', () => {
     switch (commentGroup) {
         case "tenure":    
             tenurePage.comment().contains(uniqueText)
-            tenurePage.viewResidentButton().click()
+            //tenurePage.viewResidentButton().click()
+            tenurePage.viewResidentButtonforPerson().click()
             personPage.comment().contains(uniqueText)
             break;
         case "person":
@@ -474,8 +476,13 @@ Then('I can see the timestamp for the created comment {string}', (commentGroup) 
     }
 })
 
+Then("I am on the Person details page for Alerts", () => {
+    cy.getPersonFixture().then(({ id: personId}) => {
+        personPage.visit(personId);
+    })
+});
 Then("I am on the Person details page", () => {
-    cy.contains('Date of birth:');
+        cy.contains('Cautionary Alerts');
 })
 
 Then("I am on the Property details page", () => {

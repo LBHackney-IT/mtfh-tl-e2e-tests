@@ -219,18 +219,21 @@ Then('I am taken to the search page', () => {
 })
 
 And('I click on the view property button', () => {
-    navigation.viewPropertyButton().click();
+    //navigation.viewPropertyButton().click();
+ // cy.get(':nth-child(10) > [data-layer="Content"]').click();
+  cy.get(".lbh-heading-h2 > .govuk-link").click();
 });
 
 And("I click on the view property button for a person", () => {
-  cy.get(".mtfh-layout__aside").then($body => {
-    if ($body.find('#accordion-heading-additional-tenure-details').length > 0) {
-      cy.get('#accordion-heading-additional-tenure-details').click();
-      navigation.viewPropertyButton().click();
-    } else {
-      navigation.viewPropertyButton().click();
-    }
-  });
+  // cy.get(".mtfh-layout__aside").then($body => {
+  //   if ($body.find('#accordion-heading-additional-tenure-details').length > 0) {
+  //     cy.get('#accordion-heading-additional-tenure-details').click();
+  //     navigation.viewPropertyButton().click();
+  //   } else {
+  //     navigation.viewPropertyButton().click();
+  //   }
+  // });
+  cy.get(':nth-child(1) > .govuk-link').click();
 });
 
 // Page Header shared steps
@@ -940,6 +943,7 @@ Given("I seeded the database",() => {
       uprn: tenureModel.tenuredAsset.uprn,
       isActive: false,
       type: tenureModel.tenureType.description,
+      propertyReference: tenureModel.tenuredAsset.propertyReference,
     }
 
     personModel1.tenures.push(personTenure);
