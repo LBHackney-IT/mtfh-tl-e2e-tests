@@ -15,10 +15,10 @@ Feature: Create Cautionary Alerts
     And I click on Save and Continue button
     Then I am on Check and confirm cautionary alert page
     And the Cautionary alert details are displayed
-#    When I click on Save cautionary alert button
-#    Then I am on the Person details page
-#    And I can see the section Cautionary Alerts with a Red bell icon
-#    And I can see the Cautionary Alert type
+    When I click on Save cautionary alert button
+    Then I am on the Person details page
+    And I can see the section Cautionary Alerts with a Red bell icon
+    And I can see the Cautionary Alert type
 
   Scenario: 'Update cautionary alert' on Check and confirm Cautionary alert page by clicking on the 'Change link'
     Then I am on the Person details page for Alerts
@@ -55,10 +55,10 @@ Feature: Create Cautionary Alerts
     And I click on Save and Continue button
     Then I am on Check and confirm cautionary alert page
     And I can see the 'Description' is updated with the new value
-#    When I click on Save cautionary alert button
-#    Then I am on the Person details page
-#    And I can see the section Cautionary Alerts with a Red bell icon
-#    And I can see the Cautionary Alert type with the new value
+    When I click on Save cautionary alert button
+    Then I am on the Person details page
+    And I can see the section Cautionary Alerts with a Red bell icon
+    And I can see the Cautionary Alert type with the new value
 
 
   Scenario: Verify Validation error messages in Add Cautionary Alerts page
