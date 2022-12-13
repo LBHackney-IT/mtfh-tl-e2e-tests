@@ -62,7 +62,7 @@ When("I enter only Day and Year for Date of Incident", () => {
     tenureReqDocsPO.year().clear().type('2022');
 });
 Then("Validation error messages is displayed for Month", () => {
-    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text','Date of incident must be a real date');
+    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text','Date of incident must include a month');
 });
 When("I enter only Month and Year for Date of Incident", () => {
     tenureReqDocsPO.day().clear();
@@ -138,7 +138,7 @@ When("I update the {string} with a new value", (text) => {
     switch (text)
     {
         case 'Assurance reference number': {
-            cautionaryAlertPO.assureReference().type('34343434');
+            cautionaryAlertPO.assureReference().type('98');
             break;
         }
         case 'Date of incident': {
@@ -165,7 +165,7 @@ And("I can see the {string} is updated with the new value", (text) => {
     {
         case 'Assurance reference number': {
             cy.contains('Assurance Reference');
-            cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text',34343434);
+            cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text',12121298);
             break;
         }
         case 'Date of incident': {
