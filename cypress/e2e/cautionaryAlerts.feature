@@ -95,5 +95,3 @@ Feature: Create Cautionary Alerts
     And I click on Save and Continue button
     Then Validation error message is displayed for Future date
 
-
-
