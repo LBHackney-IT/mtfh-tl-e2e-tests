@@ -122,59 +122,59 @@ When("I enter {string} {string}", (label, reason) => {
     reviewAppPage.interviewApplicantReason().clear().type(reason);
     reviewAppPage.confirmationModalApprove().click();
 });
-When("I select the recommendation as {string}", (decision) => {
-    switch (decision)
-    {
-        case'Approve':
-        {
-            cy.contains('Approve').click();
-            reviewAppPage.buttonConfirm().click();
-            cy.contains('Tenure investigator recommendation: Approve application');
-            break;
-        }
-        case'Appointment':
-        {
-            cy.contains('Appointment').click();
-            reviewAppPage.buttonConfirm().click();
-            cy.contains('Tenure investigator recommendation: Interview Applicant');
-            break;
-        }
-        case'Decline':
-        {
-            cy.contains('Decline').click();
-            reviewAppPage.buttonConfirm().click();
-            cy.contains('Tenure investigator recommendation: Decline application');
-            break;
-        }
-    }
-});
+// When("I select the recommendation as {string}", (decision) => {
+//     switch (decision)
+//     {
+//         case'Approve':
+//         {
+//             cy.contains('Approve').click();
+//             reviewAppPage.buttonConfirm().click();
+//             cy.contains('Tenure investigator recommendation: Approve application');
+//             break;
+//         }
+//         case'Appointment':
+//         {
+//             cy.contains('Appointment').click();
+//             reviewAppPage.buttonConfirm().click();
+//             cy.contains('Tenure investigator recommendation: Interview Applicant');
+//             break;
+//         }
+//         case'Decline':
+//         {
+//             cy.contains('Decline').click();
+//             reviewAppPage.buttonConfirm().click();
+//             cy.contains('Tenure investigator recommendation: Decline application');
+//             break;
+//         }
+//     }
+// });
 
-Then("model dialog is displayed with message {string}", (recommendation) => {
-    switch (recommendation)
-    {
-        case'Tenure investigator recommendation: Approve application':
-        {
-            cy.contains('Tenure investigator recommendation: Approve application');
-            break;
-        }
-        case'Tenure investigator recommendation: Interview Applicant':
-        {
-            cy.contains('Tenure investigator recommendation: Interview Applicant');
-            break;
-        }
-        case'Tenure investigator recommendation: Decline application':
-        {
-            cy.contains('Tenure investigator recommendation: Decline application');
-            break;
-        }
-    }
-});
-When("the decision is selected as 'Decline'", () => {
-    cy.contains('Decline').click();
-});
-When("I click Decline button", () => {
-    cy.contains('Confirm').click();
-});
+// Then("model dialog is displayed with message {string}", (recommendation) => {
+//     switch (recommendation)
+//     {
+//         case'Tenure investigator recommendation: Approve application':
+//         {
+//             cy.contains('Tenure investigator recommendation: Approve application');
+//             break;
+//         }
+//         case'Tenure investigator recommendation: Interview Applicant':
+//         {
+//             cy.contains('Tenure investigator recommendation: Interview Applicant');
+//             break;
+//         }
+//         case'Tenure investigator recommendation: Decline application':
+//         {
+//             cy.contains('Tenure investigator recommendation: Decline application');
+//             break;
+//         }
+//     }
+// });
+// When("the decision is selected as 'Decline'", () => {
+//     cy.contains('Decline').click();
+// });
+// When("I click Decline button", () => {
+//     cy.contains('Confirm').click();
+// });
 Then("{string} text is displayed", (reviewMessg) => {
     cy.contains(reviewMessg);
 })
