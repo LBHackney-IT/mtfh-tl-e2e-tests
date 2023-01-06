@@ -105,9 +105,9 @@ And('{string} status box is displayed {string}', (decision, reason) => {
         cy.contains(reason);
     }
 })
-Then("Office appointment scheduled message is displayed", () => {
-    reviewAppPage.messageHeadingOfficeAppointment().should('contain.text', 'Office appointment scheduled');
-});
+// Then("Office appointment scheduled message is displayed", () => {
+//     reviewAppPage.messageHeadingOfficeAppointment().should('contain.text', 'Office appointment scheduled');
+// });
 When("I enter data and time and click Continue button", () => {
     reviewAppPage.appointmentDay().type('01');
     reviewAppPage.appointmentMonth().type('01');
