@@ -3,12 +3,14 @@ import { baseUrl } from "../../../environment-config";
 
 import PropertyPageObjects from "../../pageObjects/propertyPage";
 
-const assetFixtureJson = require('../../fixtures/asset.json');
-const addressFixtureJson = require('../../fixtures/address.json');
+// Works locally but causes the Circle CI pipeline to fail (webpack error)
+// const assetFixtureJson = require('../../fixtures/asset.json'); 
 
 const propertyPage = new PropertyPageObjects();
 
-const propertyGuid = assetFixtureJson.id
+// The information below comes from asset.json (fixture)
+const propertyGuid = "635ed65b-461c-4527-bb8e-485303b74c87"
+const propertyUprn = "100023014215"
 
 // Hardcoded URL pointing to a property with a valid UPRN for which editing is enabled
 const editPropertyAddressUrl = `${baseUrl}/property/edit/${propertyGuid}`
@@ -28,7 +30,7 @@ Given("I am on the MMH 'Edit property address' page", () => {
     ).as('getAsset')
 
     cy.intercept(
-        'GET', `*/api/v1/addresses?uprn=${assetFixtureJson.assetAddress.uprn}`,
+        'GET', `*/api/v1/addresses?uprn=${propertyUprn}`,
         {
             fixture: 'address.json',
         }
