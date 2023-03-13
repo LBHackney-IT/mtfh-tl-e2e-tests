@@ -1,4 +1,4 @@
-import { When, Then, And, Given } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Then, And, Given,  } from "@badeball/cypress-cucumber-preprocessor";
 import { baseUrl } from "../../../environment-config";
 
 import PropertyPageObjects from "../../pageObjects/propertyPage";
@@ -22,19 +22,18 @@ When("I select a property", () => {
 })
 
 Given("I am on the MMH 'Edit property address' page", () => {
-    cy.intercept(
-        'GET', `*/api/v1/assets/${propertyGuid}`,
-        {
-            fixture: 'asset.json',
-        }
-    ).as('getAsset')
+    cy.intercept('GET', `*/api/v1/assets/${propertyGuid}`, { fixture: 'asset.json', }).as('getAsset')
+    cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { fixture: 'address.json', }).as('getAddress')
 
-    cy.intercept(
-        'GET', `*/api/v1/addresses?uprn=${propertyUprn}`,
-        {
-            fixture: 'address.json',
-        }
-    ).as('getAddress')
+    cy.visit(editPropertyAddressUrl)
+
+    cy.wait('@getAsset')
+    cy.wait('@getAddress')
+});
+
+Given("I am on the MMH 'Edit property address' page, but the LLPG address fails to be retrieved", () => {
+    cy.intercept('GET', `*/api/v1/assets/${propertyGuid}`, { fixture: 'asset.json', }).as('getAsset')
+    cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { forceNetworkError: true }).as('getAddress')
 
     cy.visit(editPropertyAddressUrl)
 
@@ -96,4 +95,24 @@ And("the 'Update to this address' button should be disabled", () => {
 
 And("I should see and error indicating that the request failed", () => {
     cy.contains('There was a problem amending this asset').should('be.visible')
+})
+
+And("I should see an error message indicating that the LLPG address could not be loaded", () => {
+    cy.contains('Unable to retrieve address suggestion from the Local Gazetteer').should('be.visible')
+})
+
+And("I should see a heading that says 'New address details' instead of 'Suggestion from the Local Gazetteer'", () => {
+    cy.contains('New address details').should('be.visible')
+})
+
+And("the address fields, despite not being autopopulated, should be blank and editable", () => {
+    cy.get('[data-testid="addressLine1"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="addressLine2"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="addressLine3"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="addressLine4"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="postcode"]').should('be.enabled').and('have.value', "")
+})
+
+And("the 'Update to this address' button should be enabled", () => {
+    cy.contains('Update to this address').should('be.enabled')
 })
