@@ -1,0 +1,54 @@
+{
+    "id": "635ed65b-461c-4527-bb8e-485303b74c87",
+    "assetId": "100023014215",
+    "assetType": "LettableNonDwelling",
+    "rootAsset": null,
+    "parentAssetIds": null,
+    "isActive": false,
+    "assetLocation": null,
+    "assetAddress": {
+      "uprn": "100023014215",
+      "addressLine1": "51 GREENWOOD ROAD",
+      "addressLine2": "",
+      "addressLine3": "",
+      "addressLine4": "",
+      "postCode": "E8 1NT",
+      "postPreamble": null
+    },
+    "assetManagement": {
+      "agent": null,
+      "areaOfficeName": null,
+      "isCouncilProperty": false,
+      "managingOrganisation": null,
+      "managingOrganisationId": "00000000-0000-0000-0000-000000000000",
+      "owner": null,
+      "isTMOManaged": false,
+      "propertyOccupiedStatus": null,
+      "propertyOccupiedStatusReason": null,
+      "isNoRepairsMaintenance": false,
+      "councilTaxType": null,
+      "councilTaxLiability": null,
+      "isTemporaryAccomodation": true,
+      "readyToLetDate": false
+    },
+    "assetCharacteristics": null,
+    "tenure": null,
+    "versionNumber": 10,
+    "patches": [
+      {
+        "id": "bd0a8e2b-c3b5-4628-aa33-8e7509d5eac6",
+        "parentId": "8d4fb05d-3ff5-48b7-a17a-71fcb27a66a8",
+        "name": "SN4",
+        "patchType": "patch",
+        "domain": "MMH",
+        "responsibleEntities": [
+          {
+            "id": "7fb98e5e-6543-4e3e-b654-ac06e0a3f2f9",
+            "name": "Fake_Lyla Fake_Kling",
+            "responsibleType": "HousingOfficer"
+          }
+        ],
+        "versionNumber": null
+      }
+    ]
+  }
