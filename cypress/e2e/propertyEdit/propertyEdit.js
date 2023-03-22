@@ -55,14 +55,14 @@ Then("I should see the heading 'Edit property address', and property details for
     cy.contains('Current address').should('be.visible')
 })
 
-And("the 'Update to this address' and 'Cancel edit address' buttons are present, along with a 'Back to asset' link at the top", () => {
+And("the 'Update to this address' and 'Cancel' buttons are present, along with a 'Back to asset' link at the top", () => {
     cy.contains('Update to this address').should('be.visible')
-    cy.contains('Cancel edit address').should('be.visible')
+    cy.contains('Cancel').should('be.visible')
     cy.contains('Back to asset').should('be.visible')
 })
 
 And("I edit the address line 1 of the address", () => {
-    cy.get('[data-testid="addressLine1"]').clear().type(newAddressLine1Value)
+    cy.get('[data-testid="address-line-1"]').clear().type(newAddressLine1Value)
 })
 
 Then("I click on 'Update to this address' button, and the PATCH request is successful", () => {
@@ -89,8 +89,8 @@ And("I can see a success message at the top of the screen", () => {
     cy.contains('The asset address has been updated successfully.').should('be.visible')
 })
 
-And("the 'Update to this address' button should be disabled", () => {
-    cy.contains('Update to this address').should('be.disabled')
+And("the 'Update to this address' and 'Cancel' buttons should be replaced by the 'Back to asset view' button", () => {
+    cy.contains('Back to asset view').should('be.visible')
 })
 
 And("I should see and error indicating that the request failed", () => {
@@ -106,10 +106,10 @@ And("I should see a heading that says 'New address details' instead of 'Suggesti
 })
 
 And("the address fields, despite not being autopopulated, should be blank and editable", () => {
-    cy.get('[data-testid="addressLine1"]').should('be.enabled').and('have.value', "")
-    cy.get('[data-testid="addressLine2"]').should('be.enabled').and('have.value', "")
-    cy.get('[data-testid="addressLine3"]').should('be.enabled').and('have.value', "")
-    cy.get('[data-testid="addressLine4"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="address-line-1"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="address-line-2"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="address-line-3"]').should('be.enabled').and('have.value', "")
+    cy.get('[data-testid="address-line-4"]').should('be.enabled').and('have.value', "")
     cy.get('[data-testid="postcode"]').should('be.enabled').and('have.value', "")
 })
 
