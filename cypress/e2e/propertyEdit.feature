@@ -38,7 +38,7 @@ Feature: Property Edit
     Scenario Outline: 'Edit property address page elements are present'
         Given I am on the MMH 'Edit property address' page
         Then I should see the heading 'Edit property address', and property details for the 'Suggestion from the Local Gazetteer' and the 'Current address'
-        And the 'Update to this address' and 'Cancel edit address' buttons are present, along with a 'Back to asset' link at the top
+        And the 'Update to this address' and 'Cancel' buttons are present, along with a 'Back to asset' link at the top
         Examples:
             | propertyName      | optionType |
             | 51 GREENWOOD ROAD | property   |
@@ -50,7 +50,7 @@ Feature: Property Edit
         Then I click on 'Update to this address' button, and the PATCH request is successful
         And I can see the address line 1 of the 'Current address' has changed successfully
         And I can see a success message at the top of the screen
-        And the 'Update to this address' button should be disabled
+        And the 'Update to this address' and 'Cancel' buttons should be replaced by the 'Back to asset view' button
 
     @SmokeTest
     Scenario Outline: 'Edit property address - patch address is not successful'
