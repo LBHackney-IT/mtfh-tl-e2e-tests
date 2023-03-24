@@ -57,8 +57,9 @@ Feature: Create Cautionary Alerts
     And I can see the 'Description' is updated with the new value
     When I click on Save cautionary alert button
     Then I am on the Person details page
-    And I can see the section Cautionary Alerts with a Red bell icon
-    And I can see the Cautionary Alert type with the new value
+    And I can see a message referring me to the cautionary alert spreadsheet
+    # And I can see the section Cautionary Alerts with a Red bell icon
+    # And I can see the Cautionary Alert type with the new value
 
 
   Scenario: Verify Validation error messages in Add Cautionary Alerts page
