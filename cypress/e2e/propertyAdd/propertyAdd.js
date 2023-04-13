@@ -70,9 +70,9 @@ And("I choose the option 'No' for field 'Is TMO managed?'", () => {
 })
 
 When("I click on 'Create new property' button, and the POST request is successful", () => {
-    cy.intercept('POST', '*/api/v1/assets', { statusCode: 204 }).as('createNewAsset')
+    cy.intercept('POST', '*/api/v1/assets', { statusCode: 204 }).as('createNewAssetSuccess')
     cy.contains('Create new property').click()
-    cy.wait('@createNewAsset').its('request.method').should('deep.equal', 'POST')
+    cy.wait('@createNewAssetSuccess').its('request.method').should('deep.equal', 'POST')
 })
 
 Then("I see a success message, indicating that the asset has been created successfully", () => {
@@ -80,9 +80,9 @@ Then("I see a success message, indicating that the asset has been created succes
 })
 
 When("I click on 'Create new property' button, and the POST request fails", () => {
-    cy.intercept('POST', '*/api/v1/assets', { forceNetworkError: true }).as('createNewAsset')
+    cy.intercept('POST', '*/api/v1/assets', { forceNetworkError: true }).as('createNewAssetFail')
     cy.contains('Create new property').click()
-    cy.wait('@createNewAsset').its('request.method').should('deep.equal', 'POST')
+    cy.wait('@createNewAssetFail').its('request.method').should('deep.equal', 'POST')
 })
 
 Then("I see an error message, indicating that there was a problem creating the new asset", () => {
