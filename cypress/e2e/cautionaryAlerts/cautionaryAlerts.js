@@ -101,7 +101,7 @@ And("I can see the section Cautionary Alerts with a Red bell icon", () => {
     cautionaryAlertPO.redBellIconAlert().should('exist');
 });
 And("I can see the Cautionary Alert type with the new value", () => {
-  cy.contains('Beware of aggressive pets');
+  cy.contains('Dangerous Animals');
 })
 And('I can see the Cautionary Alert type', () => {
     // cy.contains('Verbal Abuse');
@@ -148,7 +148,7 @@ When("I update the {string} with a new value", (text) => {
             break;
         }
         case 'Type of caution': {
-            cautionaryAlertPO.typeOfCaution().select('Beware of aggressive pets');
+            cautionaryAlertPO.typeOfCaution().select('Dangerous Animals');
             break;
         }
         case 'Description': {
@@ -175,7 +175,7 @@ And("I can see the {string} is updated with the new value", (text) => {
         }
         case 'Type of caution': {
             cy.contains('Type of caution');
-            cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Beware of aggressive pets');
+            cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Dangerous Animals');
             break;
         }
         case 'Description': {
