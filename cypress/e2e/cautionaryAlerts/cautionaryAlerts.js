@@ -100,18 +100,13 @@ When("I click on Save cautionary alert button", () => {
 And("I can see the section Cautionary Alerts with a Red bell icon", () => {
     cautionaryAlertPO.redBellIconAlert().should('exist');
 });
-
-And("I can see a message referring me to the cautionary alert spreadsheet", () => {
-    cy.contains('Alert(s) found. Check Cautionary Alerts Spreadsheet for details.')
+And("I can see the Cautionary Alert type with the new value", () => {
+  cy.contains('Beware of aggressive pets');
 })
-// Temporarily disabled pending database fix:
-// And("I can see the Cautionary Alert type with the new value", () => {
-//   cy.contains('Beware of aggressive pets');
-// })
-// And('I can see the Cautionary Alert type', () => {
-//     // cy.contains('Verbal Abuse');
-//     cy.contains('Do not visit alone');
-// });
+And('I can see the Cautionary Alert type', () => {
+    // cy.contains('Verbal Abuse');
+    cy.contains('Do not visit alone');
+});
 And("I can see the Red Bell icon next to the person name", () => {
 
 });
