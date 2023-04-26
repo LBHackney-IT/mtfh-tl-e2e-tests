@@ -21,7 +21,7 @@ And("I enter Date of Incident as Day Month and Year", () => {
 });
 And("select Type of Caution", () => {
    // cautionaryAlertPO.typeOfCaution().select('Verbal abuse');
-    cautionaryAlertPO.typeOfCaution().select('Do not visit alone');
+    cautionaryAlertPO.typeOfCaution().select('No Lone Visits');
 });
 And("I enter Description of Incident", () => {
     cautionaryAlertPO.descriptionOfIncident().clear().type('This is a test incident for verbal abuse happened on the date above')
@@ -90,7 +90,7 @@ And("the Cautionary alert details are displayed", () => {
     cy.get(':nth-child(2) > .govuk-summary-list__value').should('contain.text','01 12 2022');
     cy.contains('Type of caution');
     //cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Verbal Abuse');
-    cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Do not visit alone');
+    cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','No Lone Visits');
     cy.contains('Description');
     cy.get(':nth-child(4) > .govuk-summary-list__value').should('contain.text','This is a test incident for verbal abuse happened on the date above');
 });
@@ -105,7 +105,7 @@ And("I can see the Cautionary Alert type with the new value", () => {
 })
 And('I can see the Cautionary Alert type', () => {
     // cy.contains('Verbal Abuse');
-    cy.contains('Do not visit alone');
+    cy.contains('No Lone Visits');
 });
 And("I can see the Red Bell icon next to the person name", () => {
 
