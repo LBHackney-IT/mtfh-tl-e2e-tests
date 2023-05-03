@@ -15,6 +15,16 @@ export const saveFixtureData = (tableName, keys, fixtureData, response) => new C
     resolve(fixtureData)
 })
 
+export const saveNonDynamoFixture = (entityName, fixtureData, response) => new Cypress.Promise((resolve, reject) => {
+  if (fixtureData)
+    cy.writeFile(`cypress/fixtures/${entityName}.json`, fixtureData);
+
+  if (response)
+    resolve(response);
+
+  resolve(fixtureData);
+});
+
 export const queueDeletePersonWithId = (id) => {
     saveFixtureData("Persons", { id: id })
 }

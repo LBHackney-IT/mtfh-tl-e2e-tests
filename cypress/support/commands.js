@@ -33,6 +33,10 @@ Cypress.Commands.add('getPersonFixture', () => {
     cy.readFile('cypress/fixtures/Persons.json')
 })
 
+Cypress.Commands.add('getCautionaryAlertFixture', () => {
+    cy.readFile('cypress/fixtures/CautionaryAlerts.json');
+});
+
 Cypress.Commands.add('getTenureFixture', () => {
     cy.readFile('cypress/fixtures/TenureInformation.json')
 })
@@ -54,4 +58,8 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
     // failing the test
     return false
+})
+
+Cypress.Commands.add('getByTestId', (testName) => {
+    cy.get(`[data-testid=${testName}]`)
 })
