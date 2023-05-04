@@ -150,5 +150,8 @@ class PersonPageObjects {
     personAlert() {
         return cy.get('.lbh-heading-h4 > .mtfh-icon');
     }
+    nthCautionaryAlert(number = 0) {
+        return cy.getByTestId(`cautionary-alert-link-${number}`);
+    }
 }
 export default PersonPageObjects

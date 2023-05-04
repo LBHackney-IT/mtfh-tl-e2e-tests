@@ -8,7 +8,9 @@ class CautionaryAlertViewPageObject {
     }
 
     // Specific UI items
-    pageTitle = () => cy.getByTestId("manage-ca-title");
+    pageTitle = () => this.getByTestIdAttr("manage-ca-title");
+    backLink = () => this.getByTestIdAttr("back-link");
+    closeButton =() => this.getByTestIdAttr("close-link");
 
     // Details table items
     dateOfIncidentValue     = () => this.caTableItemValue("dateOfIncident");
@@ -19,7 +21,8 @@ class CautionaryAlertViewPageObject {
     assureReferenceValue    = () => this.caTableItemValue("assureReference");
 
     // Reuse purpose
-    caTableItemValue = (itemName) => cy.getByTestId(`${itemName}-value`);
+    getByTestIdAttr  = (testName) => cy.getByTestId(testName)
+    caTableItemValue = (itemName) => this.getByTestIdAttr(`${itemName}-value`);
 }
 
 export default CautionaryAlertViewPageObject;

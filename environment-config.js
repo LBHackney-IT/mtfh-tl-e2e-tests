@@ -6,6 +6,7 @@ let personCommentsUrl = "comment/person"
 let tenureCommentsUrl="comment/tenure"
 let propertyCommentsUrl="comment/property"
 let startSoleToJointProcessUrl="processes/soletojoint/start/tenure"
+let alertPreviewUrl="cautionary-alerts/alert"
 
 let tenureUrl = "tenure"
 let rootComponentPort = "9000"
@@ -40,6 +41,7 @@ module.exports = {
     tenureCommentsUrl,
     propertyCommentsUrl,
     startSoleToJointProcessUrl,
+    alertPreviewUrl,
     baseUrl,
     tenureUrl,
     property,
