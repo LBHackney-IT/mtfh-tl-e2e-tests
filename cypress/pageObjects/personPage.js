@@ -11,6 +11,10 @@ class PersonPageObjects {
         // Needs a better selector
     }
 
+    pageTitle() {
+        return cy.get("[class='lbh-heading-h1']");
+    }
+
     headerContainerName() {
         return cy.get("[data-testid='person-fullName']")
     }

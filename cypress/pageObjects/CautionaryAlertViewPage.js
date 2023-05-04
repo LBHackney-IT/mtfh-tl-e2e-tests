@@ -11,6 +11,9 @@ class CautionaryAlertViewPageObject {
     pageTitle = () => this.getByTestIdAttr("manage-ca-title");
     backLink = () => this.getByTestIdAttr("back-link");
     closeButton =() => this.getByTestIdAttr("close-link");
+    endAlertButton =() => this.getByTestIdAttr("end-alert-button");
+    endDateInput = () => this.getByTestIdAttr("end-date-input");
+    confirmButton = () => this.getByTestIdAttr("confirm-button");
 
     // Details table items
     dateOfIncidentValue     = () => this.caTableItemValue("dateOfIncident");

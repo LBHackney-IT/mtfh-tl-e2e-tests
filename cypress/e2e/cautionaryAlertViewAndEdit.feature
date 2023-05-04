@@ -12,12 +12,25 @@ Feature: Create Cautionary Alerts
   Scenario: Cautionary Alert 'back' button switches to Person page
     When I'm on the Cautionary Alert View page
     And I click on the 'back' button
-    Then I should be moved back to the Person page
+    Then I get redirected to back to the person page
     And I should see the cautionary alert I navigated from
 
   Scenario: Cautionary Alert 'close' button switches to Person page
     When I'm on the Cautionary Alert View page
     And I click on the 'close' button
-    Then I should be moved back to the Person page
+    Then I get redirected to back to the person page
     And I should see the cautionary alert I navigated from
 
+  Scenario: Cautionary Alert 'end alert' button reveals extra alert editing options and UI changes
+    When I'm on the Cautionary Alert View page
+    And I click on the 'end alert' button
+    Then The 'end date' input should become visible
+    And The 'end alert' button gets replaced with 'confirm' button
+
+  Scenario: Cautionary Alert can be ended with specified 'end date'
+    When I'm on the Cautionary Alert View page
+    And I click on the 'end alert' button
+    And I select the 'end date' for the alert
+    And I click the 'confirm' button
+    Then I get redirected to back to the person page
+    And The cautionary alert should not be listed under the person anymore
