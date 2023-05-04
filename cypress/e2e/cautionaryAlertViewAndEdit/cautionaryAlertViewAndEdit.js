@@ -12,6 +12,19 @@ When("I'm on the Cautionary Alert View page", () => {
   });
 });
 
+When("I'm on the person's with cautionary alert page", () => {
+  cy.getPersonFixture().then((person) => {
+    const personId = person.id;
+    personPO.visit(personId);
+  });
+});
+
+And("I navigate to that person's cautionary alert's page", () => {
+  const cautionaryAlertLink = personPO.nthCautionaryAlert(0);
+  cautionaryAlertLink.should('exist');
+  cautionaryAlertLink.click();
+});
+
 Then("The page title should reflect the page's purpose & contain person's name", () => {
   cy.getPersonFixture().then((expectedPerson) => {
     const personFirstName = expectedPerson.firstName;

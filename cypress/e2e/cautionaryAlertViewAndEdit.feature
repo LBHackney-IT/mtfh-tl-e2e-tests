@@ -5,7 +5,8 @@ Feature: Create Cautionary Alerts
     And There's a person with a cautionary alert
 
   Scenario: Cautionary Alert information can be viewed by getting to it from Person page
-    When I'm on the Cautionary Alert View page
+    When I'm on the person's with cautionary alert page
+    And I navigate to that person's cautionary alert's page
     Then The page title should reflect the page's purpose & contain person's name
     And The cautionary alert table should show the correct information
 
@@ -28,7 +29,8 @@ Feature: Create Cautionary Alerts
     And The 'end alert' button gets replaced with 'confirm' button
 
   Scenario: Cautionary Alert can be ended with specified 'end date'
-    When I'm on the Cautionary Alert View page
+    When I'm on the person's with cautionary alert page
+    And I navigate to that person's cautionary alert's page
     And I click on the 'end alert' button
     And I select the 'end date' for the alert
     And I click the 'confirm' button
