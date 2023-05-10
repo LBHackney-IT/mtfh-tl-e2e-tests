@@ -63,3 +63,11 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 Cypress.Commands.add('getByTestId', (testName) => {
     cy.get(`[data-testid=${testName}]`)
 })
+
+Cypress.Commands.add('setUpEndAlertError', (alertId) => {
+    const cautionaryAlertEndpoint = Cypress.env('CAUTIONARY_ALERT_ENDPOINT');
+    cy.intercept(
+        { method: 'PATCH', url: `${cautionaryAlertEndpoint}/cautionary-alerts/alerts/${alertId}/end-alert` },
+        { statusCode: 500, headers: { 'access-control-allow-headers': 'content-type' } }
+      );
+});

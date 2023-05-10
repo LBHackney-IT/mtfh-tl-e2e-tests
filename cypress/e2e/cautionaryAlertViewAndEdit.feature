@@ -51,3 +51,12 @@ Feature: Create Cautionary Alerts
     And I fill in a valid 'end date' for the alert
     Then The 'end date' input error message is NOT displayed on the screen
     And The 'confirm' button gets unlocked
+
+  Scenario: When an 'End Alert' form submission fails, a Page Error is displayed
+    And Given an impending 'End Alert' endpoint failure
+    When I'm on the Cautionary Alert View page
+    And I click on the 'end alert' button
+    And I fill in a valid 'end date' for the alert
+    And I click the 'confirm' button
+    Then The page error is displayed notifying the user about request failure
+    And User should stay on the manage cautionary alert page

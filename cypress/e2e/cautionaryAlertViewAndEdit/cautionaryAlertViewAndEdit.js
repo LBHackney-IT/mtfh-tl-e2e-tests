@@ -130,3 +130,21 @@ And("The 'confirm' button gets locked out", () => {
 And("The 'confirm' button gets unlocked", () => {
   cautionaryAlertViewPO.confirmButton().should('not.be.disabled');
 });
+
+And("Given an impending 'End Alert' endpoint failure", () => {
+  cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
+    const cautionaryAlertId = cautionaryAlerts[0].alertId;
+    cy.setUpEndAlertError(cautionaryAlertId);
+  });
+});
+
+Then("The page error is displayed notifying the user about request failure", () => {
+  cautionaryAlertViewPO.pageError().should('exist');
+});
+
+And("User should stay on the manage cautionary alert page", () => {
+  cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
+    const cautionaryAlertId = cautionaryAlerts[0].alertId;
+    cy.url().should('include', `/cautionary-alerts/alert/${cautionaryAlertId}`);
+  });
+});
