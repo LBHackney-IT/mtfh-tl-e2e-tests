@@ -32,7 +32,22 @@ Feature: Create Cautionary Alerts
     When I'm on the person's with cautionary alert page
     And I navigate to that person's cautionary alert's page
     And I click on the 'end alert' button
-    And I select the 'end date' for the alert
+    And I fill in a valid 'end date' for the alert
     And I click the 'confirm' button
     Then I get redirected to back to the person page
     And The cautionary alert should not be listed under the person anymore
+
+  Scenario: End date input shows the validation error when the entered date is not valid
+    When I'm on the Cautionary Alert View page
+    And I click on the 'end alert' button
+    And I fill in an 'end date' for the alert that is not allowed
+    Then The 'end date' input error message gets displayed on the screen
+    And The 'confirm' button gets locked out
+
+  Scenario: End date input hides the validation error when the entered date is corrected
+    When I'm on the Cautionary Alert View page
+    And I click on the 'end alert' button
+    And I fill in an 'end date' for the alert that is not allowed
+    And I fill in a valid 'end date' for the alert
+    Then The 'end date' input error message is NOT displayed on the screen
+    And The 'confirm' button gets unlocked

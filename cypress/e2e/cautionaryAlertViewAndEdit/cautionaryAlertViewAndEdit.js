@@ -86,12 +86,15 @@ And("The 'end alert' button gets replaced with 'confirm' button", () => {
   cautionaryAlertViewPO.confirmButton().should('exist');
 });
 
-And("I select the 'end date' for the alert", () => {
+And("I fill in a valid 'end date' for the alert", () => {
   const today = new Date();
-  const day = today.getDay().toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
   const month = (today.getMonth() + 1).toString().padStart(2, '0');
   const year = today.getFullYear().toString();
-  cautionaryAlertViewPO.endDateInput().click().type(`${year}-${month}-${day}`);
+
+  // On the UI it's DD-MM-YYYY, however, cypress demands the opposite for it to work as expected.
+  const typedDate = `${year}-${month}-${day}`;
+  cautionaryAlertViewPO.endDateInput().click().type(typedDate);
 });
 
 And("I click the 'confirm' button", () => {
@@ -102,4 +105,28 @@ And("The cautionary alert should not be listed under the person anymore", () => 
   // ensure page is loaded before the cautionary alert assertion
   personPO.pageTitle().should('exist');
   personPO.nthCautionaryAlert(0).should('not.exist');
+});
+
+And("I fill in an 'end date' for the alert that is not allowed", () => {
+  const today = new Date();
+  const day = (today.getDate() + 1).toString().padStart(2, '0');
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const year = today.getFullYear().toString();
+  cautionaryAlertViewPO.endDateInput().focus().click().type(`${year}-${month}-${day}`);
+});
+
+Then("The 'end date' input error message gets displayed on the screen", () => {
+  cautionaryAlertViewPO.endDateInputError().should('exist');
+});
+
+Then("The 'end date' input error message is NOT displayed on the screen", () => {
+  cautionaryAlertViewPO.endDateInputError().should('not.exist');
+});
+
+And("The 'confirm' button gets locked out", () => {
+  cautionaryAlertViewPO.confirmButton().should('be.disabled');
+});
+
+And("The 'confirm' button gets unlocked", () => {
+  cautionaryAlertViewPO.confirmButton().should('not.be.disabled');
 });

@@ -14,6 +14,7 @@ class CautionaryAlertViewPageObject {
     endAlertButton =() => this.getByTestIdAttr("end-alert-button");
     endDateInput = () => this.getByTestIdAttr("end-date-input");
     confirmButton = () => this.getByTestIdAttr("confirm-button");
+    endDateInputError = () => this.getByTestIdAttr("end-date-error");
 
     // Details table items
     dateOfIncidentValue     = () => this.caTableItemValue("dateOfIncident");
