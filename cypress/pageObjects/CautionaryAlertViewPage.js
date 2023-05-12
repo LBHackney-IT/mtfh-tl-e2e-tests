@@ -8,14 +8,14 @@ class CautionaryAlertViewPageObject {
     }
 
     // Specific UI items
-    pageTitle = () => this.getByTestIdAttr("manage-ca-title");
-    backLink = () => this.getByTestIdAttr("back-link");
-    closeButton =() => this.getByTestIdAttr("close-link");
-    endAlertButton =() => this.getByTestIdAttr("end-alert-button");
-    endDateInput = () => this.getByTestIdAttr("end-date-input");
-    confirmButton = () => this.getByTestIdAttr("confirm-button");
-    endDateInputError = () => this.getByTestIdAttr("end-date-error");
-    pageError = () => this.getByTestIdAttr("page-error");
+    pageTitle          = () => this.getByTestIdAttr("manage-ca-title");
+    backLink           = () => this.getByTestIdAttr("back-link");
+    cancelButton       = () => this.getByTestIdAttr("cancel-changes");
+    endAlertButton     = () => this.getByTestIdAttr("end-alert-button");
+    endDateInput       = () => this.getByTestIdAttr("end-date-input");
+    confirmButton      = () => this.getByTestIdAttr("confirm-button");
+    endDateInputError  = () => this.getByTestIdAttr("end-date-error");
+    pageError          = () => this.getByTestIdAttr("page-error");
 
     // Details table items
     dateOfIncidentValue     = () => this.caTableItemValue("dateOfIncident");

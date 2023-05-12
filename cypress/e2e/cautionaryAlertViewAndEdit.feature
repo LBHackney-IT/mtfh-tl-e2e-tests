@@ -16,17 +16,20 @@ Feature: Create Cautionary Alerts
     Then I get redirected to back to the person page
     And I should see the cautionary alert I navigated from
 
-  Scenario: Cautionary Alert 'close' button switches to Person page
-    When I'm on the Cautionary Alert View page
-    And I click on the 'close' button
-    Then I get redirected to back to the person page
-    And I should see the cautionary alert I navigated from
-
-  Scenario: Cautionary Alert 'end alert' button reveals extra alert editing options and UI changes
+  Scenario: Cautionary Alert 'end alert' button enters the 'edit mode'
     When I'm on the Cautionary Alert View page
     And I click on the 'end alert' button
     Then The 'end date' input should become visible
+    And The 'cancel' button becomes visible
     And The 'end alert' button gets replaced with 'confirm' button
+
+  Scenario: Cautionary Alert 'cancel' button exits the 'edit mode'
+    When I'm on the Cautionary Alert View page
+    And I click on the 'end alert' button
+    And I click on the 'cancel' button
+    Then The 'end date' input should become hidden
+    And The 'cancel' button should become hidden
+    And The 'confirm' button gets replaced with 'end alert' button
 
   Scenario: Cautionary Alert can be ended with specified 'end date'
     When I'm on the person's with cautionary alert page
@@ -41,6 +44,13 @@ Feature: Create Cautionary Alerts
     When I'm on the Cautionary Alert View page
     And I click on the 'end alert' button
     And I fill in an 'end date' for the alert that is not allowed
+    Then The 'end date' input error message gets displayed on the screen
+    And The 'confirm' button gets locked out
+
+  Scenario: End date input shows the validation error when no date is entered
+    When I'm on the Cautionary Alert View page
+    And I click on the 'end alert' button
+    And I click the 'confirm' button
     Then The 'end date' input error message gets displayed on the screen
     And The 'confirm' button gets locked out
 

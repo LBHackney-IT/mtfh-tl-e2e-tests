@@ -69,8 +69,16 @@ And("I should see the cautionary alert I navigated from", () => {
   }); 
 });
 
-And("I click on the 'close' button", () => {
-  cautionaryAlertViewPO.closeButton().click();
+And("I click on the 'cancel' button", () => {
+  cautionaryAlertViewPO.cancelButton().click();
+});
+
+And("The 'cancel' button becomes visible", () => {
+  cautionaryAlertViewPO.cancelButton().should('exist');
+});
+
+And("The 'cancel' button should become hidden", () => {
+  cautionaryAlertViewPO.cancelButton().should('not.exist');
 });
 
 And("I click on the 'end alert' button", () => {
@@ -81,9 +89,18 @@ Then("The 'end date' input should become visible", () => {
   cautionaryAlertViewPO.endDateInput().should('exist');
 });
 
+Then("The 'end date' input should become hidden", () => {
+  cautionaryAlertViewPO.endDateInput().should('not.exist');
+});
+
 And("The 'end alert' button gets replaced with 'confirm' button", () => {
   cautionaryAlertViewPO.endAlertButton().should('not.exist');
   cautionaryAlertViewPO.confirmButton().should('exist');
+});
+
+And("The 'confirm' button gets replaced with 'end alert' button", () => {
+  cautionaryAlertViewPO.endAlertButton().should('exist');
+  cautionaryAlertViewPO.confirmButton().should('not.exist');
 });
 
 And("I fill in a valid 'end date' for the alert", () => {
