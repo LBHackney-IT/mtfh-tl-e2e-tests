@@ -92,6 +92,7 @@ commands:
                           export CYPRESS_EQUALITY_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/equality-information-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_CAUTIONARY_ALERT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/cautionary-alerts-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
                           export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
