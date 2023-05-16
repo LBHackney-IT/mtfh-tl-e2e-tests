@@ -11,6 +11,10 @@ class PersonPageObjects {
         // Needs a better selector
     }
 
+    pageTitle() {
+        return cy.get("[class='lbh-heading-h1']");
+    }
+
     headerContainerName() {
         return cy.get("[data-testid='person-fullName']")
     }
@@ -149,6 +153,9 @@ class PersonPageObjects {
     }
     personAlert() {
         return cy.get('.lbh-heading-h4 > .mtfh-icon');
+    }
+    nthCautionaryAlert(number = 0) {
+        return cy.getByTestId(`cautionary-alert-link-${number}`);
     }
 }
 export default PersonPageObjects

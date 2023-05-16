@@ -33,6 +33,10 @@ Cypress.Commands.add('getPersonFixture', () => {
     cy.readFile('cypress/fixtures/Persons.json')
 })
 
+Cypress.Commands.add('getCautionaryAlertFixture', () => {
+    cy.readFile('cypress/fixtures/CautionaryAlerts.json');
+});
+
 Cypress.Commands.add('getTenureFixture', () => {
     cy.readFile('cypress/fixtures/TenureInformation.json')
 })
@@ -55,3 +59,15 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // failing the test
     return false
 })
+
+Cypress.Commands.add('getByTestId', (testName) => {
+    cy.get(`[data-testid=${testName}]`)
+})
+
+Cypress.Commands.add('setUpEndAlertError', (alertId) => {
+    const cautionaryAlertEndpoint = Cypress.env('CAUTIONARY_ALERT_ENDPOINT');
+    cy.intercept(
+        { method: 'PATCH', url: `${cautionaryAlertEndpoint}/cautionary-alerts/alerts/${alertId}/end-alert` },
+        { statusCode: 500, headers: { 'access-control-allow-headers': 'content-type' } }
+      );
+});

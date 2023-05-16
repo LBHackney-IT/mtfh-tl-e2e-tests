@@ -23,6 +23,7 @@ import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 import comment from "../../../api/comment";
 import contactDetails from "../../../api/contact-details";
 import { getTenure, editTenure } from "../../../api/tenure";
+import createCautionaryAlert from "../../../api/cautionary-alert";
 import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
 import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
@@ -39,6 +40,8 @@ import { patch } from "../../../api/models/requests/patchModel"
 import { asset } from "../../../api/models/requests/createAssetModel"
 import { person } from "../../../api/models/requests/createPersonModel"
 import { tenure } from "../../../api/models/requests/addTenureModel";
+import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
+import { saveNonDynamoFixture } from "../../../api/helpers"
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -63,6 +66,26 @@ let personId = "";
 let propertyId = "";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
+
+const tenureToPersonTenure = (tenure) => ({
+  id: tenure.id,
+  startDate: tenure.startOfTenureDate,
+  endDate: tenure.endOfTenureDate,
+  assetFullAddress: tenure.tenuredAsset.fullAddress,
+  assetId: tenure.tenuredAsset.id,
+  uprn: tenure.tenuredAsset.uprn,
+  isActive: false,
+  type: tenure.tenureType.description,
+  propertyReference: tenure.tenuredAsset.propertyReference,
+});
+
+const tenureToAssetTenure = (tenure) => ({
+  endOfTenureDate: tenure.endOfTenureDate,
+  id: tenure.id,
+  paymentReference: tenure.paymentReference,
+  startOfTenureDate: tenure.startOfTenureDate,
+  type: tenure.tenureType.description,
+});
 
 defineParameterType({
   name: "boolean",
@@ -972,6 +995,57 @@ Given("I seeded the database",() => {
     })
   })
 })
+
+Given("There's a person with a cautionary alert", () => {
+  cy
+    .log("Creating cautoinary alert & entities associated with it")
+    .then(() => {
+      const patchModel = patch;
+      const assetModel = asset(patchModel);
+      const tenureModel = tenure({}, assetModel);
+      const personModel = person();
+      const personTenure = tenureToPersonTenure(tenureModel);
+      personModel.tenures.push(personTenure);
+      assetModel.tenure = tenureToAssetTenure(tenureModel);
+  
+      const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
+        console.log("saveNonDynamoRecord data: ", response)
+        try {
+          saveNonDynamoFixture(
+            "CautionaryAlerts",
+            [response.body],
+            response,
+          ).then((response) => {
+              resolve(response)
+          });
+        }
+        catch(ex) {
+          reject(ex);
+        }
+      });
+
+      const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
+      
+      createCautionaryAlert(cautionaryAlertRecord).then((data) => {
+        saveNonDynamoRecord(data).then((moreData) => {
+          Promise.resolve(moreData);
+        });
+      });
+
+      return new Cypress.Promise((resolve) => {
+          Promise.all([
+            DynamoDb.createRecord("PatchesAndAreas", patchModel),
+            DynamoDb.createRecord("Assets", assetModel),
+            DynamoDb.createRecord("TenureInformation", tenureModel),
+            DynamoDb.createRecord("Persons", personModel)
+          ]).then(() => {
+            resolve();
+          });
+        }).then(() => {
+          cy.log("CA related data created.");
+        })
+    });
+});
 
 Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) => {
   cy.log("Creating tenure").then(() => {
