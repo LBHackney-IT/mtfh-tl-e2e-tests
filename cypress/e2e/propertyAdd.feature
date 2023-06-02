@@ -51,4 +51,11 @@ Feature: Property Add
         When I click on 'Create new property' button, and the POST request fails
         Then I see an error message, indicating that there was a problem creating the new asset
 
+    @SmokeTest
+    Scenario Outline: 'New property - a user is able to add, remove, edit Patch information for the new asset'
+        Given I am on the MMH 'New property' page
+        And I find the Patch field heading
+        And I see one Patch dropdown field available to start with and I select a value
+        When I click on the button to add another Patch dropdown field, I should see a new one appear, and select a value
+        When I remove the first Patch dropdown field, using the 'Remove patch' as no longer required, I should see a total of 1 Patch dropdown field
 

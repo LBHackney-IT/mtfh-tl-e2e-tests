@@ -1,0 +1,44 @@
+[
+    {
+        "id": "b4b3593c-f5d1-4ade-875f-648acefb63bf",
+        "parentId": "cd855559-c9a1-409f-948f-57bffdf4dd4c",
+        "name": "HN8",
+        "patchType": "patch",
+        "domain": "MMH",
+        "responsibleEntities": [
+            {
+                "id": "57e7a596-1851-40c6-90e6-26074b636364",
+                "name": "Fake_Gabriella Fake_Klocko",
+                "responsibleType": "HousingOfficer"
+            }
+        ]
+    },
+    {
+        "id": "d32b8c9e-a66d-4c29-a283-892cab6b7cf2",
+        "parentId": "131d9da4-07a3-432a-85b8-2588ba270907",
+        "name": "SD9",
+        "patchType": "patch",
+        "domain": "MMH",
+        "responsibleEntities": [
+            {
+                "id": "90a2777f-8a24-4922-9648-1bae7ce45c22",
+                "name": "Fake_Isabella Fake_Kulas",
+                "responsibleType": "HousingOfficer"
+            }
+        ]
+    },
+    {
+        "id": "19186680-5dc8-49a8-8916-e8c8bcffbefd",
+        "parentId": "00f32090-68d5-49f6-950d-eba5b94c6f54",
+        "name": "HN1 Area",
+        "patchType": "area",
+        "domain": "MMH",
+        "responsibleEntities": [
+            {
+                "id": "240b0ea4-5f18-4066-8fa4-159fce959062",
+                "name": "Fake_Devan Fake_Cruickshank",
+                "responsibleType": "HousingOfficer"
+            }
+        ]
+    }
+]
