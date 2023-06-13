@@ -1,0 +1,15 @@
+{
+  "id": "60fdb77e-8964-4f04-ac13-1c11ed0196ba",
+  "domain": "MMH",
+  "name": "E2E",
+  "parentId": "d484a6f7-54a5-4ee5-a1f4-029e30e186d7",
+  "patchType": "patch",
+  "responsibleEntities": [
+    {
+      "name": "Emma Spinka",
+      "responsibleType": "HousingOfficer",
+      "id": "248499a5-2b86-477a-a91b-620139cd5f59"
+    }
+  ],
+  "versionNumber": 0
+}
