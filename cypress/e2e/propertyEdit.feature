@@ -47,7 +47,7 @@ Feature: Property Edit
     Scenario Outline: 'Edit property address - patch address is successful'
         Given I am on the MMH 'Edit property address' page
         And I edit the address line 1 of the address
-        Then I click on 'Update to this address' button, and the PATCH request is successful
+        Then I click on 'Update to this address' button, and the PATCH requests are successful
         And I can see the address line 1 of the 'Current address' has changed successfully
         And I can see a success message at the top of the screen
         And the 'Update to this address' and 'Cancel' buttons should be replaced by the 'Back to asset view' button
@@ -56,7 +56,7 @@ Feature: Property Edit
     Scenario Outline: 'Edit property address - patch address is not successful'
         Given I am on the MMH 'Edit property address' page
         And I edit the address line 1 of the address
-        Then I click on 'Update to this address' button, and the PATCH request fails
+        Then I click on 'Update to this address' button, and the PATCH requests fail
         And I should see and error indicating that the request failed
 
     @SmokeTest

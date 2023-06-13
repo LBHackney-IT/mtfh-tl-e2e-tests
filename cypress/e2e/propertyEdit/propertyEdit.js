@@ -65,16 +65,19 @@ And("I edit the address line 1 of the address", () => {
     cy.get('[data-testid="address-line-1"]').clear().type(newAddressLine1Value)
 })
 
-Then("I click on 'Update to this address' button, and the PATCH request is successful", () => {
+Then("I click on 'Update to this address' button, and the PATCH requests are successful", () => {
     cy.intercept('PATCH', `*/api/v1/assets/${propertyGuid}/address`, { statusCode: 204 }).as('patchAddress')
+    cy.intercept('PATCH', `*/api/v1/asset/${propertyUprn}`, { statusCode: 204 }).as('updateAssetDetails')
 
     cy.contains('Update to this address').click()
 
     cy.wait('@patchAddress')
+    cy.wait('@updateAssetDetails')
 })
 
-Then("I click on 'Update to this address' button, and the PATCH request fails", () => {
+Then("I click on 'Update to this address' button, and the PATCH requests fail", () => {
     cy.intercept('PATCH', `*/api/v1/assets/${propertyGuid}/address`, { forceNetworkError: true }).as('patchAddress')
+    cy.intercept('PATCH', `*/api/v1/asset/${propertyUprn}`, { forceNetworkError: true }).as('updateAssetDetails')
 
     cy.contains('Update to this address').click()
 

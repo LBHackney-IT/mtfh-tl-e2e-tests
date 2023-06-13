@@ -8,7 +8,7 @@ const addressLine1 = "47 Test Road"
 const postcode = "MK40 2RF"
 
 Given("I am on the MMH 'New property' page", () => {
-    cy.intercept('GET', `*/api/v1/patch/all`, { fixture: 'patches.json', }).as('getAllPatches')
+    cy.intercept('GET', '*/api/v1/patch/all', { fixture: 'patches.json', }).as('getAllPatches')
 
     cy.visit(addPropertyAddressUrl)
 
