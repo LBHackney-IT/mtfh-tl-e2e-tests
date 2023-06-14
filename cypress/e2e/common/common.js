@@ -1004,7 +1004,7 @@ Given("I seeded the database with an asset {string}",(assetGuid) => {
 
     const assetModel = {
       "id": assetGuid,
-      "assetId": "123PD123",
+      "assetId": "0014062023",
       "assetType": "Dwelling",
       "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
       "isActive": true,
@@ -1016,11 +1016,11 @@ Given("I seeded the database with an asset {string}",(assetGuid) => {
       "assetAddress": {
           "uprn": "",
           "postPreamble": "",
-          "addressLine1": "123 Ocropoid Road",
+          "addressLine1": "12 Pitcairn House",
           "addressLine2": "",
           "addressLine3": "",
           "addressLine4": "",
-          "postCode": "FK81FH"
+          "postCode": "E9 6PT"
       },
       "assetManagement": {
           "agent": "",
@@ -1135,3 +1135,20 @@ After(() => {
         })
     });
 })
+
+afterEach(() => {
+  const filename = "cypress/fixtures/recordsToDelete.json";
+  cy.readFile(filename)
+    .then(recordsToDelete => {
+
+      return new Cypress.Promise((resolve) => {
+        Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))
+          .then(() => {
+            resolve()
+          })
+      }).then(() => {
+        cy.writeFile(filename, []);
+        cy.log("Database cleared!")
+      })
+    });
+});
