@@ -996,6 +996,61 @@ Given("I seeded the database",() => {
   })
 })
 
+Given("I seeded the database with an asset {string}",(assetGuid) => {
+  cy.log("Adding asset to database").then(() => {
+    // const patchModel = patch;
+    // const assetModel = asset(patchModel, assetGuid);
+    // const tenureModel = tenure({}, assetModel);
+
+    const assetModel = {
+      "id": assetGuid,
+      "assetId": "123PD123",
+      "assetType": "Dwelling",
+      "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
+      "isActive": true,
+      "assetLocation": {
+          "floorNo": "",
+          "totalBlockFloors": null,
+          "parentAssets": []
+      },
+      "assetAddress": {
+          "uprn": "",
+          "postPreamble": "",
+          "addressLine1": "123 Ocropoid Road",
+          "addressLine2": "",
+          "addressLine3": "",
+          "addressLine4": "",
+          "postCode": "FK81FH"
+      },
+      "assetManagement": {
+          "agent": "",
+          "areaOfficeName": "",
+          "isCouncilProperty": true,
+          "managingOrganisation": "London Borough of Hackney",
+          "isTMOManaged": false,
+          "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+      },
+      "assetCharacteristics": {
+          "numberOfBedrooms": null,
+          "numberOfLivingRooms": null,
+          "yearConstructed": "",
+          "windowType": "",
+          "numberOfLifts": null
+      }
+  }
+
+    return new Cypress.Promise((resolve) => {
+      Promise.all([
+        DynamoDb.createRecord("Assets", assetModel),
+      ]).then(() => {
+        resolve()
+      })
+    }).then(() => {
+      cy.log("Asset added to db!");
+    })
+  })
+})
+
 Given("There's a person with a cautionary alert", () => {
   cy
     .log("Creating cautoinary alert & entities associated with it")

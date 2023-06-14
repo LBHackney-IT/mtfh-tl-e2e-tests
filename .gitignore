@@ -11,3 +11,5 @@ docker/dynamodb/shared-local-instance.db
 .idea/workspace.xml
 cypress/cucumber-json/
 cucumber-messages.ndjson
+cypress/e2e/common/DynamoDb.js
+cypress/support/commands.js
