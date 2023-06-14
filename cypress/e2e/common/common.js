@@ -1119,23 +1119,43 @@ Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) 
 
 })
 
-After(() => {
-  const filename = "cypress/fixtures/recordsToDelete.json";
-  cy.readFile(filename)
-    .then(data => {
-      return new Cypress.Promise((resolve) => {
-        Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
-          .then(() => {
-            resolve()
-          })
-      }).then(() => {
-        cy.writeFile(filename, []);
-        cy.log("Test database records cleared!")
-      })
-    });
-})
+// After(() => {
+//   const filename = "cypress/fixtures/recordsToDelete.json";
+//   cy.readFile(filename)
+//     .then(data => {
+//       return new Cypress.Promise((resolve) => {
+//         Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
+//           .then(() => {
+//             resolve()
+//           })
+//       }).then(() => {
+//         cy.writeFile(filename, []);
+//         cy.log("Test database records cleared!")
+//       })
+//     });
+// })
 
 beforeEach(() => {
+  const filename = "cypress/fixtures/recordsToDelete.json";
+  cy.readFile(filename)
+    .then(recordsToDelete => {
+      if (recordsToDelete.length) {
+        cy.log("Removing test database records from database (see recordsToDelete.json file).")
+
+        return new Cypress.Promise((resolve) => {
+          Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))
+            .then(() => {
+              resolve()
+            })
+        }).then(() => {
+          cy.writeFile(filename, []);
+          cy.log("Test database records cleared!")
+        })
+      }
+    });
+});
+
+afterEach(() => {
   const filename = "cypress/fixtures/recordsToDelete.json";
   cy.readFile(filename)
     .then(recordsToDelete => {
