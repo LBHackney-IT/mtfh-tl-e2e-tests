@@ -1013,7 +1013,7 @@ Given("I seeded the database with an asset {string}", (assetGuid) => {
         "parentAssets": []
       },
       "assetAddress": {
-        "uprn": "",
+        "uprn": "00014579215",
         "postPreamble": "",
         "addressLine1": "12 Pitcairn House",
         "addressLine2": "",

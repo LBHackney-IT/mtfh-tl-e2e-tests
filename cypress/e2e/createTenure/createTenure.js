@@ -101,8 +101,9 @@ Then('the person is not added to the tenure', () => {
 })
 
 When('I add {int} household member', (householdMembers) => {
+    console.log(householdMembers)
     for(let i = 0; i < householdMembers; i++) {
-        createTenurePage.addAsHousholdMember().eq(i).click()
+        createTenurePage.addAsHouseholdMember().eq(i).click()
     }
 })
 

@@ -91,7 +91,7 @@ class CreateTenurePageObjects {
         return cy.contains('Add as named tenure holder')
     }
 
-    addAsHousholdMember() {
+    addAsHouseholdMember() {
         return cy.contains('Add as household member')
     }
 
