@@ -948,59 +948,56 @@ And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
 });
 
-Given("I seeded the database", () => {
+// Given("I seeded the database", () => {
+//   cy.log("Seeding database").then(() => {
+//     const patchModel = patch;
+//     const assetModel = asset(patchModel);
+//     const personModel1 = person();
+//     const personModel2 = person();
+//     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+//     const personTenure = {
+//       id: tenureModel.id,
+//       startDate: tenureModel.startOfTenureDate,
+//       endDate: tenureModel.endOfTenureDate,
+//       assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+//       assetId: tenureModel.tenuredAsset.id,
+//       uprn: tenureModel.tenuredAsset.uprn,
+//       isActive: false,
+//       type: tenureModel.tenureType.description,
+//       propertyReference: tenureModel.tenuredAsset.propertyReference,
+//     }
+
+//     personModel1.tenures.push(personTenure);
+//     personModel2.tenures.push(personTenure);
+
+//     assetModel.tenure = {
+//       endOfTenureDate: tenureModel.endOfTenureDate,
+//       id: tenureModel.id,
+//       paymentReference: tenureModel.paymentReference,
+//       startOfTenureDate: tenureModel.startOfTenureDate,
+//       type: tenureModel.tenureType.description,
+//     }
+
+//     return new Cypress.Promise((resolve) => {
+//       Promise.all([
+//         DynamoDb.createRecord("PatchesAndAreas", patchModel),
+//         DynamoDb.createRecord("Assets", assetModel),
+//         DynamoDb.createRecord("TenureInformation", tenureModel),
+//         DynamoDb.createRecord("Persons", personModel1),
+//         DynamoDb.createRecord("Persons", personModel2),
+//       ]).then(() => {
+//         resolve()
+//       })
+//     }).then(() => {
+//       cy.log("Database seeded!");
+//     })
+//   })
+// })
+
+Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
-    const assetModel = asset(patchModel);
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
-
-    const personTenure = {
-      id: tenureModel.id,
-      startDate: tenureModel.startOfTenureDate,
-      endDate: tenureModel.endOfTenureDate,
-      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
-      assetId: tenureModel.tenuredAsset.id,
-      uprn: tenureModel.tenuredAsset.uprn,
-      isActive: false,
-      type: tenureModel.tenureType.description,
-      propertyReference: tenureModel.tenuredAsset.propertyReference,
-    }
-
-    personModel1.tenures.push(personTenure);
-    personModel2.tenures.push(personTenure);
-
-    assetModel.tenure = {
-      endOfTenureDate: tenureModel.endOfTenureDate,
-      id: tenureModel.id,
-      paymentReference: tenureModel.paymentReference,
-      startOfTenureDate: tenureModel.startOfTenureDate,
-      type: tenureModel.tenureType.description,
-    }
-
-    return new Cypress.Promise((resolve) => {
-      Promise.all([
-        DynamoDb.createRecord("PatchesAndAreas", patchModel),
-        DynamoDb.createRecord("Assets", assetModel),
-        DynamoDb.createRecord("TenureInformation", tenureModel),
-        DynamoDb.createRecord("Persons", personModel1),
-        DynamoDb.createRecord("Persons", personModel2),
-      ]).then(() => {
-        resolve()
-      })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
-  })
-})
-
-Given("I seeded the database with an asset {string}", (assetGuid) => {
-  cy.log("Adding asset to database").then(() => {
-    // const patchModel = patch;
-    // const assetModel = asset(patchModel, assetGuid);
-    // const tenureModel = tenure({}, assetModel);
-
     const assetModel = {
       "id": assetGuid,
       "assetId": "0014062023",
@@ -1035,20 +1032,200 @@ Given("I seeded the database with an asset {string}", (assetGuid) => {
         "yearConstructed": "",
         "windowType": "",
         "numberOfLifts": null
-      }
+      },
+      "patches": [patch]
     }
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+    const personTenure = {
+      id: tenureModel.id,
+      startDate: tenureModel.startOfTenureDate,
+      endDate: tenureModel.endOfTenureDate,
+      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+      assetId: tenureModel.tenuredAsset.id,
+      uprn: tenureModel.tenuredAsset.uprn,
+      isActive: false,
+      type: tenureModel.tenureType.description,
+      propertyReference: tenureModel.tenuredAsset.propertyReference,
+    }
+
+    personModel1.tenures.push(personTenure);
+    personModel2.tenures.push(personTenure);
+
+    // assetModel.tenure = {
+    //   endOfTenureDate: tenureModel.endOfTenureDate,
+    //   id: tenureModel.id,
+    //   paymentReference: tenureModel.paymentReference,
+    //   startOfTenureDate: tenureModel.startOfTenureDate,
+    //   type: tenureModel.tenureType.description,
+    // }
 
     return new Cypress.Promise((resolve) => {
       Promise.all([
+        DynamoDb.createRecord("PatchesAndAreas", patchModel),
         DynamoDb.createRecord("Assets", assetModel),
+        // DynamoDb.createRecord("TenureInformation", tenureModel),
+        DynamoDb.createRecord("Persons", personModel1),
+        DynamoDb.createRecord("Persons", personModel2),
       ]).then(() => {
         resolve()
       })
     }).then(() => {
-      cy.log("Asset added to db!");
+      cy.log("Database seeded!");
     })
   })
 })
+
+Given("I seeded the database with an asset {string} with a previous tenure", (assetGuid) => {
+  cy.log("Seeding database").then(() => {
+    const patchModel = patch;
+    const assetModel = {
+      "id": assetGuid,
+      "assetId": "0014062023",
+      "assetType": "Dwelling",
+      "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
+      "isActive": true,
+      "assetLocation": {
+        "floorNo": "",
+        "totalBlockFloors": null,
+        "parentAssets": []
+      },
+      "assetAddress": {
+        "uprn": "00014579215",
+        "postPreamble": "",
+        "addressLine1": "12 Pitcairn House",
+        "addressLine2": "",
+        "addressLine3": "",
+        "addressLine4": "",
+        "postCode": "E9 6PT"
+      },
+      "assetManagement": {
+        "agent": "",
+        "areaOfficeName": "",
+        "isCouncilProperty": true,
+        "managingOrganisation": "London Borough of Hackney",
+        "isTMOManaged": false,
+        "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+      },
+      "assetCharacteristics": {
+        "numberOfBedrooms": null,
+        "numberOfLivingRooms": null,
+        "yearConstructed": "",
+        "windowType": "",
+        "numberOfLifts": null
+      },
+      "patches": [patch]
+    }
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+    const personTenure = {
+      id: tenureModel.id,
+      startDate: tenureModel.startOfTenureDate,
+      endDate: tenureModel.endOfTenureDate,
+      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+      assetId: tenureModel.tenuredAsset.id,
+      uprn: tenureModel.tenuredAsset.uprn,
+      isActive: false,
+      type: tenureModel.tenureType.description,
+      propertyReference: tenureModel.tenuredAsset.propertyReference,
+    }
+
+    personModel1.tenures.push(personTenure);
+    personModel2.tenures.push(personTenure);
+
+    assetModel.tenure = {
+      endOfTenureDate: tenureModel.endOfTenureDate,
+      id: tenureModel.id,
+      paymentReference: tenureModel.paymentReference,
+      startOfTenureDate: tenureModel.startOfTenureDate,
+      type: tenureModel.tenureType.description,
+    }
+    assetModel.tenure = {
+      endOfTenureDate: "2022-07-29T00:00:00",
+      id: tenureModel.id,
+      paymentReference: tenureModel.paymentReference,
+      startOfTenureDate: "2020-07-29T00:00:00",
+      type: tenureModel.tenureType.description,
+    }
+
+    console.log('ASSET MODEL WITH PREVIOUS TENURE', assetModel)
+    cy.log('ASSET MODEL WITH PREVIOUS TENURE ', assetModel)
+
+    return new Cypress.Promise((resolve) => {
+      Promise.all([
+        DynamoDb.createRecord("PatchesAndAreas", patchModel),
+        DynamoDb.createRecord("Assets", assetModel),
+        DynamoDb.createRecord("TenureInformation", tenureModel),
+        DynamoDb.createRecord("Persons", personModel1),
+        DynamoDb.createRecord("Persons", personModel2),
+      ]).then(() => {
+        resolve()
+      })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
+})
+
+// WORKING FOR ASSET
+// Given("I seeded the database with an asset {string}", (assetGuid) => {
+//   cy.log("Adding asset to database").then(() => {
+//     // const patchModel = patch;
+//     // const assetModel = asset(patchModel, assetGuid);
+//     // const tenureModel = tenure({}, assetModel);
+
+//     const assetModel = {
+//       "id": assetGuid,
+//       "assetId": "0014062023",
+//       "assetType": "Dwelling",
+//       "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
+//       "isActive": true,
+//       "assetLocation": {
+//         "floorNo": "",
+//         "totalBlockFloors": null,
+//         "parentAssets": []
+//       },
+//       "assetAddress": {
+//         "uprn": "00014579215",
+//         "postPreamble": "",
+//         "addressLine1": "12 Pitcairn House",
+//         "addressLine2": "",
+//         "addressLine3": "",
+//         "addressLine4": "",
+//         "postCode": "E9 6PT"
+//       },
+//       "assetManagement": {
+//         "agent": "",
+//         "areaOfficeName": "",
+//         "isCouncilProperty": true,
+//         "managingOrganisation": "London Borough of Hackney",
+//         "isTMOManaged": false,
+//         "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+//       },
+//       "assetCharacteristics": {
+//         "numberOfBedrooms": null,
+//         "numberOfLivingRooms": null,
+//         "yearConstructed": "",
+//         "windowType": "",
+//         "numberOfLifts": null
+//       }
+//     }
+
+//     return new Cypress.Promise((resolve) => {
+//       Promise.all([
+//         DynamoDb.createRecord("Assets", assetModel),
+//       ]).then(() => {
+//         resolve()
+//       })
+//     }).then(() => {
+//       cy.log("Asset added to db!");
+//     })
+//   })
+// })
 
 Given("There's a person with a cautionary alert", () => {
   cy
