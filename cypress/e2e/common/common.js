@@ -948,52 +948,52 @@ And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
 });
 
-// Given("I seeded the database", () => {
-//   cy.log("Seeding database").then(() => {
-//     const patchModel = patch;
-//     const assetModel = asset(patchModel);
-//     const personModel1 = person();
-//     const personModel2 = person();
-//     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+Given("I seeded the database", () => {
+  cy.log("Seeding database").then(() => {
+    const patchModel = patch;
+    const assetModel = asset(patchModel);
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
 
-//     const personTenure = {
-//       id: tenureModel.id,
-//       startDate: tenureModel.startOfTenureDate,
-//       endDate: tenureModel.endOfTenureDate,
-//       assetFullAddress: tenureModel.tenuredAsset.fullAddress,
-//       assetId: tenureModel.tenuredAsset.id,
-//       uprn: tenureModel.tenuredAsset.uprn,
-//       isActive: false,
-//       type: tenureModel.tenureType.description,
-//       propertyReference: tenureModel.tenuredAsset.propertyReference,
-//     }
+    const personTenure = {
+      id: tenureModel.id,
+      startDate: tenureModel.startOfTenureDate,
+      endDate: tenureModel.endOfTenureDate,
+      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+      assetId: tenureModel.tenuredAsset.id,
+      uprn: tenureModel.tenuredAsset.uprn,
+      isActive: false,
+      type: tenureModel.tenureType.description,
+      propertyReference: tenureModel.tenuredAsset.propertyReference,
+    }
 
-//     personModel1.tenures.push(personTenure);
-//     personModel2.tenures.push(personTenure);
+    personModel1.tenures.push(personTenure);
+    personModel2.tenures.push(personTenure);
 
-//     assetModel.tenure = {
-//       endOfTenureDate: tenureModel.endOfTenureDate,
-//       id: tenureModel.id,
-//       paymentReference: tenureModel.paymentReference,
-//       startOfTenureDate: tenureModel.startOfTenureDate,
-//       type: tenureModel.tenureType.description,
-//     }
+    assetModel.tenure = {
+      endOfTenureDate: tenureModel.endOfTenureDate,
+      id: tenureModel.id,
+      paymentReference: tenureModel.paymentReference,
+      startOfTenureDate: tenureModel.startOfTenureDate,
+      type: tenureModel.tenureType.description,
+    }
 
-//     return new Cypress.Promise((resolve) => {
-//       Promise.all([
-//         DynamoDb.createRecord("PatchesAndAreas", patchModel),
-//         DynamoDb.createRecord("Assets", assetModel),
-//         DynamoDb.createRecord("TenureInformation", tenureModel),
-//         DynamoDb.createRecord("Persons", personModel1),
-//         DynamoDb.createRecord("Persons", personModel2),
-//       ]).then(() => {
-//         resolve()
-//       })
-//     }).then(() => {
-//       cy.log("Database seeded!");
-//     })
-//   })
-// })
+    return new Cypress.Promise((resolve) => {
+      Promise.all([
+        DynamoDb.createRecord("PatchesAndAreas", patchModel),
+        DynamoDb.createRecord("Assets", assetModel),
+        DynamoDb.createRecord("TenureInformation", tenureModel),
+        DynamoDb.createRecord("Persons", personModel1),
+        DynamoDb.createRecord("Persons", personModel2),
+      ]).then(() => {
+        resolve()
+      })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
+})
 
 Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
