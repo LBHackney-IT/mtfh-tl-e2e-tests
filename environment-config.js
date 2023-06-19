@@ -1,5 +1,5 @@
 const environment = Cypress.env('ENVIRONMENT')
-let rootUrl = "http://localdev.hackney.gov.uk"
+let rootUrl = "http://local.hackney.gov.uk"
 let searchUrl = "search"
 let personUrl = "person"
 let personCommentsUrl = "comment/person"
@@ -15,7 +15,7 @@ let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 let baseUrl = `${rootUrl}:${rootComponentPort}`
 
 if (environment === 'local') {
-    baseUrl = "https://manage-my-home-development.hackney.gov.uk"
+    baseUrl = "http://local.hackney.gov.uk:9000"
     gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
 }
 

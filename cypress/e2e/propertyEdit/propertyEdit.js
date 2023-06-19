@@ -82,6 +82,7 @@ Then("I click on 'Update to this address' button, and the PATCH requests fail", 
     cy.contains('Update to this address').click()
 
     cy.wait('@patchAddress')
+    cy.wait('@updateAssetDetails')
 })
 
 And("I can see the address line 1 of the 'Current address' has changed successfully", () => {
