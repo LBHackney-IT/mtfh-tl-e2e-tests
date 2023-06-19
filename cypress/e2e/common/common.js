@@ -37,7 +37,7 @@ import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
 import { patch } from "../../../api/models/requests/patchModel"
-import { asset } from "../../../api/models/requests/createAssetModel"
+import { asset, getAssetWithNoTenure } from "../../../api/models/requests/createAssetModel"
 import { person } from "../../../api/models/requests/createPersonModel"
 import { tenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
@@ -998,75 +998,15 @@ Given("I seeded the database", () => {
 Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
-    const assetModel = {
-      "id": assetGuid,
-      "assetId": "0014062023",
-      "assetType": "Dwelling",
-      "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
-      "isActive": true,
-      "assetLocation": {
-        "floorNo": "",
-        "totalBlockFloors": null,
-        "parentAssets": []
-      },
-      "assetAddress": {
-        "uprn": "00014579215",
-        "postPreamble": "",
-        "addressLine1": "12 Pitcairn House",
-        "addressLine2": "",
-        "addressLine3": "",
-        "addressLine4": "",
-        "postCode": "E9 6PT"
-      },
-      "assetManagement": {
-        "agent": "",
-        "areaOfficeName": "",
-        "isCouncilProperty": true,
-        "managingOrganisation": "London Borough of Hackney",
-        "isTMOManaged": false,
-        "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
-      },
-      "assetCharacteristics": {
-        "numberOfBedrooms": null,
-        "numberOfLivingRooms": null,
-        "yearConstructed": "",
-        "windowType": "",
-        "numberOfLifts": null
-      },
-      "patches": [patch]
-    }
+    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
     const personModel1 = person();
     const personModel2 = person();
     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
-
-    const personTenure = {
-      id: tenureModel.id,
-      startDate: tenureModel.startOfTenureDate,
-      endDate: tenureModel.endOfTenureDate,
-      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
-      assetId: tenureModel.tenuredAsset.id,
-      uprn: tenureModel.tenuredAsset.uprn,
-      isActive: false,
-      type: tenureModel.tenureType.description,
-      propertyReference: tenureModel.tenuredAsset.propertyReference,
-    }
-
-    personModel1.tenures.push(personTenure);
-    personModel2.tenures.push(personTenure);
-
-    // assetModel.tenure = {
-    //   endOfTenureDate: tenureModel.endOfTenureDate,
-    //   id: tenureModel.id,
-    //   paymentReference: tenureModel.paymentReference,
-    //   startOfTenureDate: tenureModel.startOfTenureDate,
-    //   type: tenureModel.tenureType.description,
-    // }
 
     return new Cypress.Promise((resolve) => {
       Promise.all([
         DynamoDb.createRecord("PatchesAndAreas", patchModel),
         DynamoDb.createRecord("Assets", assetModel),
-        // DynamoDb.createRecord("TenureInformation", tenureModel),
         DynamoDb.createRecord("Persons", personModel1),
         DynamoDb.createRecord("Persons", personModel2),
       ]).then(() => {
@@ -1081,43 +1021,7 @@ Given("I seeded the database with an asset {string} with no attached tenure", (a
 Given("I seeded the database with an asset {string} with a previous tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
-    const assetModel = {
-      "id": assetGuid,
-      "assetId": "0014062023",
-      "assetType": "Dwelling",
-      "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
-      "isActive": true,
-      "assetLocation": {
-        "floorNo": "",
-        "totalBlockFloors": null,
-        "parentAssets": []
-      },
-      "assetAddress": {
-        "uprn": "00014579215",
-        "postPreamble": "",
-        "addressLine1": "12 Pitcairn House",
-        "addressLine2": "",
-        "addressLine3": "",
-        "addressLine4": "",
-        "postCode": "E9 6PT"
-      },
-      "assetManagement": {
-        "agent": "",
-        "areaOfficeName": "",
-        "isCouncilProperty": true,
-        "managingOrganisation": "London Borough of Hackney",
-        "isTMOManaged": false,
-        "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
-      },
-      "assetCharacteristics": {
-        "numberOfBedrooms": null,
-        "numberOfLivingRooms": null,
-        "yearConstructed": "",
-        "windowType": "",
-        "numberOfLifts": null
-      },
-      "patches": [patch]
-    }
+    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
     const personModel1 = person();
     const personModel2 = person();
     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
@@ -1144,6 +1048,8 @@ Given("I seeded the database with an asset {string} with a previous tenure", (as
       startOfTenureDate: tenureModel.startOfTenureDate,
       type: tenureModel.tenureType.description,
     }
+
+    // Add expired/previous tenure to asset
     assetModel.tenure = {
       endOfTenureDate: "2022-07-29T00:00:00",
       id: tenureModel.id,
@@ -1151,9 +1057,6 @@ Given("I seeded the database with an asset {string} with a previous tenure", (as
       startOfTenureDate: "2020-07-29T00:00:00",
       type: tenureModel.tenureType.description,
     }
-
-    console.log('ASSET MODEL WITH PREVIOUS TENURE', assetModel)
-    cy.log('ASSET MODEL WITH PREVIOUS TENURE ', assetModel)
 
     return new Cypress.Promise((resolve) => {
       Promise.all([
@@ -1170,62 +1073,6 @@ Given("I seeded the database with an asset {string} with a previous tenure", (as
     })
   })
 })
-
-// WORKING FOR ASSET
-// Given("I seeded the database with an asset {string}", (assetGuid) => {
-//   cy.log("Adding asset to database").then(() => {
-//     // const patchModel = patch;
-//     // const assetModel = asset(patchModel, assetGuid);
-//     // const tenureModel = tenure({}, assetModel);
-
-//     const assetModel = {
-//       "id": assetGuid,
-//       "assetId": "0014062023",
-//       "assetType": "Dwelling",
-//       "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
-//       "isActive": true,
-//       "assetLocation": {
-//         "floorNo": "",
-//         "totalBlockFloors": null,
-//         "parentAssets": []
-//       },
-//       "assetAddress": {
-//         "uprn": "00014579215",
-//         "postPreamble": "",
-//         "addressLine1": "12 Pitcairn House",
-//         "addressLine2": "",
-//         "addressLine3": "",
-//         "addressLine4": "",
-//         "postCode": "E9 6PT"
-//       },
-//       "assetManagement": {
-//         "agent": "",
-//         "areaOfficeName": "",
-//         "isCouncilProperty": true,
-//         "managingOrganisation": "London Borough of Hackney",
-//         "isTMOManaged": false,
-//         "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
-//       },
-//       "assetCharacteristics": {
-//         "numberOfBedrooms": null,
-//         "numberOfLivingRooms": null,
-//         "yearConstructed": "",
-//         "windowType": "",
-//         "numberOfLifts": null
-//       }
-//     }
-
-//     return new Cypress.Promise((resolve) => {
-//       Promise.all([
-//         DynamoDb.createRecord("Assets", assetModel),
-//       ]).then(() => {
-//         resolve()
-//       })
-//     }).then(() => {
-//       cy.log("Asset added to db!");
-//     })
-//   })
-// })
 
 Given("There's a person with a cautionary alert", () => {
   cy
@@ -1296,28 +1143,27 @@ Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) 
 
 })
 
-// After(() => {
-//   const filename = "cypress/fixtures/recordsToDelete.json";
-//   cy.readFile(filename)
-//     .then(data => {
-//       return new Cypress.Promise((resolve) => {
-//         Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
-//           .then(() => {
-//             resolve()
-//           })
-//       }).then(() => {
-//         cy.writeFile(filename, []);
-//         cy.log("Test database records cleared!")
-//       })
-//     });
-// })
+After(() => {
+  const filename = "cypress/fixtures/recordsToDelete.json";
+  cy.readFile(filename)
+    .then(data => {
+      return new Cypress.Promise((resolve) => {
+        Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
+          .then(() => {
+            resolve()
+          })
+      }).then(() => {
+        cy.writeFile(filename, []);
+        cy.log("Test database records cleared!")
+      })
+    });
+})
 
 beforeEach(() => {
   const filename = "cypress/fixtures/recordsToDelete.json";
   cy.readFile(filename)
     .then(recordsToDelete => {
       if (recordsToDelete.length) {
-        cy.log("Removing test database records from database (see recordsToDelete.json file).")
 
         return new Cypress.Promise((resolve) => {
           Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))
@@ -1337,7 +1183,6 @@ afterEach(() => {
   cy.readFile(filename)
     .then(recordsToDelete => {
       if (recordsToDelete.length) {
-        cy.log("Removing test database records from database (see recordsToDelete.json file).")
 
         return new Cypress.Promise((resolve) => {
           Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))

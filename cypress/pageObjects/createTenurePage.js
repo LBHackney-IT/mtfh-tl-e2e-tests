@@ -92,7 +92,7 @@ class CreateTenurePageObjects {
     }
 
     addAsHouseholdMember() {
-        return cy.contains('Add as household member')
+        return cy.get('.govuk-button.lbh-button:contains("Add as household member")');
     }
 
     pageAnnouncementContainer() {

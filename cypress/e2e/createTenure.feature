@@ -84,7 +84,7 @@ Feature: Create tenure
     Then the search results are displayed by best match "<searchTerm>"
     When I add 1 named tenure holder
     Then the person is added to the tenure
-    When I add 1 household member
+    When I add 2 household member
     Then the person is added to the tenure
     And I click done button
     Then the message New tenure completed is displayed
