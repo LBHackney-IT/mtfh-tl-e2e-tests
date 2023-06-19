@@ -32,12 +32,12 @@ import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
 import { hasToggle } from "../../helpers/hasToggle";
 import { guid } from "../../helpers/commentText";
 import property from "../../../api/property";
-import {searchPersonResults} from "../../support/searchPersonResults";
-import {searchPropertyResults} from "../../support/searchPropertyResults";
+import { searchPersonResults } from "../../support/searchPersonResults";
+import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
 import { patch } from "../../../api/models/requests/patchModel"
-import { asset } from "../../../api/models/requests/createAssetModel"
+import { asset, getAssetWithNoTenure } from "../../../api/models/requests/createAssetModel"
 import { person } from "../../../api/models/requests/createPersonModel"
 import { tenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
@@ -139,7 +139,7 @@ Given("I create a new person", () => {
 });
 
 
-Given("I create a new {string} tenure",  (tenureTypeCode) => {
+Given("I create a new {string} tenure", (tenureTypeCode) => {
   cy.log("Creating new tenure record").then(() => {
     return tenure.createTenure(tenureTypeCode).then((response) => {
       cy.log(`Tenure created!`);
@@ -237,13 +237,13 @@ And('I click on the breadcrumb', () => {
 })
 
 Then('I am taken to the search page', () => {
- // cy.url().should('contain', "search")
+  // cy.url().should('contain', "search")
   cy.findAllByText("Search Results");
 })
 
 And('I click on the view property button', () => {
-    //navigation.viewPropertyButton().click();
- // cy.get(':nth-child(10) > [data-layer="Content"]').click();
+  //navigation.viewPropertyButton().click();
+  // cy.get(':nth-child(10) > [data-layer="Content"]').click();
   cy.get(".lbh-heading-h2 > .govuk-link").click();
 });
 
@@ -321,15 +321,15 @@ Then(
   }
 );
 Then(
-    "search results are displayed by the best match {string}",
-    (searchTerm) => {
-      if (searchTerm === "guid") {
-        searchTerm = guid;
-      }
-      searchPage
-          .searchResults()
-          .contains(searchTerm.replace(/\s/g, ""), { matchCase: false });
+  "search results are displayed by the best match {string}",
+  (searchTerm) => {
+    if (searchTerm === "guid") {
+      searchTerm = guid;
     }
+    searchPage
+      .searchResults()
+      .contains(searchTerm.replace(/\s/g, ""), { matchCase: false });
+  }
 );
 
 Then("the default sort option is correct", () => {
@@ -356,8 +356,7 @@ And("have no detectable a11y violations", () => {
   function axeTerminalLog(violations) {
     cy.task(
       "log",
-      `${violations.length} accessibility violation${
-        violations.length === 1 ? "" : "s"
+      `${violations.length} accessibility violation${violations.length === 1 ? "" : "s"
       } ${violations.length === 1 ? "was" : "were"} detected`
     );
 
@@ -497,7 +496,7 @@ And("I am on the tenure page for {string}", (tenure) => {
   cy.url().should("include", tenure);
 });
 
-Then('the personal details are displayed on the sidebar' ,() => {
+Then('the personal details are displayed on the sidebar', () => {
   personPage.sidebar().contains('Date of birth')
   personPage.sidebar().contains('Phone 1')
   personPage.sidebar().contains('Email 1')
@@ -506,9 +505,9 @@ Then('the personal details are displayed on the sidebar' ,() => {
 
 // Create/edit person page
 Given("I create a person for tenure", () => {
-    cy.getTenureFixture().then((tenure) => {
-        addPersonPage.visit(tenure.id);
-    })
+  cy.getTenureFixture().then((tenure) => {
+    addPersonPage.visit(tenure.id);
+  })
 });
 
 And("I select a preferred middle name {string}", (preferredMiddleName) => {
@@ -563,7 +562,7 @@ Then('the add a new person tenure page is correct', () => {
 
 // Tenure page
 When('I view a tenure {string}', (id) => {
-  cy.getTenureFixture().then(({id: tenureId }) => {
+  cy.getTenureFixture().then(({ id: tenureId }) => {
     tenurePage.visit(id || tenureId)
   })
 })
@@ -591,7 +590,7 @@ And('the edit tenure button is not displayed', () => {
 
 // Property page
 Given("I create a new property", async () => {
-  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
+  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" } }
   await dynamoDb.deleteRecordFromDynamoDB(record)
   cy.log("Creating Property record");
   const response = await property.createProperty();
@@ -602,7 +601,7 @@ Given("I create a new property", async () => {
 })
 
 Given("I create a new property {string}", async (type) => {
-  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
+  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" } }
   await dynamoDb.deleteRecordFromDynamoDB(record)
   cy.log("Creating Property record");
   const response = await property.createProperty(type);
@@ -613,7 +612,7 @@ Given("I create a new property {string}", async (type) => {
 })
 
 Given("I create a new property with tenure", async () => {
-  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" }}
+  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" } }
   await dynamoDb.deleteRecordFromDynamoDB(record)
   cy.log("Creating Property record");
   const response = await property.createPropertyWithTenure();
@@ -623,7 +622,7 @@ Given("I create a new property with tenure", async () => {
   propertyId = response.data.id;
 })
 When("I view a property {string}", (id) => {
-  cy.getAssetFixture().then(({ id: propertyId}) => {
+  cy.getAssetFixture().then(({ id: propertyId }) => {
     propertyPage.visit(id || propertyId);
   })
 });
@@ -636,7 +635,7 @@ Then('the property information is displayed', () => {
 })
 
 Then('I am on the create new tenure page {string}', (id) => {
-  cy.getAssetFixture().then(({id: propertyId}) => {
+  cy.getAssetFixture().then(({ id: propertyId }) => {
     cy.url().should('contain', `tenure/${id || propertyId}/add`)
   })
 })
@@ -653,11 +652,11 @@ When('I click on the add new person to tenure button', () => {
 })
 
 And('I click the modal cancel button', () => {
-  modal.cancelButton().click({force: true})
+  modal.cancelButton().click({ force: true })
 })
 
 And('I click the confirm button', () => {
-  modal.confirmationButton().click({force: true})
+  modal.confirmationButton().click({ force: true })
 })
 
 Then('the cancel modal is displayed', () => {
@@ -676,17 +675,17 @@ And('I click yes on the modal', () => {
   modal.confirmationButton().click()
 })
 
-    // Add person
+// Add person
 And('I select a title {string}', (title) => {
   addPersonPage.personTitleSelection().select(title)
 })
 
 When('I select person type {string}', (personType) => {
-  if(personType === 'Named tenure holder') {
-      addPersonPage.tenureHolderRadioButton().click()
+  if (personType === 'Named tenure holder') {
+    addPersonPage.tenureHolderRadioButton().click()
   }
-  if(personType === 'Household member') {
-      addPersonPage.householdMemberRadioButton().click()
+  if (personType === 'Household member') {
+    addPersonPage.householdMemberRadioButton().click()
   }
 })
 
@@ -701,11 +700,11 @@ And('I enter a middle name {string}', (middleName) => {
 })
 
 And('I enter a last name {string}', (lastName) => {
-    if(lastName === 'guid') {
-        lastName = guid
-    }
-    addPersonPage.lastNameContainer().clear()
-    addPersonPage.lastNameContainer().type(lastName)
+  if (lastName === 'guid') {
+    lastName = guid
+  }
+  addPersonPage.lastNameContainer().clear()
+  addPersonPage.lastNameContainer().type(lastName)
 })
 
 And('I enter a date of birth {string} {string} {string}', (day, month, year) => {
@@ -760,7 +759,7 @@ When("I enter {string} as search criteria", (textSearch) => {
   changeOfNamePage.searchField().clear().type(textSearch);
 });
 When("I select {string} and click on search button", (entity) => {
-  switch (entity){
+  switch (entity) {
     case 'Person':
       changeOfNamePage.radiobuttonPerson().click();
       changeOfNamePage.searchButton().click();
@@ -798,7 +797,7 @@ When("I select person", () => {
             title = person.title + "."
           } else title = person.title;
           let fullname = title + " " + person.firstname + " " + person.surname;
-          cy.findByRole('link', {name: fullname}).click();
+          cy.findByRole('link', { name: fullname }).click();
           break;
         } else {
           i++;
@@ -820,7 +819,7 @@ When("I select person who is InActive", () => {
             title = person.title + "."
           } else title = person.title;
           let fullname = title + " " + person.firstname + " " + person.surname;
-          cy.findByRole('link', {name: fullname}).click();
+          cy.findByRole('link', { name: fullname }).click();
           break;
         } else {
           i++;
@@ -839,7 +838,7 @@ When("I select person and click on checkbox", () => {
         title = title + ".";
       }
       const fullname = `${title} ${person.firstname} ${person.surname}`;
-      cy.findByRole('link', {name: fullname}).click();
+      cy.findByRole('link', { name: fullname }).click();
       break;
     }
   });
@@ -860,7 +859,7 @@ When("I click on Save email address without entering any data", () => {
   cy.contains('Save email address').click();
 });
 Then("Validation error message is displayed for email address", () => {
-  cy.get('#contact-details-email-address-error').should('contain','You must enter an email address to proceed');
+  cy.get('#contact-details-email-address-error').should('contain', 'You must enter an email address to proceed');
 });
 When("I click on Save Phone number without entering any data", () => {
   cy.get('.mtfh-fieldset__content > :nth-child(2) > .govuk-button').click();
@@ -876,8 +875,8 @@ When("I click on the link 'the contact details'", () => {
 });
 
 Then("{string} modal dialog is displayed", (header) => {
-  modal.modalBody().should('contain',header);
-  modal.modalBody().should('contain','Add an email address');
+  modal.modalBody().should('contain', header);
+  modal.modalBody().should('contain', 'Add an email address');
   changeOfName.buttonReturnToApplication().should('exist');
 });
 When("I select Return to Application", () => {
@@ -897,40 +896,40 @@ When("I enter data email address and phone number", () => {
   cy.contains('Save phone number').click();
   changeOfName.buttonReturnToApplication().click();
 });
- And("I click on Remove email address and Remove phone number" , () => {
-   cy.get('[data-testid=button-remove-email]').click();
-   cy.get('[data-testid=button-confirm-remove-email]').click();
-   cy.get('[data-testid=button-remove-phone]').click();
-   cy.get('[data-testid=button-confirm-remove-phone]').click();
-   changeOfName.buttonReturnToApplication().click();
-// contactDetails.getContactDetails(personId).then(getResponse => {
-//   cy.log(`Status code ${getResponse.status} returned`)
-//   if (getResponse.status === 200) {
-//     const results = getResponse.data.results
-//     results.forEach(({id, targetId, contactInformation }) => {
-//       if (contactInformation.contactType === "phone") {
-//         cy.log(`id=${id}`)
-//         cy.log(`tid=${targetId}`)
-//         contactDetails.deleteContactDetails(
-//             id,
-//             targetId,
-//         ).then(deleteResponse => {
-//           assert.deepEqual(deleteResponse.status, 200)
-//
-//         })
-//       }
-//     })
+And("I click on Remove email address and Remove phone number", () => {
+  cy.get('[data-testid=button-remove-email]').click();
+  cy.get('[data-testid=button-confirm-remove-email]').click();
+  cy.get('[data-testid=button-remove-phone]').click();
+  cy.get('[data-testid=button-confirm-remove-phone]').click();
+  changeOfName.buttonReturnToApplication().click();
+  // contactDetails.getContactDetails(personId).then(getResponse => {
+  //   cy.log(`Status code ${getResponse.status} returned`)
+  //   if (getResponse.status === 200) {
+  //     const results = getResponse.data.results
+  //     results.forEach(({id, targetId, contactInformation }) => {
+  //       if (contactInformation.contactType === "phone") {
+  //         cy.log(`id=${id}`)
+  //         cy.log(`tid=${targetId}`)
+  //         contactDetails.deleteContactDetails(
+  //             id,
+  //             targetId,
+  //         ).then(deleteResponse => {
+  //           assert.deepEqual(deleteResponse.status, 200)
+  //
+  //         })
+  //       }
+  //     })
+  //   }
+  // })
+});
+// And("I click on Remove phone number" , () => {
+//   let phoneBtn = cy.get('[data-testid=button-remove-phone]');
+//   for(let i = 0; i < phoneBtn.length; i++) {
+//    phoneBtn[i].click();
+//     cy.get('[data-testid=button-confirm-remove-phone]').click();
 //   }
-// })
-  });
- // And("I click on Remove phone number" , () => {
- //   let phoneBtn = cy.get('[data-testid=button-remove-phone]');
- //   for(let i = 0; i < phoneBtn.length; i++) {
- //    phoneBtn[i].click();
- //     cy.get('[data-testid=button-confirm-remove-phone]').click();
- //   }
- //   changeOfName.buttonReturnToApplication().click();
- // });
+//   changeOfName.buttonReturnToApplication().click();
+// });
 
 Then("email address and phone number are null", () => {
   cy.contains(emailAdd).should('not.exist');
@@ -949,7 +948,7 @@ And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
 });
 
-Given("I seeded the database",() => {
+Given("I seeded the database", () => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
     const assetModel = asset(patchModel);
@@ -996,6 +995,85 @@ Given("I seeded the database",() => {
   })
 })
 
+Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
+  cy.log("Seeding database").then(() => {
+    const patchModel = patch;
+    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+    return new Cypress.Promise((resolve) => {
+      Promise.all([
+        DynamoDb.createRecord("PatchesAndAreas", patchModel),
+        DynamoDb.createRecord("Assets", assetModel),
+        DynamoDb.createRecord("Persons", personModel1),
+        DynamoDb.createRecord("Persons", personModel2),
+      ]).then(() => {
+        resolve()
+      })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
+})
+
+Given("I seeded the database with an asset {string} with a previous tenure", (assetGuid) => {
+  cy.log("Seeding database").then(() => {
+    const patchModel = patch;
+    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+    const personTenure = {
+      id: tenureModel.id,
+      startDate: tenureModel.startOfTenureDate,
+      endDate: tenureModel.endOfTenureDate,
+      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+      assetId: tenureModel.tenuredAsset.id,
+      uprn: tenureModel.tenuredAsset.uprn,
+      isActive: false,
+      type: tenureModel.tenureType.description,
+      propertyReference: tenureModel.tenuredAsset.propertyReference,
+    }
+
+    personModel1.tenures.push(personTenure);
+    personModel2.tenures.push(personTenure);
+
+    assetModel.tenure = {
+      endOfTenureDate: tenureModel.endOfTenureDate,
+      id: tenureModel.id,
+      paymentReference: tenureModel.paymentReference,
+      startOfTenureDate: tenureModel.startOfTenureDate,
+      type: tenureModel.tenureType.description,
+    }
+
+    // Add expired/previous tenure to asset
+    assetModel.tenure = {
+      endOfTenureDate: "2022-07-29T00:00:00",
+      id: tenureModel.id,
+      paymentReference: tenureModel.paymentReference,
+      startOfTenureDate: "2020-07-29T00:00:00",
+      type: tenureModel.tenureType.description,
+    }
+
+    return new Cypress.Promise((resolve) => {
+      Promise.all([
+        DynamoDb.createRecord("PatchesAndAreas", patchModel),
+        DynamoDb.createRecord("Assets", assetModel),
+        DynamoDb.createRecord("TenureInformation", tenureModel),
+        DynamoDb.createRecord("Persons", personModel1),
+        DynamoDb.createRecord("Persons", personModel2),
+      ]).then(() => {
+        resolve()
+      })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
+})
+
 Given("There's a person with a cautionary alert", () => {
   cy
     .log("Creating cautoinary alert & entities associated with it")
@@ -1007,7 +1085,7 @@ Given("There's a person with a cautionary alert", () => {
       const personTenure = tenureToPersonTenure(tenureModel);
       personModel.tenures.push(personTenure);
       assetModel.tenure = tenureToAssetTenure(tenureModel);
-  
+
       const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
         console.log("saveNonDynamoRecord data: ", response)
         try {
@@ -1016,16 +1094,16 @@ Given("There's a person with a cautionary alert", () => {
             [response.body],
             response,
           ).then((response) => {
-              resolve(response)
+            resolve(response)
           });
         }
-        catch(ex) {
+        catch (ex) {
           reject(ex);
         }
       });
 
       const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
-      
+
       createCautionaryAlert(cautionaryAlertRecord).then((data) => {
         saveNonDynamoRecord(data).then((moreData) => {
           Promise.resolve(moreData);
@@ -1033,17 +1111,17 @@ Given("There's a person with a cautionary alert", () => {
       });
 
       return new Cypress.Promise((resolve) => {
-          Promise.all([
-            DynamoDb.createRecord("PatchesAndAreas", patchModel),
-            DynamoDb.createRecord("Assets", assetModel),
-            DynamoDb.createRecord("TenureInformation", tenureModel),
-            DynamoDb.createRecord("Persons", personModel)
-          ]).then(() => {
-            resolve();
-          });
-        }).then(() => {
-          cy.log("CA related data created.");
-        })
+        Promise.all([
+          DynamoDb.createRecord("PatchesAndAreas", patchModel),
+          DynamoDb.createRecord("Assets", assetModel),
+          DynamoDb.createRecord("TenureInformation", tenureModel),
+          DynamoDb.createRecord("Persons", personModel)
+        ]).then(() => {
+          resolve();
+        });
+      }).then(() => {
+        cy.log("CA related data created.");
+      })
     });
 });
 
@@ -1066,17 +1144,55 @@ Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) 
 })
 
 After(() => {
-    const filename = "cypress/fixtures/recordsToDelete.json";
-    cy.readFile(filename)
-      .then(data => {
+  const filename = "cypress/fixtures/recordsToDelete.json";
+  cy.readFile(filename)
+    .then(data => {
+      return new Cypress.Promise((resolve) => {
+        Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
+          .then(() => {
+            resolve()
+          })
+      }).then(() => {
+        cy.writeFile(filename, []);
+        cy.log("Test database records cleared!")
+      })
+    });
+})
+
+beforeEach(() => {
+  const filename = "cypress/fixtures/recordsToDelete.json";
+  cy.readFile(filename)
+    .then(recordsToDelete => {
+      if (recordsToDelete.length) {
+
         return new Cypress.Promise((resolve) => {
-          Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
+          Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))
             .then(() => {
               resolve()
             })
         }).then(() => {
           cy.writeFile(filename, []);
-          cy.log("Database cleared!")
+          cy.log("Test database records cleared!")
         })
+      }
     });
-})
+});
+
+afterEach(() => {
+  const filename = "cypress/fixtures/recordsToDelete.json";
+  cy.readFile(filename)
+    .then(recordsToDelete => {
+      if (recordsToDelete.length) {
+
+        return new Cypress.Promise((resolve) => {
+          Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))
+            .then(() => {
+              resolve()
+            })
+        }).then(() => {
+          cy.writeFile(filename, []);
+          cy.log("Test database records cleared!")
+        })
+      }
+    });
+});

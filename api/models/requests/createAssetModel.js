@@ -69,7 +69,46 @@ const createAssetModel = {
       }
     ]
   },
-  "tenure": null
+}
+
+const getAssetWithNoTenure = (assetGuid, patch) => {
+  return {
+    "id": assetGuid,
+    "assetId": "0014062023",
+    "assetType": "Dwelling",
+    "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
+    "isActive": true,
+    "assetLocation": {
+      "floorNo": "",
+      "totalBlockFloors": null,
+      "parentAssets": []
+    },
+    "assetAddress": {
+      "uprn": "00014579215",
+      "postPreamble": "",
+      "addressLine1": "12 Pitcairn House",
+      "addressLine2": "",
+      "addressLine3": "",
+      "addressLine4": "",
+      "postCode": "E9 6PT"
+    },
+    "assetManagement": {
+      "agent": "",
+      "areaOfficeName": "",
+      "isCouncilProperty": true,
+      "managingOrganisation": "London Borough of Hackney",
+      "isTMOManaged": false,
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+    },
+    "assetCharacteristics": {
+      "numberOfBedrooms": null,
+      "numberOfLivingRooms": null,
+      "yearConstructed": "",
+      "windowType": "",
+      "numberOfLifts": null
+    },
+    "patches": [patch]
+  }
 }
 
 const asset = (patch) => {
@@ -82,5 +121,6 @@ const asset = (patch) => {
 
 module.exports = {
   asset,
-  createAssetModel
+  createAssetModel,
+  getAssetWithNoTenure
 }
