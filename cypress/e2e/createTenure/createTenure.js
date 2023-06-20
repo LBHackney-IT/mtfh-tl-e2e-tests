@@ -12,7 +12,7 @@ Then('the new tenure landing page is displayed', () => {
     createTenurePage.addPropertyHeading().should('be.visible')
     createTenurePage.propertyAddress().should('be.visible')
 })
-    
+
 When('I select a tenure type {string}', (tenureType) => {
     createTenurePage.tenureTypeSelection().select(tenureType)
 })
@@ -30,7 +30,7 @@ And('I enter a tenure end date {string} {string} {string}', (day, month, year) =
 })
 
 And('I click the cancel button', () => {
-    createTenurePage.cancelButton().click({force: true})
+    createTenurePage.cancelButton().click({ force: true })
 })
 
 Then('a create tenure error is triggered {string}', (error) => {
@@ -60,7 +60,7 @@ Then('the edit tenure information is displayed', () => {
     createTenurePage.tenureStartDateDayContainer().should('be.visible')
     createTenurePage.tenureStartDateMonthContainer().should('be.visible')
     createTenurePage.tenureStartDateYearContainer().should('be.visible')
-    cy.getTenureFixture(({id: tenureId}) => {
+    cy.getTenureFixture(({ id: tenureId }) => {
         cy.url().should('include', `tenure/${tenureId}/edit`)
     })
 })
@@ -85,14 +85,15 @@ Then('the tenure cannot be edited warning message is displayed', () => {
 })
 
 When('I add {int} named tenure holder', (tenureHolders) => {
-    for(let i = 0; i < tenureHolders; i++) {
+    cy.wait(10000) // Allows enough time to retrieve tenure with the latest version
+    for (let i = 0; i < tenureHolders; i++) {
         createTenurePage.addAsNamedTenureHolderButton().eq(i).click()
     }
 })
 
 Then('the person is added to the tenure', () => {
     // createTenurePage.pageAnnouncementContainer().should('be.visible')
-     createTenurePage.pageAnnouncementContainer().should('contain', 'Person added to tenure');
+    createTenurePage.pageAnnouncementContainer().should('contain', 'Person added to tenure');
 })
 
 Then('the person is not added to the tenure', () => {
@@ -101,8 +102,9 @@ Then('the person is not added to the tenure', () => {
 })
 
 When('I add {int} household member', (householdMembers) => {
-    for(let i = 0; i < householdMembers; i++) {
-        createTenurePage.addAsHousholdMember().eq(i).click()
+    cy.wait(10000) // Allows enough time to retrieve tenure with the latest version
+    for (let i = 0; i < householdMembers; i++) {
+        createTenurePage.addAsHouseholdMember().eq(i).click()
     }
 })
 
@@ -146,7 +148,7 @@ Given('I delete all existing persons from the tenure {string}', async (tenureId)
     const householdMembers = getResponse.data.householdMembers;
 
     // DELETE any existing person from the tenure
-    for(let i = 0; i < householdMembers.length; i++) {
+    for (let i = 0; i < householdMembers.length; i++) {
         const deleteResponse = await tenure.deleteTenure(tenureId, householdMembers[i].id)
         cy.log(`Status code ${deleteResponse.status} returned`)
         assert.deepEqual(deleteResponse.status, 204)
@@ -165,7 +167,7 @@ Then('the tenure end date is editable', () => {
 });
 Then("the information text is displayed", () => {
     modal.modalBody().should('be.visible');
-    modal.modalBody().should('contain', 'Are you sure you want to change the status of the tenure to inactive? The tenure will no longer be editable.' );
+    modal.modalBody().should('contain', 'Are you sure you want to change the status of the tenure to inactive? The tenure will no longer be editable.');
 });
 
 When("I enter a tenure end date as {string} {string} {string}", (day, month, year) => {

@@ -91,8 +91,8 @@ class CreateTenurePageObjects {
         return cy.contains('Add as named tenure holder')
     }
 
-    addAsHousholdMember() {
-        return cy.contains('Add as household member')
+    addAsHouseholdMember() {
+        return cy.get('.govuk-button.lbh-button:contains("Add as household member")');
     }
 
     pageAnnouncementContainer() {
