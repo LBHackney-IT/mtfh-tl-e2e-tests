@@ -43,7 +43,7 @@ Then("errors for the required form fields should be visible", () => {
     ]
 
     requiredFieldErrors.forEach(error => cy.contains(error).should('be.visible'))
-    cy.get('span').filter(':contains("Please select an option")').should('have.length', 2)
+    cy.get('span').filter(':contains("Please select an option")').should('be.visible')
 })
 
 Then("I should see the 'Managing organisation' field populated with the default option of 'London Borough of Hackney'", () => {
@@ -68,10 +68,6 @@ And("I enter a valid value for field 'Postcode'", () => {
 
 And("I choose the option 'Yes' for field 'Is LBH property?'", () => {
     cy.get('[data-testid="is-council-property-yes"]').click()
-})
-
-And("I choose the option 'No' for field 'Is TMO managed?'", () => {
-    cy.get('[data-testid="is-tmo-managed-no"]').click()
 })
 
 When("I click on 'Create new property' button, and the POST request is successful", () => {
