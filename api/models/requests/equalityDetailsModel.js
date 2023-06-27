@@ -1,5 +1,7 @@
+const { faker } = require("@faker-js/faker")
+
 const equalityDetailsModel = {
-    "targetId": "f33e70b2-afb8-a3ba-46bc-9e8e4d2eb21d",
+    "targetId": faker.datatype.uuid(),
     "ageGroup": null,
     "caringResponsibilities": {
         "provideUnpaidCare": null,

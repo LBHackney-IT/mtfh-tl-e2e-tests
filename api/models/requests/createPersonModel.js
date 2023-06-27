@@ -14,11 +14,11 @@ export const createPersonModel = {
     "identifications": [],
     "tenures": [
         {
-            "id": "54eae587-19b5-9381-c613-91da61648936",
+            "id": faker.datatype.uuid(),
             "startDate": "2004-09-20T00:00:00",
             "endDate": "2015-07-19T00:00:00",
             "assetFullAddress": "23 Brunswick House  Thurtle Road E2 8PJ",
-            "assetId": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
+            "assetId": faker.datatype.uuid(),
             "uprn": "100022991794",
             "isActive": false,
             "type": "Secure"

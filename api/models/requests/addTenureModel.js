@@ -1,4 +1,5 @@
 const { faker } = require("@faker-js/faker");
+
 const createTenureModel = {
     "tenureType": {
         "code": "FRS",
@@ -6,7 +7,7 @@ const createTenureModel = {
     },
     "householdMembers": [
         {
-            "id": "5270ebf3-7ec5-4825-8273-6843ad7781db",
+            "id": faker.datatype.uuid(),
             "type": "person",
             "fullName": "Dolphin Hackney",
             "isResponsible": true,
@@ -14,7 +15,7 @@ const createTenureModel = {
             "personTenureType": "Tenant"
         },
         {
-            "id": "2e03113a-f404-acdd-fe16-0eb1351526dc",
+            "id": faker.datatype.uuid(),
             "type": "person",
             "fullName": "FAKE_Katy FAKE_Turne",
             "isResponsible": false,
@@ -22,7 +23,7 @@ const createTenureModel = {
             "personTenureType": "HouseholdMember"
         },
         {
-            "id": "1a622732-c9ad-4599-b5ba-4c144728c9f4",
+            "id": faker.datatype.uuid(),
             "type": "person",
             "fullName": "Whales Hackney",
             "isResponsible": true,
@@ -31,7 +32,7 @@ const createTenureModel = {
         }
     ],
     "tenuredAsset": {
-        "id": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
+        "id": faker.datatype.uuid(),
         "type": "Dwelling",
         "fullAddress": "E2E test street N18 2UF",
         "uprn": "10008334555"
@@ -47,7 +48,7 @@ const secureTenureModel = {
     "paymentReference": "9156853502",
     "householdMembers": [
         {
-            "id": "2e03113a-f404-acdd-fe16-0eb1351526dc",
+            "id": faker.datatype.uuid(),
             "type": "person",
             "fullName": "FAKE_Katy FAKE_Turne",
             "isResponsible": false,
@@ -56,7 +57,7 @@ const secureTenureModel = {
         }
     ],
     "tenuredAsset": {
-        "id": "667c6809-d27b-40c6-a263-48670e253b2f",
+        "id": faker.datatype.uuid(),
         "type": "Dwelling",
         "fullAddress": "ROOM 106 CAPE HOUSE 39 Dalston Lane E8 3DF",
         "uprn": "10008334555"
@@ -88,7 +89,7 @@ const tenure = (data, asset, householdMembers) => {
         householdMembers: [
             ...newHouseholdMembers,
             {
-                id: "2e03113a-f404-acdd-fe16-0eb1351526dc",
+                id: faker.datatype.uuid(),
                 type: "person",
                 fullName: "FAKE_Katy FAKE_Turne",
                 isResponsible: false,
@@ -103,7 +104,7 @@ const tenure = (data, asset, householdMembers) => {
             uprn: assetAddress.uprn,
             fullAddress: `${assetAddress.addressLine1} ${assetAddress.addressLine2} ${assetAddress.addressLine3} ${assetAddress.postCode}`
         } : {
-            id: "667c6809-d27b-40c6-a263-48670e253b2f",
+            id: faker.datatype.uuid(),
             propertyReference: "1234567",
             type: "Dwelling",
             fullAddress: "ROOM 106 CAPE HOUSE 39 Dalston Lane E8 3DF",
