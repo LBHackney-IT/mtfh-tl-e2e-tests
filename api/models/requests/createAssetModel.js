@@ -1,7 +1,6 @@
 const { faker } = require("@faker-js/faker");
-
 const createAssetModel = {
-  "id": faker.datatype.uuid(),
+  "id": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
   "assetId": "12876875",
   "assetAddress": {
     "uprn": "100021065786",
@@ -17,7 +16,7 @@ const createAssetModel = {
     "areaOfficeName": "Clapton Panel Area Team",
     "isCouncilProperty": true,
     "managingOrganisation": "LBH",
-    "managingOrganisationId": faker.datatype.uuid(),
+    "managingOrganisationId": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
     "owner": "London Borough of Hackney",
     "isTMOManaged": true,
     "propertyOccupiedStatus": "DS",
@@ -57,7 +56,7 @@ const createAssetModel = {
     "kitchenNotes": "Shared, on 1st and 3rd floors",
     "isStepFree": true
   },
-  "parentId": faker.datatype.uuid(),
+  "parentId": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
   "assetType": "Dwelling",
   "assetLocation": {
     "floorNo": "G",
@@ -65,7 +64,7 @@ const createAssetModel = {
     "parentAssets": [
       {
         "type": "block",
-        "id": faker.datatype.uuid(),
+        "id": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
         "name": "Stone Bridge Estate"
       }
     ]
