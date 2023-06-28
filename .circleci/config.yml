@@ -174,7 +174,10 @@ jobs:
                 type: string
         steps:
           - when:
-              condition: << pipeline.parameters.run_workflow_ci >> 
+              condition:
+              - and:
+                - << pipeline.parameters.run_workflow_ci >>
+                - false
               steps:
                 - *attach_workspace
                 - aws-cli/install
