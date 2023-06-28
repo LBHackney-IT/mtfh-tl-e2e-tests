@@ -174,7 +174,7 @@ jobs:
                 type: string
         steps:
           - when:
-              condition: false
+              condition: "false"
               steps:
                 - *attach_workspace
                 - aws-cli/install
