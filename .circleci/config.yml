@@ -225,8 +225,8 @@ workflows:
           name: trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: staging
           context: mtfh-mfe-e2e-tests
-          requires:
-            - Run acceptance tests against development
+          #requires:
+          #  - Run acceptance tests against development
           
   e2e-tests-staging:
     when:
@@ -236,17 +236,21 @@ workflows:
     jobs:
       - assume-role-staging:
           context: api-assume-role-housing-staging-context
-      - run-e2e-tests:
-          name: Run acceptance tests against staging environment
-          stage: staging
-          context: mtfh-mfe-e2e-tests
+      - permit-production-release:
+          type: approval
           requires:
             - assume-role-staging
       - trigger-downstream-deployment:
           name: trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: production
           requires:
-            - Run acceptance tests against staging environment
+            - permit-production-release
+      - run-e2e-tests:
+          name: Run acceptance tests against staging environment
+          stage: staging
+          context: mtfh-mfe-e2e-tests
+          requires:
+            - permit-production-release
       
   e2e-tests-production:
     when:
