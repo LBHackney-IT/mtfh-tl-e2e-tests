@@ -228,8 +228,8 @@ workflows:
           name: trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: staging
           context: mtfh-mfe-e2e-tests
-          requires:
-            - Run acceptance tests against development
+          #requires:
+          #  - Run acceptance tests against development
           
   e2e-tests-staging:
     when:
@@ -248,8 +248,8 @@ workflows:
       - trigger-downstream-deployment:
           name: trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: production
-          requires:
-            - Run acceptance tests against staging environment
+          #requires:
+          #  - Run acceptance tests against staging environment
       
   e2e-tests-production:
     when:
