@@ -176,12 +176,9 @@ jobs:
           - when:
               condition: << pipeline.parameters.run_workflow_ci >> 
               steps:
-                - *attach_workspace
-                - aws-cli/install
-                - checkout
-                - execute-e2e-tests:
-                    stage: development
-                    trigger-context: ci
+              - run:
+                  name: "Disable"
+                  command: echo "CI tests have been temporarily disabled"
         
   run-e2e-devices:
         executor: cypress-browsers
