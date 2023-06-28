@@ -165,7 +165,7 @@ jobs:
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
   run-ci-tests:
-        parallelism: 22
+        parallelism: 11
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
@@ -173,9 +173,12 @@ jobs:
             stage:
                 type: string
         steps:
-          - run:
-            name: "Temp removal"
-            command: echo "CI tests have been temporaily disabled" 
+          - when:
+              condition: << pipeline.parameters.run_workflow_ci >> 
+              steps:
+              - run:
+                  name: "Disable"
+                  command: echo "CI tests have been temporarily disabled"
         
   run-e2e-devices:
         executor: cypress-browsers
@@ -222,8 +225,8 @@ workflows:
           name: trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: staging
           context: mtfh-mfe-e2e-tests
-          #requires:
-          #  - Run acceptance tests against development
+          requires:
+            - Run acceptance tests against development
           
   e2e-tests-staging:
     when:
@@ -242,8 +245,8 @@ workflows:
       - trigger-downstream-deployment:
           name: trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: production
-          #requires:
-          #  - Run acceptance tests against staging environment
+          requires:
+            - Run acceptance tests against staging environment
       
   e2e-tests-production:
     when:
