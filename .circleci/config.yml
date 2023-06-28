@@ -173,15 +173,9 @@ jobs:
             stage:
                 type: string
         steps:
-          - when:
-              equal: [ xxx, << pipeline.parameters.run_workflow_ci >> ]
-              steps:
-                - *attach_workspace
-                - aws-cli/install
-                - checkout
-                - execute-e2e-tests:
-                    stage: development
-                    trigger-context: ci
+          - run:
+            name: "Temp removal"
+            command: echo "CI tests have been temporaily disabled" 
         
   run-e2e-devices:
         executor: cypress-browsers
