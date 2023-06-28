@@ -226,7 +226,7 @@ workflows:
           stage: development
           context: mtfh-mfe-e2e-tests
           requires:
-            - trigger-downstream-deployment
+            - trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
           
   e2e-tests-staging:
     when:
@@ -250,7 +250,7 @@ workflows:
           stage: staging
           context: mtfh-mfe-e2e-tests
           requires:
-            - permit-production-release
+            - trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
       
   e2e-tests-production:
     when:
