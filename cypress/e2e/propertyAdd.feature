@@ -13,7 +13,7 @@ Feature: Property Add
     @SmokeTest
     Scenario Outline: 'New property - Page headings/sections and form action buttons are present'
         Given I am on the MMH 'New property' page
-        Then I should see the main heading 'New Property', along with the other secondary headings: Address, Property management, Asset details
+        Then I should see the main heading 'New Property', and the user disclaimer along with the other secondary headings: Address, Property management, Asset details
         And the 'Create new property' and 'Cancel' buttons are present, along with a 'Back' link at the top
 
     @SmokeTest

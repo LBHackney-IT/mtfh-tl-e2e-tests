@@ -15,8 +15,9 @@ Given("I am on the MMH 'New property' page", () => {
     cy.wait('@getAllPatches')
 });
 
-Then("I should see the main heading 'New Property', along with the other secondary headings: Address, Property management, Asset details", () => {
+Then("I should see the main heading 'New Property', and the user disclaimer along with the other secondary headings: Address, Property management, Asset details", () => {
     cy.contains('New property').should('be.visible')
+    cy.get('[data-testid="new-property-disclaimer"]').should('be.visible')
     cy.contains('Address').should('be.visible')
     cy.contains('Property management').should('be.visible')
     cy.contains('Asset details').should('be.visible')
