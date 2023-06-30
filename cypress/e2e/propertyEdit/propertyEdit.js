@@ -1,6 +1,6 @@
 import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
 import { getAsset } from "../../../api/models/requests/createAssetModel";
-import { addTestAssetToDatabase, getAssetViewUrlByGuid } from "../common/common";
+import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
 
 const propertyUprn = "100023014215"
@@ -135,7 +135,7 @@ Given("I seeded the database with an asset with GUID {string}, and with no valid
         const testAsset = getAsset(assetGuid, "");
 
         cy.log("Adding test asset to database and creating a record of it in recordsToDelete.json file")
-        await addTestAssetToDatabase(testAsset);
+        await addTestRecordToDatabase("Assets", testAsset);
     })
 })
 
@@ -144,6 +144,6 @@ Given("I seeded the database with an asset with GUID {string}, and with a valid 
         const testAsset = getAsset(assetGuid, propertyUprn);
 
         cy.log("Adding test asset to database and creating a record of it in recordsToDelete.json file")
-        await addTestAssetToDatabase(testAsset);
+        await addTestRecordToDatabase("Assets", testAsset);
     })
 })

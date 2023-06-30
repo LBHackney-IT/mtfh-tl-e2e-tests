@@ -1147,9 +1147,10 @@ export const getAssetViewUrlByGuid = (assetGuid) => {
   return `${envConfig.baseUrl}/property/${assetGuid}`
 }
 
-export const addTestAssetToDatabase = (testAsset) => {
+// This methods adds a temporary database record to the provided database table, and adds an entry to recordsToDelete.json
+export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
   return new Cypress.Promise((resolve) => {
-    DynamoDb.createRecord("Assets", testAsset)
+    DynamoDb.createRecord(dbTableName, testDbRecord)
       .then(() => {
         resolve()
       })
