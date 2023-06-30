@@ -111,6 +111,59 @@ const getAssetWithNoTenure = (assetGuid, patch) => {
   }
 }
 
+const getAsset = (assetGuid, uprn) => {
+  return {
+    "id": assetGuid,
+    "assetId": "00054811",
+    "assetType": "LettableNonDwelling",
+    "rootAsset": "ROOT",
+    "isActive": false,
+    "parentAssetIds": "ROOT",
+    "assetLocation": {
+      "floorNo": "0",
+      "totalBlockFloors": 0,
+      "parentAssets": []
+    },
+    "assetAddress": {
+      "uprn": uprn,
+      "addressLine1": "123 Test Asset",
+      "addressLine2": "Hackney",
+      "addressLine3": "LONDON",
+      "addressLine4": "",
+      "postCode": "E2 8EB",
+      "postPreamble": ""
+    },
+    "assetManagement": {
+      "agent": "Hackney Homes",
+      "areaOfficeName": "Shoreditch Panel Area Team",
+      "isCouncilProperty": true,
+      "managingOrganisation": "London Borough of Hackney",
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724",
+      "owner": "LBH",
+      "isTMOManaged": false,
+      "propertyOccupiedStatus": "VR",
+      "isNoRepairsMaintenance": false
+    },
+    "assetCharacteristics": {
+      "numberOfBedrooms": 0,
+      "numberOfLifts": 0,
+      "numberOfLivingRooms": 0,
+      "windowType": "",
+      "yearConstructed": "0"
+    },
+    "patches": [
+      {
+        "id": "bd0a8e2b-c3b5-4628-aa33-8e7509d5eac6",
+        "parentId": "8d4fb05d-3ff5-48b7-a17a-71fcb27a66a8",
+        "name": "SN4",
+        "patchType": "patch",
+        "domain": "MMH",
+        "responsibleEntities": []
+      }
+    ]
+  }
+}
+
 const asset = (patch) => {
   return {
     ...createAssetModel,
@@ -122,5 +175,6 @@ const asset = (patch) => {
 module.exports = {
   asset,
   createAssetModel,
-  getAssetWithNoTenure
+  getAsset,
+  getAssetWithNoTenure,
 }

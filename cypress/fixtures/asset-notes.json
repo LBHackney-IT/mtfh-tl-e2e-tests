@@ -1,0 +1,25 @@
+{
+    "results": [
+        {
+            "id": "4162a73a-8ad0-4fcc-8674-35aa9e8abe90",
+            "title": "This is a test",
+            "description": "Testings",
+            "targetType": "asset",
+            "targetId": "2d13b5cb-baf2-91fd-c231-8c5c2ee9548c",
+            "createdAt": "2021-11-18T15:14:02.117Z",
+            "categorisation": {
+                "category": "Rehousing",
+                "subCategory": null,
+                "description": null
+            },
+            "author": {
+                "fullName": "Mirela Georgieva",
+                "email": "mirela.georgieva@hackney.gov.uk"
+            },
+            "highlight": false
+        }
+    ],
+    "paginationDetails": {
+        "nextToken": null
+    }
+}

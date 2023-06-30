@@ -1,51 +1,40 @@
-import { When, Then, And, Given,  } from "@badeball/cypress-cucumber-preprocessor";
+import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
+import { getAsset } from "../../../api/models/requests/createAssetModel";
 import { baseUrl } from "../../../environment-config";
+import DynamoDb from "../common/DynamoDb";
 
-import PropertyPageObjects from "../../pageObjects/propertyPage";
 
-// Works locally but causes the Circle CI pipeline to fail (webpack error)
-// const assetFixtureJson = require('../../fixtures/asset.json'); 
-
-const propertyPage = new PropertyPageObjects();
-
-// The information below comes from asset.json (fixture)
-const propertyGuid = "635ed65b-461c-4527-bb8e-485303b74c87"
 const propertyUprn = "100023014215"
+const propertyAssetId = getAsset("Test", "Test").assetId;
 
-// Hardcoded URL pointing to a property with a valid UPRN for which editing is enabled
-const editPropertyAddressUrl = `${baseUrl}/property/edit/${propertyGuid}`
 
 const newAddressLine1Value = 'NEW ADDRESS LINE 1'
 
-When("I select a property", () => {
-    propertyPage.selectFirstRecord().click();
-})
-
-Given("I am on the MMH 'Edit property address' page", () => {
-    cy.intercept('GET', `*/api/v1/assets/${propertyGuid}`, { fixture: 'asset.json', }).as('getAsset')
+Given("I am on the MMH 'Edit property address' page, for asset with GUID {string}", (assetGuid) => {
+    cy.intercept('GET', `*/api/v1/assets/${assetGuid}`).as('getAsset')
     cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { fixture: 'address.json', }).as('getAddress')
 
-    cy.visit(editPropertyAddressUrl)
+    cy.visit(getAssetEditUrlByGuid(assetGuid))
 
     cy.wait('@getAsset')
     cy.wait('@getAddress')
 });
 
-Given("I am on the MMH 'Edit property address' page, but the LLPG address fails to be retrieved", () => {
-    cy.intercept('GET', `*/api/v1/assets/${propertyGuid}`, { fixture: 'asset.json', }).as('getAsset')
+Given("I am on the MMH 'Edit property address' page, for asset with GUID {string}, but the LLPG address fails to be retrieved", (assetGuid) => {
+    cy.intercept('GET', `*/api/v1/assets/${assetGuid}`).as('getAsset')
     cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { forceNetworkError: true }).as('getAddress')
 
-    cy.visit(editPropertyAddressUrl)
+    cy.visit(getAssetEditUrlByGuid(assetGuid))
 
     cy.wait('@getAsset')
     cy.wait('@getAddress')
 });
 
-Then("if the property has no valid UPRN, I can see a disabled button that says 'Cannot edit: UPRN missing'", () => {
+Given("that the property has no valid UPRN, I can see a disabled button that says 'Cannot edit: UPRN missing'", () => {
     cy.contains('Cannot edit: UPRN missing').should('be.visible')
 })
 
-Then("if the property has a valid UPRN, I can see a button that says 'Edit address details'", () => {
+Given("that the property has a valid UPRN, I can see a button that says 'Edit address details'", () => {
     cy.contains('Edit address details').should('be.visible')
 })
 
@@ -65,9 +54,9 @@ And("I edit the address line 1 of the address", () => {
     cy.get('[data-testid="address-line-1"]').clear().type(newAddressLine1Value)
 })
 
-Then("I click on 'Update to this address' button, and the PATCH requests are successful", () => {
-    cy.intercept('PATCH', `*/api/v1/assets/${propertyGuid}/address`, { statusCode: 204 }).as('patchAddress')
-    cy.intercept('PATCH', `*/api/v1/asset/${propertyUprn}`, { statusCode: 204 }).as('updateAssetDetails')
+Then("I click on 'Update to this address' button, and the PATCH requests are successful for asset with GUID {string}", (assetGuid) => {
+    cy.intercept('PATCH', `*/api/v1/assets/${assetGuid}/address`, { statusCode: 204 }).as('patchAddress')
+    cy.intercept('PATCH', `*api/v1/asset/${propertyAssetId}`, { statusCode: 204 }).as('updateAssetDetails')
 
     cy.contains('Update to this address').click()
 
@@ -75,9 +64,9 @@ Then("I click on 'Update to this address' button, and the PATCH requests are suc
     cy.wait('@updateAssetDetails')
 })
 
-Then("I click on 'Update to this address' button, and the PATCH requests fail", () => {
-    cy.intercept('PATCH', `*/api/v1/assets/${propertyGuid}/address`, { forceNetworkError: true }).as('patchAddress')
-    cy.intercept('PATCH', `*/api/v1/asset/${propertyUprn}`, { forceNetworkError: true }).as('updateAssetDetails')
+Then("I click on 'Update to this address' button, and the PATCH requests fail for asset with GUID {string}", (assetGuid) => {
+    cy.intercept('PATCH', `*/api/v1/assets/${assetGuid}/address`, { forceNetworkError: true }).as('patchAddress')
+    cy.intercept('PATCH', `*api/v1/asset/${propertyAssetId}`, { forceNetworkError: true }).as('updateAssetDetails')
 
     cy.contains('Update to this address').click()
 
@@ -119,4 +108,51 @@ And("the address fields, despite not being autopopulated, should be blank and ed
 
 And("the 'Update to this address' button should be enabled", () => {
     cy.contains('Update to this address').should('be.enabled')
+})
+
+When("I view the asset with GUID {string}, in MMH", (assetGuid) => {
+    cy.intercept('GET', `*/api/v1/assets/${assetGuid}`).as('getAsset')
+    cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=${assetGuid}`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
+    cy.visit(getAssetViewUrlByGuid(assetGuid))
+    cy.wait('@getAsset')
+    cy.wait('@getNotes')
+});
+
+
+// Helper methods
+
+const getAssetViewUrlByGuid = (assetGuid) => {
+    return `${baseUrl}/property/${assetGuid}`
+}
+
+const getAssetEditUrlByGuid = (assetGuid) => {
+    return `${baseUrl}/property/edit/${assetGuid}/`
+}
+
+const addTestAssetToDatabase = (testAsset) => {
+    return new Cypress.Promise((resolve) => {
+        DynamoDb.createRecord("Assets", testAsset).then(() => {
+            resolve()
+        })
+    }).then(() => {
+        cy.log("Database seeded!");
+    })
+}
+
+// Database seed methods
+
+Given("I seeded the database with an asset with GUID {string}, and with no valid UPRN", (assetGuid) => {
+    cy.log("Seeding database").then(() => {
+        const testAsset = getAsset(assetGuid, "");
+
+        addTestAssetToDatabase(testAsset);
+    })
+})
+
+Given("I seeded the database with an asset with GUID {string}, and with a valid UPRN", (assetGuid) => {
+    cy.log("Seeding database").then(() => {
+        const testAsset = getAsset(assetGuid, propertyUprn);
+
+        addTestAssetToDatabase(testAsset);
+    })
 })
