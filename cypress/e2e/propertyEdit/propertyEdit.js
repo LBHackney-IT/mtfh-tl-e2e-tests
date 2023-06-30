@@ -2,6 +2,7 @@ import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor
 import { getAsset } from "../../../api/models/requests/createAssetModel";
 import { addTestAssetToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
+import DynamoDb from "../common/DynamoDb";
 
 const propertyUprn = "100023014215"
 const propertyAssetId = getAsset("Test", "Test").assetId;
@@ -113,11 +114,11 @@ When("I view the asset with GUID {string}, in MMH", (assetGuid) => {
     cy.wait('@getNotes')
 });
 
-Then ("I click on the 'Back to asset view' button", () => {
+Then("I click on the 'Back to asset view' button", () => {
     cy.contains('Back to asset view').should('be.visible').click()
 })
 
-And ("I should see the edited address", () => {
+And("I should see the edited address", () => {
     cy.contains(newAddressLine1Value).should('be.visible')
 })
 
@@ -126,22 +127,22 @@ And ("I should see the edited address", () => {
 
 const getAssetEditUrlByGuid = (assetGuid) => {
     return `${baseUrl}/property/edit/${assetGuid}/`
-  }
+}
 
 // Database seed methods
 
 Given("I seeded the database with an asset with GUID {string}, and with no valid UPRN", (assetGuid) => {
-    cy.log("Seeding database").then(() => {
+    cy.log("Seeding database").then(async () => {
         const testAsset = getAsset(assetGuid, "");
 
-        addTestAssetToDatabase(testAsset);
+        await addTestAssetToDatabase(testAsset);
     })
 })
 
 Given("I seeded the database with an asset with GUID {string}, and with a valid UPRN", (assetGuid) => {
-    cy.log("Seeding database").then(() => {
+    cy.log("Seeding database").then(async () => {
         const testAsset = getAsset(assetGuid, propertyUprn);
 
-        addTestAssetToDatabase(testAsset);
+        await addTestAssetToDatabase(testAsset);
     })
 })

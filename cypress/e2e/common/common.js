@@ -1,47 +1,46 @@
 import {
-  Then,
   And,
   Given,
-  defineParameterType,
+  Then,
   When,
-  After,
+  defineParameterType
 } from "@badeball/cypress-cucumber-preprocessor";
+import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
+import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
+import PersonContactPageObjects from "../../pageObjects/personContactPage";
+import PersonPageObjects from "../../pageObjects/personPage";
+import PropertyPageObjects from "../../pageObjects/propertyPage";
+import SearchPageObjects from "../../pageObjects/searchPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
 import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
-import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
-import PersonContactPageObjects from "../../pageObjects/personContactPage";
-import PersonPageObjects from "../../pageObjects/personPage";
-import PropertyPageObjects from "../../pageObjects/propertyPage"
-import SearchPageObjects from "../../pageObjects/searchPage";
+import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation";
 import TenurePageObjects from "../../pageObjects/tenurePage";
-import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
-import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 
 
+import date from "date-and-time";
+import createCautionaryAlert from "../../../api/cautionary-alert";
 import comment from "../../../api/comment";
 import contactDetails from "../../../api/contact-details";
-import { getTenure, editTenure } from "../../../api/tenure";
-import createCautionaryAlert from "../../../api/cautionary-alert";
 import referenceData from "../../../api/reference-data";
-import date from "date-and-time";
+import { editTenure, getTenure } from "../../../api/tenure";
 import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
 
 
-import { hasToggle } from "../../helpers/hasToggle";
-import { guid } from "../../helpers/commentText";
 import property from "../../../api/property";
+import { guid } from "../../helpers/commentText";
+import { hasToggle } from "../../helpers/hasToggle";
 import { searchPersonResults } from "../../support/searchPersonResults";
 import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
-import { patch } from "../../../api/models/requests/patchModel"
-import { asset, getAssetWithNoTenure } from "../../../api/models/requests/createAssetModel"
-import { person } from "../../../api/models/requests/createPersonModel"
+import { saveNonDynamoFixture } from "../../../api/helpers";
 import { tenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
-import { saveNonDynamoFixture } from "../../../api/helpers"
+import { asset, getAssetWithNoTenure } from "../../../api/models/requests/createAssetModel";
+import { person } from "../../../api/models/requests/createPersonModel";
+import { patch } from "../../../api/models/requests/patchModel";
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -1148,13 +1147,15 @@ export const getAssetViewUrlByGuid = (assetGuid) => {
   return `${envConfig.baseUrl}/property/${assetGuid}`
 }
 
-export const addTestAssetToDatabase = async (testAsset) => {
-  await new Cypress.Promise((resolve) => {
-    DynamoDb.createRecord("Assets", testAsset).then(() => {
-      resolve();
-    });
-  });
-  cy.log("Database seeded!");
+export const addTestAssetToDatabase = (testAsset) => {
+  return new Cypress.Promise((resolve) => {
+    DynamoDb.createRecord("Assets", testAsset)
+      .then(() => {
+        resolve()
+      })
+  }).then(() => {
+    cy.log("Database seeded!");
+  })
 }
 
 // Database data teardown
