@@ -38,6 +38,8 @@ Feature: Property Edit
         And I can see the address line 1 of the 'Current address' has changed successfully
         And I can see a success message at the top of the screen
         And the 'Update to this address' and 'Cancel' buttons should be replaced by the 'Back to asset view' button
+        Then I click on the 'Back to asset view' button
+        And I should see the edited address
 
     @SmokeTest
     Scenario Outline: 'Edit property address - patch address is not successful'

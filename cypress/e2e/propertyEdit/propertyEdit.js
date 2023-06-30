@@ -1,13 +1,10 @@
 import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
 import { getAsset } from "../../../api/models/requests/createAssetModel";
+import { addTestAssetToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
-import DynamoDb from "../common/DynamoDb";
-
 
 const propertyUprn = "100023014215"
 const propertyAssetId = getAsset("Test", "Test").assetId;
-
-
 const newAddressLine1Value = 'NEW ADDRESS LINE 1'
 
 Given("I am on the MMH 'Edit property address' page, for asset with GUID {string}", (assetGuid) => {
@@ -55,12 +52,10 @@ And("I edit the address line 1 of the address", () => {
 })
 
 Then("I click on 'Update to this address' button, and the PATCH requests are successful for asset with GUID {string}", (assetGuid) => {
-    cy.intercept('PATCH', `*/api/v1/assets/${assetGuid}/address`, { statusCode: 204 }).as('patchAddress')
     cy.intercept('PATCH', `*api/v1/asset/${propertyAssetId}`, { statusCode: 204 }).as('updateAssetDetails')
 
     cy.contains('Update to this address').click()
 
-    cy.wait('@patchAddress')
     cy.wait('@updateAssetDetails')
 })
 
@@ -118,26 +113,20 @@ When("I view the asset with GUID {string}, in MMH", (assetGuid) => {
     cy.wait('@getNotes')
 });
 
+Then ("I click on the 'Back to asset view' button", () => {
+    cy.contains('Back to asset view').should('be.visible').click()
+})
+
+And ("I should see the edited address", () => {
+    cy.contains(newAddressLine1Value).should('be.visible')
+})
+
 
 // Helper methods
 
-const getAssetViewUrlByGuid = (assetGuid) => {
-    return `${baseUrl}/property/${assetGuid}`
-}
-
 const getAssetEditUrlByGuid = (assetGuid) => {
     return `${baseUrl}/property/edit/${assetGuid}/`
-}
-
-const addTestAssetToDatabase = (testAsset) => {
-    return new Cypress.Promise((resolve) => {
-        DynamoDb.createRecord("Assets", testAsset).then(() => {
-            resolve()
-        })
-    }).then(() => {
-        cy.log("Database seeded!");
-    })
-}
+  }
 
 // Database seed methods
 

@@ -63,7 +63,6 @@ const phoneNumber = '07788123456';
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
-let propertyId = "";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
@@ -1142,6 +1141,23 @@ Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) 
   });
 
 })
+
+// Helper methods
+
+export const getAssetViewUrlByGuid = (assetGuid) => {
+  return `${envConfig.baseUrl}/property/${assetGuid}`
+}
+
+export const addTestAssetToDatabase = async (testAsset) => {
+  await new Cypress.Promise((resolve) => {
+    DynamoDb.createRecord("Assets", testAsset).then(() => {
+      resolve();
+    });
+  });
+  cy.log("Database seeded!");
+}
+
+// Database data teardown
 
 beforeEach(() => {
   const filename = "cypress/fixtures/recordsToDelete.json";
