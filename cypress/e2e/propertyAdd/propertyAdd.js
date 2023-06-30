@@ -7,10 +7,10 @@ import { getAssetViewUrlByGuid } from "../common/common";
 const { faker } = require("@faker-js/faker");
 
 const addPropertyAddressUrl = `${baseUrl}/property/new`
-const assetId = "065515914"
+const assetId = faker.random.numeric(9)
 const addressLine1 = "47 Test Road"
 const postcode = "MK40 2RF"
-const newAssetGuid = faker.datatype.uuid()
+const assetGuid = faker.datatype.uuid()
 
 Given("I am on the MMH 'New property' page", () => {
     cy.intercept('GET', '*/api/v1/patch/all', { fixture: 'patches.json', }).as('getAllPatches')
@@ -79,12 +79,13 @@ And("I choose the option 'Yes' for field 'Is LBH property?'", () => {
 When("I click on 'Create new property' button, and the POST request is successful", () => {
     cy.contains('Create new property').click()
 
-    const testAsset = getNewAsset(newAssetGuid);
+    const testAsset = getNewAsset(assetGuid, assetId);
     // Add test asset to database
     cy.intercept('*/api/v1/assets', (req) => { req.body = testAsset }).as('createNewAssetSuccess')
     // Make note of asset GUID in recordsToDelete.json file, for tear down
     saveFixtureData("Assets", { id: testAsset.id }, testAsset)
-    cy.log("Randomly generated Asset GUID:", newAssetGuid)
+    cy.log("Randomly generated Asset GUID:", assetGuid)
+    cy.log("Randomly generated Asset ID:", assetId)
 
     cy.wait('@createNewAssetSuccess').its('request.method').should('deep.equal', 'POST')
 })
@@ -129,8 +130,8 @@ When("I remove the first Patch dropdown field, using the 'Remove patch' as no lo
 })
 
 Then("I should be able to view new property in MMH", () => {
-    cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=${newAssetGuid}`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
-    cy.visit(getAssetViewUrlByGuid(newAssetGuid))
+    cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=${assetGuid}`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
+    cy.visit(getAssetViewUrlByGuid(assetGuid))
     cy.contains(addressLine1).should('be.visible');
     cy.contains(postcode).should('be.visible');
 })

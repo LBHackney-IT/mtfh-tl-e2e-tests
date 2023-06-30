@@ -164,10 +164,10 @@ const getAsset = (assetGuid, uprn) => {
   }
 }
 
-const getNewAsset = (assetGuid) => {
+const getNewAsset = (assetGuid, assetId) => {
   return {
     "id": assetGuid,
-    "assetId": "065515914",
+    "assetId": assetId,
     "assetType": "Dwelling",
     "parentAssetIds": "",
     "isActive": true,
