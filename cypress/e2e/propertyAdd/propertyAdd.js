@@ -80,10 +80,11 @@ When("I click on 'Create new property' button, and the POST request is successfu
     cy.contains('Create new property').click()
 
     const testAsset = getNewAsset(assetGuid, assetId);
-    // Add test asset to database
+    cy.log("The POST request will save the test asset record to the database")
     cy.intercept('*/api/v1/assets', (req) => { req.body = testAsset }).as('createNewAssetSuccess')
-    // Make note of asset GUID in recordsToDelete.json file, for tear down
+    cy.log("Saving details of the test asset in recordsToDelete.json file")
     saveFixtureData("Assets", { id: testAsset.id }, testAsset)
+    
     cy.log("Randomly generated Asset GUID:", assetGuid)
     cy.log("Randomly generated Asset ID:", assetId)
 
