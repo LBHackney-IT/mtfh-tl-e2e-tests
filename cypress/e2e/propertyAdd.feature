@@ -37,6 +37,7 @@ Feature: Property Add
         And I choose the option 'Yes' for field 'Is LBH property?'
         When I click on 'Create new property' button, and the POST request is successful
         And I see a success message, indicating that the asset has been created successfully
+        Then I should be able to view new property in MMH
 
     @SmokeTest
     Scenario Outline: 'New property - when the required fields are populated, and the POST request fails, an error message is displayed'

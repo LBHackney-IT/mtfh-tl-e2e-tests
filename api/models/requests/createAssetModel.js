@@ -164,6 +164,45 @@ const getAsset = (assetGuid, uprn) => {
   }
 }
 
+const getNewAsset = (assetGuid) => {
+  return {
+    "id": assetGuid,
+    "assetId": "065515914",
+    "assetType": "Dwelling",
+    "parentAssetIds": "",
+    "isActive": true,
+    "assetLocation": {
+      "floorNo": "",
+      "totalBlockFloors": null,
+      "parentAssets": []
+    },
+    "assetAddress": {
+      "uprn": "",
+      "postPreamble": "",
+      "addressLine1": "47 Test Road",
+      "addressLine2": "",
+      "addressLine3": "",
+      "addressLine4": "",
+      "postCode": "MK40 2RF"
+    },
+    "assetManagement": {
+      "agent": "",
+      "areaOfficeName": "",
+      "isCouncilProperty": true,
+      "managingOrganisation": "London Borough of Hackney",
+      "isTMOManaged": false,
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+    },
+    "assetCharacteristics": {
+      "numberOfBedrooms": null,
+      "numberOfLivingRooms": null,
+      "yearConstructed": "",
+      "windowType": "",
+      "numberOfLifts": null
+    }
+  }
+}
+
 const asset = (patch) => {
   return {
     ...createAssetModel,
@@ -176,5 +215,6 @@ module.exports = {
   asset,
   createAssetModel,
   getAsset,
+  getNewAsset,
   getAssetWithNoTenure,
 }

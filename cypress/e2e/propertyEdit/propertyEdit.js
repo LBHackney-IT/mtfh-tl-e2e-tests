@@ -2,7 +2,6 @@ import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor
 import { getAsset } from "../../../api/models/requests/createAssetModel";
 import { addTestAssetToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
-import DynamoDb from "../common/DynamoDb";
 
 const propertyUprn = "100023014215"
 const propertyAssetId = getAsset("Test", "Test").assetId;
