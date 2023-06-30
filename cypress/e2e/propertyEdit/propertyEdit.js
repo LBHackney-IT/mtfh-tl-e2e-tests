@@ -134,6 +134,7 @@ Given("I seeded the database with an asset with GUID {string}, and with no valid
     cy.log("Seeding database").then(async () => {
         const testAsset = getAsset(assetGuid, "");
 
+        // Add test asset to database and save to recordsToDelete.json
         await addTestAssetToDatabase(testAsset);
     })
 })
@@ -142,6 +143,7 @@ Given("I seeded the database with an asset with GUID {string}, and with a valid 
     cy.log("Seeding database").then(async () => {
         const testAsset = getAsset(assetGuid, propertyUprn);
 
+        // Add test asset to database and save to recordsToDelete.json
         await addTestAssetToDatabase(testAsset);
     })
 })
