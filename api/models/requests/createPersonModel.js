@@ -27,7 +27,7 @@ export const createPersonModel = {
     "nationalInsuranceNo": null
 }
 
-export const getPersonWithGuid = (personGuid) => {
+export const getPersonWithGuid = (personGuid = faker.datatype.uuid()) => {
     return {
         "id": personGuid,
         "title": "Mr",

@@ -17,19 +17,20 @@ Given("I seeded the database with a person with GUID {string}", (personGuid) => 
 Given('I go to the activity history for person with GUID {string}', (personGuid) => {
     activityHistoryObjects.visit(personGuid)
 
-    cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${personGuid}`, { fixture: "activity-history.json" }).as("getActivityHistory")
+    cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${personGuid}`, { fixture: "activity-history-person.json" }).as("getActivityHistory")
     cy.wait("@getActivityHistory")
 })
 
-And('table headers should visible', () => {
+And('table headers should be visible', () => {
     activityHistoryObjects.tableHeaders().forEach(tableHeader => {
         cy.contains(tableHeader).should('be.visible')
     })
 })
 
 And('the name of the person should be visible', () => {
-    // The name below comes from the person record returned by getPersonWithGuid()
-    cy.contains("John Doe").should('be.visible')
+    // Check that the information hardcoded in the person record we're using is visible
+    cy.contains(getPersonWithGuid().firstName).should('be.visible')
+    cy.contains(getPersonWithGuid().surname).should('be.visible')
 })
 
 Then('the activity history is displayed', () => {

@@ -15,7 +15,7 @@ Feature: Activity History
     Given I seeded the database with a person with GUID "3aa800c2-0c10-4d26-bca2-4eef5cd7d3be"
     Given I go to the activity history for person with GUID "3aa800c2-0c10-4d26-bca2-4eef5cd7d3be"
     Then the activity history is displayed
-    And table headers should visible
+    And table headers should be visible
     And the name of the person should be visible
     Then I click close activity history
     And I am on the person page for "3aa800c2-0c10-4d26-bca2-4eef5cd7d3be"

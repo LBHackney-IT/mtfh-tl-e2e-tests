@@ -17,6 +17,12 @@ class ActivityHistoryTenurePageObjects {
     activityHistoryCell() {
         return cy.get('.govuk-table__cell')
     }
+
+    tableHeaders() {
+        return [
+            'date', 'category', 'edit details', 'edited by'
+        ]
+    }
 }
 
 export default ActivityHistoryTenurePageObjects
