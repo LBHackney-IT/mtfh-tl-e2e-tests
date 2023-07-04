@@ -1,4 +1,16 @@
 const { faker } = require("@faker-js/faker");
+
+const defaultPatch = [
+  {
+    "id": faker.datatype.uuid(),
+    "parentId": faker.datatype.uuid(),
+    "name": "SN4",
+    "patchType": "patch",
+    "domain": "MMH",
+    "responsibleEntities": []
+  }
+]
+
 const createAssetModel = {
   "id": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
   "assetId": "12876875",
@@ -71,47 +83,7 @@ const createAssetModel = {
   },
 }
 
-const getAssetWithNoTenure = (assetGuid, patch) => {
-  return {
-    "id": assetGuid,
-    "assetId": "0014062023",
-    "assetType": "Dwelling",
-    "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
-    "isActive": true,
-    "assetLocation": {
-      "floorNo": "",
-      "totalBlockFloors": null,
-      "parentAssets": []
-    },
-    "assetAddress": {
-      "uprn": "00014579215",
-      "postPreamble": "",
-      "addressLine1": "12 Pitcairn House",
-      "addressLine2": "",
-      "addressLine3": "",
-      "addressLine4": "",
-      "postCode": "E9 6PT"
-    },
-    "assetManagement": {
-      "agent": "",
-      "areaOfficeName": "",
-      "isCouncilProperty": true,
-      "managingOrganisation": "London Borough of Hackney",
-      "isTMOManaged": false,
-      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
-    },
-    "assetCharacteristics": {
-      "numberOfBedrooms": null,
-      "numberOfLivingRooms": null,
-      "yearConstructed": "",
-      "windowType": "",
-      "numberOfLifts": null
-    },
-    "patches": [patch]
-  }
-}
-
-const getAsset = (assetGuid, uprn) => {
+const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString(), patch = defaultPatch) => {
   return {
     "id": assetGuid,
     "assetId": "00054811",
@@ -151,20 +123,11 @@ const getAsset = (assetGuid, uprn) => {
       "windowType": "",
       "yearConstructed": "0"
     },
-    "patches": [
-      {
-        "id": "bd0a8e2b-c3b5-4628-aa33-8e7509d5eac6",
-        "parentId": "8d4fb05d-3ff5-48b7-a17a-71fcb27a66a8",
-        "name": "SN4",
-        "patchType": "patch",
-        "domain": "MMH",
-        "responsibleEntities": []
-      }
-    ]
+    "patches": [...patch]
   }
 }
 
-const getNewAsset = (assetGuid, assetId) => {
+const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.random.numeric(7).toString()) => {
   return {
     "id": assetGuid,
     "assetId": assetId,
@@ -214,7 +177,6 @@ const asset = (patch) => {
 module.exports = {
   asset,
   createAssetModel,
-  getAsset,
-  getNewAsset,
-  getAssetWithNoTenure,
+  generateAsset,
+  generateNewAsset
 }

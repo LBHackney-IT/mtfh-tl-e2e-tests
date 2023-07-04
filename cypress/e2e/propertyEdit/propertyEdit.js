@@ -1,10 +1,10 @@
 import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
-import { getAsset } from "../../../api/models/requests/createAssetModel";
+import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
 
 const propertyUprn = "100023014215"
-const propertyAssetId = getAsset("Test", "Test").assetId;
+const propertyAssetId = generateAsset("Test", "Test").assetId;
 const newAddressLine1Value = 'NEW ADDRESS LINE 1'
 
 Given("I am on the MMH 'Edit property address' page, for asset with GUID {string}", (assetGuid) => {
@@ -132,7 +132,7 @@ const getAssetEditUrlByGuid = (assetGuid) => {
 
 Given("I seeded the database with an asset with GUID {string}, and with no valid UPRN", (assetGuid) => {
     cy.log("Seeding database").then(async () => {
-        const testAsset = getAsset(assetGuid, "");
+        const testAsset = generateAsset(assetGuid, "");
 
         cy.log("Adding test asset to database and creating a record of it in recordsToDelete.json file")
         await addTestRecordToDatabase("Assets", testAsset);
@@ -141,7 +141,7 @@ Given("I seeded the database with an asset with GUID {string}, and with no valid
 
 Given("I seeded the database with an asset with GUID {string}, and with a valid UPRN", (assetGuid) => {
     cy.log("Seeding database").then(async () => {
-        const testAsset = getAsset(assetGuid, propertyUprn);
+        const testAsset = generateAsset(assetGuid, propertyUprn);
 
         cy.log("Adding test asset to database and creating a record of it in recordsToDelete.json file")
         await addTestRecordToDatabase("Assets", testAsset);

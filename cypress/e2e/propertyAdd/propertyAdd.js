@@ -1,6 +1,6 @@
 import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { saveFixtureData } from "../../../api/helpers";
-import { getNewAsset } from "../../../api/models/requests/createAssetModel";
+import { generateNewAsset } from "../../../api/models/requests/createAssetModel";
 import { baseUrl } from "../../../environment-config";
 import * as patchData from "../../fixtures/patches.json";
 import { getAssetViewUrlByGuid } from "../common/common";
@@ -79,7 +79,7 @@ And("I choose the option 'Yes' for field 'Is LBH property?'", () => {
 When("I click on 'Create new property' button, and the POST request is successful", () => {
     cy.contains('Create new property').click()
 
-    const testAsset = getNewAsset(assetGuid, assetId);
+    const testAsset = generateNewAsset(assetGuid, assetId);
     cy.log("The POST request will save the test asset record to the database")
     cy.intercept('*/api/v1/assets', (req) => { req.body = testAsset }).as('createNewAssetSuccess')
     cy.log("Saving details of the test asset in recordsToDelete.json file")

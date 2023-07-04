@@ -38,7 +38,7 @@ import DynamoDb from "./DynamoDb";
 import { saveNonDynamoFixture } from "../../../api/helpers";
 import { tenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
-import { asset, getAssetWithNoTenure } from "../../../api/models/requests/createAssetModel";
+import { asset, generateAsset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
 import { patch } from "../../../api/models/requests/patchModel";
 
@@ -992,7 +992,7 @@ Given("I seeded the database", () => {
 Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
-    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
+    const assetModel = generateAsset(assetGuid, {patch: patchModel})
     const personModel1 = person();
     const personModel2 = person();
     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
@@ -1015,7 +1015,7 @@ Given("I seeded the database with an asset {string} with no attached tenure", (a
 Given("I seeded the database with an asset {string} with a previous tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
-    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
+    const assetModel = generateAsset(assetGuid, {patch: patchModel})
     const personModel1 = person();
     const personModel2 = person();
     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
