@@ -111,3 +111,33 @@ Feature: Property Page
     Examples:
     |propertyName|commentType|
     |   lon      |property   |
+
+    Scenario Outline: When I go to the Asset page, I can expand & collapse additional asset characteristics details
+      Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
+      When I view a property "<assetGuid>"
+      Then The 'Property Specification' information should be invisible
+      When Click the 'Property Specification' section
+      Then The 'Property Specification' information becomes visible
+      When Click the 'Property Specification' section
+      Then The 'Property Specification' information should be invisible
+      Examples:
+        | assetGuid                            | completeness         |
+        | a5b35705-15c0-0170-b73a-743f07a11e55 | irrelevant           |
+
+    Scenario Outline: When I go to the asset page & expand the asset details, I see the correct information
+      Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
+      When I view a property "<assetGuid>"
+      When Click the 'Property Specification' section
+      Then The displayed asset characteristics information is correct
+      Examples:
+        | assetGuid                            | completeness |
+        | 14a9c7de-60ea-4a79-8bf2-6d819a562bf0 | populated    |
+
+    Scenario Outline: When I go to the asset page & expand the asset details, missing information is displayed as empty
+      Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
+      When I view a property "<assetGuid>"
+      When Click the 'Property Specification' section
+      Then The empty asset characteristics fields are displayed as empty
+      Examples:
+        | assetGuid                            | completeness         |
+        | ae86d71f-70eb-4259-9cf3-d0ff3362be10 | partially-populated  |

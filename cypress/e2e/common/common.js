@@ -37,7 +37,7 @@ import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
 import { patch } from "../../../api/models/requests/patchModel"
-import { asset, getAssetWithNoTenure } from "../../../api/models/requests/createAssetModel"
+import { asset, getAssetWithNoTenure, assetModelControlledSubmodels, defaultAssetLocation, assetCharacteristicsModel } from "../../../api/models/requests/createAssetModel"
 import { person } from "../../../api/models/requests/createPersonModel"
 import { tenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
@@ -1121,6 +1121,27 @@ Given("There's a person with a cautionary alert", () => {
         });
       }).then(() => {
         cy.log("CA related data created.");
+      })
+    });
+});
+
+Given("There exists a {string} asset with {string} asset characteristics", (assetGuid, acCompleteness) => {
+  cy
+    .log(`Creating asset with ${acCompleteness} asset characteristics`)
+    .then(() => {
+      const isFullyPopulated = acCompleteness === "populated";
+      const assetLocation = { ...defaultAssetLocation, totalBlockFloors: 5 };
+      const assetCharacteristics = isFullyPopulated ? assetCharacteristicsModel() : { yearConstructed: "1984" };
+      const assetModel = assetModelControlledSubmodels({ assetGuid, assetLocation, assetCharacteristics });
+
+      return new Cypress.Promise((resolve) => {
+        Promise.all([
+          DynamoDb.createRecord("Assets", assetModel),
+        ]).then(() => {
+          resolve()
+        })
+      }).then(() => {
+        cy.log("Database seeded!");
       })
     });
 });
