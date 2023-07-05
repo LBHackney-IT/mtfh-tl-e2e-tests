@@ -1,6 +1,10 @@
 import { When, Then, Given, And } from "@badeball/cypress-cucumber-preprocessor";
 import TenurePageObjects from '../../pageObjects/tenurePage';
 import { getTenure, createTenureWithStartDate, createTenureWithNoOtherResponsibleHouseholdMembers } from "../../../api/tenure";
+import { generateAsset } from "../../../api/models/requests/createAssetModel";
+import { person } from "../../../api/models/requests/createPersonModel";
+import { tenure } from "../../../api/models/requests/addTenureModel";
+import { addTestRecordToDatabase } from "../common/common";
 
 const tenurePage = new TenurePageObjects
 let tenureId = ''
@@ -9,7 +13,7 @@ Given("the start date of the tenure is {string}", (startOfTenureDate) => {
     cy.log("Creating new tenure record");
     createTenureWithStartDate(startOfTenureDate).then(response => {
         cy.log(`Status code ${response.status} returned`);
-        cy.log ('Start of Tenure Date: ',response.body.startOfTenureDate)
+        cy.log('Start of Tenure Date: ', response.body.startOfTenureDate)
         cy.log(`Tenure Id for record ${response.body.id} created!`);
         tenureId = response.body.id
     });
@@ -18,22 +22,31 @@ Given("the start date of the tenure is {string}", (startOfTenureDate) => {
 Given('the start date for the selected tenure record is before 31 December 2013 {string}', async (tenureId) => {
     const getResponse = await getTenure(tenureId)
     cy.log(`Status code ${getResponse.status} returned`)
-    var startDate =  new Date(getResponse.data.startOfTenureDate)
-    var threshold =  new Date(2013, 12, 31)
+    var startDate = new Date(getResponse.data.startOfTenureDate)
+    var threshold = new Date(2013, 12, 31)
     cy.log('startDate', startDate)
     cy.log('threshold', threshold)
     expect(startDate).to.lessThan(threshold)
 })
 
-Given('the start date for the tenure record is before 31 December 2013', () => {
-    getTenure(tenureId).then(response => {
-        cy.log(`Status code ${response.status} returned`)
-        const startDate =  new Date(response.body.startOfTenureDate)
-        const threshold =  new Date(2013, 12, 31)
+And('the start date for the tenure record is before 31 December 2013', () => {
+    cy.getTenureFixture().then((tenure) => {
+        const startDate = new Date(tenure.startOfTenureDate)
+        const threshold = new Date(2013, 12, 31)
         cy.log('startDate', startDate)
         cy.log('threshold', threshold)
         expect(startDate).to.lessThan(threshold)
-    })
+      })
+})
+
+And('the start date for the tenure record is after 31 December 2013', () => {
+    cy.getTenureFixture().then((tenure) => {
+        const startDate = new Date(tenure.startOfTenureDate)
+        const threshold = new Date(2013, 12, 31)
+        cy.log('startDate', startDate)
+        cy.log('threshold', threshold)
+        expect(startDate).to.greaterThan(threshold)
+      })
 })
 
 Given("There are only responsible household members for the tenure", async () => {
@@ -41,7 +54,7 @@ Given("There are only responsible household members for the tenure", async () =>
     const response = await createTenureWithNoOtherResponsibleHouseholdMembers();
 
     cy.log(`Status code ${response.status} returned`);
-    cy.log(`Tenure Id for record ${response.data.id} created!`);  
+    cy.log(`Tenure Id for record ${response.data.id} created!`);
     tenureId = response.data.id
 });
 
@@ -80,7 +93,7 @@ Then('the resident details are displayed', () => {
     cy.url().should('include', '/person')
 })
 
-Then ('Then the Scanned historic tenure records button is displayed',() => {
+Then('Then the Scanned historic tenure records button is displayed', () => {
     tenurePage.scannedHistoricTenureRecords().should(vis)
 })
 
@@ -106,4 +119,16 @@ Then('the Scanned historic tenure records button is displayed', () => {
 
 Then('the Scanned historic tenure records button is not displayed', () => {
     tenurePage.scannedHistoricTenureRecords().should('not.exist')
+})
+
+// Database seed methods
+
+Given("I create a tenure that started on date {string}, with no responsible household members", (startOfTenureDate) => {
+    const assetModel = generateAsset()
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: false, personTenureType: "Tenant", ...personModel2 }], undefined, startOfTenureDate);
+    tenureModel.householdMembers = [];
+
+    addTestRecordToDatabase("TenureInformation", tenureModel)
 })

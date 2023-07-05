@@ -1,6 +1,5 @@
-import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
+import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor"
 import ActivityHistoryTenurePageObjects from '../../pageObjects/activityHistoryTenurePage'
-import { getTenureWithGuid } from "../../../api/models/requests/addTenureModel"
 
 const activityHistoryTenure = new ActivityHistoryTenurePageObjects()
 

@@ -555,10 +555,13 @@ Then('the add a new person tenure page is correct', () => {
 })
 
 // Tenure page
-When('I view a tenure {string}', (id) => {
+When('I view a tenure', () => {
   cy.getTenureFixture().then(({ id: tenureId }) => {
-    tenurePage.visit(id || tenureId)
+    tenurePage.visit(tenureId)
   })
+
+  cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
+  cy.wait("@getNotes")
 })
 
 Then('the tenure information is displayed', () => {
@@ -992,10 +995,9 @@ Given("I seeded the database", () => {
 Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
-    const assetModel = generateAsset(assetGuid, {patch: patchModel})
+    const assetModel = generateAsset(assetGuid, { patch: patchModel })
     const personModel1 = person();
     const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
 
     return new Cypress.Promise((resolve) => {
       Promise.all([
@@ -1015,7 +1017,7 @@ Given("I seeded the database with an asset {string} with no attached tenure", (a
 Given("I seeded the database with an asset {string} with a previous tenure", (assetGuid) => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
-    const assetModel = generateAsset(assetGuid, {patch: patchModel})
+    const assetModel = generateAsset(assetGuid, { patch: patchModel })
     const personModel1 = person();
     const personModel2 = person();
     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
@@ -1118,24 +1120,6 @@ Given("There's a person with a cautionary alert", () => {
       })
     });
 });
-
-Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) => {
-  cy.log("Creating tenure").then(() => {
-    const assetModel = asset(patch);
-    const tenureModel = tenure({ startOfTenureDate }, assetModel);
-    if (isResponsible === "true") {
-      tenureModel.householdMembers[0].isResponsible = true;
-    }
-    return new Cypress.Promise((resolve) => {
-      DynamoDb.createRecord("TenureInformation", tenureModel).then(() => {
-        resolve()
-      })
-    })
-  }).then(() => {
-    cy.log("Tenure created!")
-  });
-
-})
 
 // Helper methods
 
