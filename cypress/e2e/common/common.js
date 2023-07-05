@@ -1158,6 +1158,17 @@ export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
   })
 }
 
+// Database seed methods
+
+Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
+  const assetModel = generateAsset()
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
+
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+})
+
 // Database data teardown
 
 beforeEach(() => {

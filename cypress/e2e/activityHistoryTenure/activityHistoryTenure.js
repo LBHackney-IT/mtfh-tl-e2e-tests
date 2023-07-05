@@ -1,7 +1,6 @@
 import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
 import ActivityHistoryTenurePageObjects from '../../pageObjects/activityHistoryTenurePage'
 import { getTenureWithGuid } from "../../../api/models/requests/addTenureModel"
-import { addTestRecordToDatabase } from "../common/common"
 
 const activityHistoryTenure = new ActivityHistoryTenurePageObjects()
 
@@ -22,10 +21,10 @@ When('I click close activity history', () => {
 
 Then('the tenure activity history is displayed', () => {
     activityHistoryTenure.activityHistoryTenureActivities().should('be.visible')
-
-    // Check that the information hardcoded in the tenure record we're using is visible
-    cy.contains(getTenureWithGuid().tenuredAsset.fullAddress).should('be.visible');
-    cy.contains(getTenureWithGuid().paymentReference).should('be.visible');
+    cy.getTenureFixture().then((tenureRecord) => {
+        cy.contains(tenureRecord.tenuredAsset.fullAddress).should('be.visible');
+        cy.contains(tenureRecord.paymentReference).should('be.visible');
+    })
 })
 
 And('table headers should be visible', () => {
@@ -36,11 +35,6 @@ And('table headers should be visible', () => {
 
 Then('the update exists in the activity history {string}', (update) => {
     activityHistoryTenure.activityHistoryCell().eq(6).contains(`Changed to: ${update}`)
-})
-
-Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
-    const testTenure = getTenureWithGuid(tenureGuid);
-    addTestRecordToDatabase("TenureInformation", testTenure);
 })
 
 And("I am on the tenure page for tenure with GUID {string}", (tenureGuid) => {

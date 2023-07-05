@@ -435,16 +435,6 @@ Then("I visit the 'Edit person' page for the person", () => {
 
 // Database seed methods
 
-Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
-  const assetModel = generateAsset()
-  const personModel1 = person();
-  const personModel2 = person();
-  const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
-
-  addTestRecordToDatabase("TenureInformation", tenureModel)
-})
-
-
 Given("I create a person with GUID {string} and seed it to the database", (personGuid) => {
   const testPerson = person(undefined, personGuid);
   addTestRecordToDatabase("Persons", testPerson)
