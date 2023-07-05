@@ -1,11 +1,15 @@
-import { Given, Then, When, And } from '@badeball/cypress-cucumber-preprocessor'
-
+import { And, Given, Then, When } from '@badeball/cypress-cucumber-preprocessor'
+import { queueDeletePersonWithId } from "../../../api/helpers"
+import { tenure } from '../../../api/models/requests/addTenureModel'
+import { generateAsset } from '../../../api/models/requests/createAssetModel'
+import { person } from "../../../api/models/requests/createPersonModel"
+import guid from '../../helpers/commentText'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
-import guid from '../../helpers/commentText'
-import { createPerson, createPersonWithNewTenure } from '../../../api/person'
-import { queueDeletePersonWithId } from "../../../api/helpers"
+import DynamoDb from '../common/DynamoDb'
+import { baseUrl } from "../../../environment-config";
+
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
@@ -19,31 +23,31 @@ And('the person has been added to the tenure', () => {
 })
 
 And('the person is added to the tenure page {string} {string} {string}', (title, firstName, middleName) => {
-    for (let index = 0; index < 10; ) {
-      cy.get('.mtfh-resident-details').then(($residentDetails) => {
-        if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${guid}`)){
-          cy.contains(`${title} ${firstName} ${middleName} ${guid}`)
-            .should('be.visible')
-        } else {
-          cy.wait
-          cy.reload()
-          index++
-        }
-      })
-    }
+  for (let index = 0; index < 10;) {
+    cy.get('.mtfh-resident-details').then(($residentDetails) => {
+      if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${guid}`)) {
+        cy.contains(`${title} ${firstName} ${middleName} ${guid}`)
+          .should('be.visible')
+      } else {
+        cy.wait
+        cy.reload()
+        index++
+      }
+    })
+  }
 
-    const person = `${title} ${firstName} ${middleName} ${guid}`
-    for (let i = 0; i < 10; i++) {
-      addPersonPage.mainContent().then(($body) => {
-        if ($body.text().includes(guid)) {
-          cy.contains(person).click()
-        } else {
-          cy.wait(1000)
-          cy.reload(true)
-        }
-      })
-    }
-  },
+  const person = `${title} ${firstName} ${middleName} ${guid}`
+  for (let i = 0; i < 10; i++) {
+    addPersonPage.mainContent().then(($body) => {
+      if ($body.text().includes(guid)) {
+        cy.contains(person).click()
+      } else {
+        cy.wait(1000)
+        cy.reload(true)
+      }
+    })
+  }
+},
 )
 
 And('the person page is loaded', () => {
@@ -255,13 +259,13 @@ And('I am on the contact details page', () => {
   cy.url()
     .should('include', 'contact')
     .then(url => {
-        const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
-        queueDeletePersonWithId(personId);
-  });
+      const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
+      queueDeletePersonWithId(personId);
+    });
 })
 
 Given('I create a person and then edit them', () => {
-  cy.getPersonFixture().then(({ id: personId}) => {
+  cy.getPersonFixture().then(({ id: personId }) => {
     editPersonPage.visit(personId)
   })
 })
@@ -301,7 +305,7 @@ Given("the person's equality information is reset", () => {
     cy.log('Getting etag from the person...')
     getEqualityDetails.getEqualityDetails(personId).then(getResponse => {
       cy.log(`Status code ${getResponse.status} returned`)
-      if(getResponse.status === 200){
+      if (getResponse.status === 200) {
         cy.log('etag captured!')
         cy.log(getResponse.headers.etag)
 
@@ -422,4 +426,30 @@ When('I clear address line 1', () => {
 
 Then('the next button is enabled', () => {
   cy.contains('Next').should('be.enabled')
+})
+
+Then("I browse to the 'Add Person to Tenure' page for tenure with GUID {string}", (tenureGuid) => {
+  cy.reload()
+  cy.visit(`${baseUrl}/tenure/${tenureGuid}/edit/person/new`)
+});
+
+// Database seed methods
+
+Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
+  cy.log("Seeding database").then(() => {
+    const assetModel = generateAsset()
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
+
+    return new Cypress.Promise((resolve) => {
+      Promise.all([
+        DynamoDb.createRecord("TenureInformation", tenureModel),
+      ]).then(() => {
+        resolve()
+      })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
 })

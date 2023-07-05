@@ -1,51 +1,54 @@
-# @authentication
-# @common
-# @personal-details
-# @processes
-# @root
+@authentication
+@common
+@personal-details
+@processes
+@root
 
-# @AddPersonPage
-# Feature: Add a new person to a tenure
-#   I want to add a person to a tenure
+@AddPersonPage
+Feature: Add a new person to a tenure
+  I want to add a person to a tenure
 
-#   Background: 
-#     Given I am logged in
-#     And I seeded the database
+  Background:
+    Given I am logged in
+  # And I seeded the database
 
-#   @SmokeTest
-#  @Regression
-#  Scenario: Removed fields are not displayed
-#    Given I create a person for tenure
-#    Then the gender field is not displayed
-#    And the nationality field is not displayed
-#    And the national insurance field is not displayed
-#    And the add language options are not displayed
-#    And the add id options are not displayed
+    @SmokeTest
+   @Regression
+   Scenario: Removed fields are not displayed
+     Given I seeded the database with an asset "477a39c3-0b63-4f89-b95e-51d116176413" with a previous tenure
+     Given I create a person for tenure
+     Then the gender field is not displayed
+     And the nationality field is not displayed
+     And the national insurance field is not displayed
+     And the add language options are not displayed
+     And the add id options are not displayed
 
-#  @SmokeTest
-#  @Positive
-#  Scenario Outline: Add a new person to a tenure
-#    Given I create a person for tenure
-#    Then the add a new person tenure page is correct
-#    When I select person type "<personType>"
-#    And I select a title "<title>"
-#    And I enter a first name "<firstName>"
-#    And I enter a middle name "<middleName>"
-#    And I enter a last name "<lastName>"
-#    And I enter a date of birth "<day>" "<month>" "<year>"
-#    And I enter a place of birth "<placeOfBirth>"
-#    And I select a preferred title "<preferredTitle>"
-#    And I select a preferred first name "<preferredFirstName>"
-#    And I select a preferred middle name "<preferredMiddleName>"
-#    And I select a preferred last name "<preferredLastName>"
-#    And I enter a reason for creation
-#    And I click add person
-#    And I am on the contact details page
+  @SmokeTest
+  @Positive
+  Scenario Outline: Add a new person to a tenure
+    Given I seeded the database with a tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
+    Then I browse to the 'Add Person to Tenure' page for tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
+    Then the add a new person tenure page is correct
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a place of birth "<placeOfBirth>"
+    And I select a preferred title "<preferredTitle>"
+    And I select a preferred first name "<preferredFirstName>"
+    And I select a preferred middle name "<preferredMiddleName>"
+    And I select a preferred last name "<preferredLastName>"
+    And I enter a reason for creation
+    And I click add person
+    And I am on the contact details page
 
-#    Examples:
-#      | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
-#      | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-#      | Mrs   | Household member    | Test      | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+    Examples:
+      | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
+      | Mr    | Named tenure holder | Test      | Test       | Test     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+      | Mrs   | Household member    | Test      | Test       | Test     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+
 
 # # skip as failing due to fe change
 # #  @ignore

@@ -150,7 +150,7 @@ const getTenureWithGuid = (tenureGuid = faker.datatype.uuid()) => {
        }
 }
 
-const tenure = (data, asset, householdMembers) => {
+const tenure = (data, asset, householdMembers, tenureGuid = faker.datatype.uuid()) => {
     const { id: assetId, assetType, assetAddress } = asset;
     let newHouseholdMembers = []
     if (householdMembers) {
@@ -165,7 +165,7 @@ const tenure = (data, asset, householdMembers) => {
         })
     }
     return {
-        id: faker.datatype.uuid(),
+        id: tenureGuid,
         tenureType: {
             code: "SEC",
             description: "Secure"
