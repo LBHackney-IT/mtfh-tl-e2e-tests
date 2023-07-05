@@ -7,9 +7,8 @@ import guid from '../../helpers/commentText'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
-import DynamoDb from '../common/DynamoDb'
-import { baseUrl } from "../../../environment-config";
-
+import { addTestRecordToDatabase } from '../common/common'
+const envConfig = require('../../../environment-config')
 
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
@@ -264,12 +263,6 @@ And('I am on the contact details page', () => {
     });
 })
 
-Given('I create a person and then edit them', () => {
-  cy.getPersonFixture().then(({ id: personId }) => {
-    editPersonPage.visit(personId)
-  })
-})
-
 And('I click the save equality information button', () => {
   addPersonPage.saveEqualityInformationButton().click()
 })
@@ -430,26 +423,28 @@ Then('the next button is enabled', () => {
 
 Then("I browse to the 'Add Person to Tenure' page for tenure with GUID {string}", (tenureGuid) => {
   cy.reload()
-  cy.visit(`${baseUrl}/tenure/${tenureGuid}/edit/person/new`)
+  cy.visit(`${envConfig.baseUrl}/tenure/${tenureGuid}/edit/person/new`)
 });
 
 // Database seed methods
 
 Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
-  cy.log("Seeding database").then(() => {
     const assetModel = generateAsset()
     const personModel1 = person();
     const personModel2 = person();
     const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
 
-    return new Cypress.Promise((resolve) => {
-      Promise.all([
-        DynamoDb.createRecord("TenureInformation", tenureModel),
-      ]).then(() => {
-        resolve()
-      })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
+    addTestRecordToDatabase("TenureInformation", tenureModel)
+})
+
+
+Given("I create a person with GUID {string} and seed it to the database", (personGuid) => {
+    const testPerson = person(undefined, personGuid);
+    addTestRecordToDatabase("Persons", testPerson)
+})
+
+Then("I visit the 'Edit person' page for the person", () => {
+  cy.getPersonFixture().then(({ id: personGuid }) => {
+    editPersonPage.visit(personGuid)
   })
 })

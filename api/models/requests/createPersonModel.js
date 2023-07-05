@@ -64,9 +64,9 @@ export const getPersonWithGuid = (personGuid = faker.datatype.uuid()) => {
     }
 }
 
-export const person = (tenure) => {
+export const person = (tenure, personGuid = faker.datatype.uuid()) => {
     return {
-        id: faker.datatype.uuid(),
+        id: personGuid,
         title: "Mr",
         firstName: "Add",
         middleName: "Person",

@@ -12,16 +12,16 @@ Feature: Add a new person to a tenure
     Given I am logged in
   # And I seeded the database
 
-    @SmokeTest
-   @Regression
-   Scenario: Removed fields are not displayed
-     Given I seeded the database with an asset "477a39c3-0b63-4f89-b95e-51d116176413" with a previous tenure
-     Given I create a person for tenure
-     Then the gender field is not displayed
-     And the nationality field is not displayed
-     And the national insurance field is not displayed
-     And the add language options are not displayed
-     And the add id options are not displayed
+  @SmokeTest
+  @Regression
+  Scenario: Removed fields are not displayed
+    Given I seeded the database with an asset "477a39c3-0b63-4f89-b95e-51d116176413" with a previous tenure
+    Given I create a person for tenure
+    Then the gender field is not displayed
+    And the nationality field is not displayed
+    And the national insurance field is not displayed
+    And the add language options are not displayed
+    And the add id options are not displayed
 
   @SmokeTest
   @Positive
@@ -50,95 +50,96 @@ Feature: Add a new person to a tenure
       | Mrs   | Household member    | Test      | Test       | Test     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
 
 
-# # skip as failing due to fe change
-# #  @ignore
-# #  @device
-# #  Scenario Outline: Add a new person to tenure on a device
-# #    Given I create a person for tenure
-# #    And I am using a mobile viewport "<device>"
-# #    Then the add a new person tenure page is correct
-# #    When I select person type "<personType>"
-# #    And I select a title "<title>"
-# #    And I enter a first name "<firstName>"
-# #    And I enter a middle name "<middleName>"
-# #    And I enter a last name "<lastName>"
-# #    And I enter a date of birth "<day>" "<month>" "<year>"
-# #    And I enter a place of birth "<placeOfBirth>"
-# #    And I select a preferred title "<preferredTitle>"
-# #    And I select a preferred first name "<preferredFirstName>"
-# #    And I select a preferred middle name "<preferredMiddleName>"
-# #    And I select a preferred last name "<preferredLastName>"
-# #    And I enter a reason for creation
-# #    And I click add person
-# #    And I click the done button
-# #    And I am on the tenure page '<tenure>'
-# #    And the person has been added to the tenure
-# #
-# #    Examples:
-# #      | device        | title | personType          | firstName     | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
-# #      | ipad-2        | Mr    | Named tenure holder | ipad2         | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | ipad-mini     | Mrs   | Household member    | ipad-mini     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | iphone-3      | Mrs   | Named tenure holder | iphone3       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | iphone-4      | Miss  | Household member    | iphone4       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | iphone-5      | Mrs   | Named tenure holder | iphone5       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | iphone-6      | Mr    | Household member    | iphone6       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | iphone-6+     | Miss  | Named tenure holder | iphone6+      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | iphone-7      | Miss  | Household member    | iphone7       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | iphone-8      | Mr    | Named tenure holder | iphone8       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | iphone-xr     | Mrs   | Household member    | iphone-xr     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | iphone-se2    | Mrs   | Named tenure holder | iphone-se2    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | macbook-11    | Mr    | Household member    | macbook-11    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | macbook-13    | Miss  | Named tenure holder | macbook-13    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | macbook-15    | Mr    | Household member    | macbook-15    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | macbook-16    | Miss  | Named tenure holder | macbook-17    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
-# #      | samsung-note9 | Miss  | Household member    | samsung-note9 | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
-# #      | samsung-s10   | Miss  | Named tenure holder | samsung-s10   | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  # skip as failing due to fe change
+  #  @ignore
+  #  @device
+  #  Scenario Outline: Add a new person to tenure on a device
+  #    Given I create a person for tenure
+  #    And I am using a mobile viewport "<device>"
+  #    Then the add a new person tenure page is correct
+  #    When I select person type "<personType>"
+  #    And I select a title "<title>"
+  #    And I enter a first name "<firstName>"
+  #    And I enter a middle name "<middleName>"
+  #    And I enter a last name "<lastName>"
+  #    And I enter a date of birth "<day>" "<month>" "<year>"
+  #    And I enter a place of birth "<placeOfBirth>"
+  #    And I select a preferred title "<preferredTitle>"
+  #    And I select a preferred first name "<preferredFirstName>"
+  #    And I select a preferred middle name "<preferredMiddleName>"
+  #    And I select a preferred last name "<preferredLastName>"
+  #    And I enter a reason for creation
+  #    And I click add person
+  #    And I click the done button
+  #    And I am on the tenure page '<tenure>'
+  #    And the person has been added to the tenure
+  #
+  #    Examples:
+  #      | device        | title | personType          | firstName     | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |
+  #      | ipad-2        | Mr    | Named tenure holder | ipad2         | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | ipad-mini     | Mrs   | Household member    | ipad-mini     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | iphone-3      | Mrs   | Named tenure holder | iphone3       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | iphone-4      | Miss  | Household member    | iphone4       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | iphone-5      | Mrs   | Named tenure holder | iphone5       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | iphone-6      | Mr    | Household member    | iphone6       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | iphone-6+     | Miss  | Named tenure holder | iphone6+      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | iphone-7      | Miss  | Household member    | iphone7       | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | iphone-8      | Mr    | Named tenure holder | iphone8       | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | iphone-xr     | Mrs   | Household member    | iphone-xr     | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | iphone-se2    | Mrs   | Named tenure holder | iphone-se2    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | macbook-11    | Mr    | Household member    | macbook-11    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | macbook-13    | Miss  | Named tenure holder | macbook-13    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | macbook-15    | Mr    | Household member    | macbook-15    | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | macbook-16    | Miss  | Named tenure holder | macbook-17    | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
+  #      | samsung-note9 | Miss  | Household member    | samsung-note9 | Test       | guid     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
+  #      | samsung-s10   | Miss  | Named tenure holder | samsung-s10   | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
 
-#  @SmokeTest
-#  @Negative
-#  Scenario Outline: Validation check
-#    Given I create a person for tenure
-#    Then the add a new person tenure page is correct
-#    When I select person type "<personType>"
-#    And I select a title "<title>"
-#    And I enter a first name "<firstName>"
-#    And I enter a middle name "<middleName>"
-#    And I enter a last name "<lastName>"
-#    And I enter a date of birth "<day>" "<month>" "<year>"
-#    And I enter a reason for creation
-#    And I click add person
-#    Then the form error container is displayed
+  @SmokeTest
+  @Negative
+  Scenario Outline: Validation check
+    Given I seeded the database with a tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
+    Then I browse to the 'Add Person to Tenure' page for tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
+    When I select person type "<personType>"
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a reason for creation
+    And I click add person
+    Then the form error container is displayed
 
-#    Examples:
-#      | personType          | title | firstName | middleName | lastName | day | month | year |
-#      | Household member    | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 |
+    Examples:
+      | personType       | title | firstName | middleName | lastName | day | month | year |
+      | Household member | Mr    | Testy     | McTest     | Face     | 08  | 05    | 2099 |
 
-#    @SmokeTest
-#    @Positive
-#    Scenario Outline: Edit a person
-#      Given I create a person and then edit them
-#      And the person type options are not displayed
-#      And I select a title "<title>"
-#      And I enter a first name "<firstName>"
-#      And I enter a middle name "<middleName>"
-#      And I enter a last name "<lastName>"
-#      And I enter a date of birth "<day>" "<month>" "<year>"
-#      And I enter a place of birth "<placeOfBirth>"
-#      And I select a preferred title "<preferredTitle>"
-#      And I select a preferred first name "<preferredFirstName>"
-#      And I select a preferred middle name "<preferredMiddleName>"
-#      And I select a preferred last name "<preferredLastName>"
-#      And I click the update person button
-#      And I click the next button
-#      And I click the save equality information button
-#      And I click edit person
-#      And I enter a first name "<conflictTitle>"
-#      And there is a merge conflict
+  @SmokeTest
+  @Positive
+  Scenario Outline: Edit a person
+    Given I create a person with GUID "828ae179-a2a0-406f-954e-d87625954630" and seed it to the database
+    Then I visit the 'Edit person' page for the person
+    And the person type options are not displayed
+    And I select a title "<title>"
+    And I enter a first name "<firstName>"
+    And I enter a middle name "<middleName>"
+    And I enter a last name "<lastName>"
+    And I enter a date of birth "<day>" "<month>" "<year>"
+    And I enter a place of birth "<placeOfBirth>"
+    And I select a preferred title "<preferredTitle>"
+    And I select a preferred first name "<preferredFirstName>"
+    And I select a preferred middle name "<preferredMiddleName>"
+    And I select a preferred last name "<preferredLastName>"
+    And I click the update person button
+    And I click the next button
+    And I click the save equality information button
+    And I click edit person
+    And I enter a first name "<conflictTitle>"
+    And there is a merge conflict
 
-#      Examples:
-#        | title | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | conflictTitle  |
-#        | Mr    | Modified  | Test       | guid     | 09  | 12    | 1950 | Mt. Fuji     | Reverend       | Pref modified      | Mid modified        | guid              | testytest@test.com     | This is an email | 0118999     | Other     | This is a phone  | changeConflict |
-#        | Mrs   | Modified  | Test       | guid     | 30  | 06    | 1988 | Crete        | Ms             | Pref modified      | Mid modified        | guid              | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone  | changeConflict |
+    Examples:
+      | title | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | conflictTitle  |
+      | Mr    | Modified  | Test       | guid     | 09  | 12    | 1950 | Mt. Fuji     | Reverend       | Pref modified      | Mid modified        | guid              | testytest@test.com     | This is an email | 0118999     | Other     | This is a phone  | changeConflict |
+      | Mrs   | Modified  | Test       | guid     | 30  | 06    | 1988 | Crete        | Ms             | Pref modified      | Mid modified        | guid              | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone  | changeConflict |
 
 #    Scenario Outline: Confirmation modal
 #      Given I create a person and then edit them

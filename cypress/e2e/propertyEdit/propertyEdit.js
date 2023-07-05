@@ -131,19 +131,11 @@ const getAssetEditUrlByGuid = (assetGuid) => {
 // Database seed methods
 
 Given("I seeded the database with an asset with GUID {string}, and with no valid UPRN", (assetGuid) => {
-    cy.log("Seeding database").then(async () => {
-        const testAsset = generateAsset(assetGuid, "");
-
-        cy.log("Adding test asset to database and creating a record of it in recordsToDelete.json file")
-        await addTestRecordToDatabase("Assets", testAsset);
-    })
+    const testAsset = generateAsset(assetGuid, "");
+    addTestRecordToDatabase("Assets", testAsset);
 })
 
 Given("I seeded the database with an asset with GUID {string}, and with a valid UPRN", (assetGuid) => {
-    cy.log("Seeding database").then(async () => {
-        const testAsset = generateAsset(assetGuid, propertyUprn);
-
-        cy.log("Adding test asset to database and creating a record of it in recordsToDelete.json file")
-        await addTestRecordToDatabase("Assets", testAsset);
-    })
+    const testAsset = generateAsset(assetGuid, propertyUprn);
+    addTestRecordToDatabase("Assets", testAsset);
 })

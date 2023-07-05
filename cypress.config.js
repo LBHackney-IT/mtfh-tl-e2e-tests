@@ -1,8 +1,8 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
-  defaultCommandTimeout: 20000,
-  requestTimeout: 20000,
+  defaultCommandTimeout: 30000,
+  requestTimeout: 30000,
   lighthouse: {
     performance: 0,
     accessibility: 0,

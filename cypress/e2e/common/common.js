@@ -1145,13 +1145,16 @@ export const getAssetViewUrlByGuid = (assetGuid) => {
 
 // This methods adds a temporary database record to the provided database table, and adds an entry to recordsToDelete.json
 export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
-  return new Cypress.Promise((resolve) => {
-    DynamoDb.createRecord(dbTableName, testDbRecord)
-      .then(() => {
-        resolve()
-      })
-  }).then(() => {
-    cy.log("Database seeded!");
+  cy.log("Seeding database").then(async () => {
+    cy.log(`Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`)
+    return new Cypress.Promise((resolve) => {
+      DynamoDb.createRecord(dbTableName, testDbRecord)
+        .then(() => {
+          resolve()
+        })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
   })
 }
 

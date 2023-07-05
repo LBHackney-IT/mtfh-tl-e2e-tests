@@ -6,12 +6,8 @@ import { addTestRecordToDatabase } from "../common/common";
 const activityHistoryObjects = new ActivityHistoryPageObjects()
 
 Given("I seeded the database with a person with GUID {string}", (personGuid) => {
-    cy.log("Seeding database").then(async () => {
-        const testPerson = getPersonWithGuid(personGuid);
-
-        cy.log("Adding test person to database and creating a record of it in recordsToDelete.json file")
-        await addTestRecordToDatabase("Persons", testPerson);
-    })
+    const testPerson = getPersonWithGuid(personGuid);
+    addTestRecordToDatabase("Persons", testPerson);
 })
 
 Given('I go to the activity history for person with GUID {string}', (personGuid) => {
