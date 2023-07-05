@@ -10,7 +10,6 @@ Feature: Add a new person to a tenure
 
   Background:
     Given I am logged in
-  # And I seeded the database
 
   @SmokeTest
   @Regression
@@ -97,8 +96,8 @@ Feature: Add a new person to a tenure
   @SmokeTest
   @Negative
   Scenario Outline: Validation check
-    Given I seeded the database with a tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
-    Then I browse to the 'Add Person to Tenure' page for tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
+    Given I seeded the database with a tenure with GUID "1414a574-2c53-49e1-b5a2-87247c457ed2"
+    Then I browse to the 'Add Person to Tenure' page for tenure with GUID "1414a574-2c53-49e1-b5a2-87247c457ed2"
     When I select person type "<personType>"
     And I select a title "<title>"
     And I enter a first name "<firstName>"
@@ -141,122 +140,124 @@ Feature: Add a new person to a tenure
       | Mr    | Modified  | Test       | guid     | 09  | 12    | 1950 | Mt. Fuji     | Reverend       | Pref modified      | Mid modified        | guid              | testytest@test.com     | This is an email | 0118999     | Other     | This is a phone  | changeConflict |
       | Mrs   | Modified  | Test       | guid     | 30  | 06    | 1988 | Crete        | Ms             | Pref modified      | Mid modified        | guid              | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone  | changeConflict |
 
-#    Scenario Outline: Confirmation modal
-#      Given I create a person and then edit them
-#      And I click edit person
-#      And I click cancel
-#      Then the confirmation modal is displayed
+  Scenario Outline: Confirmation modal
+    Given I create a person with GUID "52bb2638-5645-4c9e-a621-5485ae165bf3" and seed it to the database
+    Then I visit the 'Edit person' page for the person
+    And I click edit person
+    And I click cancel
+    Then the confirmation modal is displayed
+  @Accessibility
+  Scenario: Accessibility Testing
+    And have no detectable a11y violations
 
-#      Examples:
-#      | title | personType          | firstName | middleName |
-#      | Mr    | Named tenure holder | Original  | Test       |
+  #    @ignore
+  #    Scenario Outline: Correspondence address using valid postcode lookup details
+  #      When I edit a person's contact details "<person>"
+  #      And I click add a correspondence address
+  #      Then the correspondence address fields are displayed
+  #      When I enter a postcode into the lookup field "<postCode>"
+  #      And I click look up
+  #      Then the select address selection box is populated "<postCode>"
+  #      When I select an address from the selection
+  #      And I click save correspondence address
+  #      Then the correspondence address is saved
+  #
+  #      Examples:
+  #          | person                               | postCode |
+  #          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | E8 2DY   |
 
-#    @Accessibility
-#    Scenario: Accessibility Testing
-#      And have no detectable a11y violations
+  Scenario Outline: Correspondence address using invalid postcode lookup details
+    Given I create a person with GUID "c3778a55-f01a-4192-adaa-4095f8f02765" and seed it to the database
+    When I edit a person's contact details
+    And I click add a correspondence address
+    Then the correspondence address fields are displayed
+    When I enter a postcode into the lookup field "asdasd"
+    And I click look up
+    Then an invalid postcode error is thrown
 
-# #    @ignore
-# #    Scenario Outline: Correspondence address using valid postcode lookup details
-# #      When I edit a person's contact details "<person>"
-# #      And I click add a correspondence address
-# #      Then the correspondence address fields are displayed
-# #      When I enter a postcode into the lookup field "<postCode>"
-# #      And I click look up
-# #      Then the select address selection box is populated "<postCode>"
-# #      When I select an address from the selection
-# #      And I click save correspondence address
-# #      Then the correspondence address is saved
-# #
-# #      Examples:
-# #          | person                               | postCode |
-# #          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | E8 2DY   |
+  Scenario Outline: Correspondence address using free text fields
+    Given I create a person with GUID "9e8d6243-95f5-40f6-a052-dca33def7102" and seed it to the database
+    When I edit a person's contact details
+    And I click add a correspondence address
+    Then the correspondence address fields are displayed
+    When I enter "<addressOne>" into address line 1
+    When I enter "<addressTwo>" into address line 2
+    When I enter "<addressThree>" into address line 3
+    When I enter "<addressFour>" into address line 4
+    When I enter "<postCode>" into the postcode field
+    And I click save correspondence address
+    Then the correspondence address is saved
 
-#    Scenario Outline: Correspondence address using invalid postcode lookup details
-#      When I edit a person's contact details
-#      And I click add a correspondence address
-#      Then the correspondence address fields are displayed
-#      When I enter a postcode into the lookup field "<postCode>"
-#      And I click look up
-#      Then an invalid postcode error is thrown
+    Examples:
+      | postCode | addressOne | addressTwo | addressThree | addressFour |
+      | SW1A 1AA | Buckingham | Palace     | London       | England     |
 
-#      Examples:
-#          | postCode |
-#          | 0        |
+  Scenario Outline: Maximum contact details reached
+    Given I create a person with GUID "79fa8f12-d322-473d-b14f-15609a020d9d" and seed it to the database
+    Given I have the maximum number of "<contactType>" for a person
+    When I edit a person's contact details
+    Then I cannot add any more contacts for "<contactType>"
 
-#    Scenario Outline: Correspondence address using free text fields
-#      When I edit a person's contact details
-#      And I click add a correspondence address
-#      Then the correspondence address fields are displayed
-#      When I enter "<addressOne>" into address line 1
-#      When I enter "<addressTwo>" into address line 2
-#      When I enter "<addressThree>" into address line 3
-#      When I enter "<addressFour>" into address line 4
-#      When I enter "<postCode>" into the postcode field
-#      And I click save correspondence address
-#      Then the correspondence address is saved
+    Examples:
+      | contactType |
+      | email       |
+      | phone       |
 
-#      Examples:
-#          | postCode | addressOne | addressTwo | addressThree | addressFour |
-#          | SW1A 1AA | Buckingham | Palace     | London       | England     |
+  Scenario Outline: Add equality information
+    Given I create a person with GUID "f61e1e17-d396-41c8-81de-b2101d160b0f" and seed it to the database
+    Then I seed blank equality information to the database, for such person
+    Given I edit a person's equality information
+    Then the equality information is displayed
+    And the sexual orientation information is not displayed
+    When I select an age group "<ageGroup>"
+    Then the sexual orientation information is displayed
+    Then I select a carer option "<carerOption>"
+    And I select a disability option "<disabilityOption>"
+    And I select an ethnicity "<ethnicity>"
+    And I select a gender "<gender>"
+    And I select a gender identity option "<genderIdentityOption>"
+    And I select a religion or belief "<religionOrBelief>"
+    And I select a sexual orientation "<sexualOrientation>"
+    And I select a pregnancy or maternity option "<pregnancyOrMaternityOption>"
+    And I click save equality information
+    Then the equality information is saved "<person>"
 
-#    Scenario Outline: Maximum contact details reached
-#      Given I have the maximum number of "<contactType>" for a person
-#      When I edit a person's contact details
-#      Then I cannot add any more contacts for "<contactType>"
+    Examples:
+      | ageGroup | carerOption       | disabilityOption | ethnicity        | gender | genderIdentityOption | religionOrBelief | sexualOrientation    | pregnancyOrMaternityOption |
+      | 25-34    | Prefer not to say | Yes              | Mixed background | Male   | No                   | Secular beliefs  | Lesbian or Gay woman | Prefer not to say          |
 
-#      Examples:
-#          | contactType |
-#          | email       |
-#          | phone       |
+  Scenario Outline: Sexual orientation is not displayed for under 16s
+    Given I create a person with GUID "e5400f3e-cfa4-4b8d-bae6-50e4874d0ee9" and seed it to the database
+    Then I seed blank equality information to the database, for such person
+    Given I edit a person's equality information
+    Then the equality information is displayed
+    When I select an age group "<ageGroup>"
+    And the sexual orientation information is not displayed
 
-#    Scenario Outline: Add equality information
-#      Given I edit a person's equality information
-#      Then the equality information is diplayed
-#      And the sexual orientation information is not displayed
-#      When I select an age group "<ageGroup>"
-#      Then the sexual orientation information is displayed
-#      Then I select a carer option "<carerOption>"
-#      And I select a disability option "<disabilityOption>"
-#      And I select an ethnicity "<ethnicity>"
-#      And I select a gender "<gender>"
-#      And I select a gender identity option "<genderIdentityOption>"
-#      And I select a religion or belief "<religionOrBelief>"
-#      And I select a sexual orientation "<sexualOrientation>"
-#      And I select a pregnancy or maternity option "<pregnancyOrMaternityOption>"
-#      And I click save equality information
-#      Then the equality information is saved "<person>"
+    Examples:
+      | ageGroup |
+      | Under 16 |
 
-#      Examples:
-#          | ageGroup | carerOption       | disabilityOption | ethnicity        | gender | genderIdentityOption | religionOrBelief | sexualOrientation    | pregnancyOrMaternityOption |
-#          | 25-34    | Prefer not to say | Yes              | Mixed background | Male   | No                   | Secular beliefs  | Lesbian or Gay woman | Prefer not to say          |
+  Scenario Outline: Preferred term for gender field is displayed when "other" is selected for gender term
+    Given I create a person with GUID "76ca0d2d-977a-4ba7-95d9-19163a3c7a5d" and seed it to the database
+    Then I seed blank equality information to the database, for such person
+    Given I edit a person's equality information
+    Then the equality information is displayed
+    And I select a gender "<gender>"
+    And the preferred gender term field is displayed
+    And I enter "<genderTerm>" into the gender term field
 
-#    Scenario Outline: Sexual orientation is not displayed for under 16s
-#      Given I edit a person's equality information
-#      Then the equality information is diplayed
-#      When I select an age group "<ageGroup>"
-#      And the sexual orientation information is not displayed
+    Examples:
+      | gender | genderTerm  |
+      | Other  | Gender Term |
 
-#      Examples:
-#          | ageGroup |
-#          | Under 16 |
-
-#    Scenario Outline: Preferred term for gender field is displayed when "other" is selected for gender term
-#      Given I edit a person's equality information
-#      Then the equality information is diplayed
-#      And I select a gender "<gender>"
-#      And the preferred gender term field is displayed
-#      And I enter "<genderTerm>" into the gender term field
-
-#      Examples:
-#          | gender | genderTerm  |
-#          | Other  | Gender Term |
-
-#    Scenario: Confirmation alert not shown
-#      When I edit a person's contact details
-#      And I click add a correspondence address
-#      Then the correspondence address fields are displayed
-#      When I enter "Address" into address line 1
-#      And the review changes option is visible
-#      And the next button is disabled
-#      When I clear address line 1
-#      Then the next button is enabled
+  Scenario: Confirmation alert not shown
+    Given I create a person with GUID "76ca0d2d-977a-4ba7-95d9-19163a3c7a5d" and seed it to the database
+    When I edit a person's contact details
+    And I click add a correspondence address
+    Then the correspondence address fields are displayed
+    When I enter "Address" into address line 1
+    And the review changes option is visible
+    And the next button is disabled
+    When I clear address line 1
+    Then the next button is enabled

@@ -8,8 +8,9 @@ import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import { addTestRecordToDatabase } from '../common/common'
-const envConfig = require('../../../environment-config')
+import { generateEqualityInformation } from '../../../api/models/requests/equalityDetailsModel'
 
+const envConfig = require('../../../environment-config')
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 const personContactPage = new PersonContactPageObjects()
@@ -273,7 +274,7 @@ Given("I edit a person's equality information", () => {
   })
 })
 
-Then('the equality information is diplayed', () => {
+Then('the equality information is displayed', () => {
   addPersonPage.ageGroupSelectionBox().should('be.visible')
   addPersonPage.provideUnpaidCareSelectionField().should('be.visible')
   addPersonPage.ethnicitySelectionBox().should('be.visible')
@@ -426,25 +427,34 @@ Then("I browse to the 'Add Person to Tenure' page for tenure with GUID {string}"
   cy.visit(`${envConfig.baseUrl}/tenure/${tenureGuid}/edit/person/new`)
 });
 
-// Database seed methods
-
-Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
-    const assetModel = generateAsset()
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
-
-    addTestRecordToDatabase("TenureInformation", tenureModel)
-})
-
-
-Given("I create a person with GUID {string} and seed it to the database", (personGuid) => {
-    const testPerson = person(undefined, personGuid);
-    addTestRecordToDatabase("Persons", testPerson)
-})
-
 Then("I visit the 'Edit person' page for the person", () => {
   cy.getPersonFixture().then(({ id: personGuid }) => {
     editPersonPage.visit(personGuid)
   })
 })
+
+// Database seed methods
+
+Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
+  const assetModel = generateAsset()
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
+
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+})
+
+
+Given("I create a person with GUID {string} and seed it to the database", (personGuid) => {
+  const testPerson = person(undefined, personGuid);
+  addTestRecordToDatabase("Persons", testPerson)
+})
+
+Then("I seed blank equality information to the database, for such person", () => {
+  cy.getPersonFixture().then(({ id: personGuid }) => {
+    addTestRecordToDatabase("EqualityInformation", generateEqualityInformation(personGuid))
+  })
+})
+
+
+
