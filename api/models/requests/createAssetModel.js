@@ -12,7 +12,7 @@ const defaultPatch = [
 ]
 
 const createAssetModel = {
-  "id": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
+  "id": faker.datatype.uuid(),
   "assetId": "12876875",
   "assetAddress": {
     "uprn": "100021065786",
@@ -169,7 +169,6 @@ const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.ran
 const asset = (patch) => {
   return {
     ...createAssetModel,
-    id: faker.datatype.uuid(),
     patches: [patch]
   }
 }

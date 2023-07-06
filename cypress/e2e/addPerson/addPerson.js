@@ -1,14 +1,12 @@
 import { And, Given, Then, When } from '@badeball/cypress-cucumber-preprocessor'
 import { queueDeletePersonWithId } from "../../../api/helpers"
-import { tenure } from '../../../api/models/requests/addTenureModel'
-import { generateAsset } from '../../../api/models/requests/createAssetModel'
 import { person } from "../../../api/models/requests/createPersonModel"
+import { generateEqualityInformation } from '../../../api/models/requests/equalityDetailsModel'
 import guid from '../../helpers/commentText'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import { addTestRecordToDatabase } from '../common/common'
-import { generateEqualityInformation } from '../../../api/models/requests/equalityDetailsModel'
 
 const envConfig = require('../../../environment-config')
 const addPersonPage = new AddPersonPageObjects()
