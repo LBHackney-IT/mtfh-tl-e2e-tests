@@ -1,7 +1,10 @@
-import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
-import CreateTenurePageObjects from "../../pageObjects/createTenurePage"
-import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
+import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { generateAsset } from "../../../api/models/requests/createAssetModel";
+import { person } from "../../../api/models/requests/createPersonModel";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
+import CreateTenurePageObjects from "../../pageObjects/createTenurePage";
+import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
+import DynamoDb from "../common/DynamoDb";
 
 const createTenurePage = new CreateTenurePageObjects()
 const addPersonPage = new AddPersonPageObjects()
@@ -175,6 +178,85 @@ When("I enter a tenure end date as {string} {string} {string}", (day, month, yea
     createTenurePage.tenureEndDateMonthContainer().clear().type(month);
     createTenurePage.tenureEndDateYearContainer().clear().type(year);
 });
+
 Then("the tenure information is displayed with the page heading Tenure updated", () => {
     createTenurePage.confirmTenureUpdatedText().should('contain', 'Tenure updated');
 })
+
+// Database seed methods
+
+Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
+    cy.log("Seeding database").then(() => {
+      const assetModel = generateAsset(assetGuid)
+      const personModel1 = person();
+      const personModel2 = person();
+  
+      return new Cypress.Promise((resolve) => {
+        Promise.all([
+          DynamoDb.createRecord("Assets", assetModel),
+          DynamoDb.createRecord("Persons", personModel1),
+          DynamoDb.createRecord("Persons", personModel2),
+        ]).then(() => {
+          resolve()
+        })
+      }).then(() => {
+        cy.log("Database seeded!");
+      })
+    })
+  })
+  
+//   Given("I seeded the database with an asset {string} with a previous tenure", (assetGuid) => {
+//     cy.log("Seeding database").then(() => {
+//       const patchModel = patch;
+//       const assetModel = generateAsset(assetGuid, { patch: patchModel })
+//       const personModel1 = person();
+//       const personModel2 = person();
+//       const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+  
+//       const personTenure = {
+//         id: tenureModel.id,
+//         startDate: tenureModel.startOfTenureDate,
+//         endDate: tenureModel.endOfTenureDate,
+//         assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+//         assetId: tenureModel.tenuredAsset.id,
+//         uprn: tenureModel.tenuredAsset.uprn,
+//         isActive: false,
+//         type: tenureModel.tenureType.description,
+//         propertyReference: tenureModel.tenuredAsset.propertyReference,
+//       }
+  
+//       personModel1.tenures.push(personTenure);
+//       personModel2.tenures.push(personTenure);
+  
+//       assetModel.tenure = {
+//         endOfTenureDate: tenureModel.endOfTenureDate,
+//         id: tenureModel.id,
+//         paymentReference: tenureModel.paymentReference,
+//         startOfTenureDate: tenureModel.startOfTenureDate,
+//         type: tenureModel.tenureType.description,
+//       }
+  
+//       // Add expired/previous tenure to asset
+//       assetModel.tenure = {
+//         endOfTenureDate: "2022-07-29T00:00:00",
+//         id: tenureModel.id,
+//         paymentReference: tenureModel.paymentReference,
+//         startOfTenureDate: "2020-07-29T00:00:00",
+//         type: tenureModel.tenureType.description,
+//       }
+  
+//       return new Cypress.Promise((resolve) => {
+//         Promise.all([
+//           DynamoDb.createRecord("PatchesAndAreas", patchModel),
+//           DynamoDb.createRecord("Assets", assetModel),
+//           DynamoDb.createRecord("TenureInformation", tenureModel),
+//           DynamoDb.createRecord("Persons", personModel1),
+//           DynamoDb.createRecord("Persons", personModel2),
+//         ]).then(() => {
+//           resolve()
+//         })
+//       }).then(() => {
+//         cy.log("Database seeded!");
+//       })
+//     })
+//   })

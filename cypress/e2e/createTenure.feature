@@ -1,41 +1,41 @@
-# @authentication
-# @common
-# @processes
-# @root
-# @tenure
+@authentication
+@common
+@processes
+@root
+@tenure
 
-# Feature: Create tenure
-#   I want to create a new tenure
+Feature: Create tenure
+  I want to create a new tenure
 
-#   Background:
-#     Given I am logged in
+  Background:
+    Given I am logged in
 
-#   #  commented the below as its failing in Dev - record not found in Dev
-#   #  @ignore
-#   #  Scenario Outline: Clean up test data from DynamoDb
-#   #    Then I can delete a created record from DynamoDb "<tableName>"
-#   #
-#   #    Examples:
-#   #      | tableName          |
-#   #      | TenureInformation  |
-#   #
-#   @ignore
-#   @SmokeTest
-#   Scenario Outline: Create new tenure
-#     Given I seeded the database with an asset "<property>" with no attached tenure
-#     When I view a property "<property>"
-#     When I click on the new tenure button
-#     Then I am on the create new tenure page "<property>"
-#     Then the new tenure landing page is displayed
-#     When I select a tenure type "<tenureType>"
-#     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-#     And I click the next button
-#     And the tenure person search is displayed
+  #  commented the below as its failing in Dev - record not found in Dev
+  #  @ignore
+  #  Scenario Outline: Clean up test data from DynamoDb
+  #    Then I can delete a created record from DynamoDb "<tableName>"
+  #
+  #    Examples:
+  #      | tableName          |
+  #      | TenureInformation  |
+  #
+  @ignore
+  @SmokeTest
+  Scenario Outline: Create new tenure
+    Given I seeded the database with an asset "<property>" with no attached tenure
+    When I view a property "<property>"
+    When I click on the new tenure button
+    Then I am on the create new tenure page "<property>"
+    Then the new tenure landing page is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I click the next button
+    And the tenure person search is displayed
 
-#     Examples:
-#       | property                             | tenureType | startDay | startMonth | startYear |
-#       | 14a9c7de-60ea-4a79-8bf2-6d819a562bf0 | Non-Secure | 01       | 01         | 2000      |
-#   #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
+    Examples:
+      | property                             | tenureType | startDay | startMonth | startYear |
+      | 14a9c7de-60ea-4a79-8bf2-6d819a562bf0 | Non-Secure | 01       | 01         | 2000      |
+  #   | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 | Freehold   | 01       | 01         | 2000      |
 
 #   @ignore
 #   @SmokeTest

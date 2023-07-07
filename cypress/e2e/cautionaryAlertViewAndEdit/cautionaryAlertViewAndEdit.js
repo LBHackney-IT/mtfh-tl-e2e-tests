@@ -1,6 +1,14 @@
-import { Given, And, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { saveNonDynamoFixture } from "../../../api/helpers";
+import { tenure } from "../../../api/models/requests/addTenureModel";
+import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
+import { asset } from "../../../api/models/requests/createAssetModel";
+import { person } from "../../../api/models/requests/createPersonModel";
 import CautionaryAlertViewPageObject from "../../pageObjects/CautionaryAlertViewPage";
 import PersonPageObjects from "../../pageObjects/personPage";
+import { addTestRecordToDatabase, tenureToAssetTenure, tenureToPersonTenure } from "../common/common";
+import createCautionaryAlert from "../../../api/cautionary-alert";
+import DynamoDb from "../common/DynamoDb";
 
 const personPO = new PersonPageObjects();
 const cautionaryAlertViewPO = new CautionaryAlertViewPageObject();
@@ -13,19 +21,28 @@ When("I'm on the Cautionary Alert View page", () => {
 });
 
 When("I'm on the person's with cautionary alert page", () => {
+  cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
+  // NOT NEEDED cy.intercept('GET', `*/api/v1/cautionary-alerts/persons/*`, { fixture: "CautionaryAlerts.json", statusCode: 200 }).as('getCautionaryAlertsForPerson')
+
   cy.getPersonFixture().then((person) => {
     const personId = person.id;
     personPO.visit(personId);
   });
+
+  cy.wait(20000)
 });
 
 And("I navigate to that person's cautionary alert's page", () => {
+  // cy.intercept('GET', `*/api/v1/persons/alert`, { fixture: "Persons.json", statusCode: 200 }).as('getCautionaryAlertPersonInfo')
+
   const cautionaryAlertLink = personPO.nthCautionaryAlert(0);
   cautionaryAlertLink.should('exist');
   cautionaryAlertLink.click();
 });
 
 Then("The page title should reflect the page's purpose & contain person's name", () => {
+  // cy.intercept('GET', `*api/v1/cautionary-alerts/alert/*`, { fixture: "cautionary-alert.json", statusCode: 200 }).as('getCautionaryAlert')
+
   cy.getPersonFixture().then((expectedPerson) => {
     const personFirstName = expectedPerson.firstName;
     const personLastName = expectedPerson.surname;
@@ -44,7 +61,7 @@ And("The cautionary alert table should show the correct information", () => {
 
     cautionaryAlertViewPO.dateOfIncidentValue().should('contain', cautionaryAlert.dateOfIncident);
     cautionaryAlertViewPO.alertCodeValue().should('contain', cautionaryAlert.code);
-    cautionaryAlertViewPO.cautionOnSystemValue().should('contain', cautionaryAlert.cautionOnSystem)  ;  
+    cautionaryAlertViewPO.cautionOnSystemValue().should('contain', cautionaryAlert.cautionOnSystem);
     cautionaryAlertViewPO.personNameValue().should('contain', cautionaryAlert.name);
     cautionaryAlertViewPO.reasonValue().should('contain', cautionaryAlert.reason);
     cautionaryAlertViewPO.assureReferenceValue().should('contain', cautionaryAlert.assureReference);
@@ -66,7 +83,7 @@ And("I should see the cautionary alert I navigated from", () => {
   cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
     const cautionaryAlert = cautionaryAlerts[0];
     personPO.nthCautionaryAlert(0).should('contain', cautionaryAlert.cautionOnSystem);
-  }); 
+  });
 });
 
 And("I click on the 'cancel' button", () => {
@@ -165,3 +182,98 @@ And("User should stay on the manage cautionary alert page", () => {
     cy.url().should('include', `/cautionary-alerts/alert/${cautionaryAlertId}`);
   });
 });
+
+// Database seed methods
+
+Given("There's a resident with a cautionary alert", () => {
+  cy.intercept('GET', `*/api/v1/persons/alert`, { fixture: "Persons.json", statusCode: 200 }).as('getCautionaryAlertPersonInfo')
+
+  cy.log("Creating cautionary alert & entities associated with it")
+    .then(() => {
+      const assetModel = asset();
+      const tenureModel = tenure({}, assetModel);
+      const personModel = person();
+      const personTenure = tenureToPersonTenure(tenureModel);
+
+      personModel.tenures.push(personTenure);
+      assetModel.tenure = tenureToAssetTenure(tenureModel);
+
+      const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
+        console.log("saveNonDynamoRecord data: ", response)
+        try {
+          saveNonDynamoFixture(
+            "CautionaryAlerts",
+            [response.body],
+            response,
+          ).then((response) => {
+            resolve(response)
+          });
+        }
+        catch (ex) {
+          reject(ex);
+        }
+      });
+
+      const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
+
+      createCautionaryAlert(cautionaryAlertRecord).then((data) => {
+        saveNonDynamoRecord(data).then((moreData) => {
+          Promise.resolve(moreData);
+        });
+      });
+
+      // saveNonDynamoFixture("CautionaryAlerts", cautionaryAlertRecord)
+      addTestRecordToDatabase("Assets", assetModel)
+      addTestRecordToDatabase("TenureInformation", tenureModel)
+      addTestRecordToDatabase("Persons", personModel)
+    })
+})
+
+// Given("There's a resident with a cautionary alert", () => {
+//   cy
+//     .log("Creating cautionary alert & entities associated with it")
+//     .then(() => {
+//       const assetModel = asset();
+//       const tenureModel = tenure({}, assetModel);
+//       const personModel = person();
+//       const personTenure = tenureToPersonTenure(tenureModel);
+//       personModel.tenures.push(personTenure);
+//       assetModel.tenure = tenureToAssetTenure(tenureModel);
+
+//       const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
+//         console.log("saveNonDynamoRecord data: ", response)
+//         try {
+//           saveNonDynamoFixture(
+//             "CautionaryAlerts",
+//             [response.body],
+//             response,
+//           ).then((response) => {
+//             resolve(response)
+//           });
+//         }
+//         catch (ex) {
+//           reject(ex);
+//         }
+//       });
+
+//       const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
+
+//       createCautionaryAlert(cautionaryAlertRecord).then((data) => {
+//         saveNonDynamoRecord(data).then((moreData) => {
+//           Promise.resolve(moreData);
+//         });
+//       });
+
+//       return new Cypress.Promise((resolve) => {
+//         Promise.all([
+//           DynamoDb.createRecord("Assets", assetModel),
+//           DynamoDb.createRecord("TenureInformation", tenureModel),
+//           DynamoDb.createRecord("Persons", personModel)
+//         ]).then(() => {
+//           resolve();
+//         });
+//       }).then(() => {
+//         cy.log("CA related data created.");
+//       })
+//     });
+// });
