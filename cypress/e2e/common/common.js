@@ -1066,6 +1066,7 @@ export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
 
 // Database seed methods
 
+// THIS CAN MAYBE BE REMOVED AND REPLACED BY THE ONE BELOW (WITHOUT NEEDING GUID PARAM)
 Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => {
   const assetModel = generateAsset()
   const personModel1 = person();
@@ -1073,6 +1074,18 @@ Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => 
   const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
 
   addTestRecordToDatabase("TenureInformation", tenureModel)
+})
+
+Given("I seeded the database with a tenure", () => {
+    const assetModel = generateAsset()
+    const personModel1 = person();
+    const personModel2 = person();
+    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined);
+
+    addTestRecordToDatabase("Assets", assetModel)
+    addTestRecordToDatabase("TenureInformation", tenureModel)
+    addTestRecordToDatabase("Persons", personModel1)
+    addTestRecordToDatabase("Persons", personModel2)
 })
 
 // Database data teardown

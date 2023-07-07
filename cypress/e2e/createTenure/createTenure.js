@@ -259,12 +259,3 @@ Given("I seeded the database with an asset with a previous tenure", () => {
         })
     })
 })
-
-Given("I seeded the database with a tenure", () => {
-    const assetModel = generateAsset()
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined);
-
-    addTestRecordToDatabase("TenureInformation", tenureModel)
-})
