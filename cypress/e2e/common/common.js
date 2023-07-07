@@ -36,7 +36,7 @@ import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
 import { saveNonDynamoFixture } from "../../../api/helpers";
-import { tenure } from "../../../api/models/requests/addTenureModel";
+import { generateTenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
 import { asset, generateAsset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
@@ -951,7 +951,7 @@ Given("I seeded the database", () => {
     const assetModel = asset(patchModel);
     const personModel1 = person();
     const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
 
     const personTenure = {
       id: tenureModel.id,
@@ -998,7 +998,7 @@ Given("There's a person with a cautionary alert", () => {
     .then(() => {
       const patchModel = patch;
       const assetModel = asset(patchModel);
-      const tenureModel = tenure({}, assetModel);
+      const tenureModel = generateTenure({}, assetModel);
       const personModel = person();
       const personTenure = tenureToPersonTenure(tenureModel);
       personModel.tenures.push(personTenure);
@@ -1070,7 +1070,7 @@ Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => 
   const assetModel = generateAsset()
   const personModel1 = person();
   const personModel2 = person();
-  const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], tenureGuid);
 
   addTestRecordToDatabase("TenureInformation", tenureModel)
 })

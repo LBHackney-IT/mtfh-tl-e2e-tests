@@ -3,7 +3,7 @@ import TenurePageObjects from '../../pageObjects/tenurePage';
 import { getTenure, createTenureWithStartDate, createTenureWithNoOtherResponsibleHouseholdMembers } from "../../../api/tenure";
 import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
-import { tenure } from "../../../api/models/requests/addTenureModel";
+import { generateTenure } from "../../../api/models/requests/addTenureModel";
 import { addTestRecordToDatabase } from "../common/common";
 
 const tenurePage = new TenurePageObjects
@@ -127,7 +127,7 @@ Given("I create a tenure that started on date {string}, with no responsible hous
     const assetModel = generateAsset()
     const personModel1 = person();
     const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: false, personTenureType: "Tenant", ...personModel2 }], undefined, startOfTenureDate);
+    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: false, personTenureType: "Tenant", ...personModel2 }], undefined, startOfTenureDate);
     tenureModel.householdMembers = [];
 
     addTestRecordToDatabase("TenureInformation", tenureModel)

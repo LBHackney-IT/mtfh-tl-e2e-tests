@@ -1,6 +1,6 @@
 import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { saveNonDynamoFixture } from "../../../api/helpers";
-import { tenure } from "../../../api/models/requests/addTenureModel";
+import { generateTenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
 import { asset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
@@ -191,7 +191,7 @@ Given("There's a resident with a cautionary alert", () => {
   cy.log("Creating cautionary alert & entities associated with it")
     .then(() => {
       const assetModel = asset();
-      const tenureModel = tenure({}, assetModel);
+      const tenureModel = generateTenure({}, assetModel);
       const personModel = person();
       const personTenure = tenureToPersonTenure(tenureModel);
 
@@ -234,7 +234,7 @@ Given("There's a resident with a cautionary alert", () => {
 //     .log("Creating cautionary alert & entities associated with it")
 //     .then(() => {
 //       const assetModel = asset();
-//       const tenureModel = tenure({}, assetModel);
+//       const tenureModel = generateTenure({}, assetModel);
 //       const personModel = person();
 //       const personTenure = tenureToPersonTenure(tenureModel);
 //       personModel.tenures.push(personTenure);

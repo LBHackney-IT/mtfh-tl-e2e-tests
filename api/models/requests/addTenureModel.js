@@ -65,7 +65,7 @@ const secureTenureModel = {
     "startOfTenureDate": "2010-01-01"
 }
 
-const tenure = (data, asset, householdMembers, tenureGuid = faker.datatype.uuid(), startOfTenureDate = "2010-01-01") => {
+const generateTenure = (data, asset, householdMembers, tenureGuid = faker.datatype.uuid(), startOfTenureDate = "2010-01-01", endOfTenureDate = "2077-01-01") => {
     const { id: assetId, assetType, assetAddress } = asset;
     let newHouseholdMembers = []
     if (householdMembers) {
@@ -112,11 +112,12 @@ const tenure = (data, asset, householdMembers, tenureGuid = faker.datatype.uuid(
         },
         ...data,
         startOfTenureDate: startOfTenureDate,
+        endOfTenureDate: endOfTenureDate
     }
 }
 
 module.exports = {
     createTenureModel,
     secureTenureModel,
-    tenure
+    generateTenure
 }
