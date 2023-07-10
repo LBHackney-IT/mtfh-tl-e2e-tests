@@ -14,7 +14,7 @@ Feature: Add a new person to a tenure
   @SmokeTest
   @Regression
   Scenario: Removed fields are not displayed
-    Given I seeded the database with an asset "477a39c3-0b63-4f89-b95e-51d116176413" with a previous tenure
+    Given I seeded the database with an asset with a previous tenure
     Given I create a person for tenure
     Then the gender field is not displayed
     And the nationality field is not displayed
