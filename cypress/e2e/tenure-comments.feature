@@ -10,19 +10,19 @@ Feature: Tenure Comment
     Background:
         Given I am logged in
 
-    # @SmokeTest
-    # Scenario Outline: I go to create a comment for a tenure page
-    #     Given I seeded the database with a tenure
-    #     Given I am on the create comment page for "tenure"
-    #     Then the create comment component is displayed
+    @SmokeTest
+    Scenario Outline: I go to create a comment for a tenure page
+        Given I seeded the database with a tenure
+        Given I am on the create comment page for "tenure"
+        Then the create comment component is displayed
 
-    # @Positive
-    # Scenario Outline: Add comment - Relationship between selected record and records in other entities
-    #     Given I seeded the database with a tenure
-    #     Given I am on the create comment page for "tenure"
-    #     When I select a checkbox
-    #     And I create a comment
-    #     Then I can see the same comments in the linked entities
+    @Positive
+    Scenario Outline: Add comment - Relationship between selected record and records in other entities
+        Given I seeded the database with a tenure
+        Given I am on the create comment page for "tenure"
+        When I select a checkbox
+        And I create a comment
+        Then I can see the same comments in the linked entities
 
     @device
     Scenario Outline: I go to create a comment for a tenure page on a device
@@ -55,74 +55,80 @@ Feature: Tenure Comment
             | tenure      | samsung-note9 | Appointments        |
             | tenure      | samsung-s10   | Appointments        |
 
-# @Positive
-# Scenario Outline: Save comment for tenure
-#   Given I am on the create comment page for "tenure"
-#   When I enter a valid title
-#   And I enter a valid comment
-#   And I select a comment category "<category>"
-#   Then I click the save comment button "<commentType>"
-#   And the comment is submitted "<commentType>"
-#   And I can see the timestamp for the created comment "<commentType>"
+    @Positive
+    Scenario Outline: Save comment for tenure
+        Given I seeded the database with a tenure
+        Given I am on the create comment page for "tenure"
+        When I enter a valid title
+        And I enter a valid comment
+        And I select a comment category "<category>"
+        Then I click the save comment button "<commentType>"
+        And the comment is submitted "<commentType>"
+        And I can see the timestamp for the created comment "<commentType>"
 
-#   Examples:
-#     | commentType | tenureId                               | category     |
-#     | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   | Appointments |
+        Examples:
+            | commentType | category     |
+            | tenure      | Appointments |
 
-# @SmokeTest
-# @Negative
-#   Scenario Outline: User cannot submit a comment without mandatory fields
-#   Given I am on the create comment page for "tenure"
-#   When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
-#   And I click the save comment button "<commentType>"
-#   Then I can see a specific validation message for the field "<validationMessage>"
+    @SmokeTest
+    @Negative
+    Scenario Outline: User cannot submit a comment without mandatory fields
+        Given I seeded the database with a tenure
+        Given I am on the create comment page for "tenure"
+        When I do not fill the mandatory fields:"<commentTitle>" "<commentDescription>" "<commentCategory>"
+        And I click the save comment button "<commentType>"
+        Then I can see a specific validation message for the field "<validationMessage>"
 
-#   Examples:
-#   | commentType  | tenureId                             | commentTitle | commentDescription | commentCategory | validationMessage                              |
-#   | tenure       | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |              | test comment       |  Rents          | You must provide a title for this comment        |
-#   | tenure       | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   |                    |  Rents          | You must enter a description for this comment    |
-#   | tenure       | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 | test title   | test comment       |                 | You must select a category for this comment      |
+        Examples:
+            | commentType | commentTitle | commentDescription | commentCategory | validationMessage                             |
+            | tenure      |              | test comment       | Rents           | You must provide a title for this comment     |
+            | tenure      | test title   |                    | Rents           | You must enter a description for this comment |
+            | tenure      | test title   | test comment       |                 | You must select a category for this comment   |
 
-# @SmokeTest
-# @Positive
-# #Notes: TL-60 AC3.1, AC 3.2 and 3.4
-# Scenario Outline: Cancel comment and pop up message
-#   Given I am on the create comment page for "tenure"
-#   When I click the Discard comment link
-#   Then I can see the cancellation pop up for comment
-#   Then I can cancel the comment
+    @SmokeTest
+    @Positive
+    #Notes: TL-60 AC3.1, AC 3.2 and 3.4
+    Scenario Outline: Cancel comment and pop up message
+        Given I seeded the database with a tenure
+        Given I am on the create comment page for "tenure"
+        When I click the Discard comment link
+        Then I can see the cancellation pop up for comment
+        Then I can cancel the comment
 
-#   Examples:
-#     | commentType | tenureId                             |
-#     | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97 |
+        Examples:
+            | commentType |
+            | tenure      |
 
-# @Positive
-# @SmokeTest
-# Scenario Outline: Character limit counter
-#   Given I am on the create comment page for "tenure"
-#   When I enter <characters> characters into the comment field "<commentType>"
-#   Then the number of characters remaining is correct <characters> "<commentType>"
+    @Positive
+    @SmokeTest
+    Scenario Outline: Character limit counter
+        Given I seeded the database with a tenure
+        Given I am on the create comment page for "tenure"
+        When I enter <characters> characters into the comment field "<commentType>"
+        Then the number of characters remaining is correct <characters> "<commentType>"
 
-#   Examples:
-#     | commentType | tenureId                              | characters |
-#     | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97  | 350        |
+        Examples:
+            | commentType | characters |
+            | tenure      | 350        |
 
-# @Negative
-# @SmokeTest
-# Scenario Outline: Character limit exceeded
-#   Given I am on the create comment page for "tenure"
-#   When I enter <characters> characters into the comment field "<commentType>"
-#   Then the warning message tells me I am over by <characters>
+    @Negative
+    @SmokeTest
+    Scenario Outline: Character limit exceeded
+        Given I seeded the database with a tenure
+        Given I am on the create comment page for "tenure"
+        When I enter <characters> characters into the comment field "<commentType>"
+        Then the warning message tells me I am over by <characters>
 
-#   Examples:
-#     | commentType | tenureId                               | characters |
-#     | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97    | 1008        |
+        Examples:
+            | commentType | characters |
+            | tenure      | 1008       |
 
-# @Accessibility
-# Scenario Outline: Accessibility Testing for tenure
-#   Given I am on the create comment page for "tenure"
-#   And have no detectable a11y violations
+@Accessibility
+Scenario Outline: Accessibility Testing for tenure
+Given I seeded the database with a tenure
+  Given I am on the create comment page for "tenure"
+  And have no detectable a11y violations
 
-#   Examples:
-#     | commentType | tenureId                               |
-#     | tenure      | 5d576bff-59e4-9baf-3f80-0b9cc53d8a97   |
+  Examples:
+    | commentType |
+    | tenure      |

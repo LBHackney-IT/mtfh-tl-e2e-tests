@@ -356,7 +356,9 @@ Then('I can cancel the comment', () => {
     switch (commentGroup) {
         case "tenure":
             tenureCommentsPage.cancellationYesButton().contains('Yes').click()
-            cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}`)
+            cy.getTenureFixture().then(async (tenure) => {
+                cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenure.id}`)
+            })
             break;
         case "person":
             personCommentsPage.commentContainer().type(inputText)
