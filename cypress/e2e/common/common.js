@@ -1149,11 +1149,6 @@ Given("I seeded the database with a person", () => {
   addTestRecordToDatabase("Persons", testPerson)
 })
 
-Given("I seeded the database with a person", () => {
-  const testPerson = person();
-  addTestRecordToDatabase("Persons", testPerson)
-})
-
 Given("I seeded the database with an asset", () => {
   const testAsset = generateAsset();
   addTestRecordToDatabase("Assets", testAsset);
