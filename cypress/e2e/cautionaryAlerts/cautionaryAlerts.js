@@ -20,7 +20,7 @@ And("I enter Date of Incident as Day Month and Year", () => {
     tenureReqDocsPO.year().clear().type('2022');
 });
 And("select Type of Caution", () => {
-   // cautionaryAlertPO.typeOfCaution().select('Verbal abuse');
+    // cautionaryAlertPO.typeOfCaution().select('Verbal abuse');
     cautionaryAlertPO.typeOfCaution().select('No Lone Visits');
 });
 And("I enter Description of Incident", () => {
@@ -31,16 +31,16 @@ And("I click on Save and Continue button", () => {
 });
 
 Then("Validation error messages is displayed for Assure reference", () => {
-    cautionaryAlertPO.assureReferenceFieldErrorMessg().should('contain','Enter an Assure reference');
+    cautionaryAlertPO.assureReferenceFieldErrorMessg().should('contain', 'Enter an Assure reference');
 });
 And("Validation error messages is displayed for Date of Incident", () => {
-    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain','Enter date of incident');
+    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain', 'Enter date of incident');
 });
 And("Validation error messages is displayed for Type of Caution", () => {
-    cautionaryAlertPO.selectTypeOfCautionFieldErrorMessg().should('contain','Select a type of caution');
+    cautionaryAlertPO.selectTypeOfCautionFieldErrorMessg().should('contain', 'Select a type of caution');
 });
 And("Validation error messages is displayed for Description of Incident", () => {
-    cautionaryAlertPO.descriptionOfIncidentFieldErrorMessg().should('contain','Enter description of incident');
+    cautionaryAlertPO.descriptionOfIncidentFieldErrorMessg().should('contain', 'Enter description of incident');
 });
 And("I enter only Day for Date of Incident", () => {
     tenureReqDocsPO.day().clear().type('10');
@@ -54,7 +54,7 @@ When("I enter only Day and Month for Date of Incident", () => {
     tenureReqDocsPO.year().clear();
 });
 Then("Validation error messages is displayed for Year", () => {
-    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text','Date of incident must include a year');
+    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text', 'Date of incident must include a year');
 });
 When("I enter only Day and Year for Date of Incident", () => {
     tenureReqDocsPO.day().clear().type('10');
@@ -62,7 +62,7 @@ When("I enter only Day and Year for Date of Incident", () => {
     tenureReqDocsPO.year().clear().type('2022');
 });
 Then("Validation error messages is displayed for Month", () => {
-    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text','Date of incident must include a month');
+    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text', 'Date of incident must include a month');
 });
 When("I enter only Month and Year for Date of Incident", () => {
     tenureReqDocsPO.day().clear();
@@ -70,7 +70,7 @@ When("I enter only Month and Year for Date of Incident", () => {
     tenureReqDocsPO.year().clear().type('2022');
 });
 Then("Validation error messages is displayed for Day", () => {
-    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text','Date of incident must include a day');
+    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text', 'Date of incident must include a day');
 });
 When("I enter Future date", () => {
     tenureReqDocsPO.day().clear().type('10');
@@ -78,30 +78,32 @@ When("I enter Future date", () => {
     tenureReqDocsPO.year().clear().type('2040');
 });
 Then("Validation error message is displayed for Future date", () => {
-    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text','Date of incident must be today or in the past');
+    cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain.text', 'Date of incident must be today or in the past');
 });
 Then("I am on Check and confirm cautionary alert page", () => {
     cautionaryAlertPO.pageHeaderCautionaryAlert().should('contain.text', 'Check and confirm cautionary alert for');
 });
 And("the Cautionary alert details are displayed", () => {
     cy.contains('Assurance Reference');
-    cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text',121212);
+    cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text', 121212);
     cy.contains('Date of incident');
-    cy.get(':nth-child(2) > .govuk-summary-list__value').should('contain.text','01 12 2022');
+    cy.get(':nth-child(2) > .govuk-summary-list__value').should('contain.text', '01 12 2022');
     cy.contains('Type of caution');
     //cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Verbal Abuse');
-    cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','No Lone Visits');
+    cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text', 'No Lone Visits');
     cy.contains('Description');
-    cy.get(':nth-child(4) > .govuk-summary-list__value').should('contain.text','This is a test incident for verbal abuse happened on the date above');
+    cy.get(':nth-child(4) > .govuk-summary-list__value').should('contain.text', 'This is a test incident for verbal abuse happened on the date above');
 });
 When("I click on Save cautionary alert button", () => {
+    cy.intercept('POST', `${Cypress.env('CAUTIONARY_ALERT_ENDPOINT')}/cautionary-alerts/`).as('createCautionaryAlert')
     cy.contains('Save cautionary alert').click();
+    cy.wait('@createCautionaryAlert')
 });
 And("I can see the section Cautionary Alerts with a Red bell icon", () => {
     cautionaryAlertPO.redBellIconAlert().should('exist');
 });
 And("I can see the Cautionary Alert type with the new value", () => {
-  cy.contains('Dangerous Animals');
+    cy.contains('Dangerous Animals');
 })
 And('I can see the Cautionary Alert type', () => {
     // cy.contains('Verbal Abuse');
@@ -112,10 +114,9 @@ And("I can see the Red Bell icon next to the person name", () => {
 });
 
 When("I click on Change link for {string}", (text) => {
-    switch (text)
-    {
+    switch (text) {
         case 'Assurance reference number': {
-                cautionaryAlertPO.changeLinkAssuranceRef().click();
+            cautionaryAlertPO.changeLinkAssuranceRef().click();
             break;
         }
         case 'Date of incident': {
@@ -135,8 +136,7 @@ When("I click on Change link for {string}", (text) => {
 
 });
 When("I update the {string} with a new value", (text) => {
-    switch (text)
-    {
+    switch (text) {
         case 'Assurance reference number': {
             cautionaryAlertPO.assureReference().type('98');
             break;
@@ -161,26 +161,25 @@ When("I update the {string} with a new value", (text) => {
 
 
 And("I can see the {string} is updated with the new value", (text) => {
-    switch (text)
-    {
+    switch (text) {
         case 'Assurance reference number': {
             cy.contains('Assurance Reference');
-            cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text',12121298);
+            cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text', 12121298);
             break;
         }
         case 'Date of incident': {
             cy.contains('Date of incident');
-            cy.get(':nth-child(2) > .govuk-summary-list__value').should('contain.text','02 02 2022');
+            cy.get(':nth-child(2) > .govuk-summary-list__value').should('contain.text', '02 02 2022');
             break;
         }
         case 'Type of caution': {
             cy.contains('Type of caution');
-            cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text','Dangerous Animals');
+            cy.get(':nth-child(3) > .govuk-summary-list__value').should('contain.text', 'Dangerous Animals');
             break;
         }
         case 'Description': {
             cy.contains('Description');
-            cy.get(':nth-child(4) > .govuk-summary-list__value').should('contain.text','This is an update to the previous test incident');
+            cy.get(':nth-child(4) > .govuk-summary-list__value').should('contain.text', 'This is an update to the previous test incident');
             break;
         }
     }
