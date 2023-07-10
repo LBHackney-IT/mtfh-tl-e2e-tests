@@ -68,9 +68,9 @@ export const person = (tenure, personGuid = faker.datatype.uuid()) => {
     return {
         id: personGuid,
         title: "Mr",
-        firstName: "Add",
-        middleName: "Person",
-        surname: "API E2E Test",
+        firstName: "John",
+        middleName: "",
+        surname: "Doe",
         placeOfBirth: faker.address.city(),
         dateOfBirth: "2002-02-19T18:12:39.258Z",
         personTypes: ["Tenant"],

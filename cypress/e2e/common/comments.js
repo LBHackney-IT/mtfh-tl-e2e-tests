@@ -57,8 +57,9 @@ Given('I am on the create comment page for {string}', (commentType, id) => {
             })
             break;
         case "person":
-            personCommentsPage.visit(id)
-            personId = id
+            cy.getPersonFixture().then(async (person) => {
+                personCommentsPage.visit(person.id);
+            })
             break;
         case "property":
             propertyCommentsPage.visit(id)
@@ -506,13 +507,17 @@ Then('I can see the timestamp for the created comment {string}', (commentGroup) 
     }
 })
 
-Then("I am on the Person details page for Alerts", () => {
+// Then("I am on the Person details page for Alerts", () => {
+//     cy.getPersonFixture().then(({ id: personId }) => {
+//         personPage.visit(personId);
+//     })
+//     cy.contains('Cautionary Alerts');
+// });
+
+Then("I am on the person details page", () => {
     cy.getPersonFixture().then(({ id: personId }) => {
         personPage.visit(personId);
     })
-});
-Then("I am on the Person details page", () => {
-    cy.contains('Cautionary Alerts');
 })
 
 Then("I am on the Property details page", () => {

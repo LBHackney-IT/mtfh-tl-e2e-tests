@@ -482,8 +482,10 @@ And("I click edit person", () => {
   personPage.editPersonButton().click();
 });
 
-Given('I view a person {string}', (id) => {
-  personPage.visit(id || personId)
+Given('I view a person', () => {
+  cy.getPersonFixture().then(person => {
+    personPage.visit(person.id)
+  })
 })
 
 And("I am on the person page for {string}", (person) => {
@@ -1077,15 +1079,27 @@ Given("I seeded the database with a tenure with GUID {string}", (tenureGuid) => 
 })
 
 Given("I seeded the database with a tenure", () => {
-    const assetModel = generateAsset()
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined);
+  const assetModel = generateAsset()
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined);
 
-    addTestRecordToDatabase("Assets", assetModel)
-    addTestRecordToDatabase("TenureInformation", tenureModel)
-    addTestRecordToDatabase("Persons", personModel1)
-    addTestRecordToDatabase("Persons", personModel2)
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
+})
+
+Given("I seeded the database with a person", () => {
+  // const assetModel = generateAsset()
+  const testPerson = person();
+  // const personModel2 = person();
+  // const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined);
+
+  // addTestRecordToDatabase("Assets", assetModel)
+  // addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", testPerson)
+  // addTestRecordToDatabase("Persons", personModel2)
 })
 
 // Database data teardown
