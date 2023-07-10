@@ -77,14 +77,15 @@ And("I choose the option 'Yes' for field 'Is LBH property?'", () => {
 })
 
 When("I click on 'Create new property' button, and the POST request is successful", () => {
+    cy.intercept('POST', '*/api/v1/assets', (req) => { req.body = testAsset }).as('createNewAssetSuccess')
+
     cy.contains('Create new property').click()
 
     const testAsset = generateNewAsset(assetGuid, assetId);
     cy.log("The POST request will save the test asset record to the database")
-    cy.intercept('*/api/v1/assets', (req) => { req.body = testAsset }).as('createNewAssetSuccess')
     cy.log("Saving details of the test asset in recordsToDelete.json file")
     saveFixtureData("Assets", { id: testAsset.id }, testAsset)
-    
+
     cy.log("Randomly generated Asset GUID:", assetGuid)
     cy.log("Randomly generated Asset ID:", assetId)
 
