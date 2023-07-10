@@ -25,29 +25,6 @@ let uniqueText = (Math.random() + 1).toString(10).substring(5)
 let commentGroup = ""
 let validationMessageField = ""
 
-
-// IMPLEMENT BELOW METHOD THAT DOES NOT PASS GUID AND DELETE THIS ONE
-// Given('I am on the create comment page for {string} {string}', (commentType, id) => {
-//     commentGroup = commentType
-//     switch (commentGroup) {
-//         case "tenure":
-//             cy.getTenureFixture().then(async (tenure) => {
-//                 tenureCommentsPage.visit(tenure.id)
-//             })
-//             break;
-//         case "person":
-//             personCommentsPage.visit(id)
-//             personId = id
-//             break;
-//         case "property":
-//             propertyCommentsPage.visit(id)
-//             personId = id
-//             break;
-//         default:
-//             break;
-//     }
-// })
-
 Given('I am on the create comment page for {string}', (commentType, id) => {
     commentGroup = commentType
     switch (commentGroup) {
@@ -62,8 +39,9 @@ Given('I am on the create comment page for {string}', (commentType, id) => {
             })
             break;
         case "property":
-            propertyCommentsPage.visit(id)
-            personId = id
+            cy.getAssetFixture().then(async (asset) => {
+                propertyCommentsPage.visit(asset.id);
+            })
             break;
         default:
             break;
@@ -513,15 +491,18 @@ Then("I am on the person details page", () => {
     })
 })
 
-Then("I am on the Property details page", () => {
-    cy.contains('UPRN');
-})
+// Then("I am on the Property details page", () => {
+//     cy.contains('UPRN');
+// })
+
 Then("Add comment button is displayed", () => {
     personPage.addCommentButton().should('exist');
 })
+
 When("I click on Add comment button", () => {
     personPage.addCommentButton().click();
 });
+
 And("I create a comment for test", () => {
     cy.get('#add-comment-title-field').type("Test Comment 123");
     cy.get('#add-comment-description-field').type("This is a demo and adding a test comment description");

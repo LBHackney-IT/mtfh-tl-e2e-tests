@@ -3,7 +3,6 @@ import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
 
-const propertyUprn = "100023014215"
 const newAddressLine1Value = 'NEW ADDRESS LINE 1'
 
 Given("I am on the MMH 'Edit property address' page for the asset", () => {
@@ -132,12 +131,12 @@ const getAssetEditUrlByGuid = (assetGuid) => {
 
 // Database seed methods
 
-Given("I seeded the database with an asset with no valid UPRN", (assetGuid) => {
-    const testAsset = generateAsset(assetGuid, "");
+Given("I seeded the database with an asset with no valid UPRN", () => {
+    const testAsset = generateAsset(undefined, "");
     addTestRecordToDatabase("Assets", testAsset);
 })
 
 Given("I seeded the database with an asset with a valid UPRN", () => {
-    const testAsset = generateAsset(undefined, propertyUprn);
+    const testAsset = generateAsset(undefined);
     addTestRecordToDatabase("Assets", testAsset);
 })
