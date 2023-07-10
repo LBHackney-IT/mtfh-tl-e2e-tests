@@ -1090,11 +1090,6 @@ Given("I seeded the database with a tenure", () => {
   addTestRecordToDatabase("Persons", personModel2)
 })
 
-Given("I seeded the database with a person", () => {
-  const testPerson = person();
-  addTestRecordToDatabase("Persons", testPerson)
-})
-
 Given("I seeded the database with an asset with a previous tenure", () => {
   cy.log("Seeding database").then(() => {
     const assetModel = generateAsset()
@@ -1147,6 +1142,11 @@ Given("I seeded the database with an asset with a previous tenure", () => {
       cy.log("Database seeded!");
     })
   })
+})
+
+Given("I seeded the database with a person", () => {
+  const testPerson = person();
+  addTestRecordToDatabase("Persons", testPerson)
 })
 
 // Database data teardown

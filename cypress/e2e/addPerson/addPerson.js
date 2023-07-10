@@ -420,9 +420,11 @@ Then('the next button is enabled', () => {
   cy.contains('Next').should('be.enabled')
 })
 
-Then("I browse to the 'Add Person to Tenure' page for tenure with GUID {string}", (tenureGuid) => {
-  cy.reload()
-  cy.visit(`${envConfig.baseUrl}/tenure/${tenureGuid}/edit/person/new`)
+Then("I browse to the 'Add Person to Tenure' page for the tenure", () => {
+  cy.getTenureFixture().then((tenure) => {
+    cy.reload()
+    cy.visit(`${envConfig.baseUrl}/tenure/${tenure.id}/edit/person/new`)
+  })
 });
 
 Then("I visit the 'Edit person' page for the person", () => {
@@ -432,11 +434,6 @@ Then("I visit the 'Edit person' page for the person", () => {
 })
 
 // Database seed methods
-
-Given("I create a person with GUID {string} and seed it to the database", (personGuid) => {
-  const testPerson = person(undefined, personGuid);
-  addTestRecordToDatabase("Persons", testPerson)
-})
 
 Then("I seed blank equality information to the database, for such person", () => {
   cy.getPersonFixture().then(({ id: personGuid }) => {

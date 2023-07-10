@@ -14,7 +14,7 @@ Feature: Add a new person to a tenure
   @SmokeTest
   @Regression
   Scenario: Removed fields are not displayed
-    Given I seeded the database with an asset with a previous tenure
+    Given I seeded the database with a tenure
     Given I create a person for tenure
     Then the gender field is not displayed
     And the nationality field is not displayed
@@ -25,8 +25,8 @@ Feature: Add a new person to a tenure
   @SmokeTest
   @Positive
   Scenario Outline: Add a new person to a tenure
-    Given I seeded the database with a tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
-    Then I browse to the 'Add Person to Tenure' page for tenure with GUID "a477e05a-22a2-4bf7-aef2-107acba1ea18"
+    Given I seeded the database with a tenure
+    Then I browse to the 'Add Person to Tenure' page for the tenure
     Then the add a new person tenure page is correct
     When I select person type "<personType>"
     And I select a title "<title>"
@@ -96,8 +96,8 @@ Feature: Add a new person to a tenure
   @SmokeTest
   @Negative
   Scenario Outline: Validation check
-    Given I seeded the database with a tenure with GUID "1414a574-2c53-49e1-b5a2-87247c457ed2"
-    Then I browse to the 'Add Person to Tenure' page for tenure with GUID "1414a574-2c53-49e1-b5a2-87247c457ed2"
+    Given I seeded the database with a tenure
+    Then I browse to the 'Add Person to Tenure' page for the tenure
     When I select person type "<personType>"
     And I select a title "<title>"
     And I enter a first name "<firstName>"
@@ -115,7 +115,7 @@ Feature: Add a new person to a tenure
   @SmokeTest
   @Positive
   Scenario Outline: Edit a person
-    Given I create a person with GUID "828ae179-a2a0-406f-954e-d87625954630" and seed it to the database
+    Given I seeded the database with a person
     Then I visit the 'Edit person' page for the person
     And the person type options are not displayed
     And I select a title "<title>"
@@ -141,7 +141,7 @@ Feature: Add a new person to a tenure
       | Mrs   | Modified  | Test       | guid     | 30  | 06    | 1988 | Crete        | Ms             | Pref modified      | Mid modified        | guid              | testymctester@test.com | This is an email | 99988199    | Mobile    | This is a phone  | changeConflict |
 
   Scenario Outline: Confirmation modal
-    Given I create a person with GUID "52bb2638-5645-4c9e-a621-5485ae165bf3" and seed it to the database
+    Given I seeded the database with a person
     Then I visit the 'Edit person' page for the person
     And I click edit person
     And I click cancel
@@ -167,7 +167,7 @@ Feature: Add a new person to a tenure
   #          | 279bf08c-0c9e-4d81-e24a-8930e8b37a68 | E8 2DY   |
 
   Scenario Outline: Correspondence address using invalid postcode lookup details
-    Given I create a person with GUID "c3778a55-f01a-4192-adaa-4095f8f02765" and seed it to the database
+    Given I seeded the database with a person
     When I edit a person's contact details
     And I click add a correspondence address
     Then the correspondence address fields are displayed
@@ -176,7 +176,7 @@ Feature: Add a new person to a tenure
     Then an invalid postcode error is thrown
 
   Scenario Outline: Correspondence address using free text fields
-    Given I create a person with GUID "9e8d6243-95f5-40f6-a052-dca33def7102" and seed it to the database
+    Given I seeded the database with a person
     When I edit a person's contact details
     And I click add a correspondence address
     Then the correspondence address fields are displayed
@@ -193,7 +193,7 @@ Feature: Add a new person to a tenure
       | SW1A 1AA | Buckingham | Palace     | London       | England     |
 
   Scenario Outline: Maximum contact details reached
-    Given I create a person with GUID "79fa8f12-d322-473d-b14f-15609a020d9d" and seed it to the database
+    Given I seeded the database with a person
     Given I have the maximum number of "<contactType>" for a person
     When I edit a person's contact details
     Then I cannot add any more contacts for "<contactType>"
@@ -204,7 +204,7 @@ Feature: Add a new person to a tenure
       | phone       |
 
   Scenario Outline: Add equality information
-    Given I create a person with GUID "f61e1e17-d396-41c8-81de-b2101d160b0f" and seed it to the database
+    Given I seeded the database with a person
     Then I seed blank equality information to the database, for such person
     Given I edit a person's equality information
     Then the equality information is displayed
@@ -227,7 +227,7 @@ Feature: Add a new person to a tenure
       | 25-34    | Prefer not to say | Yes              | Mixed background | Male   | No                   | Secular beliefs  | Lesbian or Gay woman | Prefer not to say          |
 
   Scenario Outline: Sexual orientation is not displayed for under 16s
-    Given I create a person with GUID "e5400f3e-cfa4-4b8d-bae6-50e4874d0ee9" and seed it to the database
+    Given I seeded the database with a person
     Then I seed blank equality information to the database, for such person
     Given I edit a person's equality information
     Then the equality information is displayed
@@ -239,7 +239,7 @@ Feature: Add a new person to a tenure
       | Under 16 |
 
   Scenario Outline: Preferred term for gender field is displayed when "other" is selected for gender term
-    Given I create a person with GUID "76ca0d2d-977a-4ba7-95d9-19163a3c7a5d" and seed it to the database
+    Given I seeded the database with a person
     Then I seed blank equality information to the database, for such person
     Given I edit a person's equality information
     Then the equality information is displayed
@@ -252,7 +252,7 @@ Feature: Add a new person to a tenure
       | Other  | Gender Term |
 
   Scenario: Confirmation alert not shown
-    Given I create a person with GUID "76ca0d2d-977a-4ba7-95d9-19163a3c7a5d" and seed it to the database
+    Given I seeded the database with a person
     When I edit a person's contact details
     And I click add a correspondence address
     Then the correspondence address fields are displayed
