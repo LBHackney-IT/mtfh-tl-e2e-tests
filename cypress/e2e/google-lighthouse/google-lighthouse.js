@@ -32,7 +32,7 @@ Then('I perform a Lighthouse audit on the search page', () => {
     // cy.pa11y()
 })
 
-Then('I perform a Lighthouse audit on the page', () => {
+Then('I perform a Lighthouse audit on the search results page', () => {
     cy.lighthouse()
     // cy.pa11y()
 })

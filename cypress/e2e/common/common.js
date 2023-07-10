@@ -17,7 +17,7 @@ import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation";
 import TenurePageObjects from "../../pageObjects/tenurePage";
-
+import HomePageObjects from "../../pageObjects/homePage";
 
 import date from "date-and-time";
 import createCautionaryAlert from "../../../api/cautionary-alert";
@@ -26,7 +26,6 @@ import contactDetails from "../../../api/contact-details";
 import referenceData from "../../../api/reference-data";
 import { editTenure, getTenure } from "../../../api/tenure";
 import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
-
 
 import property from "../../../api/property";
 import { guid } from "../../helpers/commentText";
@@ -56,6 +55,7 @@ const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
 const changeOfName = new ChangeOfNamePageObjects();
+const homePage = new HomePageObjects()
 const emailAdd = 'AutomationTest@test.com';
 const phoneNumber = '07788123456';
 
@@ -1044,6 +1044,11 @@ Given("There's a person with a cautionary alert", () => {
       })
     });
 });
+
+Given('I am on the Home page', () => {
+  homePage.visit()
+  homePage.iAmOnTheHomePage()
+})
 
 // Helper methods
 
