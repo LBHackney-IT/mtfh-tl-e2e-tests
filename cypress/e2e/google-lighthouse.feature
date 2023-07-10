@@ -14,7 +14,7 @@ Feature: Google Lighthouse audit
     And have no detectable a11y violations
 
   Scenario Outline: Search results page audit
-    Given I am on the Home page
+    Given I am on the MMH home page
     When I enter any of the following criteria "<characters>"
     And I click on the search button
     Then I perform a Lighthouse audit on the search results page
