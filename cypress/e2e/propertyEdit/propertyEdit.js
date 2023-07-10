@@ -8,7 +8,7 @@ const newAddressLine1Value = 'NEW ADDRESS LINE 1'
 Given("I am on the MMH 'Edit property address' page for the asset", () => {
     cy.getAssetFixture().then(asset => {
         cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
-        cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { fixture: 'address.json', }).as('getAddress')
+        cy.intercept('GET', `*/api/v1/addresses?uprn=${asset.assetAddress.uprn}`, { fixture: 'address.json', }).as('getAddress')
 
         cy.visit(getAssetEditUrlByGuid(asset.id))
 
@@ -20,7 +20,7 @@ Given("I am on the MMH 'Edit property address' page for the asset", () => {
 Given("I am on the MMH 'Edit property address' page, but the LLPG address fails to be retrieved", () => {
     cy.getAssetFixture().then(asset => {
         cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
-        cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { forceNetworkError: true }).as('getAddress')
+        cy.intercept('GET', `*/api/v1/addresses?uprn=${asset.assetAddress.uprn}`, { forceNetworkError: true }).as('getAddress')
 
         cy.visit(getAssetEditUrlByGuid(asset.id))
 
