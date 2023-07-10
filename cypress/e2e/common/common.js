@@ -750,13 +750,19 @@ And('I click the next button', () => {
   cy.contains('Next').click()
 });
 
-Given("I am on the MMH home page", () => {
-  changeOfNamePage.visitHomePage();
-});
+// Given("I am on the MMH home page", () => {
+//   changeOfNamePage.visitHomePage();
+// });
+
+Given('I am on the MMH home page', () => {
+  homePage.visit()
+  homePage.iAmOnTheHomePage()
+})
 When("I enter {string} as search criteria", (textSearch) => {
   changeOfNamePage.textSearch().should('exist');
   changeOfNamePage.searchField().clear().type(textSearch);
 });
+
 When("I select {string} and click on search button", (entity) => {
   switch (entity) {
     case 'Person':
@@ -1044,11 +1050,6 @@ Given("There's a person with a cautionary alert", () => {
       })
     });
 });
-
-Given('I am on the Home page', () => {
-  homePage.visit()
-  homePage.iAmOnTheHomePage()
-})
 
 // Helper methods
 
