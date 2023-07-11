@@ -80,6 +80,7 @@ Then('the more contact details are displayed', () => {
 })
 
 Then('the personal details are displayed on the mobile content container', () => {
+    cy.wait(1000)
     personPage.personalDetailsMobile().contains('Date of birth')
     personPage.personalDetailsMobile().contains('Phone 1')
     personPage.personalDetailsMobile().contains('Email 1')
