@@ -1,95 +1,88 @@
-# @authentication
-# @common
-# @personal-details
-# @processes
-# @root
+@authentication
+@common
+@personal-details
+@processes
+@root
 
-# Feature: T&L Person Page
-#   I want to view a person
+Feature: T&L Person Page
+    I want to view a person
 
-#   Background:
-#     Given I am logged in
+    Background:
+        Given I am logged in
 
-#   @SmokeTest
-#   @Positive
-#   Scenario Outline: View person details web page view
-#     Given I view a person "<record>"
-#     Then the personal details are displayed on the sidebar
-#     When I click on the more personal details accordion
-#     Then the body Person details are displayed
-#     When I click on the more personal details accordion
-#     When I click on the more tenure details accordion
-#     Then the body tenure details are displayed
-#     When I click on the more tenure details accordion
-#     When I click on the equality details accordion
-#     Then the equality information is displayed
+    @SmokeTest
+    @Positive
+    Scenario Outline: View person details web page view
+        Given I seeded the database with an asset with a previous tenure
+        Given I am on the person details page
+        And the person has valid contact details
+        Then the personal details are displayed on the sidebar
+        When I click on the more personal details accordion
+        Then the body Person details are displayed
+        When I click on the more personal details accordion
+        When I click on the more tenure details accordion
+        Then the body tenure details are displayed
+        When I click on the more tenure details accordion
+        When I click on the equality details accordion
+        Then the equality information is displayed
 
-#     Examples:
-#       | record                               |
-#       | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+    @device
+    Scenario Outline: View person details device view
+        Given I seeded the database with an asset with a previous tenure
+        Given I am on the person details page
+        And the person has valid contact details
+        When I am using a mobile viewport "<device>"
+        Then the personal details are displayed on the mobile content container
+        When I click on the more personal details accordion
+        Then the body Person details are displayed
+        When I click on the more personal details accordion
+        When I click on the more tenure details accordion
+        Then the body tenure details are displayed
+        When I click on the more tenure details accordion
+        When I click on the equality details accordion
+        Then the equality information is displayed
 
-#   @device
-#   Scenario Outline: View person details device view
-#     Given I view a person "<record>"
-#     When I am using a mobile viewport "<device>"
-#     Then the personal details are displayed on the mobile content container
-#     When I click on the more personal details accordion
-#     Then the body Person details are displayed
-#     When I click on the more personal details accordion
-#     When I click on the more tenure details accordion
-#     Then the body tenure details are displayed
-#     When I click on the more tenure details accordion
-#     When I click on the equality details accordion
-#     Then the equality information is displayed
+        Examples:
+            | device      |
+            #| ipad-2        |
+            #| ipad-mini     |
+            | iphone-3    |
+            | iphone-4    |
+            | iphone-5    |
+            | iphone-6    |
+            | iphone-6+   |
+            | iphone-7    |
+            | iphone-8    |
+            | iphone-x    |
+            | iphone-xr   |
+            | iphone-se2  |
+            # | macbook-11    |
+            #| macbook-13    |
+            #  | macbook-15    |
+            # | macbook-16    |
+            # | samsung-note9 |
+            | samsung-s10 |
 
-#     Examples:
-#       | device        | record                               |
-#       # | ipad-2        | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       # | ipad-mini     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-3      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-4      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-5      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-6      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-6+     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-7      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-8      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-x      | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-xr     | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | iphone-se2    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       # | macbook-11    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       # | macbook-13    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       # | macbook-15    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       # | macbook-16    | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       # | samsung-note9 | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
-#       | samsung-s10   | 3cd58102-dad6-4ace-fe5d-1400fb1e5c45 |
+      @SmokeTest
+      Scenario Outline: Look for record that does not exist
+        Given I have loaded an invalid person record "<record>"
+        Then The person you've requested does not exist error message appears
 
-#   @SmokeTest
-#   Scenario Outline: Look for record that does not exist
-#     Given I have loaded an invalid person record "<record>"
-#     Then The person you've requested does not exist error message appears
+        Examples:
+          | record |
+          | kdfbv  |
+          | dfkkkl |
 
-#     Examples:
-#       | record |
-#       | kdfbv  |
-#       | dfkkkl |
+    @SmokeTest
+    Scenario Outline: Add a comment for a person navigation
+        Given I seeded the database with a person
+        Given I am on the person details page
+        Then the body Person details are displayed
+        When I click on the add comment button
+        Then I am taken to the add comment for person page
 
-#   @SmokeTest
-#   Scenario Outline: Add a comment for a person navigation
-#   # Add comment functinality is covered in person-comments.feature
-#     Given I view a person "<record>"
-#     Then the body Person details are displayed
-#     When I click on the add comment button
-#     Then I am taken to the add comment for person page "<record>"
-
-#     Examples:
-#       | record                               | category     |
-#       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 | Appointments |
-
-#   @Accessibility
-#   Scenario Outline: Scenario Outline name: Accessibility Testing
-#     Given I view a person "<record>"
-#     And have no detectable a11y violations
-
-#     Examples:
-#       | record                               |
-#       | aac57a95-11e4-9eeb-954a-c2dd5a0a7f31 |
+    @Accessibility
+    Scenario Outline: Scenario Outline name: Accessibility Testing
+        Given I seeded the database with a person
+        Given I am on the person details page
+        And have no detectable a11y violations

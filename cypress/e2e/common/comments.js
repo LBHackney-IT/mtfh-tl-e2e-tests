@@ -485,12 +485,6 @@ Then('I can see the timestamp for the created comment {string}', (commentGroup) 
     }
 })
 
-Then("I am on the person details page", () => {
-    cy.getPersonFixture().then(({ id: personId }) => {
-        personPage.visit(personId);
-    })
-})
-
 Then("Add comment button is displayed", () => {
     personPage.addCommentButton().should('exist');
 })

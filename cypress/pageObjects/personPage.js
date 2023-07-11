@@ -23,7 +23,7 @@ class PersonPageObjects {
         return cy.get('[id="add-comment-title-field"]')
     }
 
-    addCommentCategoryField(){
+    addCommentCategoryField() {
         return cy.get('[id="add-comment-category-field"]')
     }
 
@@ -39,7 +39,7 @@ class PersonPageObjects {
         return cy.get('.comment__date-time')
     }
 
-    comment(){
+    comment() {
         return cy.get('[class="comment__item --center"]')
     }
 
@@ -84,7 +84,7 @@ class PersonPageObjects {
     }
 
     morePersonalDetailsAccordion() {
-        return cy.get('[id="accordion-heading-additional-person-details"]')
+        return cy.get('[id="accordion-heading-additional-person-details"]', { force: true })
     }
 
     moreTenureDetailsAccordion() {
@@ -144,7 +144,7 @@ class PersonPageObjects {
         return cy.get('[class="mtfh-tenure-details"]')
     }
 
-    newProcess(){
+    newProcess() {
         return cy.contains('New Process')
     }
 

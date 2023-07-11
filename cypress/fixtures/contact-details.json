@@ -1,0 +1,91 @@
+{
+    "results": [
+        {
+            "id": "f63de407-0f3c-cf21-7cbb-b17def49abc0",
+            "targetId": "8d8daf75-7370-e7c8-8a4b-855b06941fff",
+            "targetType": "person",
+            "contactInformation": {
+                "contactType": "phone",
+                "subType": "home",
+                "value": "02072123456",
+                "description": "",
+                "addressExtended": null
+            },
+            "sourceServiceArea": {
+                "area": "Housing",
+                "isDefault": true
+            },
+            "recordValidUntil": null,
+            "isActive": true,
+            "createdBy": {
+                "createdAt": "2021-08-14T17:06:55.710677",
+                "fullName": "Import",
+                "emailAddress": ""
+            }
+        },
+        {
+            "id": "29c61467-c066-ec63-04b6-7f4be6e9463b",
+            "targetId": "8d8daf75-7370-e7c8-8a4b-855b06941fff",
+            "targetType": "person",
+            "contactInformation": {
+                "contactType": "address",
+                "subType": "correspondenceAddress",
+                "value": "27 27 Lilian Close Hackney London N16 0SG",
+                "description": "",
+                "addressExtended": {
+                    "uprn": "10008289960",
+                    "isOverseasAddress": false,
+                    "overseasAddress": null,
+                    "addressLine1": " 27 27 Lilian Close",
+                    "addressLine2": "Hackney",
+                    "addressLine3": "London",
+                    "addressLine4": "",
+                    "postCode": "N16 0SG"
+                }
+            },
+            "sourceServiceArea": {
+                "area": "Housing",
+                "isDefault": true
+            },
+            "recordValidUntil": null,
+            "isActive": true,
+            "createdBy": {
+                "createdAt": "2021-10-25T14:55:14.869002",
+                "fullName": "Import",
+                "emailAddress": ""
+            }
+        },
+        {
+            "id": "29c61467-c066-ec63-04b6-7f4be6e9464a",
+            "targetId": "8d8daf75-7370-e7c8-8a4b-855b06941fff",
+            "targetType": "person",
+            "contactInformation": {
+                "contactType": "email",
+                "subType": null,
+                "value": "ange@hootmail.com",
+                "description": "",
+                "addressExtended": {
+                    "uprn": "10008289960",
+                    "isOverseasAddress": false,
+                    "overseasAddress": null,
+                    "addressLine1": " 27 27 Lilian Close",
+                    "addressLine2": "Hackney",
+                    "addressLine3": "London",
+                    "addressLine4": "",
+                    "postCode": "N16 0SG"
+                }
+            },
+            "sourceServiceArea": {
+                "area": "Housing",
+                "isDefault": true
+            },
+            "recordValidUntil": null,
+            "isActive": true,
+            "createdBy": {
+                "createdAt": "2021-10-25T14:55:14.869002",
+                "fullName": "Import",
+                "emailAddress": ""
+            }
+        }
+    ]
+}

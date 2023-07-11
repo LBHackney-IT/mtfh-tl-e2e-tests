@@ -481,9 +481,9 @@ And("I click edit person", () => {
   personPage.editPersonButton().click();
 });
 
-Given('I view a person', () => {
-  cy.getPersonFixture().then(person => {
-    personPage.visit(person.id)
+Then("I am on the person details page", () => {
+  cy.getPersonFixture().then(({ id: personId }) => {
+    personPage.visit(personId);
   })
 })
 
@@ -962,6 +962,14 @@ Given("the person has a correspondence address", () => {
   })
 })
 
+Given("the person has valid contact details", () => {
+  cy.getPersonFixture().then((person) => {
+    // cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
+    // cy.intercept('GET', `*api/v2/contactDetails?targetId=*`, { fixture: "contact-details.json", statusCode: 200 }).as('getContactDetails')
+    cy.intercept('GET', `https://gos4l9my1a.execute-api.eu-west-2.amazonaws.com/development/api/v2/contactDetails?targetId=${person.id}`, { fixture: "contact-details.json", statusCode: 200 }).as('getContactDetails')
+  })
+})
+
 And("the details email address and phone number are displayed", () => {
   cy.contains(emailAdd);
   cy.contains(phoneNumber);
@@ -1183,7 +1191,7 @@ Given("I seeded the database with a person with an active tenure", () => {
     assetFullAddress: tenureModel.tenuredAsset.fullAddress,
     assetId: tenureModel.tenuredAsset.id,
     uprn: tenureModel.tenuredAsset.uprn,
-    isActive: false,
+    isActive: true,
     type: tenureModel.tenureType.description,
     propertyReference: tenureModel.tenuredAsset.propertyReference,
   }
