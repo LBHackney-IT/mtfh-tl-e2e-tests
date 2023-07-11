@@ -40,7 +40,7 @@ Feature: Property Page
         And I click on the view property button for a person
         Then the property information is displayed
 
-    @ignore
+    @SmokeTest
     Scenario Outline: Repairs container is displayed
         Given I seeded the database with an asset
         When I view a property ""

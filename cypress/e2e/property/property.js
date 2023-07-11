@@ -38,23 +38,9 @@ And('I am shown an error message', () => {
 
 Then('the repairs container is displayed', () => {
     cy.getAssetFixture().then((assetFixture) => {
-        cy.intercept(
-            'GET',
-            `*/api/v2/workOrders?propertyReference=${assetFixture.assetId}
-            &PageNumber=1&PageSize=12&
-            StatusCode=20
-            &StatusCode=60
-            &StatusCode=80
-            &StatusCode=90
-            &StatusCode=100
-            &StatusCode=110
-            &StatusCode=120
-            &StatusCode=1000
-            &StatusCode=1010
-            &StatusCode=1080
-            &StatusCode=1090`, 
-            { fixture: 'repairs.json' })
-            .as('getRepairs')
+        cy.intercept('GET',
+            `*/api/v2/workOrders?propertyReference=${assetFixture.assetId}&PageNumber=1&PageSize=12&StatusCode=20&StatusCode=60&StatusCode=80&StatusCode=90&StatusCode=100&StatusCode=110&StatusCode=120&StatusCode=1000&StatusCode=1010&StatusCode=1080&StatusCode=1090`,
+            { fixture: 'repairs.json' }).as('getRepairs')
     })
 
     cy.wait('@getRepairs').then(() => {
