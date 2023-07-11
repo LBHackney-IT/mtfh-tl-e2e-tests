@@ -1,16 +1,16 @@
-# Feature: As a Housing Officer
-#   I want to confirm a tenure investigation has been completed
-#   So that I can make a decision on the sole to joint application
+Feature: As a Housing Officer
+  I want to confirm a tenure investigation has been completed
+  So that I can make a decision on the sole to joint application
 
-#   Background:
-#     Given I am logged in
-#     And I seeded the database
+  Background:
+    Given I am logged in
+    And I seeded the database
 
-#   Scenario: AC1: View the Confirmation of completed tenure investigation page
-#     Given The tenure investigation has been completed for tenure
-#     When I tick the box "I confirm that the tenure investigation has been completed"
-#     Then I am able to choose which recommendation the tenure investigator has given Approve Decline or Appointment
-#     And the progress indicator is still in "Review Application"
+  Scenario: AC1: View the Confirmation of completed tenure investigation page
+    Given The tenure investigation has been completed for tenure
+    When I tick the box "I confirm that the tenure investigation has been completed"
+    Then I am able to choose which recommendation the tenure investigator has given Approve Decline or Appointment
+    And the progress indicator is still in "Review Application"
 
 # # temporarily skip as failing but working manually
 # #  Scenario: Tenure Investigation recommendation - Approve, HO Review - Approve application
