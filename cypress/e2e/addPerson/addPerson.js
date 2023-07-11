@@ -228,8 +228,8 @@ Given('I have the maximum number of {string} for a person', (contactType) => {
   cy.getPersonFixture().then(({ id: personId }) => {
     for (let i = 0; i < 5; i++) {
       contactDetails.addContactDetails(
-        contactType,
         personId,
+        contactType
       ).then(postResponse => {
         assert.deepEqual(postResponse.status, 201)
       })

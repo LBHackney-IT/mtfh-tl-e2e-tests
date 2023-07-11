@@ -29,17 +29,17 @@ Given('I am on the create comment page for {string}', (commentType, id) => {
     commentGroup = commentType
     switch (commentGroup) {
         case "tenure":
-            cy.getTenureFixture().then(async (tenure) => {
+            cy.getTenureFixture().then((tenure) => {
                 tenureCommentsPage.visit(tenure.id)
             })
             break;
         case "person":
-            cy.getPersonFixture().then(async (person) => {
+            cy.getPersonFixture().then((person) => {
                 personCommentsPage.visit(person.id);
             })
             break;
         case "property":
-            cy.getAssetFixture().then(async (asset) => {
+            cy.getAssetFixture().then((asset) => {
                 propertyCommentsPage.visit(asset.id);
             })
             break;
@@ -490,10 +490,6 @@ Then("I am on the person details page", () => {
         personPage.visit(personId);
     })
 })
-
-// Then("I am on the Property details page", () => {
-//     cy.contains('UPRN');
-// })
 
 Then("Add comment button is displayed", () => {
     personPage.addCommentButton().should('exist');

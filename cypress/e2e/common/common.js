@@ -8,6 +8,7 @@ import {
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
+import HomePageObjects from "../../pageObjects/homePage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import PropertyPageObjects from "../../pageObjects/propertyPage";
@@ -17,12 +18,11 @@ import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation";
 import TenurePageObjects from "../../pageObjects/tenurePage";
-import HomePageObjects from "../../pageObjects/homePage";
 
 import date from "date-and-time";
 import createCautionaryAlert from "../../../api/cautionary-alert";
 import comment from "../../../api/comment";
-import contactDetails from "../../../api/contact-details";
+import { addContactDetails } from "../../../api/contact-details";
 import referenceData from "../../../api/reference-data";
 import { editTenure, getTenure } from "../../../api/tenure";
 import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
@@ -197,7 +197,7 @@ And("I want to edit a person", async () => {
 
 And("I want to add contact details {string}", async (type) => {
   cy.log(`Creating contact details for record ${personId}`)
-  const response = await contactDetails.addContactDetails(type, personId);
+  const response = await contactDetails.addContactDetails(personId, type);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Contact details for record ${response.data.id} created!`);
   assert.deepEqual(response.status, 201);
@@ -235,8 +235,7 @@ And('I click on the breadcrumb', () => {
 })
 
 Then('I am taken to the search page', () => {
-  // cy.url().should('contain', "search")
-  cy.findAllByText("Search Results");
+  cy.contains("Search").should('be.visible')
 })
 
 And('I click on the view property button', () => {
@@ -941,14 +940,38 @@ Then("email address and phone number are null", () => {
   cy.contains(phoneNumber).should('not.exist');
 })
 
+Given("the person has a correspondence address", () => {
+  cy.getPersonFixture().then((person) => {
+    const contactInformation = {
+      "contactType": "address",
+      "subType": "correspondenceAddress",
+      "value": "SHELTER 30M FROM VOODOO RAYS UNIT 1-3 BOXPARK RETAIL MALL2-10 BETHNAL GREEN ROAD 8M FRO E1 6AW",
+      "description": null,
+      "addressExtended": {
+        "uprn": "1000123456789",
+        "isOverseasAddress": false,
+        "overseasAddress": null,
+        "addressLine1": "SHELTER 30M FROM VOODOO RAYS",
+        "addressLine2": "UNIT 1-3",
+        "addressLine3": "BOXPARK RETAIL MALL2-10",
+        "addressLine4": "BETHNAL GREEN ROAD 8M FRO",
+        "postCode": "E1 6AW"
+      }
+    }
+    addContactDetails(person.id, undefined, contactInformation)
+  })
+})
+
 And("the details email address and phone number are displayed", () => {
   cy.contains(emailAdd);
   cy.contains(phoneNumber);
 });
+
 Then("Status Stepper is at {string}", (status) => {
   changeOfName.statusActiveCheck().should('be.visible');
   changeOfName.statusActiveCheck().should('contain.text', status);
 });
+
 And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
 });
@@ -1101,7 +1124,7 @@ Given("I seeded the database with an asset with a previous tenure", () => {
     const assetModel = generateAsset()
     const personModel1 = person();
     const personModel2 = person();
-    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined, "1998-10-13");
+    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, "1990-10-13", "1998-10-13");
 
     const personTenure = {
       id: tenureModel.id,
@@ -1117,14 +1140,6 @@ Given("I seeded the database with an asset with a previous tenure", () => {
 
     personModel1.tenures.push(personTenure);
     personModel2.tenures.push(personTenure);
-
-    assetModel.tenure = {
-      endOfTenureDate: tenureModel.endOfTenureDate,
-      id: tenureModel.id,
-      paymentReference: tenureModel.paymentReference,
-      startOfTenureDate: tenureModel.startOfTenureDate,
-      type: tenureModel.tenureType.description,
-    }
 
     // Add expired/previous tenure to asset
     assetModel.tenure = {
@@ -1153,6 +1168,41 @@ Given("I seeded the database with an asset with a previous tenure", () => {
 Given("I seeded the database with a person", () => {
   const testPerson = person();
   addTestRecordToDatabase("Persons", testPerson)
+})
+
+Given("I seeded the database with a person with an active tenure", () => {
+  const assetModel = generateAsset()
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+  const personTenure = {
+    id: tenureModel.id,
+    startDate: tenureModel.startOfTenureDate,
+    endDate: tenureModel.endOfTenureDate,
+    assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+    assetId: tenureModel.tenuredAsset.id,
+    uprn: tenureModel.tenuredAsset.uprn,
+    isActive: false,
+    type: tenureModel.tenureType.description,
+    propertyReference: tenureModel.tenuredAsset.propertyReference,
+  }
+
+  personModel1.tenures.push(personTenure);
+  personModel2.tenures.push(personTenure);
+
+  assetModel.tenure = {
+    endOfTenureDate: tenureModel.endOfTenureDate,
+    id: tenureModel.id,
+    paymentReference: tenureModel.paymentReference,
+    startOfTenureDate: tenureModel.startOfTenureDate,
+    type: tenureModel.tenureType.description,
+  }
+
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
 })
 
 Given("I seeded the database with an asset", () => {

@@ -72,7 +72,6 @@ Feature: T&L Person Comment
     @SmokeTest
     Scenario Outline: Character limit counter
         Given I seeded the database with a person
-
         Then I am on the person details page
         And Add comment button is displayed
         When I click on Add comment button
