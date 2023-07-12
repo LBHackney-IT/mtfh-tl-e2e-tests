@@ -1,14 +1,13 @@
-import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor"
-import PersonPageObjects from "../../pageObjects/personPage"
-import TenurePageObjects from "../../pageObjects/tenurePage";
-import PropertyPageObjects from "../../pageObjects/propertyPage";
+import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
+import PersonPageObjects from "../../pageObjects/personPage";
+import PropertyPageObjects from "../../pageObjects/propertyPage";
+import TenurePageObjects from "../../pageObjects/tenurePage";
 
 const personPage = new PersonPageObjects()
 const processesPage = new ProcessesPageObjects()
 const tenurePage = new TenurePageObjects()
 const propertyPage = new PropertyPageObjects()
-const envConfig = require('../../../environment-config')
 
 When('I select New Process menu {string}',  (processType) => {
     switch (processType) {

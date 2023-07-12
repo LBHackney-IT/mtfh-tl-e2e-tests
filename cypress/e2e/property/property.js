@@ -1,8 +1,7 @@
-import { When, Then, And, Given } from "@badeball/cypress-cucumber-preprocessor";
-import asset from '../../../api/asset'
-import { property } from "../../../environment-config";
-import PropertyPageObjects from "../../pageObjects/propertyPage";
+import { And, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import asset from '../../../api/asset';
 import PersonPageObjects from "../../pageObjects/personPage";
+import PropertyPageObjects from "../../pageObjects/propertyPage";
 
 const propertyPage = new PropertyPageObjects();
 const personPage = new PersonPageObjects();

@@ -1,4 +1,5 @@
 import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import createCautionaryAlert from "../../../api/cautionary-alert";
 import { saveNonDynamoFixture } from "../../../api/helpers";
 import { generateTenure } from "../../../api/models/requests/addTenureModel";
 import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
@@ -7,8 +8,6 @@ import { person } from "../../../api/models/requests/createPersonModel";
 import CautionaryAlertViewPageObject from "../../pageObjects/CautionaryAlertViewPage";
 import PersonPageObjects from "../../pageObjects/personPage";
 import { addTestRecordToDatabase, tenureToAssetTenure, tenureToPersonTenure } from "../common/common";
-import createCautionaryAlert from "../../../api/cautionary-alert";
-import DynamoDb from "../common/DynamoDb";
 
 const personPO = new PersonPageObjects();
 const cautionaryAlertViewPO = new CautionaryAlertViewPageObject();
@@ -22,8 +21,6 @@ When("I'm on the Cautionary Alert View page", () => {
 
 When("I'm on the person's with cautionary alert page", () => {
   cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
-  // NOT NEEDED cy.intercept('GET', `*/api/v1/cautionary-alerts/persons/*`, { fixture: "CautionaryAlerts.json", statusCode: 200 }).as('getCautionaryAlertsForPerson')
-
   cy.getPersonFixture().then((person) => {
     const personId = person.id;
     personPO.visit(personId);

@@ -20,7 +20,6 @@ import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation
 import TenurePageObjects from "../../pageObjects/tenurePage";
 
 import date from "date-and-time";
-import createCautionaryAlert from "../../../api/cautionary-alert";
 import comment from "../../../api/comment";
 import { addContactDetails } from "../../../api/contact-details";
 import referenceData from "../../../api/reference-data";
@@ -34,9 +33,7 @@ import { searchPersonResults } from "../../support/searchPersonResults";
 import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
-import { saveNonDynamoFixture } from "../../../api/helpers";
 import { generateTenure } from "../../../api/models/requests/addTenureModel";
-import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
 import { asset, generateAsset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
 import { patch } from "../../../api/models/requests/patchModel";
@@ -1043,54 +1040,6 @@ Given("I seeded the database", () => {
   addTestRecordToDatabase("Persons", personModel1)
   addTestRecordToDatabase("Persons", personModel2)
 })
-
-Given("There's a person with a cautionary alert", () => {
-  cy.log("Creating cautionary alert & entities associated with it")
-  const patchModel = patch;
-  const assetModel = asset(patchModel);
-  const tenureModel = generateTenure({}, assetModel);
-  const personModel = person();
-  const personTenure = tenureToPersonTenure(tenureModel);
-  personModel.tenures.push(personTenure);
-  assetModel.tenure = tenureToAssetTenure(tenureModel);
-
-  const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
-    console.log("saveNonDynamoRecord data: ", response)
-    try {
-      saveNonDynamoFixture(
-        "CautionaryAlerts",
-        [response.body],
-        response,
-      ).then((response) => {
-        resolve(response)
-      });
-    }
-    catch (ex) {
-      reject(ex);
-    }
-  });
-
-  const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
-
-  createCautionaryAlert(cautionaryAlertRecord).then((data) => {
-    saveNonDynamoRecord(data).then((moreData) => {
-      Promise.resolve(moreData);
-    });
-  });
-
-  return new Cypress.Promise((resolve) => {
-    Promise.all([
-      DynamoDb.createRecord("PatchesAndAreas", patchModel),
-      DynamoDb.createRecord("Assets", assetModel),
-      DynamoDb.createRecord("TenureInformation", tenureModel),
-      DynamoDb.createRecord("Persons", personModel)
-    ]).then(() => {
-      resolve();
-    });
-  }).then(() => {
-    cy.log("CA related data created.");
-  })
-});
 
 Given("I seeded the database with a tenure", () => {
   const assetModel = generateAsset()

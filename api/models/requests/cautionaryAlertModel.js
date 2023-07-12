@@ -1,27 +1,5 @@
 const { faker } = require("@faker-js/faker");
 
-// export const cautionaryAlert = (person, asset) => {
-//   return {
-//     "personId": person.id,
-//     "alerts": [
-//       {
-//         "dateModified": "07/06/2023",
-//         "modifiedBy": "GoogleSheet",
-//         "startDate": "07/06/2023",
-//         "endDate": null,
-//         "alertCode": "10‑10",
-//         "description": "Verbal abuse",
-//         "reason": "Test",
-//         "assureReference": "1234",
-//         "personName": `${person.firstName} ${person.surname}`,
-//         "personId": person.id,
-//         "isActive": true,
-//         "alertId": faker.datatype.uuid()
-//       }
-//     ]
-//   }
-// };
-
 export const cautionaryAlert = (person, asset) => ({
   assureReference: "121212",
   incidentDate: "2023-02-02",

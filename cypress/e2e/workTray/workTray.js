@@ -1,8 +1,7 @@
-import {And, Given, Then, When} from "@badeball/cypress-cucumber-preprocessor";
-import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
+import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import changeOfNamePage from "../../pageObjects/changeOfNamePage";
 import homePage from "../../pageObjects/homePage";
 import workTrayPage from "../../pageObjects/workTrayPage";
-import changeOfNamePage from "../../pageObjects/changeOfNamePage";
 
 const homePagePO = new homePage()
 const workTrayPO = new workTrayPage();

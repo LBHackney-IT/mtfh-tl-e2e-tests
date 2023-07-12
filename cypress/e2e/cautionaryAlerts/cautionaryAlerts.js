@@ -1,6 +1,6 @@
-import { Given, And, When, Then } from "@badeball/cypress-cucumber-preprocessor"
-import CautionaryAlertsPageObjects from '../../pageObjects/cautionaryAlertsPage'
-import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage"
+import { And, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import CautionaryAlertsPageObjects from '../../pageObjects/cautionaryAlertsPage';
+import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 
 const cautionaryAlertPO = new CautionaryAlertsPageObjects();
 const tenureReqDocsPO = new TenureRequestDocsPageObjects();

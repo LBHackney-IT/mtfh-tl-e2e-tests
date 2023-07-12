@@ -1,11 +1,9 @@
 import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
-import { generateTenure } from "../../../api/models/requests/addTenureModel";
 import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
 import CreateTenurePageObjects from "../../pageObjects/createTenurePage";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import DynamoDb from "../common/DynamoDb";
-import { addTestRecordToDatabase } from "../common/common";
 
 const createTenurePage = new CreateTenurePageObjects()
 const modal = new ModalPageObjects()

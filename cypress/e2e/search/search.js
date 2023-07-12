@@ -1,4 +1,4 @@
-import { Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor";
+import { And, Given, Then } from "@badeball/cypress-cucumber-preprocessor";
 import SearchPageObjects from "../../pageObjects/searchPage";
 const searchPage = new SearchPageObjects();
 
