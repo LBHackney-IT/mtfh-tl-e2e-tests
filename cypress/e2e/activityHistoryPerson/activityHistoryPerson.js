@@ -5,16 +5,13 @@ import { addTestRecordToDatabase } from "../common/common";
 
 const activityHistoryObjects = new ActivityHistoryPageObjects()
 
-Given("I seeded the database with a person with GUID {string}", (personGuid) => {
-    const testPerson = getPersonWithGuid(personGuid);
-    addTestRecordToDatabase("Persons", testPerson);
-})
+Given('I go to the activity history for the person', () => {
+    cy.getPersonFixture().then((person) => {
+        activityHistoryObjects.visit(person.id)
+        cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${person.id}`, { fixture: "activity-history-person.json" }).as("getActivityHistory")
+        cy.wait("@getActivityHistory")
+    })
 
-Given('I go to the activity history for person with GUID {string}', (personGuid) => {
-    activityHistoryObjects.visit(personGuid)
-
-    cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${personGuid}`, { fixture: "activity-history-person.json" }).as("getActivityHistory")
-    cy.wait("@getActivityHistory")
 })
 
 And('table headers should be visible', () => {

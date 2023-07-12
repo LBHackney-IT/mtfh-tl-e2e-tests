@@ -14,7 +14,7 @@ Feature: T&L Person Page
     @Positive
     Scenario Outline: View person details web page view
         Given I seeded the database with an asset with a previous tenure
-        Given I am on the person details page
+        Given I visit the 'Person details' page
         And the person has valid contact details
         Then the personal details are displayed on the sidebar
         When I click on the more personal details accordion
@@ -29,7 +29,7 @@ Feature: T&L Person Page
     @device
     Scenario Outline: View person details device view
         Given I seeded the database with an asset with a previous tenure
-        Given I am on the person details page
+        Given I visit the 'Person details' page
         And the person has valid contact details
         When I am using a mobile viewport "<device>"
         Then the personal details are displayed on the mobile content container
@@ -76,7 +76,7 @@ Feature: T&L Person Page
     @SmokeTest
     Scenario Outline: Add a comment for a person navigation
         Given I seeded the database with a person
-        Given I am on the person details page
+        Given I visit the 'Person details' page
         Then the body Person details are displayed
         When I click on the add comment button
         Then I am taken to the add comment for person page
@@ -84,5 +84,5 @@ Feature: T&L Person Page
     @Accessibility
     Scenario Outline: Scenario Outline name: Accessibility Testing
         Given I seeded the database with a person
-        Given I am on the person details page
+        Given I visit the 'Person details' page
         And have no detectable a11y violations

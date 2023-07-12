@@ -13,7 +13,7 @@ Feature: Processes menu for easier navigation
     @Positive
     Scenario Outline: Display process options for person
         Given I seeded the database with a person
-        Given I am on the person details page
+        Given I visit the 'Person details' page
         When I select New Process menu "<processType>"
         Then I am directed to the main process landing page
         And I can see a list of processes

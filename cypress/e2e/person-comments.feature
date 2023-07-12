@@ -13,7 +13,7 @@ Feature: T&L Person Comment
     @SmokeTest
     Scenario Outline: I go to create a comment for a person page
         Given I seeded the database with a person
-        Then I am on the person details page
+        Then I visit the 'Person details' page
         And Add comment button is displayed
         When I click on Add comment button
         And I create a comment for test
@@ -27,7 +27,7 @@ Feature: T&L Person Comment
     @Negative
     Scenario Outline: Validation message is displayed
         Given I seeded the database with a person
-        Then I am on the person details page
+        Then I visit the 'Person details' page
         And Add comment button is displayed
         When I click on Add comment button
         And I click the save comment button "<commentType>"
@@ -72,7 +72,7 @@ Feature: T&L Person Comment
     @SmokeTest
     Scenario Outline: Character limit counter
         Given I seeded the database with a person
-        Then I am on the person details page
+        Then I visit the 'Person details' page
         And Add comment button is displayed
         When I click on Add comment button
         And I enter <characters> characters into the comment field "<commentType>"
@@ -84,7 +84,7 @@ Feature: T&L Person Comment
     @Negative
     Scenario Outline: Character limit exceeded
         Given I seeded the database with a person
-        Then I am on the person details page
+        Then I visit the 'Person details' page
         And Add comment button is displayed
         When I click on Add comment button
         When I enter <characters> characters into the comment field "<commentType>"

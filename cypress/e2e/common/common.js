@@ -481,14 +481,16 @@ And("I click edit person", () => {
   personPage.editPersonButton().click();
 });
 
-Then("I am on the person details page", () => {
+Then("I visit the 'Person details' page", () => {
   cy.getPersonFixture().then(({ id: personId }) => {
     personPage.visit(personId);
   })
 })
 
-And("I am on the person page for {string}", (person) => {
-  cy.url().should("include", person);
+And("I am on the 'Person details' page", () => {
+  cy.getPersonFixture().then(({ id: personId }) => {
+    cy.url().should("include", personId);
+  })
 });
 
 Then('the personal details are displayed on the sidebar', () => {

@@ -12,14 +12,13 @@ Feature: Activity History
 
   @SmokeTest
   Scenario Outline: View activity history
-    Given I seeded the database with a person with GUID "3aa800c2-0c10-4d26-bca2-4eef5cd7d3be"
-    Given I go to the activity history for person with GUID "3aa800c2-0c10-4d26-bca2-4eef5cd7d3be"
+    Given I seeded the database with a person
+    Given I go to the activity history for the person
     Then the activity history is displayed
     And table headers should be visible
     And the name of the person should be visible
     Then I click close activity history
-    And I am on the person page for "3aa800c2-0c10-4d26-bca2-4eef5cd7d3be"
-
+    And I am on the 'Person details' page
 
       # //TODO commented for 5th July release as this test is failing in pipeline
 
