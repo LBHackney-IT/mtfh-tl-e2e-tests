@@ -9,7 +9,6 @@ import commentTitle from "../../helpers/commentText"
 import comment from "../../helpers/commentText"
 import category from "../../helpers/commentText"
 import PropertyPageObjects from "../../pageObjects/propertyPage"
-import editPersonPage from "../../pageObjects/editPersonPage";
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 const personCommentsPage = new PersonCommentsPageObjects()
@@ -19,8 +18,6 @@ const personPage = new PersonPageObjects()
 const propertyPage = new PropertyPageObjects
 const envConfig = require('../../../environment-config')
 
-let tenureId = ""
-let personId = ""
 let uniqueText = (Math.random() + 1).toString(10).substring(5)
 let commentGroup = ""
 let validationMessageField = ""

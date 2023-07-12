@@ -48,7 +48,7 @@ executors:
             - image: circleci/python:3.7
     cypress-browsers:
         docker:
-            - image: cypress/browsers:node16.13.2-chrome100-ff98
+            - image: cypress/browsers:node18.6.0-chrome105-ff104
 
 commands:
     assume-role-and-persist-workspace:
