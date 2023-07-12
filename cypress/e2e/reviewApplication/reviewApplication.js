@@ -42,19 +42,7 @@ const manualChecksPass = ({ id: tenureId, householdMembers }) => {
 };
 
 Given("The tenure investigation has been completed for tenure", () => {
-    // cy.intercept(
-    //     'POST',
-    //     'https://bj7sld6363.execute-api.eu-west-2.amazonaws.com/development/api/v2/process/soletojoint',
-    //     {fixture: 'sole-to-joint.json', statusCode: 201}
-    // )
     cy.getTenureFixture().then((tenureInfo) => {
-        
-    cy.intercept(
-        'PATCH',
-        `https://bj7sld6363.execute-api.eu-west-2.amazonaws.com/development/api/v1/process/soletojoint/${tenureInfo.id}/SubmitApplication`,
-        {statusCode: 204}
-    )
-
         manualChecksPass(tenureInfo);
         cy.contains('Next').click();
         tenureReqDocsPage.requestDocsElectronically().click();
