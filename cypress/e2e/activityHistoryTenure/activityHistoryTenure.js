@@ -3,11 +3,12 @@ import ActivityHistoryTenurePageObjects from '../../pageObjects/activityHistoryT
 
 const activityHistoryTenure = new ActivityHistoryTenurePageObjects()
 
-Given('I go to the tenure activity history for tenure with GUID {string}', (tenureGuid) => {
-    activityHistoryTenure.visit(tenureGuid)
-
-    cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${tenureGuid}`, { fixture: "activity-history-tenure.json" }).as("getActivityHistory")
-    cy.wait("@getActivityHistory")
+Given('I go to the tenure activity history', () => {
+    cy.getTenureFixture().then((tenureRecord) => {
+        activityHistoryTenure.visit(tenureRecord.id)
+        cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${tenureRecord.id}`, { fixture: "activity-history-tenure.json" }).as("getActivityHistory")
+        cy.wait("@getActivityHistory")
+    })
 })
 
 Then('tenure migrated activity history is displayed', () => {
@@ -36,6 +37,8 @@ Then('the update exists in the activity history {string}', (update) => {
     activityHistoryTenure.activityHistoryCell().eq(6).contains(`Changed to: ${update}`)
 })
 
-And("I am on the tenure page for tenure with GUID {string}", (tenureGuid) => {
-    cy.url().should("include", tenureGuid);
+And("I am on the tenure page for the tenure", () => {
+    cy.getTenureFixture().then((tenureRecord) => {
+        cy.url().should("include", tenureRecord.id);
+    })
 });

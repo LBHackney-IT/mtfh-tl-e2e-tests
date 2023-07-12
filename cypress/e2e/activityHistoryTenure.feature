@@ -12,21 +12,21 @@ Feature: Activity History for Tenure
 
   @SmokeTest
   Scenario Outline: View Tenure activity history page
-    Given I seeded the database with a tenure with GUID "b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5"
-    Given I go to the tenure activity history for tenure with GUID "b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5"
+    Given I seeded the database with a tenure
+    Given I go to the tenure activity history
     Then the tenure activity history is displayed
     And table headers should be visible
     When I click close activity history
-    And I am on the tenure page for tenure with GUID "b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5"
+    And I am on the tenure page for the tenure
 
   Scenario Outline: View Tenure activity history page for legacy data - Data imported
-    Given I seeded the database with a tenure with GUID "c711646d-ce52-44b7-ae6d-7bb2a8e466d8"
-    Given I go to the tenure activity history for tenure with GUID "c711646d-ce52-44b7-ae6d-7bb2a8e466d8"
+    Given I seeded the database with a tenure
+    Given I go to the tenure activity history
     Then the tenure activity history is displayed
     And table headers should be visible
     Then tenure migrated activity history is displayed
     Then I click close activity history
-    And I am on the tenure page for tenure with GUID "c711646d-ce52-44b7-ae6d-7bb2a8e466d8"
+    And I am on the tenure page for the tenure
 
 # //TODO commented for 5th July release as this test is failing in pipeline
 #  @SmokeTest
