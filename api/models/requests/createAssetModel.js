@@ -123,7 +123,7 @@ const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.nu
       "windowType": "",
       "yearConstructed": "0"
     },
-    "patches": [...patch]
+    "patches": [patch]
   }
 }
 
