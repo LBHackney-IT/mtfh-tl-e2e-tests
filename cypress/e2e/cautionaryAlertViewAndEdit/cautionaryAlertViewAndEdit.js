@@ -33,16 +33,12 @@ When("I'm on the person's with cautionary alert page", () => {
 });
 
 And("I navigate to that person's cautionary alert's page", () => {
-  // cy.intercept('GET', `*/api/v1/persons/alert`, { fixture: "Persons.json", statusCode: 200 }).as('getCautionaryAlertPersonInfo')
-
   const cautionaryAlertLink = personPO.nthCautionaryAlert(0);
   cautionaryAlertLink.should('exist');
   cautionaryAlertLink.click();
 });
 
 Then("The page title should reflect the page's purpose & contain person's name", () => {
-  // cy.intercept('GET', `*api/v1/cautionary-alerts/alert/*`, { fixture: "cautionary-alert.json", statusCode: 200 }).as('getCautionaryAlert')
-
   cy.getPersonFixture().then((expectedPerson) => {
     const personFirstName = expectedPerson.firstName;
     const personLastName = expectedPerson.surname;
