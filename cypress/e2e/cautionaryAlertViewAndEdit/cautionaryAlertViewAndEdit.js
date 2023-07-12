@@ -28,8 +28,6 @@ When("I'm on the person's with cautionary alert page", () => {
     const personId = person.id;
     personPO.visit(personId);
   });
-
-  cy.wait(20000)
 });
 
 And("I navigate to that person's cautionary alert's page", () => {
@@ -132,7 +130,7 @@ And("I click the 'confirm' button", () => {
 });
 
 And("The cautionary alert should not be listed under the person anymore", () => {
-  // ensure page is loaded before the cautionary alert assertion
+  cy.reload() // Prevents the tests from being flaky. Reloading the page will always give us up to date information.
   personPO.pageTitle().should('exist');
   personPO.nthCautionaryAlert(0).should('not.exist');
 });
@@ -182,8 +180,6 @@ And("User should stay on the manage cautionary alert page", () => {
 // Database seed methods
 
 Given("There's a resident with a cautionary alert", () => {
-  cy.intercept('GET', `*/api/v1/persons/alert`, { fixture: "Persons.json", statusCode: 200 }).as('getCautionaryAlertPersonInfo')
-
   cy.log("Creating cautionary alert & entities associated with it")
     .then(() => {
       const assetModel = asset();
@@ -218,58 +214,8 @@ Given("There's a resident with a cautionary alert", () => {
         });
       });
 
-      // saveNonDynamoFixture("CautionaryAlerts", cautionaryAlertRecord)
       addTestRecordToDatabase("Assets", assetModel)
       addTestRecordToDatabase("TenureInformation", tenureModel)
       addTestRecordToDatabase("Persons", personModel)
     })
 })
-
-// Given("There's a resident with a cautionary alert", () => {
-//   cy
-//     .log("Creating cautionary alert & entities associated with it")
-//     .then(() => {
-//       const assetModel = asset();
-//       const tenureModel = generateTenure({}, assetModel);
-//       const personModel = person();
-//       const personTenure = tenureToPersonTenure(tenureModel);
-//       personModel.tenures.push(personTenure);
-//       assetModel.tenure = tenureToAssetTenure(tenureModel);
-
-//       const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
-//         console.log("saveNonDynamoRecord data: ", response)
-//         try {
-//           saveNonDynamoFixture(
-//             "CautionaryAlerts",
-//             [response.body],
-//             response,
-//           ).then((response) => {
-//             resolve(response)
-//           });
-//         }
-//         catch (ex) {
-//           reject(ex);
-//         }
-//       });
-
-//       const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
-
-//       createCautionaryAlert(cautionaryAlertRecord).then((data) => {
-//         saveNonDynamoRecord(data).then((moreData) => {
-//           Promise.resolve(moreData);
-//         });
-//       });
-
-//       return new Cypress.Promise((resolve) => {
-//         Promise.all([
-//           DynamoDb.createRecord("Assets", assetModel),
-//           DynamoDb.createRecord("TenureInformation", tenureModel),
-//           DynamoDb.createRecord("Persons", personModel)
-//         ]).then(() => {
-//           resolve();
-//         });
-//       }).then(() => {
-//         cy.log("CA related data created.");
-//       })
-//     });
-// });
