@@ -14,9 +14,7 @@ const assetGuid = faker.datatype.uuid()
 
 Given("I am on the MMH 'New property' page", () => {
     cy.intercept('GET', '*/api/v1/patch/all', { fixture: 'patches.json', }).as('getAllPatches')
-
     cy.visit(addPropertyAddressUrl)
-
     cy.wait('@getAllPatches')
 });
 

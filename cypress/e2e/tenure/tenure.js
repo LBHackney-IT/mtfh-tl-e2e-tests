@@ -76,7 +76,7 @@ When('I view the Other household members section in the tenure page', () => {
 })
 
 When('I click the resident details accordion', () => {
-    tenurePage.residentDetailsAccordion().click()
+    tenurePage.residentDetailsAccordion().click({force: true})
 })
 
 Then('the household member details are displayed', () => {
@@ -98,7 +98,7 @@ Then('Then the Scanned historic tenure records button is displayed', () => {
 })
 
 And('I click the tenure details accordion', () => {
-    tenurePage.tenureDetailsAccordion().click()
+    tenurePage.tenureDetailsAccordion().click({force: true})
 })
 
 And('there are no named tenure holders', () => {

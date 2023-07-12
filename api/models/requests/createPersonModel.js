@@ -27,43 +27,6 @@ export const createPersonModel = {
     "nationalInsuranceNo": null
 }
 
-export const getPersonWithGuid = (personGuid = faker.datatype.uuid()) => {
-    return {
-        "id": personGuid,
-        "title": "Mr",
-        "preferredTitle": "",
-        "preferredFirstName": "",
-        "preferredSurname": "",
-        "preferredMiddleName": "",
-        "firstName": "John",
-        "middleName": "",
-        "surname": "Doe",
-        "placeOfBirth": "",
-        "dateOfBirth": "1990-01-01",
-        "reason": "Test",
-        "personTypes": [
-            "HouseholdMember"
-        ],
-        "links": [],
-        "tenures": [
-            {
-                "assetFullAddress": "Gge 49 Lincoln Court 1-66 Bethune Road Hackney London N16 5EB",
-                "assetId": "6d69a68b-5c0d-3040-cb9b-a67df30b87f0",
-                "startDate": "2022-12-12T00:00:00.0000000Z",
-                "endDate": "2023-12-11T00:00:00.0000000Z",
-                "id": "528f5a7e-1050-446a-ab55-41b34ad4ac71",
-                "type": "Commercial Let",
-                "uprn": "",
-                "paymentReference": "3750091302",
-                "propertyReference": "00050091",
-                "isActive": true
-            }
-        ],
-        "isAMinor": false,
-        "dateOfDeath": null
-    }
-}
-
 export const person = (tenure, personGuid = faker.datatype.uuid()) => {
     return {
         id: personGuid,
