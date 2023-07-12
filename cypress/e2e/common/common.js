@@ -1078,19 +1078,18 @@ Given("There's a person with a cautionary alert", () => {
     });
   });
 
-      return new Cypress.Promise((resolve) => {
-        Promise.all([
-          DynamoDb.createRecord("PatchesAndAreas", patchModel),
-          DynamoDb.createRecord("Assets", assetModel),
-          DynamoDb.createRecord("TenureInformation", tenureModel),
-          DynamoDb.createRecord("Persons", personModel)
-        ]).then(() => {
-          resolve();
-        });
-      }).then(() => {
-        cy.log("CA related data created.");
-      })
+  return new Cypress.Promise((resolve) => {
+    Promise.all([
+      DynamoDb.createRecord("PatchesAndAreas", patchModel),
+      DynamoDb.createRecord("Assets", assetModel),
+      DynamoDb.createRecord("TenureInformation", tenureModel),
+      DynamoDb.createRecord("Persons", personModel)
+    ]).then(() => {
+      resolve();
     });
+  }).then(() => {
+    cy.log("CA related data created.");
+  })
 });
 
 Given("I seeded the database with a tenure", () => {
