@@ -9,7 +9,6 @@ Feature: Processes menu for easier navigation
 
     Background:
         Given I am logged in
-        And I seeded the database
 
     @Positive
     Scenario Outline: Display process options for person
@@ -35,6 +34,18 @@ Feature: Processes menu for easier navigation
             | processType |
             | property    |
 
+    @Positive
+    Scenario Outline: Display process options for tenure
+        Given I seeded the database with a tenure
+        Given I view a tenure
+        When I select New Process menu "<processType>"
+        Then I am directed to the main process landing page
+        And I can see a list of processes
+
+        Examples:
+            | processType |
+            | tenure      |
+
     #@Positive
     #Scenario Outline: Initiate sole to joint process from tenure
     #  When I view a tenure "<tenure>"
@@ -51,19 +62,9 @@ Feature: Processes menu for easier navigation
     #  | tenure                               | processType | process               | subProcess                          |  yourName            | propertyAddress       |propertyRef|tenancyReference|
     #  | e832a76f-8bcf-238c-7ad1-6ef1b408b316 | tenure      | Other tenancy changes | Sole tenant requests a joint tenure |FAKE_Julie FAKE_Davies|34A Craven Walk N16 6BU|00046299   |FN00046299      |
 
-    @Positive
-    Scenario Outline: Display process options for tenure
-        Given I seeded the database with a tenure
-        Given I view a tenure
-        When I select New Process menu "<processType>"
-        Then I am directed to the main process landing page
-        And I can see a list of processes
-
-        Examples:
-            | processType |
-            | tenure      |
 
     Scenario Outline: Process landing page loaded
+        Given I seeded the database
         Given I select to initiate a Sole To Joint process
         Then the property details are shown
         Then the start process button is disabled
@@ -77,6 +78,7 @@ Feature: Processes menu for easier navigation
         And I can see Further eligibility questions
 
     Scenario: Selecting back or cancelling out of the process
+        Given I seeded the database
         Given I select to initiate a Sole To Joint process
         When I click the cancel process button
         Then I am taken back to the processes menu
@@ -85,6 +87,7 @@ Feature: Processes menu for easier navigation
         Then I am taken back to the processes menu
 
     Scenario Outline: Verify Automatic checks fail and Close Case Process is initiated
+        Given I seeded the database
         Given I select to initiate a Sole To Joint process
         When I accept the terms and conditions
         And I click the start process button
@@ -97,6 +100,7 @@ Feature: Processes menu for easier navigation
         Then 'Thank you for your confirmation' message is displayed with a link to Return to Home page
 
     Scenario Outline: Verify Automatic checks Pass and Manual Checks Fail and Close case process is initiated
+        Given I seeded the database
         Given I select to initiate a Sole To Joint process
         When I accept the terms and conditions
         And I click the start process button
