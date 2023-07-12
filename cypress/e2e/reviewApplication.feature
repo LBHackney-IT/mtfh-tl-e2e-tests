@@ -4,9 +4,9 @@ Feature: As a Housing Officer
 
   Background:
     Given I am logged in
-    And I seeded the database
 
   Scenario: AC1: View the Confirmation of completed tenure investigation page
+    Given I seeded the database
     Given The tenure investigation has been completed for tenure
     When I tick the box "I confirm that the tenure investigation has been completed"
     Then I am able to choose which recommendation the tenure investigator has given Approve Decline or Appointment
