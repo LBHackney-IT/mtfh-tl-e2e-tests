@@ -128,7 +128,7 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        parallelism: 11
+        parallelism: 22
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
