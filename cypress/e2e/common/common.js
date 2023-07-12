@@ -1008,87 +1008,75 @@ export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
 // Database seed methods
 
 Given("I seeded the database", () => {
-  cy.log("Seeding database").then(() => {
-    const patchModel = patch;
-    const assetModel = asset(patchModel);
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+  const patchModel = patch;
+  const assetModel = asset(patchModel);
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
 
-    const personTenure = {
-      id: tenureModel.id,
-      startDate: tenureModel.startOfTenureDate,
-      endDate: tenureModel.endOfTenureDate,
-      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
-      assetId: tenureModel.tenuredAsset.id,
-      uprn: tenureModel.tenuredAsset.uprn,
-      isActive: false,
-      type: tenureModel.tenureType.description,
-      propertyReference: tenureModel.tenuredAsset.propertyReference,
-    }
+  const personTenure = {
+    id: tenureModel.id,
+    startDate: tenureModel.startOfTenureDate,
+    endDate: tenureModel.endOfTenureDate,
+    assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+    assetId: tenureModel.tenuredAsset.id,
+    uprn: tenureModel.tenuredAsset.uprn,
+    isActive: false,
+    type: tenureModel.tenureType.description,
+    propertyReference: tenureModel.tenuredAsset.propertyReference,
+  }
 
-    personModel1.tenures.push(personTenure);
-    personModel2.tenures.push(personTenure);
+  personModel1.tenures.push(personTenure);
+  personModel2.tenures.push(personTenure);
 
-    assetModel.tenure = {
-      endOfTenureDate: tenureModel.endOfTenureDate,
-      id: tenureModel.id,
-      paymentReference: tenureModel.paymentReference,
-      startOfTenureDate: tenureModel.startOfTenureDate,
-      type: tenureModel.tenureType.description,
-    }
+  assetModel.tenure = {
+    endOfTenureDate: tenureModel.endOfTenureDate,
+    id: tenureModel.id,
+    paymentReference: tenureModel.paymentReference,
+    startOfTenureDate: tenureModel.startOfTenureDate,
+    type: tenureModel.tenureType.description,
+  }
 
-    return new Cypress.Promise((resolve) => {
-      Promise.all([
-        DynamoDb.createRecord("PatchesAndAreas", patchModel),
-        DynamoDb.createRecord("Assets", assetModel),
-        DynamoDb.createRecord("TenureInformation", tenureModel),
-        DynamoDb.createRecord("Persons", personModel1),
-        DynamoDb.createRecord("Persons", personModel2),
-      ]).then(() => {
-        resolve()
-      })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
-  })
+  addTestRecordToDatabase("PatchesAndAreas", patchModel)
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
 })
 
 Given("There's a person with a cautionary alert", () => {
-  cy
-    .log("Creating cautionary alert & entities associated with it")
-    .then(() => {
-      const patchModel = patch;
-      const assetModel = asset(patchModel);
-      const tenureModel = generateTenure({}, assetModel);
-      const personModel = person();
-      const personTenure = tenureToPersonTenure(tenureModel);
-      personModel.tenures.push(personTenure);
-      assetModel.tenure = tenureToAssetTenure(tenureModel);
+  cy.log("Creating cautionary alert & entities associated with it")
+  const patchModel = patch;
+  const assetModel = asset(patchModel);
+  const tenureModel = generateTenure({}, assetModel);
+  const personModel = person();
+  const personTenure = tenureToPersonTenure(tenureModel);
+  personModel.tenures.push(personTenure);
+  assetModel.tenure = tenureToAssetTenure(tenureModel);
 
-      const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
-        console.log("saveNonDynamoRecord data: ", response)
-        try {
-          saveNonDynamoFixture(
-            "CautionaryAlerts",
-            [response.body],
-            response,
-          ).then((response) => {
-            resolve(response)
-          });
-        }
-        catch (ex) {
-          reject(ex);
-        }
+  const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
+    console.log("saveNonDynamoRecord data: ", response)
+    try {
+      saveNonDynamoFixture(
+        "CautionaryAlerts",
+        [response.body],
+        response,
+      ).then((response) => {
+        resolve(response)
       });
+    }
+    catch (ex) {
+      reject(ex);
+    }
+  });
 
-      const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
+  const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
 
-      createCautionaryAlert(cautionaryAlertRecord).then((data) => {
-        saveNonDynamoRecord(data).then((moreData) => {
-          Promise.resolve(moreData);
-        });
-      });
+  createCautionaryAlert(cautionaryAlertRecord).then((data) => {
+    saveNonDynamoRecord(data).then((moreData) => {
+      Promise.resolve(moreData);
+    });
+  });
 
       return new Cypress.Promise((resolve) => {
         Promise.all([
@@ -1118,49 +1106,39 @@ Given("I seeded the database with a tenure", () => {
 })
 
 Given("I seeded the database with an asset with a previous tenure", () => {
-  cy.log("Seeding database").then(() => {
-    const assetModel = generateAsset()
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, "1990-10-13", "1998-10-13");
+  const assetModel = generateAsset()
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, "1990-10-13", "1998-10-13");
 
-    const personTenure = {
-      id: tenureModel.id,
-      startDate: tenureModel.startOfTenureDate,
-      endDate: tenureModel.endOfTenureDate,
-      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
-      assetId: tenureModel.tenuredAsset.id,
-      uprn: tenureModel.tenuredAsset.uprn,
-      isActive: false,
-      type: tenureModel.tenureType.description,
-      propertyReference: tenureModel.tenuredAsset.propertyReference,
-    }
+  const personTenure = {
+    id: tenureModel.id,
+    startDate: tenureModel.startOfTenureDate,
+    endDate: tenureModel.endOfTenureDate,
+    assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+    assetId: tenureModel.tenuredAsset.id,
+    uprn: tenureModel.tenuredAsset.uprn,
+    isActive: false,
+    type: tenureModel.tenureType.description,
+    propertyReference: tenureModel.tenuredAsset.propertyReference,
+  }
 
-    personModel1.tenures.push(personTenure);
-    personModel2.tenures.push(personTenure);
+  personModel1.tenures.push(personTenure);
+  personModel2.tenures.push(personTenure);
 
-    // Add expired/previous tenure to asset
-    assetModel.tenure = {
-      endOfTenureDate: "2022-07-29T00:00:00",
-      id: tenureModel.id,
-      paymentReference: tenureModel.paymentReference,
-      startOfTenureDate: "2020-07-29T00:00:00",
-      type: tenureModel.tenureType.description,
-    }
+  // Add expired/previous tenure to asset
+  assetModel.tenure = {
+    endOfTenureDate: "2022-07-29T00:00:00",
+    id: tenureModel.id,
+    paymentReference: tenureModel.paymentReference,
+    startOfTenureDate: "2020-07-29T00:00:00",
+    type: tenureModel.tenureType.description,
+  }
 
-    return new Cypress.Promise((resolve) => {
-      Promise.all([
-        DynamoDb.createRecord("Assets", assetModel),
-        DynamoDb.createRecord("TenureInformation", tenureModel),
-        DynamoDb.createRecord("Persons", personModel1),
-        DynamoDb.createRecord("Persons", personModel2),
-      ]).then(() => {
-        resolve()
-      })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
-  })
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
 })
 
 Given("I seeded the database with a person", () => {
@@ -1169,7 +1147,8 @@ Given("I seeded the database with a person", () => {
 })
 
 Given("I seeded the database with a person with an active tenure", () => {
-  const assetModel = generateAsset()
+  const patchModel = patch;
+  const assetModel = generateAsset(undefined, undefined, patchModel)
   const personModel1 = person();
   const personModel2 = person();
   const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
