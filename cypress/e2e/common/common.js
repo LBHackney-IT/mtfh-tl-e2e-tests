@@ -984,6 +984,29 @@ And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
 });
 
+// Helper methods
+
+export const getAssetViewUrlByGuid = (assetGuid) => {
+  return `${envConfig.baseUrl}/property/${assetGuid}`
+}
+
+// This methods adds a temporary database record to the provided database table, and adds an entry to recordsToDelete.json
+export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
+  cy.log("Seeding database").then(async () => {
+    cy.log(`Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`)
+    return new Cypress.Promise((resolve) => {
+      DynamoDb.createRecord(dbTableName, testDbRecord)
+        .then(() => {
+          resolve()
+        })
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
+}
+
+// Database seed methods
+
 Given("I seeded the database", () => {
   cy.log("Seeding database").then(() => {
     const patchModel = patch;
@@ -1081,29 +1104,6 @@ Given("There's a person with a cautionary alert", () => {
       })
     });
 });
-
-// Helper methods
-
-export const getAssetViewUrlByGuid = (assetGuid) => {
-  return `${envConfig.baseUrl}/property/${assetGuid}`
-}
-
-// This methods adds a temporary database record to the provided database table, and adds an entry to recordsToDelete.json
-export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
-  cy.log("Seeding database").then(async () => {
-    cy.log(`Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`)
-    return new Cypress.Promise((resolve) => {
-      DynamoDb.createRecord(dbTableName, testDbRecord)
-        .then(() => {
-          resolve()
-        })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
-  })
-}
-
-// Database seed methods
 
 Given("I seeded the database with a tenure", () => {
   const assetModel = generateAsset()

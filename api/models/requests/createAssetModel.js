@@ -1,15 +1,5 @@
 const { faker } = require("@faker-js/faker");
-
-const defaultPatch = [
-  {
-    "id": faker.datatype.uuid(),
-    "parentId": faker.datatype.uuid(),
-    "name": "SN4",
-    "patchType": "patch",
-    "domain": "MMH",
-    "responsibleEntities": []
-  }
-]
+const { patch: defaultPatch } = require("./patchModel");
 
 const createAssetModel = {
   "id": faker.datatype.uuid(),
@@ -83,7 +73,7 @@ const createAssetModel = {
   },
 }
 
-const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString(), patch = defaultPatch) => {
+const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString(), patches = [defaultPatch]) => {
   return {
     "id": assetGuid,
     "assetId": "00054811",
@@ -123,7 +113,7 @@ const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.nu
       "windowType": "",
       "yearConstructed": "0"
     },
-    "patches": [...patch]
+    "patches": [...patches]
   }
 }
 
