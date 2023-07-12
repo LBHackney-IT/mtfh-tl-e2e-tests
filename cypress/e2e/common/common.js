@@ -1147,7 +1147,7 @@ Given("I seeded the database with a person", () => {
 
 Given("I seeded the database with a person with an active tenure", () => {
   const patchModel = patch;
-  const assetModel = generateAsset(undefined, undefined, patchModel)
+  const assetModel = generateAsset(undefined, undefined, [patchModel])
   const personModel1 = person();
   const personModel2 = person();
   const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
