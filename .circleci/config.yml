@@ -166,6 +166,7 @@ jobs:
   
   run-ci-tests:
         parallelism: 8
+        resource_class: large
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
