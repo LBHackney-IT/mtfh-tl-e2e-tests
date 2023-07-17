@@ -3,10 +3,7 @@ version: 2.1
 orbs:
   aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
   aws-cli: circleci/aws-cli@2.0.3
-  cypress: cypress-io/cypress@1
-  # browsers-chrome78-ff70:
-  #   docker:
-  #     - image: cypress/browsers:node14.16.0-chrome89-ff86
+  cypress: cypress-io/cypress@3.1.1
 
 parameters:
   run_workflow_ci:
@@ -165,6 +162,8 @@ jobs:
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
   run-ci-tests:
+        package-manager: yarn
+        install-browsers: true
         parallelism: 11
         executor: cypress/default
         environment:
