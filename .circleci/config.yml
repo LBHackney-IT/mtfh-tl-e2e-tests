@@ -163,7 +163,6 @@ jobs:
   
   run-ci-tests:
         package-manager: yarn
-        install-browsers: true
         parallelism: 11
         executor: cypress/default
         environment:
