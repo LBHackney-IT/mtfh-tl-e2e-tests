@@ -81,3 +81,46 @@ Then('the personal details are displayed', () => {
 When("I select a property", () => {
     propertyPage.selectFirstRecord().click();
 })
+
+Then("The 'Property Specification' information should be invisible", () => {
+    propertyPage.assetCharacteristicsInfoBlock().should('not.exist');
+});
+When("Click the 'Property Specification' section", () => {
+    propertyPage.propertySpecification().click();
+});
+Then("The 'Property Specification' information becomes visible", () => {
+    propertyPage.assetCharacteristicsInfoBlock().should('exist');
+});
+And("The displayed asset characteristics information is correct", () => {
+    cy.getAssetFixture().then((databaseAsset) => {
+        propertyPage.numberOfBedrooms().should('contain', databaseAsset.assetCharacteristics.numberOfBedrooms);
+        propertyPage.numberOfLifts().should('contain', databaseAsset.assetCharacteristics.numberOfLifts);
+        propertyPage.numberOfSingleBeds().should('contain', databaseAsset.assetCharacteristics.numberOfSingleBeds);
+        propertyPage.numberOfDoubleBeds().should('contain', databaseAsset.assetCharacteristics.numberOfDoubleBeds);
+        propertyPage.numberOfLivingRooms().should('contain', databaseAsset.assetCharacteristics.numberOfLivingRooms);
+        propertyPage.numberOfFloors().should('contain', databaseAsset.assetCharacteristics.numberOfFloors);
+        propertyPage.totalBlockFloors().should('contain', databaseAsset.assetLocation.totalBlockFloors);
+        propertyPage.heating().should('contain', databaseAsset.assetCharacteristics.heating);
+        propertyPage.windowType().should('contain', databaseAsset.assetCharacteristics.windowType);
+        propertyPage.propertyFactor().should('contain', databaseAsset.assetCharacteristics.propertyFactor);
+        propertyPage.yearConstructed().should('contain', databaseAsset.assetCharacteristics.yearConstructed);
+        propertyPage.architecturalType().should('contain', databaseAsset.assetCharacteristics.architecturalType);
+    });
+});
+Then("The empty asset characteristics fields are displayed as empty", () => {
+    cy.getAssetFixture().then((databaseAsset) => {
+        propertyPage.totalBlockFloors().should('contain', databaseAsset.assetLocation.totalBlockFloors);
+        propertyPage.yearConstructed().should('contain', databaseAsset.assetCharacteristics.yearConstructed);
+
+        propertyPage.numberOfBedrooms().find('dd').should('have.text', ' ');
+        propertyPage.numberOfLifts().find('dd').should('have.text', ' ');
+        propertyPage.numberOfSingleBeds().find('dd').should('have.text', ' ');
+        propertyPage.numberOfDoubleBeds().find('dd').should('have.text', ' ');
+        propertyPage.numberOfLivingRooms().find('dd').should('have.text', ' ');
+        propertyPage.numberOfFloors().find('dd').should('have.text', ' ');
+        propertyPage.heating().find('dd').should('have.text', ' ');
+        propertyPage.windowType().find('dd').should('have.text', ' ');
+        propertyPage.propertyFactor().find('dd').should('have.text', ' ');
+        propertyPage.architecturalType().find('dd').should('have.text', ' ');
+    });
+});
