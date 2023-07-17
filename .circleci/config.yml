@@ -162,7 +162,6 @@ jobs:
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
   run-ci-tests:
-        package-manager: yarn
         parallelism: 11
         executor: cypress/default
         environment:
