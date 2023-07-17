@@ -12,7 +12,7 @@ module.exports = defineConfig({
   },
   retries: {
     runMode: 2,
-    openMode: 2,
+    openMode: 0,
   },
   chromeWebSecurity: false,
   video: true,
