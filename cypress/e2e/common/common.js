@@ -34,7 +34,7 @@ import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
 import { generateTenure } from "../../../api/models/requests/addTenureModel";
-import { asset, generateAsset, getAssetWithNoTenure, assetModelControlledSubmodels, defaultAssetLocation, assetCharacteristicsModel } from "../../../api/models/requests/createAssetModel";
+import { asset, generateAsset, assetModelControlledSubmodels, defaultAssetLocation, assetCharacteristicsModel } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
 import { patch } from "../../../api/models/requests/patchModel";
 
@@ -618,9 +618,9 @@ Given("I create a new property with tenure", async () => {
   cy.log(`Property record ${response.data.id} created`);
   propertyId = response.data.id;
 })
-When("I view a property {string}", (id) => {
-  cy.getAssetFixture().then(({ id: propertyId }) => {
-    propertyPage.visit(id || propertyId);
+When("I view the property in MMH", () => {
+  cy.getAssetFixture().then((asset) => {
+    propertyPage.visit(asset.id);
   })
 });
 
@@ -1130,42 +1130,15 @@ Given("I seeded the database with a person with an active tenure", () => {
   addTestRecordToDatabase("Persons", personModel2)
 })
 
-Given("There exists a {string} asset with {string} asset characteristics", (assetGuid, acCompleteness) => {
-  cy
-    .log(`Creating asset with ${acCompleteness} asset characteristics`)
-    .then(() => {
-      const isFullyPopulated = acCompleteness === "populated";
-      const assetLocation = { ...defaultAssetLocation, totalBlockFloors: 5 };
-      const assetCharacteristics = isFullyPopulated ? assetCharacteristicsModel() : { yearConstructed: "1984" };
-      const assetModel = assetModelControlledSubmodels({ assetGuid, assetLocation, assetCharacteristics });
+Given("I seeded an asset with {string} asset characteristics", (acCompleteness) => {
+  cy.log(`Creating asset with ${acCompleteness} asset characteristics`)
+  const isFullyPopulated = acCompleteness === "populated";
+  const assetLocation = { ...defaultAssetLocation, totalBlockFloors: 5 };
+  const assetCharacteristics = isFullyPopulated ? assetCharacteristicsModel() : { yearConstructed: "1984" };
+  const assetModel = assetModelControlledSubmodels({ assetLocation, assetCharacteristics });
 
-      return new Cypress.Promise((resolve) => {
-        Promise.all([
-          DynamoDb.createRecord("Assets", assetModel),
-        ]).then(() => {
-          resolve()
-        })
-      }).then(() => {
-        cy.log("Database seeded!");
-      })
-    });
+  addTestRecordToDatabase("Assets", assetModel)
 });
-
-Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) => {
-  cy.log("Creating tenure").then(() => {
-    const assetModel = asset(patch);
-    const tenureModel = tenure({ startOfTenureDate }, assetModel);
-    if (isResponsible === "true") {
-      tenureModel.householdMembers[0].isResponsible = true;
-    }
-    return new Cypress.Promise((resolve) => {
-      DynamoDb.createRecord("TenureInformation", tenureModel).then(() => {
-        resolve()
-      })
-    })
-  }).then(() => {
-    cy.log("Tenure created!")
-  });
 
 Given("I seeded the database with an asset", () => {
   const testAsset = generateAsset();

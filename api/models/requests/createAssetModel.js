@@ -88,7 +88,7 @@ const defaultAssetLocation = {
 const defaultAssetAddress = {
   "uprn": "00014579215",
   "postPreamble": "",
-  "addressLine1": "12 Pitcairn House",
+  "addressLine1": "123 Test Road",
   "addressLine2": "",
   "addressLine3": "",
   "addressLine4": "",
@@ -103,23 +103,7 @@ const defaultAssetManagement = {
   "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
 };
 
-const getAssetWithNoTenure = (assetGuid, patch) => {
-  return {
-    "id": assetGuid,
-    "assetId": "0014062023",
-    "assetType": "Dwelling",
-    "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
-    "isActive": true,
-    "assetLocation": defaultAssetLocation,
-    "assetAddress": defaultAssetAddress,
-    "assetManagement": defaultAssetManagement,
-    "assetCharacteristics": defaultAssetCharacteristics,
-    "patches": [patch]
-  }
-}
-
 const assetModelControlledSubmodels = ({
-  assetGuid,
   assetLocation,
   assetCharacteristics,
   patch
@@ -136,7 +120,7 @@ const assetModelControlledSubmodels = ({
     : defaultAssetCharacteristics;
 
   return {
-    "id": assetGuid,
+    "id": faker.datatype.uuid(),
     "assetId": "0014062023",
     "assetType": "Dwelling",
     "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
@@ -278,7 +262,6 @@ const assetCharacteristicsModel = () => {
 module.exports = {
   asset,
   createAssetModel,
-  getAssetWithNoTenure,
   assetModelControlledSubmodels,
   defaultAssetLocation,
   assetCharacteristicsModel,

@@ -13,7 +13,7 @@ Feature: Property Comment
     @Negative
     Scenario Outline: Validation message is displayed
         Given I seeded the database with an asset
-        When I view a property ""
+        When I view the property in MMH
         And Add comment button is displayed
         When I click on Add comment button
         And I click the save comment button "<commentType>"
@@ -25,7 +25,7 @@ Feature: Property Comment
     @SmokeTest
     Scenario Outline: I go to create a comment for a Property
         Given I seeded the database with an asset
-        When I view a property ""
+        When I view the property in MMH
         And Add comment button is displayed
         When I click on Add comment button
         And I create a comment for test
@@ -39,7 +39,7 @@ Feature: Property Comment
     @Positive
     Scenario Outline: Character limit counter
         Given I seeded the database with an asset
-        When I view a property ""
+        When I view the property in MMH
         And Add comment button is displayed
         And Add comment button is displayed
         When I click on Add comment button
@@ -52,7 +52,7 @@ Feature: Property Comment
     @Negative
     Scenario Outline: Character limit exceeded
         Given I seeded the database with an asset
-        When I view a property ""
+        When I view the property in MMH
         And Add comment button is displayed
         When I click on Add comment button
         When I enter <characters> characters into the comment field "<commentType>"

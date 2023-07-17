@@ -13,7 +13,7 @@ Feature: Property Page
   @SmokeTest
   Scenario Outline: View property details
     Given I seeded the database with an asset with a previous tenure
-    When I view a property ""
+    When I view the property in MMH
     And the page breadcrumb is displayed
     And the property information is displayed
     And the tenure information is displayed
@@ -43,7 +43,7 @@ Feature: Property Page
   @SmokeTest
   Scenario Outline: Repairs container is displayed
     Given I seeded the database with an asset
-    When I view a property ""
+    When I view the property in MMH
     Then the repairs container is displayed
     And the repairs card list is displayed "<repairsType>"
 
@@ -54,38 +54,38 @@ Feature: Property Page
   @smoke
   Scenario Outline: 'New tenure' button should be displayed if no tenure information is returned for a given property
     Given I seeded the database with an asset
-    When I view a property ""
+    When I view the property in MMH
     And New Tenure button should be displayed
 
   @SmokeTest
   Scenario Outline: When I go to the Asset page, I can expand & collapse additional asset characteristics details
-    Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
-    When I view a property "<assetGuid>"
+    Given I seeded an asset with "<completeness>" asset characteristics
+    When I view the property in MMH
     Then The 'Property Specification' information should be invisible
     When Click the 'Property Specification' section
     Then The 'Property Specification' information becomes visible
     When Click the 'Property Specification' section
     Then The 'Property Specification' information should be invisible
     Examples:
-      | assetGuid                            | completeness |
-      | a5b35705-15c0-0170-b73a-743f07a11e55 | irrelevant   |
+      | completeness |
+      | irrelevant   |
 
   @SmokeTest
   Scenario Outline: When I go to the asset page & expand the asset details, I see the correct information
-    Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
-    When I view a property "<assetGuid>"
+    Given I seeded an asset with "<completeness>" asset characteristics
+    When I view the property in MMH
     When Click the 'Property Specification' section
     Then The displayed asset characteristics information is correct
     Examples:
-      | assetGuid                            | completeness |
-      | 14a9c7de-60ea-4a79-8bf2-6d819a562bf0 | populated    |
+      | completeness |
+      | populated    |
 
   @SmokeTest
   Scenario Outline: When I go to the asset page & expand the asset details, missing information is displayed as empty
-    Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
-    When I view a property "<assetGuid>"
+    Given I seeded an asset with "<completeness>" asset characteristics
+    When I view the property in MMH
     When Click the 'Property Specification' section
     Then The empty asset characteristics fields are displayed as empty
     Examples:
-      | assetGuid                            | completeness        |
-      | ae86d71f-70eb-4259-9cf3-d0ff3362be10 | partially-populated |
+      | completeness        |
+      | partially-populated |

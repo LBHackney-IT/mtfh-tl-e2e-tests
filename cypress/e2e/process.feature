@@ -25,7 +25,7 @@ Feature: Processes menu for easier navigation
     @Positive
     Scenario Outline: Display process options for property
         Given I seeded the database with an asset
-        Given I view a property ""
+        Given I view the property in MMH
         When I select New Process menu "<processType>"
         Then I am directed to the main process landing page
         And I can see a list of processes

@@ -23,7 +23,7 @@ Feature: Create tenure
   @SmokeTest
   Scenario Outline: Create new tenure
     Given I seeded the database with an asset with no attached tenure
-    When I view a property ""
+    When I view the property in MMH
     When I click on the new tenure button
     Then I am on the create new tenure page ""
     Then the new tenure landing page is displayed
@@ -41,7 +41,7 @@ Feature: Create tenure
   @SmokeTest
   Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
     Given I seeded the database with an asset with no attached tenure
-    When I view a property ""
+    When I view the property in MMH
     When I click on the new tenure button
     Then I am on the create new tenure page ""
     Then the new tenure landing page is displayed
@@ -64,7 +64,7 @@ Feature: Create tenure
   @SmokeTest
   Scenario Outline: Create new tenure search and select resident
     Given I seeded the database with an asset with no attached tenure
-    When I view a property ""
+    When I view the property in MMH
     When I click on the new tenure button
     Then I am on the create new tenure page ""
     Then the new tenure landing page is displayed
@@ -90,7 +90,7 @@ Feature: Create tenure
   @ignore
   Scenario Outline: Create new tenure and filter search
     Given I seeded the database with an asset with no attached tenure
-    When I view a property ""
+    When I view the property in MMH
     When I click on the new tenure button
     Then I am on the create new tenure page ""
     Then the new tenure landing page is displayed
@@ -115,7 +115,7 @@ Feature: Create tenure
     #  @ignore
     #  Scenario Outline: Create new tenure and add new person
     #    Given I create a new property
-    #    When I view a property "<property>"
+    #    When I view the property in MMH
     #    When I click on the new tenure button
     #    Then I am on the create new tenure page ""
     #    Then the new tenure landing page is displayed
@@ -166,7 +166,7 @@ Feature: Create tenure
     #  @ignore
     #  Scenario Outline: Create new tenure validation
     #    Given I create a new property
-    #    When I view a property ""
+    #    When I view the property in MMH
     #    When I click on the new tenure button
     #    Then I am on the create new tenure page ""
     #    Then the new tenure landing page is displayed
@@ -197,7 +197,7 @@ Feature: Create tenure
     #  @ignore
     #  @SmokeTest
     #  Scenario Outline: Create new tenure and cancel
-    #    When I view a property "<property>"
+    #    When I view the property in MMH
     #    When I click on the new tenure button
     #    Then I am on the create new tenure page "<property>"
     #    Then the new tenure landing page is displayed
@@ -216,7 +216,7 @@ Feature: Create tenure
     #
     #  @SmokeTest
     #  Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
-    #    When I view a property "<property>"
+    #    When I view the property in MMH
     #    When I click on the new tenure button
     #    Then I am on the create new tenure page "<property>"
     #    Then the new tenure landing page is displayed
@@ -231,7 +231,7 @@ Feature: Create tenure
     #
     #  @SmokeTest
     #  Scenario Outline: Create new tenure that with start date that occurs after end date
-    #    When I view a property "<property>"
+    #    When I view the property in MMH
     #    When I click on the new tenure button
     #    Then I am on the create new tenure page "<property>"
     #    Then the new tenure landing page is displayed
@@ -425,7 +425,7 @@ Feature: Create tenure
   @SmokeTest
   Scenario: Create new tenure and cancel
     Given I seeded the database with an asset with no attached tenure
-    When I view a property ""
+    When I view the property in MMH
     When I click on the new tenure button
     Then I am on the create new tenure page ""
     Then the new tenure landing page is displayed
@@ -441,7 +441,7 @@ Feature: Create tenure
   @SmokeTest
   Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
     Given I seeded the database with an asset with a previous tenure
-    When I view a property ""
+    When I view the property in MMH
     When I click on the new tenure button
     Then I am on the create new tenure page ""
     Then the new tenure landing page is displayed
@@ -457,7 +457,7 @@ Feature: Create tenure
   @SmokeTest
   Scenario Outline: Create new tenure with start date that occurs after end date
     Given I seeded the database with an asset with no attached tenure
-    When I view a property ""
+    When I view the property in MMH
     When I click on the new tenure button
     Then I am on the create new tenure page ""
     Then the new tenure landing page is displayed
