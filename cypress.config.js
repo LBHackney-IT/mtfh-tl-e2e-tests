@@ -12,7 +12,7 @@ module.exports = defineConfig({
   },
   retries: {
     runMode: 2,
-    openMode: 0,
+    openMode: 2,
   },
   chromeWebSecurity: false,
   video: true,
@@ -24,6 +24,7 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
     },
     specPattern: 'cypress/e2e/**/*.{feature,features}',
-    experimentalMemoryManagement: true
+    experimentalMemoryManagement: true,
+    numTestsKeptInMemory: 25
   },
 })
