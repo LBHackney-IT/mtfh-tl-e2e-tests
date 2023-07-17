@@ -163,7 +163,7 @@ jobs:
   
   run-ci-tests:
         parallelism: 11
-        executor: cypress/browsers:node18.12.0-chrome107
+        executor: cypress-browsers
         environment:
             aws-region: eu-west-2
         parameters:
