@@ -73,6 +73,83 @@ const createAssetModel = {
   },
 }
 
+const defaultAssetCharacteristics = {
+  "numberOfBedrooms": null,
+  "numberOfLivingRooms": null,
+  "yearConstructed": "",
+  "windowType": "",
+  "numberOfLifts": null
+};
+const defaultAssetLocation = {
+  "floorNo": "",
+  "totalBlockFloors": null,
+  "parentAssets": []
+};
+const defaultAssetAddress = {
+  "uprn": "00014579215",
+  "postPreamble": "",
+  "addressLine1": "12 Pitcairn House",
+  "addressLine2": "",
+  "addressLine3": "",
+  "addressLine4": "",
+  "postCode": "E9 6PT"
+};
+const defaultAssetManagement = {
+  "agent": "",
+  "areaOfficeName": "",
+  "isCouncilProperty": true,
+  "managingOrganisation": "London Borough of Hackney",
+  "isTMOManaged": false,
+  "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+};
+
+const getAssetWithNoTenure = (assetGuid, patch) => {
+  return {
+    "id": assetGuid,
+    "assetId": "0014062023",
+    "assetType": "Dwelling",
+    "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
+    "isActive": true,
+    "assetLocation": defaultAssetLocation,
+    "assetAddress": defaultAssetAddress,
+    "assetManagement": defaultAssetManagement,
+    "assetCharacteristics": defaultAssetCharacteristics,
+    "patches": [patch]
+  }
+}
+
+const assetModelControlledSubmodels = ({
+  assetGuid,
+  assetLocation,
+  assetCharacteristics,
+  patch
+}) => {
+  const assetLocationInternal = assetLocation
+    ? assetLocation
+    : defaultAssetLocation;
+
+  const assetAddressInternal = defaultAssetAddress;
+  const assetManagementInternal = defaultAssetManagement;
+
+  const assetCharacteristicsInternal = assetCharacteristics
+    ? assetCharacteristics
+    : defaultAssetCharacteristics;
+
+  return {
+    "id": assetGuid,
+    "assetId": "0014062023",
+    "assetType": "Dwelling",
+    "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
+    "isActive": true,
+    "assetLocation": assetLocationInternal,
+    "assetAddress": assetAddressInternal,
+    "assetManagement": assetManagementInternal,
+    "assetCharacteristics": assetCharacteristicsInternal,
+    "patches": [patch]
+  };
+};
+
+
 const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString(), patches = [defaultPatch]) => {
   return {
     "id": assetGuid,
@@ -163,9 +240,49 @@ const asset = (patch) => {
   }
 }
 
+const randomInt = (min, max) => faker.datatype.number({ min: min, max: max });
+const randomItem = (collection) => collection[randomInt(0, collection.length - 1)];
+
+const assetCharacteristicsModel = () => {
+  // some possible states:
+  const windowStates = ['D', 'DBL', 'S', 'SNG'];
+  const architectureStates = ['PRE45MR-FLT', '45-64MR-FLT', 'POST74MR-FLT', '65-74MR-FLT', 'POST74HSE', 'PRE45HSE', '65-74HSE'];
+  const propFactorStates = [1.5, 3, 4, 4.5, 5];
+  const heatingStates = ['FGC', 'FCH', 'FEC', 'FUF', 'NEF', 'PCB', 'UNK', 'FMC'];
+
+  // random values
+  const singleBeds = randomInt(0, 6);
+  const doubleBeds = randomInt(0, 6);
+  const assetFloors = randomInt(0, 4);
+  const livingRooms = 1;
+  const year = randomInt(1960, 2070).toString();
+  const windows = randomItem(windowStates);
+  const architecture = randomItem(architectureStates);
+  const propFactor = randomItem(propFactorStates);
+  const heating = randomItem(heatingStates);
+
+  return {
+    numberOfBedrooms: singleBeds + doubleBeds,
+    numberOfLifts: 1,
+    numberOfLivingRooms: livingRooms,
+    windowType: windows,
+    yearConstructed: year,
+    numberOfSingleBeds: singleBeds,
+    numberOfDoubleBeds: doubleBeds,
+    numberOfFloors: assetFloors,
+    heating: heating,
+    propertyFactor: propFactor,
+    architecturalType: architecture,
+  };
+};
+
 module.exports = {
   asset,
   createAssetModel,
+  getAssetWithNoTenure,
+  assetModelControlledSubmodels,
+  defaultAssetLocation,
+  assetCharacteristicsModel,
   generateAsset,
   generateNewAsset
-}
+};
