@@ -149,6 +149,89 @@ const assetModelControlledSubmodels = ({
   };
 };
 
+const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString(), patches = [defaultPatch]) => {
+  return {
+    "id": assetGuid,
+    "assetId": "00054811",
+    "assetType": "LettableNonDwelling",
+    "rootAsset": "ROOT",
+    "isActive": false,
+    "parentAssetIds": "ROOT",
+    "assetLocation": {
+      "floorNo": "0",
+      "totalBlockFloors": 0,
+      "parentAssets": []
+    },
+    "assetAddress": {
+      "uprn": uprn,
+      "addressLine1": "123 Test Asset",
+      "addressLine2": "Hackney",
+      "addressLine3": "LONDON",
+      "addressLine4": "",
+      "postCode": "E2 8EB",
+      "postPreamble": ""
+    },
+    "assetManagement": {
+      "agent": "Hackney Homes",
+      "areaOfficeName": "Shoreditch Panel Area Team",
+      "isCouncilProperty": true,
+      "managingOrganisation": "London Borough of Hackney",
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724",
+      "owner": "LBH",
+      "isTMOManaged": false,
+      "propertyOccupiedStatus": "VR",
+      "isNoRepairsMaintenance": false
+    },
+    "assetCharacteristics": {
+      "numberOfBedrooms": 0,
+      "numberOfLifts": 0,
+      "numberOfLivingRooms": 0,
+      "windowType": "",
+      "yearConstructed": "0"
+    },
+    "patches": [...patches]
+  }
+}
+
+const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.random.numeric(7).toString()) => {
+  return {
+    "id": assetGuid,
+    "assetId": assetId,
+    "assetType": "Dwelling",
+    "parentAssetIds": "",
+    "isActive": true,
+    "assetLocation": {
+      "floorNo": "",
+      "totalBlockFloors": null,
+      "parentAssets": []
+    },
+    "assetAddress": {
+      "uprn": "",
+      "postPreamble": "",
+      "addressLine1": "47 Test Road",
+      "addressLine2": "",
+      "addressLine3": "",
+      "addressLine4": "",
+      "postCode": "MK40 2RF"
+    },
+    "assetManagement": {
+      "agent": "",
+      "areaOfficeName": "",
+      "isCouncilProperty": true,
+      "managingOrganisation": "London Borough of Hackney",
+      "isTMOManaged": false,
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+    },
+    "assetCharacteristics": {
+      "numberOfBedrooms": null,
+      "numberOfLivingRooms": null,
+      "yearConstructed": "",
+      "windowType": "",
+      "numberOfLifts": null
+    }
+  }
+}
+
 const asset = (patch) => {
   return {
     ...createAssetModel,
@@ -163,42 +246,6 @@ const assetCharacteristicsModel = () => {
   // some possible states:
   const windowStates = ['D', 'DBL', 'S', 'SNG'];
   const architectureStates = ['PRE45MR-FLT', '45-64MR-FLT', 'POST74MR-FLT', '65-74MR-FLT', 'POST74HSE', 'PRE45HSE', '65-74HSE'];
-  const propFactorStates = [1.5, 3, 4, 4.5, 5];
-  const heatingStates = ['FGC', 'FCH', 'FEC', 'FUF', 'NEF', 'PCB', 'UNK', 'FMC'];
-
-  // random values
-  const singleBeds = randomInt(0, 6);
-  const doubleBeds = randomInt(0, 6);
-  const assetFloors = randomInt(0, 4);
-  const livingRooms = 1;
-  const year = randomInt(1960, 2070).toString();
-  const windows = randomItem(windowStates);
-  const architecture = randomItem(architectureStates);
-  const propFactor = randomItem(propFactorStates);
-  const heating = randomItem(heatingStates);
-
-  return {
-    numberOfBedrooms: singleBeds + doubleBeds,
-    numberOfLifts: 1,
-    numberOfLivingRooms: livingRooms,
-    windowType: windows,
-    yearConstructed: year,
-    numberOfSingleBeds: singleBeds,
-    numberOfDoubleBeds: doubleBeds,
-    numberOfFloors: assetFloors,
-    heating: heating,
-    propertyFactor: propFactor,
-    architecturalType: architecture,
-  };
-};
-
-const randomInt = (min, max) => faker.datatype.number({min: min, max: max});
-const randomItem = (collection) => collection[randomInt(0, collection.length - 1)];
-
-const assetCharacteristicsModel = () => {
-  // some possible states:
-  const windowStates = ['D', 'DBL', 'S', 'SNG'];
-  const architectureStates = ['PRE45MR-FLT', '45-64MR-FLT', 'POST74MR-FLT', '65-74MR-FLT', 'POST74HSE' ,'PRE45HSE', '65-74HSE'];
   const propFactorStates = [1.5, 3, 4, 4.5, 5];
   const heatingStates = ['FGC', 'FCH', 'FEC', 'FUF', 'NEF', 'PCB', 'UNK', 'FMC'];
 
