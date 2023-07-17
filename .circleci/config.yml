@@ -166,7 +166,7 @@ jobs:
   
   run-ci-tests:
         parallelism: 11
-        executor: cypress-browsers
+        executor: cypress/default
         environment:
             aws-region: eu-west-2
         parameters:
