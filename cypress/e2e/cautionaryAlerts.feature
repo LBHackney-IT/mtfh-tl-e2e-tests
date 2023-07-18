@@ -1,11 +1,11 @@
 Feature: Create Cautionary Alerts
 
-  Background:
-    Given I am logged in
-    And I seeded the database
+    Background:
+        Given I am logged in
 
-  Scenario: Add cautionary alert for a Person and verify Red bell icon is displayed next to the person
-    Then I am on the Person details page for Alerts
+Scenario: Add cautionary alert for a Person and verify Red bell icon is displayed next to the person
+    Given I seeded the database
+    Then I visit the 'Person details' page
     When I click on Add cautionary alert link
     Then I am taken to the Add cautionary alert page
     When I enter Assure reference
@@ -16,12 +16,13 @@ Feature: Create Cautionary Alerts
     Then I am on Check and confirm cautionary alert page
     And the Cautionary alert details are displayed
     When I click on Save cautionary alert button
-    Then I am on the Person details page
+    Then I visit the 'Person details' page
     And I can see the section Cautionary Alerts with a Red bell icon
     And I can see the Cautionary Alert type
 
-  Scenario: 'Update cautionary alert' on Check and confirm Cautionary alert page by clicking on the 'Change link'
-    Then I am on the Person details page for Alerts
+Scenario: 'Update cautionary alert' on Check and confirm Cautionary alert page by clicking on the 'Change link'
+    Given I seeded the database
+    Then I visit the 'Person details' page
     When I click on Add cautionary alert link
     Then I am taken to the Add cautionary alert page
     When I enter Assure reference
@@ -56,13 +57,14 @@ Feature: Create Cautionary Alerts
     Then I am on Check and confirm cautionary alert page
     And I can see the 'Description' is updated with the new value
     When I click on Save cautionary alert button
-    Then I am on the Person details page
+    Then I visit the 'Person details' page
     And I can see the section Cautionary Alerts with a Red bell icon
     And I can see the Cautionary Alert type with the new value
 
 
-  Scenario: Verify Validation error messages in Add Cautionary Alerts page
-    Then I am on the Person details page for Alerts
+Scenario: Verify Validation error messages in Add Cautionary Alerts page
+    Given I seeded the database
+    Then I visit the 'Person details' page
     When I click on Add cautionary alert link
     Then I am taken to the Add cautionary alert page
     When I click on Save and Continue button
@@ -73,7 +75,8 @@ Feature: Create Cautionary Alerts
 
 
   Scenario: Verify Validation error messages for Date of Incident Field
-    Then I am on the Person details page for Alerts
+    Given I seeded the database
+    Then I visit the 'Person details' page
     When I click on Add cautionary alert link
     Then I am taken to the Add cautionary alert page
     When I enter Assure reference
@@ -94,4 +97,3 @@ Feature: Create Cautionary Alerts
     When I enter Future date
     And I click on Save and Continue button
     Then Validation error message is displayed for Future date
-

@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "id": "b318a0a6-d048-45d6-9188-cc26324eecfc",
+      "targetId": "71a29e65-efa7-4113-bb33-7a11cde9f8b0",
+      "type": "create",
+      "targetType": "person",
+      "createdAt": "2022-01-19T16:07:16.6404558Z",
+      "timetoLiveForRecord": 0,
+      "oldData": null,
+      "newData": {
+        "reason": "Test",
+        "placeOfBirth": null,
+        "preferredSurname": null,
+        "dateOfDeath": null,
+        "dateOfBirth": "1990-01-01T00:00:00Z",
+        "preferredMiddleName": null,
+        "title": "Mr",
+        "preferredTitle": null,
+        "personTypes": [
+          "HouseholdMember"
+        ],
+        "versionNumber": 0,
+        "firstName": "Asd",
+        "surname": "Qwe",
+        "preferredFirstName": null,
+        "tenures": [],
+        "id": "71a29e65-efa7-4113-bb33-7a11cde9f8b0",
+        "lastModified": "2022-01-19T16:07:16.5586116Z"
+      },
+      "authorDetails": {
+        "fullName": "Angelo Di Massimo",
+        "email": "angelo.dimassimo@hackney.gov.uk"
+      },
+      "sourceDomain": "Person"
+    }
+  ],
+  "paginationDetails": {
+    "nextToken": null
+  }
+}

@@ -1,5 +1,6 @@
 const { faker } = require("@faker-js/faker");
 const createTenureModel = {
+    "id": faker.datatype.uuid(),
     "tenureType": {
         "code": "FRS",
         "description": "Freehold (Serv)"
@@ -64,22 +65,22 @@ const secureTenureModel = {
     "startOfTenureDate": "2010-01-01"
 }
 
-const tenure = (data, asset, householdMembers) => {
+const generateTenure = (data, asset, householdMembers, tenureGuid = faker.datatype.uuid(), startOfTenureDate = "2010-01-01", endOfTenureDate = "2077-01-01") => {
     const { id: assetId, assetType, assetAddress } = asset;
     let newHouseholdMembers = []
     if (householdMembers) {
         newHouseholdMembers = householdMembers.map(person => {
-           return {
-               isResponsible: person.isResponsible,
-               fullName: `${person.firstName} ${person.surname}` ,
-               personTenureType: person.personTenureType,
-               type: "person",
-               id: person.id,
-           }
+            return {
+                isResponsible: person.isResponsible,
+                fullName: `${person.firstName} ${person.surname}`,
+                personTenureType: person.personTenureType,
+                type: "person",
+                id: person.id,
+            }
         })
     }
     return {
-        id: faker.datatype.uuid(),
+        id: tenureGuid,
         tenureType: {
             code: "SEC",
             description: "Secure"
@@ -110,12 +111,13 @@ const tenure = (data, asset, householdMembers) => {
             uprn: "10008334555"
         },
         ...data,
-        startOfTenureDate: data.startOfTenureData || "2010-01-01",
+        startOfTenureDate: startOfTenureDate,
+        endOfTenureDate: endOfTenureDate
     }
 }
 
 module.exports = {
     createTenureModel,
     secureTenureModel,
-    tenure
+    generateTenure
 }

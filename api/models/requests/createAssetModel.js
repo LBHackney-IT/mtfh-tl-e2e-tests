@@ -1,6 +1,8 @@
 const { faker } = require("@faker-js/faker");
+const { patch: defaultPatch } = require("./patchModel");
+
 const createAssetModel = {
-  "id": "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6",
+  "id": faker.datatype.uuid(),
   "assetId": "12876875",
   "assetAddress": {
     "uprn": "100021065786",
@@ -69,7 +71,7 @@ const createAssetModel = {
       }
     ]
   },
-};
+}
 
 const defaultAssetCharacteristics = {
   "numberOfBedrooms": null,
@@ -78,23 +80,20 @@ const defaultAssetCharacteristics = {
   "windowType": "",
   "numberOfLifts": null
 };
-
 const defaultAssetLocation = {
   "floorNo": "",
   "totalBlockFloors": null,
   "parentAssets": []
 };
-
 const defaultAssetAddress = {
   "uprn": "00014579215",
   "postPreamble": "",
-  "addressLine1": "12 Pitcairn House",
+  "addressLine1": "123 Test Road",
   "addressLine2": "",
   "addressLine3": "",
   "addressLine4": "",
   "postCode": "E9 6PT"
 };
-
 const defaultAssetManagement = {
   "agent": "",
   "areaOfficeName": "",
@@ -104,23 +103,7 @@ const defaultAssetManagement = {
   "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
 };
 
-const getAssetWithNoTenure = (assetGuid, patch) => {
-  return {
-    "id": assetGuid,
-    "assetId": "0014062023",
-    "assetType": "Dwelling",
-    "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
-    "isActive": true,
-    "assetLocation": defaultAssetLocation,
-    "assetAddress": defaultAssetAddress,
-    "assetManagement": defaultAssetManagement,
-    "assetCharacteristics": defaultAssetCharacteristics,
-    "patches": [patch]
-  }
-}
-
 const assetModelControlledSubmodels = ({
-  assetGuid,
   assetLocation,
   assetCharacteristics,
   patch
@@ -137,7 +120,7 @@ const assetModelControlledSubmodels = ({
     : defaultAssetCharacteristics;
 
   return {
-    "id": assetGuid,
+    "id": faker.datatype.uuid(),
     "assetId": "0014062023",
     "assetType": "Dwelling",
     "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
@@ -150,21 +133,103 @@ const assetModelControlledSubmodels = ({
   };
 };
 
+const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString(), patches = [defaultPatch]) => {
+  return {
+    "id": assetGuid,
+    "assetId": "00054811",
+    "assetType": "LettableNonDwelling",
+    "rootAsset": "ROOT",
+    "isActive": false,
+    "parentAssetIds": "ROOT",
+    "assetLocation": {
+      "floorNo": "0",
+      "totalBlockFloors": 0,
+      "parentAssets": []
+    },
+    "assetAddress": {
+      "uprn": uprn,
+      "addressLine1": "123 Test Asset",
+      "addressLine2": "Hackney",
+      "addressLine3": "LONDON",
+      "addressLine4": "",
+      "postCode": "E2 8EB",
+      "postPreamble": ""
+    },
+    "assetManagement": {
+      "agent": "Hackney Homes",
+      "areaOfficeName": "Shoreditch Panel Area Team",
+      "isCouncilProperty": true,
+      "managingOrganisation": "London Borough of Hackney",
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724",
+      "owner": "LBH",
+      "isTMOManaged": false,
+      "propertyOccupiedStatus": "VR",
+      "isNoRepairsMaintenance": false
+    },
+    "assetCharacteristics": {
+      "numberOfBedrooms": 0,
+      "numberOfLifts": 0,
+      "numberOfLivingRooms": 0,
+      "windowType": "",
+      "yearConstructed": "0"
+    },
+    "patches": [...patches]
+  }
+}
+
+const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.random.numeric(7).toString()) => {
+  return {
+    "id": assetGuid,
+    "assetId": assetId,
+    "assetType": "Dwelling",
+    "parentAssetIds": "",
+    "isActive": true,
+    "assetLocation": {
+      "floorNo": "",
+      "totalBlockFloors": null,
+      "parentAssets": []
+    },
+    "assetAddress": {
+      "uprn": "",
+      "postPreamble": "",
+      "addressLine1": "47 Test Road",
+      "addressLine2": "",
+      "addressLine3": "",
+      "addressLine4": "",
+      "postCode": "MK40 2RF"
+    },
+    "assetManagement": {
+      "agent": "",
+      "areaOfficeName": "",
+      "isCouncilProperty": true,
+      "managingOrganisation": "London Borough of Hackney",
+      "isTMOManaged": false,
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+    },
+    "assetCharacteristics": {
+      "numberOfBedrooms": null,
+      "numberOfLivingRooms": null,
+      "yearConstructed": "",
+      "windowType": "",
+      "numberOfLifts": null
+    }
+  }
+}
+
 const asset = (patch) => {
   return {
     ...createAssetModel,
-    id: faker.datatype.uuid(),
     patches: [patch]
   }
 }
 
-const randomInt = (min, max) => faker.datatype.number({min: min, max: max});
+const randomInt = (min, max) => faker.datatype.number({ min: min, max: max });
 const randomItem = (collection) => collection[randomInt(0, collection.length - 1)];
 
 const assetCharacteristicsModel = () => {
   // some possible states:
   const windowStates = ['D', 'DBL', 'S', 'SNG'];
-  const architectureStates = ['PRE45MR-FLT', '45-64MR-FLT', 'POST74MR-FLT', '65-74MR-FLT', 'POST74HSE' ,'PRE45HSE', '65-74HSE'];
+  const architectureStates = ['PRE45MR-FLT', '45-64MR-FLT', 'POST74MR-FLT', '65-74MR-FLT', 'POST74HSE', 'PRE45HSE', '65-74HSE'];
   const propFactorStates = [1.5, 3, 4, 4.5, 5];
   const heatingStates = ['FGC', 'FCH', 'FEC', 'FUF', 'NEF', 'PCB', 'UNK', 'FMC'];
 
@@ -197,8 +262,9 @@ const assetCharacteristicsModel = () => {
 module.exports = {
   asset,
   createAssetModel,
-  getAssetWithNoTenure,
   assetModelControlledSubmodels,
   defaultAssetLocation,
   assetCharacteristicsModel,
+  generateAsset,
+  generateNewAsset
 };

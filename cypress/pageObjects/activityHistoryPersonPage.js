@@ -14,8 +14,10 @@ class ActivityHistoryPageObjects {
         return cy.get('[class="govuk-table__row govuk-table__row mtfh-activity-history"]')
     }
 
-    tableHeader() {
-        return cy.get('.govuk-table__head')
+    tableHeaders() {
+        return [
+            'date', 'category', 'edit details', 'edited by'
+        ]
     }
 
     tableBody() {

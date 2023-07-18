@@ -40,7 +40,7 @@ Feature: As an internal Hackney User eg. HO, AHM
    Scenario: AC3 - Worktray filter display by default
      Given I am on the MMH home page
      Then I can see my worktray dashboard
-    # And by default the status filter will select ALL statuses
+    #And by default the status filter will select ALL statuses
     #Then the default filter will be pre-selected to ALL available process
     #And pre-selected to ALL available status
     #And pre-selected to ONLY patches I am associated with

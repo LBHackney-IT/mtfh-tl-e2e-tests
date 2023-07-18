@@ -1,10 +1,9 @@
-import { When, Then, Given, And } from "@badeball/cypress-cucumber-preprocessor";
+import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
+import AddPersonPage from "../../pageObjects/addPersonPage";
+import ReviewApplicationPageObjects from "../../pageObjects/reviewApplicationPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
-import ReviewApplicationPageObjects from "../../pageObjects/reviewApplicationPage";
-import AddPersonPage from "../../pageObjects/addPersonPage";
-import tenure from "../../../api/tenure";
 
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
@@ -35,7 +34,7 @@ const manualChecksPass = ({ id: tenureId, householdMembers }) => {
     tenureReqDocsPage.textBreachOfTenure().should('be.visible');
     tenureReqDocsPage.statusBreachOfTenureCheck().should('be.visible');
     tenureReqDocsPage.statusActiveCheck().should('be.visible');
-    tenureReqDocsPage.statusActiveCheck().should('contain.text','Breach of tenure check');
+    tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Breach of tenure check');
     tenureReqDocsPage.tenantLiveNoticeNo().click();
     tenureReqDocsPage.cautionaryContactNo().click();
     tenureReqDocsPage.successionNo().click();
@@ -75,7 +74,7 @@ When("I am able to choose which recommendation the tenure investigator has given
     reviewAppPage.radioDecline().should('exist');
 });
 Then('the progress indicator is still in "Review Application"', () => {
-    tenureReqDocsPage.statusActiveCheck().should('contain.text','Review application');
+    tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review application');
 });
 
 When("I select the option pass the case to Area Housing Manager", () => {
@@ -123,50 +122,48 @@ When("I enter {string} {string}", (label, reason) => {
     reviewAppPage.confirmationModalApprove().click();
 });
 When("I select the recommendation as {string}", (decision) => {
-    switch (decision)
-    {
-        case'Approve':
-        {
-            cy.contains('Approve').click();
-            reviewAppPage.buttonConfirm().click();
-            cy.contains('Tenure investigator recommendation: Approve application');
-            break;
-        }
-        case'Appointment':
-        {
-            cy.contains('Appointment').click();
-            reviewAppPage.buttonConfirm().click();
-            cy.contains('Tenure investigator recommendation: Interview Applicant');
-            break;
-        }
-        case'Decline':
-        {
-            cy.contains('Decline').click();
-            reviewAppPage.buttonConfirm().click();
-            cy.contains('Tenure investigator recommendation: Decline application');
-            break;
-        }
+    switch (decision) {
+        case 'Approve':
+            {
+                cy.contains('Approve').click();
+                reviewAppPage.buttonConfirm().click();
+                cy.contains('Tenure investigator recommendation: Approve application');
+                break;
+            }
+        case 'Appointment':
+            {
+                cy.contains('Appointment').click();
+                reviewAppPage.buttonConfirm().click();
+                cy.contains('Tenure investigator recommendation: Interview Applicant');
+                break;
+            }
+        case 'Decline':
+            {
+                cy.contains('Decline').click();
+                reviewAppPage.buttonConfirm().click();
+                cy.contains('Tenure investigator recommendation: Decline application');
+                break;
+            }
     }
 });
 
 Then("model dialog is displayed with message {string}", (recommendation) => {
-    switch (recommendation)
-    {
-        case'Tenure investigator recommendation: Approve application':
-        {
-            cy.contains('Tenure investigator recommendation: Approve application');
-            break;
-        }
-        case'Tenure investigator recommendation: Interview Applicant':
-        {
-            cy.contains('Tenure investigator recommendation: Interview Applicant');
-            break;
-        }
-        case'Tenure investigator recommendation: Decline application':
-        {
-            cy.contains('Tenure investigator recommendation: Decline application');
-            break;
-        }
+    switch (recommendation) {
+        case 'Tenure investigator recommendation: Approve application':
+            {
+                cy.contains('Tenure investigator recommendation: Approve application');
+                break;
+            }
+        case 'Tenure investigator recommendation: Interview Applicant':
+            {
+                cy.contains('Tenure investigator recommendation: Interview Applicant');
+                break;
+            }
+        case 'Tenure investigator recommendation: Decline application':
+            {
+                cy.contains('Tenure investigator recommendation: Decline application');
+                break;
+            }
     }
 });
 When("the decision is selected as 'Decline'", () => {

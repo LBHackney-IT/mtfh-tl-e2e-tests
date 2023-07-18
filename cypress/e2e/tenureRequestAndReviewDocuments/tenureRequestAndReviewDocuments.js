@@ -116,10 +116,10 @@ Then("the option to proceed is enabled", () => {
 And("a case activity log is created for {string}", () => {
     tenureReqDocsPage.activityHistoryButton().click();
 });
-When("I click on the current tenant’s name in the heading", () => {
+When("I click on the current tenant's name in the heading", () => {
     tenureReqDocsPage.personLink().click();
 });
-Then("I am taken to the current tenant’s person page which will be opened in a new tab", () => {
+Then("I am taken to the current tenant's person page which will be opened in a new tab", () => {
     tenureReqDocsPage.personLink().invoke('removeAttr', 'target').click();
     cy.url()
       .should('include', '/person/')

@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker';
 
-
 export const patch = {
   "id": faker.datatype.uuid(),
   "domain": "MMH",

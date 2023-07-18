@@ -1,3 +1,5 @@
+const { faker } = require("@faker-js/faker");
+
 export const cautionaryAlert = (person, asset) => ({
   assureReference: "121212",
   incidentDate: "2023-02-02",
@@ -9,7 +11,7 @@ export const cautionaryAlert = (person, asset) => ({
   assetDetails: {
       id: asset.id,
       propertyReference: asset.assetId,
-      uprn: "100021065711",
+      uprn: faker.random.numeric(12),
       fullAddress: asset.assetAddress.addressLine1
         + asset.assetAddress.addressLine2
         + asset.assetAddress.addressLine3

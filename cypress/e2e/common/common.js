@@ -1,47 +1,42 @@
 import {
-  Then,
   And,
   Given,
-  defineParameterType,
+  Then,
   When,
-  After,
+  defineParameterType
 } from "@badeball/cypress-cucumber-preprocessor";
+import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
+import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
+import HomePageObjects from "../../pageObjects/homePage";
+import PersonContactPageObjects from "../../pageObjects/personContactPage";
+import PersonPageObjects from "../../pageObjects/personPage";
+import PropertyPageObjects from "../../pageObjects/propertyPage";
+import SearchPageObjects from "../../pageObjects/searchPage";
 import FooterPageObjects from "../../pageObjects/sharedComponents/footer";
 import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
-import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation"
-import PersonContactPageObjects from "../../pageObjects/personContactPage";
-import PersonPageObjects from "../../pageObjects/personPage";
-import PropertyPageObjects from "../../pageObjects/propertyPage"
-import SearchPageObjects from "../../pageObjects/searchPage";
+import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation";
 import TenurePageObjects from "../../pageObjects/tenurePage";
-import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
-import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 
-
-import comment from "../../../api/comment";
-import contactDetails from "../../../api/contact-details";
-import { getTenure, editTenure } from "../../../api/tenure";
-import createCautionaryAlert from "../../../api/cautionary-alert";
-import referenceData from "../../../api/reference-data";
 import date from "date-and-time";
+import comment from "../../../api/comment";
+import { addContactDetails } from "../../../api/contact-details";
+import referenceData from "../../../api/reference-data";
+import { editTenure, getTenure } from "../../../api/tenure";
 import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
 
-
-import { hasToggle } from "../../helpers/hasToggle";
-import { guid } from "../../helpers/commentText";
 import property from "../../../api/property";
+import { guid } from "../../helpers/commentText";
+import { hasToggle } from "../../helpers/hasToggle";
 import { searchPersonResults } from "../../support/searchPersonResults";
 import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
-import { patch } from "../../../api/models/requests/patchModel"
-import { asset, getAssetWithNoTenure, assetModelControlledSubmodels, defaultAssetLocation, assetCharacteristicsModel } from "../../../api/models/requests/createAssetModel"
-import { person } from "../../../api/models/requests/createPersonModel"
-import { tenure } from "../../../api/models/requests/addTenureModel";
-import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
-import { saveNonDynamoFixture } from "../../../api/helpers"
+import { generateTenure } from "../../../api/models/requests/addTenureModel";
+import { asset, generateAsset, assetModelControlledSubmodels, defaultAssetLocation, assetCharacteristicsModel } from "../../../api/models/requests/createAssetModel";
+import { person } from "../../../api/models/requests/createPersonModel";
+import { patch } from "../../../api/models/requests/patchModel";
 
 const envConfig = require("../../../environment-config");
 const activityHistory = new ActivityHistoryPageObjects();
@@ -57,17 +52,17 @@ const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
 const changeOfName = new ChangeOfNamePageObjects();
+const homePage = new HomePageObjects()
 const emailAdd = 'AutomationTest@test.com';
 const phoneNumber = '07788123456';
 
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
-let propertyId = "";
 
 const endpoint = Cypress.env('PERSON_ENDPOINT')
 
-const tenureToPersonTenure = (tenure) => ({
+export const tenureToPersonTenure = (tenure) => ({
   id: tenure.id,
   startDate: tenure.startOfTenureDate,
   endDate: tenure.endOfTenureDate,
@@ -79,7 +74,7 @@ const tenureToPersonTenure = (tenure) => ({
   propertyReference: tenure.tenuredAsset.propertyReference,
 });
 
-const tenureToAssetTenure = (tenure) => ({
+export const tenureToAssetTenure = (tenure) => ({
   endOfTenureDate: tenure.endOfTenureDate,
   id: tenure.id,
   paymentReference: tenure.paymentReference,
@@ -199,7 +194,7 @@ And("I want to edit a person", async () => {
 
 And("I want to add contact details {string}", async (type) => {
   cy.log(`Creating contact details for record ${personId}`)
-  const response = await contactDetails.addContactDetails(type, personId);
+  const response = await contactDetails.addContactDetails(personId, type);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Contact details for record ${response.data.id} created!`);
   assert.deepEqual(response.status, 201);
@@ -237,8 +232,7 @@ And('I click on the breadcrumb', () => {
 })
 
 Then('I am taken to the search page', () => {
-  // cy.url().should('contain', "search")
-  cy.findAllByText("Search Results");
+  cy.contains("Search").should('be.visible')
 })
 
 And('I click on the view property button', () => {
@@ -484,16 +478,16 @@ And("I click edit person", () => {
   personPage.editPersonButton().click();
 });
 
-Given('I view a person {string}', (id) => {
-  personPage.visit(id || personId)
+Then("I visit the 'Person details' page", () => {
+  cy.getPersonFixture().then(({ id: personId }) => {
+    personPage.visit(personId);
+  })
 })
 
-And("I am on the person page for {string}", (person) => {
-  cy.url().should("include", person);
-});
-
-And("I am on the tenure page for {string}", (tenure) => {
-  cy.url().should("include", tenure);
+And("I am on the 'Person details' page", () => {
+  cy.getPersonFixture().then(({ id: personId }) => {
+    cy.url().should("include", personId);
+  })
 });
 
 Then('the personal details are displayed on the sidebar', () => {
@@ -561,10 +555,13 @@ Then('the add a new person tenure page is correct', () => {
 })
 
 // Tenure page
-When('I view a tenure {string}', (id) => {
+When('I view a tenure', () => {
   cy.getTenureFixture().then(({ id: tenureId }) => {
-    tenurePage.visit(id || tenureId)
+    tenurePage.visit(tenureId)
   })
+
+  cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
+  cy.wait("@getNotes")
 })
 
 Then('the tenure information is displayed', () => {
@@ -621,9 +618,9 @@ Given("I create a new property with tenure", async () => {
   cy.log(`Property record ${response.data.id} created`);
   propertyId = response.data.id;
 })
-When("I view a property {string}", (id) => {
-  cy.getAssetFixture().then(({ id: propertyId }) => {
-    propertyPage.visit(id || propertyId);
+When("I view the property in MMH", () => {
+  cy.getAssetFixture().then((asset) => {
+    propertyPage.visit(asset.id);
   })
 });
 
@@ -751,13 +748,19 @@ And('I click the next button', () => {
   cy.contains('Next').click()
 });
 
-Given("I am on the MMH home page", () => {
-  changeOfNamePage.visitHomePage();
-});
+// Given("I am on the MMH home page", () => {
+//   changeOfNamePage.visitHomePage();
+// });
+
+Given('I am on the MMH home page', () => {
+  homePage.visit()
+  homePage.iAmOnTheHomePage()
+})
 When("I enter {string} as search criteria", (textSearch) => {
   changeOfNamePage.textSearch().should('exist');
   changeOfNamePage.searchField().clear().type(textSearch);
 });
+
 When("I select {string} and click on search button", (entity) => {
   switch (entity) {
     case 'Person':
@@ -936,249 +939,213 @@ Then("email address and phone number are null", () => {
   cy.contains(phoneNumber).should('not.exist');
 })
 
+Given("the person has a correspondence address", () => {
+  cy.getPersonFixture().then((person) => {
+    const contactInformation = {
+      "contactType": "address",
+      "subType": "correspondenceAddress",
+      "value": "SHELTER 30M FROM VOODOO RAYS UNIT 1-3 BOXPARK RETAIL MALL2-10 BETHNAL GREEN ROAD 8M FRO E1 6AW",
+      "description": null,
+      "addressExtended": {
+        "uprn": "1000123456789",
+        "isOverseasAddress": false,
+        "overseasAddress": null,
+        "addressLine1": "SHELTER 30M FROM VOODOO RAYS",
+        "addressLine2": "UNIT 1-3",
+        "addressLine3": "BOXPARK RETAIL MALL2-10",
+        "addressLine4": "BETHNAL GREEN ROAD 8M FRO",
+        "postCode": "E1 6AW"
+      }
+    }
+    addContactDetails(person.id, undefined, contactInformation)
+  })
+})
+
+Given("the person has valid contact details", () => {
+  cy.getPersonFixture().then((person) => {
+    cy.intercept('GET', `*/api/v2/contactDetails?targetId=${person.id}`, { fixture: "contact-details.json", statusCode: 200 }).as('getContactDetails')
+  })
+})
+
 And("the details email address and phone number are displayed", () => {
   cy.contains(emailAdd);
   cy.contains(phoneNumber);
 });
+
 Then("Status Stepper is at {string}", (status) => {
   changeOfName.statusActiveCheck().should('be.visible');
   changeOfName.statusActiveCheck().should('contain.text', status);
 });
+
 And("I can see the text add the contact details", () => {
   cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
 });
 
-Given("I seeded the database", () => {
-  cy.log("Seeding database").then(() => {
-    const patchModel = patch;
-    const assetModel = asset(patchModel);
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+// Helper methods
 
-    const personTenure = {
-      id: tenureModel.id,
-      startDate: tenureModel.startOfTenureDate,
-      endDate: tenureModel.endOfTenureDate,
-      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
-      assetId: tenureModel.tenuredAsset.id,
-      uprn: tenureModel.tenuredAsset.uprn,
-      isActive: false,
-      type: tenureModel.tenureType.description,
-      propertyReference: tenureModel.tenuredAsset.propertyReference,
-    }
+export const getAssetViewUrlByGuid = (assetGuid) => {
+  return `${envConfig.baseUrl}/property/${assetGuid}`
+}
 
-    personModel1.tenures.push(personTenure);
-    personModel2.tenures.push(personTenure);
-
-    assetModel.tenure = {
-      endOfTenureDate: tenureModel.endOfTenureDate,
-      id: tenureModel.id,
-      paymentReference: tenureModel.paymentReference,
-      startOfTenureDate: tenureModel.startOfTenureDate,
-      type: tenureModel.tenureType.description,
-    }
-
+// This methods adds a temporary database record to the provided database table, and adds an entry to recordsToDelete.json
+export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
+  cy.log("Seeding database").then(async () => {
+    cy.log(`Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`)
     return new Cypress.Promise((resolve) => {
-      Promise.all([
-        DynamoDb.createRecord("PatchesAndAreas", patchModel),
-        DynamoDb.createRecord("Assets", assetModel),
-        DynamoDb.createRecord("TenureInformation", tenureModel),
-        DynamoDb.createRecord("Persons", personModel1),
-        DynamoDb.createRecord("Persons", personModel2),
-      ]).then(() => {
-        resolve()
-      })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
-  })
-})
-
-Given("I seeded the database with an asset {string} with no attached tenure", (assetGuid) => {
-  cy.log("Seeding database").then(() => {
-    const patchModel = patch;
-    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
-
-    return new Cypress.Promise((resolve) => {
-      Promise.all([
-        DynamoDb.createRecord("PatchesAndAreas", patchModel),
-        DynamoDb.createRecord("Assets", assetModel),
-        DynamoDb.createRecord("Persons", personModel1),
-        DynamoDb.createRecord("Persons", personModel2),
-      ]).then(() => {
-        resolve()
-      })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
-  })
-})
-
-Given("I seeded the database with an asset {string} with a previous tenure", (assetGuid) => {
-  cy.log("Seeding database").then(() => {
-    const patchModel = patch;
-    const assetModel = getAssetWithNoTenure(assetGuid, patchModel)
-    const personModel1 = person();
-    const personModel2 = person();
-    const tenureModel = tenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
-
-    const personTenure = {
-      id: tenureModel.id,
-      startDate: tenureModel.startOfTenureDate,
-      endDate: tenureModel.endOfTenureDate,
-      assetFullAddress: tenureModel.tenuredAsset.fullAddress,
-      assetId: tenureModel.tenuredAsset.id,
-      uprn: tenureModel.tenuredAsset.uprn,
-      isActive: false,
-      type: tenureModel.tenureType.description,
-      propertyReference: tenureModel.tenuredAsset.propertyReference,
-    }
-
-    personModel1.tenures.push(personTenure);
-    personModel2.tenures.push(personTenure);
-
-    assetModel.tenure = {
-      endOfTenureDate: tenureModel.endOfTenureDate,
-      id: tenureModel.id,
-      paymentReference: tenureModel.paymentReference,
-      startOfTenureDate: tenureModel.startOfTenureDate,
-      type: tenureModel.tenureType.description,
-    }
-
-    // Add expired/previous tenure to asset
-    assetModel.tenure = {
-      endOfTenureDate: "2022-07-29T00:00:00",
-      id: tenureModel.id,
-      paymentReference: tenureModel.paymentReference,
-      startOfTenureDate: "2020-07-29T00:00:00",
-      type: tenureModel.tenureType.description,
-    }
-
-    return new Cypress.Promise((resolve) => {
-      Promise.all([
-        DynamoDb.createRecord("PatchesAndAreas", patchModel),
-        DynamoDb.createRecord("Assets", assetModel),
-        DynamoDb.createRecord("TenureInformation", tenureModel),
-        DynamoDb.createRecord("Persons", personModel1),
-        DynamoDb.createRecord("Persons", personModel2),
-      ]).then(() => {
-        resolve()
-      })
-    }).then(() => {
-      cy.log("Database seeded!");
-    })
-  })
-})
-
-Given("There's a person with a cautionary alert", () => {
-  cy
-    .log("Creating cautoinary alert & entities associated with it")
-    .then(() => {
-      const patchModel = patch;
-      const assetModel = asset(patchModel);
-      const tenureModel = tenure({}, assetModel);
-      const personModel = person();
-      const personTenure = tenureToPersonTenure(tenureModel);
-      personModel.tenures.push(personTenure);
-      assetModel.tenure = tenureToAssetTenure(tenureModel);
-
-      const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
-        console.log("saveNonDynamoRecord data: ", response)
-        try {
-          saveNonDynamoFixture(
-            "CautionaryAlerts",
-            [response.body],
-            response,
-          ).then((response) => {
-            resolve(response)
-          });
-        }
-        catch (ex) {
-          reject(ex);
-        }
-      });
-
-      const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
-
-      createCautionaryAlert(cautionaryAlertRecord).then((data) => {
-        saveNonDynamoRecord(data).then((moreData) => {
-          Promise.resolve(moreData);
-        });
-      });
-
-      return new Cypress.Promise((resolve) => {
-        Promise.all([
-          DynamoDb.createRecord("PatchesAndAreas", patchModel),
-          DynamoDb.createRecord("Assets", assetModel),
-          DynamoDb.createRecord("TenureInformation", tenureModel),
-          DynamoDb.createRecord("Persons", personModel)
-        ]).then(() => {
-          resolve();
-        });
-      }).then(() => {
-        cy.log("CA related data created.");
-      })
-    });
-});
-
-Given("There exists a {string} asset with {string} asset characteristics", (assetGuid, acCompleteness) => {
-  cy
-    .log(`Creating asset with ${acCompleteness} asset characteristics`)
-    .then(() => {
-      const isFullyPopulated = acCompleteness === "populated";
-      const assetLocation = { ...defaultAssetLocation, totalBlockFloors: 5 };
-      const assetCharacteristics = isFullyPopulated ? assetCharacteristicsModel() : { yearConstructed: "1984" };
-      const assetModel = assetModelControlledSubmodels({ assetGuid, assetLocation, assetCharacteristics });
-
-      return new Cypress.Promise((resolve) => {
-        Promise.all([
-          DynamoDb.createRecord("Assets", assetModel),
-        ]).then(() => {
+      DynamoDb.createRecord(dbTableName, testDbRecord)
+        .then(() => {
           resolve()
         })
-      }).then(() => {
-        cy.log("Database seeded!");
-      })
-    });
+    }).then(() => {
+      cy.log("Database seeded!");
+    })
+  })
+}
+
+// Database seed methods
+
+Given("I seeded the database", () => {
+  const patchModel = patch;
+  const assetModel = asset(patchModel);
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+  const personTenure = {
+    id: tenureModel.id,
+    startDate: tenureModel.startOfTenureDate,
+    endDate: tenureModel.endOfTenureDate,
+    assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+    assetId: tenureModel.tenuredAsset.id,
+    uprn: tenureModel.tenuredAsset.uprn,
+    isActive: false,
+    type: tenureModel.tenureType.description,
+    propertyReference: tenureModel.tenuredAsset.propertyReference,
+  }
+
+  personModel1.tenures.push(personTenure);
+  personModel2.tenures.push(personTenure);
+
+  assetModel.tenure = {
+    endOfTenureDate: tenureModel.endOfTenureDate,
+    id: tenureModel.id,
+    paymentReference: tenureModel.paymentReference,
+    startOfTenureDate: tenureModel.startOfTenureDate,
+    type: tenureModel.tenureType.description,
+  }
+
+  addTestRecordToDatabase("PatchesAndAreas", patchModel)
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
+})
+
+Given("I seeded the database with a tenure", () => {
+  const assetModel = generateAsset()
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined);
+
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
+})
+
+Given("I seeded the database with an asset with a previous tenure", () => {
+  const assetModel = generateAsset()
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, "1990-10-13", "1998-10-13");
+
+  const personTenure = {
+    id: tenureModel.id,
+    startDate: tenureModel.startOfTenureDate,
+    endDate: tenureModel.endOfTenureDate,
+    assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+    assetId: tenureModel.tenuredAsset.id,
+    uprn: tenureModel.tenuredAsset.uprn,
+    isActive: false,
+    type: tenureModel.tenureType.description,
+    propertyReference: tenureModel.tenuredAsset.propertyReference,
+  }
+
+  personModel1.tenures.push(personTenure);
+  personModel2.tenures.push(personTenure);
+
+  // Add expired/previous tenure to asset
+  assetModel.tenure = {
+    endOfTenureDate: "2022-07-29T00:00:00",
+    id: tenureModel.id,
+    paymentReference: tenureModel.paymentReference,
+    startOfTenureDate: "2020-07-29T00:00:00",
+    type: tenureModel.tenureType.description,
+  }
+
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
+})
+
+Given("I seeded the database with a person", () => {
+  const testPerson = person();
+  addTestRecordToDatabase("Persons", testPerson)
+})
+
+Given("I seeded the database with a person with an active tenure", () => {
+  const patchModel = patch;
+  const assetModel = generateAsset(undefined, undefined, [patchModel])
+  const personModel1 = person();
+  const personModel2 = person();
+  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+
+  const personTenure = {
+    id: tenureModel.id,
+    startDate: tenureModel.startOfTenureDate,
+    endDate: tenureModel.endOfTenureDate,
+    assetFullAddress: tenureModel.tenuredAsset.fullAddress,
+    assetId: tenureModel.tenuredAsset.id,
+    uprn: tenureModel.tenuredAsset.uprn,
+    isActive: true,
+    type: tenureModel.tenureType.description,
+    propertyReference: tenureModel.tenuredAsset.propertyReference,
+  }
+
+  personModel1.tenures.push(personTenure);
+  personModel2.tenures.push(personTenure);
+
+  assetModel.tenure = {
+    endOfTenureDate: tenureModel.endOfTenureDate,
+    id: tenureModel.id,
+    paymentReference: tenureModel.paymentReference,
+    startOfTenureDate: tenureModel.startOfTenureDate,
+    type: tenureModel.tenureType.description,
+  }
+
+  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("TenureInformation", tenureModel)
+  addTestRecordToDatabase("Persons", personModel1)
+  addTestRecordToDatabase("Persons", personModel2)
+})
+
+Given("I seeded an asset with {string} asset characteristics", (acCompleteness) => {
+  cy.log(`Creating asset with ${acCompleteness} asset characteristics`)
+  const isFullyPopulated = acCompleteness === "populated";
+  const assetLocation = { ...defaultAssetLocation, totalBlockFloors: 5 };
+  const assetCharacteristics = isFullyPopulated ? assetCharacteristicsModel() : { yearConstructed: "1984" };
+  const assetModel = assetModelControlledSubmodels({ assetLocation, assetCharacteristics });
+
+  addTestRecordToDatabase("Assets", assetModel)
 });
 
-Given("I create a tenure {string} {string}", (startOfTenureDate, isResponsible) => {
-  cy.log("Creating tenure").then(() => {
-    const assetModel = asset(patch);
-    const tenureModel = tenure({ startOfTenureDate }, assetModel);
-    if (isResponsible === "true") {
-      tenureModel.householdMembers[0].isResponsible = true;
-    }
-    return new Cypress.Promise((resolve) => {
-      DynamoDb.createRecord("TenureInformation", tenureModel).then(() => {
-        resolve()
-      })
-    })
-  }).then(() => {
-    cy.log("Tenure created!")
-  });
-
+Given("I seeded the database with an asset", () => {
+  const testAsset = generateAsset();
+  addTestRecordToDatabase("Assets", testAsset);
 })
 
-After(() => {
-  const filename = "cypress/fixtures/recordsToDelete.json";
-  cy.readFile(filename)
-    .then(data => {
-      return new Cypress.Promise((resolve) => {
-        Promise.all(data.map(record => dynamoDb.deleteRecord(record)))
-          .then(() => {
-            resolve()
-          })
-      }).then(() => {
-        cy.writeFile(filename, []);
-        cy.log("Test database records cleared!")
-      })
-    });
-})
+// Database data teardown
 
 beforeEach(() => {
   const filename = "cypress/fixtures/recordsToDelete.json";

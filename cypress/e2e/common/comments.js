@@ -9,7 +9,6 @@ import commentTitle from "../../helpers/commentText"
 import comment from "../../helpers/commentText"
 import category from "../../helpers/commentText"
 import PropertyPageObjects from "../../pageObjects/propertyPage"
-import editPersonPage from "../../pageObjects/editPersonPage";
 
 const tenureCommentsPage = new TenureCommentsPageObjects()
 const personCommentsPage = new PersonCommentsPageObjects()
@@ -19,33 +18,34 @@ const personPage = new PersonPageObjects()
 const propertyPage = new PropertyPageObjects
 const envConfig = require('../../../environment-config')
 
-let tenureId = ""
-let personId = ""
-let uniqueText =(Math.random() + 1).toString(10).substring(5)
-let commentGroup=""
+let uniqueText = (Math.random() + 1).toString(10).substring(5)
+let commentGroup = ""
 let validationMessageField = ""
 
-Given('I am on the create comment page for {string} {string}', (commentType, id) => {
+Given('I am on the create comment page for {string}', (commentType, id) => {
     commentGroup = commentType
     switch (commentGroup) {
         case "tenure":
-            tenureCommentsPage.visit(id)
-            tenureId = id    
+            cy.getTenureFixture().then((tenure) => {
+                tenureCommentsPage.visit(tenure.id)
+            })
             break;
         case "person":
-            personCommentsPage.visit(id)
-            personId = id
+            cy.getPersonFixture().then((person) => {
+                personCommentsPage.visit(person.id);
+            })
             break;
         case "property":
-            propertyCommentsPage.visit(id)
-            personId = id
-            break;   
+            cy.getAssetFixture().then((asset) => {
+                propertyCommentsPage.visit(asset.id);
+            })
+            break;
         default:
             break;
     }
 })
 
-When('I enter a valid title',  () => {
+When('I enter a valid title', () => {
     switch (commentGroup) {
         case "tenure":
             tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle)
@@ -60,17 +60,38 @@ When('I enter a valid title',  () => {
     }
 })
 
-When('I select a checkbox for {string}', (checkbox) => {
+// IMPLEMENT BELOW METHOD THAT DOES NOT PASS GUID AND DELETE THIS ONE
+// When('I select a checkbox for {string}', (checkbox) => {
+//     switch (commentGroup) {
+//         case "tenure":
+//             cy.getTenureFixture().then(async (tenure) => {
+//                 personCommentsPage.Commentcheckbox(tenure.householdMembers[1].id).check()
+//             })
+//             break;
+//         case "person":
+//             personCommentsPage.Commentcheckbox(checkbox).check()
+//             break;
+//         case "property":
+//             propertyCommentsPage.Commentcheckbox(checkbox).check()
+//             break;
+//         default:
+//             break;
+//     }
+// })
+
+When('I select a checkbox', () => {
     switch (commentGroup) {
-        case "tenure":    
-            tenureCommentsPage.Commentcheckbox(checkbox).check()
+        case "tenure":
+            cy.getTenureFixture().then(async (tenure) => {
+                personCommentsPage.Commentcheckbox(tenure.householdMembers[1].id).check()
+            })
             break;
-        case "person":
-            personCommentsPage.Commentcheckbox(checkbox).check()
-            break;
-        case "property":
-            propertyCommentsPage.Commentcheckbox(checkbox).check()
-            break;
+        // case "person":
+        //     personCommentsPage.Commentcheckbox(checkbox).check()
+        //     break;
+        // case "property":
+        //     propertyCommentsPage.Commentcheckbox(checkbox).check()
+        //     break;
         default:
             break;
     }
@@ -78,7 +99,7 @@ When('I select a checkbox for {string}', (checkbox) => {
 
 When('I enter a valid comment', () => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.commentContainer().type(comment.comment);
             break;
         case "person":
@@ -92,9 +113,9 @@ When('I enter a valid comment', () => {
     }
 })
 
-When('I select a comment category {string}',  (category) => {
+When('I select a comment category {string}', (category) => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.addCommentCategoryField().select(category)
             break;
         case "person":
@@ -102,7 +123,7 @@ When('I select a comment category {string}',  (category) => {
             break;
         case "property":
             propertyCommentsPage.addCommentCategoryField().select(category)
-            break;  
+            break;
         default:
             break;
     }
@@ -110,21 +131,21 @@ When('I select a comment category {string}',  (category) => {
 
 When('I create a comment', () => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
-            tenureCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
+            tenureCommentsPage.commentFormDescription().type(comment.comment + ' : ' + uniqueText)
             tenureCommentsPage.addCommentCategoryField().select(category.category)
             tenureCommentsPage.submitCommentButton().click()
             break;
         case "person":
             personCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
-            personCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
+            personCommentsPage.commentFormDescription().type(comment.comment + ' : ' + uniqueText)
             personCommentsPage.addCommentCategoryField().select(category.category)
             personCommentsPage.submitCommentButton().click()
             break;
         case "property":
             propertyCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
-            propertyCommentsPage.commentFormDescription().type(comment.comment + ' : '+ uniqueText)
+            propertyCommentsPage.commentFormDescription().type(comment.comment + ' : ' + uniqueText)
             propertyCommentsPage.addCommentCategoryField().select(category.category)
             propertyCommentsPage.submitCommentButton().click()
             break;
@@ -135,7 +156,7 @@ When('I create a comment', () => {
 
 Then('I click the save comment button {string}', (commentGroup) => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.submitCommentButton().click();
             break;
         case "person":
@@ -143,7 +164,7 @@ Then('I click the save comment button {string}', (commentGroup) => {
             break;
         case "property":
             propertyCommentsPage.submitCommentButton().click();
-            break;   
+            break;
         default:
             break;
     }
@@ -151,18 +172,18 @@ Then('I click the save comment button {string}', (commentGroup) => {
 
 Then('the comment is submitted {string}', (commentGroup) => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.pageAnnouncementHeader().should("be.visible");
-            tenureCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");  
+            tenureCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");
             break;
         case "person":
             personCommentsPage.pageAnnouncementHeader().should("be.visible");
-            personCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");            
+            personCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");
             break;
         case "property":
             propertyCommentsPage.pageAnnouncementHeader().should("be.visible");
-            propertyCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");            
-                break;   
+            propertyCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");
+            break;
         default:
             break;
     }
@@ -170,11 +191,12 @@ Then('the comment is submitted {string}', (commentGroup) => {
 
 Then('I can see the same comments in the linked entities', () => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenurePage.comment().contains(uniqueText)
-            //tenurePage.viewResidentButton().click()
-            tenurePage.viewResidentButtonforPerson().click()
-            personPage.comment().contains(uniqueText)
+            cy.getTenureFixture().then(async (tenure) => {
+                cy.contains(tenure.householdMembers[1].fullName).click()
+                personPage.comment().contains(uniqueText)
+            })
             break;
         case "person":
             personPage.comment().contains(uniqueText)
@@ -193,7 +215,7 @@ Then('I can see the same comments in the linked entities', () => {
 
 Then('the create comment component is displayed', () => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.addCommentForm().should('be.visible')
             tenureCommentsPage.submitCommentButton().should('be.visible')
             break;
@@ -207,15 +229,15 @@ Then('the create comment component is displayed', () => {
             break;
         default:
             break;
-    }  
+    }
 })
 
 // Field validation related steps
-When('I enter {int} characters into the comment field {string}', (characters,commentType) => {
+When('I enter {int} characters into the comment field {string}', (characters, commentType) => {
     commentGroup = commentType
     const inputText = truncateString(helperText.helperText, characters)
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.commentContainer().type(inputText)
             break;
         case "person":
@@ -229,161 +251,145 @@ When('I enter {int} characters into the comment field {string}', (characters,com
     }
 })
 
-When('I do not fill the mandatory fields:{string} {string} {string}',  (commentTitle, commentDescription, commentCategory ) => {
+When('I do not fill the mandatory fields:{string} {string} {string}', (commentTitle, commentDescription, commentCategory) => {
     switch (commentGroup) {
-        case "tenure":    
-        if (commentTitle === "")
-            {
+        case "tenure":
+            if (commentTitle === "") {
                 tenureCommentsPage.commentContainer().type(commentDescription);
                 tenureCommentsPage.addCommentCategoryField().select(commentCategory)
                 validationMessageField = "commentTitle"
             }
-        else if(commentDescription === "")
-            {
+            else if (commentDescription === "") {
                 tenureCommentsPage.addCommentTitleField().type(commentTitle)
                 tenureCommentsPage.addCommentCategoryField().select(commentCategory)
-                validationMessageField = "commentDescription" 
+                validationMessageField = "commentDescription"
             }
-        else if (commentCategory === "")
-            {
+            else if (commentCategory === "") {
                 tenureCommentsPage.addCommentTitleField().type(commentTitle)
                 tenureCommentsPage.commentContainer().type(commentDescription)
                 validationMessageField = "commentCategory"
             }
             break;
         case "person":
-            if (commentTitle === "")
-            {
+            if (commentTitle === "") {
                 personCommentsPage.commentContainer().type(commentDescription);
                 personCommentsPage.addCommentCategoryField().select(commentCategory)
-                validationMessageField = "commentTitle"     
+                validationMessageField = "commentTitle"
             }
-        else if(commentDescription === "")
-            {
+            else if (commentDescription === "") {
                 personCommentsPage.addCommentTitleField().type(commentTitle)
                 personCommentsPage.addCommentCategoryField().select(commentCategory)
                 validationMessageField = "commentDescription"
-    
+
             }
-        else if (commentCategory === "") 
-            {
+            else if (commentCategory === "") {
                 personCommentsPage.addCommentTitleField().type(commentTitle)
                 personCommentsPage.commentContainer().type(commentDescription)
                 validationMessageField = "commentCategory"
             }
             break;
         case "property":
-                if (commentTitle === "")
-                {
-                    propertyCommentsPage.commentContainer().type(commentDescription);
-                    propertyCommentsPage.addCommentCategoryField().select(commentCategory)
-                    validationMessageField = "commentTitle"
-                    
-                }
-            else if(commentDescription === "")
-                {
-                    propertyCommentsPage.addCommentTitleField().type(commentTitle)
-                    propertyCommentsPage.addCommentCategoryField().select(commentCategory)
-                    validationMessageField = "commentDescription"
-        
-                }
-            else if (commentCategory === "") 
-                {
-                    propertyCommentsPage.addCommentTitleField().type(commentTitle)
-                    propertyCommentsPage.commentContainer().type(commentDescription)
-                    validationMessageField = "commentCategory"
-                }
-                break;
+            if (commentTitle === "") {
+                propertyCommentsPage.commentContainer().type(commentDescription);
+                propertyCommentsPage.addCommentCategoryField().select(commentCategory)
+                validationMessageField = "commentTitle"
+
+            }
+            else if (commentDescription === "") {
+                propertyCommentsPage.addCommentTitleField().type(commentTitle)
+                propertyCommentsPage.addCommentCategoryField().select(commentCategory)
+                validationMessageField = "commentDescription"
+
+            }
+            else if (commentCategory === "") {
+                propertyCommentsPage.addCommentTitleField().type(commentTitle)
+                propertyCommentsPage.commentContainer().type(commentDescription)
+                validationMessageField = "commentCategory"
+            }
+            break;
         default:
             break;
     }
 })
 
-When('I click the Discard comment link',  () => {
+When('I click the Discard comment link', () => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.discardCommentLink().click()
             break;
         case "person":
-            personCommentsPage.discardCommentLink().click()           
+            personCommentsPage.discardCommentLink().click()
             break;
         case "property":
-            propertyCommentsPage.discardCommentLink().click()           
+            propertyCommentsPage.discardCommentLink().click()
             break;
         default:
             break;
     }
 })
 
-Then('I can cancel the comment',  () => {
+Then('I can cancel the comment', () => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.cancellationYesButton().contains('Yes').click()
-            cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}`)
+            cy.getTenureFixture().then(async (tenure) => {
+                cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenure.id}`)
+            })
             break;
         case "person":
             personCommentsPage.commentContainer().type(inputText)
             break;
         case "property":
             propertyCommentsPage.commentContainer().type(inputText)
-            break;   
+            break;
         default:
             break;
     }
 })
 
-Then ('I can see a specific validation message for the field {string}',(validationMessage)=>{
+Then('I can see a specific validation message for the field {string}', (validationMessage) => {
     switch (commentGroup) {
-        case "tenure":    
-            if (validationMessageField == "commentTitle") 
-            {
+        case "tenure":
+            if (validationMessageField == "commentTitle") {
                 tenureCommentsPage.addCommentTitleError().contains(validationMessage)
             }
-            else if(validationMessageField == "commentDescription")
-            {
+            else if (validationMessageField == "commentDescription") {
                 tenureCommentsPage.commentDescriptionError().contains(validationMessage)
             }
-            else if (validationMessageField == "commentCategory")
-            {
+            else if (validationMessageField == "commentCategory") {
                 tenureCommentsPage.addCommentCategoryError().contains(validationMessage)
             }
             break;
         case "person":
-            if (validationMessageField == "commentTitle") 
-            {
+            if (validationMessageField == "commentTitle") {
                 personCommentsPage.addCommentTitleError().contains(validationMessage)
             }
-            else if(validationMessageField == "commentDescription")
-            {
+            else if (validationMessageField == "commentDescription") {
                 personCommentsPage.commentDescriptionError().contains(validationMessage)
             }
-            else if (validationMessageField == "commentCategory")
-            {
+            else if (validationMessageField == "commentCategory") {
                 personCommentsPage.addCommentCategoryError().contains(validationMessage)
             }
             break;
         case "property":
-                if (validationMessageField == "commentTitle") 
-                {
-                    propertyCommentsPage.addCommentTitleError().contains(validationMessage)
-                }
-                else if(validationMessageField == "commentDescription")
-                {
-                    propertyCommentsPage.commentDescriptionError().contains(validationMessage)
-                }
-                else if (validationMessageField == "commentCategory")
-                {
-                    propertyCommentsPage.addCommentCategoryError().contains(validationMessage)
-                }
-                break;
+            if (validationMessageField == "commentTitle") {
+                propertyCommentsPage.addCommentTitleError().contains(validationMessage)
+            }
+            else if (validationMessageField == "commentDescription") {
+                propertyCommentsPage.commentDescriptionError().contains(validationMessage)
+            }
+            else if (validationMessageField == "commentCategory") {
+                propertyCommentsPage.addCommentCategoryError().contains(validationMessage)
+            }
+            break;
         default:
             break;
-    }   
+    }
 })
 
-Then('I can see the cancellation pop up for comment',  () => {
+Then('I can see the cancellation pop up for comment', () => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.cancellationPopUpWindow().contains('Are you sure you wish to cancel adding this comment?')
             break;
         case "person":
@@ -397,22 +403,22 @@ Then('I can see the cancellation pop up for comment',  () => {
     }
 })
 
-Then('the number of characters remaining is correct {int} {string}', (characters,commentGroup) => {
+Then('the number of characters remaining is correct {int} {string}', (characters, commentGroup) => {
     const difference = differenceInCharacters(characters)
 
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.characterCountMessage().should('be.visible')
             tenureCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
             break;
         case "person":
             personCommentsPage.characterCountMessage().should('be.visible')
-            personCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)           
+            personCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
             break;
         case "property":
             propertyCommentsPage.characterCountMessage().should('be.visible')
-            propertyCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)           
-            break; 
+            propertyCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
+            break;
         default:
             break;
     }
@@ -422,17 +428,17 @@ Then('the warning message tells me I am over by {int}', (characters) => {
     const difference = differenceInCharacters(characters)
 
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.characterCountErrorMessage().should('be.visible')
-            tenureCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)   
+            tenureCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)
             break;
         case "person":
             personCommentsPage.characterCountErrorMessage().should('be.visible')
-            personCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)          
+            personCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)
             break;
         case "property":
             propertyCommentsPage.characterCountErrorMessage().should('be.visible')
-            propertyCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)          
+            propertyCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)
             break;
         default:
             break;
@@ -441,9 +447,9 @@ Then('the warning message tells me I am over by {int}', (characters) => {
 
 Then('a validation error occurs {string}', (commentGroup) => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenureCommentsPage.addCommentsError().should('be.visible')
-            tenureCommentsPage.commentDescriptionError().should('be.visible')   
+            tenureCommentsPage.commentDescriptionError().should('be.visible')
             break;
         case "person":
             personCommentsPage.addCommentsError().should('be.visible');
@@ -453,7 +459,7 @@ Then('a validation error occurs {string}', (commentGroup) => {
             break;
         case "property":
             propertyCommentsPage.addCommentsError().should('be.visible')
-            propertyCommentsPage.commentDescriptionError().should('be.visible')          
+            propertyCommentsPage.commentDescriptionError().should('be.visible')
             break;
         default:
             break;
@@ -462,7 +468,7 @@ Then('a validation error occurs {string}', (commentGroup) => {
 
 Then('I can see the timestamp for the created comment {string}', (commentGroup) => {
     switch (commentGroup) {
-        case "tenure":    
+        case "tenure":
             tenurePage.commentDateTime().should('be.visible')
             break;
         case "person":
@@ -470,30 +476,20 @@ Then('I can see the timestamp for the created comment {string}', (commentGroup) 
             break;
         case "property":
             propertyPage.commentDateTime().should('be.visible')
-            break; 
+            break;
         default:
             break;
     }
 })
 
-Then("I am on the Person details page for Alerts", () => {
-    cy.getPersonFixture().then(({ id: personId}) => {
-        personPage.visit(personId);
-    })
-});
-Then("I am on the Person details page", () => {
-        cy.contains('Cautionary Alerts');
-})
-
-Then("I am on the Property details page", () => {
-    cy.contains('UPRN');
-})
 Then("Add comment button is displayed", () => {
     personPage.addCommentButton().should('exist');
 })
+
 When("I click on Add comment button", () => {
     personPage.addCommentButton().click();
 });
+
 And("I create a comment for test", () => {
     cy.get('#add-comment-title-field').type("Test Comment 123");
     cy.get('#add-comment-description-field').type("This is a demo and adding a test comment description");
@@ -502,12 +498,12 @@ And("I create a comment for test", () => {
 })
 
 function differenceInCharacters(characters) {
-    return Math.abs(1000-characters)
+    return Math.abs(1000 - characters)
 }
 
 function truncateString(str, num) {
     if (str.length <= num) {
-    return str
+        return str
     }
     return str.toString().slice(0, num)
 }

@@ -22,7 +22,7 @@ Then('the header Person details are displayed', () => {
 })
 
 When('I click on the more personal details accordion', () => {
-    personPage.morePersonalDetailsAccordion().click()
+    personPage.morePersonalDetailsAccordion().click({force: true})
 })
 
 Then('the body Person details are displayed', () => {
@@ -34,7 +34,7 @@ When('I click on the more tenure details accordion', () => {
 })
 
 When('I click on the equality details accordion', () => {
-    personPage.equalityDetailsAccordion().click()
+    personPage.equalityDetailsAccordion().click({force: true})
 })
 
 Then('the equality information is displayed', () => {
@@ -60,8 +60,10 @@ When('I click on the add comment button', () => {
     personPage.addCommentButton().click()
 })
 
-Then('I am taken to the add comment for person page {string}', (record) => {
-    cy.url().should('contain', `${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${record}`)
+Then('I am taken to the add comment for person page', () => {
+    cy.getPersonFixture((person) => {
+        cy.url().should('contain', `${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person.id}`)
+    })
 })
 
 Then('the new comment is loaded', () => {
@@ -69,7 +71,7 @@ Then('the new comment is loaded', () => {
 })
     
 When('I click on the more contact details accordion', () => {
-    personPage.moreContactDetailsAccordion().click()
+    personPage.moreContactDetailsAccordion().click({force: true})
 })
 
 Then('the more contact details are displayed', () => {
@@ -78,6 +80,7 @@ Then('the more contact details are displayed', () => {
 })
 
 Then('the personal details are displayed on the mobile content container', () => {
+    cy.wait(1000)
     personPage.personalDetailsMobile().contains('Date of birth')
     personPage.personalDetailsMobile().contains('Phone 1')
     personPage.personalDetailsMobile().contains('Email 1')

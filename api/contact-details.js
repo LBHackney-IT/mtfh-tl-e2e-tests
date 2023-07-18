@@ -31,17 +31,21 @@ export const deleteContactDetails = (contactDetailsId, targetId) => {
     });
 }
 
-export const addContactDetails = (contactType, targetId) => {
+export const addContactDetails = (targetId, contactType = null, contactInformation = null) => {
     let value
     if (contactType === "phone") {
         value = "011899988199"
     }
-    if (contactType === "email") {
+    if (contactType === "email" || contactType == null) {
         value = "test.email@hackney.gov.uk"
     }
     addContactModel.targetId = targetId
     addContactModel.contactInformation.contactType = contactType
     addContactModel.contactInformation.value = value
+
+    if (contactInformation) {
+        addContactModel.contactInformation = contactInformation
+    }
 
     return new Cypress.Promise((resolve) => {
         cy.request({
@@ -52,7 +56,7 @@ export const addContactDetails = (contactType, targetId) => {
         }).then(response => {
             saveFixtureData(
                 tableName,
-                {id: response.body.id, targetId: response.body.targetId },
+                { id: response.body.id, targetId: response.body.targetId },
                 response.body,
                 response
             ).then((response) => {

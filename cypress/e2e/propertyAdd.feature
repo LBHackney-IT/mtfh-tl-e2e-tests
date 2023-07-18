@@ -13,7 +13,7 @@ Feature: Property Add
     @SmokeTest
     Scenario Outline: 'New property - Page headings/sections and form action buttons are present'
         Given I am on the MMH 'New property' page
-        Then I should see the main heading 'New Property', along with the other secondary headings: Address, Property management, Asset details
+        Then I should see the main heading 'New Property', and the user disclaimer along with the other secondary headings: Address, Property management, Asset details
         And the 'Create new property' and 'Cancel' buttons are present, along with a 'Back' link at the top
 
     @SmokeTest
@@ -35,9 +35,9 @@ Feature: Property Add
         And I enter a value for field 'Address line 1'
         And I enter a valid value for field 'Postcode'
         And I choose the option 'Yes' for field 'Is LBH property?'
-        And I choose the option 'No' for field 'Is TMO managed?'
         When I click on 'Create new property' button, and the POST request is successful
         And I see a success message, indicating that the asset has been created successfully
+        Then I should be able to view new property in MMH
 
     @SmokeTest
     Scenario Outline: 'New property - when the required fields are populated, and the POST request fails, an error message is displayed'
@@ -47,7 +47,6 @@ Feature: Property Add
         And I enter a value for field 'Address line 1'
         And I enter a valid value for field 'Postcode'
         And I choose the option 'Yes' for field 'Is LBH property?'
-        And I choose the option 'No' for field 'Is TMO managed?'
         When I click on 'Create new property' button, and the POST request fails
         Then I see an error message, indicating that there was a problem creating the new asset
 

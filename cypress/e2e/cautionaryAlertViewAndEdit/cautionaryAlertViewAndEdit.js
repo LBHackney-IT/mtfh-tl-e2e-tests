@@ -1,6 +1,13 @@
-import { Given, And, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import createCautionaryAlert from "../../../api/cautionary-alert";
+import { saveNonDynamoFixture } from "../../../api/helpers";
+import { generateTenure } from "../../../api/models/requests/addTenureModel";
+import { cautionaryAlert } from "../../../api/models/requests/cautionaryAlertModel";
+import { asset } from "../../../api/models/requests/createAssetModel";
+import { person } from "../../../api/models/requests/createPersonModel";
 import CautionaryAlertViewPageObject from "../../pageObjects/CautionaryAlertViewPage";
 import PersonPageObjects from "../../pageObjects/personPage";
+import { addTestRecordToDatabase, tenureToAssetTenure, tenureToPersonTenure } from "../common/common";
 
 const personPO = new PersonPageObjects();
 const cautionaryAlertViewPO = new CautionaryAlertViewPageObject();
@@ -13,6 +20,7 @@ When("I'm on the Cautionary Alert View page", () => {
 });
 
 When("I'm on the person's with cautionary alert page", () => {
+  cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
   cy.getPersonFixture().then((person) => {
     const personId = person.id;
     personPO.visit(personId);
@@ -44,7 +52,7 @@ And("The cautionary alert table should show the correct information", () => {
 
     cautionaryAlertViewPO.dateOfIncidentValue().should('contain', cautionaryAlert.dateOfIncident);
     cautionaryAlertViewPO.alertCodeValue().should('contain', cautionaryAlert.code);
-    cautionaryAlertViewPO.cautionOnSystemValue().should('contain', cautionaryAlert.cautionOnSystem)  ;  
+    cautionaryAlertViewPO.cautionOnSystemValue().should('contain', cautionaryAlert.cautionOnSystem);
     cautionaryAlertViewPO.personNameValue().should('contain', cautionaryAlert.name);
     cautionaryAlertViewPO.reasonValue().should('contain', cautionaryAlert.reason);
     cautionaryAlertViewPO.assureReferenceValue().should('contain', cautionaryAlert.assureReference);
@@ -66,7 +74,7 @@ And("I should see the cautionary alert I navigated from", () => {
   cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
     const cautionaryAlert = cautionaryAlerts[0];
     personPO.nthCautionaryAlert(0).should('contain', cautionaryAlert.cautionOnSystem);
-  }); 
+  });
 });
 
 And("I click on the 'cancel' button", () => {
@@ -119,7 +127,7 @@ And("I click the 'confirm' button", () => {
 });
 
 And("The cautionary alert should not be listed under the person anymore", () => {
-  // ensure page is loaded before the cautionary alert assertion
+  cy.reload() // Prevents the tests from being flaky. Reloading the page will always give us up to date information.
   personPO.pageTitle().should('exist');
   personPO.nthCautionaryAlert(0).should('not.exist');
 });
@@ -165,3 +173,46 @@ And("User should stay on the manage cautionary alert page", () => {
     cy.url().should('include', `/cautionary-alerts/alert/${cautionaryAlertId}`);
   });
 });
+
+// Database seed methods
+
+Given("There's a resident with a cautionary alert", () => {
+  cy.log("Creating cautionary alert & entities associated with it")
+    .then(() => {
+      const assetModel = asset();
+      const tenureModel = generateTenure({}, assetModel);
+      const personModel = person();
+      const personTenure = tenureToPersonTenure(tenureModel);
+
+      personModel.tenures.push(personTenure);
+      assetModel.tenure = tenureToAssetTenure(tenureModel);
+
+      const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
+        console.log("saveNonDynamoRecord data: ", response)
+        try {
+          saveNonDynamoFixture(
+            "CautionaryAlerts",
+            [response.body],
+            response,
+          ).then((response) => {
+            resolve(response)
+          });
+        }
+        catch (ex) {
+          reject(ex);
+        }
+      });
+
+      const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
+
+      createCautionaryAlert(cautionaryAlertRecord).then((data) => {
+        saveNonDynamoRecord(data).then((moreData) => {
+          Promise.resolve(moreData);
+        });
+      });
+
+      addTestRecordToDatabase("Assets", assetModel)
+      addTestRecordToDatabase("TenureInformation", tenureModel)
+      addTestRecordToDatabase("Persons", personModel)
+    })
+})

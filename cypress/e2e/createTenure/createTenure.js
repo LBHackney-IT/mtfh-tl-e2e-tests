@@ -1,11 +1,13 @@
-import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
-import CreateTenurePageObjects from "../../pageObjects/createTenurePage"
-import ModalPageObjects from "../../pageObjects/sharedComponents/modal"
-import AddPersonPageObjects from "../../pageObjects/addPersonPage";
+import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { generateAsset } from "../../../api/models/requests/createAssetModel";
+import { person } from "../../../api/models/requests/createPersonModel";
+import CreateTenurePageObjects from "../../pageObjects/createTenurePage";
+import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
+import DynamoDb from "../common/DynamoDb";
 
 const createTenurePage = new CreateTenurePageObjects()
-const addPersonPage = new AddPersonPageObjects()
 const modal = new ModalPageObjects()
+
 const tenure = require('../../../api/tenure')
 
 Then('the new tenure landing page is displayed', () => {
@@ -175,6 +177,29 @@ When("I enter a tenure end date as {string} {string} {string}", (day, month, yea
     createTenurePage.tenureEndDateMonthContainer().clear().type(month);
     createTenurePage.tenureEndDateYearContainer().clear().type(year);
 });
+
 Then("the tenure information is displayed with the page heading Tenure updated", () => {
     createTenurePage.confirmTenureUpdatedText().should('contain', 'Tenure updated');
+})
+
+// Database seed methods
+
+Given("I seeded the database with an asset with no attached tenure", () => {
+    cy.log("Seeding database").then(() => {
+        const assetModel = generateAsset()
+        const personModel1 = person();
+        const personModel2 = person();
+
+        return new Cypress.Promise((resolve) => {
+            Promise.all([
+                DynamoDb.createRecord("Assets", assetModel),
+                DynamoDb.createRecord("Persons", personModel1),
+                DynamoDb.createRecord("Persons", personModel2),
+            ]).then(() => {
+                resolve()
+            })
+        }).then(() => {
+            cy.log("Database seeded!");
+        })
+    })
 })

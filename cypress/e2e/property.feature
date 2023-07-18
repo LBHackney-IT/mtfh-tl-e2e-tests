@@ -7,137 +7,85 @@
 Feature: Property Page
   View property page
 
-    Background:
-      Given I am logged in
+  Background:
+    Given I am logged in
 
-    @SmokeTest
-    Scenario Outline: View property details
-      Given I am on the MMH home page
-      When I enter "<propertyName>" as search criteria
-      And I select "<commentType>" and click on search button
-      Then I am on the Property search results page for "<propertyName>"
-      When I select property
-      Then I am on the Property details page
-      And the page breadcrumb is displayed
-      And the property information is displayed
-      And the tenure information is displayed
-      When I click on the view tenure button
-      Then tenure page is displayed
-      And I click on the breadcrumb
-      Then I am taken to the search page
-      Examples:
-        |propertyName|commentType|
-        |   lon      |property   |
+  @SmokeTest
+  Scenario Outline: View property details
+    Given I seeded the database with an asset with a previous tenure
+    When I view the property in MMH
+    And the page breadcrumb is displayed
+    And the property information is displayed
+    And the tenure information is displayed
+    When I click on the view tenure button
+    Then tenure page is displayed
+    And I click on the breadcrumb
+    Then I am taken to the search page
 
+  @Regression
+  Scenario Outline: View property via tenure
+    Given I seeded the database with a tenure
+    When I view a tenure
+    Then tenure page is displayed
+    And the tenure information is displayed
+    And I click on the view property button
+    Then the property information is displayed
 
-    @Regression
-    Scenario Outline: View property via tenure
-      Given I am on the MMH home page
-      When I enter "<tenureName>" as search criteria
-      And I select "<commentType>" and click on search button
-      Then I am on the Tenure search results page for "<tenureName>"
-      When I select tenure
-      Then tenure page is displayed
-      And the tenure information is displayed
-      And I click on the view property button
-      Then the property information is displayed
-      Examples:
-        | tenureName | commentType |
-        | lon        | Tenure      |
+  @Regression
+  Scenario Outline: View property via person
+    Given I seeded the database with a person with an active tenure
+    Given the person has a correspondence address
+    Then I visit the 'Person details' page
+    Then the personal details are displayed
+    And I click on the view property button for a person
+    Then the property information is displayed
 
-    @Regression
-    Scenario Outline: View property via person
-      Given I am on the MMH home page
-      When I enter "<personName>" as search criteria
-      And I select "<Type>" and click on search button
-      Then I am on the Person search results page for "<personName>"
-      When I select person
-      Then the personal details are displayed
-      And I click on the view property button for a person
-      Then the property information is displayed
-      Examples:
-        | personName | Type   |
-        | lon        | Person |
+  @SmokeTest
+  Scenario Outline: Repairs container is displayed
+    Given I seeded the database with an asset
+    When I view the property in MMH
+    Then the repairs container is displayed
+    And the repairs card list is displayed "<repairsType>"
 
-    Scenario Outline: Asset API for valid FE type
-      Given I check the asset API for "<assetId>"
-      When I navigate to the asset page "<assetId>"
-      Then the property information is displayed
-      Examples:
-      | assetId                              |
-      | 49202bdc-5d97-a46c-289c-997df568500f |
-
-    Scenario Outline: Asset API for invalid FE type
-      Given I check the asset API for "<assetId>"
-      When I navigate to the asset page "<assetId>"
-      And I am shown an error message
-      Examples:
-      | assetId                              |
-      | 5372e973-2857-98df-a343-4acfb76af535 |
-
-    # Because we have a dependency on the repairs api
-    # we have no control over the data set(s) they present to us
-    # so these tests are likely to be brittle
-    @ignore
-    Scenario Outline: Repairs container is displayed
-      When I view a property "<property>"
-      Then the repairs container is displayed
-      And the repairs card list is displayed "<repairsType>"
-
-      Examples:
-          | property                             | repairsType |
-          | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | In Progress |
-
-    @ignore
-    Scenario Outline: Repairs list type is changed
-      When I view a property "<property>"
-      Then I set the the repair type to "<repairsType>"
-      And the repairs card list is displayed "<repairsType>"
-
-      Examples:
-          | property                             | repairsType |
-          | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | Cancelled   |
-          | 2d13b5cb-baf2-91fd-c231-8c5c2ee9548c | In Progress |
+    Examples:
+      | repairsType |
+      | In Progress |
 
   @smoke
-    Scenario Outline: 'New tenure' button should be displayed if no tenure information is returned for a given property
-    Given I am on the MMH home page
-    When I enter "<propertyName>" as search criteria
-    And I select "<commentType>" and click on search button
-    Then I am on the Property search results page for "<propertyName>"
-    When I select a property
-    Then I am on the Property details page
+  Scenario Outline: 'New tenure' button should be displayed if no tenure information is returned for a given property
+    Given I seeded the database with an asset
+    When I view the property in MMH
     And New Tenure button should be displayed
+
+  @SmokeTest
+  Scenario Outline: When I go to the Asset page, I can expand & collapse additional asset characteristics details
+    Given I seeded an asset with "<completeness>" asset characteristics
+    When I view the property in MMH
+    Then The 'Property Specification' information should be invisible
+    When Click the 'Property Specification' section
+    Then The 'Property Specification' information becomes visible
+    When Click the 'Property Specification' section
+    Then The 'Property Specification' information should be invisible
     Examples:
-    |propertyName|commentType|
-    |   lon      |property   |
+      | completeness |
+      | irrelevant   |
 
-    Scenario Outline: When I go to the Asset page, I can expand & collapse additional asset characteristics details
-      Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
-      When I view a property "<assetGuid>"
-      Then The 'Property Specification' information should be invisible
-      When Click the 'Property Specification' section
-      Then The 'Property Specification' information becomes visible
-      When Click the 'Property Specification' section
-      Then The 'Property Specification' information should be invisible
-      Examples:
-        | assetGuid                            | completeness         |
-        | a5b35705-15c0-0170-b73a-743f07a11e55 | irrelevant           |
+  @SmokeTest
+  Scenario Outline: When I go to the asset page & expand the asset details, I see the correct information
+    Given I seeded an asset with "<completeness>" asset characteristics
+    When I view the property in MMH
+    When Click the 'Property Specification' section
+    Then The displayed asset characteristics information is correct
+    Examples:
+      | completeness |
+      | populated    |
 
-    Scenario Outline: When I go to the asset page & expand the asset details, I see the correct information
-      Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
-      When I view a property "<assetGuid>"
-      When Click the 'Property Specification' section
-      Then The displayed asset characteristics information is correct
-      Examples:
-        | assetGuid                            | completeness |
-        | 14a9c7de-60ea-4a79-8bf2-6d819a562bf0 | populated    |
-
-    Scenario Outline: When I go to the asset page & expand the asset details, missing information is displayed as empty
-      Given There exists a "<assetGuid>" asset with "<completeness>" asset characteristics
-      When I view a property "<assetGuid>"
-      When Click the 'Property Specification' section
-      Then The empty asset characteristics fields are displayed as empty
-      Examples:
-        | assetGuid                            | completeness         |
-        | ae86d71f-70eb-4259-9cf3-d0ff3362be10 | partially-populated  |
+  @SmokeTest
+  Scenario Outline: When I go to the asset page & expand the asset details, missing information is displayed as empty
+    Given I seeded an asset with "<completeness>" asset characteristics
+    When I view the property in MMH
+    When Click the 'Property Specification' section
+    Then The empty asset characteristics fields are displayed as empty
+    Examples:
+      | completeness        |
+      | partially-populated |

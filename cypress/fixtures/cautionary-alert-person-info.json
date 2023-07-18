@@ -1,0 +1,34 @@
+{
+    "id": "0d768948-3b56-47be-bc51-c0c04216eb7s",
+    "title": "Mr",
+    "preferredTitle": "Mr",
+    "preferredFirstName": "Bi",
+    "preferredSurname": "Han",
+    "preferredMiddleName": "",
+    "firstName": "Bi",
+    "middleName": "Test",
+    "surname": "Han",
+    "placeOfBirth": "China",
+    "dateOfBirth": "1969-05-08",
+    "reason": "This is a test",
+    "personTypes": [
+        "Tenant"
+    ],
+    "links": [],
+    "tenures": [
+        {
+            "assetFullAddress": "103 The Beckers  Rectory Road N16 7QT",
+            "assetId": "9e40396a-e33a-33b0-1d92-b264a6ee914f",
+            "startDate": "2003-05-12T00:00:00Z",
+            "endDate": "2010-09-12T00:00:00Z",
+            "id": "e31bd4e3-8639-35ee-9849-47f5ae62ac17",
+            "type": "Secure",
+            "uprn": "100021068726",
+            "paymentReference": null,
+            "propertyReference": null,
+            "isActive": false
+        }
+    ],
+    "isAMinor": false,
+    "dateOfDeath": null
+}

@@ -1,12 +1,13 @@
-import { Given, Then, When, And } from '@badeball/cypress-cucumber-preprocessor'
-
+import { And, Given, Then, When } from '@badeball/cypress-cucumber-preprocessor'
+import { queueDeletePersonWithId } from "../../../api/helpers"
+import { generateEqualityInformation } from '../../../api/models/requests/equalityDetailsModel'
+import guid from '../../helpers/commentText'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
-import guid from '../../helpers/commentText'
-import { createPerson, createPersonWithNewTenure } from '../../../api/person'
-import { queueDeletePersonWithId } from "../../../api/helpers"
+import { addTestRecordToDatabase } from '../common/common'
 
+const envConfig = require('../../../environment-config')
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 const personContactPage = new PersonContactPageObjects()
@@ -19,31 +20,31 @@ And('the person has been added to the tenure', () => {
 })
 
 And('the person is added to the tenure page {string} {string} {string}', (title, firstName, middleName) => {
-    for (let index = 0; index < 10; ) {
-      cy.get('.mtfh-resident-details').then(($residentDetails) => {
-        if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${guid}`)){
-          cy.contains(`${title} ${firstName} ${middleName} ${guid}`)
-            .should('be.visible')
-        } else {
-          cy.wait
-          cy.reload()
-          index++
-        }
-      })
-    }
+  for (let index = 0; index < 10;) {
+    cy.get('.mtfh-resident-details').then(($residentDetails) => {
+      if ($residentDetails.text().includes(`${title} ${firstName} ${middleName} ${guid}`)) {
+        cy.contains(`${title} ${firstName} ${middleName} ${guid}`)
+          .should('be.visible')
+      } else {
+        cy.wait
+        cy.reload()
+        index++
+      }
+    })
+  }
 
-    const person = `${title} ${firstName} ${middleName} ${guid}`
-    for (let i = 0; i < 10; i++) {
-      addPersonPage.mainContent().then(($body) => {
-        if ($body.text().includes(guid)) {
-          cy.contains(person).click()
-        } else {
-          cy.wait(1000)
-          cy.reload(true)
-        }
-      })
-    }
-  },
+  const person = `${title} ${firstName} ${middleName} ${guid}`
+  for (let i = 0; i < 10; i++) {
+    addPersonPage.mainContent().then(($body) => {
+      if ($body.text().includes(guid)) {
+        cy.contains(person).click()
+      } else {
+        cy.wait(1000)
+        cy.reload(true)
+      }
+    })
+  }
+},
 )
 
 And('the person page is loaded', () => {
@@ -226,8 +227,8 @@ Given('I have the maximum number of {string} for a person', (contactType) => {
   cy.getPersonFixture().then(({ id: personId }) => {
     for (let i = 0; i < 5; i++) {
       contactDetails.addContactDetails(
-        contactType,
         personId,
+        contactType
       ).then(postResponse => {
         assert.deepEqual(postResponse.status, 201)
       })
@@ -255,15 +256,9 @@ And('I am on the contact details page', () => {
   cy.url()
     .should('include', 'contact')
     .then(url => {
-        const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
-        queueDeletePersonWithId(personId);
-  });
-})
-
-Given('I create a person and then edit them', () => {
-  cy.getPersonFixture().then(({ id: personId}) => {
-    editPersonPage.visit(personId)
-  })
+      const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
+      queueDeletePersonWithId(personId);
+    });
 })
 
 And('I click the save equality information button', () => {
@@ -276,7 +271,7 @@ Given("I edit a person's equality information", () => {
   })
 })
 
-Then('the equality information is diplayed', () => {
+Then('the equality information is displayed', () => {
   addPersonPage.ageGroupSelectionBox().should('be.visible')
   addPersonPage.provideUnpaidCareSelectionField().should('be.visible')
   addPersonPage.ethnicitySelectionBox().should('be.visible')
@@ -301,7 +296,7 @@ Given("the person's equality information is reset", () => {
     cy.log('Getting etag from the person...')
     getEqualityDetails.getEqualityDetails(personId).then(getResponse => {
       cy.log(`Status code ${getResponse.status} returned`)
-      if(getResponse.status === 200){
+      if (getResponse.status === 200) {
         cy.log('etag captured!')
         cy.log(getResponse.headers.etag)
 
@@ -423,3 +418,27 @@ When('I clear address line 1', () => {
 Then('the next button is enabled', () => {
   cy.contains('Next').should('be.enabled')
 })
+
+Then("I browse to the 'Add Person to Tenure' page for the tenure", () => {
+  cy.getTenureFixture().then((tenure) => {
+    cy.reload()
+    cy.visit(`${envConfig.baseUrl}/tenure/${tenure.id}/edit/person/new`)
+  })
+});
+
+Then("I visit the 'Edit person' page for the person", () => {
+  cy.getPersonFixture().then(({ id: personGuid }) => {
+    editPersonPage.visit(personGuid)
+  })
+})
+
+// Database seed methods
+
+Then("I seed blank equality information to the database, for such person", () => {
+  cy.getPersonFixture().then(({ id: personGuid }) => {
+    addTestRecordToDatabase("EqualityInformation", generateEqualityInformation(personGuid))
+  })
+})
+
+
+

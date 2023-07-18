@@ -1,51 +1,39 @@
-import { When, Then, And, Given,  } from "@badeball/cypress-cucumber-preprocessor";
+import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
+import { generateAsset } from "../../../api/models/requests/createAssetModel";
+import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
-
-import PropertyPageObjects from "../../pageObjects/propertyPage";
-
-// Works locally but causes the Circle CI pipeline to fail (webpack error)
-// const assetFixtureJson = require('../../fixtures/asset.json'); 
-
-const propertyPage = new PropertyPageObjects();
-
-// The information below comes from asset.json (fixture)
-const propertyGuid = "635ed65b-461c-4527-bb8e-485303b74c87"
-const propertyUprn = "100023014215"
-
-// Hardcoded URL pointing to a property with a valid UPRN for which editing is enabled
-const editPropertyAddressUrl = `${baseUrl}/property/edit/${propertyGuid}`
 
 const newAddressLine1Value = 'NEW ADDRESS LINE 1'
 
-When("I select a property", () => {
-    propertyPage.selectFirstRecord().click();
-})
+Given("I am on the MMH 'Edit property address' page for the asset", () => {
+    cy.getAssetFixture().then(asset => {
+        cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
+        cy.intercept('GET', `*/api/v1/addresses?uprn=${asset.assetAddress.uprn}`, { fixture: 'address.json', }).as('getAddress')
 
-Given("I am on the MMH 'Edit property address' page", () => {
-    cy.intercept('GET', `*/api/v1/assets/${propertyGuid}`, { fixture: 'asset.json', }).as('getAsset')
-    cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { fixture: 'address.json', }).as('getAddress')
+        cy.visit(getAssetEditUrlByGuid(asset.id))
 
-    cy.visit(editPropertyAddressUrl)
-
-    cy.wait('@getAsset')
-    cy.wait('@getAddress')
+        cy.wait('@getAsset')
+        cy.wait('@getAddress')
+    })
 });
 
 Given("I am on the MMH 'Edit property address' page, but the LLPG address fails to be retrieved", () => {
-    cy.intercept('GET', `*/api/v1/assets/${propertyGuid}`, { fixture: 'asset.json', }).as('getAsset')
-    cy.intercept('GET', `*/api/v1/addresses?uprn=${propertyUprn}`, { forceNetworkError: true }).as('getAddress')
+    cy.getAssetFixture().then(asset => {
+        cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
+        cy.intercept('GET', `*/api/v1/addresses?uprn=${asset.assetAddress.uprn}`, { forceNetworkError: true }).as('getAddress')
 
-    cy.visit(editPropertyAddressUrl)
+        cy.visit(getAssetEditUrlByGuid(asset.id))
 
-    cy.wait('@getAsset')
-    cy.wait('@getAddress')
+        cy.wait('@getAsset')
+        cy.wait('@getAddress')
+    })
 });
 
-Then("if the property has no valid UPRN, I can see a disabled button that says 'Cannot edit: UPRN missing'", () => {
+Given("that the property has no valid UPRN, I can see a disabled button that says 'Cannot edit: UPRN missing'", () => {
     cy.contains('Cannot edit: UPRN missing').should('be.visible')
 })
 
-Then("if the property has a valid UPRN, I can see a button that says 'Edit address details'", () => {
+Given("that the property has a valid UPRN, I can see a button that says 'Edit address details'", () => {
     cy.contains('Edit address details').should('be.visible')
 })
 
@@ -66,23 +54,16 @@ And("I edit the address line 1 of the address", () => {
 })
 
 Then("I click on 'Update to this address' button, and the PATCH requests are successful", () => {
-    cy.intercept('PATCH', `*/api/v1/assets/${propertyGuid}/address`, { statusCode: 204 }).as('patchAddress')
-    cy.intercept('PATCH', `*/api/v1/asset/${propertyUprn}`, { statusCode: 204 }).as('updateAssetDetails')
-
     cy.contains('Update to this address').click()
-
-    cy.wait('@patchAddress')
-    cy.wait('@updateAssetDetails')
 })
 
 Then("I click on 'Update to this address' button, and the PATCH requests fail", () => {
-    cy.intercept('PATCH', `*/api/v1/assets/${propertyGuid}/address`, { forceNetworkError: true }).as('patchAddress')
-    cy.intercept('PATCH', `*/api/v1/asset/${propertyUprn}`, { forceNetworkError: true }).as('updateAssetDetails')
+    cy.getAssetFixture().then(asset => {
+        cy.intercept('PATCH', `*/api/v1/assets/${asset.id}/address`, { forceNetworkError: true }).as('patchAddress')
+        cy.intercept('PATCH', `*api/v1/asset/${asset.assetId}`, { forceNetworkError: true }).as('updateAssetDetails')
 
-    cy.contains('Update to this address').click()
-
-    cy.wait('@patchAddress')
-    cy.wait('@updateAssetDetails')
+        cy.contains('Update to this address').click()
+    })
 })
 
 And("I can see the address line 1 of the 'Current address' has changed successfully", () => {
@@ -119,4 +100,43 @@ And("the address fields, despite not being autopopulated, should be blank and ed
 
 And("the 'Update to this address' button should be enabled", () => {
     cy.contains('Update to this address').should('be.enabled')
+})
+
+When("I view the asset in MMH", () => {
+    cy.getAssetFixture().then(asset => {
+        cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
+        cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=${asset.id}`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
+
+        cy.visit(getAssetViewUrlByGuid(asset.id))
+
+        cy.wait('@getAsset')
+        cy.wait('@getNotes')
+    })
+});
+
+Then("I click on the 'Back to asset view' button", () => {
+    cy.contains('Back to asset view').should('be.visible').click()
+})
+
+And("I should see the edited address", () => {
+    cy.contains(newAddressLine1Value).should('be.visible')
+})
+
+
+// Helper methods
+
+const getAssetEditUrlByGuid = (assetGuid) => {
+    return `${baseUrl}/property/edit/${assetGuid}/`
+}
+
+// Database seed methods
+
+Given("I seeded the database with an asset with no valid UPRN", () => {
+    const testAsset = generateAsset(undefined, "");
+    addTestRecordToDatabase("Assets", testAsset);
+})
+
+Given("I seeded the database with an asset with a valid UPRN", () => {
+    const testAsset = generateAsset(undefined);
+    addTestRecordToDatabase("Assets", testAsset);
 })
