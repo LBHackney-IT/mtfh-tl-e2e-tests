@@ -56,7 +56,7 @@ And("I edit the address line 1 of the address", () => {
 Then("I click on 'Update to this address' button, and the PATCH requests are successful", () => {
     cy.getAssetFixture().then(asset => {
         cy.intercept('PATCH', `*/api/v1/assets/${asset.id}/address`).as('patchAddress')
-        cy.intercept('PATCH', `*/api/v1/asset/${asset.assetId}`).as('updateAssetDetails')
+        cy.intercept('PATCH', `*/api/v1/asset/${asset.assetId}`, { statusCode: 204 }).as('updateAssetDetails')
 
         cy.contains('Update to this address').click()
     })
