@@ -56,7 +56,7 @@ And("I edit the address line 1 of the address", () => {
 Then("I click on 'Update to this address' button, and the PATCH requests are successful", () => {
     cy.getAssetFixture().then(asset => {
         cy.intercept('PATCH', `*/api/v1/assets/${asset.id}/address`).as('patchAddress')
-        cy.intercept('PATCH', `*api/v1/asset/${asset.assetId}`).as('updateAssetDetails')
+        cy.intercept('PATCH', `*/api/v1/asset/${asset.assetId}`).as('updateAssetDetails')
 
         cy.contains('Update to this address').click()
     })
@@ -72,7 +72,7 @@ Then("I click on 'Update to this address' button, and the PATCH requests fail", 
 })
 
 And("I can see the address line 1 of the 'Current address' has changed successfully", () => {
-    cy.wait('@patchAddress')
+    cy.wait(['@patchAddress', '@updateAssetDetails'])
     cy.get('[data-testid="asset-address-line-one"]').should('have.value', newAddressLine1Value)
 })
 
