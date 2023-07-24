@@ -91,6 +91,7 @@ When("I click on 'Create new property' button, and the POST request is successfu
 })
 
 Then("I see a success message, indicating that the asset has been created successfully", () => {
+    cy.scrollTo('top');
     cy.contains('The new asset address has been successfully added.').should('be.visible')
 })
 
