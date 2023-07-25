@@ -1,0 +1,15 @@
+{
+  "id": "99a07cde-ba69-4175-b13f-90d06841033e",
+  "domain": "MMH",
+  "name": "E2E",
+  "parentId": "d1ecf7c0-b4d4-4b04-ba43-d5d49fb39954",
+  "patchType": "patch",
+  "responsibleEntities": [
+    {
+      "name": "Mrs. Douglas Runte IV",
+      "responsibleType": "HousingOfficer",
+      "id": "86ca14a3-bc58-49ca-aae4-cb2b75f5d90e"
+    }
+  ],
+  "versionNumber": 0
+}

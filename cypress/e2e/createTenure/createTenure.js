@@ -67,6 +67,11 @@ Then('the edit tenure information is displayed', () => {
     })
 })
 
+And('the tenure type field is disabled', ()=>{
+    createTenurePage.tenureTypeSelection().should('have.attr', 'aria-disabled').and('equal', 'true')
+})
+
+
 And('I click done button', () => {
     createTenurePage.doneButton().click()
 })
@@ -157,6 +162,7 @@ Given('I delete all existing persons from the tenure {string}', async (tenureId)
     }
     cy.log(`${householdMembers.length} person records deleted`)
 })
+
 
 And('I click remove person', () => {
     createTenurePage.confirmRemovePersonButton().click()

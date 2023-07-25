@@ -1,0 +1,64 @@
+{
+  "id": "3574e811-8110-44b1-aa2c-670e0926e87e",
+  "assetId": "00054811",
+  "assetType": "LettableNonDwelling",
+  "rootAsset": "ROOT",
+  "isActive": false,
+  "parentAssetIds": "ROOT",
+  "assetLocation": {
+    "floorNo": "0",
+    "totalBlockFloors": 0,
+    "parentAssets": []
+  },
+  "assetAddress": {
+    "uprn": "53887917417",
+    "addressLine1": "123 Test Asset",
+    "addressLine2": "Hackney",
+    "addressLine3": "LONDON",
+    "addressLine4": "",
+    "postCode": "E2 8EB",
+    "postPreamble": ""
+  },
+  "assetManagement": {
+    "agent": "Hackney Homes",
+    "areaOfficeName": "Shoreditch Panel Area Team",
+    "isCouncilProperty": true,
+    "managingOrganisation": "London Borough of Hackney",
+    "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724",
+    "owner": "LBH",
+    "isTMOManaged": false,
+    "propertyOccupiedStatus": "VR",
+    "isNoRepairsMaintenance": false
+  },
+  "assetCharacteristics": {
+    "numberOfBedrooms": 0,
+    "numberOfLifts": 0,
+    "numberOfLivingRooms": 0,
+    "windowType": "",
+    "yearConstructed": "0"
+  },
+  "patches": [
+    {
+      "id": "d7aca732-e56d-453a-b916-3f9a40a152bd",
+      "domain": "MMH",
+      "name": "E2E",
+      "parentId": "7e1baa12-818a-44e9-afcc-518b64b9dd0c",
+      "patchType": "patch",
+      "responsibleEntities": [
+        {
+          "name": "Blake Hammes",
+          "responsibleType": "HousingOfficer",
+          "id": "40228b23-62f7-46e0-88fa-7d8940736bc5"
+        }
+      ],
+      "versionNumber": 0
+    }
+  ],
+  "tenure": {
+    "endOfTenureDate": "2022-07-29T00:00:00",
+    "id": "4a6281ea-6ae6-4f0d-9e69-3aa95db64002",
+    "paymentReference": "9156853502",
+    "startOfTenureDate": "2020-07-29T00:00:00",
+    "type": "Secure"
+  }
+}

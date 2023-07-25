@@ -63,8 +63,8 @@ class CreateTenurePageObjects {
         return cy.contains('New tenure')
     }
     
-    nextButton() {
-        return cy.contains('Next')
+    submitButton() {
+        return cy.contains('Submit')
     }
 
     cancelButton() {

@@ -56,7 +56,7 @@ class TenureRequestDocsPageObjects {
     checkboxTenantDeclaration() {
         return cy.get('#declaration-form-group-field');
     }
-    nextButton() {
+    submitButton() {
         return cy.get('#request-documents-form > .govuk-button');
     };
     activityHistoryButton() {

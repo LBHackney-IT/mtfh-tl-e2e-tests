@@ -744,8 +744,8 @@ And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
 })
 
-And('I click the next button', () => {
-  cy.contains('Next').click()
+And('I click the submit button', () => {
+  cy.contains('Submit').click()
 });
 
 // Given("I am on the MMH home page", () => {

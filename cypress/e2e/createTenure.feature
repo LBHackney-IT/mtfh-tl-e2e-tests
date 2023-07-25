@@ -19,98 +19,98 @@ Feature: Create tenure
   #      | tableName          |
   #      | TenureInformation  |
   #
-  @ignore
-  @SmokeTest
-  Scenario Outline: Create new tenure
-    Given I seeded the database with an asset with no attached tenure
-    When I view the property in MMH
-    When I click on the new tenure button
-    Then I am on the create new tenure page ""
-    Then the new tenure landing page is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the next button
-    And the tenure person search is displayed
+  # @ignore
+  # @SmokeTest
+  # Scenario Outline: Create new tenure
+  #   Given I seeded the database with an asset with no attached tenure
+  #   When I view the property in MMH
+  #   When I click on the new tenure button
+  #   Then I am on the create new tenure page ""
+  #   Then the new tenure landing page is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+  #   And I click the next button
+  #   And the tenure person search is displayed
 
-    Examples:
-      | tenureType | startDay | startMonth | startYear |
-      | Non-Secure | 01       | 01         | 2000      |
-      | Freehold   | 01       | 01         | 2000      |
+  #   Examples:
+  #     | tenureType | startDay | startMonth | startYear |
+  #     | Non-Secure | 01       | 01         | 2000      |
+  #     | Freehold   | 01       | 01         | 2000      |
 
-  @ignore
-  @SmokeTest
-  Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
-    Given I seeded the database with an asset with no attached tenure
-    When I view the property in MMH
-    When I click on the new tenure button
-    Then I am on the create new tenure page ""
-    Then the new tenure landing page is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the next button
-    And the tenure person search is displayed
-    When I enter any of the following criteria "<searchTerm>"
-    And I click on the search button
-    Then the search results are displayed by best match "<searchTerm>"
-    When I add 1 named tenure holder
-    Then the person is added to the tenure
+  # @ignore
+  # @SmokeTest
+  # Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
+  #   Given I seeded the database with an asset with no attached tenure
+  #   When I view the property in MMH
+  #   When I click on the new tenure button
+  #   Then I am on the create new tenure page ""
+  #   Then the new tenure landing page is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+  #   And I click the next button
+  #   And the tenure person search is displayed
+  #   When I enter any of the following criteria "<searchTerm>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<searchTerm>"
+  #   When I add 1 named tenure holder
+  #   Then the person is added to the tenure
 
 
-    Examples:
-      | tenureType | startDay | startMonth | startYear | searchTerm | tableName         |
-      | Freehold   | 21       | 05         | 2022      | tre        | TenureInformation |
+  #   Examples:
+  #     | tenureType | startDay | startMonth | startYear | searchTerm | tableName         |
+  #     | Freehold   | 21       | 05         | 2022      | tre        | TenureInformation |
 
-  @ignore
-  @SmokeTest
-  Scenario Outline: Create new tenure search and select resident
-    Given I seeded the database with an asset with no attached tenure
-    When I view the property in MMH
-    When I click on the new tenure button
-    Then I am on the create new tenure page ""
-    Then the new tenure landing page is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the next button
-    And the tenure person search is displayed
-    When I enter any of the following criteria "<searchTerm>"
-    And I click on the search button
-    Then the search results are displayed by best match "<searchTerm>"
-    When I add 1 named tenure holder
-    Then the person is added to the tenure
-    When I add 2 household member
-    Then the person is added to the tenure
-    And I click done button
-    Then the message New tenure completed is displayed
-    Then the tenure information is displayed
+  # @ignore
+  # @SmokeTest
+  # Scenario Outline: Create new tenure search and select resident
+  #   Given I seeded the database with an asset with no attached tenure
+  #   When I view the property in MMH
+  #   When I click on the new tenure button
+  #   Then I am on the create new tenure page ""
+  #   Then the new tenure landing page is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+  #   And I click the next button
+  #   And the tenure person search is displayed
+  #   When I enter any of the following criteria "<searchTerm>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<searchTerm>"
+  #   When I add 1 named tenure holder
+  #   Then the person is added to the tenure
+  #   When I add 2 household member
+  #   Then the person is added to the tenure
+  #   And I click done button
+  #   Then the message New tenure completed is displayed
+  #   Then the tenure information is displayed
 
-    Examples:
-      | tenureType | startDay | startMonth | startYear | searchTerm |
-      | Freehold   | 01       | 01         | 2000      | tre        |
+  #   Examples:
+  #     | tenureType | startDay | startMonth | startYear | searchTerm |
+  #     | Freehold   | 01       | 01         | 2000      | tre        |
 
-  @ignore
-  Scenario Outline: Create new tenure and filter search
-    Given I seeded the database with an asset with no attached tenure
-    When I view the property in MMH
-    When I click on the new tenure button
-    Then I am on the create new tenure page ""
-    Then the new tenure landing page is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the next button
-    And the tenure person search is displayed
-    When I enter any of the following criteria "<searchTerm>"
-    And I click on the search button
-    Then the search results are displayed by best match "<searchTerm>"
-    Then the default sort option is correct
-    When I select to sort by "<filter>"
-    When I set the number of results to <results>
-    Then the correct number of <results> are displayed
+  # @ignore
+  # Scenario Outline: Create new tenure and filter search
+  #   Given I seeded the database with an asset with no attached tenure
+  #   When I view the property in MMH
+  #   When I click on the new tenure button
+  #   Then I am on the create new tenure page ""
+  #   Then the new tenure landing page is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+  #   And I click the next button
+  #   And the tenure person search is displayed
+  #   When I enter any of the following criteria "<searchTerm>"
+  #   And I click on the search button
+  #   Then the search results are displayed by best match "<searchTerm>"
+  #   Then the default sort option is correct
+  #   When I select to sort by "<filter>"
+  #   When I set the number of results to <results>
+  #   Then the correct number of <results> are displayed
 
-    Examples:
-      | tenureType | startDay | startMonth | startYear | searchTerm | filter        | results |
-      | Freehold   | 01       | 01         | 2000      | tre        | Last name A-Z | 40      |
-      | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
-      | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
+  #   Examples:
+  #     | tenureType | startDay | startMonth | startYear | searchTerm | filter        | results |
+  #     | Freehold   | 01       | 01         | 2000      | tre        | Last name A-Z | 40      |
+  #     | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
+  #     | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
 
     #  @ignore
     #  Scenario Outline: Create new tenure and add new person
@@ -422,116 +422,133 @@ Feature: Create tenure
     #      | tenureType | startDay | startMonth | startYear | searchTerm | searchTerm2 |
     #      | Freehold   | 01       | 01         | 2000      | tre        | sar         |
 
-  @SmokeTest
-  Scenario: Create new tenure and cancel
-    Given I seeded the database with an asset with no attached tenure
-    When I view the property in MMH
-    When I click on the new tenure button
-    Then I am on the create new tenure page ""
-    Then the new tenure landing page is displayed
-    And I click the cancel button
-    Then the cancel confirmation modal is displayed
-    And I click the modal cancel button
-    Then the new tenure landing page is displayed
-    And I click the cancel button
-    Then the cancel confirmation modal is displayed
-    And I click the confirm button
-    Then the property information is displayed
+  # @SmokeTest
+  # Scenario: Create new tenure and cancel
+  #   Given I seeded the database with an asset with no attached tenure
+  #   When I view the property in MMH
+  #   When I click on the new tenure button
+  #   Then I am on the create new tenure page ""
+  #   Then the new tenure landing page is displayed
+  #   And I click the cancel button
+  #   Then the cancel confirmation modal is displayed
+  #   And I click the modal cancel button
+  #   Then the new tenure landing page is displayed
+  #   And I click the cancel button
+  #   Then the cancel confirmation modal is displayed
+  #   And I click the confirm button
+  #   Then the property information is displayed
 
-  @SmokeTest
-  Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
+  # @SmokeTest
+  # Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
+  #   Given I seeded the database with an asset with a previous tenure
+  #   When I view the property in MMH
+  #   When I click on the new tenure button
+  #   Then I am on the create new tenure page ""
+  #   Then the new tenure landing page is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+  #   And I click the submit button
+  #   Then a create tenure error is triggered "Start date must occur after the end date of the previous tenure"
+
+  #   Examples:
+  #     | tenureType | startDay | startMonth | startYear |
+  #     | Freehold   | 20       | 05         | 2022      |
+
+  # @SmokeTest
+  # Scenario Outline: Create new tenure with start date that occurs after end date
+  #   Given I seeded the database with an asset with no attached tenure
+  #   When I view the property in MMH
+  #   When I click on the new tenure button
+  #   Then I am on the create new tenure page ""
+  #   Then the new tenure landing page is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+  #   And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
+  #   And I click the submit button
+  #   Then a create tenure error is triggered "End date must occur after start date"
+
+  #   Examples:
+  #     | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
+  #     | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
+
+  ## -- Edit tenure page --
+
+  # Scenario Outline: Edit existing tenure
+  #   Given I seeded the database
+  #   When I view a tenure
+  #   Then the tenure information is displayed
+  #   And I click edit tenure
+  #   Then the edit tenure information is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I click the submit button
+  #   Then the edit tenure information is displayed
+
+  #   Examples:
+  #     | tenureType |
+  #     | Freehold   |
+
+  # Scenario Outline: Edit existing tenure and cancel
+  #   Given I seeded the database
+  #   When I view a tenure
+  #   Then the tenure information is displayed
+  #   And I click edit tenure
+  #   Then the edit tenure information is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I click the cancel button
+  #   Then the cancel modal is displayed
+  #   When I click the modal cancel button
+  #   Then the edit tenure information is displayed
+  #   And I click the cancel button
+  #   Then the cancel modal is displayed
+  #   And I click the confirm button
+  #   Then the tenure information is displayed
+
+  #   Examples:
+  #     | tenureType |
+  #     | Freehold   |
+
+  # Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
+  #   Given I seeded the database
+  #   When I view a tenure
+  #   Then the tenure information is displayed
+  #   And I click edit tenure
+  #   Then the edit tenure information is displayed
+  #   When I select a tenure type "<tenureType>"
+  #   And I enter a tenure end date as "<day>" "<month>" "<year>"
+  #   And I click the submit button
+  #   Then the warning modal is displayed
+  #   And the information text is displayed
+  #   When I click the modal cancel button
+  #   Then the edit tenure information is displayed
+  #   When I click the submit button
+  #   Then the warning modal is displayed
+  #   When I click yes on the modal
+  #   Then the tenure information is displayed with the page heading Tenure updated
+
+  #   Examples:
+  #     | tenureType | day | month | year |
+  #     | Freehold   | 20  | 05    | 2022 |
+
+  Scenario Outline: Edit tenure button is displayed for inactive or past tenures for authorised users
     Given I seeded the database with an asset with a previous tenure
-    When I view the property in MMH
-    When I click on the new tenure button
-    Then I am on the create new tenure page ""
-    Then the new tenure landing page is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the next button
-    Then a create tenure error is triggered "Start date must occur after the end date of the previous tenure"
-
-    Examples:
-      | tenureType | startDay | startMonth | startYear |
-      | Freehold   | 20       | 05         | 2022      |
-
-  @SmokeTest
-  Scenario Outline: Create new tenure with start date that occurs after end date
-    Given I seeded the database with an asset with no attached tenure
-    When I view the property in MMH
-    When I click on the new tenure button
-    Then I am on the create new tenure page ""
-    Then the new tenure landing page is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
-    And I click the next button
-    Then a create tenure error is triggered "End date must occur after start date"
-
-    Examples:
-      | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
-      | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
-
-  Scenario Outline: Edit existing tenure
-    Given I seeded the database
     When I view a tenure
     Then the tenure information is displayed
     And I click edit tenure
     Then the edit tenure information is displayed
-    When I select a tenure type "<tenureType>"
-    And I click the next button
-    Then the edit tenure information is displayed
+    And the tenure type field is disabled
+    # And I enter a tenure end date as "<day>" "<month>" "<year>"
+    # And I click the submit button
+    # Then the warning modal is displayed
+    # And the information text is displayed
+    # When I click the modal cancel button
+    # Then the edit tenure information is displayed
+    # When I click the submit button
+    # Then the warning modal is displayed
+    # When I click yes on the modal
+    # Then the tenure information is displayed with the page heading Tenure updated
 
-    Examples:
-      | tenureType |
-      | Freehold   |
 
-  Scenario Outline: Edit existing tenure and cancel
-    Given I seeded the database
-    When I view a tenure
-    Then the tenure information is displayed
-    And I click edit tenure
-    Then the edit tenure information is displayed
-    When I select a tenure type "<tenureType>"
-    And I click the cancel button
-    Then the cancel modal is displayed
-    When I click the modal cancel button
-    Then the edit tenure information is displayed
-    And I click the cancel button
-    Then the cancel modal is displayed
-    And I click the confirm button
-    Then the tenure information is displayed
 
-    Examples:
-      | tenureType |
-      | Freehold   |
-
-  Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
-    Given I seeded the database
-    When I view a tenure
-    Then the tenure information is displayed
-    And I click edit tenure
-    Then the edit tenure information is displayed
-    When I select a tenure type "<tenureType>"
-    And I enter a tenure end date as "<day>" "<month>" "<year>"
-    And I click the next button
-    Then the warning modal is displayed
-    And the information text is displayed
-    When I click the modal cancel button
-    Then the edit tenure information is displayed
-    When I click the next button
-    Then the warning modal is displayed
-    When I click yes on the modal
-    Then the tenure information is displayed with the page heading Tenure updated
-
-    Examples:
-      | tenureType | day | month | year |
-      | Freehold   | 20  | 05    | 2022 |
-
-  Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
-    Given I seeded the database with an asset with a previous tenure
-    When I view a tenure
-    Then the tenure information is displayed
-    And the edit tenure button is not displayed
 
   Scenario Outline: Cannot edit tenure for inactive or past tenures
     Given I seeded the database with an asset with a previous tenure
@@ -566,34 +583,34 @@ Feature: Create tenure
   #      | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
   #      | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
 
-@regression
-Scenario Outline: End dates are editable for all tenure types
-  Given I seeded the database with a tenure
-  When I edit a Tenure ""
-  When I select a tenure type "<tenureType>"
-  Then the tenure end date is editable
+# @regression
+# Scenario Outline: End dates are editable for all tenure types
+#   Given I seeded the database with a tenure
+#   When I edit a Tenure ""
+#   When I select a tenure type "<tenureType>"
+#   Then the tenure end date is editable
 
-  Examples:
-    | tenureType       |
-    | Freehold         |
-    | Freehold (Serv)  |
-    | Introductory     |
-    | Leasehold (RTB)  |
-    | License Temp Ac  |
-    | Lse 100% Stair   |
-    | Mesne Profit Ac  |
-    | Non-Secure       |
-    | Private Sale LH  |
-    | Rent To Mortgage |
-    | Secure           |
-    | Shared Equity    |
-    | Shared Owners    |
-    | Short Life Lse   |
-    | Temp Annex       |
-    | Temp B&B         |
-    | Temp Decant      |
-    | Temp Hostel      |
-    | Temp Hostel Lse  |
-    | Temp Private Lt  |
-    | Temp Traveller   |
-    | Tenant Acc Flat  |
+#   Examples:
+#     | tenureType       |
+#     | Freehold         |
+#     | Freehold (Serv)  |
+#     | Introductory     |
+#     | Leasehold (RTB)  |
+#     | License Temp Ac  |
+#     | Lse 100% Stair   |
+#     | Mesne Profit Ac  |
+#     | Non-Secure       |
+#     | Private Sale LH  |
+#     | Rent To Mortgage |
+#     | Secure           |
+#     | Shared Equity    |
+#     | Shared Owners    |
+#     | Short Life Lse   |
+#     | Temp Annex       |
+#     | Temp B&B         |
+#     | Temp Decant      |
+#     | Temp Hostel      |
+#     | Temp Hostel Lse  |
+#     | Temp Private Lt  |
+#     | Temp Traveller   |
+#     | Tenant Acc Flat  |

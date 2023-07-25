@@ -1,0 +1,26 @@
+{
+  "id": "0de09eff-bf3c-4673-9a71-7d05fa3a3c92",
+  "title": "Mr",
+  "firstName": "John",
+  "middleName": "",
+  "surname": "Doe",
+  "placeOfBirth": "New Emerson",
+  "dateOfBirth": "2002-02-19T18:12:39.258Z",
+  "personTypes": [
+    "Tenant"
+  ],
+  "reason": "Perspiciatis aliquid quidem repudiandae.",
+  "tenures": [
+    {
+      "id": "4a6281ea-6ae6-4f0d-9e69-3aa95db64002",
+      "startDate": "1990-10-13",
+      "endDate": "1998-10-13",
+      "assetFullAddress": "123 Test Asset Hackney LONDON E2 8EB",
+      "assetId": "3574e811-8110-44b1-aa2c-670e0926e87e",
+      "uprn": "53887917417",
+      "isActive": false,
+      "type": "Secure",
+      "propertyReference": "00054811"
+    }
+  ]
+}
