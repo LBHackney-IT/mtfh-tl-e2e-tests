@@ -1039,26 +1039,25 @@ Given("I seeded the database", () => {
   addTestRecordToDatabase("TenureInformation", tenureModel)
   addTestRecordToDatabase("Persons", personModel1)
   addTestRecordToDatabase("Persons", personModel2)
-})
+});
 
-Given("I seeded the database with a tenure", () => {
+
+
+const seedDatabaseWithTenure = (isActive) => {
   const assetModel = generateAsset()
   const personModel1 = person();
   const personModel2 = person();
-  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, undefined);
+  const tenureModel = generateTenure(
+    {}, 
+    assetModel, 
+    [personModel1, 
+        { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], 
+        undefined, 
+        "1990-10-13", 
+        isActive ? "3050-10-13" : "1998-10-13"
+);
 
-  addTestRecordToDatabase("Assets", assetModel)
-  addTestRecordToDatabase("TenureInformation", tenureModel)
-  addTestRecordToDatabase("Persons", personModel1)
-  addTestRecordToDatabase("Persons", personModel2)
-})
-
-Given("I seeded the database with an asset with a previous tenure", () => {
-  const assetModel = generateAsset()
-  const personModel1 = person();
-  const personModel2 = person();
-  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], undefined, "1990-10-13", "1998-10-13");
-
+  // Add tenure to persons
   const personTenure = {
     id: tenureModel.id,
     startDate: tenureModel.startOfTenureDate,
@@ -1066,7 +1065,7 @@ Given("I seeded the database with an asset with a previous tenure", () => {
     assetFullAddress: tenureModel.tenuredAsset.fullAddress,
     assetId: tenureModel.tenuredAsset.id,
     uprn: tenureModel.tenuredAsset.uprn,
-    isActive: false,
+    isActive: isActive,
     type: tenureModel.tenureType.description,
     propertyReference: tenureModel.tenuredAsset.propertyReference,
   }
@@ -1074,12 +1073,12 @@ Given("I seeded the database with an asset with a previous tenure", () => {
   personModel1.tenures.push(personTenure);
   personModel2.tenures.push(personTenure);
 
-  // Add expired/previous tenure to asset
+  // Add tenure to asset
   assetModel.tenure = {
-    endOfTenureDate: "2022-07-29T00:00:00",
+    endOfTenureDate: tenureModel.endOfTenureDate,
     id: tenureModel.id,
     paymentReference: tenureModel.paymentReference,
-    startOfTenureDate: "2020-07-29T00:00:00",
+    startOfTenureDate: tenureModel.startOfTenureDate,
     type: tenureModel.tenureType.description,
   }
 
@@ -1087,7 +1086,15 @@ Given("I seeded the database with an asset with a previous tenure", () => {
   addTestRecordToDatabase("TenureInformation", tenureModel)
   addTestRecordToDatabase("Persons", personModel1)
   addTestRecordToDatabase("Persons", personModel2)
+};
+
+Given("I seeded the database with a tenure", () => {
+    seedDatabaseWithTenure(true);
 })
+
+Given("I seeded the database with an asset with a previous tenure", () => {
+    seedDatabaseWithTenure(false);
+});
 
 Given("I seeded the database with a person", () => {
   const testPerson = person();

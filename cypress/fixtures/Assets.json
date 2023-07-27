@@ -1,5 +1,5 @@
 {
-  "id": "3574e811-8110-44b1-aa2c-670e0926e87e",
+  "id": "b251719e-7ccf-4afc-ade2-df521a4d4d84",
   "assetId": "00054811",
   "assetType": "LettableNonDwelling",
   "rootAsset": "ROOT",
@@ -11,7 +11,7 @@
     "parentAssets": []
   },
   "assetAddress": {
-    "uprn": "53887917417",
+    "uprn": "56902452331",
     "addressLine1": "123 Test Asset",
     "addressLine2": "Hackney",
     "addressLine3": "LONDON",
@@ -39,26 +39,26 @@
   },
   "patches": [
     {
-      "id": "d7aca732-e56d-453a-b916-3f9a40a152bd",
+      "id": "0634f7fc-0fa2-4648-9395-17c82a95d52f",
       "domain": "MMH",
       "name": "E2E",
-      "parentId": "7e1baa12-818a-44e9-afcc-518b64b9dd0c",
+      "parentId": "a152a7e7-cb9c-4439-9c19-85c776296808",
       "patchType": "patch",
       "responsibleEntities": [
         {
-          "name": "Blake Hammes",
+          "name": "Merle Trantow V",
           "responsibleType": "HousingOfficer",
-          "id": "40228b23-62f7-46e0-88fa-7d8940736bc5"
+          "id": "170afb65-d696-4207-814a-909d16d9103e"
         }
       ],
       "versionNumber": 0
     }
   ],
   "tenure": {
-    "endOfTenureDate": "2022-07-29T00:00:00",
-    "id": "4a6281ea-6ae6-4f0d-9e69-3aa95db64002",
+    "endOfTenureDate": "1998-10-13",
+    "id": "f075ed9c-1711-4f03-94de-663ba773d1cb",
     "paymentReference": "9156853502",
-    "startOfTenureDate": "2020-07-29T00:00:00",
+    "startOfTenureDate": "1990-10-13",
     "type": "Secure"
   }
 }

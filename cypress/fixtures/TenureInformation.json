@@ -1,5 +1,5 @@
 {
-  "id": "4a6281ea-6ae6-4f0d-9e69-3aa95db64002",
+  "id": "f075ed9c-1711-4f03-94de-663ba773d1cb",
   "tenureType": {
     "code": "SEC",
     "description": "Secure"
@@ -9,14 +9,14 @@
     {
       "fullName": "John Doe",
       "type": "person",
-      "id": "eff918b2-b25b-4739-ae90-888989aefe11"
+      "id": "7252cba4-d092-4023-a59c-44fc513d018f"
     },
     {
       "isResponsible": true,
       "fullName": "John Doe",
       "personTenureType": "Tenant",
       "type": "person",
-      "id": "0de09eff-bf3c-4673-9a71-7d05fa3a3c92"
+      "id": "8c60d7cb-c2c7-4c3f-b3b8-7fa49c33447c"
     },
     {
       "id": "2e03113a-f404-acdd-fe16-0eb1351526dc",
@@ -28,10 +28,10 @@
     }
   ],
   "tenuredAsset": {
-    "id": "3574e811-8110-44b1-aa2c-670e0926e87e",
+    "id": "b251719e-7ccf-4afc-ade2-df521a4d4d84",
     "propertyReference": "00054811",
     "type": "LettableNonDwelling",
-    "uprn": "53887917417",
+    "uprn": "56902452331",
     "fullAddress": "123 Test Asset Hackney LONDON E2 8EB"
   },
   "startOfTenureDate": "1990-10-13",

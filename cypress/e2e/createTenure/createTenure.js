@@ -173,9 +173,17 @@ Then('the tenure end date is editable', () => {
     createTenurePage.tenureEndDateMonthContainer().should('be.enabled')
     createTenurePage.tenureEndDateYearContainer().should('be.enabled')
 });
-Then("the information text is displayed", () => {
+
+Then("the tenure closure warning is displayed", () => {
     modal.modalBody().should('be.visible');
-    modal.modalBody().should('contain', 'Are you sure you want to change the status of the tenure to inactive? The tenure will no longer be editable.');
+    const warningText = "Are you sure you want to change the status of the tenure to inactive? The tenure will no longer be editable. This will stop this tenure's rent account instantly";
+    modal.modalBody().should('contain', warningText);
+});
+
+Then("the tenure reactivation warning is displayed", () => {
+    modal.modalBody().should('be.visible');
+    const warningText = "Are you sure you want to change the status of the tenure to active? This will reactivate this tenure's rent account instantly";
+    modal.modalBody().should('contain', warningText);
 });
 
 When("I enter a tenure end date as {string} {string} {string}", (day, month, year) => {

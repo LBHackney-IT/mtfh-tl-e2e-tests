@@ -529,31 +529,48 @@ Feature: Create tenure
   #     | tenureType | day | month | year |
   #     | Freehold   | 20  | 05    | 2022 |
 
-  Scenario Outline: Edit tenure button is displayed for inactive or past tenures for authorised users
+  Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
+    Given I seeded the database with a tenure
+    When I view a tenure
+    Then the tenure information is displayed
+    And I click edit tenure
+    Then the edit tenure information is displayed
+    When I select a tenure type "<tenureType>"
+    And I enter a tenure end date as "<day>" "<month>" "<year>"
+    And I click the submit button
+    Then the warning modal is displayed
+    Then the tenure closure warning is displayed
+    When I click the modal cancel button
+    Then the edit tenure information is displayed
+    When I click the submit button
+    Then the warning modal is displayed
+    When I click yes on the modal
+    Then the tenure information is displayed with the page heading Tenure updated
+    Examples:
+      | tenureType | day | month | year |
+      | Freehold   | 20  | 05    | 2000 |
+
+Scenario Outline: Display Confirmation Alert pop up when reactivating a Tenure
     Given I seeded the database with an asset with a previous tenure
     When I view a tenure
     Then the tenure information is displayed
     And I click edit tenure
     Then the edit tenure information is displayed
     And the tenure type field is disabled
-    # And I enter a tenure end date as "<day>" "<month>" "<year>"
-    # And I click the submit button
-    # Then the warning modal is displayed
-    # And the information text is displayed
-    # When I click the modal cancel button
-    # Then the edit tenure information is displayed
-    # When I click the submit button
-    # Then the warning modal is displayed
-    # When I click yes on the modal
-    # Then the tenure information is displayed with the page heading Tenure updated
-
-
-
-
-  Scenario Outline: Cannot edit tenure for inactive or past tenures
-    Given I seeded the database with an asset with a previous tenure
-    When I edit a Tenure ""
-    Then the tenure cannot be edited warning message is displayed
+    And I enter a tenure end date as "<day>" "<month>" "<year>"
+    And I click the submit button
+    Then the warning modal is displayed
+    Then the tenure reactivation warning is displayed
+    When I click the modal cancel button
+    Then the edit tenure information is displayed
+    When I click the submit button
+    Then the warning modal is displayed
+    When I click yes on the modal
+    And I click done button
+    Then the tenure information is displayed with the page heading Tenure updated
+    Examples:
+      | day | month | year |
+      | 20  | 05    | 3000 |
 
   #  @ignore
   #  Scenario Outline: Create person for new tenure validation
