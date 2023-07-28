@@ -29,7 +29,7 @@ Feature: Create tenure
     Then the new tenure landing page is displayed
     When I select a tenure type "<tenureType>"
     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the Next button
+    And I click the next button
     And the tenure person search is displayed
 
     Examples:
@@ -47,7 +47,7 @@ Feature: Create tenure
     Then the new tenure landing page is displayed
     When I select a tenure type "<tenureType>"
     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the Next button
+    And I click the next button
     And the tenure person search is displayed
     When I enter any of the following criteria "<searchTerm>"
     And I click on the search button
@@ -70,7 +70,7 @@ Feature: Create tenure
     Then the new tenure landing page is displayed
     When I select a tenure type "<tenureType>"
     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the Next button
+    And I click the next button
     And the tenure person search is displayed
     When I enter any of the following criteria "<searchTerm>"
     And I click on the search button
@@ -96,7 +96,7 @@ Feature: Create tenure
     Then the new tenure landing page is displayed
     When I select a tenure type "<tenureType>"
     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the Next button
+    And I click the next button
     And the tenure person search is displayed
     When I enter any of the following criteria "<searchTerm>"
     And I click on the search button
@@ -121,7 +121,7 @@ Feature: Create tenure
     #    Then the new tenure landing page is displayed
     #    When I select a tenure type "<tenureType>"
     #    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    #    And I click the Next button
+    #    And I click the next button
     #    And the tenure person search is displayed
     #    And the create new person button is not enabled
     #    When I enter any of the following criteria "<searchTerm>"
@@ -154,7 +154,7 @@ Feature: Create tenure
     #    And I enter a phone number description "<phoneDescription>"
     #    And I click save phone number
     #    And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
-    #    And I click the Next button
+    #    And I click the next button
     #    And I click the save equality information button
     #    And the person is added to the list of tenures "<title>" "<firstName>" "<middleName>" "<lastName>" "<day>" "<month>" "<year>"
     #    And the tenure person search is displayed
@@ -172,7 +172,7 @@ Feature: Create tenure
     #    Then the new tenure landing page is displayed
     #    When I select a tenure type "<tenureType>"
     #    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    #    And I click the Next button
+    #    And I click the next button
     #    And the tenure person search is displayed
     #    When I enter any of the following criteria "<searchTerm>"
     #    And I click on the search button
@@ -222,7 +222,7 @@ Feature: Create tenure
     #    Then the new tenure landing page is displayed
     #    When I select a tenure type "<tenureType>"
     #    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    #    And I click the Next button
+    #    And I click the next button
     #    Then a create tenure error is triggered
     #
     #    Examples:
@@ -238,7 +238,7 @@ Feature: Create tenure
     #    When I select a tenure type "<tenureType>"
     #    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
     #    And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
-    #    And I click the Next button
+    #    And I click the next button
     #    Then a create tenure error is triggered
     #
     #    Examples:
@@ -341,7 +341,7 @@ Feature: Create tenure
     Then the new tenure landing page is displayed
     When I select a tenure type "<tenureType>"
     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
-    And I click the Next button
+    And I click the next button
     Then a create tenure error is triggered "Start date must occur after the end date of the previous tenure"
 
     Examples:
@@ -358,7 +358,7 @@ Feature: Create tenure
     When I select a tenure type "<tenureType>"
     And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
     And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
-    And I click the Next button
+    And I click the next button
     Then a create tenure error is triggered "End date must occur after start date"
 
     Examples:
@@ -374,7 +374,7 @@ Feature: Create tenure
     And I click edit tenure
     Then the edit tenure information is displayed
     When I select a tenure type "<tenureType>"
-    And I click the Next button
+    And I click the next button
     Then the edit tenure information is displayed
 
     Examples:
@@ -409,12 +409,12 @@ Feature: Create tenure
     Then the edit tenure information is displayed
     When I select a tenure type "<tenureType>"
     And I enter a tenure end date as "<day>" "<month>" "<year>"
-    And I click the Next button
+    And I click the next button
     Then the warning modal is displayed
     And the modal confirms making the tenure inactive
     When I click the modal cancel button
     Then the edit tenure information is displayed
-    When I click the Next button
+    When I click the next button
     Then the warning modal is displayed
     When I click yes on the modal
     Then the tenure information is displayed with the page heading Tenure updated
@@ -432,13 +432,13 @@ Feature: Create tenure
     Then the edit tenure information is displayed
     And the tenure type field is disabled
     And I enter a tenure end date as "<day>" "<month>" "<year>"
-    And I click the Next button
+    And I click the next button
     Then the warning modal is displayed
     And the modal confirms making the tenure active
     Then the tenure reactivation warning is displayed
     When I click the modal cancel button
     Then the edit tenure information is displayed
-    When I click the Next button
+    When I click the next button
     Then the warning modal is displayed
     When I click yes on the modal
     And I click done button

@@ -752,7 +752,7 @@ And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
 })
 
-And('I click the Next button', () => {
+And('I click the next button', () => {
   cy.contains('Next').click()
 });
 
