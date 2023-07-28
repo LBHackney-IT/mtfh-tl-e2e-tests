@@ -34,7 +34,7 @@ class AddTenurePageObjects {
         return cy.get('')
     }
 
-    submitButton() {
+    nextButton() {
         return cy.contains('Next')
     }
 
