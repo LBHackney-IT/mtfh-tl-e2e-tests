@@ -664,6 +664,14 @@ Then('the warning modal is displayed', () => {
   modal.modalBody().should('be.visible')
 })
 
+And('the modal confirms making the tenure inactive', () => {
+  modal.modalBody().contains('Are you sure you want to change the status of the tenure to inactive?')
+})
+
+And('the modal confirms making the tenure active', () => {
+  modal.modalBody().contains('Are you sure you want to change the status of the tenure to active?')
+})
+
 When('I click cancel on the modal', () => {
   modal.cancelButton().click()
 })
@@ -744,8 +752,8 @@ And('I remove one of the tenure holders', () => {
   addPersonPage.removePersonFromTenure().click()
 })
 
-And('I click the submit button', () => {
-  cy.contains('Submit').click()
+And('I click the Next button', () => {
+  cy.contains('Next').click()
 });
 
 // Given("I am on the MMH home page", () => {
