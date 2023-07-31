@@ -4,8 +4,8 @@
 @root
 @tenure
 
-Feature: Create tenure
-  I want to create a new tenure
+Feature: Create and edit tenure
+  I want to create a new tenure and edit an existing one
 
   Background:
     Given I am logged in
@@ -20,7 +20,7 @@ Feature: Create tenure
   #      | TenureInformation  |
 
   @ignore
-    @SmokeTest
+  @SmokeTest
   Scenario Outline: Create new tenure
     Given I seeded the database with an asset with no attached tenure
     When I view the property in MMH
@@ -38,7 +38,7 @@ Feature: Create tenure
       | Freehold   | 01       | 01         | 2000      |
 
   @ignore
-    @SmokeTest
+  @SmokeTest
   Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
     Given I seeded the database with an asset with no attached tenure
     When I view the property in MMH
@@ -61,7 +61,7 @@ Feature: Create tenure
       | Freehold   | 21       | 05         | 2022      | tre        | TenureInformation |
 
   @ignore
-    @SmokeTest
+  @SmokeTest
   Scenario Outline: Create new tenure search and select resident
     Given I seeded the database with an asset with no attached tenure
     When I view the property in MMH
@@ -106,11 +106,11 @@ Feature: Create tenure
     When I set the number of results to <results>
     Then the correct number of <results> are displayed
 
-    Examples:
-      | tenureType | startDay | startMonth | startYear | searchTerm | filter        | results |
-      | Freehold   | 01       | 01         | 2000      | tre        | Last name A-Z | 40      |
-      | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
-      | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
+  #   Examples:
+  #     | tenureType | startDay | startMonth | startYear | searchTerm | filter        | results |
+  #     | Freehold   | 01       | 01         | 2000      | tre        | Last name A-Z | 40      |
+  #     | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
+  #     | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
 
 #  @ignore
     #  Scenario Outline: Create new tenure and add new person
@@ -208,13 +208,50 @@ Feature: Create tenure
     #    And I click the cancel button
     #    Then the cancel confirmation modal is displayed
     #    And I click the confirm button
-    #    Then the property information is displayed
-    #
-    #    Examples:
-    #        | property                             |
-    #        | aff61bd4-841b-b4dc-af23-dfbdb8cc8434 |
+    #    Then the property information       @ignore
 
-     #  @SmokeTest
+  Scenario Outline: Create person by navigating to new tenure
+      Given I delete all existing persons from the tenure "<tenure>"
+      When I navigate to a create person for new tenure "<property>" "<tenure>"
+      And the tenure person search is displayed
+      And the create new person button is not enabled
+      When I enter any of the following criteria "<searchTerm>"
+      And I click on the search button
+      And I click create new person
+      And I am on the create new person for a new tenure page
+      When I select person type "<personType>"
+      And I select a title "<title>"
+      And I enter a first name "<firstName>"
+      And I enter a middle name "<middleName>"
+      And I enter a last name "<lastName>"
+      And I enter a date of birth "<day>" "<month>" "<year>"
+      And I enter a place of birth "<placeOfBirth>"
+      And I select a preferred title "<preferredTitle>"
+      And I select a preferred first name "<preferredFirstName>"
+      And I select a preferred middle name "<preferredMiddleName>"
+      And I select a preferred last name "<preferredLastName>"
+      And I enter a reason for creation
+      And I click add person
+      Then I am on the create contact for a new tenure page
+      And I click the add email address button
+      And I enter an email address "<email>"
+      And I enter an email description "<emailDescription>"
+      And I click save email address
+      And the email information is captured "<email>" "<emailDescription>"
+      And I click the add phone number button
+      And I enter a phone number "<phoneNumber>"
+      And I select a phone number type "<phoneType>"
+      And I enter a phone number description "<phoneDescription>"
+      And I click save phone number
+      And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
+      And I click done button
+      And the tenure person search is displayed
+
+      Examples:
+      | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
+      | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
+
+
     #  Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
     #    When I view the property in MMH
     #    When I click on the new tenure button
@@ -245,76 +282,76 @@ Feature: Create tenure
     #        | property                             | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
     #        | 986a2a9e-9eb4-0966-120a-238689e3e265 | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
 
-#        @ignore
-#        Scenario Outline: Create person by navigating to new tenure
-#            Given I delete all existing persons from the tenure "<tenure>"
-#            When I navigate to a create person for new tenure "<property>" "<tenure>"
-#            And the tenure person search is displayed
-#            And the create new person button is not enabled
-#            When I enter any of the following criteria "<searchTerm>"
-#            And I click on the search button
-#            And I click create new person
-#            And I am on the create new person for a new tenure page
-#            When I select person type "<personType>"
-#            And I select a title "<title>"
-#            And I enter a first name "<firstName>"
-#            And I enter a middle name "<middleName>"
-#            And I enter a last name "<lastName>"
-#            And I enter a date of birth "<day>" "<month>" "<year>"
-#            And I enter a place of birth "<placeOfBirth>"
-#            And I select a preferred title "<preferredTitle>"
-#            And I select a preferred first name "<preferredFirstName>"
-#            And I select a preferred middle name "<preferredMiddleName>"
-#            And I select a preferred last name "<preferredLastName>"
-#            And I enter a reason for creation
-#            And I click add person
-#            Then I am on the create contact for a new tenure page
-#            And I click the add email address button
-#            And I enter an email address "<email>"
-#            And I enter an email description "<emailDescription>"
-#            And I click save email address
-#            And the email information is captured "<email>" "<emailDescription>"
-#            And I click the add phone number button
-#            And I enter a phone number "<phoneNumber>"
-#            And I select a phone number type "<phoneType>"
-#            And I enter a phone number description "<phoneDescription>"
-#            And I click save phone number
-#            And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
-#            And I click done button
-#            And the tenure person search is displayed
-#
-#            Examples:
-#            | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
-#            | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
-#
-#
-#        @ignore
-#        Scenario Outline: Create person for new tenure validation
-#            Given I delete all existing persons from the tenure "<tenure>"
-#            When I navigate to a create person for new tenure "<property>" "<tenure>"
-#            When I enter any of the following criteria "<searchTerm>"
-#            And I click on the search button
-#            When I add 5 named tenure holder
-#            Then a new tenure error message appears "Max. tenure holders added"
-#            And I click create new person
-#            And I am on the create new person for a new tenure page
-#            And the named tenure holder button is not active
-#            And I remove one of the tenure holders
-#            And I click the cancel button
-#            And I remove one of the tenure holders
-#            And I click remove person
-#            Then the person is removed
-#            When I select person type "Named tenure holder"
-#            And I select a title "<title>"
-#            And I enter a first name "<firstName>"
-#            And I enter a last name "<lastName>"
-#            And I enter a date of birth "<day>" "<month>" "<year>"
-#            And I enter a reason for creation
-#            And I click done button
-#
-#            Examples:
-#            | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
-#            | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
+    #  @ignore
+    #  Scenario Outline: Create person by navigating to new tenure
+    #      Given I delete all existing persons from the tenure "<tenure>"
+    #      When I navigate to a create person for new tenure "<property>" "<tenure>"
+    #      And the tenure person search is displayed
+    #      And the create new person button is not enabled
+    #      When I enter any of the following criteria "<searchTerm>"
+    #      And I click on the search button
+    #      And I click create new person
+    #      And I am on the create new person for a new tenure page
+    #      When I select person type "<personType>"
+    #      And I select a title "<title>"
+    #      And I enter a first name "<firstName>"
+    #      And I enter a middle name "<middleName>"
+    #      And I enter a last name "<lastName>"
+    #      And I enter a date of birth "<day>" "<month>" "<year>"
+    #      And I enter a place of birth "<placeOfBirth>"
+    #      And I select a preferred title "<preferredTitle>"
+    #      And I select a preferred first name "<preferredFirstName>"
+    #      And I select a preferred middle name "<preferredMiddleName>"
+    #      And I select a preferred last name "<preferredLastName>"
+    #      And I enter a reason for creation
+    #      And I click add person
+    #      Then I am on the create contact for a new tenure page
+    #      And I click the add email address button
+    #      And I enter an email address "<email>"
+    #      And I enter an email description "<emailDescription>"
+    #      And I click save email address
+    #      And the email information is captured "<email>" "<emailDescription>"
+    #      And I click the add phone number button
+    #      And I enter a phone number "<phoneNumber>"
+    #      And I select a phone number type "<phoneType>"
+    #      And I enter a phone number description "<phoneDescription>"
+    #      And I click save phone number
+    #      And the phone information is captured "<phoneNumber>" "<phoneType>" "<phoneDescription>"
+    #      And I click done button
+    #      And the tenure person search is displayed
+
+    #      Examples:
+    #      | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
+    #      | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
+
+
+  @ignore
+  Scenario Outline: Create person for new tenure validation
+      Given I delete all existing persons from the tenure "<tenure>"
+      When I navigate to a create person for new tenure "<property>" "<tenure>"
+      When I enter any of the following criteria "<searchTerm>"
+      And I click on the search button
+      When I add 5 named tenure holder
+      Then a new tenure error message appears "Max. tenure holders added"
+      And I click create new person
+      And I am on the create new person for a new tenure page
+      And the named tenure holder button is not active
+      And I remove one of the tenure holders
+      And I click the cancel button
+      And I remove one of the tenure holders
+      And I click remove person
+      Then the person is removed
+      When I select person type "Named tenure holder"
+      And I select a title "<title>"
+      And I enter a first name "<firstName>"
+      And I enter a last name "<lastName>"
+      And I enter a date of birth "<day>" "<month>" "<year>"
+      And I enter a reason for creation
+      And I click done button
+
+      Examples:
+      | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
+      | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
 
   @SmokeTest
   Scenario: Create new tenure and cancel
@@ -408,7 +445,8 @@ Feature: Create tenure
     And I click edit tenure
     Then the edit tenure information is displayed
     When I select a tenure type "<tenureType>"
-    And I enter a tenure end date as "<day>" "<month>" "<year>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
     And I click the next button
     Then the warning modal is displayed
     And the modal confirms making the tenure inactive
@@ -420,8 +458,8 @@ Feature: Create tenure
     Then the tenure information is displayed with the page heading Tenure updated
 
     Examples:
-      | tenureType | day | month | year |
-      | Freehold   | 20  | 05    | 2022 |
+      | tenureType | startDay | startMonth | startYear | endDay | endMonth| endYear |
+      | Freehold   | 20       | 05         | 1985      | 20     | 05      | 2000    |
 
 #
   Scenario Outline: Display Confirmation Alert pop up when reactivating a Tenure
@@ -431,7 +469,8 @@ Feature: Create tenure
     And I click edit tenure
     Then the edit tenure information is displayed
     And the tenure type field is disabled
-    And I enter a tenure end date as "<day>" "<month>" "<year>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
     And I click the next button
     Then the warning modal is displayed
     And the modal confirms making the tenure active
@@ -444,8 +483,8 @@ Feature: Create tenure
     And I click done button
     Then the tenure information is displayed with the page heading Tenure updated
     Examples:
-      | day | month | year |
-      | 20  | 05    | 3000 |
+      | startDay | startMonth | startYear | endDay | endMonth| endYear |
+      | 20       | 05         | 2000      | 20     | 05      | 3000    |
 
   #  @ignore
   #  Scenario Outline: Create person for new tenure validation

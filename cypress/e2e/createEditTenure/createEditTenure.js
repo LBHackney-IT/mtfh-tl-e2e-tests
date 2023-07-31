@@ -20,15 +20,15 @@ When('I select a tenure type {string}', (tenureType) => {
 })
 
 And('I enter a tenure start date {string} {string} {string}', (day, month, year) => {
-    createTenurePage.tenureStartDateDayContainer().type(day)
-    createTenurePage.tenureStartDateMonthContainer().type(month)
-    createTenurePage.tenureStartDateYearContainer().type(year)
+    createTenurePage.tenureStartDateDayContainer().clear().type(day)
+    createTenurePage.tenureStartDateMonthContainer().clear().type(month)
+    createTenurePage.tenureStartDateYearContainer().clear().type(year)
 })
 
 And('I enter a tenure end date {string} {string} {string}', (day, month, year) => {
-    createTenurePage.tenureEndDateDayContainer().type(day)
-    createTenurePage.tenureEndDateMonthContainer().type(month)
-    createTenurePage.tenureEndDateYearContainer().type(year)
+    createTenurePage.tenureEndDateDayContainer().clear().type(day)
+    createTenurePage.tenureEndDateMonthContainer().clear().type(month)
+    createTenurePage.tenureEndDateYearContainer().clear().type(year)
 })
 
 And('I click the cancel button', () => {
@@ -162,7 +162,6 @@ Given('I delete all existing persons from the tenure {string}', async (tenureId)
     }
     cy.log(`${householdMembers.length} person records deleted`)
 })
-
 
 And('I click remove person', () => {
     createTenurePage.confirmRemovePersonButton().click()
