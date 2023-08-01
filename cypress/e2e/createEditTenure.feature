@@ -407,7 +407,7 @@ Feature: Create and edit tenure
       | Freehold   |
 
   Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
-    Given I seeded the database
+    Given I seeded the database with a tenure
     When I view a tenure
     Then the tenure information is displayed
     And I click edit tenure
