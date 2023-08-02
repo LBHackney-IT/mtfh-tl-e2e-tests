@@ -71,10 +71,11 @@ When("I visit the 'Related asset page' for the asset", () => {
     })
 })
 
-Then("I should see the main heading, the current property and the related assets", () => {
+Then("I should see the main heading, the current property, its asset type and the related assets", () => {
     cy.wait('@getChildrenAssets')
     relatedAssetsPage.relatedAssetHeading().should('be.visible')
-    relatedAssetsPage.relatedAssetCurrentProperty().should('be.visible')
+    relatedAssetsPage.propertyAddress().should('be.visible')
+    relatedAssetsPage.propertyAssetType().should('be.visible')
     relatedAssetsPage.relatedAssetItemsByType().should('be.visible')
     relatedAssetsPage.relatedAsset().should('be.visible')
 })

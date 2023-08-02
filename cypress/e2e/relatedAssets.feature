@@ -29,7 +29,7 @@ Feature: Related assets
         Given I seeded the database with an asset
         And The asset has more than than 3 related children assets
         When I visit the 'Related asset page' for the asset
-        Then I should see the main heading, the current property and the related assets
+        Then I should see the main heading, the current property, its asset type and the related assets
 
     @SmokeTest
     Scenario Outline: 'When visiting the "Related asset page", for an asset with no related assets, a message is displayed to inform the user no related assets are available'

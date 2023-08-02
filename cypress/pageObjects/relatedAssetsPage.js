@@ -13,8 +13,12 @@ class RelatedAssetsPageObjects {
         return cy.get('[data-testid="related-assets-heading"]')
     }
 
-    relatedAssetCurrentProperty() {
-        return cy.get('[data-testid="related-assets-property"]')
+    propertyAddress() {
+        return cy.get('[data-testid="property-address"]')
+    }
+
+    propertyAssetType() {
+        return cy.get('[data-testid="property-asset-type"]')
     }
 
     relatedAssetItemsByType() {
