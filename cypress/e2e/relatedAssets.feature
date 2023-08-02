@@ -37,3 +37,17 @@ Feature: Related assets
         And The asset has no related children assets
         When I visit the 'Related asset page' for the asset
         Then I should see a message that says no related assets are available
+
+    @SmokeTest
+    Scenario Outline: 'When visiting the "Related asset page", when the request fails to retrieve children assets, an error is displayed'
+        Given I seeded the database with an asset
+        And The request to retrieve related children assets fails
+        When I visit the 'Related asset page' for the asset
+        Then I should see an error on the screen saying related children assets could not be retrieved
+
+    @SmokeTest
+    Scenario Outline: 'When visiting the "Related asset page", when the request fails to retrieve the asset, an error is displayed'
+        Given I seeded the database with an asset
+        And The request to retrieve the asset fails
+        When I visit the 'Related asset page' for the asset
+        Then I should see an error on the screen saying the asset could not be retrieved

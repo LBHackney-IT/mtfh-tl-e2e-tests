@@ -28,6 +28,14 @@ class RelatedAssetsPageObjects {
     noRelatedAssetMessage() {
         return cy.get('[data-testid="no-related-assets-message"]')
     }
+
+    unableToRetrieveChildrenAssetsError() {
+        return cy.get('[data-testid="cannot-fetch-children-error"]')
+    }
+
+    unableToRetrieveAssetError() {
+        return cy.contains("There was a problem retrieving the record").should('be.visible')
+    }
 }
 
 export default RelatedAssetsPageObjects

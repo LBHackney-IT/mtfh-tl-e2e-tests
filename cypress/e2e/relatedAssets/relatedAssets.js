@@ -43,6 +43,18 @@ And("The asset has no related children assets", () => {
     })
 })
 
+And("The request to retrieve related children assets fails", () => {
+    cy.getAssetFixture().then(asset => {
+        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}`, { forceNetworkError: true }).as('getChildrenAssets')
+    })
+})
+
+And("The request to retrieve the asset fails", () => {
+    cy.getAssetFixture().then(asset => {
+        cy.intercept('GET', `*/api/v1/assets/${asset.id}`, { forceNetworkError: true }).as('getAsset')
+    })
+})
+
 Then("I should not see the link to the 'Related asset page' as there are not enough children asset", () => {
     cy.wait('@getChildrenAssets')
     relatedAssetsPage.relatedAssetLinkToPage().should("not.exist")
@@ -71,6 +83,17 @@ Then("I should see a message that says no related assets are available", () => {
     cy.wait('@getChildrenAssets')
     relatedAssetsPage.noRelatedAssetMessage().should('be.visible')
     relatedAssetsPage.noRelatedAssetMessage().should('have.text', "There are no related assets for this property.")
+})
+
+Then("I should see an error on the screen saying related children assets could not be retrieved", () => {
+    cy.wait('@getChildrenAssets')
+    relatedAssetsPage.unableToRetrieveChildrenAssetsError().should('be.visible')
+    cy.contains("There was a problem retrieving related children assets for the property").should('be.visible')
+})
+
+Then("I should see an error on the screen saying the asset could not be retrieved", () => {
+    cy.wait('@getAsset')
+    relatedAssetsPage.unableToRetrieveAssetError().should('be.visible')
 })
 
 // Database seed methods
