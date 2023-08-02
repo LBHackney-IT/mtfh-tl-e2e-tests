@@ -23,7 +23,7 @@ Cypress.Commands.add('logout', () => {
     cy.getCookies().should('be.empty')
 })
 
-// fixture data
+// Fixture data (json files added to gitignore file)
 
 Cypress.Commands.add('getContactDetailsFixture', () => {
     cy.readFile('cypress/fixtures/ContactDetails.json')
@@ -49,6 +49,10 @@ Cypress.Commands.add('getAssetFixture', () => {
     cy.readFile('cypress/fixtures/Assets.json')
 })
 
+Cypress.Commands.add('generateCustomTemporaryFixture', (data) => {
+    cy.writeFile(`cypress/fixtures/CustomTemporaryFixture.json`, JSON.stringify(data));
+});
+
 Cypress.on('uncaught:exception', (err, runnable) => {
     if (err) {
         // tslint:disable: no-console
@@ -69,5 +73,5 @@ Cypress.Commands.add('setUpEndAlertError', (alertId) => {
     cy.intercept(
         { method: 'PATCH', url: `${cautionaryAlertEndpoint}/cautionary-alerts/alerts/${alertId}/end-alert` },
         { statusCode: 500, headers: { 'access-control-allow-headers': 'content-type' } }
-      );
+    );
 });

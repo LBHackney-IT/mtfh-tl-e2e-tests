@@ -140,15 +140,21 @@ const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.nu
     "assetType": "LettableNonDwelling",
     "rootAsset": "ROOT",
     "isActive": false,
-    "parentAssetIds": "ROOT",
+    "parentAssetIds": "14edf718-19ff-ff43-4679-f8ef404fa029",
     "assetLocation": {
-      "floorNo": "0",
+      "floorNo": "",
       "totalBlockFloors": 0,
-      "parentAssets": []
+      "parentAssets": [
+        {
+          "type": "Estate",
+          "id": "14edf718-19ff-ff43-4679-f8ef404fa029",
+          "name": "Random Test Estate"
+        }
+      ]
     },
     "assetAddress": {
       "uprn": uprn,
-      "addressLine1": "123 Test Asset",
+      "addressLine1": `${faker.random.numeric(2).toString()} Test Asset`,
       "addressLine2": "Hackney",
       "addressLine3": "LONDON",
       "addressLine4": "",

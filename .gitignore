@@ -11,3 +11,13 @@ docker/dynamodb/shared-local-instance.db
 .idea/workspace.xml
 cypress/cucumber-json/
 cucumber-messages.ndjson
+
+# Dynamic Fixtures
+cypress/fixtures/CustomTemporaryFixture.json
+cypress/fixtures/Assets.json
+cypress/fixtures/ContactDetails.json
+cypress/fixtures/Persons.json
+cypress/fixtures/CautionaryAlerts.json
+cypress/fixtures/TenureInformation.json
+cypress/fixtures/PatchesAndAreas.json
+cypress/fixtures/recordsToDelete.json
