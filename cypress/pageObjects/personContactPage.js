@@ -157,6 +157,21 @@ class PersonContactPageObjects {
     confirmationMessage() {
         return cy.get('.lbh-page-announcement')
     }
+
+    addEmailAddress(value, description) {
+        this.addEmailAddressButton().click()
+        this.emailAddressField().type(value)
+        this.emailAddressDescription().type(description)
+        this.saveEmailAddressButton().click()
+    }
+
+    addPhoneNumber(value, description) {
+        this.addPhoneNumberButton().click()
+        this.phoneNumberField().type(value)
+        this.phoneNumberMobileType().click()
+        this.phoneNumberDescription().type(description)
+        this.savePhoneNumberButton().click()
+    }
 }
 
 export default PersonContactPageObjects

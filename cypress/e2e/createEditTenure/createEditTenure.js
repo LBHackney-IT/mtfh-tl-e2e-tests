@@ -20,15 +20,15 @@ When('I select a tenure type {string}', (tenureType) => {
 })
 
 And('I enter a tenure start date {string} {string} {string}', (day, month, year) => {
-    createTenurePage.tenureStartDateDayContainer().type(day)
-    createTenurePage.tenureStartDateMonthContainer().type(month)
-    createTenurePage.tenureStartDateYearContainer().type(year)
+    createTenurePage.tenureStartDateDayContainer().clear().type(day)
+    createTenurePage.tenureStartDateMonthContainer().clear().type(month)
+    createTenurePage.tenureStartDateYearContainer().clear().type(year)
 })
 
 And('I enter a tenure end date {string} {string} {string}', (day, month, year) => {
-    createTenurePage.tenureEndDateDayContainer().type(day)
-    createTenurePage.tenureEndDateMonthContainer().type(month)
-    createTenurePage.tenureEndDateYearContainer().type(year)
+    createTenurePage.tenureEndDateDayContainer().clear().type(day)
+    createTenurePage.tenureEndDateMonthContainer().clear().type(month)
+    createTenurePage.tenureEndDateYearContainer().clear().type(year)
 })
 
 And('I click the cancel button', () => {
@@ -66,6 +66,11 @@ Then('the edit tenure information is displayed', () => {
         cy.url().should('include', `tenure/${tenureId}/edit`)
     })
 })
+
+And('the tenure type field is disabled', ()=>{
+    createTenurePage.tenureTypeSelection().should('have.attr', 'aria-disabled').and('equal', 'true')
+})
+
 
 And('I click done button', () => {
     createTenurePage.doneButton().click()
@@ -167,9 +172,17 @@ Then('the tenure end date is editable', () => {
     createTenurePage.tenureEndDateMonthContainer().should('be.enabled')
     createTenurePage.tenureEndDateYearContainer().should('be.enabled')
 });
-Then("the information text is displayed", () => {
+
+Then("the tenure closure warning is displayed", () => {
     modal.modalBody().should('be.visible');
-    modal.modalBody().should('contain', 'Are you sure you want to change the status of the tenure to inactive? The tenure will no longer be editable.');
+    const warningText = "Are you sure you want to change the status of the tenure to inactive? The tenure will no longer be editable. This will stop this tenure's rent account instantly";
+    modal.modalBody().should('contain', warningText);
+});
+
+Then("the tenure reactivation warning is displayed", () => {
+    modal.modalBody().should('be.visible');
+    const warningText = "Are you sure you want to change the status of the tenure to active? This will reactivate this tenure's rent account instantly";
+    modal.modalBody().should('contain', warningText);
 });
 
 When("I enter a tenure end date as {string} {string} {string}", (day, month, year) => {

@@ -4,8 +4,8 @@
 @root
 @tenure
 
-Feature: Create tenure
-  I want to create a new tenure
+Feature: Create and edit tenure
+  I want to create a new tenure and edit an existing one
 
   Background:
     Given I am logged in
@@ -112,7 +112,7 @@ Feature: Create tenure
       | Freehold   | 01       | 01         | 2000      | tre        | Last name Z-A | 20      |
       | Freehold   | 01       | 01         | 2000      | tre        | Best match    | 12      |
 
-    #  @ignore
+#  @ignore
     #  Scenario Outline: Create new tenure and add new person
     #    Given I create a new property
     #    When I view the property in MMH
@@ -279,43 +279,6 @@ Feature: Create tenure
     #        | tenure                               | tenureType |
     #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |
 
-    #
-    #  Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
-    #    When I view a Tenure "<tenure>"
-    #    Then the tenure information is displayed
-    #    And I click edit tenure
-    #    Then the edit tenure information is displayed
-    #    When I select a tenure type "<tenureType>"
-    #    And I enter a tenure end date as "<day>" "<month>" "<year>"
-    #    And I click the next button
-    #    Then the warning modal is displayed
-    #    And the information text is displayed
-    #    When I click cancel on the modal
-    #    Then the edit tenure information is displayed
-    #    # When the below steps are executed the test data will be unvailable for the next run as edit tenure button will not be displayed
-    #    #When I click yes on the modal
-    #    #Then the tenure information is displayed with the page heading Tenure updated
-    #
-    #    Examples:
-    #      | tenure                               | tenureType | day | month | year |
-    #      | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold   |  20 |  05   | 2022 |
-    #
-    #    Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
-    #        When I view a Tenure "<tenure>"
-    #        Then the tenure information is displayed
-    #        And the edit tenure button is not displayed
-    #        Examples:
-    #        | tenure                               |
-    #        | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
-    #
-    #    Scenario Outline: Cannot edit tenure for inactive or past tenures
-    #        When I edit a Tenure "<tenure>"
-    #        Then the tenure cannot be edited warning message is displayed
-    #
-    #        Examples:
-    #        | tenure                               |
-    #        | e832a76f-8bcf-238c-7ad1-6ef1b408b316 |
-    #
     #    @ignore
     #    Scenario Outline: Create person by navigating to new tenure
     #        Given I delete all existing persons from the tenure "<tenure>"
@@ -356,72 +319,8 @@ Feature: Create tenure
     #
     #        Examples:
     #        | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
-    #        | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |
-    #
-    #
-    #    @ignore
-    #    Scenario Outline: Create person for new tenure validation
-    #        Given I delete all existing persons from the tenure "<tenure>"
-    #        When I navigate to a create person for new tenure "<property>" "<tenure>"
-    #        When I enter any of the following criteria "<searchTerm>"
-    #        And I click on the search button
-    #        When I add 5 named tenure holder
-    #        Then a new tenure error message appears "Max. tenure holders added"
-    #        And I click create new person
-    #        And I am on the create new person for a new tenure page
-    #        And the named tenure holder button is not active
-    #        And I remove one of the tenure holders
-    #        And I click the cancel button
-    #        And I remove one of the tenure holders
-    #        And I click remove person
-    #        Then the person is removed
-    #        When I select person type "Named tenure holder"
-    #        And I select a title "<title>"
-    #        And I enter a first name "<firstName>"
-    #        And I enter a last name "<lastName>"
-    #        And I enter a date of birth "<day>" "<month>" "<year>"
-    #        And I enter a reason for creation
-    #        And I click done button
-    #
-    #        Examples:
-    #        | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
-    #        | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
-    #
-    #    @regression
-    #    Scenario Outline: End dates are editable for all tenure types
-    #      When I edit a Tenure "<tenure>"
-    #      When I select a tenure type "<tenureType>"
-    #      Then the tenure end date is editable
-    #
-    #      Examples:
-    #        | tenure                               | tenureType       |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold         |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Freehold (Serv)  |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Introductory     |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Leasehold (RTB)  |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | License Temp Ac  |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Lse 100% Stair   |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Mesne Profit Ac  |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Non-Secure       |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Private Sale LH  |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Rent To Mortgage |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Secure           |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Shared Equity    |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Shared Owners    |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Short Life Lse   |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Annex       |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp B&B         |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Decant      |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Hostel      |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Hostel Lse  |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Private Lt  |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Temp Traveller   |
-    #        | aaaf05fb-6a4d-f6ef-592f-4beccbe62ccb | Tenant Acc Flat  |
-
-
-    #      | tenureType | startDay | startMonth | startYear | searchTerm | searchTerm2 |
-    #      | Freehold   | 01       | 01         | 2000      | tre        | sar         |
-
+    #        | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |      | 
+  
   @SmokeTest
   Scenario: Create new tenure and cancel
     Given I seeded the database with an asset with no attached tenure
@@ -452,7 +351,7 @@ Feature: Create tenure
 
     Examples:
       | tenureType | startDay | startMonth | startYear |
-      | Freehold   | 20       | 05         | 2022      |
+      | Freehold   | 20       | 05         | 1900      |
 
   @SmokeTest
   Scenario Outline: Create new tenure with start date that occurs after end date
@@ -470,6 +369,8 @@ Feature: Create tenure
     Examples:
       | tenureType    | startDay | startMonth | startYear | endDay | endMonth | endYear |
       | Shared Owners | 02       | 01         | 2000      | 01     | 01       | 2000    |
+
+  # -- Edit tenure page --
 
   Scenario Outline: Edit existing tenure
     Given I seeded the database
@@ -506,16 +407,17 @@ Feature: Create tenure
       | Freehold   |
 
   Scenario Outline: Display Confirmation Alert pop up when ending a Tenure
-    Given I seeded the database
+    Given I seeded the database with a tenure
     When I view a tenure
     Then the tenure information is displayed
     And I click edit tenure
     Then the edit tenure information is displayed
     When I select a tenure type "<tenureType>"
-    And I enter a tenure end date as "<day>" "<month>" "<year>"
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
     And I click the next button
     Then the warning modal is displayed
-    And the information text is displayed
+    And the modal confirms making the tenure inactive
     When I click the modal cancel button
     Then the edit tenure information is displayed
     When I click the next button
@@ -524,19 +426,33 @@ Feature: Create tenure
     Then the tenure information is displayed with the page heading Tenure updated
 
     Examples:
-      | tenureType | day | month | year |
-      | Freehold   | 20  | 05    | 2022 |
+      | tenureType | startDay | startMonth | startYear | endDay | endMonth| endYear |
+      | Freehold   | 20       | 05         | 1985      | 20     | 05      | 2000    |
 
-  Scenario Outline: Edit tenure button is not displayed for inactive or past tenures
+#
+  Scenario Outline: Display Confirmation Alert pop up when reactivating a Tenure
     Given I seeded the database with an asset with a previous tenure
     When I view a tenure
     Then the tenure information is displayed
-    And the edit tenure button is not displayed
-
-  Scenario Outline: Cannot edit tenure for inactive or past tenures
-    Given I seeded the database with an asset with a previous tenure
-    When I edit a Tenure ""
-    Then the tenure cannot be edited warning message is displayed
+    And I click edit tenure
+    Then the edit tenure information is displayed
+    And the tenure type field is disabled
+    And I enter a tenure start date "<startDay>" "<startMonth>" "<startYear>"
+    And I enter a tenure end date "<endDay>" "<endMonth>" "<endYear>"
+    And I click the next button
+    Then the warning modal is displayed
+    And the modal confirms making the tenure active
+    Then the tenure reactivation warning is displayed
+    When I click the modal cancel button
+    Then the edit tenure information is displayed
+    When I click the next button
+    Then the warning modal is displayed
+    When I click yes on the modal
+    And I click done button
+    Then the tenure information is displayed with the page heading Tenure updated
+    Examples:
+      | startDay | startMonth | startYear | endDay | endMonth| endYear |
+      | 20       | 05         | 2000      | 20     | 05      | 3000    |
 
   #  @ignore
   #  Scenario Outline: Create person for new tenure validation
@@ -566,34 +482,34 @@ Feature: Create tenure
   #      | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year |
   #      | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | emi        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 |
 
-@regression
-Scenario Outline: End dates are editable for all tenure types
-  Given I seeded the database with a tenure
-  When I edit a Tenure ""
-  When I select a tenure type "<tenureType>"
-  Then the tenure end date is editable
+  @regression
+  Scenario Outline: End dates are editable for all tenure types
+    Given I seeded the database with a tenure
+    When I edit a Tenure ""
+    When I select a tenure type "<tenureType>"
+    Then the tenure end date is editable
 
-  Examples:
-    | tenureType       |
-    | Freehold         |
-    | Freehold (Serv)  |
-    | Introductory     |
-    | Leasehold (RTB)  |
-    | License Temp Ac  |
-    | Lse 100% Stair   |
-    | Mesne Profit Ac  |
-    | Non-Secure       |
-    | Private Sale LH  |
-    | Rent To Mortgage |
-    | Secure           |
-    | Shared Equity    |
-    | Shared Owners    |
-    | Short Life Lse   |
-    | Temp Annex       |
-    | Temp B&B         |
-    | Temp Decant      |
-    | Temp Hostel      |
-    | Temp Hostel Lse  |
-    | Temp Private Lt  |
-    | Temp Traveller   |
-    | Tenant Acc Flat  |
+    Examples:
+      | tenureType       |
+      | Freehold         |
+      | Freehold (Serv)  |
+      | Introductory     |
+      | Leasehold (RTB)  |
+      | License Temp Ac  |
+      | Lse 100% Stair   |
+      | Mesne Profit Ac  |
+      | Non-Secure       |
+      | Private Sale LH  |
+      | Rent To Mortgage |
+      | Secure           |
+      | Shared Equity    |
+      | Shared Owners    |
+      | Short Life Lse   |
+      | Temp Annex       |
+      | Temp B&B         |
+      | Temp Decant      |
+      | Temp Hostel      |
+      | Temp Hostel Lse  |
+      | Temp Private Lt  |
+      | Temp Traveller   |
+      | Tenant Acc Flat  |

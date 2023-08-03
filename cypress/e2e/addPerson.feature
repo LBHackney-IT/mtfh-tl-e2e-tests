@@ -194,8 +194,9 @@ Feature: Add a new person to a tenure
 
   Scenario Outline: Maximum contact details reached
     Given I seeded the database with a person
-    Given I have the maximum number of "<contactType>" for a person
+    Given the person has valid contact details
     When I edit a person's contact details
+    And I add up to 5 contact details of type "<contactType>"
     Then I cannot add any more contacts for "<contactType>"
 
     Examples:
