@@ -7,8 +7,9 @@ let tenureCommentsUrl="comment/tenure"
 let propertyCommentsUrl="comment/property"
 let startSoleToJointProcessUrl="processes/soletojoint/start/tenure"
 let alertPreviewUrl="cautionary-alerts/alert"
-
+let relatedAssetUrl="property/related"
 let tenureUrl = "tenure"
+
 let rootComponentPort = "9000"
 let property = "property"
 let gssoTestKey = Cypress.env('E2E_ACCESS_TOKEN_LOCAL')
@@ -44,6 +45,7 @@ module.exports = {
     alertPreviewUrl,
     baseUrl,
     tenureUrl,
+    relatedAssetUrl,
     property,
     gssoTestKey
 }
