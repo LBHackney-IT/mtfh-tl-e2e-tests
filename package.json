@@ -43,9 +43,10 @@
   "dependencies": {
     "aws-sdk": "^2.1020.0",
     "axios": "^0.21.3",
-    "cypress": "^10.10.0",
+    "cypress": "^12.17.3",
     "cypress-real-events": "^1.7.1",
     "date-and-time": "^1.0.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "webpack": "^5.88.2"
   }
 }
