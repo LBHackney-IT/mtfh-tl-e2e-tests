@@ -4,6 +4,7 @@ import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common
 import { baseUrl } from "../../../environment-config";
 
 const newAddressLine1Value = 'NEW ADDRESS LINE 1'
+const noUprnValue = 'N/A'
 
 Given("I am on the MMH 'Edit property address' page for the asset", () => {
     cy.getAssetFixture().then(asset => {
@@ -13,7 +14,7 @@ Given("I am on the MMH 'Edit property address' page for the asset", () => {
         cy.visit(getAssetEditUrlByGuid(asset.id))
 
         cy.wait('@getAsset')
-        cy.wait('@getAddress')
+        if (asset.assetAddress.uprn) cy.wait('@getAddress')
     })
 });
 
@@ -25,15 +26,11 @@ Given("I am on the MMH 'Edit property address' page, but the LLPG address fails 
         cy.visit(getAssetEditUrlByGuid(asset.id))
 
         cy.wait('@getAsset')
-        cy.wait('@getAddress')
+        if (asset.assetAddress.uprn) cy.wait('@getAddress')
     })
 });
 
-Given("that the property has no valid UPRN, I can see a disabled button that says 'Cannot edit: UPRN missing'", () => {
-    cy.contains('Cannot edit: UPRN missing').should('be.visible')
-})
-
-Given("that the property has a valid UPRN, I can see a button that says 'Edit address details'", () => {
+Then("I can see a button that says 'Edit address details'", () => {
     cy.contains('Edit address details').should('be.visible')
 })
 
@@ -57,7 +54,7 @@ Then("I click on 'Update to this address' button, and the PATCH requests are suc
     cy.getAssetFixture().then(asset => {
         cy.intercept('PATCH', `*/api/v1/assets/${asset.id}/address`).as('patchAddress')
         cy.intercept('PATCH', `*/api/v1/asset/${asset.assetId}`, { statusCode: 204 }).as('updateAssetDetails')
-      
+
         cy.contains('Update to this address').click()
     })
 })
@@ -96,12 +93,14 @@ And("I should see a heading that says 'New address details' instead of 'Suggesti
     cy.contains('New address details').should('be.visible')
 })
 
-And("the address fields, despite not being autopopulated, should be blank and editable", () => {
-    cy.get('[data-testid="address-line-1"]').should('be.enabled').and('have.value', "")
-    cy.get('[data-testid="address-line-2"]').should('be.enabled').and('have.value', "")
-    cy.get('[data-testid="address-line-3"]').should('be.enabled').and('have.value', "")
-    cy.get('[data-testid="address-line-4"]').should('be.enabled').and('have.value', "")
-    cy.get('[data-testid="postcode"]').should('be.enabled').and('have.value', "")
+And("the address fields should contain the current address' details", () => {
+    cy.getAssetFixture().then(asset => {
+        cy.get('[data-testid="address-line-1"]').should('be.enabled').and('have.value', asset.assetAddress.addressLine1)
+        cy.get('[data-testid="address-line-2"]').should('be.enabled').and('have.value', asset.assetAddress.addressLine2)
+        cy.get('[data-testid="address-line-3"]').should('be.enabled').and('have.value', asset.assetAddress.addressLine3)
+        cy.get('[data-testid="address-line-4"]').should('be.enabled').and('have.value', asset.assetAddress.addressLine4)
+        cy.get('[data-testid="postcode"]').should('be.enabled').and('have.value', asset.assetAddress.postCode)
+    })
 })
 
 And("the 'Update to this address' button should be enabled", () => {
@@ -128,6 +127,15 @@ And("I should see the edited address", () => {
     cy.contains(newAddressLine1Value).should('be.visible')
 })
 
+And("I can see the asset UPRN", () => {
+    cy.getAssetFixture().then(asset => {
+        cy.contains(asset.assetAddress.uprn).should('be.visible')
+    })
+})
+
+And("I can see the asset does not have a UPRN", () => {
+    cy.contains(noUprnValue).should('be.visible')
+})
 
 // Helper methods
 
