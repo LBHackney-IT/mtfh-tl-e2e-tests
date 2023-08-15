@@ -23,7 +23,7 @@ And("The asset has less than than 3 related children assets", () => {
     cy.generateCustomTemporaryFixture(generateChildrenAssetsFixture(2));
 
     cy.getAssetFixture().then(asset => {
-        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=5000`, { fixture: "CustomTemporaryFixture.json" }).as('getChildrenAssets')
+        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=1000`, { fixture: "CustomTemporaryFixture.json" }).as('getChildrenAssets')
     })
 })
 
@@ -31,7 +31,7 @@ And("The asset has more than than 3 related children assets", () => {
     cy.generateCustomTemporaryFixture(generateChildrenAssetsFixture(5));
 
     cy.getAssetFixture().then(asset => {
-        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=5000`, { fixture: "CustomTemporaryFixture.json" }).as('getChildrenAssets')
+        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=1000`, { fixture: "CustomTemporaryFixture.json" }).as('getChildrenAssets')
     })
 })
 
@@ -39,13 +39,13 @@ And("The asset has no related children assets", () => {
     cy.generateCustomTemporaryFixture(generateChildrenAssetsFixture(0));
 
     cy.getAssetFixture().then(asset => {
-        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=5000`, { fixture: "CustomTemporaryFixture.json" }).as('getChildrenAssets')
+        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=1000`, { fixture: "CustomTemporaryFixture.json" }).as('getChildrenAssets')
     })
 })
 
 And("The request to retrieve related children assets fails", () => {
     cy.getAssetFixture().then(asset => {
-        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=5000`, { forceNetworkError: true }).as('getChildrenAssets')
+        cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=1000`, { forceNetworkError: true }).as('getChildrenAssets')
     })
 })
 
