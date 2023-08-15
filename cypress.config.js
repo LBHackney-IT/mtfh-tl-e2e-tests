@@ -11,8 +11,8 @@ module.exports = defineConfig({
     pwa: 0,
   },
   retries: {
-    runMode: 9,
-    openMode: 9,
+    runMode: 2,
+    openMode: 2,
   },
   chromeWebSecurity: false,
   video: true,
