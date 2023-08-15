@@ -74,6 +74,10 @@ And("I choose the option 'Yes' for field 'Is LBH property?'", () => {
     cy.get('[data-testid="is-council-property-yes"]').click()
 })
 
+And("I choose the option 'Yes' for field 'Add Default SOR Contracts'", () => {
+    cy.get('[data-testid="add-default-sor-contracts-yes"]').click()
+})
+
 When("I click on 'Create new property' button, and the POST request is successful", () => {
     cy.intercept('POST', '*/api/v1/assets', (req) => { req.body = testAsset }).as('createNewAssetSuccess')
 
