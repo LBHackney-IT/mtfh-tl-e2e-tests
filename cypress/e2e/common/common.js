@@ -619,8 +619,6 @@ Given("I create a new property with tenure", async () => {
   propertyId = response.data.id;
 })
 When("I view the property in MMH", () => {
-  cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
-
   cy.getAssetFixture().then((asset) => {
     propertyPage.visit(asset.id);
   })
