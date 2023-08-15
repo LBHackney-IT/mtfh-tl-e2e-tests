@@ -6,7 +6,7 @@
 @root
 
 Feature: T&L Home page
-    I am on the Tenants and Leaseholders Home page
+  I am on the Tenants and Leaseholders Home page
 
   @SmokeTest
   Scenario: Home Page whilst logged out
@@ -15,20 +15,24 @@ Feature: T&L Home page
     Then the page header is visible
     And the page footer is visible
 
-#  @SmokeTest
-#  Scenario: Home page whilst logged in
-#    Given I am logged in
-#    When I am on the Home page
-#    Then the header link says welcome
-#    Then the page header is visible
-#    And the page footer is visible
+  #  @SmokeTest
+  #  Scenario: Home page whilst logged in
+  #    Given I am logged in
+  #    When I am on the Home page
+  #    Then the header link says welcome
+  #    Then the page header is visible
+  #    And the page footer is visible
 
   @Accessibility
   Scenario: Accessibility Testing
+    Given I am logged in
+    When I am on the Home page
     And have no detectable a11y violations
 
   @SmokeTest
   Scenario: Page footer links
+    Given I am logged in
+    When I am on the Home page
     Then the page footer links are visible
     And the page footer links are correct
 
