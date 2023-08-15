@@ -35,6 +35,7 @@ Feature: Property Add
         And I enter a value for field 'Address line 1'
         And I enter a valid value for field 'Postcode'
         And I choose the option 'Yes' for field 'Is LBH property?'
+        And I choose the option 'Yes' for field 'Add Default SOR Contracts'
         When I click on 'Create new property' button, and the POST request is successful
         And I see a success message, indicating that the asset has been created successfully
         Then I should be able to view new property in MMH
@@ -47,6 +48,7 @@ Feature: Property Add
         And I enter a value for field 'Address line 1'
         And I enter a valid value for field 'Postcode'
         And I choose the option 'Yes' for field 'Is LBH property?'
+        And I choose the option 'Yes' for field 'Add Default SOR Contracts'
         When I click on 'Create new property' button, and the POST request fails
         Then I see an error message, indicating that there was a problem creating the new asset
 
