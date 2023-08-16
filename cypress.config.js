@@ -11,8 +11,8 @@ module.exports = defineConfig({
     pwa: 0,
   },
   retries: {
-    runMode: 10,
-    openMode: 10,
+    runMode: 2,
+    openMode: 2,
   },
   chromeWebSecurity: false,
   video: true,
@@ -21,6 +21,14 @@ module.exports = defineConfig({
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
+
+      on('task', {
+        log(message) {
+          console.log(message)
+          return null
+        },
+      })
+
       return require('./cypress/plugins/index.js')(on, config)
     },
     specPattern: 'cypress/e2e/**/*.{feature,features}',
