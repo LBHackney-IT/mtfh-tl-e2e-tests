@@ -32,6 +32,7 @@ Feature: Property Add
         Given I am on the MMH 'New property' page
         And I enter a value for field 'Asset ID'
         And I select an option for field 'Asset Type'
+        And I select a parent asset
         And I enter a value for field 'Address line 1'
         And I enter a valid value for field 'Postcode'
         And I choose the option 'Yes' for field 'Is LBH property?'
@@ -45,6 +46,7 @@ Feature: Property Add
         Given I am on the MMH 'New property' page
         And I enter a value for field 'Asset ID'
         And I select an option for field 'Asset Type'
+        And I select a parent asset
         And I enter a value for field 'Address line 1'
         And I enter a valid value for field 'Postcode'
         And I choose the option 'Yes' for field 'Is LBH property?'

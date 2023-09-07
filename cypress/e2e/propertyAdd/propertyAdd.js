@@ -62,6 +62,17 @@ And("I select an option for field 'Asset Type'", () => {
     cy.get('[data-testid="asset-type"]').select('Dwelling')
 })
 
+And("I select a parent asset", () => {
+    cy.intercept('GET', '*/api/v1/search/assets?searchText=asd&useCustomSorting=true&assetTypes=', { fixture: 'parent-assets-options.json', }).as('getParentAssetOptions')
+
+    cy.get('[data-testid="parentAsset-search-input"]').clear().type('asd')
+    cy.contains('Search').click()
+
+    cy.wait('@getParentAssetOptions')
+
+    cy.get('[data-testid="parentAsset"]').select('Fake Parent Asset 1')
+})
+
 And("I enter a value for field 'Address line 1'", () => {
     cy.get('[data-testid="address-line-1"]').type(addressLine1)
 })
