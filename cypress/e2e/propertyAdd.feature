@@ -1,7 +1,6 @@
 @authentication
 @common
-@processes
-@property
+@property-add
 @root
 
 Feature: Property Add
