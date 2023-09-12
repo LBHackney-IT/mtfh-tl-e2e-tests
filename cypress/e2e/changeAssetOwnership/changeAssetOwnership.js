@@ -95,11 +95,6 @@ Then("I see an error message to confirm the asset ownership has NOT been edited"
     cy.get('[data-testid="ownership-edit-failure"]').should('be.visible')
 })
 
-Then("I waits", () => {
-
-    cy.wait(10000)
-})
-
 // Helper methods
 
 const getAssetOwnershipEditUrlByGuid = (assetGuid) => {
