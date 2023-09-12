@@ -1,7 +1,6 @@
 @authentication
 @common
-@processes
-@property
+@property-edit
 @root
 
 Feature: Property Edit
