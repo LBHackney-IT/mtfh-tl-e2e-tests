@@ -48,11 +48,8 @@ Feature: Tenure page
         And I select a resident
         Then the resident details are displayed
 
-    # These tests seem to pass consistently in Circle CI, however when running locally, the Tenure Accordion cannot be found at times,
-    # and the tests have flaky results. We're currently (06/07/23) working on getting consistent passes on all MMH tests,
-    # and as I can't guaranteee these tests will never cause any flakiness on the Circle CI pipeline, I'm currently commenting these out (Angelo).
     @device
-    Scenario Outline: Mobile view
+    Scenario Outline: Mobile view - Devices with smaller screens
         Given I seeded the database with a tenure
         And I view a tenure
         When I am using a mobile viewport "<device>"
@@ -63,8 +60,6 @@ Feature: Tenure page
 
         Examples:
             | device      |
-            # | ipad-2        |
-            # | ipad-mini   |
             | iphone-3    |
             | iphone-4    |
             | iphone-5    |
@@ -75,12 +70,25 @@ Feature: Tenure page
             | iphone-x    |
             | iphone-xr   |
             | iphone-se2  |
-            # | macbook-11    |
-            # | macbook-13    |
-            # | macbook-15    |
-            # | macbook-16    |
-            # | samsung-note9 |
             | samsung-s10 |
+
+    @device
+    Scenario Outline: Mobile view - Devices with bigger screens
+        Given I seeded the database with a tenure
+        And I view a tenure
+        When I am using a mobile viewport "<device>"
+        Then the tenure details accordion information is displayed
+        Then the residents details accordion information is displayed
+
+        Examples:
+            | device        |
+            | ipad-2        |
+            | ipad-mini     |
+            | macbook-11    |
+            | macbook-13    |
+            | macbook-15    |
+            | macbook-16    |
+            | samsung-note9 |
 
     @Accessibility
     Scenario: Accessibility Testing
