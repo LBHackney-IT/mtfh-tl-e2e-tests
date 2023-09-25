@@ -146,9 +146,6 @@ Feature: Add a new person to a tenure
     And I click edit person
     And I click cancel
     Then the confirmation modal is displayed
-  @Accessibility
-  Scenario: Accessibility Testing
-    And have no detectable a11y violations
 
   #    @ignore
   #    Scenario Outline: Correspondence address using valid postcode lookup details

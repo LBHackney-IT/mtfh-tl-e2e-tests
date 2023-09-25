@@ -46,20 +46,8 @@ class PersonContactPageObjects {
         return cy.get('#contact-details-phone-number-field')
     }
 
-    phoneNumberMobileType() {
-        return cy.get('#contact-details-phone-type-mobile')
-    }
-
-    phoneNumberHomeType() {
-        return cy.get('#contact-details-phone-type-home')
-    }
-
-    phoneNumberWorkType() {
-        return cy.get('#contact-details-phone-type-work')
-    }
-
-    phoneNumberOtherType() {
-        return cy.get('#contact-details-phone-type-other')
+    phoneNumberContactTypeMainNumber() {
+        return cy.get('#contact-details-phone-type-field').select("Main number")
     }
 
     phoneNumberDescription() {
@@ -168,7 +156,7 @@ class PersonContactPageObjects {
     addPhoneNumber(value, description) {
         this.addPhoneNumberButton().click()
         this.phoneNumberField().type(value)
-        this.phoneNumberMobileType().click()
+        this.phoneNumberContactTypeMainNumber()
         this.phoneNumberDescription().type(description)
         this.savePhoneNumberButton().click()
     }
