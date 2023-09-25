@@ -46,24 +46,8 @@ class PersonContactPageObjects {
         return cy.get('#contact-details-phone-number-field')
     }
 
-    phoneNumberMobileType() {
-        return cy.get('#contact-details-phone-type-mobile')
-    }
-
     phoneNumberContactTypeMainNumber() {
         return cy.get('#contact-details-phone-type-field').select("Main number")
-    }
-
-    phoneNumberHomeType() {
-        return cy.get('#contact-details-phone-type-home')
-    }
-
-    phoneNumberWorkType() {
-        return cy.get('#contact-details-phone-type-work')
-    }
-
-    phoneNumberOtherType() {
-        return cy.get('#contact-details-phone-type-other')
     }
 
     phoneNumberDescription() {
