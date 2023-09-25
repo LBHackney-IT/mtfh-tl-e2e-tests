@@ -139,13 +139,3 @@ Feature: As an internal Hackney user
         And the status is Finish
         And I click on Continue button
         And I can see the text 'I confirm that the tenure investigation has been completed'
-
-
-
-
-
-
-
-
-
-

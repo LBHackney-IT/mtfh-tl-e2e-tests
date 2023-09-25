@@ -398,30 +398,6 @@ And("I enter a phone number {string}", (phoneNumber) => {
   personContactPage.phoneNumberField().type(phoneNumber);
 });
 
-And("I select a phone number type {string}", (phoneType) => {
-  switch (phoneType) {
-    case "Mobile":
-      personContactPage.phoneNumberMobileType().click();
-      break;
-
-    case "Work":
-      personContactPage.phoneNumberWorkType().click();
-      break;
-
-    case "Home":
-      personContactPage.phoneNumberHomeType().click();
-      break;
-
-    case "Other":
-      personContactPage.phoneNumberOtherType().click();
-      break;
-
-    default:
-      cy.log("Please select a valid phone number type");
-      break;
-  }
-});
-
 And("I enter a phone number description {string}", (phoneDescription) => {
   personContactPage.phoneNumberDescription().type(phoneDescription);
 });
@@ -903,7 +879,7 @@ When("I enter data email address and phone number", () => {
   //cy.contains(`Email address: ${emailAdd}`);
   cy.contains('Add a phone number').click();
   cy.get('#contact-details-phone-number-field').type(phoneNumber);
-  cy.get('#contact-details-phone-type-mobile').click();
+  cy.get('#contact-details-phone-type-field').select("Main number")
   cy.contains('Save phone number').click();
   changeOfName.buttonReturnToApplication().click();
 });
