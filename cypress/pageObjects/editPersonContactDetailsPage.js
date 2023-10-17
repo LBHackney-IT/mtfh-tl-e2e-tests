@@ -2,7 +2,6 @@ const envConfig = require('../../environment-config')
 
 class EditPersonContactDetailsPageObjects {
     visit(record) {
-        // cy.visit(`${envConfig.baseUrl}/tenure/${record}/edit/person/new`)
         cy.visit(`${envConfig.baseUrl}/person/${record}`)
         cy.injectAxe()
     }
