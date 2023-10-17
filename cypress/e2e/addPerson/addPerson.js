@@ -118,11 +118,6 @@ And('there is a merge conflict', () => {
   editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
 })
 
-When("I edit a person's contact details", () => {
-  cy.getPersonFixture().then((person) => {
-    addPersonPage.editPersonContactDetails(person.id)
-  })
-})
 
 And("I add up to 5 contact details of type {string}", (contactType) => {
   for (let i = 0; i < 5; i++) {

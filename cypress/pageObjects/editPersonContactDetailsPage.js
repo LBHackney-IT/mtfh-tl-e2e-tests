@@ -1,6 +1,6 @@
 const envConfig = require('../../environment-config')
 
-class EditPersonContactDetailsPage {
+class EditPersonContactDetailsPageObjects {
     visit(record) {
         // cy.visit(`${envConfig.baseUrl}/tenure/${record}/edit/person/new`)
         cy.visit(`${envConfig.baseUrl}/person/${record}`)
@@ -8,7 +8,7 @@ class EditPersonContactDetailsPage {
     }
 
     editPersonContactDetails(record) {
-        
+
         cy.visit(`${envConfig.baseUrl}/person/${record}/edit-contact-details`)
     }
 
@@ -254,4 +254,4 @@ class EditPersonContactDetailsPage {
         this.addPersonHeader().contains('Edit tenure')
     }
 }
-export default EditPersonContactDetailsPage
+export default EditPersonContactDetailsPageObjects

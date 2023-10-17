@@ -6,9 +6,6 @@ class AddPersonPageObjects {
         cy.injectAxe()
     }
 
-    editPersonContactDetails(record) {
-        cy.visit(`${envConfig.baseUrl}/person/${record}/edit/contact`)
-    }
 
     editPersonEqualityInformation(record) {
         cy.visit(`${envConfig.baseUrl}/person/${record}/edit/equality-information`)

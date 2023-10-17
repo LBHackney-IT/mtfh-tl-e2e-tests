@@ -2,13 +2,13 @@ import { And, Given, Then, When } from '@badeball/cypress-cucumber-preprocessor'
 import { queueDeletePersonWithId } from "../../../api/helpers"
 import { generateEqualityInformation } from '../../../api/models/requests/equalityDetailsModel'
 import guid from '../../helpers/commentText'
-import AddPersonPageObjects from '../../pageObjects/addPersonPage'
+import EditPersonContactDetailsPageObjects from '../../pageObjects/editPersonContactDetailsPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import { addTestRecordToDatabase } from '../common/common'
 
 const envConfig = require('../../../environment-config')
-const addPersonPage = new AddPersonPageObjects()
+const editPersonContactDetailsPage = new EditPersonContactDetailsPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 const personContactPage = new PersonContactPageObjects()
 const contactDetails = require('../../../api/contact-details')
@@ -16,7 +16,7 @@ const editEqualityDetails = require('../../../api/equality-information')
 const getEqualityDetails = require('../../../api/equality-information')
 
 And('the person has been added to the tenure', () => {
-  addPersonPage.pageAnnouncement().contains('Person added to tenure')
+  editPersonContactDetailsPage.pageAnnouncement().contains('Person added to tenure')
 })
 
 And('the person is added to the tenure page {string} {string} {string}', (title, firstName, middleName) => {
@@ -35,7 +35,7 @@ And('the person is added to the tenure page {string} {string} {string}', (title,
 
   const person = `${title} ${firstName} ${middleName} ${guid}`
   for (let i = 0; i < 10; i++) {
-    addPersonPage.mainContent().then(($body) => {
+    editPersonContactDetailsPage.mainContent().then(($body) => {
       if ($body.text().includes(guid)) {
         cy.contains(person).click()
       } else {
@@ -56,56 +56,56 @@ And('I am on the tenure page {string}', (tenureId) => {
 })
 
 And('I click the update person button', () => {
-  addPersonPage.updatePersonButton().click()
+  editPersonContactDetailsPage.updatePersonButton().click()
 })
 
 And(
   'the person has been updated {string} {string} {string}',
   (firstName, middleName, lastName) => {
-    addPersonPage.pageAnnouncement().contains('Person updated')
+    editPersonContactDetailsPage.pageAnnouncement().contains('Person updated')
     if (lastName === 'guid') {
       lastName = guid
     }
-    addPersonPage
+    editPersonContactDetailsPage
       .mainContent()
       .contains(`${firstName} ${middleName} ${lastName}`)
   },
 )
 
 And('the confirmation modal is displayed', () => {
-  addPersonPage.confirmationModal().should('be.visible')
-  addPersonPage.confirmationModal().contains('Yes')
-  addPersonPage.confirmationModal().contains('Cancel')
-  addPersonPage.confirmationModal().contains('Unsaved changes will be lost.')
+  editPersonContactDetailsPage.confirmationModal().should('be.visible')
+  editPersonContactDetailsPage.confirmationModal().contains('Yes')
+  editPersonContactDetailsPage.confirmationModal().contains('Cancel')
+  editPersonContactDetailsPage.confirmationModal().contains('Unsaved changes will be lost.')
 })
 
 And('the confirmation modal is not displayed', () => {
-  addPersonPage.confirmationModal().should('not.exist')
+  editPersonContactDetailsPage.confirmationModal().should('not.exist')
 })
 
 And('the person type options are not displayed', () => {
-  addPersonPage.tenureHolderRadioButton().should('not.exist')
-  addPersonPage.householdMemberRadioButton().should('not.exist')
+  editPersonContactDetailsPage.tenureHolderRadioButton().should('not.exist')
+  editPersonContactDetailsPage.householdMemberRadioButton().should('not.exist')
 })
 
 Then('the gender field is not displayed', () => {
-  addPersonPage.genderContainer().should('not.exist')
+  editPersonContactDetailsPage.genderContainer().should('not.exist')
 })
 
 And('the nationality field is not displayed', () => {
-  addPersonPage.nationalityContainer().should('not.exist')
+  editPersonContactDetailsPage.nationalityContainer().should('not.exist')
 })
 
 And('the national insurance field is not displayed', () => {
-  addPersonPage.nationalInsuranceNumberContainer().should('not.exist')
+  editPersonContactDetailsPage.nationalInsuranceNumberContainer().should('not.exist')
 })
 
 And('the add language options are not displayed', () => {
-  addPersonPage.addLanguageButton().should('not.exist')
+  editPersonContactDetailsPage.addLanguageButton().should('not.exist')
 })
 
 And('the add id options are not displayed', () => {
-  addPersonPage.addIdButton().should('not.exist')
+  editPersonContactDetailsPage.addIdButton().should('not.exist')
 })
 
 And('there is a merge conflict', () => {
@@ -113,14 +113,14 @@ And('there is a merge conflict', () => {
     req.headers['If-Match'] = '0'
   }).as('edit')
 
-  addPersonPage.updatePersonButton().click()
+  editPersonContactDetailsPage.updatePersonButton().click()
   cy.wait('@edit')
   editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
 })
 
 When("I edit a person's contact details", () => {
   cy.getPersonFixture().then((person) => {
-    addPersonPage.editPersonContactDetails(person.id)
+    editPersonContactDetailsPage.editPersonContactDetails(person.id)
   })
 })
 
@@ -275,33 +275,33 @@ And('I am on the contact details page', () => {
 })
 
 And('I click the save equality information button', () => {
-  addPersonPage.saveEqualityInformationButton().click()
+  editPersonContactDetailsPage.saveEqualityInformationButton().click()
 })
 
 Given("I edit a person's equality information", () => {
   cy.getPersonFixture().then(({ id }) => {
-    addPersonPage.editPersonEqualityInformation(id)
+    editPersonContactDetailsPage.editPersonEqualityInformation(id)
   })
 })
 
 Then('the equality information is displayed', () => {
-  addPersonPage.ageGroupSelectionBox().should('be.visible')
-  addPersonPage.provideUnpaidCareSelectionField().should('be.visible')
-  addPersonPage.ethnicitySelectionBox().should('be.visible')
-  addPersonPage.consideredDisabledSelectionField().should('be.visible')
-  addPersonPage.genderSelectionField().should('be.visible')
-  addPersonPage.genderDifferentToBirthSexSelectionField().should('be.visible')
-  addPersonPage.religionOrBeliefSelectionBox().should('be.visible')
-  addPersonPage.pregnancyOrMaternityLeaveSelectionField().should('be.visible')
-  addPersonPage.saveEqualityInformationButton().should('be.visible')
+  editPersonContactDetailsPage.ageGroupSelectionBox().should('be.visible')
+  editPersonContactDetailsPage.provideUnpaidCareSelectionField().should('be.visible')
+  editPersonContactDetailsPage.ethnicitySelectionBox().should('be.visible')
+  editPersonContactDetailsPage.consideredDisabledSelectionField().should('be.visible')
+  editPersonContactDetailsPage.genderSelectionField().should('be.visible')
+  editPersonContactDetailsPage.genderDifferentToBirthSexSelectionField().should('be.visible')
+  editPersonContactDetailsPage.religionOrBeliefSelectionBox().should('be.visible')
+  editPersonContactDetailsPage.pregnancyOrMaternityLeaveSelectionField().should('be.visible')
+  editPersonContactDetailsPage.saveEqualityInformationButton().should('be.visible')
 })
 
 Then('the preferred gender term field is displayed', () => {
-  addPersonPage.preferredGenderTermField().should('be.visible')
+  editPersonContactDetailsPage.preferredGenderTermField().should('be.visible')
 })
 
 Then('the preferred gender term field is not displayed', () => {
-  addPersonPage.preferredGenderTermField().should('not.be.visible')
+  editPersonContactDetailsPage.preferredGenderTermField().should('not.be.visible')
 })
 
 Given("the person's equality information is reset", () => {
@@ -328,11 +328,11 @@ Given("the person's equality information is reset", () => {
 })
 
 When('I select an age group {string}', (ageGroup) => {
-  addPersonPage.ageGroupSelectionBox().select(ageGroup)
+  editPersonContactDetailsPage.ageGroupSelectionBox().select(ageGroup)
 })
 
 Then('I select a carer option {string}', (carerOption) => {
-  addPersonPage
+  editPersonContactDetailsPage
     .provideUnpaidCareSelectionField()
     .within(() => {
       return cy.contains(carerOption)
@@ -341,7 +341,7 @@ Then('I select a carer option {string}', (carerOption) => {
 })
 
 And('I select a disability option {string}', (disabilityOption) => {
-  addPersonPage
+  editPersonContactDetailsPage
     .consideredDisabledSelectionField()
     .within(() => {
       return cy.contains(disabilityOption)
@@ -350,7 +350,7 @@ And('I select a disability option {string}', (disabilityOption) => {
 })
 
 And('I select an ethnicity {string}', (ethnicity) => {
-  addPersonPage.ethnicitySelectionBox().select(ethnicity)
+  editPersonContactDetailsPage.ethnicitySelectionBox().select(ethnicity)
 })
 
 And('I select a gender {string}', (gender) => {
@@ -366,11 +366,11 @@ And('I select a gender {string}', (gender) => {
 })
 
 And('I enter {string} into the gender term field', (genderTerm) => {
-  addPersonPage.preferredGenderTermField().type(genderTerm)
+  editPersonContactDetailsPage.preferredGenderTermField().type(genderTerm)
 })
 
 And('I select a gender identity option {string}', (genderIdentity) => {
-  addPersonPage
+  editPersonContactDetailsPage
     .genderDifferentToBirthSexSelectionField()
     .within(() => {
       return cy.contains(genderIdentity)
@@ -379,17 +379,17 @@ And('I select a gender identity option {string}', (genderIdentity) => {
 })
 
 And('I select a religion or belief {string}', (religionOrBelief) => {
-  addPersonPage.religionOrBeliefSelectionBox().select(religionOrBelief)
+  editPersonContactDetailsPage.religionOrBeliefSelectionBox().select(religionOrBelief)
 })
 
 And('I select a sexual orientation {string}', (sexualOrientation) => {
-  addPersonPage.sexualOrientationSelectionBox().select(sexualOrientation)
+  editPersonContactDetailsPage.sexualOrientationSelectionBox().select(sexualOrientation)
 })
 
 And(
   'I select a pregnancy or maternity option {string}',
   (pregnancyOrMaternityOption) => {
-    addPersonPage
+    editPersonContactDetailsPage
       .pregnancyOrMaternityLeaveSelectionField()
       .within(() => {
         return cy.contains(pregnancyOrMaternityOption)
@@ -399,19 +399,19 @@ And(
 )
 
 And('I click save equality information', () => {
-  addPersonPage.saveEqualityInformationButton().click()
+  editPersonContactDetailsPage.saveEqualityInformationButton().click()
 })
 
 Then('the equality information is saved {string}', (person) => {
-  addPersonPage.mainContent().contains('Person updated')
+  editPersonContactDetailsPage.mainContent().contains('Person updated')
 })
 
 And('the sexual orientation information is not displayed', () => {
-  addPersonPage.sexualOrientationSelectionBox().should('not.exist')
+  editPersonContactDetailsPage.sexualOrientationSelectionBox().should('not.exist')
 })
 
 Then('the sexual orientation information is displayed', () => {
-  addPersonPage.sexualOrientationSelectionBox().should('be.visible')
+  editPersonContactDetailsPage.sexualOrientationSelectionBox().should('be.visible')
 })
 
 And('the review changes option is visible', () => {
