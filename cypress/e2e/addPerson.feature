@@ -41,7 +41,7 @@ Feature: Add a new person to a tenure
     And I select a preferred last name "<preferredLastName>"
     And I enter a reason for creation
     And I click add person
-    And I am on the contact details page
+    And I am on the equality information page
 
     Examples:
       | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName |

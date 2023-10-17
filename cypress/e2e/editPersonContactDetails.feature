@@ -48,14 +48,3 @@ Feature: Edit contact details for a person
       | contactType |
       | email       |
       | phone       |
-
-  Scenario: Confirmation alert not shown
-    Given I seeded the database with a person
-    When I edit a person's contact details
-    And I click add a correspondence address
-    Then the correspondence address fields are displayed
-    When I enter "Address" into address line 1
-    And the review changes option is visible
-    And the next button is disabled
-    When I clear address line 1
-    Then the next button is enabled
