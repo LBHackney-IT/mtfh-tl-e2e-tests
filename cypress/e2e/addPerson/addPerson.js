@@ -4,14 +4,11 @@ import { generateEqualityInformation } from '../../../api/models/requests/equali
 import guid from '../../helpers/commentText'
 import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
-import PersonContactPageObjects from '../../pageObjects/personContactPage'
 import { addTestRecordToDatabase } from '../common/common'
 
 const envConfig = require('../../../environment-config')
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
-const personContactPage = new PersonContactPageObjects()
-const contactDetails = require('../../../api/contact-details')
 const editEqualityDetails = require('../../../api/equality-information')
 const getEqualityDetails = require('../../../api/equality-information')
 
@@ -116,153 +113,6 @@ And('there is a merge conflict', () => {
   addPersonPage.updatePersonButton().click()
   cy.wait('@edit')
   editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
-})
-
-When("I edit a person's contact details", () => {
-  cy.getPersonFixture().then((person) => {
-    addPersonPage.editPersonContactDetails(person.id)
-  })
-})
-
-And("I add up to 5 contact details of type {string}", (contactType) => {
-  for (let i = 0; i < 5; i++) {
-    cy.get('body').then(($body) => {
-      if (contactType === "email" && !$body.text().includes("Email address 5")) {
-        personContactPage.addEmailAddress("test@test.com", "test email description")
-      } else if (contactType === "phone" && !$body.text().includes("Phone number 5")) {
-        personContactPage.addPhoneNumber("01234567890", "test phone description")
-      }
-    })
-  }
-})
-
-And('I click add a correspondence address', () => {
-  personContactPage.addCorrespondenceAddressButton().click()
-})
-
-Then('the correspondence address fields are displayed', () => {
-  personContactPage.addressLineOneField().should('be.visible')
-  personContactPage.addressLineTwoField().should('be.visible')
-  personContactPage.addressLineThreeField().should('be.visible')
-  personContactPage.addressLineFourField().should('be.visible')
-  personContactPage.postcodeLookupButton().should('be.visible')
-  personContactPage.postcodeLookupField().should('be.visible')
-  personContactPage.postcodeField().should('be.visible')
-})
-
-When('I enter a postcode into the lookup field {string}', (postCode) => {
-  personContactPage.postcodeLookupField().type(postCode)
-})
-
-And('I click look up', () => {
-  personContactPage.postcodeLookupButton().click()
-})
-
-Then('the select address selection box is populated {string}', (postCode) => {
-  personContactPage.addressLineOneField().should('not.be.empty')
-  personContactPage.addressLineTwoField().should('not.be.empty')
-  personContactPage.addressLineThreeField().should('not.be.empty')
-  personContactPage.addressLineFourField().should('not.be.empty')
-  personContactPage.postcodeField().contains(postCode)
-})
-
-Then('an invalid postcode error is thrown', () => {
-  personContactPage.postcodeLookupErrorContainer().should('be.visible')
-  personContactPage
-    .postcodeLookupErrorContainer()
-    .contains('Please enter a valid postcode')
-})
-
-When('I enter {string} into address line 1', (address) => {
-  personContactPage.addressLineOneField().type(address)
-})
-
-When('I enter {string} into address line 2', (address) => {
-  personContactPage.addressLineTwoField().type(address)
-})
-
-When('I enter {string} into address line 3', (address) => {
-  personContactPage.addressLineThreeField().type(address)
-})
-
-When('I enter {string} into address line 4', (address) => {
-  personContactPage.addressLineFourField().type(address)
-})
-
-When('I enter {string} into the postcode field', (postCode) => {
-  personContactPage.postcodeField().type(postCode)
-})
-
-And('I click save correspondence address', () => {
-  personContactPage.saveAddressButton().click()
-})
-
-Then('the correspondence address is saved', () => {
-  personContactPage.confirmationMessage().should('be.visible')
-  personContactPage
-    .confirmationMessage()
-    .contains('Correspondence address saved')
-})
-
-Given('the person has no correspondence addresses', () => {
-  cy.getPersonFixture().then(({ id: personId }) => {
-
-    // GET the list of correspondence addresses for a person
-    contactDetails.getContactDetails(personId).then(getResponse => {
-      cy.log(`Status code ${getResponse.status} returned`)
-
-      if (getResponse.status === 200) {
-        const correspondenceAddresses = getResponse.body.results
-
-        // DELETE any existing correspondence addresses for a person
-        for (let i = 0; i < correspondenceAddresses.length; i++) {
-          if (
-            correspondenceAddresses[i].contactInformation.subType ===
-            'correspondenceAddress'
-          ) {
-            cy.log(`id=${correspondenceAddresses[i].id}`)
-            cy.log(`tid=${correspondenceAddresses[i].targetId}`)
-            contactDetails.deleteContactDetails(
-              correspondenceAddresses[i].id,
-              correspondenceAddresses[i].targetId,
-            ).then(deleteResponse => {
-              assert.deepEqual(deleteResponse.status, 200)
-            })
-          }
-        }
-      }
-    })
-  })
-})
-
-Given('I have the maximum number of {string} for a person', (contactType) => {
-  // Seems very unreliable
-  cy.getPersonFixture().then(({ id: personId }) => {
-    for (let i = 0; i < 5; i++) {
-      contactDetails.addContactDetails(
-        personId,
-        contactType
-      ).then(postResponse => {
-        assert.deepEqual(postResponse.status, 201)
-      })
-    }
-  });
-})
-
-Then('I cannot add any more contacts for {string}', (contactType) => {
-  if (contactType === 'email') {
-    personContactPage
-      .mainContent()
-      .contains('You cannot add more than 5 email addresses')
-    personContactPage.addEmailAddressButton().should('be.disabled')
-  }
-
-  if (contactType === 'phone') {
-    personContactPage
-      .mainContent()
-      .contains('You cannot add more than 5 phone numbers')
-    personContactPage.addPhoneNumberButton().should('be.disabled')
-  }
 })
 
 And('I am on the contact details page', () => {
@@ -402,7 +252,7 @@ And('I click save equality information', () => {
   addPersonPage.saveEqualityInformationButton().click()
 })
 
-Then('the equality information is saved {string}', (person) => {
+Then('the equality information is saved {string}', () => {
   addPersonPage.mainContent().contains('Person updated')
 })
 
@@ -412,24 +262,6 @@ And('the sexual orientation information is not displayed', () => {
 
 Then('the sexual orientation information is displayed', () => {
   addPersonPage.sexualOrientationSelectionBox().should('be.visible')
-})
-
-And('the review changes option is visible', () => {
-  personContactPage
-    .mainContent()
-    .contains('Review unsaved changes before continuing')
-})
-
-And('the next button is disabled', () => {
-  cy.contains('Next').should('be.disabled')
-})
-
-When('I clear address line 1', () => {
-  personContactPage.addressLineOneField().clear()
-})
-
-Then('the next button is enabled', () => {
-  cy.contains('Next').should('be.enabled')
 })
 
 Then("I browse to the 'Add Person to Tenure' page for the tenure", () => {
@@ -452,6 +284,3 @@ Then("I seed blank equality information to the database, for such person", () =>
     addTestRecordToDatabase("EqualityInformation", generateEqualityInformation(personGuid))
   })
 })
-
-
-
