@@ -115,9 +115,9 @@ And('there is a merge conflict', () => {
   editPersonPage.mergeConflictDialogBox().contains('Changes not saved')
 })
 
-And('I am on the equality information page', () => {
+And('I am on the contact details page', () => {
   cy.url()
-    .should('include', 'equality')
+    .should('include', 'contact')
     .then(url => {
       const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
       queueDeletePersonWithId(personId);
