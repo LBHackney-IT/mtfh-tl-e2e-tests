@@ -613,7 +613,7 @@ Then('I am on the create new tenure page {string}', (id) => {
   })
 })
 
-And('the patch details are displayed', () => {
+And("the property's patch details are displayed", () => {
   propertyPage.patchDetails().should('be.visible')
   propertyPage.patchDetails().contains('Patch')
   propertyPage.patchDetails().contains('Housing officer')

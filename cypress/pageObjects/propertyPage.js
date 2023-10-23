@@ -44,6 +44,10 @@ class PropertyPageObjects {
     patchDetails() {
         return cy.get('[class="mtfh-patch-details"]')
     }
+
+    managePatchesButton() {
+        return cy.get('[data-testid="manage-patches-button"]')
+    }
     
     commentDateTime() {
         return cy.get('.comment__date-time')
