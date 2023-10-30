@@ -33,18 +33,35 @@ Then('I cannot add any more contacts for {string}', (contactType) => {
   }
 })
 
-
 And("I add up to 5 contact details of type {string}", (contactType) => {
   for (let i = 0; i < 5; i++) {
-    cy.get('body').then(($body) => {
-      if (contactType === "email" && !$body.text().includes("Email address 5")) {
-        personContactPage.addEmailAddress("test@test.com", "test email description")
-      } else if (contactType === "phone" && !$body.text().includes("Phone number 5")) {
-        personContactPage.addPhoneNumber("01234567890", "test phone description")
+    cy.wait(500);
+
+    cy.get("body").then(($body) => {
+      if (contactType === "email") {
+        if (
+          $body.text().includes("You cannot add more than 5 email addresses")
+        ) {
+          return;
+        }
+        personContactPage.addEmailAddress(
+          "test@test.com",
+          "test email description"
+        );
       }
-    })
+
+      if (contactType === "phone") {
+        if ($body.text().includes("You cannot add more than 5 phone numbers")) {
+          return;
+        }
+        personContactPage.addPhoneNumber(
+          "01234567890",
+          "test phone description"
+        );
+      }
+    });
   }
-})
+});
 
 And('I click add a correspondence address', () => {
   personContactPage.addCorrespondenceAddressButton().click()

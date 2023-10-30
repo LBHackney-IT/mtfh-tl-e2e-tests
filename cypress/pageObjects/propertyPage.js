@@ -46,7 +46,7 @@ class PropertyPageObjects {
     }
 
     managePatchesButton() {
-        return cy.get('[data-testid="manage-patches-button"]')
+        return cy.get('[data-testid="all-patches-and-areas-button"]')
     }
     
     commentDateTime() {

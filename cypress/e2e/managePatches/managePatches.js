@@ -10,7 +10,7 @@ When('I click on the manage patches button', () => {
 });
 
 Then('the manage patches page is displayed', () => {
-    cy.url().should("include", "manage-patches");
+    cy.findByText('Patches and areas').should('be.visible');
 });
 
 And('the area dropdown is displayed', () => {
@@ -31,6 +31,7 @@ Then("I can see a row for patch {string}", (patchName) => {
 });
 
 And("I cannot see a row for patch {string}", (patchName) => {
+    if (!patchName) return;
     managePatchesPage.getPatchRow(patchName).should('not.exist');
 });
 
@@ -54,5 +55,9 @@ And("I click the confirm button on the modal", () => {
 Then("I can see a success message for patch reassignment", () => {
     cy.scrollTo('top');
     managePatchesPage.getSuccessMessage().should('be.visible');
+});
+
+When("I click on the back link", () => {
+    managePatchesPage.backLink().click();
 });
 

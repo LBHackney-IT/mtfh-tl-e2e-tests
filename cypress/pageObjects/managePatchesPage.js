@@ -2,8 +2,12 @@ const envConfig = require('../../environment-config')
 
 class ManagePatchesPageObjects {
     visit() {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.property}/manage-patches`)
+        cy.visit(`${envConfig.baseUrl}/${envConfig.property}/all-patches-and-areas`)
         cy.injectAxe()
+    }
+
+    backLink() {
+        return cy.get('[data-testid="back-link"]')
     }
 
     getAreaDropdown() {
