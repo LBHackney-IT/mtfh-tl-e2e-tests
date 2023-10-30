@@ -32,7 +32,6 @@ Feature: Property Page
     And I click on the view property button
     Then the property information is displayed
 
-  # TODO: Fix this test
   @Regression
   Scenario Outline: View property via person
     Given I seeded the database with a person with an active tenure
