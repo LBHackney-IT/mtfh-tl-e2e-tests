@@ -47,4 +47,10 @@ Feature: Edit contact details for a person
     Examples:
       | contactType |
       | email       |
-      | phone       |
+
+  Scenario Outline: Maximum phone numbers reached
+    Given I seeded the database with a person
+    Given the person has valid contact details
+    When I edit a person's contact details
+    And I add up to 5 contact details of type "phone"
+    Then I cannot add any more contacts for "phone"

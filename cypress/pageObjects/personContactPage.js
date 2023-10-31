@@ -42,20 +42,22 @@ class PersonContactPageObjects {
         return cy.contains('Add a phone number')
     }
 
-    phoneNumberField() {
-        return cy.get('#contact-details-phone-number-field')
+    phoneNumberFields() {
+        return cy.get('input[data-test="phone-number-input"]')
     }
 
     phoneNumberContactTypeMainNumber() {
-        return cy.get('#contact-details-phone-type-field').select("Main number")
+        return cy.get('select[data-test="phone-number-type-checkbox"]')
+        .last()
+        .select("Main number")
     }
 
-    phoneNumberDescription() {
-        return cy.get('#contact-details-phone-description-field')
+    phoneNumberDescriptions() {
+        return cy.get('input[data-test="phone-number-description-input"]')
     }
 
-    savePhoneNumberButton() {
-        return cy.contains('Save phone number')
+    saveChangesButton() {
+        return cy.contains('Save changes')
     }
 
     removeEmailAddressButton() {
@@ -155,10 +157,12 @@ class PersonContactPageObjects {
 
     addPhoneNumber(value, description) {
         this.addPhoneNumberButton().click()
-        this.phoneNumberField().type(value)
+
+        this.phoneNumberFields().last().type(`{selectall}{backspace}${value}`)
         this.phoneNumberContactTypeMainNumber()
-        this.phoneNumberDescription().type(description)
-        this.savePhoneNumberButton().click()
+        this.phoneNumberDescriptions().last().type(`{selectall}{backspace}${description}`)
+
+        this.saveChangesButton().click()
     }
 }
 
