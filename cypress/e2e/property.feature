@@ -16,6 +16,7 @@ Feature: Property Page
     When I view the property in MMH
     And the page breadcrumb is displayed
     And the property information is displayed
+    And the property's patch details are displayed
     And the tenure information is displayed
     When I click on the view tenure button
     Then tenure page is displayed
