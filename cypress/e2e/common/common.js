@@ -3,7 +3,7 @@ import {
   Given,
   Then,
   When,
-  defineParameterType
+  defineParameterType,
 } from "@badeball/cypress-cucumber-preprocessor";
 import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
@@ -34,7 +34,13 @@ import { searchPropertyResults } from "../../support/searchPropertyResults";
 import DynamoDb from "./DynamoDb";
 
 import { generateTenure } from "../../../api/models/requests/addTenureModel";
-import { asset, generateAsset, assetModelControlledSubmodels, defaultAssetLocation, assetCharacteristicsModel } from "../../../api/models/requests/createAssetModel";
+import {
+  asset,
+  generateAsset,
+  assetModelControlledSubmodels,
+  defaultAssetLocation,
+  assetCharacteristicsModel,
+} from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
 import { patch } from "../../../api/models/requests/patchModel";
 
@@ -52,15 +58,15 @@ const searchPage = new SearchPageObjects();
 const tenurePage = new TenurePageObjects();
 const changeOfNamePage = new ChangeOfNamePageObjects();
 const changeOfName = new ChangeOfNamePageObjects();
-const homePage = new HomePageObjects()
-const emailAdd = 'AutomationTest@test.com';
-const phoneNumber = '07788123456';
+const homePage = new HomePageObjects();
+const emailAdd = "AutomationTest@test.com";
+const phoneNumber = "07788123456";
 
 let dateCaptureDay;
 let dateCaptureTime;
 let personId = "";
 
-const endpoint = Cypress.env('PERSON_ENDPOINT')
+const endpoint = Cypress.env("PERSON_ENDPOINT");
 
 export const tenureToPersonTenure = (tenure) => ({
   id: tenure.id,
@@ -109,23 +115,23 @@ Given(
 );
 
 Given("I edit a tenure {string} {string}", (tenureId, tenureType) => {
-  getTenure(tenureId).then(response => {
-    cy.log(`Status code ${response.status} returned`)
-    assert.deepEqual(response.status, 200)
-    cy.log('etag captured!')
+  getTenure(tenureId).then((response) => {
+    cy.log(`Status code ${response.status} returned`);
+    assert.deepEqual(response.status, 200);
+    cy.log("etag captured!");
 
-    cy.log('Updating tenure...')
-    editTenure(tenureId, tenureType, response.headers.etag).then(response => {
-      cy.log(`Status code ${response.status} returned`)
-      assert.deepEqual(response.status, 204)
-      cy.log('Tenure updated!')
-    })
-  })
-})
+    cy.log("Updating tenure...");
+    editTenure(tenureId, tenureType, response.headers.etag).then((response) => {
+      cy.log(`Status code ${response.status} returned`);
+      assert.deepEqual(response.status, 204);
+      cy.log("Tenure updated!");
+    });
+  });
+});
 
 Given("I create a new person", () => {
   cy.log("Creating Person record");
-  person.createPerson().then(response => {
+  person.createPerson().then((response) => {
     cy.log(`Status code ${response.status} returned`);
     cy.log(`Person record ${response.body.id} created!`);
     assert.deepEqual(response.status, 201);
@@ -133,45 +139,49 @@ Given("I create a new person", () => {
   });
 });
 
-
 Given("I create a new {string} tenure", (tenureTypeCode) => {
   cy.log("Creating new tenure record").then(() => {
     return tenure.createTenure(tenureTypeCode).then((response) => {
       cy.log(`Tenure created!`);
-    })
-  })
+    });
+  });
 });
 
 Given("I create a person with new tenure", () => {
   cy.log("Creating Person record");
   cy.getTenureFixture().then(({ id: tenureId }) => {
-    cy.log('Tenure Id inside person request', tenureId)
-    person.createPersonWithNewTenure(tenureId).then(response => {
+    cy.log("Tenure Id inside person request", tenureId);
+    person.createPersonWithNewTenure(tenureId).then((response) => {
       cy.log(`Status code ${response.status} returned`);
       cy.log(`Person record ${response.body.id} created!`);
       assert.deepEqual(response.status, 201);
-      personId = response.body.id
+      personId = response.body.id;
     });
-  })
-
+  });
 });
 
 Given("I create person and add to a tenure {string}", (isResponsible) => {
   cy.getTenureFixture().then(({ id: tenureId }) => {
-    cy.log('Getting etag from the tenure...')
-    tenure.getTenure(tenureId).then(response => {
-      cy.log(`Tenure received`)
-      assert.deepEqual(response.status, 200)
+    cy.log("Getting etag from the tenure...");
+    tenure.getTenure(tenureId).then((response) => {
+      cy.log(`Tenure received`);
+      assert.deepEqual(response.status, 200);
 
       cy.log("Creating Person record");
-      cy.log('Tenure Id inside person request', tenureId)
-      tenure.addPersonToTenure(tenureId, isResponsible === "true", response.headers.etag).then(response => {
-        cy.log(`Status code ${response.status} returned`);
-        assert.deepEqual(response.status, 204);
-        cy.log(`Person added!`);
-      });
-    })
-  })
+      cy.log("Tenure Id inside person request", tenureId);
+      tenure
+        .addPersonToTenure(
+          tenureId,
+          isResponsible === "true",
+          response.headers.etag
+        )
+        .then((response) => {
+          cy.log(`Status code ${response.status} returned`);
+          assert.deepEqual(response.status, 204);
+          cy.log(`Person added!`);
+        });
+    });
+  });
 });
 
 Then("I want to view a person", async () => {
@@ -179,8 +189,8 @@ Then("I want to view a person", async () => {
   const response = await person.viewPerson(personId);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Person record ${personId} read!`);
-  cy.log(`${personId}`)
-  cy.log(endpoint)
+  cy.log(`${personId}`);
+  cy.log(endpoint);
   assert.deepEqual(response.status, 200);
 });
 
@@ -193,7 +203,7 @@ And("I want to edit a person", async () => {
 });
 
 And("I want to add contact details {string}", async (type) => {
-  cy.log(`Creating contact details for record ${personId}`)
+  cy.log(`Creating contact details for record ${personId}`);
   const response = await contactDetails.addContactDetails(personId, type);
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Contact details for record ${response.data.id} created!`);
@@ -227,15 +237,15 @@ Then("the page breadcrumb is displayed", () => {
   breadCrumb.should("be.visible");
 });
 
-And('I click on the breadcrumb', () => {
-  navigation.backButton().click()
-})
+And("I click on the breadcrumb", () => {
+  navigation.backButton().click();
+});
 
-Then('I am taken to the search page', () => {
-  cy.contains("Search").should('be.visible')
-})
+Then("I am taken to the search page", () => {
+  cy.contains("Search").should("be.visible");
+});
 
-And('I click on the view property button', () => {
+And("I click on the view property button", () => {
   //navigation.viewPropertyButton().click();
   // cy.get(':nth-child(10) > [data-layer="Content"]').click();
   cy.get(".lbh-heading-h2 > .govuk-link").click();
@@ -250,7 +260,7 @@ And("I click on the view property button for a person", () => {
   //     navigation.viewPropertyButton().click();
   //   }
   // });
-  cy.get(':nth-child(1) > .govuk-link').click();
+  cy.get(":nth-child(1) > .govuk-link").click();
 });
 
 // Page Header shared steps
@@ -295,7 +305,7 @@ When("I click on the radio button for {string}", (searchType) => {
     searchPage.tenureRadioButton().click();
   }
   if (searchPage === "Property") {
-    searchPage.propertyRadionButton().click()
+    searchPage.propertyRadionButton().click();
   }
 });
 
@@ -350,7 +360,8 @@ And("have no detectable a11y violations", () => {
   function axeTerminalLog(violations) {
     cy.task(
       "log",
-      `${violations.length} accessibility violation${violations.length === 1 ? "" : "s"
+      `${violations.length} accessibility violation${
+        violations.length === 1 ? "" : "s"
       } ${violations.length === 1 ? "was" : "were"} detected`
     );
 
@@ -457,27 +468,27 @@ And("I click edit person", () => {
 Then("I visit the 'Person details' page", () => {
   cy.getPersonFixture().then(({ id: personId }) => {
     personPage.visit(personId);
-  })
-})
+  });
+});
 
 And("I am on the 'Person details' page", () => {
   cy.getPersonFixture().then(({ id: personId }) => {
     cy.url().should("include", personId);
-  })
+  });
 });
 
-Then('the personal details are displayed on the sidebar', () => {
-  personPage.sidebar().contains('Date of birth')
-  personPage.sidebar().contains('Phone 1')
-  personPage.sidebar().contains('Email 1')
-  personPage.sidebar().contains('Correspondence address 1')
-})
+Then("the personal details are displayed on the sidebar", () => {
+  personPage.sidebar().contains("Date of birth");
+  personPage.sidebar().contains("Phone 1");
+  personPage.sidebar().contains("Email 1");
+  personPage.sidebar().contains("Correspondence address 1");
+});
 
 // Create/edit person page
 Given("I create a person for tenure", () => {
   cy.getTenureFixture().then((tenure) => {
     addPersonPage.visit(tenure.id);
-  })
+  });
 });
 
 And("I select a preferred middle name {string}", (preferredMiddleName) => {
@@ -526,265 +537,295 @@ Then("the activity history is correct", () => {
   activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
 });
 
-Then('the add a new person tenure page is correct', () => {
-  addPersonPage.addPersonPageIsDisplayed()
-})
+Then("the add a new person tenure page is correct", () => {
+  addPersonPage.addPersonPageIsDisplayed();
+});
 
 // Tenure page
-When('I view a tenure', () => {
+When("I view a tenure", () => {
   cy.getTenureFixture().then(({ id: tenureId }) => {
-    tenurePage.visit(tenureId)
-  })
+    tenurePage.visit(tenureId);
+  });
 
-  cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=*`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
-  cy.wait("@getNotes")
-})
+  cy.intercept("GET", `*/api/v2/notes?pageSize=5&targetId=*`, {
+    fixture: "asset-notes.json",
+    statusCode: 200,
+  }).as("getNotes");
+  cy.wait("@getNotes");
+});
 
-Then('the tenure information is displayed', () => {
+Then("the tenure information is displayed", () => {
   tenurePage.tenureDetailsContainer().should("be.visible");
   tenurePage.tenureDetailsContainer().contains("Status");
   tenurePage.tenureDetailsContainer().contains("Start date");
   tenurePage.tenureDetailsContainer().contains("End date");
   tenurePage.tenureDetailsContainer().contains("Type");
-})
+});
 
-Then('the message New tenure completed is displayed', () => {
+Then("the message New tenure completed is displayed", () => {
   //tenurePage.newTenureCompleted().should('be.visible');
-  cy.findAllByText('New tenure completed');
-})
+  cy.findAllByText("New tenure completed");
+});
 
-And('I click edit tenure', () => {
-  tenurePage.editTenureButton().click()
-})
+And("I click edit tenure", () => {
+  tenurePage.editTenureButton().click();
+});
 
-And('the edit tenure button is not displayed', () => {
-  tenurePage.editTenureButton().should('not.exist')
-})
+And("the edit tenure button is not displayed", () => {
+  tenurePage.editTenureButton().should("not.exist");
+});
 
 // Property page
 Given("I create a new property", async () => {
-  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" } }
-  await dynamoDb.deleteRecordFromDynamoDB(record)
+  const record = {
+    tableName: "Assets",
+    key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" },
+  };
+  await dynamoDb.deleteRecordFromDynamoDB(record);
   cy.log("Creating Property record");
   const response = await property.createProperty();
   cy.log(`Status code ${response.status} returned`);
   assert.deepEqual(response.status, 201);
   cy.log(`Property record ${response.data.id} created`);
   propertyId = response.data.id;
-})
+});
 
 Given("I create a new property {string}", async (type) => {
-  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" } }
-  await dynamoDb.deleteRecordFromDynamoDB(record)
+  const record = {
+    tableName: "Assets",
+    key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" },
+  };
+  await dynamoDb.deleteRecordFromDynamoDB(record);
   cy.log("Creating Property record");
   const response = await property.createProperty(type);
   cy.log(`Status code ${response.status} returned`);
   assert.deepEqual(response.status, 201);
   cy.log(`Property record ${response.data.id} created`);
   propertyId = response.data.id;
-})
+});
 
 Given("I create a new property with tenure", async () => {
-  const record = { tableName: "Assets", key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" } }
-  await dynamoDb.deleteRecordFromDynamoDB(record)
+  const record = {
+    tableName: "Assets",
+    key: { id: "6f22e9ae-3e8a-4e0e-af46-db02eb87f8e6" },
+  };
+  await dynamoDb.deleteRecordFromDynamoDB(record);
   cy.log("Creating Property record");
   const response = await property.createPropertyWithTenure();
   cy.log(`Status code ${response.status} returned`);
   assert.deepEqual(response.status, 201);
   cy.log(`Property record ${response.data.id} created`);
   propertyId = response.data.id;
-})
+});
 When("I view the property in MMH", () => {
   cy.getAssetFixture().then((asset) => {
     propertyPage.visit(asset.id);
-  })
+  });
 });
 
-Then('the property information is displayed', () => {
-  propertyPage.propertyViewSidebar().should('be.visible')
-  propertyPage.propertyViewSidebar().contains('Type')
-  propertyPage.propertyViewSidebar().contains('UPRN')
-  propertyPage.propertyViewSidebar().contains('Reference')
-})
+Then("the property information is displayed", () => {
+  propertyPage.propertyViewSidebar().should("be.visible");
+  propertyPage.propertyViewSidebar().contains("Type");
+  propertyPage.propertyViewSidebar().contains("UPRN");
+  propertyPage.propertyViewSidebar().contains("Reference");
+});
 
-Then('I am on the create new tenure page {string}', (id) => {
+Then("I am on the create new tenure page {string}", (id) => {
   cy.getAssetFixture().then(({ id: propertyId }) => {
-    cy.url().should('contain', `tenure/${id || propertyId}/add`)
-  })
-})
+    cy.url().should("contain", `tenure/${id || propertyId}/add`);
+  });
+});
 
-When('I click on the new tenure button', () => {
-  propertyPage.newTenureButton().click()
-})
-And('the residents information is displayed', () => {
-  tenurePage.residentsDetailsAreDisplayed()
-})
+When("I click on the new tenure button", () => {
+  propertyPage.newTenureButton().click();
+});
+And("the residents information is displayed", () => {
+  tenurePage.residentsDetailsAreDisplayed();
+});
 
-When('I click on the add new person to tenure button', () => {
-  tenurePage.addNewPersonToTenureButton().click()
-})
+When("I click on the add new person to tenure button", () => {
+  tenurePage.addNewPersonToTenureButton().click();
+});
 
-And('I click the modal cancel button', () => {
-  modal.cancelButton().click({ force: true })
-})
+And("I click the modal cancel button", () => {
+  modal.cancelButton().click({ force: true });
+});
 
-And('I click the confirm button', () => {
-  modal.confirmationButton().click({ force: true })
-})
+And("I click the confirm button", () => {
+  modal.confirmationButton().click({ force: true });
+});
 
-Then('the cancel modal is displayed', () => {
-  modal.modalBody().should('be.visible')
-})
+Then("the cancel modal is displayed", () => {
+  modal.modalBody().should("be.visible");
+});
 
-Then('the warning modal is displayed', () => {
-  modal.modalBody().should('be.visible')
-})
+Then("the warning modal is displayed", () => {
+  modal.modalBody().should("be.visible");
+});
 
-And('the modal confirms making the tenure inactive', () => {
-  modal.modalBody().contains('Are you sure you want to change the status of the tenure to inactive?')
-})
+And("the modal confirms making the tenure inactive", () => {
+  modal
+    .modalBody()
+    .contains(
+      "Are you sure you want to change the status of the tenure to inactive?"
+    );
+});
 
-And('the modal confirms making the tenure active', () => {
-  modal.modalBody().contains('Are you sure you want to change the status of the tenure to active?')
-})
+And("the modal confirms making the tenure active", () => {
+  modal
+    .modalBody()
+    .contains(
+      "Are you sure you want to change the status of the tenure to active?"
+    );
+});
 
-When('I click cancel on the modal', () => {
-  modal.cancelButton().click()
-})
+When("I click cancel on the modal", () => {
+  modal.cancelButton().click();
+});
 
-And('I click yes on the modal', () => {
-  modal.confirmationButton().click()
-})
+And("I click yes on the modal", () => {
+  modal.confirmationButton().click();
+});
 
 // Add person
-And('I select a title {string}', (title) => {
-  addPersonPage.personTitleSelection().select(title)
-})
+And("I select a title {string}", (title) => {
+  addPersonPage.personTitleSelection().select(title);
+});
 
-When('I select person type {string}', (personType) => {
-  if (personType === 'Named tenure holder') {
-    addPersonPage.tenureHolderRadioButton().click()
+When("I select person type {string}", (personType) => {
+  if (personType === "Named tenure holder") {
+    addPersonPage.tenureHolderRadioButton().click();
   }
-  if (personType === 'Household member') {
-    addPersonPage.householdMemberRadioButton().click()
+  if (personType === "Household member") {
+    addPersonPage.householdMemberRadioButton().click();
   }
-})
+});
 
-And('I enter a first name {string}', (firstName) => {
-  addPersonPage.firstNameContainer().clear()
-  addPersonPage.firstNameContainer().type(firstName)
-})
+And("I enter a first name {string}", (firstName) => {
+  addPersonPage.firstNameContainer().clear();
+  addPersonPage.firstNameContainer().type(firstName);
+});
 
-And('I enter a middle name {string}', (middleName) => {
-  addPersonPage.middleNameContainer().clear()
-  addPersonPage.middleNameContainer().type(middleName)
-})
+And("I enter a middle name {string}", (middleName) => {
+  addPersonPage.middleNameContainer().clear();
+  addPersonPage.middleNameContainer().type(middleName);
+});
 
-And('I enter a last name {string}', (lastName) => {
-  if (lastName === 'guid') {
-    lastName = guid
+And("I enter a last name {string}", (lastName) => {
+  if (lastName === "guid") {
+    lastName = guid;
   }
-  addPersonPage.lastNameContainer().clear()
-  addPersonPage.lastNameContainer().type(lastName)
-})
+  addPersonPage.lastNameContainer().clear();
+  addPersonPage.lastNameContainer().type(lastName);
+});
 
-And('I enter a date of birth {string} {string} {string}', (day, month, year) => {
-  addPersonPage.dateOfBirthDayContainer().clear()
-  addPersonPage.dateOfBirthDayContainer().type(day)
-  addPersonPage.dateOfBirthMonthContainer().clear()
-  addPersonPage.dateOfBirthMonthContainer().type(month)
-  addPersonPage.dateOfBirthYearContainer().clear()
-  addPersonPage.dateOfBirthYearContainer().type(year)
-})
+And(
+  "I enter a date of birth {string} {string} {string}",
+  (day, month, year) => {
+    addPersonPage.dateOfBirthDayContainer().clear();
+    addPersonPage.dateOfBirthDayContainer().type(day);
+    addPersonPage.dateOfBirthMonthContainer().clear();
+    addPersonPage.dateOfBirthMonthContainer().type(month);
+    addPersonPage.dateOfBirthYearContainer().clear();
+    addPersonPage.dateOfBirthYearContainer().type(year);
+  }
+);
 
-Then('the form error container is displayed', () => {
-  addPersonPage.addPersonFormErrorContainer().should('be.visible')
-  addPersonPage.errorSummaryBody().contains('This date cannot be in the future')
-})
+Then("the form error container is displayed", () => {
+  addPersonPage.addPersonFormErrorContainer().should("be.visible");
+  addPersonPage
+    .errorSummaryBody()
+    .contains("This date cannot be in the future");
+});
 
-And('I enter a place of birth {string}', (placeOfBirth) => {
-  addPersonPage.placeOfBirthContainer().clear()
-  addPersonPage.placeOfBirthContainer().type(placeOfBirth)
-})
+And("I enter a place of birth {string}", (placeOfBirth) => {
+  addPersonPage.placeOfBirthContainer().clear();
+  addPersonPage.placeOfBirthContainer().type(placeOfBirth);
+});
 
-And('I select a preferred title {string}', (preferredTitle) => {
-  addPersonPage.preferredTitleContainer().select(preferredTitle)
-})
+And("I select a preferred title {string}", (preferredTitle) => {
+  addPersonPage.preferredTitleContainer().select(preferredTitle);
+});
 
-And('I select a preferred first name {string}', (preferredFirstName) => {
-  addPersonPage.preferredFirstNameContainer().clear()
-  addPersonPage.preferredFirstNameContainer().type(preferredFirstName)
-})
+And("I select a preferred first name {string}", (preferredFirstName) => {
+  addPersonPage.preferredFirstNameContainer().clear();
+  addPersonPage.preferredFirstNameContainer().type(preferredFirstName);
+});
 
-And('the named tenure holder button is not active', () => {
-  addPersonPage.tenureHolderRadioButton().should('have.attr', 'disabled')
-})
+And("the named tenure holder button is not active", () => {
+  addPersonPage.tenureHolderRadioButton().should("have.attr", "disabled");
+});
 
-And('the named tenure holder button is active', () => {
-  addPersonPage.tenureHolderRadioButton().should('have.attr', 'disabled')
-})
+And("the named tenure holder button is active", () => {
+  addPersonPage.tenureHolderRadioButton().should("have.attr", "disabled");
+});
 
-And('I remove one of the tenure holders', () => {
-  addPersonPage.removePersonFromTenure().click()
-})
+And("I remove one of the tenure holders", () => {
+  addPersonPage.removePersonFromTenure().click();
+});
 
-And('I click the next button', () => {
-  cy.contains('Next').click()
+And("I click the next button", () => {
+  cy.contains("Next").click();
 });
 
 // Given("I am on the MMH home page", () => {
 //   changeOfNamePage.visitHomePage();
 // });
 
-Given('I am on the MMH home page', () => {
-  homePage.visit()
-  homePage.iAmOnTheHomePage()
-})
+Given("I am on the MMH home page", () => {
+  homePage.visit();
+  homePage.iAmOnTheHomePage();
+});
 When("I enter {string} as search criteria", (textSearch) => {
-  changeOfNamePage.textSearch().should('exist');
+  changeOfNamePage.textSearch().should("exist");
   changeOfNamePage.searchField().clear().type(textSearch);
 });
 
 When("I select {string} and click on search button", (entity) => {
   switch (entity) {
-    case 'Person':
+    case "Person":
       changeOfNamePage.radiobuttonPerson().click();
       changeOfNamePage.searchButton().click();
       break;
-    case 'property':
+    case "property":
       changeOfNamePage.radiobuttonProperty().click();
       changeOfNamePage.searchButton().click();
       break;
-    case 'Tenure':
+    case "Tenure":
       changeOfNamePage.radiobuttonTenure().click();
       changeOfNamePage.searchButton().click();
       break;
   }
-
 });
 Then("I am on the Person search results page for {string}", (personSearch) => {
-  cy.findAllByText('Search Results').should('exist');
-  cy.get('#limit-field').select('40 items');//.click();
+  cy.findAllByText("Search Results").should("exist");
+  cy.get("#limit-field").select("40 items"); //.click();
   searchPersonResults(personSearch);
 });
-Then("I am on the Property search results page for {string}", (propertySearch) => {
-  cy.findAllByText('Search Results').should('exist');
-  cy.get('#limit-field').select('40 items');//.click();
-  searchPropertyResults(propertySearch);
-})
+Then(
+  "I am on the Property search results page for {string}",
+  (propertySearch) => {
+    cy.findAllByText("Search Results").should("exist");
+    cy.get("#limit-field").select("40 items"); //.click();
+    searchPropertyResults(propertySearch);
+  }
+);
 When("I select person", () => {
-  cy.get('@searchPersonResult').then(res => {
+  cy.get("@searchPersonResult").then((res) => {
     for (let i = 0; i < res.results.persons.length; i++) {
       let person = res.results.persons[i];
       if (person.tenures.length === 1) {
-        if (person.tenures[0].type === "Secure" && person.tenures[0].isActive === true) {
+        if (
+          person.tenures[0].type === "Secure" &&
+          person.tenures[0].isActive === true
+        ) {
           cy.log(person.firstname);
           let title;
-          if (person.title === 'Ms' || person.title === 'Mrs') {
-            title = person.title + "."
+          if (person.title === "Ms" || person.title === "Mrs") {
+            title = person.title + ".";
           } else title = person.title;
           let fullname = title + " " + person.firstname + " " + person.surname;
-          cy.findByRole('link', { name: fullname }).click();
+          cy.findByRole("link", { name: fullname }).click();
           break;
         } else {
           i++;
@@ -795,18 +836,21 @@ When("I select person", () => {
 });
 
 When("I select person who is InActive", () => {
-  cy.get('@searchPersonResult').then(res => {
+  cy.get("@searchPersonResult").then((res) => {
     for (let i = 0; i < res.results.persons.length; i++) {
       let person = res.results.persons[i];
       if (person.tenures.length === 1) {
-        if (person.tenures[0].type === "Secure" && person.tenures[0].isActive === false) {
+        if (
+          person.tenures[0].type === "Secure" &&
+          person.tenures[0].isActive === false
+        ) {
           cy.log(person.firstname);
           let title;
-          if (person.title === 'Ms' || person.title === 'Mrs') {
-            title = person.title + "."
+          if (person.title === "Ms" || person.title === "Mrs") {
+            title = person.title + ".";
           } else title = person.title;
           let fullname = title + " " + person.firstname + " " + person.surname;
-          cy.findByRole('link', { name: fullname }).click();
+          cy.findByRole("link", { name: fullname }).click();
           break;
         } else {
           i++;
@@ -818,76 +862,90 @@ When("I select person who is InActive", () => {
 //property
 
 When("I select person and click on checkbox", () => {
-  cy.get('@searchPersonResult').then(res => {
+  cy.get("@searchPersonResult").then((res) => {
     for (const person of res.results.persons) {
       let title = person.title;
-      if (['Ms', 'Mrs'].includes(title)) {
+      if (["Ms", "Mrs"].includes(title)) {
         title = title + ".";
       }
       const fullname = `${title} ${person.firstname} ${person.surname}`;
-      cy.findByRole('link', { name: fullname }).click();
+      cy.findByRole("link", { name: fullname }).click();
       break;
     }
   });
-})
+});
 When("I select property", () => {
-  cy.get(':nth-child(1) > .mtfh-search-card > .mtfh-link-overlay > .govuk-link').click();
-})
+  cy.get(
+    ":nth-child(1) > .mtfh-search-card > .mtfh-link-overlay > .govuk-link"
+  ).click();
+});
 Then("I can see the same comments in the Person details page", () => {
-  cy.contains('Test Comment 123');
-})
+  cy.contains("Test Comment 123");
+});
 
 Then("I can see the same comments in the Property details page", () => {
-  cy.contains('Test Comment 123');
+  cy.contains("Test Comment 123");
 });
 
 When("I click on Save email address without entering any data", () => {
-  cy.get('.mtfh-fieldset__content > :nth-child(1) > .govuk-button').click();
-  cy.contains('Save email address').click();
+  cy.get(".mtfh-fieldset__content > :nth-child(1) > .govuk-button").click();
+  cy.contains("Save email address").click();
 });
 Then("Validation error message is displayed for email address", () => {
-  cy.get('#contact-details-email-address-error').should('contain', 'You must enter an email address to proceed');
+  cy.get("#contact-details-email-address-error").should(
+    "contain",
+    "You must enter an email address to proceed"
+  );
 });
 When("I click on Save Phone number without entering any data", () => {
-  cy.get('.mtfh-fieldset__content > :nth-child(2) > .govuk-button').click();
-  cy.contains('Save phone number').click();
+  cy.contains("Add a phone number").click();
+  cy.contains("Save changes").click();
 });
 Then("Validation error message is displayed for phone number", () => {
-  cy.get('#contact-details-phone-number-error').should('contain', 'You must enter a phone number to proceed');
-  cy.get('#contact-details-phone-type-error').should('contain', 'You must select an option to proceed');
-  cy.get('.lbh-dialog__close > svg').click();
+  cy.contains("You must enter a phone number to proceed");
+  cy.contains("You must select an option to proceed");
+
+  cy.get(".lbh-dialog__close > svg").click();
 });
 When("I click on the link 'the contact details'", () => {
-  cy.contains('the contact details,').click();
+  cy.contains("the contact details,").click();
 });
 
 Then("{string} modal dialog is displayed", (header) => {
-  modal.modalBody().should('contain', header);
-  modal.modalBody().should('contain', 'Add an email address');
-  changeOfName.buttonReturnToApplication().should('exist');
+  modal.modalBody().should("contain", header);
+  modal.modalBody().should("contain", "Add an email address");
+  changeOfName.buttonReturnToApplication().should("exist");
 });
 When("I select Return to Application", () => {
   changeOfName.buttonReturnToApplication().click();
 });
 Then("modal dialog is closed and I am on the supporting documents page", () => {
-  changeOfName.statusActiveCheck().should('contain.text', "Request Documents");
+  changeOfName.statusActiveCheck().should("contain.text", "Request Documents");
 });
 When("I enter data email address and phone number", () => {
-  cy.get('.mtfh-fieldset__content > :nth-child(1) > .govuk-button').click();
+  cy.get(".mtfh-fieldset__content > :nth-child(1) > .govuk-button").click();
   changeOfName.emailAddress().clear().type(emailAdd);
-  cy.contains('Save email address').click();
-  //cy.contains(`Email address: ${emailAdd}`);
-  cy.contains('Add a phone number').click();
-  cy.get('#contact-details-phone-number-field').type(phoneNumber);
-  cy.get('#contact-details-phone-type-field').select("Main number")
-  cy.contains('Save phone number').click();
+  cy.contains("Save email address").click();
+
+  cy.contains("Add a phone number").click();
+  cy.get("#contact-details-phone-number-field").type(phoneNumber);
+  cy.get("#contact-details-phone-type-field").select("Main number");
+
+  cy.get('input[data-test="phone-number-input"]').type(
+    `{selectall}{backspace}${phoneNumber}`
+  );
+  cy.get('select[data-test="phone-number-type-checkbox"]').select(
+    "Main number"
+  );
+
+  cy.contains("Save changes").click();
   changeOfName.buttonReturnToApplication().click();
 });
 And("I click on Remove email address and Remove phone number", () => {
-  cy.get('[data-testid=button-remove-email]').click();
-  cy.get('[data-testid=button-confirm-remove-email]').click();
-  cy.get('[data-testid=button-remove-phone]').click();
-  cy.get('[data-testid=button-confirm-remove-phone]').click();
+  cy.get("[data-testid=button-remove-email]").click();
+  cy.get("[data-testid=button-confirm-remove-email]").click();
+  cy.get("[data-testid=button-remove-phone]").click();
+  cy.get("[data-testid=button-confirm-remove-phone]").click();
   changeOfName.buttonReturnToApplication().click();
   // contactDetails.getContactDetails(personId).then(getResponse => {
   //   cy.log(`Status code ${getResponse.status} returned`)
@@ -919,37 +977,41 @@ And("I click on Remove email address and Remove phone number", () => {
 // });
 
 Then("email address and phone number are null", () => {
-  cy.contains(emailAdd).should('not.exist');
-  cy.contains(phoneNumber).should('not.exist');
-})
+  cy.contains(emailAdd).should("not.exist");
+  cy.contains(phoneNumber).should("not.exist");
+});
 
 Given("the person has a correspondence address", () => {
   cy.getPersonFixture().then((person) => {
     const contactInformation = {
-      "contactType": "address",
-      "subType": "correspondenceAddress",
-      "value": "SHELTER 30M FROM VOODOO RAYS UNIT 1-3 BOXPARK RETAIL MALL2-10 BETHNAL GREEN ROAD 8M FRO E1 6AW",
-      "description": null,
-      "addressExtended": {
-        "uprn": "1000123456789",
-        "isOverseasAddress": false,
-        "overseasAddress": null,
-        "addressLine1": "SHELTER 30M FROM VOODOO RAYS",
-        "addressLine2": "UNIT 1-3",
-        "addressLine3": "BOXPARK RETAIL MALL2-10",
-        "addressLine4": "BETHNAL GREEN ROAD 8M FRO",
-        "postCode": "E1 6AW"
-      }
-    }
-    addContactDetails(person.id, undefined, contactInformation)
-  })
-})
+      contactType: "address",
+      subType: "correspondenceAddress",
+      value:
+        "SHELTER 30M FROM VOODOO RAYS UNIT 1-3 BOXPARK RETAIL MALL2-10 BETHNAL GREEN ROAD 8M FRO E1 6AW",
+      description: null,
+      addressExtended: {
+        uprn: "1000123456789",
+        isOverseasAddress: false,
+        overseasAddress: null,
+        addressLine1: "SHELTER 30M FROM VOODOO RAYS",
+        addressLine2: "UNIT 1-3",
+        addressLine3: "BOXPARK RETAIL MALL2-10",
+        addressLine4: "BETHNAL GREEN ROAD 8M FRO",
+        postCode: "E1 6AW",
+      },
+    };
+    addContactDetails(person.id, undefined, contactInformation);
+  });
+});
 
 Given("the person has valid contact details", () => {
   cy.getPersonFixture().then((person) => {
-    cy.intercept('GET', `*/api/v2/contactDetails?targetId=${person.id}`, { fixture: "contact-details.json", statusCode: 200 }).as('getContactDetails')
-  })
-})
+    cy.intercept("GET", `*/api/v2/contactDetails?targetId=${person.id}`, {
+      fixture: "contact-details.json",
+      statusCode: 200,
+    }).as("getContactDetails");
+  });
+});
 
 And("the details email address and phone number are displayed", () => {
   cy.contains(emailAdd);
@@ -957,34 +1019,37 @@ And("the details email address and phone number are displayed", () => {
 });
 
 Then("Status Stepper is at {string}", (status) => {
-  changeOfName.statusActiveCheck().should('be.visible');
-  changeOfName.statusActiveCheck().should('contain.text', status);
+  changeOfName.statusActiveCheck().should("be.visible");
+  changeOfName.statusActiveCheck().should("contain.text", status);
 });
 
 And("I can see the text add the contact details", () => {
-  cy.contains('Please add the contact details, it will automatically update the tenant’s contact details as well.');
+  cy.contains(
+    "Please add the contact details, it will automatically update the tenant’s contact details as well."
+  );
 });
 
 // Helper methods
 
 export const getAssetViewUrlByGuid = (assetGuid) => {
-  return `${envConfig.baseUrl}/property/${assetGuid}`
-}
+  return `${envConfig.baseUrl}/property/${assetGuid}`;
+};
 
 // This methods adds a temporary database record to the provided database table, and adds an entry to recordsToDelete.json
 export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
   cy.log("Seeding database").then(async () => {
-    cy.log(`Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`)
+    cy.log(
+      `Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`
+    );
     return new Cypress.Promise((resolve) => {
-      DynamoDb.createRecord(dbTableName, testDbRecord)
-        .then(() => {
-          resolve()
-        })
+      DynamoDb.createRecord(dbTableName, testDbRecord).then(() => {
+        resolve();
+      });
     }).then(() => {
       cy.log("Database seeded!");
-    })
-  })
-}
+    });
+  });
+};
 
 // Database seed methods
 
@@ -993,7 +1058,10 @@ Given("I seeded the database", () => {
   const assetModel = asset(patchModel);
   const personModel1 = person();
   const personModel2 = person();
-  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+  const tenureModel = generateTenure({}, assetModel, [
+    personModel1,
+    { isResponsible: true, personTenureType: "Tenant", ...personModel2 },
+  ]);
 
   const personTenure = {
     id: tenureModel.id,
@@ -1005,7 +1073,7 @@ Given("I seeded the database", () => {
     isActive: false,
     type: tenureModel.tenureType.description,
     propertyReference: tenureModel.tenuredAsset.propertyReference,
-  }
+  };
 
   personModel1.tenures.push(personTenure);
   personModel2.tenures.push(personTenure);
@@ -1016,30 +1084,30 @@ Given("I seeded the database", () => {
     paymentReference: tenureModel.paymentReference,
     startOfTenureDate: tenureModel.startOfTenureDate,
     type: tenureModel.tenureType.description,
-  }
+  };
 
-  addTestRecordToDatabase("PatchesAndAreas", patchModel)
-  addTestRecordToDatabase("Assets", assetModel)
-  addTestRecordToDatabase("TenureInformation", tenureModel)
-  addTestRecordToDatabase("Persons", personModel1)
-  addTestRecordToDatabase("Persons", personModel2)
+  addTestRecordToDatabase("PatchesAndAreas", patchModel);
+  addTestRecordToDatabase("Assets", assetModel);
+  addTestRecordToDatabase("TenureInformation", tenureModel);
+  addTestRecordToDatabase("Persons", personModel1);
+  addTestRecordToDatabase("Persons", personModel2);
 });
 
-
-
 const seedDatabaseWithTenure = (isActive) => {
-  const assetModel = generateAsset()
+  const assetModel = generateAsset();
   const personModel1 = person();
   const personModel2 = person();
   const tenureModel = generateTenure(
-    {}, 
-    assetModel, 
-    [personModel1, 
-        { isResponsible: true, personTenureType: "Tenant", ...personModel2 }], 
-        undefined, 
-        "1990-10-13", 
-        isActive ? "3050-10-13" : "1998-10-13"
-);
+    {},
+    assetModel,
+    [
+      personModel1,
+      { isResponsible: true, personTenureType: "Tenant", ...personModel2 },
+    ],
+    undefined,
+    "1990-10-13",
+    isActive ? "3050-10-13" : "1998-10-13"
+  );
 
   // Add tenure to persons
   const personTenure = {
@@ -1052,7 +1120,7 @@ const seedDatabaseWithTenure = (isActive) => {
     isActive: isActive,
     type: tenureModel.tenureType.description,
     propertyReference: tenureModel.tenuredAsset.propertyReference,
-  }
+  };
 
   personModel1.tenures.push(personTenure);
   personModel2.tenures.push(personTenure);
@@ -1064,33 +1132,36 @@ const seedDatabaseWithTenure = (isActive) => {
     paymentReference: tenureModel.paymentReference,
     startOfTenureDate: tenureModel.startOfTenureDate,
     type: tenureModel.tenureType.description,
-  }
+  };
 
-  addTestRecordToDatabase("Assets", assetModel)
-  addTestRecordToDatabase("TenureInformation", tenureModel)
-  addTestRecordToDatabase("Persons", personModel1)
-  addTestRecordToDatabase("Persons", personModel2)
+  addTestRecordToDatabase("Assets", assetModel);
+  addTestRecordToDatabase("TenureInformation", tenureModel);
+  addTestRecordToDatabase("Persons", personModel1);
+  addTestRecordToDatabase("Persons", personModel2);
 };
 
 Given("I seeded the database with a tenure", () => {
-    seedDatabaseWithTenure(true);
-})
+  seedDatabaseWithTenure(true);
+});
 
 Given("I seeded the database with an asset with a previous tenure", () => {
-    seedDatabaseWithTenure(false);
+  seedDatabaseWithTenure(false);
 });
 
 Given("I seeded the database with a person", () => {
   const testPerson = person();
-  addTestRecordToDatabase("Persons", testPerson)
-})
+  addTestRecordToDatabase("Persons", testPerson);
+});
 
 Given("I seeded the database with a person with an active tenure", () => {
   const patchModel = patch;
-  const assetModel = generateAsset(undefined, undefined, [patchModel])
+  const assetModel = generateAsset(undefined, undefined, [patchModel]);
   const personModel1 = person();
   const personModel2 = person();
-  const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: true, personTenureType: "Tenant", ...personModel2 }]);
+  const tenureModel = generateTenure({}, assetModel, [
+    personModel1,
+    { isResponsible: true, personTenureType: "Tenant", ...personModel2 },
+  ]);
 
   const personTenure = {
     id: tenureModel.id,
@@ -1102,7 +1173,7 @@ Given("I seeded the database with a person with an active tenure", () => {
     isActive: true,
     type: tenureModel.tenureType.description,
     propertyReference: tenureModel.tenuredAsset.propertyReference,
-  }
+  };
 
   personModel1.tenures.push(personTenure);
   personModel2.tenures.push(personTenure);
@@ -1113,65 +1184,71 @@ Given("I seeded the database with a person with an active tenure", () => {
     paymentReference: tenureModel.paymentReference,
     startOfTenureDate: tenureModel.startOfTenureDate,
     type: tenureModel.tenureType.description,
-  }
+  };
 
-  addTestRecordToDatabase("Assets", assetModel)
-  addTestRecordToDatabase("TenureInformation", tenureModel)
-  addTestRecordToDatabase("Persons", personModel1)
-  addTestRecordToDatabase("Persons", personModel2)
-})
-
-Given("I seeded an asset with {string} asset characteristics", (acCompleteness) => {
-  cy.log(`Creating asset with ${acCompleteness} asset characteristics`)
-  const isFullyPopulated = acCompleteness === "populated";
-  const assetLocation = { ...defaultAssetLocation, totalBlockFloors: 5 };
-  const assetCharacteristics = isFullyPopulated ? assetCharacteristicsModel() : { yearConstructed: "1984" };
-  const assetModel = assetModelControlledSubmodels({ assetLocation, assetCharacteristics });
-
-  addTestRecordToDatabase("Assets", assetModel)
+  addTestRecordToDatabase("Assets", assetModel);
+  addTestRecordToDatabase("TenureInformation", tenureModel);
+  addTestRecordToDatabase("Persons", personModel1);
+  addTestRecordToDatabase("Persons", personModel2);
 });
+
+Given(
+  "I seeded an asset with {string} asset characteristics",
+  (acCompleteness) => {
+    cy.log(`Creating asset with ${acCompleteness} asset characteristics`);
+    const isFullyPopulated = acCompleteness === "populated";
+    const assetLocation = { ...defaultAssetLocation, totalBlockFloors: 5 };
+    const assetCharacteristics = isFullyPopulated
+      ? assetCharacteristicsModel()
+      : { yearConstructed: "1984" };
+    const assetModel = assetModelControlledSubmodels({
+      assetLocation,
+      assetCharacteristics,
+    });
+
+    addTestRecordToDatabase("Assets", assetModel);
+  }
+);
 
 Given("I seeded the database with an asset", () => {
   const testAsset = generateAsset();
   addTestRecordToDatabase("Assets", testAsset);
-})
+});
 
 // Database data teardown
 
 beforeEach(() => {
   const filename = "cypress/fixtures/recordsToDelete.json";
-  cy.readFile(filename)
-    .then(recordsToDelete => {
-      if (recordsToDelete.length) {
-
-        return new Cypress.Promise((resolve) => {
-          Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))
-            .then(() => {
-              resolve()
-            })
-        }).then(() => {
-          cy.writeFile(filename, []);
-          cy.log("Test database records cleared!")
-        })
-      }
-    });
+  cy.readFile(filename).then((recordsToDelete) => {
+    if (recordsToDelete.length) {
+      return new Cypress.Promise((resolve) => {
+        Promise.all(
+          recordsToDelete.map((record) => dynamoDb.deleteRecord(record))
+        ).then(() => {
+          resolve();
+        });
+      }).then(() => {
+        cy.writeFile(filename, []);
+        cy.log("Test database records cleared!");
+      });
+    }
+  });
 });
 
 afterEach(() => {
   const filename = "cypress/fixtures/recordsToDelete.json";
-  cy.readFile(filename)
-    .then(recordsToDelete => {
-      if (recordsToDelete.length) {
-
-        return new Cypress.Promise((resolve) => {
-          Promise.all(recordsToDelete.map(record => dynamoDb.deleteRecord(record)))
-            .then(() => {
-              resolve()
-            })
-        }).then(() => {
-          cy.writeFile(filename, []);
-          cy.log("Test database records cleared!")
-        })
-      }
-    });
+  cy.readFile(filename).then((recordsToDelete) => {
+    if (recordsToDelete.length) {
+      return new Cypress.Promise((resolve) => {
+        Promise.all(
+          recordsToDelete.map((record) => dynamoDb.deleteRecord(record))
+        ).then(() => {
+          resolve();
+        });
+      }).then(() => {
+        cy.writeFile(filename, []);
+        cy.log("Test database records cleared!");
+      });
+    }
+  });
 });
