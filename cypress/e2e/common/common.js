@@ -635,16 +635,13 @@ Then("I am on the create new tenure page {string}", (id) => {
     cy.url().should("contain", `tenure/${id || propertyId}/add`);
   });
 });
-    cy.url().should('contain', `tenure/${id || propertyId}/add`)
-  })
-})
 
 And("the property's patch details are displayed", () => {
-  propertyPage.patchDetails().should('be.visible')
-  propertyPage.patchDetails().contains('Patch')
-  propertyPage.patchDetails().contains('Housing officer')
-  propertyPage.patchDetails().contains('Area manager')
-})
+  propertyPage.patchDetails().should("be.visible");
+  propertyPage.patchDetails().contains("Patch");
+  propertyPage.patchDetails().contains("Housing officer");
+  propertyPage.patchDetails().contains("Area manager");
+});
 
 When("I click on the new tenure button", () => {
   propertyPage.newTenureButton().click();
