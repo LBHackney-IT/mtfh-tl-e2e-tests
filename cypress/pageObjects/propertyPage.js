@@ -40,6 +40,14 @@ class PropertyPageObjects {
     newProcess(){
         return cy.contains('New Process')
     }
+
+    patchDetails() {
+        return cy.get('[class="mtfh-patch-details"]')
+    }
+
+    managePatchesButton() {
+        return cy.get('[data-testid="all-patches-and-areas-button"]')
+    }
     
     commentDateTime() {
         return cy.get('.comment__date-time')

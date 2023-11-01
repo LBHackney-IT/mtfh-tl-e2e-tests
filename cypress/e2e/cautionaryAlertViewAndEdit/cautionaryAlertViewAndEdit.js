@@ -134,9 +134,15 @@ And("The cautionary alert should not be listed under the person anymore", () => 
 
 And("I fill in an 'end date' for the alert that is not allowed", () => {
   const today = new Date();
-  const day = (today.getDate() + 1).toString().padStart(2, '0');
-  const month = (today.getMonth() + 1).toString().padStart(2, '0');
-  const year = today.getFullYear().toString();
+  const day = "28";
+  var yearNo = today.getFullYear();
+  var monthNo = today.getMonth() + 2;
+  if (monthNo > 12) {
+    monthNo = 1;
+    yearNo += 1;
+  }
+  const year = yearNo.toString();
+  const month = monthNo.toString().padStart(2, '0');
   cautionaryAlertViewPO.endDateInput().focus().click().type(`${year}-${month}-${day}`);
 });
 
