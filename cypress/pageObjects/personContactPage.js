@@ -52,6 +52,12 @@ class PersonContactPageObjects {
         .select("Main number")
     }
 
+    toggleIsNonUkNumber() {
+        cy.get("input[data-test='phone-number-checkbox']")
+        .last()
+        .click()
+    }
+
     phoneNumberDescriptions() {
         return cy.get('input[data-test="phone-number-description-input"]')
     }
@@ -147,6 +153,11 @@ class PersonContactPageObjects {
     confirmationMessage() {
         return cy.get('.lbh-page-announcement')
     }
+
+    clickSaveChangesButton() {
+        cy.contains("Save changes").click()
+    }
+
 
     addEmailAddress(value, description) {
         this.addEmailAddressButton().click()

@@ -49,9 +49,56 @@ Feature: Edit contact details for a person
     And I add up to 5 contact details of type "phone"
     Then I cannot add any more contacts for "phone"
 
-# Add phone number with empty fields throws error message
-# Phone number is added
-# Save button disabled after changes saved
-# Remove phone number opens confirmation modal
-# Removing a new number doesnt open confirmation modal
-# Detects if a number is uk or not, and populates checkbox
+
+  Scenario Outline: Validation shown when empty form
+    Given I seeded the database with a person
+    When I edit a person's contact details
+    And I click the add phone number button
+    And I click the save changes button
+    Then I see validation errors for empty fields
+
+  Scenario Outline: Success message when phone added
+    Given I seeded the database with a person
+    When I edit a person's contact details
+    And I click the add phone number button
+    And I populate the phone number form
+    Then I click the save changes button
+    Then I see a success message
+
+  Scenario Outline: Save button disabled after changes saved
+    Given I seeded the database with a person
+    When I edit a person's contact details
+    And I click the add phone number button
+    And I populate the phone number form
+    Then I click the save changes button
+    Then I see the success button is disabled
+
+  Scenario Outline: Removing a phone number opens a confirmation modal
+    Given I seeded the database with a person
+    When I edit a person's contact details
+    And I click the add phone number button
+    And I populate the phone number form
+    Then I click the save changes button
+    Then I see a success message
+    Then I click the remove button
+    And I expect to see a confirmation modal
+    Then I click the remove phone number button
+    And I see a phone number removed confirmation message
+    And the phone number is removed
+
+  Scenario Outline: Removing a phone number before saved doesnt open a confirmation modal
+    Given I seeded the database with a person
+    When I edit a person's contact details
+    And I click the add phone number button
+    And I populate the phone number form
+    Then I click the remove button
+    And I expect to not see a confirmation modal
+    And the phone number is removed
+
+  Scenario Outline: The IsUkNumber checkbox is correctly populated for new numbers
+    Given I seeded the database with a person
+    When I edit a person's contact details
+    And I add a non-uk phone number
+    Then I see a success message
+    Then I reload the page
+    And I expect to see NonUkNumber enabled
