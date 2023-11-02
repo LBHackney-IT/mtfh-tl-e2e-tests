@@ -102,10 +102,12 @@ Feature: Edit contact details for a person
   Scenario Outline: The IsUkNumber checkbox is correctly populated for new numbers
     Given I seeded the database with a person
     When I edit a person's contact details
+    And I click the add phone number button
     And I populate the phone number form with "<phoneNumber>"
+    Then I click the save changes button
     Then I see a success message
     Then I reload the page
-    And I expect to see NonUkNumber "<enabled>"
+    And I expect to see NonUkNumber <enabled>
 
     Examples: 
       | phoneNumber   | enabled |

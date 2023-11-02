@@ -38,7 +38,7 @@ Then("I reload the page", () => {
   cy.reload();
 });
 
-And("I expect to see NonUkNumber enabled {boolean}", (enabled) => {
+And("I expect to see NonUkNumber {boolean}", (enabled) => {
   cy.get("input[data-test='phone-number-checkbox']")
     .last()
     .should(enabled ? "be.checked" : "not.be.checked");
