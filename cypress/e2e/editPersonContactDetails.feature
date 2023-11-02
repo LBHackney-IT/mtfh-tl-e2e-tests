@@ -49,7 +49,6 @@ Feature: Edit contact details for a person
     And I add up to 5 contact details of type "phone"
     Then I cannot add any more contacts for "phone"
 
-
   Scenario Outline: Validation shown when empty form
     Given I seeded the database with a person
     When I edit a person's contact details
@@ -61,15 +60,20 @@ Feature: Edit contact details for a person
     Given I seeded the database with a person
     When I edit a person's contact details
     And I click the add phone number button
-    And I populate the phone number form
+    And I populate the phone number form with "<phoneNumber>"
     Then I click the save changes button
     Then I see a success message
+
+    Examples: 
+      | phoneNumber   |
+      |   07777777777 |
+      | +449844444444 |
 
   Scenario Outline: Save button disabled after changes saved
     Given I seeded the database with a person
     When I edit a person's contact details
     And I click the add phone number button
-    And I populate the phone number form
+    And I populate the phone number form with "07777777777"
     Then I click the save changes button
     Then I see the success button is disabled
 
@@ -77,7 +81,7 @@ Feature: Edit contact details for a person
     Given I seeded the database with a person
     When I edit a person's contact details
     And I click the add phone number button
-    And I populate the phone number form
+    And I populate the phone number form with "07777777777"
     Then I click the save changes button
     Then I see a success message
     Then I click the remove button
@@ -90,7 +94,7 @@ Feature: Edit contact details for a person
     Given I seeded the database with a person
     When I edit a person's contact details
     And I click the add phone number button
-    And I populate the phone number form
+    And I populate the phone number form with "07777777777"
     Then I click the remove button
     And I expect to not see a confirmation modal
     And the phone number is removed
@@ -98,7 +102,12 @@ Feature: Edit contact details for a person
   Scenario Outline: The IsUkNumber checkbox is correctly populated for new numbers
     Given I seeded the database with a person
     When I edit a person's contact details
-    And I add a non-uk phone number
+    And I populate the phone number form with "<phoneNumber>"
     Then I see a success message
     Then I reload the page
-    And I expect to see NonUkNumber enabled
+    And I expect to see NonUkNumber "<enabled>"
+
+    Examples: 
+      | phoneNumber   | enabled |
+      |   07777777777 | false   |
+      | +449844444444 | true    |

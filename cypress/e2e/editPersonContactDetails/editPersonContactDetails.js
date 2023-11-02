@@ -1,15 +1,9 @@
 import { And, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import EditPersonContactDetailsPageObjects from "../../pageObjects/editPersonContactDetailsPage";
-import EditPersonPageObjects from "../../pageObjects/editPersonPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 
-const envConfig = require("../../../environment-config");
 const editPersonContactDetailsPage = new EditPersonContactDetailsPageObjects();
-const editPersonPage = new EditPersonPageObjects();
 const personContactPage = new PersonContactPageObjects();
-const contactDetails = require("../../../api/contact-details");
-const editEqualityDetails = require("../../../api/equality-information");
-const getEqualityDetails = require("../../../api/equality-information");
 
 When("I edit a person's contact details", () => {
   cy.getPersonFixture().then((person) => {
@@ -21,19 +15,19 @@ And("I click the save changes button", () => {
   personContactPage.clickSaveChangesButton();
 });
 
-And("I populate the phone number form", () => {
-  personContactPage.phoneNumberContactTypeMainNumber()
-  personContactPage.phoneNumberFields().last().type(`07777777777`);
+And("I populate the phone number form with {string}", (phoneNumber) => {
+  personContactPage.phoneNumberContactTypeMainNumber();
+  personContactPage.phoneNumberFields().last().type(phoneNumber);
 });
 
 And("I add a non-uk phone number", () => {
-  cy.contains("Add a phone number").click()
+  cy.contains("Add a phone number").click();
 
-  personContactPage.phoneNumberContactTypeMainNumber()
-  personContactPage.toggleIsNonUkNumber()
+  personContactPage.phoneNumberContactTypeMainNumber();
+  personContactPage.toggleIsNonUkNumber();
   personContactPage.phoneNumberFields().last().type(`+227777777777`);
 
-  cy.contains("Save changes").click()
+  cy.contains("Save changes").click();
 });
 
 Then("I see a success message", () => {
@@ -41,29 +35,31 @@ Then("I see a success message", () => {
 });
 
 Then("I reload the page", () => {
-  cy.reload()
-})
+  cy.reload();
+});
 
-And("I expect to see NonUkNumber enabled", () => {
+And("I expect to see NonUkNumber enabled {boolean}", (enabled) => {
   cy.get("input[data-test='phone-number-checkbox']")
-  .last()
-  .should('be.checked')
+    .last()
+    .should(enabled ? "be.checked" : "not.be.checked");
 });
 
 Then("I click the remove button", () => {
-  cy.contains("Remove").click()
+  cy.contains("Remove").click();
 });
 
 Then("I expect to see a confirmation modal", () => {
-  cy.contains("Are you sure you want to remove this phone number?")
+  cy.contains("Are you sure you want to remove this phone number?");
 });
 
 Then("I expect to not see a confirmation modal", () => {
-  cy.contains("Are you sure you want to remove this phone number?").should('not.exist')
+  cy.contains("Are you sure you want to remove this phone number?").should(
+    "not.exist"
+  );
 });
 
 Then("I click the remove phone number button", () => {
-  cy.contains("Remove phone number").click()
+  cy.contains("Remove phone number").click();
 });
 
 Then("I see a phone number removed confirmation message", () => {
@@ -71,12 +67,12 @@ Then("I see a phone number removed confirmation message", () => {
 });
 
 Then("the phone number is removed", () => {
-  cy.contains('07777777777').should('not.exist')
-  cy.contains('Main number').should('not.exist')
+  cy.contains("07777777777").should("not.exist");
+  cy.contains("Main number").should("not.exist");
 });
 
 Then("I see the success button is disabled", () => {
-  cy.contains("Save changes").should("be.disabled")
+  cy.contains("Save changes").should("be.disabled");
 });
 
 Then("I see validation errors for empty fields", () => {
