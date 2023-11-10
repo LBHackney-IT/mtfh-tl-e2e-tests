@@ -44,6 +44,19 @@ And("I expect to see NonUkNumber {boolean}", (enabled) => {
     .should(enabled ? "be.checked" : "not.be.checked");
 });
 
+And("I check Non-UK Number checkbox with {boolean}", (enabled) => {
+
+  if (enabled) {
+    cy.get("input[data-test='phone-number-checkbox']")
+    .last()
+    .check()
+  } else {
+    cy.get("input[data-test='phone-number-checkbox']")
+    .last()
+    .uncheck()
+  }
+});
+
 Then("I click the remove button", () => {
   cy.contains("Remove").click();
 });
