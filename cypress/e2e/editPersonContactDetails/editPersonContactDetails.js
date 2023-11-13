@@ -16,14 +16,14 @@ And("I click the save changes button", () => {
 });
 
 And("I populate the phone number form with {string}", (phoneNumber) => {
-  personContactPage.phoneNumberContactTypeMainNumber();
+  personContactPage.phoneNumberContactType();
   personContactPage.phoneNumberFields().last().type(phoneNumber);
 });
 
 And("I add a non-uk phone number", () => {
   cy.contains("Add a phone number").click();
 
-  personContactPage.phoneNumberContactTypeMainNumber();
+  personContactPage.phoneNumberContactType();
   personContactPage.toggleIsNonUkNumber();
   personContactPage.phoneNumberFields().last().type(`+227777777777`);
 

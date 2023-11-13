@@ -18,6 +18,7 @@ import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation";
 import TenurePageObjects from "../../pageObjects/tenurePage";
+// const personContactPage = new PersonContactPageObjects();
 
 import date from "date-and-time";
 import comment from "../../../api/comment";
@@ -930,22 +931,18 @@ Then("modal dialog is closed and I am on the supporting documents page", () => {
   changeOfName.statusActiveCheck().should("contain.text", "Request Documents");
 });
 When("I enter data email address and phone number", () => {
+  // email
   cy.get(".mtfh-fieldset__content > :nth-child(1) > .govuk-button").click();
   changeOfName.emailAddress().clear().type(emailAdd);
   cy.contains("Save email address").click();
 
-  cy.contains("Add a phone number").click();
-  cy.get("#contact-details-phone-number-field").type(phoneNumber);
-  cy.get("#contact-details-phone-type-field").select("Main number");
 
-  cy.get('input[data-test="phone-number-input"]').type(
-    `{selectall}{backspace}${phoneNumber}`
-  );
-  cy.get('select[data-test="phone-number-type-checkbox"]').select(
-    "Main number"
+  // phone number
+  personContactPage.addPhoneNumber(
+    phoneNumber,
+    "test phone description"
   );
 
-  cy.contains("Save changes").click();
   changeOfName.buttonReturnToApplication().click();
 });
 And("I click on Remove email address and Remove phone number", () => {
