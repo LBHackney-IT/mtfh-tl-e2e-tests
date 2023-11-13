@@ -18,7 +18,6 @@ import HeaderPageObjects from "../../pageObjects/sharedComponents/header";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import NavigationPageObjects from "../../pageObjects/sharedComponents/navigation";
 import TenurePageObjects from "../../pageObjects/tenurePage";
-// const personContactPage = new PersonContactPageObjects();
 
 import date from "date-and-time";
 import comment from "../../../api/comment";
