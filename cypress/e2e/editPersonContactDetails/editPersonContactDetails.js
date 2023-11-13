@@ -1,20 +1,96 @@
 import { And, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import EditPersonContactDetailsPageObjects from "../../pageObjects/editPersonContactDetailsPage";
-import EditPersonPageObjects from "../../pageObjects/editPersonPage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
 
-const envConfig = require("../../../environment-config");
 const editPersonContactDetailsPage = new EditPersonContactDetailsPageObjects();
-const editPersonPage = new EditPersonPageObjects();
 const personContactPage = new PersonContactPageObjects();
-const contactDetails = require("../../../api/contact-details");
-const editEqualityDetails = require("../../../api/equality-information");
-const getEqualityDetails = require("../../../api/equality-information");
 
 When("I edit a person's contact details", () => {
   cy.getPersonFixture().then((person) => {
     editPersonContactDetailsPage.editPersonContactDetails(person.id);
   });
+});
+
+And("I click the save changes button", () => {
+  personContactPage.clickSaveChangesButton();
+});
+
+And("I populate the phone number form with {string}", (phoneNumber) => {
+  personContactPage.phoneNumberContactType();
+  personContactPage.phoneNumberFields().last().type(phoneNumber);
+});
+
+And("I add a non-uk phone number", () => {
+  cy.contains("Add a phone number").click();
+
+  personContactPage.phoneNumberContactType();
+  personContactPage.toggleIsNonUkNumber();
+  personContactPage.phoneNumberFields().last().type(`+227777777777`);
+
+  cy.contains("Save changes").click();
+});
+
+Then("I see a success message", () => {
+  cy.contains("Phone numbers updated");
+});
+
+Then("I reload the page", () => {
+  cy.reload();
+});
+
+And("I expect to see NonUkNumber {boolean}", (enabled) => {
+  cy.get("input[data-test='phone-number-checkbox']")
+    .last()
+    .should(enabled ? "be.checked" : "not.be.checked");
+});
+
+And("I check Non-UK Number checkbox with {boolean}", (enabled) => {
+
+  if (enabled) {
+    cy.get("input[data-test='phone-number-checkbox']")
+    .last()
+    .check()
+  } else {
+    cy.get("input[data-test='phone-number-checkbox']")
+    .last()
+    .uncheck()
+  }
+});
+
+Then("I click the remove button", () => {
+  cy.contains("Remove").click();
+});
+
+Then("I expect to see a confirmation modal", () => {
+  cy.contains("Are you sure you want to remove this phone number?");
+});
+
+Then("I expect to not see a confirmation modal", () => {
+  cy.contains("Are you sure you want to remove this phone number?").should(
+    "not.exist"
+  );
+});
+
+Then("I click the remove phone number button", () => {
+  cy.contains("Remove phone number").click();
+});
+
+Then("I see a phone number removed confirmation message", () => {
+  cy.contains("Phone number removed");
+});
+
+Then("the phone number is removed", () => {
+  cy.contains("07777777777").should("not.exist");
+  cy.contains("Main number").should("not.exist");
+});
+
+Then("I see the success button is disabled", () => {
+  cy.contains("Save changes").should("be.disabled");
+});
+
+Then("I see validation errors for empty fields", () => {
+  cy.contains("You must select an option to proceed");
+  cy.contains("You must enter a phone number to proceed");
 });
 
 Then("I cannot add any more contacts for {string}", (contactType) => {
