@@ -203,14 +203,15 @@ Feature: As an internal Hackney User
         And I click on Next button
         Then I am on the supporting documents page
         And Status Stepper is at "Request Documents"
-        When I click on the link 'the contact details'
-        Then "Update contact details" modal dialog is displayed
-        When I enter data email address and phone number
-        Then I am on the supporting documents page
-        And the details email address and phone number are displayed
-        When I click on the link 'the contact details'
-        And I click on Remove email address and Remove phone number
-        Then I am on the supporting documents page
+        # TODO: Uncomment for contact details release
+        # When I click on the link 'the contact details'
+        # Then "Update contact details" modal dialog is displayed
+        # When I enter data email address and phone number
+        # Then I am on the supporting documents page
+        # And the details email address and phone number are displayed
+        # When I click on the link 'the contact details'
+        # And I click on Remove email address and Remove phone number
+        # Then I am on the supporting documents page
 
     Scenario Outline: AC8 - Error Validation in Update Contact Details Modal Dialog
         Given I seeded the database with a person with an active tenure
@@ -228,9 +229,10 @@ Feature: As an internal Hackney User
         And I click on Next button
         Then I am on the supporting documents page
         And Status Stepper is at "Request Documents"
-        When I click on the link 'the contact details'
-        Then "Update contact details" modal dialog is displayed
-        When I click on Save email address without entering any data
-        Then Validation error message is displayed for email address
-        When I click on Save Phone number without entering any data
-        Then Validation error message is displayed for phone number
+        # TODO: Uncomment for contact details release
+        # When I click on the link 'the contact details'
+        # Then "Update contact details" modal dialog is displayed
+        # When I click on Save email address without entering any data
+        # Then Validation error message is displayed for email address
+        # When I click on Save Phone number without entering any data
+        # Then Validation error message is displayed for phone number
