@@ -642,7 +642,6 @@ And("the property's patch details are displayed", () => {
   propertyPage.patchDetails().contains("Housing officer");
   propertyPage.patchDetails().contains("Area manager");
 });
-
 When("I click on the new tenure button", () => {
   propertyPage.newTenureButton().click();
 });
