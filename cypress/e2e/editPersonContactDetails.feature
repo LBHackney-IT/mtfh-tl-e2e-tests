@@ -103,6 +103,7 @@ Feature: Edit contact details for a person
     Given I seeded the database with a person
     When I edit a person's contact details
     And I click the add phone number button
+    And I check Non-UK Number checkbox with <enabled>
     And I populate the phone number form with "<phoneNumber>"
     Then I click the save changes button
     Then I see a success message
@@ -112,4 +113,4 @@ Feature: Edit contact details for a person
     Examples: 
       | phoneNumber   | enabled |
       |   07777777777 | false   |
-      | +449844444444 | true    |
+      | +549844444444 | true    |

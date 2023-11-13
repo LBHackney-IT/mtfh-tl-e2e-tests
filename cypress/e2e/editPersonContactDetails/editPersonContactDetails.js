@@ -16,14 +16,14 @@ And("I click the save changes button", () => {
 });
 
 And("I populate the phone number form with {string}", (phoneNumber) => {
-  personContactPage.phoneNumberContactTypeMainNumber();
+  personContactPage.phoneNumberContactType();
   personContactPage.phoneNumberFields().last().type(phoneNumber);
 });
 
 And("I add a non-uk phone number", () => {
   cy.contains("Add a phone number").click();
 
-  personContactPage.phoneNumberContactTypeMainNumber();
+  personContactPage.phoneNumberContactType();
   personContactPage.toggleIsNonUkNumber();
   personContactPage.phoneNumberFields().last().type(`+227777777777`);
 
@@ -42,6 +42,19 @@ And("I expect to see NonUkNumber {boolean}", (enabled) => {
   cy.get("input[data-test='phone-number-checkbox']")
     .last()
     .should(enabled ? "be.checked" : "not.be.checked");
+});
+
+And("I check Non-UK Number checkbox with {boolean}", (enabled) => {
+
+  if (enabled) {
+    cy.get("input[data-test='phone-number-checkbox']")
+    .last()
+    .check()
+  } else {
+    cy.get("input[data-test='phone-number-checkbox']")
+    .last()
+    .uncheck()
+  }
 });
 
 Then("I click the remove button", () => {

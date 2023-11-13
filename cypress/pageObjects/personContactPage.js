@@ -46,10 +46,10 @@ class PersonContactPageObjects {
         return cy.get('input[data-test="phone-number-input"]')
     }
 
-    phoneNumberContactTypeMainNumber() {
+    phoneNumberContactType(type = "Main number") {
         return cy.get('select[data-test="phone-number-type-checkbox"]')
         .last()
-        .select("Main number")
+        .select(type)
     }
 
     toggleIsNonUkNumber() {
@@ -170,7 +170,7 @@ class PersonContactPageObjects {
         this.addPhoneNumberButton().click()
 
         this.phoneNumberFields().last().type(`{selectall}{backspace}${value}`)
-        this.phoneNumberContactTypeMainNumber()
+        this.phoneNumberContactType()
         this.phoneNumberDescriptions().last().type(`{selectall}{backspace}${description}`)
 
         this.saveChangesButton().click()
