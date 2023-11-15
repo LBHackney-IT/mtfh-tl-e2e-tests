@@ -68,15 +68,14 @@ Feature: As an internal Hackney user
         Then Request Documents page is displayed with success message for "Eligibility checks passed"
         And "Supporting documents" text is displayed
         And Status Stepper is at "Request Documents"
-        # TODO: Uncomment for contact details release
-        # When I click on the link 'the contact details'
-        # Then "Update contact details" modal dialog is displayed
-        # When I enter data email address and phone number
-        # And the details email address and phone number are displayed
-        # When I click on the link 'the contact details'
-        # And I click on Remove email address and Remove phone number
-        # Then email address and phone number are null
-        # And I can see the text add the contact details
+        When I click on the link 'the contact details'
+        Then "Update contact details" modal dialog is displayed
+        When I enter data email address and phone number
+        And the details email address and phone number are displayed
+        When I click on the link 'the contact details'
+        And I click on Remove email address and Remove phone number
+        Then email address and phone number are null
+        And I can see the text add the contact details
 
     Scenario: AC6. Error Validation in Update Contact Details Modal Dialog
         Given I seeded the database
@@ -85,13 +84,12 @@ Feature: As an internal Hackney user
         Then Request Documents page is displayed with success message for "Eligibility checks passed"
         And "Supporting documents" text is displayed
         And Status Stepper is at "Request Documents"
-        # TODO: Uncomment for contact details release
-        # When I click on the link 'the contact details'
-        # Then "Update contact details" modal dialog is displayed
-        # When I click on Save email address without entering any data
-        # Then Validation error message is displayed for email address
-        # When I click on Save Phone number without entering any data
-        # Then Validation error message is displayed for phone number
+        When I click on the link 'the contact details'
+        Then "Update contact details" modal dialog is displayed
+        When I click on Save email address without entering any data
+        Then Validation error message is displayed for email address
+        When I click on Save Phone number without entering any data
+        Then Validation error message is displayed for phone number
 
     Scenario: AC7: View review documents screen (documents requested via DES)
         Given I seeded the database

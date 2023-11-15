@@ -85,11 +85,10 @@ Feature: Add a new person to a tenure
     And I select a preferred last name "<preferredLastName>"
     And I click the update person button
     # And I click the next button
-    # TODO: Uncomment for contact details release
-    # And I click the save equality information button
-    # And I click edit person
-    # And I enter a first name "<conflictTitle>"
-    # And there is a merge conflict
+    And I click the save equality information button
+    And I click edit person
+    And I enter a first name "<conflictTitle>"
+    And there is a merge conflict
 
     Examples:
       | title | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                  | emailDescription | phoneNumber | phoneType | phoneDescription | conflictTitle  |
