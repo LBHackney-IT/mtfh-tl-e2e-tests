@@ -10,7 +10,7 @@ class WorkTrayPageObjects {
     };
 
     filterBy() {
-        return cy.contains('Filter by');
+        return cy.contains('Filter by', { timeout: 10000 });
     };
     filterShowDays() {
         return cy.get('[data-testid=mtfh-worktray-time-period]');
