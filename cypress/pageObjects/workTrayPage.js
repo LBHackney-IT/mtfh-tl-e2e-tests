@@ -10,6 +10,7 @@ class WorkTrayPageObjects {
     };
 
     filterBy() {
+        cy.wait(1000);
         return cy.contains('Filter by');
     };
     filterShowDays() {

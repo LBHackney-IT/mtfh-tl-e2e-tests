@@ -37,9 +37,9 @@ Feature: As an internal Hackney User eg. HO, AHM
     And process status
 
 # This scenario will be fully working once the BE filter ticket is completed
-   Scenario: AC3 - Worktray filter display by default
-     Given I am on the MMH home page
-     Then I can see my worktray dashboard
+  #  Scenario: AC3 - Worktray filter display by default
+  #    Given I am on the MMH home page
+  #    Then I can see my worktray dashboard
     #And by default the status filter will select ALL statuses
     #Then the default filter will be pre-selected to ALL available process
     #And pre-selected to ALL available status
