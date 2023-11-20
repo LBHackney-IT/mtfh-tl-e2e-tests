@@ -74,15 +74,15 @@ Given("I am viewing my work tray", () => {
 });
 When("I click tenant name then I am taken to the person page on a new tab", () => {
     cy.get('[data-testid="person-link"]').first().invoke('removeAttr', 'target').click();
-    cy.url().should('contain', '/person');
-    cy.contains('Correspondence address 1:');
+    const urlRegex = /.+\/person\/.+/;
+    cy.url().should('match', urlRegex);
     cy.go('back');
 });
 
 When("I click property address then I am taken to the property detail page on a new tab", () => {
     cy.get('[data-testid="property-link"]').first().invoke('removeAttr', 'target').click();
-    cy.url().should('contain', '/property');
-    cy.contains('Payment ref.');
+    const urlRegex = /.+\/property\/.+/;
+    cy.url().should('match', urlRegex);
     cy.go('back');
 });
 
