@@ -93,5 +93,5 @@ Then('the personal details are displayed on the mobile content container', () =>
     personPage.personalDetailsMobile().contains('Email 1')
 
     personPage.personalDetailsMobile().contains("Correspondence addresses");
-    personPage.personalDetailsMobile().contains('Correspondence address 0')
+    personPage.personalDetailsMobile().contains('Correspondence address 1')
 })

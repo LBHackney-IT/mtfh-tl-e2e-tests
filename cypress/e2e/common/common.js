@@ -489,7 +489,7 @@ Then("the personal details are displayed on the sidebar", () => {
   personPage.sidebar().contains("Email 1");
 
   personPage.sidebar().contains("Correspondence addresses");
-  personPage.sidebar().contains("Correspondence address 0");
+  personPage.sidebar().contains("Correspondence address 1");
 });
 
 // Create/edit person page
