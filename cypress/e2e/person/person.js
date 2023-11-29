@@ -81,8 +81,17 @@ Then('the more contact details are displayed', () => {
 
 Then('the personal details are displayed on the mobile content container', () => {
     cy.wait(1000)
+
+    personPage.personalDetailsMobile().contains("Personal information");
     personPage.personalDetailsMobile().contains('Date of birth')
-    personPage.personalDetailsMobile().contains('Phone 1')
+    
+    personPage.personalDetailsMobile().contains("Contact details");
+    personPage.personalDetailsMobile().contains('Home')
+    personPage.personalDetailsMobile().contains('02072123456')
+    
+    personPage.personalDetailsMobile().contains("Email addresses");
     personPage.personalDetailsMobile().contains('Email 1')
+
+    personPage.personalDetailsMobile().contains("Correspondence addresses");
     personPage.personalDetailsMobile().contains('Correspondence address 1')
 })
