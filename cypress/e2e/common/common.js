@@ -478,10 +478,18 @@ And("I am on the 'Person details' page", () => {
 });
 
 Then("the personal details are displayed on the sidebar", () => {
+  personPage.sidebar().contains("Personal information");
   personPage.sidebar().contains("Date of birth");
-  personPage.sidebar().contains("Phone 1");
+
+  personPage.sidebar().contains("Contact details");
+  personPage.sidebar().contains("Home");
+  personPage.sidebar().contains("02072123456");
+
+  personPage.sidebar().contains("Email addresses");
   personPage.sidebar().contains("Email 1");
-  personPage.sidebar().contains("Correspondence address 1");
+
+  personPage.sidebar().contains("Correspondence addresses");
+  personPage.sidebar().contains("Correspondence address 0");
 });
 
 // Create/edit person page
