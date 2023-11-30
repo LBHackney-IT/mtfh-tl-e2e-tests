@@ -1,6 +1,8 @@
 {
     "id": "635ed65b-461c-4527-bb8e-485303b74c87",
     "assetId": "100023014215",
+    "areaId": "3887a798-1e38-4265-9279-bd8097d23b8d",
+    "patchId": "e611b1af-e2cc-45ee-8f17-cd8c09307121",
     "assetType": "LettableNonDwelling",
     "rootAsset": null,
     "parentAssetIds": null,
@@ -33,22 +35,5 @@
     },
     "assetCharacteristics": null,
     "tenure": null,
-    "versionNumber": 10,
-    "patches": [
-      {
-        "id": "bd0a8e2b-c3b5-4628-aa33-8e7509d5eac6",
-        "parentId": "8d4fb05d-3ff5-48b7-a17a-71fcb27a66a8",
-        "name": "SN4",
-        "patchType": "patch",
-        "domain": "MMH",
-        "responsibleEntities": [
-          {
-            "id": "7fb98e5e-6543-4e3e-b654-ac06e0a3f2f9",
-            "name": "Fake_Lyla Fake_Kling",
-            "responsibleType": "HousingOfficer"
-          }
-        ],
-        "versionNumber": null
-      }
-    ]
+    "versionNumber": 10
   }

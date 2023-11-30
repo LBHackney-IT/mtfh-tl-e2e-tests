@@ -1,9 +1,10 @@
 const { faker } = require("@faker-js/faker");
-const { patch: defaultPatch } = require("./patchModel");
 
 const createAssetModel = {
   "id": faker.datatype.uuid(),
   "assetId": "12876875",
+  "areaId": "3887a798-1e38-4265-9279-bd8097d23b8d",
+  "patchId": "e611b1af-e2cc-45ee-8f17-cd8c09307121",
   "assetAddress": {
     "uprn": "100021065786",
     "addressLine1": "Powell Road",
@@ -105,8 +106,7 @@ const defaultAssetManagement = {
 
 const assetModelControlledSubmodels = ({
   assetLocation,
-  assetCharacteristics,
-  patch
+  assetCharacteristics
 }) => {
   const assetLocationInternal = assetLocation
     ? assetLocation
@@ -122,6 +122,8 @@ const assetModelControlledSubmodels = ({
   return {
     "id": faker.datatype.uuid(),
     "assetId": "0014062023",
+    "areaId": "3887a798-1e38-4265-9279-bd8097d23b8d",
+    "patchId": "e611b1af-e2cc-45ee-8f17-cd8c09307121",
     "assetType": "Dwelling",
     "parentAssetIds": "463f556b-fbe6-4216-84f3-99b64ccafe6b",
     "isActive": true,
@@ -129,14 +131,15 @@ const assetModelControlledSubmodels = ({
     "assetAddress": assetAddressInternal,
     "assetManagement": assetManagementInternal,
     "assetCharacteristics": assetCharacteristicsInternal,
-    "patches": [patch]
   };
 };
 
-const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString(), patches = [defaultPatch]) => {
+const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.numeric(11).toString()) => {
   return {
     "id": assetGuid,
     "assetId": "00054811",
+    "areaId": "3887a798-1e38-4265-9279-bd8097d23b8d",
+    "patchId": "e611b1af-e2cc-45ee-8f17-cd8c09307121",
     "assetType": "LettableNonDwelling",
     "rootAsset": "ROOT",
     "isActive": false,
@@ -179,14 +182,15 @@ const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.nu
       "windowType": "",
       "yearConstructed": "0"
     },
-    "patches": [...patches]
   }
 }
 
-const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.random.numeric(7).toString()) => {
+const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.random.numeric(8).toString()) => {
   return {
     "id": assetGuid,
     "assetId": assetId,
+    "areaId": "3887a798-1e38-4265-9279-bd8097d23b8d",
+    "patchId": "e611b1af-e2cc-45ee-8f17-cd8c09307121",
     "assetType": "Dwelling",
     "parentAssetIds": "",
     "isActive": true,
@@ -222,11 +226,8 @@ const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.ran
   }
 }
 
-const asset = (patch) => {
-  return {
-    ...createAssetModel,
-    patches: [patch]
-  }
+const asset = () => {
+  return createAssetModel
 }
 
 const randomInt = (min, max) => faker.datatype.number({ min: min, max: max });
