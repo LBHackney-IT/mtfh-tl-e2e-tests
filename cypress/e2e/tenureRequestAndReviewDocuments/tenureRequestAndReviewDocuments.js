@@ -45,7 +45,7 @@ Given("the application has passed eligibility and the housing officer breach of 
 });
 
 When("I click the Next button", () => {
-    cy.contains('Next').click();
+    cy.get('.govuk-button').contains('Next').click();
 });
 Then("{string} text is displayed", (textSuppDocs) => {
     cy.contains(textSuppDocs);
@@ -80,7 +80,7 @@ When("I have not selected any of the radio button options but selected Tenant de
     tenureReqDocsPage.checkboxTenantDeclaration().click();
 });
 When("I click on Next button in request documents page", () => {
-   cy.contains('Next').click();
+    cy.contains('Next').click();
 });
 Then("error message is displayed", () => {
     cy.get('#request-type-form-group-error').should('contain.text', 'You must select an option to proceed');
@@ -122,7 +122,7 @@ When("I click on the current tenant's name in the heading", () => {
 Then("I am taken to the current tenant's person page which will be opened in a new tab", () => {
     tenureReqDocsPage.personLink().invoke('removeAttr', 'target').click();
     cy.url()
-      .should('include', '/person/')
+        .should('include', '/person/')
     cy.findAllByText('Date of birth:');
 });
 Given("the application has passed eligibility and failed the breach of tenancy checks for the tenure", () => {
