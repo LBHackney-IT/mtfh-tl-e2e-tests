@@ -61,7 +61,8 @@ class ChangeOfNamePageObjects {
         return cy.findByRole('link', {name:/View documents on the Document Evidence Store/i});
     };
     buttonStartProcess() {
-        return cy.contains('Start process');
+        cy.wait(1000);
+        return cy.get('.govuk-button');
     };
     buttonNext() {
         return cy.contains('Next');
