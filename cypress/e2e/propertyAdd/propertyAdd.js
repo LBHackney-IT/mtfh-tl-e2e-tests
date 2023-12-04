@@ -7,7 +7,7 @@ import { getAssetViewUrlByGuid } from "../common/common";
 const { faker } = require("@faker-js/faker");
 
 const addPropertyAddressUrl = `${baseUrl}/property/new`
-const assetId = faker.random.numeric(9)
+const propertyReference = faker.random.numeric(8)
 const addressLine1 = "47 Test Road"
 const postcode = "MK40 2RF"
 const assetGuid = faker.datatype.uuid()
@@ -39,7 +39,7 @@ And("I press the 'Create new property' button without editing any of the fields"
 
 Then("errors for the required form fields should be visible", () => {
     const requiredFieldErrors = [
-        "Asset ID is a required field",
+        "Property Reference is a required field",
         "Asset Type is a required field",
         "Address line 1 is a required field",
         "Postcode is a required field",
@@ -54,8 +54,8 @@ Then("I should see the 'Managing organisation' field populated with the default 
     cy.get('[data-testid="managing-organisation"]').should('have.value', 'London Borough of Hackney')
 })
 
-And("I enter a value for field 'Asset ID'", () => {
-    cy.get('[data-testid="asset-id"]').type(assetId)
+And("I enter a value for field 'Property Reference'", () => {
+    cy.get('[data-testid="prop-ref"]').type(propertyReference)
 })
 
 And("I select an option for field 'Asset Type'", () => {
@@ -94,13 +94,13 @@ When("I click on 'Create new property' button, and the POST request is successfu
 
     cy.contains('Create new property').click()
 
-    const testAsset = generateNewAsset(assetGuid, assetId);
+    const testAsset = generateNewAsset(assetGuid, propertyReference);
     cy.log("The POST request will save the test asset record to the database")
     cy.log("Saving details of the test asset in recordsToDelete.json file")
     saveFixtureData("Assets", { id: testAsset.id }, testAsset)
 
     cy.log("Randomly generated Asset GUID:", assetGuid)
-    cy.log("Randomly generated Asset ID:", assetId)
+    cy.log("Randomly generated Asset ID:", propertyReference)
 
     cy.wait('@createNewAssetSuccess').its('request.method').should('deep.equal', 'POST')
 })
@@ -122,7 +122,7 @@ Then("I see an error message, indicating that there was a problem creating the n
 })
 
 And("I find the Patch field heading", () => {
-    cy.contains('Patches').should('be.visible');
+    cy.contains('Patch').should('be.visible');
 })
 
 And("I see one Patch dropdown field available to start with and I select a value", () => {
@@ -131,18 +131,11 @@ And("I see one Patch dropdown field available to start with and I select a value
     cy.get('[data-testid="patch-dropdown-1"]').should('have.value', patchData[1].id);
 })
 
-When("I click on the button to add another Patch dropdown field, and select a value. 2 patches in total should be visible", () => {
-    cy.get('[data-testid="patch-add-link"]').should('be.visible');
-    cy.get('[data-testid="patch-add-link"]').click();
-    cy.get('[data-testid="patch-dropdown-2"]').should('be.visible').and('have.value', null);
-    cy.get('[data-testid="patch-dropdown-2"]').select(patchData[2].id);
-    cy.get('[id="property-patches-container"]').children().should('have.length', 2);
-})
 
-When("I remove the first Patch dropdown field, using the 'Remove patch' as no longer required, I should see a total of 1 Patch dropdown field", () => {
+When("I remove the Patch dropdown field, using the 'Remove patch' as no longer required, I should see a total of 0 Patch dropdown field", () => {
     cy.get('[data-testid="patch-remove-link-1"]').should('be.visible');
     cy.get('[data-testid="patch-remove-link-1"]').click();
-    cy.get('[id="property-patches-container"]').children().should('have.length', 1);
+    cy.get('[id="property-patches-container"]').children().should('have.length', 0);
 })
 
 Then("I should be able to view new property in MMH", () => {

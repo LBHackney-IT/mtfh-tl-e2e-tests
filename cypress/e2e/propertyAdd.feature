@@ -29,7 +29,7 @@ Feature: Property Add
     @SmokeTest
     Scenario Outline: 'New property - when the required fields are populated, and the POST request is successful, a success message is displayed'
         Given I am on the MMH 'New property' page
-        And I enter a value for field 'Asset ID'
+        And I enter a value for field 'Property Reference'
         And I select an option for field 'Asset Type'
         And I select a parent asset
         And I enter a value for field 'Address line 1'
@@ -43,7 +43,7 @@ Feature: Property Add
     @SmokeTest
     Scenario Outline: 'New property - when the required fields are populated, and the POST request fails, an error message is displayed'
         Given I am on the MMH 'New property' page
-        And I enter a value for field 'Asset ID'
+        And I enter a value for field 'Property Reference'
         And I select an option for field 'Asset Type'
         And I select a parent asset
         And I enter a value for field 'Address line 1'
@@ -58,5 +58,4 @@ Feature: Property Add
         Given I am on the MMH 'New property' page
         And I find the Patch field heading
         And I see one Patch dropdown field available to start with and I select a value
-        When I click on the button to add another Patch dropdown field, and select a value. 2 patches in total should be visible
-        When I remove the first Patch dropdown field, using the 'Remove patch' as no longer required, I should see a total of 1 Patch dropdown field
+        When I remove the Patch dropdown field, using the 'Remove patch' as no longer required, I should see a total of 0 Patch dropdown field

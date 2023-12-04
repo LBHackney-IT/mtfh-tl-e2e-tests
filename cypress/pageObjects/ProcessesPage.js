@@ -29,7 +29,8 @@ class ProcessesPageObjects{
         return cy.get(".govuk-checkboxes__input")
     }
 
-    startProcessButton(){
+    startProcessButton() {
+        cy.wait(1000)
         return cy.get(".start-process__start-button")
     }
 

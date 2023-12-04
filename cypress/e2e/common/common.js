@@ -1197,6 +1197,7 @@ Given("I seeded the database with a person with an active tenure", () => {
   };
 
   addTestRecordToDatabase("Assets", assetModel);
+  addTestRecordToDatabase("PatchesAndAreas", patchModel);
   addTestRecordToDatabase("TenureInformation", tenureModel);
   addTestRecordToDatabase("Persons", personModel1);
   addTestRecordToDatabase("Persons", personModel2);
