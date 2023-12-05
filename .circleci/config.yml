@@ -46,6 +46,7 @@ executors:
     cypress-browsers:
         docker:
             - image: cypress/browsers:node16.13.2-chrome100-ff98
+        resource_class: large
 
 commands:
     assume-role-and-persist-workspace:
