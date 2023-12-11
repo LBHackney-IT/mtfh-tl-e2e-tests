@@ -18,20 +18,20 @@ class ManagePatchesPageObjects {
         return cy.get(`[data-testid="${patchName}-row"]`)
     }
 
-    getPatchReassignmentMessage(patchName) {
-        return cy.get(`[data-testid="reassign-message-${patchName}"]`)
+    getOfficerNameInput(patchName) {
+        return cy.get(`[data-testid="officer-name-input-${patchName}"]`)
     }
-    
-    confirmReassignment() {
-        cy.get('[data-testid="confirm-reassignment-button"]').click()
+
+    getOfficerEmailInput(patchName) {
+        return cy.get(`[data-testid="officer-email-input-${patchName}"]`)
     }
 
     getSuccessMessage() {
-        return cy.contains('The patches have been updated successfully')
+        return cy.contains('The patch has been updated successfully')
     }
     
     clickButtonForPatch(patchName, buttonType) {
-        var validButtons = ["reassign", "assign", "cancel"]
+        var validButtons = ["edit-assignment", "confirm-reassignment", "cancel"]
         if (!validButtons.includes(buttonType)) {
             throw new Error(`Invalid button type ${buttonType}, must be one of ${validButtons}`)
         }
@@ -40,9 +40,11 @@ class ManagePatchesPageObjects {
         });
     }
 
-    switchPatchAssignments(patch1Name, patch2Name) {
-        this.clickButtonForPatch(patch1Name, "reassign")
-        this.clickButtonForPatch(patch2Name, "assign")
+    reassignPatch(patch1Name, officerName, officerEmail) {
+        this.clickButtonForPatch(patch1Name, "edit-assignment")
+        this.getOfficerNameInput(patch1Name).clear().type(officerName)
+        this.getOfficerEmailInput(patch1Name).clear().type(officerEmail)
+        this.clickButtonForPatch(patch1Name, "confirm-reassignment")
     }
 }
 

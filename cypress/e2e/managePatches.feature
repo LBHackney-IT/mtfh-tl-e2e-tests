@@ -29,16 +29,13 @@ Feature: View and manage patch and area assignment
 			| area option |  patch  |  notpatch  |
 			|     All     |   SN1   |            |
 			|   SN Area   |   SN1   |     SD1    |
-			|   SD Area   |   SD1   |     SN1    |
 	
-	# Skip until we release patch reassignment
-	# Scenario Outline: Switch patch assignments
-	# 	When I visit the manage patches page directly
-	# 	And I switch '<patch1>' with '<patch2>'
-	# 	Then the modal warns me I am reassigning '<patch1>' to '<patch2>'
-	# 	And I click the confirm button on the modal
-	# 	Then I can see a success message for patch reassignment
-	# 	Examples:
-	# 		|  patch1   |  patch2   |
-	# 		|  SN Area  |  SH Area  |
-	# 		|  SH Area  |  SN Area  |
+	Scenario Outline: Reassign a patch
+		When I visit the manage patches page directly
+		And I reassign '<patchName>' to a new officer
+		Then I can see a row for patch '<patchName>' with a name and email address
+		And I can see a success message for patch reassignment
+		Examples:
+			|  patchName  |
+			|   SN Area   |
+			|   SN Area   |

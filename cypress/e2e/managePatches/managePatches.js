@@ -1,6 +1,7 @@
 import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
 import PropertyPageObjects from "../../pageObjects/propertyPage";
 import ManagePatchesPageObjects from "../../pageObjects/managePatchesPage";
+import { faker } from '@faker-js/faker';
 
 const propertyPage = new PropertyPageObjects();
 const managePatchesPage = new ManagePatchesPageObjects();
@@ -35,20 +36,26 @@ And("I cannot see a row for patch {string}", (patchName) => {
     managePatchesPage.getPatchRow(patchName).should('not.exist');
 });
 
+Then("I can see a row for patch {string} with a name and email address", (patchName) => {
+    var patchRow = managePatchesPage.getPatchRow(patchName);
+    patchRow.should('be.visible');
+    patchRow.should('contain', "FAKE_");
+    patchRow.should('contain', "@hackney.gov.uk");
+});
+
 When("I select {string} from the area dropdown", (areaOption) => {
     managePatchesPage.getAreaDropdown().select(areaOption);
   });
 
-And("I switch {string} with {string}", (patch1Name, patch2Name) => {
-    managePatchesPage.switchPatchAssignments(patch1Name, patch2Name);
+And("I reassign {string} to a new officer", (patchName) => {
+    var fakeFirstName = faker.name.firstName();
+    var fakeLastName = faker.name.lastName();
+    var fakeName = `FAKE_${fakeFirstName} FAKE_${fakeLastName}`;
+    var fakeEmail = `${fakeFirstName.toLowerCase()}.${fakeLastName.toLowerCase()}@hackney.gov.uk`; 
+    managePatchesPage.reassignPatch(patchName, fakeName, fakeEmail);
 });
 
-Then("the modal warns me I am reassigning {string} to {string}", (patch1Name, patch2Name) => {
-    managePatchesPage.getPatchReassignmentMessage(patch1Name).should('be.visible');
-    managePatchesPage.getPatchReassignmentMessage(patch2Name).should('be.visible');
-});
-
-And("I click the confirm button on the modal", () => {
+And("I click the confirm button on the row", () => {
     managePatchesPage.confirmReassignment();
 });
 
