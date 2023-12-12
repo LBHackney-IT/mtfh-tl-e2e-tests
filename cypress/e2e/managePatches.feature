@@ -38,4 +38,3 @@ Feature: View and manage patch and area assignment
 		Examples:
 			|  patchName  |
 			|   SN Area   |
-			|   SN Area   |
