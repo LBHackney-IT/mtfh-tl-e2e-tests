@@ -41,6 +41,9 @@ Then("I can see a row for patch {string} with officer name {string} and email ad
     patchRow.should('be.visible');
     patchRow.should('contain', officerName);
     patchRow.should('contain', officerEmail);
+    if (!officerName && !officerEmail) {
+        patchRow.should('not.contain', "@hackney.gov.uk");
+    }
 });
 
 When("I select {string} from the area dropdown", (areaOption) => {
