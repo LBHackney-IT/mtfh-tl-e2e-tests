@@ -27,7 +27,7 @@ class ManagePatchesPageObjects {
     }
 
     getSuccessMessage() {
-        return cy.contains('The patch has been updated successfully')
+        return cy.contains('The update has completed successfully')
     }
     
     clickButtonForPatch(patchName, buttonType) {
@@ -40,11 +40,18 @@ class ManagePatchesPageObjects {
         });
     }
 
-    reassignPatch(patch1Name, officerName, officerEmail) {
-        this.clickButtonForPatch(patch1Name, "edit-assignment")
-        this.getOfficerNameInput(patch1Name).clear().type(officerName)
-        this.getOfficerEmailInput(patch1Name).clear().type(officerEmail)
-        this.clickButtonForPatch(patch1Name, "confirm-reassignment")
+    unassignPatch(patchName) {
+        this.clickButtonForPatch(patchName, "edit-assignment")
+        this.getOfficerNameInput(patchName).clear()
+        this.getOfficerEmailInput(patchName).clear()
+        this.clickButtonForPatch(patchName, "confirm-reassignment")
+    }
+
+    reassignPatch(patchName, officerName, officerEmail) {
+        this.clickButtonForPatch(patchName, "edit-assignment")
+        this.getOfficerNameInput(patchName).clear().type(officerName)
+        this.getOfficerEmailInput(patchName).clear().type(officerEmail)
+        this.clickButtonForPatch(patchName, "confirm-reassignment")
     }
 }
 

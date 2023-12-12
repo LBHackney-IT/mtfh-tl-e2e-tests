@@ -36,23 +36,23 @@ And("I cannot see a row for patch {string}", (patchName) => {
     managePatchesPage.getPatchRow(patchName).should('not.exist');
 });
 
-Then("I can see a row for patch {string} with a name and email address", (patchName) => {
+Then("I can see a row for patch {string} with officer name {string} and email address {string}", (patchName, officerName, officerEmail) => {
     var patchRow = managePatchesPage.getPatchRow(patchName);
     patchRow.should('be.visible');
-    patchRow.should('contain', "FAKE_");
-    patchRow.should('contain', "@hackney.gov.uk");
+    patchRow.should('contain', officerName);
+    patchRow.should('contain', officerEmail);
 });
 
 When("I select {string} from the area dropdown", (areaOption) => {
     managePatchesPage.getAreaDropdown().select(areaOption);
   });
 
-And("I reassign {string} to a new officer", (patchName) => {
-    var fakeFirstName = faker.name.firstName();
-    var fakeLastName = faker.name.lastName();
-    var fakeName = `FAKE_${fakeFirstName} FAKE_${fakeLastName}`;
-    var fakeEmail = `${fakeFirstName.toLowerCase()}.${fakeLastName.toLowerCase()}@hackney.gov.uk`; 
-    managePatchesPage.reassignPatch(patchName, fakeName, fakeEmail);
+And("I reassign {string} to a new officer with name {string} and email address {string}", (patchName, officerName, officerEmail) => {
+    if (!officerName && !officerEmail) {
+        managePatchesPage.unassignPatch(patchName);
+        return;
+    }
+    managePatchesPage.reassignPatch(patchName, officerName, officerEmail);
 });
 
 And("I click the confirm button on the row", () => {

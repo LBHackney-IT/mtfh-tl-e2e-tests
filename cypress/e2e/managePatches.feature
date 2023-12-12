@@ -32,9 +32,10 @@ Feature: View and manage patch and area assignment
 	
 	Scenario Outline: Reassign a patch
 		When I visit the manage patches page directly
-		And I reassign '<patchName>' to a new officer
-		Then I can see a row for patch '<patchName>' with a name and email address
+		And I reassign '<patchName>' to a new officer with name '<officerName>' and email address '<officerEmail>'
+		Then I can see a row for patch '<patchName>' with officer name '<officerName>' and email address '<officerEmail>'
 		And I can see a success message for patch reassignment
 		Examples:
-			|  patchName  |
-			|   SN Area   |
+			|  patchName  |      officerName       |       officerEmail        |
+			|   SN Area   |                        |                           |
+			|   SN Area   |  FAKE_John FAKE_Smith  | john.smith@hackney.gov.uk |
