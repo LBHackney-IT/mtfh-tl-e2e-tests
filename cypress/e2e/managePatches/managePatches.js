@@ -1,6 +1,7 @@
 import { Given, Then, When, And } from "@badeball/cypress-cucumber-preprocessor"
 import PropertyPageObjects from "../../pageObjects/propertyPage";
 import ManagePatchesPageObjects from "../../pageObjects/managePatchesPage";
+import { faker } from '@faker-js/faker';
 
 const propertyPage = new PropertyPageObjects();
 const managePatchesPage = new ManagePatchesPageObjects();
@@ -35,20 +36,29 @@ And("I cannot see a row for patch {string}", (patchName) => {
     managePatchesPage.getPatchRow(patchName).should('not.exist');
 });
 
+Then("I can see a row for patch {string} with officer name {string} and email address {string}", (patchName, officerName, officerEmail) => {
+    var patchRow = managePatchesPage.getPatchRow(patchName);
+    patchRow.should('be.visible');
+    patchRow.should('contain', officerName);
+    patchRow.should('contain', officerEmail);
+    if (!officerName && !officerEmail) {
+        patchRow.should('not.contain', "@hackney.gov.uk");
+    }
+});
+
 When("I select {string} from the area dropdown", (areaOption) => {
     managePatchesPage.getAreaDropdown().select(areaOption);
   });
 
-And("I switch {string} with {string}", (patch1Name, patch2Name) => {
-    managePatchesPage.switchPatchAssignments(patch1Name, patch2Name);
+And("I reassign {string} to a new officer with name {string} and email address {string}", (patchName, officerName, officerEmail) => {
+    if (!officerName && !officerEmail) {
+        managePatchesPage.unassignPatch(patchName);
+        return;
+    }
+    managePatchesPage.reassignPatch(patchName, officerName, officerEmail);
 });
 
-Then("the modal warns me I am reassigning {string} to {string}", (patch1Name, patch2Name) => {
-    managePatchesPage.getPatchReassignmentMessage(patch1Name).should('be.visible');
-    managePatchesPage.getPatchReassignmentMessage(patch2Name).should('be.visible');
-});
-
-And("I click the confirm button on the modal", () => {
+And("I click the confirm button on the row", () => {
     managePatchesPage.confirmReassignment();
 });
 
