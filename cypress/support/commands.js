@@ -42,7 +42,7 @@ Cypress.Commands.add('getTenureFixture', () => {
 })
 
 Cypress.Commands.add('getPatchFixture', () => {
-    cy.readFile('cypress/fixtures/patches.json')[0]
+    cy.readFile('cypress/fixtures/PatchesAndAreas.json')
 })
 
 Cypress.Commands.add('getAssetFixture', () => {
