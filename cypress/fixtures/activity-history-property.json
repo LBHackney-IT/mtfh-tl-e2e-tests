@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "id": "9307d11a-ed58-4c4b-ab70-08b2b556462a",
+      "targetId": "dda3db87-65f7-4553-afcb-923e1b521de2",
+      "type": "update",
+      "targetType": "patchesAndAreas",
+      "createdAt": "2023-12-12T16:42:46.8088128Z",
+      "timetoLiveForRecord": 0,
+      "oldData": {
+        "name": "FAKE_E2E FAKE_Tester",
+        "responsibleType": "HousingOfficer",
+        "id": "dda3db87-65f7-4553-afcb-923e1b521de2",
+        "contactDetails": {
+          "emailAddress": "e2e-testing-development-t-and-l@hackney.gov.uk"
+        }
+      },
+      "newData": {
+        "name": "FAKE_E2E FAKE_Testers",
+        "responsibleType": "HousingOfficer",
+        "id": "dda3db87-65f7-4553-afcb-923e1b521de2",
+        "contactDetails": {
+          "emailAddress": "e2e-testing-development-t-and-l@hackney.gov.uk"
+        }
+      },
+      "authorDetails": {
+        "fullName": "First Last",
+        "email": "first.last@hackney.gov.uk"
+      },
+      "sourceDomain": "PatchesAndAreas"
+    }
+  ],
+  "paginationDetails": {
+    "nextToken": null
+  }
+}

@@ -42,11 +42,15 @@ Cypress.Commands.add('getTenureFixture', () => {
 })
 
 Cypress.Commands.add('getPatchFixture', () => {
-    cy.readFile('cypress/fixtures/PatchesAndAreas.json')
+    cy.readFile('cypress/fixtures/patches.json')[0]
 })
 
 Cypress.Commands.add('getAssetFixture', () => {
     cy.readFile('cypress/fixtures/Assets.json')
+})
+
+Cypress.Commands.add("getActivityHistoryPropertyFixture", () => {
+    cy.readFile("cypress/fixtures/activity-history-property.json")
 })
 
 Cypress.Commands.add('generateCustomTemporaryFixture', (data) => {
