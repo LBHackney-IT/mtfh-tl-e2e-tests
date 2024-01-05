@@ -68,7 +68,7 @@ When("I select 'I have made an appointment to check supporting documents' and cl
     tenureReqDocsPage.makeAnAppointToCheckSuppDocs().click();
     tenureReqDocsPage.day().type('31');
     tenureReqDocsPage.month().type('12');
-    tenureReqDocsPage.year().type('2023')
+    tenureReqDocsPage.year().type('2100')
     tenureReqDocsPage.hour().type('11');
     tenureReqDocsPage.minute().type('20');
     tenureReqDocsPage.ampm().select('AM');
