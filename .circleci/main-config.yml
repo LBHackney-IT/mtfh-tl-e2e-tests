@@ -1,0 +1,286 @@
+version: 2.1
+
+orbs:
+  aws_assume_role: lbh-hackit/aws_assume_role@0.1.0
+  aws-cli: circleci/aws-cli@2.0.3
+  cypress: cypress-io/cypress@3.1.3
+
+parameters:
+  run_workflow_ci:
+    description: The default behaviour of the pipeline when a commit and/or merge is performed.
+    default: true
+    type: boolean
+
+  upstream_pipeline_name:
+    description: The name of the mfe that triggered the tests upstream.
+    default: ""
+    type: string
+
+  external_trigger:
+    description: Pipeline triggered externally
+    default: false
+    type: boolean
+
+  development_environment:
+    default: false
+    type: boolean
+
+  staging_environment:
+    default: false
+    type: boolean
+
+  production_environment:
+    default: false
+    type: boolean
+  
+  parallelism:
+    type: integer
+    default: 1
+
+references:
+    workspace_root: &workspace_root '~'
+    attach_workspace: &attach_workspace
+        attach_workspace:
+            at: *workspace_root
+
+executors:
+    docker-python:
+        docker:
+            - image: circleci/python:3.7
+    cypress-browsers:
+        docker:
+            - image: cypress/browsers:node16.13.2-chrome100-ff98
+        resource_class: medium+
+
+commands:
+    assume-role-and-persist-workspace:
+        description: 'Assume deployment role and persist credentials across jobs'
+        parameters:
+            aws-account:
+                type: string
+        steps:
+            - checkout
+            - aws_assume_role/assume_role:
+                  account: <<parameters.aws-account>>
+                  profile_name: default
+                  role: 'LBH_Circle_CI_Deployment_Role'
+            - persist_to_workspace:
+                  root: *workspace_root
+                  paths:
+                      - .aws
+    
+    execute-e2e-tests:
+        description: 'Run e2e tests'
+        parameters:
+          stage:
+            type: string
+          trigger-context:
+            type: string
+        steps:
+            - run:
+                name: Execute e2e tests
+                command: |
+                          if <<parameters.stage>> == "production"
+                          then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
+                          elif <<parameters.stage>> == "staging"
+                          then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
+                          else export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
+                          fi
+                          export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
+                          export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_EQUALITY_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/equality-information-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_CAUTIONARY_ALERT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/cautionary-alerts-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
+                          export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
+                          export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
+                          export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
+                          echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                          npm install ;
+                          if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
+                          then ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
+                          else ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
+                          fi
+                       
+            - store_artifacts:
+                path: /root/project/cypress/videos/
+                destination: artifact-file
+
+jobs:
+  assume-role-development:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_DEVELOPMENT
+
+  assume-role-staging:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_STAGING
+
+  assume-role-production:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_PRODUCTION
+
+  run-e2e-tests:
+        parallelism: << pipeline.parameters.parallelism >>
+        executor: cypress-browsers
+        environment:
+            aws-region: eu-west-2
+        parameters:
+            stage:
+                type: string
+        steps:
+          - when:
+              condition: << pipeline.parameters.external_trigger >> 
+              steps:
+                - *attach_workspace
+                - aws-cli/install
+                - checkout
+                - execute-e2e-tests:
+                    stage: <<parameters.stage>>
+                    trigger-context: external
+
+  trigger-downstream-deployment:
+        executor: cypress-browsers
+        environment:
+            aws-region: eu-west-2
+        parameters:
+            stage:
+                type: string
+        steps:
+          - run:
+              name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
+              command: |
+                        export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
+                        export DEPLOYMENT_ENVIRONMENT='run_<< parameters.stage >>_workflow' ;
+                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
+                        --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
+                        --header 'Content-Type: application/json' \
+                        --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
+  
+  run-ci-tests:
+        parallelism: << pipeline.parameters.parallelism >>
+        executor: cypress-browsers
+        environment:
+            aws-region: eu-west-2
+        parameters:
+            stage:
+                type: string
+        steps:
+          - when:
+              condition: << pipeline.parameters.run_workflow_ci >> 
+              steps:
+                - *attach_workspace
+                - aws-cli/install
+                - checkout
+                - execute-e2e-tests:
+                    stage: development
+                    trigger-context: ci
+        
+  run-e2e-devices:
+        executor: cypress-browsers
+        environment:
+            aws-region: eu-west-2
+        parameters:
+            stage:
+                type: string
+        steps:
+          - *attach_workspace
+          - aws-cli/install
+          - checkout
+          - execute-e2e-tests:
+              stage: staging
+              trigger-context: devices
+    
+workflows:
+  run-ci-tests:
+    when: << pipeline.parameters.run_workflow_ci >>
+    jobs:
+      - assume-role-development:
+          context: api-assume-role-housing-development-context
+      - run-ci-tests:
+          stage: development
+          context: mtfh-mfe-e2e-tests
+          requires:
+            - assume-role-development
+
+  e2e-tests-development:
+    when:
+      and:
+        - equal: [ << pipeline.parameters.external_trigger >> ]
+        - and: [ << pipeline.parameters.development_environment >> ]
+    jobs:
+      - assume-role-development:
+          context: api-assume-role-housing-development-context
+      - run-e2e-tests:
+          name: Run acceptance tests against development
+          stage: development
+          context: mtfh-mfe-e2e-tests
+          requires:
+            - assume-role-development
+      - trigger-downstream-deployment:
+          name: trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
+          stage: staging
+          context: mtfh-mfe-e2e-tests
+          requires:
+            - Run acceptance tests against development
+          
+  e2e-tests-staging:
+    when:
+      and:
+        - equal: [ << pipeline.parameters.external_trigger >> ]
+        - and: [ << pipeline.parameters.staging_environment >> ]
+    jobs:
+      - assume-role-staging:
+          context: api-assume-role-housing-staging-context
+      - run-e2e-tests:
+          name: Run acceptance tests against staging environment
+          stage: staging
+          context: mtfh-mfe-e2e-tests
+          requires:
+            - assume-role-staging
+      - trigger-downstream-deployment:
+          name: trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
+          stage: production
+          requires:
+            - Run acceptance tests against staging environment
+      
+  e2e-tests-production:
+    when:
+      and:
+        - equal: [ << pipeline.parameters.external_trigger >> ]
+        - and: [ << pipeline.parameters.production_environment >> ]
+    jobs:
+      - assume-role-production:
+          context: api-assume-role-housing-production-context
+      - run-e2e-tests:
+          name: Run acceptance tests against production environment
+          stage: production
+          context: mtfh-mfe-e2e-tests
+          requires: 
+            - assume-role-production
+
+  e2e-tests-devices:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 2"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - assume-role-staging:
+          context: api-assume-role-housing-staging-context
+      - run-e2e-devices:
+          stage: staging
+          context: mtfh-mfe-e2e-tests
+          requires:
+            - assume-role-staging
