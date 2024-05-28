@@ -1,0 +1,27 @@
+version: 2.1
+
+setup: true
+
+orbs:
+  continuation: circleci/continuation@0.2.0
+
+jobs:
+  determine-parallelism:
+    docker:
+      - image: cimg/base:edge
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Determine parallelism
+          command: |
+            PARALLELISM=$(find ./cypress/e2e -type f -name "*.feature" | wc -l)
+            echo "{\"parallelism\": $PARALLELISM}" > pipeline-parameters.json
+      - continuation/continue:
+          configuration_path: .circleci/config.yml
+          parameters: pipeline-parameters.json
+
+workflows:
+  build-setup:
+    jobs:
+      - determine-parallelism
