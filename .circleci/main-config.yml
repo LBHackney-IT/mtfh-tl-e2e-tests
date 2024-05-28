@@ -104,10 +104,10 @@ commands:
                           mkdir test_results ;
                           npm ci ;
                           if [ <<parameters.trigger-context>> == "device" ]
-                          then circleci tests run --command="xargs ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@device and not @ignore' --parallel --group 'all tests'" --reporter cypress-circleci-reporter --spec" --verbose --split-by=timings
+                          then circleci tests run --command="xargs ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@device and not @ignore' --parallel --group 'all tests'" --reporter cypress-circleci-reporter --spec --verbose --split-by=timings
                           elif [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
-                          then circleci tests run --command="xargs ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'"  --reporter cypress-circleci-reporter --spec" --verbose --split-by=timings
-                          else circleci tests run --command="./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'" --reporter cypress-circleci-reporter --spec" --verbose --split-by=timings
+                          then circleci tests run --command="xargs ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'"  --reporter cypress-circleci-reporter --spec --verbose --split-by=timings
+                          else circleci tests run --command="./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'" --reporter cypress-circleci-reporter --spec --verbose --split-by=timings
                           fi
             - store_test_results:
                 path: test_results             
