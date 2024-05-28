@@ -50,7 +50,7 @@ executors:
     cypress-browsers:
         docker:
             - image: cypress/browsers:node16.13.2-chrome100-ff98
-        resource_class: medium+
+        resource_class: large
 
 commands:
     assume-role-and-persist-workspace:
@@ -100,14 +100,17 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-                          npm install ;
+                          
+                          mkdir test_results ;
+                          npm ci ;
                           if [ <<parameters.trigger-context>> == "device" ]
-                          then ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@device and not @ignore' --parallel --group 'all tests'
+                          then circleci tests run --command="xargs ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@device and not @ignore' --parallel --group 'all tests'" --reporter cypress-circleci-reporter --spec" --verbose --split-by=timings
                           elif [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
-                          then ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
-                          else ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
+                          then circleci tests run --command="xargs ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'"  --reporter cypress-circleci-reporter --spec" --verbose --split-by=timings
+                          else circleci tests run --command="./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'" --reporter cypress-circleci-reporter --spec" --verbose --split-by=timings
                           fi
-                       
+            - store_test_results:
+                path: test_results             
             - store_artifacts:
                 path: /root/project/cypress/videos/
                 destination: artifact-file
