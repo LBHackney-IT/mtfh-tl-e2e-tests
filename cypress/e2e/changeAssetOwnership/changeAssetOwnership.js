@@ -15,11 +15,11 @@ Then("I see a section about the asset ownership", () => {
     cy.get('[data-testid="edit-ownership-info-button"]').should('be.visible')
 })
 
-And("I can access the form to change the ownership of the asset by clicking on the button", () => {
+Then("I can access the form to change the ownership of the asset by clicking on the button", () => {
     cy.get('[data-testid="edit-ownership-info-button"]').click()
 })
 
-And("I am taken to the 'Edit asset ownership' form", () => {
+Then("I am taken to the 'Edit asset ownership' form", () => {
     cy.getAssetFixture().then(asset => {
         cy.url().should('include', `property/${asset.id}/edit-asset-ownership`)
     })
@@ -65,7 +65,7 @@ Then("I change the ownership of the asset", () => {
     })
 })
 
-And("I see that the submit button is now enabled and the 'Edit asset ownership' can be submitted", () => {
+Then("I see that the submit button is now enabled and the 'Edit asset ownership' can be submitted", () => {
     cy.get('[data-testid="submit-edit-ownership-button"]').should('be.enabled')
 })
 

@@ -27,7 +27,7 @@ When("I accept the terms and conditions", () => {
     processPage.agreementCheckBox().click()
 })
 
-And("I click the start process button", () => {
+When("I click the start process button", () => {
     processPage.startProcessButton().click()
 })
 

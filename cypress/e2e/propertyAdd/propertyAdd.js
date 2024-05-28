@@ -26,14 +26,14 @@ Then("I should see the main heading 'New Property', and the user disclaimer alon
     cy.contains('Asset details').should('be.visible')
 })
 
-And("the 'Create new property' and 'Cancel' buttons are present, along with a 'Back' link at the top", () => {
+Then("the 'Create new property' and 'Cancel' buttons are present, along with a 'Back' link at the top", () => {
     cy.contains('Create new property').should('be.visible')
     cy.contains('Cancel').should('be.visible')
     cy.contains('Back').should('be.visible')
 })
 
 
-And("I press the 'Create new property' button without editing any of the fields", () => {
+When("I press the 'Create new property' button without editing any of the fields", () => {
     cy.contains('Create new property').click()
 })
 
@@ -54,15 +54,15 @@ Then("I should see the 'Managing organisation' field populated with the default 
     cy.get('[data-testid="managing-organisation"]').should('have.value', 'London Borough of Hackney')
 })
 
-And("I enter a value for field 'Property Reference'", () => {
+When("I enter a value for field 'Property Reference'", () => {
     cy.get('[data-testid="prop-ref"]').type(propertyReference)
 })
 
-And("I select an option for field 'Asset Type'", () => {
+When("I select an option for field 'Asset Type'", () => {
     cy.get('[data-testid="asset-type"]').select('Dwelling')
 })
 
-And("I select a parent asset", () => {
+When("I select a parent asset", () => {
     cy.intercept('GET', '*/api/v1/search/assets?searchText=asd&useCustomSorting=true&assetTypes=', { fixture: 'parent-assets-options.json', }).as('getParentAssetOptions')
 
     cy.get('[data-testid="parentAsset-search-input"]').clear().type('asd')
@@ -73,19 +73,19 @@ And("I select a parent asset", () => {
     cy.get('[data-testid="parentAsset"]').select('Fake Parent Asset 1')
 })
 
-And("I enter a value for field 'Address line 1'", () => {
+When("I enter a value for field 'Address line 1'", () => {
     cy.get('[data-testid="address-line-1"]').type(addressLine1)
 })
 
-And("I enter a valid value for field 'Postcode'", () => {
+When("I enter a valid value for field 'Postcode'", () => {
     cy.get('[data-testid="postcode"]').type(postcode)
 })
 
-And("I choose the option 'Yes' for field 'Is LBH property?'", () => {
+When("I choose the option 'Yes' for field 'Is LBH property?'", () => {
     cy.get('[data-testid="is-council-property-yes"]').click()
 })
 
-And("I choose the option 'Yes' for field 'Add Default SOR Contracts'", () => {
+When("I choose the option 'Yes' for field 'Add Default SOR Contracts'", () => {
     cy.get('[data-testid="add-default-sor-contracts-yes"]').click()
 })
 
@@ -121,11 +121,11 @@ Then("I see an error message, indicating that there was a problem creating the n
     cy.contains('Please refresh the page and try again. If the issue persists, please contact support.').should('be.visible')
 })
 
-And("I find the Patch field heading", () => {
+When("I find the Patch field heading", () => {
     cy.contains('Patch').should('be.visible');
 })
 
-And("I see one Patch dropdown field available to start with and I select a value", () => {
+Then("I see one Patch dropdown field available to start with and I select a value", () => {
     cy.get('[data-testid="patch-dropdown-1"]').should('be.visible').and('have.value', null);
     cy.get('[data-testid="patch-dropdown-1"]').select(patchData[1].id);
     cy.get('[data-testid="patch-dropdown-1"]').should('have.value', patchData[1].id);

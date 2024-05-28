@@ -29,7 +29,7 @@ Given('the start date for the selected tenure record is before 31 December 2013 
     expect(startDate).to.lessThan(threshold)
 })
 
-And('the start date for the tenure record is before 31 December 2013', () => {
+Then('the start date for the tenure record is before 31 December 2013', () => {
     cy.getTenureFixture().then((tenure) => {
         const startDate = new Date(tenure.startOfTenureDate)
         const threshold = new Date(2013, 12, 31)
@@ -39,7 +39,7 @@ And('the start date for the tenure record is before 31 December 2013', () => {
       })
 })
 
-And('the start date for the tenure record is after 31 December 2013', () => {
+Then('the start date for the tenure record is after 31 December 2013', () => {
     cy.getTenureFixture().then((tenure) => {
         const startDate = new Date(tenure.startOfTenureDate)
         const threshold = new Date(2013, 12, 31)
@@ -58,7 +58,7 @@ Given("There are only responsible household members for the tenure", async () =>
     tenureId = response.data.id
 });
 
-And('A message says this tenure has no household members', () => {
+Then('A message says this tenure has no household members', () => {
     tenurePage.tenureResidentsContainer().contains('This tenure has no household members')
 })
 
@@ -83,7 +83,7 @@ Then('the household member details are displayed', () => {
     cy.url().should('include', '/person')
 })
 
-And('I select a resident', () => {
+When('I select a resident', () => {
     // tenurePage.viewResidentButton().should('have.attr', 'href').and('include', '/person')
     // tenurePage.viewResidentButton().eq(0).click()
     tenurePage.viewResidentButtonforPerson().click();
@@ -97,11 +97,11 @@ Then('Then the Scanned historic tenure records button is displayed', () => {
     tenurePage.scannedHistoricTenureRecords().should(vis)
 })
 
-And('I click the tenure details accordion', () => {
+When('I click the tenure details accordion', () => {
     tenurePage.tenureDetailsAccordion().click({force: true})
 })
 
-And('there are no named tenure holders', () => {
+Then('there are no named tenure holders', () => {
     tenurePage.tenureResidentsContainer().contains('This tenure has no named tenure holders')
 })
 

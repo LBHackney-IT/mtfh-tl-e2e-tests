@@ -28,7 +28,7 @@ Then ('I click on a search result', () => {
     personContext = cy.intercept('*api/v1/contactDetails*')
 })
 
-And('I click the back button', () => {
+When('I click the back button', () => {
     navigation.backButton().click()
     searchPage.searchResults().should('be.visible')
 })
@@ -37,7 +37,7 @@ Then('I am returned to the search results page', () => {
     cy.url().contains(searchContext)
 })
 
-And('I click add new comment', () => {
+When('I click add new comment', () => {
     personPage.addCommentButton().click()
 })
 

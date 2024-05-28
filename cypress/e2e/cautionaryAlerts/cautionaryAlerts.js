@@ -1,4 +1,4 @@
-import { And, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import CautionaryAlertsPageObjects from '../../pageObjects/cautionaryAlertsPage';
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 
@@ -8,41 +8,45 @@ const tenureReqDocsPO = new TenureRequestDocsPageObjects();
 When("I click on Add cautionary alert link", () => {
     cautionaryAlertPO.addCautionaryAlertLink().click();
 });
+
 Then("I am taken to the Add cautionary alert page", () => {
     cautionaryAlertPO.pageHeaderCautionaryAlert().should('contain', 'Add cautionary alert for')
 });
+
 When("I enter Assure reference", () => {
     cautionaryAlertPO.assureReference().type('121212');
 });
-And("I enter Date of Incident as Day Month and Year", () => {
+
+Given("I enter Date of Incident as Day Month and Year", () => {
     tenureReqDocsPO.day().clear().type('01');
     tenureReqDocsPO.month().clear().type('12');
     tenureReqDocsPO.year().clear().type('2022');
 });
-And("select Type of Caution", () => {
+
+Given("select Type of Caution", () => {
     // cautionaryAlertPO.typeOfCaution().select('Verbal abuse');
     cautionaryAlertPO.typeOfCaution().select('No Lone Visits');
 });
-And("I enter Description of Incident", () => {
+Given("I enter Description of Incident", () => {
     cautionaryAlertPO.descriptionOfIncident().clear().type('This is a test incident for verbal abuse happened on the date above')
 });
-And("I click on Save and Continue button", () => {
+When("I click on Save and Continue button", () => {
     cy.contains('Save and continue').click();
 });
 
 Then("Validation error messages is displayed for Assure reference", () => {
     cautionaryAlertPO.assureReferenceFieldErrorMessg().should('contain', 'Enter an Assure reference');
 });
-And("Validation error messages is displayed for Date of Incident", () => {
+Given("Validation error messages is displayed for Date of Incident", () => {
     cautionaryAlertPO.dateOfIncidentFieldErrorMessg().should('contain', 'Enter date of incident');
 });
-And("Validation error messages is displayed for Type of Caution", () => {
+Given("Validation error messages is displayed for Type of Caution", () => {
     cautionaryAlertPO.selectTypeOfCautionFieldErrorMessg().should('contain', 'Select a type of caution');
 });
-And("Validation error messages is displayed for Description of Incident", () => {
+Given("Validation error messages is displayed for Description of Incident", () => {
     cautionaryAlertPO.descriptionOfIncidentFieldErrorMessg().should('contain', 'Enter description of incident');
 });
-And("I enter only Day for Date of Incident", () => {
+Given("I enter only Day for Date of Incident", () => {
     tenureReqDocsPO.day().clear().type('10');
 });
 Then("Validation error messages is displayed for Month and Year", () => {
@@ -83,7 +87,7 @@ Then("Validation error message is displayed for Future date", () => {
 Then("I am on Check and confirm cautionary alert page", () => {
     cautionaryAlertPO.pageHeaderCautionaryAlert().should('contain.text', 'Check and confirm cautionary alert for');
 });
-And("the Cautionary alert details are displayed", () => {
+Given("the Cautionary alert details are displayed", () => {
     cy.contains('Assurance Reference');
     cy.get(':nth-child(1) > .govuk-summary-list__value').should('contain.text', 121212);
     cy.contains('Date of incident');
@@ -99,17 +103,17 @@ When("I click on Save cautionary alert button", () => {
     cy.contains('Save cautionary alert').click();
     cy.wait('@createCautionaryAlert')
 });
-And("I can see the section Cautionary Alerts with a Red bell icon", () => {
+Given("I can see the section Cautionary Alerts with a Red bell icon", () => {
     cautionaryAlertPO.redBellIconAlert().should('exist');
 });
-And("I can see the Cautionary Alert type with the new value", () => {
+Given("I can see the Cautionary Alert type with the new value", () => {
     cy.contains('Dangerous Animals');
-})
-And('I can see the Cautionary Alert type', () => {
+});
+Given('I can see the Cautionary Alert type', () => {
     // cy.contains('Verbal Abuse');
     cy.contains('No Lone Visits');
 });
-And("I can see the Red Bell icon next to the person name", () => {
+Given("I can see the Red Bell icon next to the person name", () => {
 
 });
 
@@ -160,7 +164,7 @@ When("I update the {string} with a new value", (text) => {
 });
 
 
-And("I can see the {string} is updated with the new value", (text) => {
+Given("I can see the {string} is updated with the new value", (text) => {
     switch (text) {
         case 'Assurance reference number': {
             cy.contains('Assurance Reference');
@@ -184,7 +188,7 @@ And("I can see the {string} is updated with the new value", (text) => {
         }
     }
 
-})
+});
 
 
 

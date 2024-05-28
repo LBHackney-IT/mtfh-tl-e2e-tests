@@ -14,11 +14,11 @@ Then('the manage patches page is displayed', () => {
     cy.findByText('Patches and areas').should('be.visible');
 });
 
-And('the area dropdown is displayed', () => {
+Then('the area dropdown is displayed', () => {
     managePatchesPage.getAreaDropdown().should('be.visible');
 });
 
-And('the patches table is displayed', () => {
+Then('the patches table is displayed', () => {
     var name = 'SN Area';
     managePatchesPage.getPatchRow(name).should('be.visible');
 });
@@ -31,7 +31,7 @@ Then("I can see a row for patch {string}", (patchName) => {
     managePatchesPage.getPatchRow(patchName).should('be.visible');
 });
 
-And("I cannot see a row for patch {string}", (patchName) => {
+Then("I cannot see a row for patch {string}", (patchName) => {
     if (!patchName) return;
     managePatchesPage.getPatchRow(patchName).should('not.exist');
 });
@@ -50,7 +50,7 @@ When("I select {string} from the area dropdown", (areaOption) => {
     managePatchesPage.getAreaDropdown().select(areaOption);
   });
 
-And("I reassign {string} to a new officer with name {string} and email address {string}", (patchName, officerName, officerEmail) => {
+When("I reassign {string} to a new officer with name {string} and email address {string}", (patchName, officerName, officerEmail) => {
     if (!officerName && !officerEmail) {
         managePatchesPage.unassignPatch(patchName);
         return;
@@ -58,7 +58,7 @@ And("I reassign {string} to a new officer with name {string} and email address {
     managePatchesPage.reassignPatch(patchName, officerName, officerEmail);
 });
 
-And("I click the confirm button on the row", () => {
+When("I click the confirm button on the row", () => {
     managePatchesPage.confirmReassignment();
 });
 

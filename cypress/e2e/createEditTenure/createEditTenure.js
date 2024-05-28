@@ -1,14 +1,14 @@
-import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
 import CreateTenurePageObjects from "../../pageObjects/createTenurePage";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
 import DynamoDb from "../common/DynamoDb";
+const tenure = require('../../../api/tenure')
 
 const createTenurePage = new CreateTenurePageObjects()
 const modal = new ModalPageObjects()
 
-const tenure = require('../../../api/tenure')
 
 Then('the new tenure landing page is displayed', () => {
     createTenurePage.addPropertyHeading().should('be.visible')
@@ -19,19 +19,19 @@ When('I select a tenure type {string}', (tenureType) => {
     createTenurePage.tenureTypeSelection().select(tenureType)
 })
 
-And('I enter a tenure start date {string} {string} {string}', (day, month, year) => {
+Given('I enter a tenure start date {string} {string} {string}', (day, month, year) => {
     createTenurePage.tenureStartDateDayContainer().clear().type(day)
     createTenurePage.tenureStartDateMonthContainer().clear().type(month)
     createTenurePage.tenureStartDateYearContainer().clear().type(year)
 })
 
-And('I enter a tenure end date {string} {string} {string}', (day, month, year) => {
+Given('I enter a tenure end date {string} {string} {string}', (day, month, year) => {
     createTenurePage.tenureEndDateDayContainer().clear().type(day)
     createTenurePage.tenureEndDateMonthContainer().clear().type(month)
     createTenurePage.tenureEndDateYearContainer().clear().type(year)
 })
 
-And('I click the cancel button', () => {
+Given('I click the cancel button', () => {
     createTenurePage.cancelButton().click({ force: true })
 })
 
@@ -40,7 +40,7 @@ Then('a create tenure error is triggered {string}', (error) => {
     createTenurePage.errorBody().contains(error)
 })
 
-And('the person search is displayed', () => {
+Given('the person search is displayed', () => {
     createTenurePage.searchContainer().should('be.visible')
     createTenurePage.searchButton().should('be.visible')
 })
@@ -49,7 +49,7 @@ Then('the cancel confirmation modal is displayed', () => {
     modal.modalBody().should('be.visible')
 })
 
-And('the tenure person search is displayed', () => {
+Given('the tenure person search is displayed', () => {
     createTenurePage.searchContainer().should('be.visible')
     createTenurePage.searchButton().should('be.visible')
     createTenurePage.main().contains('Property type')
@@ -67,12 +67,11 @@ Then('the edit tenure information is displayed', () => {
     })
 })
 
-And('the tenure type field is disabled', ()=>{
+Given('the tenure type field is disabled', ()=>{
     createTenurePage.tenureTypeSelection().should('have.attr', 'aria-disabled').and('equal', 'true')
 })
 
-
-And('I click done button', () => {
+Given('I click done button', () => {
     createTenurePage.doneButton().click()
 })
 
@@ -120,15 +119,15 @@ Then('a new tenure error message appears {string}', (error) => {
     createTenurePage.pageAnnouncementContainer().contains(error)
 })
 
-And('the create new person button is not enabled', () => {
+Given('the create new person button is not enabled', () => {
     createTenurePage.createNewPersonButton().should('have.attr', 'aria-disabled').and('equal', 'true')
 })
 
-And('I click create new person', () => {
+Given('I click create new person', () => {
     createTenurePage.createNewPersonButton().click()
 })
 
-And('I am on the create new person for a new tenure page', () => {
+Given('I am on the create new person for a new tenure page', () => {
     cy.url().should('include', '/person/new/')
 })
 
@@ -137,7 +136,7 @@ Then('I am on the create contact for a new tenure page', () => {
     cy.url().should('include', '/contact')
 })
 
-And('the person is added to the list of tenures {string} {string} {string} {string} {string} {string} {string}', (title, firstName, middleName, lastName, day, month, year) => {
+Given('the person is added to the list of tenures {string} {string} {string} {string} {string} {string} {string}', (title, firstName, middleName, lastName, day, month, year) => {
     createTenurePage.addedHouseholdMembersContainer().contains(`${title} ${firstName} ${middleName} ${lastName}`)
     createTenurePage.addedHouseholdMembersContainer().contains(`${day}/${month}/${year},`)
 })
@@ -163,7 +162,7 @@ Given('I delete all existing persons from the tenure {string}', async (tenureId)
     cy.log(`${householdMembers.length} person records deleted`)
 })
 
-And('I click remove person', () => {
+Given('I click remove person', () => {
     createTenurePage.confirmRemovePersonButton().click()
 })
 

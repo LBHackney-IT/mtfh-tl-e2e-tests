@@ -98,7 +98,7 @@ Then("model dialog is displayed", () => {
 Then("Sole to joint application approved text is displayed", () => {
     cy.contains('Sole to joint tenure application approved, next steps:');
 });
-And('{string} status box is displayed {string}', (decision, reason) => {
+Then('{string} status box is displayed {string}', (decision, reason) => {
     cy.contains(`Housing Officer reviewed and Area Housing Manager: ${decision} application`);
     if (reason) {
         cy.contains(reason);

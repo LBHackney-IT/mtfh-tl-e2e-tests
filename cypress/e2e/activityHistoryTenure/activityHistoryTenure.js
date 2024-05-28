@@ -27,7 +27,7 @@ Then('the tenure activity history is displayed', () => {
     })
 })
 
-And('table headers should be visible', () => {
+Then('table headers should be visible', () => {
     activityHistoryTenure.tableHeaders().forEach(tableHeader => {
         cy.contains(tableHeader).should('be.visible')
     })
@@ -37,7 +37,7 @@ Then('the update exists in the activity history {string}', (update) => {
     activityHistoryTenure.activityHistoryCell().eq(6).contains(`Changed to: ${update}`)
 })
 
-And("I am on the tenure page for the tenure", () => {
+Given("I am on the tenure page for the tenure", () => {
     cy.getTenureFixture().then((tenureRecord) => {
         cy.url().should("include", tenureRecord.id);
     })

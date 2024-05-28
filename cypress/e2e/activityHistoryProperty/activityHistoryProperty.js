@@ -26,7 +26,7 @@ Then('the property activity history is displayed', () => {
     })
 })
 
-And('table headers should be visible', () => {
+Then('table headers should be visible', () => {
     activityHistoryProperty.tableHeaders().forEach(tableHeader => {
         cy.contains(tableHeader).should('be.visible')
     })
@@ -36,7 +36,7 @@ Then('the update exists in the activity history {string}', (update) => {
     activityHistoryProperty.activityHistoryCell().eq(6).contains(`Changed to: ${update}`)
 })
 
-And("I am on the property page for the property", () => {
+Then("I am on the property page for the property", () => {
     cy.getAssetFixture().then((PropertyRecord) => {
         cy.url().should("include", PropertyRecord.id);
     })

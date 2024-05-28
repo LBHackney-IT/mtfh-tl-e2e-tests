@@ -11,13 +11,13 @@ Given('I go to the activity history for the person', () => {
     })
 })
 
-And('table headers should be visible', () => {
+Then('table headers should be visible', () => {
     activityHistoryObjects.tableHeaders().forEach(tableHeader => {
         cy.contains(tableHeader).should('be.visible')
     })
 })
 
-And('the name of the person should be visible', () => {
+Then('the name of the person should be visible', () => {
     cy.getPersonFixture().then((person) => {
         cy.contains(person.firstName).should('be.visible')
         cy.contains(person.surname).should('be.visible')

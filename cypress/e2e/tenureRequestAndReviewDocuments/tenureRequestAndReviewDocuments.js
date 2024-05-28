@@ -88,21 +88,21 @@ Then("error message is displayed", () => {
 When("I have selected electronically requesting the documents via DES", () =>{
     tenureReqDocsPage.requestDocsElectronically().click();
 });
-And("I have confirmed Tenant Declaration", () =>{
+When("I have confirmed Tenant Declaration", () =>{
     tenureReqDocsPage.checkboxTenantDeclaration().click();
 });
 
-And("I am able to see the {string} state is Active", () =>{
+Then("I am able to see the {string} state is Active", () =>{
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
 });
-And("a case activity log is created", () => {
+When("a case activity log is created", () => {
     tenureReqDocsPage.activityHistoryButton().click();
 });
 When("I select that I have made an appointment to check supporting documents", () => {
     cy.contains('Next').click();
     tenureReqDocsPage.makeAnAppointToCheckSuppDocs().click();
 });
-And("I input the appointment date and time", () => {
+When("I input the appointment date and time", () => {
     tenureReqDocsPage.day().clear().type('01');
     tenureReqDocsPage.month().clear().type('10');
     tenureReqDocsPage.year().clear().type('2025');
@@ -113,7 +113,7 @@ And("I input the appointment date and time", () => {
 Then("the option to proceed is enabled", () => {
     tenureReqDocsPage.nextButton().click();
 });
-And("a case activity log is created for {string}", () => {
+Then("a case activity log is created for {string}", () => {
     tenureReqDocsPage.activityHistoryButton().click();
 });
 When("I click on the current tenant's name in the heading", () => {
@@ -189,31 +189,31 @@ When("I have proceeded to the next step", () => {
 Then("I view the page", () => {
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Review Documents');
 });
-And("a confirmation alert confirming that eligibility checks have been passed", () => {
+Then("a confirmation alert confirming that eligibility checks have been passed", () => {
     cy.contains('Eligibility checks passed').should('exist');
     cy.contains('Show all eligibility checks');
 });
-And("a success message for requested documents via DES with a link to DES", () => {
+Then("a success message for requested documents via DES with a link to DES", () => {
     cy.contains('Documents requested').should('exist');
     cy.get('a[href*="evidence-store"]').contains('View request in Document Evidence Store');
 });
-And("a checklist of documents that will need to be seen before proceeding", () => {
+Then("a checklist of documents that will need to be seen before proceeding", () => {
     tenureReviewDocsPage.photoId().should('exist');
     tenureReviewDocsPage.secondId().should('exist');
     tenureReviewDocsPage.notImmigrationControl().should('exist');
     tenureReviewDocsPage.relationshipProof().should('exist');
     tenureReviewDocsPage.tenantLivingInProperty().should('exist');
 });
-And("the option to arrange an in person appointment to view the documents if necessary", () => {
+Then("the option to arrange an in person appointment to view the documents if necessary", () => {
     tenureReviewDocsPage.checkboxMakeAnAppointment().should('exist');
 });
-And("guidance text about closing the case due to failing the supporting documents check", () => {
+Then("guidance text about closing the case due to failing the supporting documents check", () => {
     cy.contains('If the documents are not suitable and all avenues to obtain the right documents have been exhausted, then close the case.').should('exist');
 });
-And("I cannot proceed until all of the check boxes have been ticked", () => {
+Then("I cannot proceed until all of the check boxes have been ticked", () => {
     cy.contains('Next').should('be.disabled');
 });
-And("the ability to close the case at this stage of the process", () => {
+Then("the ability to close the case at this stage of the process", () => {
     cy.contains('Close Case').should('exist');
 });
 
@@ -241,7 +241,7 @@ Then("I can input an appointment date and time", () => {
     tenureReqDocsPage.ampm().select('AM');
     cy.contains('Confirm Appointment').click();
 });
-And("I can confirm the appointment has been arranged", () => {
+Then("I can confirm the appointment has been arranged", () => {
     cy.contains('Office appointment scheduled').should('exist');
     tenureReviewDocsPage.linkChange().should('exist');
 });
@@ -299,7 +299,7 @@ Then("I will confirm that the outcome letter has been sent and case will be clos
     tenureReviewDocsPage.buttonConfirm().click();
     cy.contains('Thank you for your confirmation');
 })
-And("case activity log is recorded with status closed", () => {
+Then("case activity log is recorded with status closed", () => {
     tenureReqDocsPage.activityHistoryButton().click();
 });
 
@@ -322,13 +322,13 @@ Given("I have completed document upload for Sole to Joint for tenure", () => {
 Then("the Active status should be Submit case", () => {
     tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Submit case');
 });
-And("I am shown the expandable accordions of the previously completed steps Eligibility checks passed and Supporting documents approved", () => {
+Then("I am shown the expandable accordions of the previously completed steps Eligibility checks passed and Supporting documents approved", () => {
     cy.contains('Eligibility checks passed').should('exist');
     cy.contains('Supporting documents approved').should('exist');
     cy.contains('Show all eligibility checks');
     cy.get('a[href*="evidence-store"]').contains('View documents on the Document Evidence Store');
 });
-And("I can view the Tenure Investigation disclaimer", () => {
+Then("I can view the Tenure Investigation disclaimer", () => {
     tenureReviewDocsPage.headingTenureInvestigation().should('contain.text', 'Tenure Investigation');
 });
 When("I click the Submit case button", () => {

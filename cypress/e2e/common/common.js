@@ -194,7 +194,7 @@ Then("I want to view a person", async () => {
   assert.deepEqual(response.status, 200);
 });
 
-And("I want to edit a person", async () => {
+When("I want to edit a person", async () => {
   cy.log(`Updating Person record ${personId}`);
   const response = await person.editPerson(personId);
   cy.log(`Status code ${response.status} returned`);
@@ -202,7 +202,7 @@ And("I want to edit a person", async () => {
   assert.deepEqual(response.status, 204);
 });
 
-And("I want to add contact details {string}", async (type) => {
+When("I want to add contact details {string}", async (type) => {
   cy.log(`Creating contact details for record ${personId}`);
   const response = await contactDetails.addContactDetails(personId, type);
   cy.log(`Status code ${response.status} returned`);
@@ -210,7 +210,7 @@ And("I want to add contact details {string}", async (type) => {
   assert.deepEqual(response.status, 201);
 });
 
-And("I want to add a comment", async () => {
+When("I want to add a comment", async () => {
   // TODO: Pass in the personId to the request JSON object
   // cy.log(`Creating comment for record ${personId}`)
   const response = await comment.addComment(personId);
@@ -237,7 +237,7 @@ Then("the page breadcrumb is displayed", () => {
   breadCrumb.should("be.visible");
 });
 
-And("I click on the breadcrumb", () => {
+When("I click on the breadcrumb", () => {
   navigation.backButton().click();
 });
 
@@ -245,13 +245,13 @@ Then("I am taken to the search page", () => {
   cy.contains("Search").should("be.visible");
 });
 
-And("I click on the view property button", () => {
+When("I click on the view property button", () => {
   //navigation.viewPropertyButton().click();
   // cy.get(':nth-child(10) > [data-layer="Content"]').click();
   cy.get(".lbh-heading-h2 > .govuk-link").click();
 });
 
-And("I click on the view property button for a person", () => {
+When("I click on the view property button for a person", () => {
   // cy.get(".mtfh-layout__aside").then($body => {
   //   if ($body.find('#accordion-heading-additional-tenure-details').length > 0) {
   //     cy.get('#accordion-heading-additional-tenure-details').click();
@@ -269,7 +269,7 @@ Then("the page header is visible", () => {
 });
 
 // Page Footer shared steps
-And("the page footer is visible", () => {
+Then("the page footer is visible", () => {
   footer.footerIsDisplayed();
 });
 
@@ -277,7 +277,7 @@ Then("the page footer links are visible", () => {
   footer.footerLinksAreDisplayed();
 });
 
-And("the page footer links are correct", () => {
+Then("the page footer links are correct", () => {
   footer.footerLinksAreCorrect();
 });
 
@@ -309,7 +309,7 @@ When("I click on the radio button for {string}", (searchType) => {
   }
 });
 
-And("I click on the search button", () => {
+When("I click on the search button", () => {
   searchPage.searchButton().click();
 });
 
@@ -354,7 +354,7 @@ Then("the correct number of {int} are displayed", (results) => {
 });
 
 // Accessibility
-And("have no detectable a11y violations", () => {
+Then("have no detectable a11y violations", () => {
   cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });
 
   function axeTerminalLog(violations) {
@@ -378,46 +378,46 @@ And("have no detectable a11y violations", () => {
 });
 
 // Person-contact
-And("I click the done button", () => {
+When("I click the done button", () => {
   const now = new Date();
   personContactPage.doneButton().click();
   dateCaptureDay = date.format(now, "DD/MM/YY");
   dateCaptureTime = date.format(now, "HH:mm");
 });
 
-And("I click the add email address button", () => {
+When("I click the add email address button", () => {
   personContactPage.addEmailAddressButton().click();
 });
 
-And("I enter an email address {string}", (emailAddress) => {
+When("I enter an email address {string}", (emailAddress) => {
   personContactPage.emailAddressField().type(emailAddress);
 });
 
-And("I enter an email description {string}", (emailDescription) => {
+When("I enter an email description {string}", (emailDescription) => {
   personContactPage.emailAddressDescription().type(emailDescription);
 });
 
-And("I click save email address", () => {
+When("I click save email address", () => {
   personContactPage.saveEmailAddressButton().click();
 });
 
-And("I click the add phone number button", () => {
+When("I click the add phone number button", () => {
   personContactPage.addPhoneNumberButton().click();
 });
 
-And("I enter a phone number {string}", (phoneNumber) => {
+When("I enter a phone number {string}", (phoneNumber) => {
   personContactPage.phoneNumberField().type(phoneNumber);
 });
 
-And("I enter a phone number description {string}", (phoneDescription) => {
+When("I enter a phone number description {string}", (phoneDescription) => {
   personContactPage.phoneNumberDescription().type(phoneDescription);
 });
 
-And("I click save phone number", () => {
+When("I click save phone number", () => {
   personContactPage.savePhoneNumberButton().click();
 });
 
-And(
+Then(
   "the email information is captured {string} {string}",
   (email, emailDescription) => {
     personContactPage.pageWarning().should("not.exist");
@@ -428,7 +428,7 @@ And(
   }
 );
 
-And(
+Then(
   "the phone information is captured {string} {string} {string}",
   (phoneNumber, phoneType, phoneDescription) => {
     personContactPage.pageWarning().should("not.exist");
@@ -440,28 +440,28 @@ And(
   }
 );
 
-And("I click remove email address", () => {
+When("I click remove email address", () => {
   personContactPage.removeEmailAddressButton().click();
 });
 
-And("the remove email address modal is displayed", () => {
+Then("the remove email address modal is displayed", () => {
   modal.modalBody().should("be.visible");
 });
 
-And("the modal is not displayed", () => {
+Then("the modal is not displayed", () => {
   modal.modalBody().should("not.exist");
 });
 
-And("I click remove phone number", () => {
+When("I click remove phone number", () => {
   personContactPage.removePhoneNumberButton().click();
 });
 
-And("the remove phone number modal is displayed", () => {
+Then("the remove phone number modal is displayed", () => {
   modal.modalBody().should("be.visible");
 });
 
 // Person page
-And("I click edit person", () => {
+When("I click edit person", () => {
   personPage.editPersonButton().click();
 });
 
@@ -471,7 +471,7 @@ Then("I visit the 'Person details' page", () => {
   });
 });
 
-And("I am on the 'Person details' page", () => {
+Given("I am on the 'Person details' page", () => {
   cy.getPersonFixture().then(({ id: personId }) => {
     cy.url().should("include", personId);
   });
@@ -499,7 +499,7 @@ Given("I create a person for tenure", () => {
   });
 });
 
-And("I select a preferred middle name {string}", (preferredMiddleName) => {
+When("I select a preferred middle name {string}", (preferredMiddleName) => {
   if (preferredMiddleName === "guid") {
     preferredMiddleName = guid;
   }
@@ -507,7 +507,7 @@ And("I select a preferred middle name {string}", (preferredMiddleName) => {
   addPersonPage.preferredMiddleNameContainer().type(preferredMiddleName);
 });
 
-And("I select a preferred last name {string}", (preferredLastName) => {
+When("I select a preferred last name {string}", (preferredLastName) => {
   if (preferredLastName === "guid") {
     preferredLastName = guid;
   }
@@ -515,11 +515,11 @@ And("I select a preferred last name {string}", (preferredLastName) => {
   addPersonPage.preferredLastNameContainer().type(preferredLastName);
 });
 
-And("I enter a reason for creation", () => {
+When("I enter a reason for creation", () => {
   addPersonPage.reasonForCreationContainer().type("This is a test");
 });
 
-And("I click add person", () => {
+When("I click add person", () => {
   addPersonPage.addPersonButton().click();
 });
 
@@ -531,7 +531,7 @@ When("I click update person button", () => {
   dateCaptureTime = date.format(now, "H:mm");
 });
 
-And("I click cancel", () => {
+When("I click cancel", () => {
   addPersonPage.cancelButton().click();
 });
 
@@ -575,11 +575,11 @@ Then("the message New tenure completed is displayed", () => {
   cy.findAllByText("New tenure completed");
 });
 
-And("I click edit tenure", () => {
+When("I click edit tenure", () => {
   tenurePage.editTenureButton().click();
 });
 
-And("the edit tenure button is not displayed", () => {
+Then("the edit tenure button is not displayed", () => {
   tenurePage.editTenureButton().should("not.exist");
 });
 
@@ -644,7 +644,7 @@ Then("I am on the create new tenure page {string}", (id) => {
   });
 });
 
-And("the property's patch details are displayed", () => {
+Then("the property's patch details are displayed", () => {
   propertyPage.patchDetails().should("be.visible");
   propertyPage.patchDetails().contains("Patch");
   propertyPage.patchDetails().contains("Housing officer");
@@ -653,7 +653,7 @@ And("the property's patch details are displayed", () => {
 When("I click on the new tenure button", () => {
   propertyPage.newTenureButton().click();
 });
-And("the residents information is displayed", () => {
+Then("the residents information is displayed", () => {
   tenurePage.residentsDetailsAreDisplayed();
 });
 
@@ -661,11 +661,11 @@ When("I click on the add new person to tenure button", () => {
   tenurePage.addNewPersonToTenureButton().click();
 });
 
-And("I click the modal cancel button", () => {
+When("I click the modal cancel button", () => {
   modal.cancelButton().click({ force: true });
 });
 
-And("I click the confirm button", () => {
+When("I click the confirm button", () => {
   modal.confirmationButton().click({ force: true });
 });
 
@@ -677,7 +677,7 @@ Then("the warning modal is displayed", () => {
   modal.modalBody().should("be.visible");
 });
 
-And("the modal confirms making the tenure inactive", () => {
+Then("the modal confirms making the tenure inactive", () => {
   modal
     .modalBody()
     .contains(
@@ -685,7 +685,7 @@ And("the modal confirms making the tenure inactive", () => {
     );
 });
 
-And("the modal confirms making the tenure active", () => {
+Then("the modal confirms making the tenure active", () => {
   modal
     .modalBody()
     .contains(
@@ -697,12 +697,12 @@ When("I click cancel on the modal", () => {
   modal.cancelButton().click();
 });
 
-And("I click yes on the modal", () => {
+When("I click yes on the modal", () => {
   modal.confirmationButton().click();
 });
 
 // Add person
-And("I select a title {string}", (title) => {
+When("I select a title {string}", (title) => {
   addPersonPage.personTitleSelection().select(title);
 });
 
@@ -715,17 +715,17 @@ When("I select person type {string}", (personType) => {
   }
 });
 
-And("I enter a first name {string}", (firstName) => {
+When("I enter a first name {string}", (firstName) => {
   addPersonPage.firstNameContainer().clear();
   addPersonPage.firstNameContainer().type(firstName);
 });
 
-And("I enter a middle name {string}", (middleName) => {
+When("I enter a middle name {string}", (middleName) => {
   addPersonPage.middleNameContainer().clear();
   addPersonPage.middleNameContainer().type(middleName);
 });
 
-And("I enter a last name {string}", (lastName) => {
+When("I enter a last name {string}", (lastName) => {
   if (lastName === "guid") {
     lastName = guid;
   }
@@ -733,7 +733,7 @@ And("I enter a last name {string}", (lastName) => {
   addPersonPage.lastNameContainer().type(lastName);
 });
 
-And(
+When(
   "I enter a date of birth {string} {string} {string}",
   (day, month, year) => {
     addPersonPage.dateOfBirthDayContainer().clear();
@@ -752,33 +752,33 @@ Then("the form error container is displayed", () => {
     .contains("This date cannot be in the future");
 });
 
-And("I enter a place of birth {string}", (placeOfBirth) => {
+When("I enter a place of birth {string}", (placeOfBirth) => {
   addPersonPage.placeOfBirthContainer().clear();
   addPersonPage.placeOfBirthContainer().type(placeOfBirth);
 });
 
-And("I select a preferred title {string}", (preferredTitle) => {
+When("I select a preferred title {string}", (preferredTitle) => {
   addPersonPage.preferredTitleContainer().select(preferredTitle);
 });
 
-And("I select a preferred first name {string}", (preferredFirstName) => {
+When("I select a preferred first name {string}", (preferredFirstName) => {
   addPersonPage.preferredFirstNameContainer().clear();
   addPersonPage.preferredFirstNameContainer().type(preferredFirstName);
 });
 
-And("the named tenure holder button is not active", () => {
+Then("the named tenure holder button is not active", () => {
   addPersonPage.tenureHolderRadioButton().should("have.attr", "disabled");
 });
 
-And("the named tenure holder button is active", () => {
+Then("the named tenure holder button is active", () => {
   addPersonPage.tenureHolderRadioButton().should("have.attr", "disabled");
 });
 
-And("I remove one of the tenure holders", () => {
+When("I remove one of the tenure holders", () => {
   addPersonPage.removePersonFromTenure().click();
 });
 
-And("I click the next button", () => {
+When("I click the next button", () => {
   cy.contains("Next").click();
 });
 
@@ -951,7 +951,7 @@ When("I enter data email address and phone number", () => {
 
   changeOfName.buttonReturnToApplication().click();
 });
-And("I click on Remove email address and Remove phone number", () => {
+When("I click on Remove email address and Remove phone number", () => {
   cy.get("[data-testid=button-remove-email]").click();
   cy.get("[data-testid=button-confirm-remove-email]").click();
   cy.get("[data-testid=button-remove-phone]").click();
@@ -977,7 +977,7 @@ And("I click on Remove email address and Remove phone number", () => {
   //   }
   // })
 });
-// And("I click on Remove phone number" , () => {
+// When("I click on Remove phone number" , () => {
 //   let phoneBtn = cy.get('[data-testid=button-remove-phone]');
 //   for(let i = 0; i < phoneBtn.length; i++) {
 //    phoneBtn[i].click();
@@ -1023,7 +1023,7 @@ Given("the person has valid contact details", () => {
   });
 });
 
-And("the details email address and phone number are displayed", () => {
+Then("the details email address and phone number are displayed", () => {
   cy.contains(emailAdd);
   cy.contains(phoneNumber);
 });
@@ -1033,7 +1033,7 @@ Then("Status Stepper is at {string}", (status) => {
   changeOfName.statusActiveCheck().should("contain.text", status);
 });
 
-And("I can see the text add the contact details", () => {
+Then("I can see the text add the contact details", () => {
   cy.contains(
     "Please add the contact details, it will automatically update the tenant’s contact details as well."
   );

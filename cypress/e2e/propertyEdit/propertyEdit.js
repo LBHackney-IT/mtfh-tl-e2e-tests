@@ -1,4 +1,4 @@
-import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common";
 import { baseUrl } from "../../../environment-config";
@@ -40,13 +40,13 @@ Then("I should see the heading 'Edit property address', and property details for
     cy.contains('Current address').should('be.visible')
 })
 
-And("the 'Update to this address' and 'Cancel' buttons are present, along with a 'Back to asset' link at the top", () => {
+Given("the 'Update to this address' and 'Cancel' buttons are present, along with a 'Back to asset' link at the top", () => {
     cy.contains('Update to this address').should('be.visible')
     cy.contains('Cancel').should('be.visible')
     cy.contains('Back to asset').should('be.visible')
 })
 
-And("I edit the address line 1 of the address", () => {
+When("I edit the address line 1 of the address", () => {
     cy.get('[data-testid="address-line-1"]').clear().type(newAddressLine1Value)
 })
 
@@ -68,32 +68,32 @@ Then("I click on 'Update to this address' button, and the PATCH requests fail", 
     })
 })
 
-And("I can see the address line 1 of the 'Current address' has changed successfully", () => {
+Then("I can see the address line 1 of the 'Current address' has changed successfully", () => {
     cy.wait(['@patchAddress', '@updateAssetDetails'])
     cy.get('[data-testid="asset-address-line-one"]').should('have.value', newAddressLine1Value)
 })
 
-And("I can see a success message at the top of the screen", () => {
+Then("I can see a success message at the top of the screen", () => {
     cy.contains('The asset address has been updated successfully.').should('be.visible')
 })
 
-And("the 'Update to this address' and 'Cancel' buttons should be replaced by the 'Back to asset view' button", () => {
+Then("the 'Update to this address' and 'Cancel' buttons should be replaced by the 'Back to asset view' button", () => {
     cy.contains('Back to asset view').should('be.visible')
 })
 
-And("I should see and error indicating that the request failed", () => {
+Then("I should see and error indicating that the request failed", () => {
     cy.contains('There was a problem amending this asset').should('be.visible')
 })
 
-And("I should see an error message indicating that the LLPG address could not be loaded", () => {
+Then("I should see an error message indicating that the LLPG address could not be loaded", () => {
     cy.contains('Unable to retrieve address suggestion from the Local Gazetteer').should('be.visible')
 })
 
-And("I should see a heading that says 'New address details' instead of 'Suggestion from the Local Gazetteer'", () => {
+Then("I should see a heading that says 'New address details' instead of 'Suggestion from the Local Gazetteer'", () => {
     cy.contains('New address details').should('be.visible')
 })
 
-And("the address fields should contain the current address' details", () => {
+Then("the address fields should contain the current address' details", () => {
     cy.getAssetFixture().then(asset => {
         cy.get('[data-testid="address-line-1"]').should('be.enabled').and('have.value', asset.assetAddress.addressLine1)
         cy.get('[data-testid="address-line-2"]').should('be.enabled').and('have.value', asset.assetAddress.addressLine2)
@@ -103,7 +103,7 @@ And("the address fields should contain the current address' details", () => {
     })
 })
 
-And("the 'Update to this address' button should be enabled", () => {
+Then("the 'Update to this address' button should be enabled", () => {
     cy.contains('Update to this address').should('be.enabled')
 })
 
@@ -123,17 +123,17 @@ Then("I click on the 'Back to asset view' button", () => {
     cy.contains('Back to asset view').should('be.visible').click()
 })
 
-And("I should see the edited address", () => {
+Then("I should see the edited address", () => {
     cy.contains(newAddressLine1Value).should('be.visible')
 })
 
-And("I can see the asset UPRN", () => {
+Then("I can see the asset UPRN", () => {
     cy.getAssetFixture().then(asset => {
         cy.contains(asset.assetAddress.uprn).should('be.visible')
     })
 })
 
-And("I can see the asset does not have a UPRN", () => {
+Then("I can see the asset does not have a UPRN", () => {
     cy.contains(noUprnValue).should('be.visible')
 })
 

@@ -10,7 +10,7 @@ Then("no results are returned", () => {
   searchPage.searchComponent().contains("No matching search results found");
 });
 
-And("I click on the search again button", () => {
+When("I click on the search again button", () => {
   searchPage.searchAgainButton().click();
 });
 
@@ -26,7 +26,7 @@ Then("there is no filter option", () => {
   searchPage.sortByOption().should("not.exist");
 });
 
-And("tenure search results are prefixed correctly", () => {
+Then("tenure search results are prefixed correctly", () => {
   searchPage.searchResults().contains("Tenure payment ref");
 });
 
@@ -34,7 +34,7 @@ Then("I can see the options to search in the correct order", () => {
   searchPage.searchRadioButtons().first().contains('Property')
 })
 
-And("property search results are prefixed correctly", () => {
+Then("property search results are prefixed correctly", () => {
   searchPage.searchResults().contains("Property type")
   searchPage.searchResults().contains("Tenure")
   searchPage.searchResults().contains("UPRN")

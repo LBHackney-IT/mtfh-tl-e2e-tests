@@ -1,4 +1,4 @@
-import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import createCautionaryAlert from "../../../api/cautionary-alert";
 import { saveNonDynamoFixture } from "../../../api/helpers";
 import { generateTenure } from "../../../api/models/requests/addTenureModel";
@@ -27,7 +27,7 @@ When("I'm on the person's with cautionary alert page", () => {
   });
 });
 
-And("I navigate to that person's cautionary alert's page", () => {
+When("I navigate to that person's cautionary alert's page", () => {
   const cautionaryAlertLink = personPO.nthCautionaryAlert(0);
   cautionaryAlertLink.should('exist');
   cautionaryAlertLink.click();
@@ -46,7 +46,7 @@ Then("The page title should reflect the page's purpose & contain person's name",
   });
 });
 
-And("The cautionary alert table should show the correct information", () => {
+Then("The cautionary alert table should show the correct information", () => {
   cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
     const cautionaryAlert = cautionaryAlerts[0];
 
@@ -59,7 +59,7 @@ And("The cautionary alert table should show the correct information", () => {
   });
 });
 
-And("I click on the 'back' button", () => {
+When("I click on the 'back' button", () => {
   cautionaryAlertViewPO.backLink().click();
 });
 
@@ -70,26 +70,26 @@ Then("I get redirected to back to the person page", () => {
   });
 });
 
-And("I should see the cautionary alert I navigated from", () => {
+Then("I should see the cautionary alert I navigated from", () => {
   cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
     const cautionaryAlert = cautionaryAlerts[0];
     personPO.nthCautionaryAlert(0).should('contain', cautionaryAlert.cautionOnSystem);
   });
 });
 
-And("I click on the 'cancel' button", () => {
+When("I click on the 'cancel' button", () => {
   cautionaryAlertViewPO.cancelButton().click();
 });
 
-And("The 'cancel' button becomes visible", () => {
+Then("The 'cancel' button becomes visible", () => {
   cautionaryAlertViewPO.cancelButton().should('exist');
 });
 
-And("The 'cancel' button should become hidden", () => {
+Then("The 'cancel' button should become hidden", () => {
   cautionaryAlertViewPO.cancelButton().should('not.exist');
 });
 
-And("I click on the 'end alert' button", () => {
+When("I click on the 'end alert' button", () => {
   cautionaryAlertViewPO.endAlertButton().click();
 });
 
@@ -101,17 +101,17 @@ Then("The 'end date' input should become hidden", () => {
   cautionaryAlertViewPO.endDateInput().should('not.exist');
 });
 
-And("The 'end alert' button gets replaced with 'confirm' button", () => {
+Then("The 'end alert' button gets replaced with 'confirm' button", () => {
   cautionaryAlertViewPO.endAlertButton().should('not.exist');
   cautionaryAlertViewPO.confirmButton().should('exist');
 });
 
-And("The 'confirm' button gets replaced with 'end alert' button", () => {
+Then("The 'confirm' button gets replaced with 'end alert' button", () => {
   cautionaryAlertViewPO.endAlertButton().should('exist');
   cautionaryAlertViewPO.confirmButton().should('not.exist');
 });
 
-And("I fill in a valid 'end date' for the alert", () => {
+When("I fill in a valid 'end date' for the alert", () => {
   const today = new Date();
   const day = today.getDate().toString().padStart(2, '0');
   const month = (today.getMonth() + 1).toString().padStart(2, '0');
@@ -122,17 +122,17 @@ And("I fill in a valid 'end date' for the alert", () => {
   cautionaryAlertViewPO.endDateInput().click().type(typedDate);
 });
 
-And("I click the 'confirm' button", () => {
+When("I click the 'confirm' button", () => {
   cautionaryAlertViewPO.confirmButton().click();
 });
 
-And("The cautionary alert should not be listed under the person anymore", () => {
+Then("The cautionary alert should not be listed under the person anymore", () => {
   cy.reload() // Prevents the tests from being flaky. Reloading the page will always give us up to date information.
   personPO.pageTitle().should('exist');
   personPO.nthCautionaryAlert(0).should('not.exist');
 });
 
-And("I fill in an 'end date' for the alert that is not allowed", () => {
+When("I fill in an 'end date' for the alert that is not allowed", () => {
   const today = new Date();
   const day = "28";
   var yearNo = today.getFullYear();
@@ -154,15 +154,15 @@ Then("The 'end date' input error message is NOT displayed on the screen", () => 
   cautionaryAlertViewPO.endDateInputError().should('not.exist');
 });
 
-And("The 'confirm' button gets locked out", () => {
+Then("The 'confirm' button gets locked out", () => {
   cautionaryAlertViewPO.confirmButton().should('be.disabled');
 });
 
-And("The 'confirm' button gets unlocked", () => {
+Then("The 'confirm' button gets unlocked", () => {
   cautionaryAlertViewPO.confirmButton().should('not.be.disabled');
 });
 
-And("Given an impending 'End Alert' endpoint failure", () => {
+Given("Given an impending 'End Alert' endpoint failure", () => {
   cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
     const cautionaryAlertId = cautionaryAlerts[0].alertId;
     cy.setUpEndAlertError(cautionaryAlertId);
@@ -173,7 +173,7 @@ Then("The page error is displayed notifying the user about request failure", () 
   cautionaryAlertViewPO.pageError().should('exist');
 });
 
-And("User should stay on the manage cautionary alert page", () => {
+Then("User should stay on the manage cautionary alert page", () => {
   cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
     const cautionaryAlertId = cautionaryAlerts[0].alertId;
     cy.url().should('include', `/cautionary-alerts/alert/${cautionaryAlertId}`);

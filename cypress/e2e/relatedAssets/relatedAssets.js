@@ -19,15 +19,14 @@ const generateChildrenAssetsFixture = (numberOfChildrenAssets = 0) => {
     return childrenAssetsResponseObject;
 }
 
-And("The asset has less than than 3 related children assets", () => {
+Given("The asset has less than than 3 related children assets", () => {
     cy.generateCustomTemporaryFixture(generateChildrenAssetsFixture(2));
 
     cy.getAssetFixture().then(asset => {
         cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=1000`, { fixture: "CustomTemporaryFixture.json" }).as('getChildrenAssets')
     })
 })
-
-And("The asset has more than than 3 related children assets", () => {
+Given("The asset has more than than 3 related children assets", () => {
     cy.generateCustomTemporaryFixture(generateChildrenAssetsFixture(5));
 
     cy.getAssetFixture().then(asset => {
@@ -35,7 +34,7 @@ And("The asset has more than than 3 related children assets", () => {
     })
 })
 
-And("The asset has no related children assets", () => {
+Given("The asset has no related children assets", () => {
     cy.generateCustomTemporaryFixture(generateChildrenAssetsFixture(0));
 
     cy.getAssetFixture().then(asset => {
@@ -43,13 +42,13 @@ And("The asset has no related children assets", () => {
     })
 })
 
-And("The request to retrieve related children assets fails", () => {
+Given("The request to retrieve related children assets fails", () => {
     cy.getAssetFixture().then(asset => {
         cy.intercept('GET', `*/api/v1/search/assetrelationships?searchText=${asset.id}&pageSize=1000`, { forceNetworkError: true }).as('getChildrenAssets')
     })
 })
 
-And("The request to retrieve the asset fails", () => {
+Given("The request to retrieve the asset fails", () => {
     cy.getAssetFixture().then(asset => {
         cy.intercept('GET', `*/api/v1/assets/${asset.id}`, { forceNetworkError: true }).as('getAsset')
     })

@@ -68,7 +68,8 @@ Feature: As an internal Hackney User eg. HO, AHM
      Then it will display 'Select All' feature in a link
      When I click on it, it will select ALL items within that specific filter listing
      And the link will change to 'Remove All' in a link
-     When I click on 'Remove All' it will deselect ALL items within that specific filter listing
+     When I click on 'Remove All' 
+     Then it will deselect ALL items within that specific filter listing
 
   Scenario: AC7 - Clear selected Filters
      Given I am on the MMH home page

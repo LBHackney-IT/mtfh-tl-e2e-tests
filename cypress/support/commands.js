@@ -1,7 +1,6 @@
 import '@testing-library/cypress/add-commands';
 import 'cypress-axe'
 import 'cypress-audit/commands'
-import "cypress-localstorage-commands"
 
 const environmentConfig = require('../../environment-config')
 

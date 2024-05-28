@@ -14,7 +14,7 @@ Then("tenure page is displayed", () => {
     cy.url().should("include", "tenure");
 })
 
-And('I retrieve the asset via Asset API', () => {
+Given('I retrieve the asset via Asset API', () => {
     cy.log("Getting asset");
     cy.getAssetFixture().then((assetFixture) => {
         asset.getAsset(assetFixture.id).then((response) => {
@@ -31,7 +31,7 @@ When('I navigate to the asset page', () => {
     });
 })
 
-And('I am shown an error message', () => {
+Then('I am shown an error message', () => {
     propertyPage.propertyPage().contains('could not be loaded.')
 })
 
@@ -52,7 +52,7 @@ Then('I set the the repair type to {string}', (repairType) => {
     propertyPage.repairsSelectionBox().select(`repairs ${repairType.toLowerCase()}`)
 })
 
-And('the repairs card list is displayed {string}', (repairType) => {
+Then('the repairs card list is displayed {string}', (repairType) => {
     propertyPage.repairsCardList().contains(repairType)
 })
 
@@ -91,7 +91,7 @@ When("Click the 'Property Specification' section", () => {
 Then("The 'Property Specification' information becomes visible", () => {
     propertyPage.assetCharacteristicsInfoBlock().should('exist');
 });
-And("The displayed asset characteristics information is correct", () => {
+Then("The displayed asset characteristics information is correct", () => {
     cy.getAssetFixture().then((databaseAsset) => {
         propertyPage.numberOfBedrooms().should('contain', databaseAsset.assetCharacteristics.numberOfBedrooms);
         propertyPage.numberOfLifts().should('contain', databaseAsset.assetCharacteristics.numberOfLifts);
