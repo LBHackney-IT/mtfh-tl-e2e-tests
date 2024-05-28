@@ -18,7 +18,7 @@ jobs:
             PARALLELISM=$(find ./cypress/e2e -type f -name "*.feature" | wc -l)
             echo "{\"parallelism\": $PARALLELISM}" > pipeline-parameters.json
       - continuation/continue:
-          configuration_path: .circleci/config.yml
+          configuration_path: .circleci/main-config.yml
           parameters: pipeline-parameters.json
 
 workflows:
