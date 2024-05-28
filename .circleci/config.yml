@@ -162,6 +162,25 @@ jobs:
                         --header 'Content-Type: application/json' \
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
+  run-ci-tests:
+        parallelism: 11
+        executor: cypress-browsers
+        environment:
+            aws-region: eu-west-2
+        parameters:
+            stage:
+                type: string
+        steps:
+          - when:
+              condition: << pipeline.parameters.run_workflow_ci >> 
+              steps:
+                - *attach_workspace
+                - aws-cli/install
+                - checkout
+                - execute-e2e-tests:
+                    stage: development
+                    trigger-context: ci
+        
   run-e2e-devices:
         executor: cypress-browsers
         environment:
@@ -178,12 +197,12 @@ jobs:
               trigger-context: devices
     
 workflows:
-  run-e2e-tests:
+  run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
     jobs:
       - assume-role-development:
           context: api-assume-role-housing-development-context
-      - run-e2e-tests:
+      - run-ci-tests:
           stage: development
           context: mtfh-mfe-e2e-tests
           requires:
