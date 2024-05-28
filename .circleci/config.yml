@@ -9,7 +9,7 @@ jobs:
   determine-parallelism:
     docker:
       - image: cimg/base:edge
-    resource_class: medium
+    resource_class: small
     steps:
       - checkout
       - run:
