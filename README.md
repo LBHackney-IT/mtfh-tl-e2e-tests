@@ -52,13 +52,11 @@ Open the Cypress runner console by using `npm run test:cypress:open`
 The e2e tests use feature tags in order to run scoped tests. They can be set within a feature file using `@featureTag` and then ran using `cypress run -e tags='@featureTag'` more detailed documents can be found [here](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor#running-tagged-tests).
 
 #### Running the tests in the pipeline
-The tests are configured to run in the pipeline as per the CircleCi config.yml
+The tests are configured to run in the pipeline as per the CircleCi `main-config.yml`. Each feature file is run in parallel. The `config.yml` file contains a setup workflow that determines the number of containers to use based on the number of feature files. After that, it continues to `main-config.yml`.
 
 Every test not tagged `@GoogleLighthouse`, `@Accessibility`, `@ignore` or `@device` will run on a CI run of the e2e pipeline.
 
 When triggered externally by the MTFH micro frontends as part of that particular CI workflow, it will also run everything without the aforementioned tags in both `development` and `staging` environments. Once these tests have ran (and passed) they will trigger a downstream deployment of the parent micro frontend to an elevated environment (successful tests that ran against `development` will trigger a deployment to `staging` etc.). In `production` it will only run tests that have been explicitly tagged with `@Production`. 
-
-Because each feature is ran in parallel within separate containers, you will need to ensure that each of CircleCi's jobs' `parallelism` properties are correctly set to the number of feature files, or parallelism is disabled (by removing the key and property from the job), otherwise the tests won't run correctly.
 
 #### Further testing resources
 Further resources around creating tests can be found [here](https://drive.google.com/drive/folders/1XRqzngDYWvpfeJov1hbyJ_vBa88Ex2R4)
