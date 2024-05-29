@@ -99,10 +99,10 @@ commands:
                           export CYPRESS_TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' ;
                           
                           [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS= "$CYPRESS_TAGS and @Production"
-                          [ -z "$UPSTREAM_PIPELINE" ] && CYPRESS_TAGS="$CYPRESS_TAGS and @$UPSTREAM_PIPELINE"
+                          [ -n "$UPSTREAM_PIPELINE" ] && CYPRESS_TAGS="$CYPRESS_TAGS and @$UPSTREAM_PIPELINE"
 
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-                          [ -z "$UPSTREAM_PIPELINE" ] && echo "Running against $UPSTREAM_PIPELINE microfrontend." || echo "Running against all microfrontends." ;
+                          [ -n "$UPSTREAM_PIPELINE" ] && echo "Running against $UPSTREAM_PIPELINE microfrontend." || echo "Running against all microfrontends." ;
                           echo "Running with tags: $CYPRESS_TAGS" ;
                           npm install ;
                           ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
