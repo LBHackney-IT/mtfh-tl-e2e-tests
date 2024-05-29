@@ -77,10 +77,11 @@ commands:
                 name: Execute e2e tests
                 command: |
                           if <<parameters.stage>> == "production"
-                          then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
+                            then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
                           elif <<parameters.stage>> == "staging"
-                          then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
-                          else export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
+                            then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
+                          else 
+                            export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
                           export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
@@ -95,12 +96,15 @@ commands:
                           export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
+                          export CYPRESS_TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' ;
+                          
+                          [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS= "{$CYPRESS_TAGS} and @Production"
+                          [ -z "$UPSTREAM_PIPELINE" ] && CYPRESS_TAGS="@$UPSTREAM_PIPELINE and $CYPRESS_TAGS"
+
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                          echo "Running against $UPSTREAM_PIPELINE microfrontend.";
                           npm install ;
-                          if [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ]
-                          then ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='@Production and not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
-                          else ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58 -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' --parallel --group 'all tests'
-                          fi
+                          /node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
                        
             - store_artifacts:
                 path: /root/project/cypress/videos/
@@ -126,7 +130,6 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        parallelism: 11
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
@@ -163,7 +166,7 @@ jobs:
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
   run-ci-tests:
-        parallelism: 11
+        parallelism: 27 # Needs to be the same as the number of feature files
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
