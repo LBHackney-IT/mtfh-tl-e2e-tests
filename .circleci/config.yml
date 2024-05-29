@@ -98,13 +98,13 @@ commands:
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
                           export CYPRESS_TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' ;
                           
-                          [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS= "{$CYPRESS_TAGS} and @Production"
-                          [ -z "$UPSTREAM_PIPELINE" ] && CYPRESS_TAGS="@$UPSTREAM_PIPELINE and $CYPRESS_TAGS"
+                          [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS= "$CYPRESS_TAGS and @Production"
+                          [ -z "$UPSTREAM_PIPELINE" ] && CYPRESS_TAGS="$CYPRESS_TAGS and @$UPSTREAM_PIPELINE"
 
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           echo "Running against $UPSTREAM_PIPELINE microfrontend.";
                           npm install ;
-                          /node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
+                          ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
                        
             - store_artifacts:
                 path: /root/project/cypress/videos/
