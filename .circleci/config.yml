@@ -102,7 +102,8 @@ commands:
                           [ -z "$UPSTREAM_PIPELINE" ] && CYPRESS_TAGS="$CYPRESS_TAGS and @$UPSTREAM_PIPELINE"
 
                           echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-                          echo "Running against $UPSTREAM_PIPELINE microfrontend.";
+                          [ -z "$UPSTREAM_PIPELINE" ] && echo "Running against $UPSTREAM_PIPELINE microfrontend." || echo "Running against all microfrontends." ;
+                          echo "Running with tags: $CYPRESS_TAGS" ;
                           npm install ;
                           ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
                        
