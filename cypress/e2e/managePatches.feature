@@ -2,13 +2,13 @@
 @property
 @managePatches
 
-@ManagePatches
 Feature: View and manage patch and area assignment
 	I want to view and manage patch and area assignment
 
 	Background:
 		Given I am logged in
 
+    @SmokeTest
 	Scenario: Navigate to manage patches from property, view details, return to property
 		Given I seeded the database with an asset
 		When I view the property in MMH

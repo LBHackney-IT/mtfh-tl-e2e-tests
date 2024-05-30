@@ -7,8 +7,9 @@ Feature: As an internal Hackney user
 
     Background:
         Given I am logged in
-
-    @SmokeTest
+    
+    # TODO - Refactor this whole file to seed the db with process in a certain state for each step
+    # @SmokeTest
     Scenario: AC1. View Request for Documents page
         Given I seeded the database
         Given the application has passed eligibility and the housing officer breach of tenancy checks for the tenure
@@ -27,7 +28,7 @@ Feature: As an internal Hackney user
         And I am able to see the "Review Documents" state is Active
         And a case activity log is created
 
-    @SmokeTest
+    # @SmokeTest
     Scenario: AC 1.1 Link to current tenant's person page from Request Documents Page
         Given I seeded the database
         Given I am on the Request Documents page for the tenure
@@ -35,7 +36,7 @@ Feature: As an internal Hackney user
         Then I am taken to the current tenant's person page which will be opened in a new tab
 
 
-    @SmokeTest
+    # @SmokeTest
     Scenario: AC3. Request documents via office appointment
         Given I seeded the database
         Given I am on the Request Documents page for the tenure
@@ -60,7 +61,7 @@ Feature: As an internal Hackney user
     #    Given I am completing a Sole to Joint process
     #    Then underneath the progress indicator I will see a number of buttons 'Reassign Case'
 
-    @SmokeTest
+    # @SmokeTest
     Scenario: AC5. Add or Update the contact Details in Request Documents page
         Given I seeded the database
         Given the application has passed eligibility and the housing officer breach of tenancy checks for the tenure

@@ -63,7 +63,6 @@ Feature: T&L Person Page
             # | samsung-note9 |
             | samsung-s10 |
 
-      @SmokeTest
       Scenario Outline: Look for record that does not exist
         Given I have loaded an invalid person record "<record>"
         Then The person you've requested does not exist error message appears
@@ -73,7 +72,6 @@ Feature: T&L Person Page
           | kdfbv  |
           | dfkkkl |
 
-    @SmokeTest
     Scenario Outline: Add a comment for a person navigation
         Given I seeded the database with a person
         Given I visit the 'Person details' page

@@ -10,6 +10,7 @@ Feature: Property Page
   Background:
     Given I am logged in
 
+    # TODO: Combine tests into one
   @SmokeTest
   Scenario Outline: View property details
     Given I seeded the database with an asset with a previous tenure
@@ -41,7 +42,6 @@ Feature: Property Page
     And I click on the view property button for a person
     Then the property information is displayed
 
-  @SmokeTest
   Scenario Outline: Repairs container is displayed
     Given I seeded the database with an asset
     When I view the property in MMH
@@ -52,13 +52,11 @@ Feature: Property Page
       | repairsType |
       | In Progress |
 
-  @smoke
   Scenario Outline: 'New tenure' button should be displayed if no tenure information is returned for a given property
     Given I seeded the database with an asset
     When I view the property in MMH
     And New Tenure button should be displayed
 
-  @SmokeTest
   Scenario Outline: When I go to the Asset page, I can expand & collapse additional asset characteristics details
     Given I seeded an asset with "<completeness>" asset characteristics
     When I view the property in MMH
@@ -71,7 +69,6 @@ Feature: Property Page
       | completeness |
       | irrelevant   |
 
-  @SmokeTest
   Scenario Outline: When I go to the asset page & expand the asset details, I see the correct information
     Given I seeded an asset with "<completeness>" asset characteristics
     When I view the property in MMH
@@ -81,7 +78,6 @@ Feature: Property Page
       | completeness |
       | populated    |
 
-  @SmokeTest
   Scenario Outline: When I go to the asset page & expand the asset details, missing information is displayed as empty
     Given I seeded an asset with "<completeness>" asset characteristics
     When I view the property in MMH

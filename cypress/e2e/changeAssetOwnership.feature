@@ -10,6 +10,7 @@ Feature: Property Add
     Background:
         Given I am logged in
 
+    # TODO: Merge top two tests into one
     @SmokeTest
     Scenario Outline: 'A user can access the "Edit asset ownership" form in the main asset view in MMH'
         Given I seeded the database with an asset
@@ -25,7 +26,6 @@ Feature: Property Add
         Then I can see two radio options to change the ownership of the asset
         And I can see the 'Confirm change' and 'Back to asset' buttons
 
-    @SmokeTest
     Scenario Outline: 'Edit asset ownership form - Ownership change successful'
         Given I seeded the database with an asset
         And I am on the MMH 'Edit asset ownership' page for the asset
@@ -36,7 +36,6 @@ Feature: Property Add
         Then I submit the 'Edit asset ownership' form
         And I see a success message to confirm the asset ownership has been edited
 
-    @SmokeTest
     Scenario Outline: 'Edit asset ownership form - Ownership change failure'
         Given I seeded the database with an asset
         And I am on the MMH 'Edit asset ownership' page for the asset

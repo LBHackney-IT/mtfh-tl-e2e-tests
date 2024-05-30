@@ -1,8 +1,15 @@
+@authentication
+@common
+@cautionary-alerts
+@personal-details
+@root
+
 Feature: Create Cautionary Alerts
 
     Background:
         Given I am logged in
 
+@SmokeTest
 Scenario: Cautionary Alert information can be viewed by getting to it from Person page
     Given There's a resident with a cautionary alert
     When I'm on the person's with cautionary alert page
