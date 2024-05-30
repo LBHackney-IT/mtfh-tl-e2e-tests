@@ -83,7 +83,7 @@ commands:
                           else 
                             export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
-                          export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
+
                           export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text) ;
@@ -96,15 +96,18 @@ commands:
                           export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
-                          export CYPRESS_TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' ;
                           
+                          export CYPRESS_TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' ;
+                          export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS= "$CYPRESS_TAGS and @Production"
-                          [ -n "$UPSTREAM_PIPELINE" ] && CYPRESS_TAGS="$CYPRESS_TAGS and @$UPSTREAM_PIPELINE"
 
-                          echo "Running against $CYPRESS_ENVIRONMENT environment" ;
-                          [ -n "$UPSTREAM_PIPELINE" ] && echo "Running against $UPSTREAM_PIPELINE microfrontend." || echo "Running against all microfrontends." ;
-                          echo "Running with tags: $CYPRESS_TAGS" ;
+                          if [ -n "$PIPELINE_FILTER" ]
+                            then ["$PIPELINE_FILTER" == "common"] && export $PIPELINE_FILTER="SmokeTest" ; # If the pipeline is triggered by the common pipeline, run smoke tests
+                            export CYPRESS_TAGS="$CYPRESS_TAGS and @$PIPELINE_FILTER"
+                          fi
+
                           npm install ;
+                          echo "Running against $CYPRESS_ENVIRONMENT environment" ;
                           ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
                        
             - store_artifacts:
@@ -131,6 +134,7 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
+        parallelism: fififnd
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
@@ -159,9 +163,9 @@ jobs:
           - run:
               name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
               command: |
-                        export UPSTREAM_PIPELINE="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
+                        export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
                         export DEPLOYMENT_ENVIRONMENT='run_<< parameters.stage >>_workflow' ;
-                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$UPSTREAM_PIPELINE"'/pipeline' \
+                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$PIPELINE_FILTER"'/pipeline' \
                         --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
                         --header 'Content-Type: application/json' \
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
