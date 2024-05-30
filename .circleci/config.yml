@@ -99,15 +99,15 @@ commands:
                           
                           export CYPRESS_TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device' ;
                           export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
-                          [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS= "$CYPRESS_TAGS and @Production"
+                          [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS="$CYPRESS_TAGS and @Production"
 
-                          if [ -n "$PIPELINE_FILTER" ]
-                            then ["$PIPELINE_FILTER" == "common"] && export $PIPELINE_FILTER="SmokeTest" ; # If the pipeline is triggered by the common pipeline, run smoke tests
+                          if [ -n "$PIPELINE_FILTER" ]; then
+                            [[ $PIPELINE_FILTER == "common" ]] && export PIPELINE_FILTER="SmokeTest"
                             export CYPRESS_TAGS="$CYPRESS_TAGS and @$PIPELINE_FILTER"
                           fi
 
                           npm install ;
-                          echo "Running against $CYPRESS_ENVIRONMENT environment" ;
+                          echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_TAGS" ;
                           ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
                        
             - store_artifacts:
