@@ -8,7 +8,8 @@
       "cypress/e2e/[filepath]/*.{js,ts}",
       "cypress/e2e/common/*.{js,ts}"
     ],
-    "filterSpecs": true
+    "filterSpecs": true,
+    "omitFiltered": true
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
