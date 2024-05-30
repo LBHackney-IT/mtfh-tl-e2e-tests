@@ -134,7 +134,6 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        parallelism: fififnd
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
