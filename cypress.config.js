@@ -33,6 +33,6 @@ module.exports = defineConfig({
     },
     specPattern: 'cypress/e2e/**/*.{feature,features}',
     experimentalMemoryManagement: true,
-    numTestsKeptInMemory: 25
+    numTestsKeptInMemory: 35
   },
 })

@@ -74,14 +74,11 @@ commands:
         - *attach_workspace
         - run:
             name: Copy env vars from bash.env
-            command: |
-              cp ./bash.env $BASH_ENV
-              cat $BASH_ENV
+            command: cp ./bash.env $BASH_ENV
         - run:
             name: Execute e2e tests
             command: |
               echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_TAGS" ;
-              cat $BASH_ENV
               npx cypress install ;
               ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
         - store_artifacts:
@@ -174,11 +171,9 @@ jobs:
           name: Set test tag filters
           command: |
               cypress_tags='not @GoogleLighthouse and not @Accessibility and not @ignore' ;
-
-              upsteam_pipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')" ;
-
               [ "<<parameters.trigger-context>>" == "external" ] && [ "<<parameters.stage>>" == "production" ] && cypress_tags="$cypress_tags and @Production" ;
-
+              
+              upsteam_pipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')" ;
               if [ -n "$upsteam_pipeline" ]; then
                 if [[ $upsteam_pipeline == "common" ]] || [[ $upsteam_pipeline == "root" ]] || [[ $upsteam_pipeline == "authentication" ]]
                   then upsteam_pipeline="SmokeTest" ;
@@ -194,9 +189,7 @@ jobs:
               echo "export CYPRESS_TAGS='$cypress_tags'" >> $BASH_ENV ;
       - run:
           name: Copy env vars to bash.env
-          command: |
-            cp $BASH_ENV ./bash.env
-            cat ./bash.env
+          command: cp $BASH_ENV ./bash.env
       - persist_to_workspace:
           root: *workspace_root
           paths: 
