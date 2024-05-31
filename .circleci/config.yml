@@ -120,7 +120,7 @@ jobs:
               root: *workspace_root
               paths: 
                   - ./node_modules
-                  - ./.cache/Cypress
+                  - /root/.cache/Cypresss
   
   setup-e2e-tests:
         executor: node-executor
@@ -131,6 +131,7 @@ jobs:
           trigger-context:
             type: string
         steps:
+          - *attach_workspace
           - run:
               name: Add env vars for <<parameters.stage>> environment
               command: |
