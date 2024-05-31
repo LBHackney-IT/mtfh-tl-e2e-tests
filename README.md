@@ -3,6 +3,8 @@
 ## Important - About this repository:
 The purpose of this repository is to store all E2E tests for Manage My Home (MMH).
 
+The tests run based of the mfes that relate to the tests. At the top of each file there are tags that relate to the mfe. 
+
 Part of writing a new feature for MMH, regardless of the specific microfrontend that's being changed, involves ensuring the that all tests within this repository will pass, even if you do not modify existing tests, or add new tests accordingly (which you should). 
 
 Failure to do this result in:
@@ -15,6 +17,7 @@ When adding new tests, please:
 - If test records are added to the database, these also become 'dynamic fixtures' and, if required, their properties can be accessed them using methods such as `getAssetFixture()`, `getTenureFixture()` etc. Often, these methods are used to obtain the GUID of the record, randomly generated when the record was created.
 - Do **not** create tests that rely on data existing in the database. This could lead to tests "suddenly" failing if such data is then erased from the database.
 - In those cases where very specific data is required, for a particular test/assertion, the use of 'static' fixtures is recommended (if possible).
+- Ensure to add the tags of the mfe that the tests relate to, i.e. for `mtfh-frontend-personal-details` the tag should be `@personal-details`. 
 
 ## Running instructions
 #### Installation:
