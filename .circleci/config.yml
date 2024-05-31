@@ -74,7 +74,9 @@ commands:
           - *attach_workspace
           - run:
               name: Copy env vars from bash.env
-              command: cat bash.env >> $BASH_ENV
+              command: |
+                cp bash.env $BASH_ENV
+                cat bash.env
           - run:
               name: Execute e2e tests
               command: |
