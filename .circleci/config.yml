@@ -102,8 +102,8 @@ commands:
                           [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] && export CYPRESS_TAGS="$CYPRESS_TAGS and @Production"
 
                           if [ -n "$PIPELINE_FILTER" ]; then
-                            [[ $PIPELINE_FILTER == "common" | 
-                               $PIPELINE_FILTER == "authentication" | 
+                            [[ $PIPELINE_FILTER == "common" ||
+                               $PIPELINE_FILTER == "authentication" ||
                                $PIPELINE_FILTER == "root
                             ]] 
                               && export PIPELINE_FILTER="SmokeTest"
