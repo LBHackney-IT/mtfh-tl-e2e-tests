@@ -115,6 +115,7 @@ jobs:
                   command: |
                     echo "export CYPRESS_CACHE_FOLDER=./tmp/cypress_cache" >> $BASH_ENV ;
                     npm install
+                    ls -la
           - save_cache:
               key: dependency-cache-{{ checksum "package-lock.json" }}
               paths:
