@@ -81,6 +81,7 @@ commands:
             name: Execute e2e tests
             command: |
               echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_TAGS" ;
+              cat $BASH_ENV
               npx cypress install ;
               ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
         - store_artifacts:
@@ -179,7 +180,9 @@ jobs:
               [ "<<parameters.trigger-context>>" == "external" ] && [ "<<parameters.stage>>" == "production" ] && cypress_tags="$cypress_tags and @Production" ;
 
               if [ -n "$upsteam_pipeline" ]; then
-                [[ $upsteam_pipeline == "common" ]] && upsteam_pipeline="SmokeTest" ;
+                if [[ $upsteam_pipeline == "common" ]] || [[ $upsteam_pipeline == "root" ]] || [[ $upsteam_pipeline == "authentication" ]]
+                  then upsteam_pipeline="SmokeTest" ;
+                fi
                 cypress_tags="$cypress_tags and @$upsteam_pipeline" ;
               fi
 
@@ -188,7 +191,7 @@ jobs:
                 else cypress_tags="$cypress_tags and not @device" ;
               fi
 
-              echo "export CYPRESS_TAGS=$cypress_tags" >> $BASH_ENV ;
+              echo "export CYPRESS_TAGS='$cypress_tags'" >> $BASH_ENV ;
       - run:
           name: Copy env vars to bash.env
           command: |
