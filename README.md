@@ -5,7 +5,7 @@ The purpose of this repository is to store all E2E tests for Manage My Home (MMH
 
 The tests run based of the mfes that relate to the tests. At the top of each file there are tags that relate to the mfe. 
 
-Part of writing a new feature for MMH, regardless of the specific microfrontend that's being changed, involves ensuring the that all tests within this repository will pass. This applies even if you do not modify existing tests, or add new tests accordingly (which you should). 
+Part of writing a new feature for MMH, regardless of the specific microfrontend that's being changed, involves ensuring the that relative tests within this repository will pass. This applies even if you do not modify existing tests, or add new tests accordingly (which you should). 
 
 Failure to do this result in:
 - less test coverage for MMH, adding tech debt, and all other disadvantages that come with untested code; 
