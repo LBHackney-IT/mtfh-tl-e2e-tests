@@ -120,7 +120,7 @@ jobs:
               root: *workspace_root
               paths: 
                   - ./node_modules
-                  - ~/.cache/Cypresss
+                  - .cache/Cypress
   
   setup-e2e-tests:
         executor: node-executor
