@@ -119,7 +119,8 @@ jobs:
           - persist_to_workspace:
               root: *workspace_root
               paths: 
-                - .
+                  - ./node_modules
+                  - ./.cache/Cypress
   
   setup-e2e-tests:
         executor: node-executor
@@ -228,6 +229,7 @@ workflows:
           requires:
             - assume-role-development
       - setup-e2e-tests:
+          name: Setup e2e tests
           context: mtfh-mfe-e2e-tests
           stage: development
           trigger-context: ci
@@ -236,7 +238,7 @@ workflows:
       - run-ci-tests:
           name: Run continuous integration tests
           requires:
-            - setup-e2e-tests
+            - Setup e2e tests
 
   e2e-tests-development:
     when:
@@ -250,6 +252,7 @@ workflows:
           requires:
             - assume-role-development
       - setup-e2e-tests:
+          name: Setup e2e tests
           context: mtfh-mfe-e2e-tests
           stage: development
           trigger-context: external
@@ -258,12 +261,12 @@ workflows:
       - run-e2e-tests:
           name: Run acceptance tests against development environment
           requires:
-            - setup-e2e-tests
+            - Setup e2e tests
       - trigger-downstream-deployment:
           name: Trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: staging
           requires:
-            - run-e2e-tests
+            - Run acceptance tests against development environment
           
   e2e-tests-staging:
     when:
@@ -277,6 +280,7 @@ workflows:
           requires:
             - assume-role-staging
       - setup-e2e-tests:
+          name: Setup e2e tests
           context: mtfh-mfe-e2e-tests
           stage: staging
           trigger-context: external
@@ -285,12 +289,12 @@ workflows:
       - run-e2e-tests:
           name: Run acceptance tests against staging emvironment
           requires:
-            - setup-e2e-tests
+            - Setup e2e tests
       - trigger-downstream-deployment:
           name: Trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: production
           requires:
-            - run-e2e-tests
+            - Run acceptance tests against staging emvironment
       
   e2e-tests-production:
     when:
@@ -304,6 +308,7 @@ workflows:
           requires:
             - assume-role-production
       - setup-e2e-tests:
+          name: Setup e2e tests
           context: mtfh-mfe-e2e-tests
           stage: production
           trigger-context: external
@@ -312,7 +317,7 @@ workflows:
       - run-e2e-tests:
           name: Run acceptance tests against production environment
           requires:
-            - setup-e2e-tests
+            - Setup e2e tests
 
   e2e-tests-devices:
     triggers:
@@ -329,6 +334,7 @@ workflows:
           requires:
             - assume-role-staging
       - setup-e2e-tests:
+          name: Setup e2e tests
           context: mtfh-mfe-e2e-tests
           stage: staging
           trigger-context: devices
@@ -337,4 +343,4 @@ workflows:
       - run-e2e-devices:
           name: Run device tests against staging environment
           requires:
-            - setup-e2e-tests
+            - Setup e2e tests
