@@ -198,9 +198,9 @@ jobs:
             cp $BASH_ENV ./bash.env
             cat ./bash.env
       - persist_to_workspace:
-          root: .
-          paths:
-            - bash.env
+          root: *workspace_root
+          paths: 
+            - .
 
   run-ci-tests: # For CI runs (i.e. on this repo)
       executor: cypress-browsers
