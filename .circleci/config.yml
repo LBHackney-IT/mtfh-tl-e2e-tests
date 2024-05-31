@@ -116,16 +116,24 @@ jobs:
                     echo "export CYPRESS_CACHE_FOLDER=./tmp/cypress_cache" >> $BASH_ENV ;
                     CYPRESS_CACHE_FOLDER=./tmp/cypress_cache npm install
                     ls -la
+          - run: |
+              cp $BASH_ENV bash.env
+          - persist_to_workspace:
+              root: .
+              paths:
+                - bash.env
           - save_cache:
               key: dependency-cache-{{ checksum "package-lock.json" }}
               paths:
                   - ./node_modules
+                  - ./tmp/cypress_cache
           - persist_to_workspace:
               root: .
               paths: 
                   - node_modules
                   - tmp/cypress_cache
-  
+                  - bash.env
+                  
   setup-e2e-tests:
         executor: node-executor
         description: 'Run e2e tests'
@@ -183,8 +191,10 @@ jobs:
                   fi
                 
                   echo "export CYPRESS_TAGS=$cypress_tags" >> $BASH_ENV ;
+          - run: |
+              cp $BASH_ENV bash.env
           - persist_to_workspace:
-              root: *workspace_root
+              root: .
               paths:
                 - bash.env
   
