@@ -69,23 +69,23 @@ commands:
                       - .aws
 
     execute-e2e-tests:
-        description: 'Run e2e tests'
-        steps:
-          - *attach_workspace
-          - run:
-              name: Copy env vars from bash.env
-              command: |
-                cp bash.env $BASH_ENV
-                cat bash.env
-          - run:
-              name: Execute e2e tests
-              command: |
-                echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_TAGS" ;
-                npx cypress install ;
-                ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
-          - store_artifacts:
-              path: /root/project/cypress/videos/
-              destination: artifact-file
+      description: 'Run e2e tests'
+      steps:
+        - *attach_workspace
+        - run:
+            name: Copy env vars from bash.env
+            command: |
+              cp ./bash.env $BASH_ENV
+              cat $BASH_ENV
+        - run:
+            name: Execute e2e tests
+            command: |
+              echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_TAGS" ;
+              npx cypress install ;
+              ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
+        - store_artifacts:
+            path: /root/project/cypress/videos/
+            destination: artifact-file
     
 jobs:
   assume-role-development:
@@ -112,14 +112,13 @@ jobs:
       steps:
           - *attach_workspace
           - checkout
-          # - restore_cache:
-          #         key: dependency-cache-{{ checksum "package-lock.json" }}
+          - restore_cache:
+                  key: dependency-cache-v1-{{ checksum "package-lock.json" }}
           - run:
-                  name: Install dependencies
-                  command: |
-                    echo "export CYPRESS_CACHE_FOLDER=./tmp/cypress_cache" >> $BASH_ENV ;
-                    CYPRESS_CACHE_FOLDER=./tmp/cypress_cache npm install
-                    ls -la
+                name: Install dependencies
+                command: |
+                  echo "export CYPRESS_CACHE_FOLDER=./tmp/cypress_cache" >> $BASH_ENV ;
+                  CYPRESS_CACHE_FOLDER=./tmp/cypress_cache npm install
           - run: 
               name: Copy env vars to bash.env
               command: cp $BASH_ENV bash.env
@@ -132,73 +131,74 @@ jobs:
               root: *workspace_root
               paths: 
                 - .
-                  
+
   setup-e2e-tests:
-        executor: node-executor
-        description: 'Run e2e tests'
-        parameters:
-          stage:
-            type: string
-          trigger-context:
-            type: string
-        steps:
-          - *attach_workspace
-          - aws-cli/install
-          - run:
-              name: Add env vars for <<parameters.stage>> environment
-              command: |
-                  if "<<parameters.stage>>" == "production"
-                    then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
-                  elif "<<parameters.stage>>" == "staging"
-                    then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
-                  else 
-                    export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
-                  fi
-          - run:
-              name: Add other environment vars 
-              command: |
-                  echo "export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  echo "export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  echo "export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  echo "export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  echo "export CYPRESS_EQUALITY_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/equality-information-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  echo "export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  echo "export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  echo "export CYPRESS_CAUTIONARY_ALERT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/cautionary-alerts-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
-                  
-                  echo "export CYPRESS_ENVIRONMENT=<<parameters.stage>>" >> $BASH_ENV ;
+    executor: node-executor
+    description: 'Run e2e tests'
+    parameters:
+      stage:
+        type: string
+      trigger-context:
+        type: string
+    steps:
+      - *attach_workspace
+      - aws-cli/install
+      - run:
+          name: Add env vars for <<parameters.stage>> environment
+          command: |
+              if "<<parameters.stage>>" == "production"
+                then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
+              elif "<<parameters.stage>>" == "staging"
+                then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
+              else 
+                export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
+              fi
+      - run:
+          name: Add other environment vars 
+          command: |
+              echo "export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_EQUALITY_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/equality-information-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_CAUTIONARY_ALERT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/cautionary-alerts-api-url --query Parameter.Value --output text)" >> $BASH_ENV ;
+              echo "export CYPRESS_ENVIRONMENT=<<parameters.stage>>" >> $BASH_ENV ;
 
-                  echo "export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default)" >> $BASH_ENV ;
-                  echo "export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default)" >> $BASH_ENV ;
-                  echo "export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default)" >> $BASH_ENV ;
-          - run:  
-              name: Set test tag filters
-              command: |
-                  cypress_tags='not @GoogleLighthouse and not @Accessibility and not @ignore' ;
+              echo "export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default)" >> $BASH_ENV ;
+              echo "export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default)" >> $BASH_ENV ;
+              echo "export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default)" >> $BASH_ENV ;
+      - run:  
+          name: Set test tag filters
+          command: |
+              cypress_tags='not @GoogleLighthouse and not @Accessibility and not @ignore' ;
 
-                  upsteam_pipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')" ;
-                  
-                  [ "<<parameters.trigger-context>>" == "external" ] && [ "<<parameters.stage>>" == "production" ] && cypress_tags="$cypress_tags and @Production" ;
-                  
-                  if [ -n "$upsteam_pipeline" ]; then
-                    [[ $upsteam_pipeline == "common" ]] && upsteam_pipeline="SmokeTest" ;
-                    cypress_tags="$cypress_tags and @$upsteam_pipeline" ;
-                  fi
+              upsteam_pipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')" ;
 
-                  if [<<parameters.trigger-context>> == "devices"]
-                    then cypress_tags="$cypress_tags and @device" ;
-                    else cypress_tags="$cypress_tags and not @device" ;
-                  fi
-                
-                  echo "export CYPRESS_TAGS=$cypress_tags" >> $BASH_ENV ;
-          - run:
-              name: Copy env vars to bash.env
-              command: cp $BASH_ENV bash.env
-          - persist_to_workspace:
-              root: .
-              paths:
-                - bash.env
-  
+              [ "<<parameters.trigger-context>>" == "external" ] && [ "<<parameters.stage>>" == "production" ] && cypress_tags="$cypress_tags and @Production" ;
+
+              if [ -n "$upsteam_pipeline" ]; then
+                [[ $upsteam_pipeline == "common" ]] && upsteam_pipeline="SmokeTest" ;
+                cypress_tags="$cypress_tags and @$upsteam_pipeline" ;
+              fi
+
+              if [<<parameters.trigger-context>> == "devices"]
+                then cypress_tags="$cypress_tags and @device" ;
+                else cypress_tags="$cypress_tags and not @device" ;
+              fi
+
+              echo "export CYPRESS_TAGS=$cypress_tags" >> $BASH_ENV ;
+      - run:
+          name: Copy env vars to bash.env
+          command: |
+            cp $BASH_ENV bash.env
+            cat bash.env
+      - persist_to_workspace:
+          root: .
+          paths:
+            - bash.env
+
   run-ci-tests: # For CI runs (i.e. on this repo)
       executor: cypress-browsers
       parallelism: 27 # Needs to be the same as the number of feature files
