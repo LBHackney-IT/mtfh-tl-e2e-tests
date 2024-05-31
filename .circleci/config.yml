@@ -163,8 +163,8 @@ jobs:
                   cypress_tags='not @GoogleLighthouse and not @Accessibility and not @ignore' ;
 
                   upsteam_pipeline="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')" ;
-                  [ <<parameters.trigger-context>> == "external" ] && [ <<parameters.stage>> == "production" ] 
-                    && cypress_tags="$cypress_tags and @Production" ;
+                  
+                  [ "<<parameters.trigger-context>>" == "external" ] && [ "<<parameters.stage>>" == "production" ] && cypress_tags="$cypress_tags and @Production" ;
                   
                   if [ -n "$upsteam_pipeline" ]; then
                     [[ $upsteam_pipeline == "common" ]] && upsteam_pipeline="SmokeTest" ;
