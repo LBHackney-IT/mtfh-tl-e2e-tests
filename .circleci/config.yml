@@ -121,10 +121,10 @@ jobs:
               paths:
                   - ./node_modules
           - persist_to_workspace:
-              root: *workspace_root
+              root: .
               paths: 
-                  - ./node_modules
-                  - ./tmp/cypress_cache
+                  - node_modules
+                  - tmp/cypress_cache
   
   setup-e2e-tests:
         executor: node-executor
