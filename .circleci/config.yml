@@ -72,6 +72,8 @@ commands:
         description: 'Run e2e tests'
         steps:
           - *attach_workspace
+          - run: |
+              cat bash.env >> $BASH_ENV
           - run:
               name: Execute e2e tests
               command: |
