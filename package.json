@@ -1,6 +1,6 @@
 {
   "name": "mtfh-tl-e2e-tests",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "End to end tests for MTFH T&L",
   "main": "index.js",
   "cypress-cucumber-preprocessor": {
