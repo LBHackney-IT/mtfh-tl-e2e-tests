@@ -128,11 +128,9 @@ jobs:
                   - ./node_modules
                   - ./tmp/cypress_cache
           - persist_to_workspace:
-              root: .
+              root: *workspace_root
               paths: 
-                  - node_modules
-                  - tmp/cypress_cache
-                  - bash.env
+                - .
                   
   setup-e2e-tests:
         executor: node-executor
@@ -205,21 +203,18 @@ jobs:
         - when:
             condition: << pipeline.parameters.run_workflow_ci >> 
             steps:
-              - *attach_workspace
               - execute-e2e-tests
 
   run-e2e-tests: # For MFE deployments
       executor: cypress-browsers
       parallelism: 5
       steps:
-        - *attach_workspace
         - execute-e2e-tests
         
   run-e2e-devices: # Scheduled checks on devices
       executor: cypress-browsers
       parallelism: 5
       steps:
-        - *attach_workspace
         - execute-e2e-tests
 
   trigger-downstream-deployment:
