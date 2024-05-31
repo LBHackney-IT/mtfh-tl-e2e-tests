@@ -10,12 +10,12 @@ Feature: Tenure Comment
     Background:
         Given I am logged in
 
-    @SmokeTest
     Scenario Outline: I go to create a comment for a tenure page
         Given I seeded the database with a tenure
         Given I am on the create comment page for "tenure"
         Then the create comment component is displayed
 
+    @SmokeTest
     @Positive
     Scenario Outline: Add comment - Relationship between selected record and records in other entities
         Given I seeded the database with a tenure
@@ -70,7 +70,6 @@ Feature: Tenure Comment
             | commentType | category     |
             | tenure      | Appointments |
 
-    @SmokeTest
     @Negative
     Scenario Outline: User cannot submit a comment without mandatory fields
         Given I seeded the database with a tenure
@@ -85,7 +84,6 @@ Feature: Tenure Comment
             | tenure      | test title   |                    | Rents           | You must enter a description for this comment |
             | tenure      | test title   | test comment       |                 | You must select a category for this comment   |
 
-    @SmokeTest
     @Positive
     #Notes: TL-60 AC3.1, AC 3.2 and 3.4
     Scenario Outline: Cancel comment and pop up message
@@ -100,7 +98,6 @@ Feature: Tenure Comment
             | tenure      |
 
     @Positive
-    @SmokeTest
     Scenario Outline: Character limit counter
         Given I seeded the database with a tenure
         Given I am on the create comment page for "tenure"
@@ -112,7 +109,6 @@ Feature: Tenure Comment
             | tenure      | 350        |
 
     @Negative
-    @SmokeTest
     Scenario Outline: Character limit exceeded
         Given I seeded the database with a tenure
         Given I am on the create comment page for "tenure"

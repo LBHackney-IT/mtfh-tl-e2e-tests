@@ -1,9 +1,17 @@
-@authentication @common @personal-details @processes @root @EditPersonContactDetailsPage
+@authentication 
+@common 
+@personal-details 
+@processes 
+@root 
+@EditPersonContactDetailsPage
+
 Feature: Edit contact details for a person
     I want to edit contact details for a person
 
+  # TODO - Add tests for edit individual contact details
   Background: 
     Given I am logged in
+
 
   Scenario Outline: Correspondence address using invalid postcode lookup details
     Given I seeded the database with a person
@@ -14,6 +22,7 @@ Feature: Edit contact details for a person
     And I click look up
     Then an invalid postcode error is thrown
 
+  @SmokeTest
   Scenario Outline: Correspondence address using free text fields
     Given I seeded the database with a person
     When I edit a person's contact details
@@ -56,6 +65,7 @@ Feature: Edit contact details for a person
     And I click the save changes button
     Then I see validation errors for empty fields
 
+  @SmokeTest
   Scenario Outline: Success message when phone added
     Given I seeded the database with a person
     When I edit a person's contact details
@@ -77,6 +87,7 @@ Feature: Edit contact details for a person
     Then I click the save changes button
     Then I see the success button is disabled
 
+  @SmokeTest
   Scenario Outline: Removing a phone number opens a confirmation modal
     Given I seeded the database with a person
     When I edit a person's contact details

@@ -3,6 +3,7 @@ Feature: As an internal Hackney User
     via the person page
     So that I can complete a legal change of name for a person
 
+    # TODO - Refactor this whole file to seed the db with process in a certain state for each step
     Background:
         Given I am logged in
 
@@ -186,7 +187,6 @@ Feature: As an internal Hackney User
         Then I am on the Processes list page
         And I am not able to see the Change Of Name process listed
 
-    @SmokeTest
     Scenario Outline: AC7 - Update Contact Details in Request Documents Page
         Given I seeded the database with a person with an active tenure
         Then I visit the 'Person details' page

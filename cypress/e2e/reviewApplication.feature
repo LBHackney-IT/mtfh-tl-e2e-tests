@@ -1,3 +1,8 @@
+@authentication
+@common
+@processes
+@root
+
 Feature: As a Housing Officer
   I want to confirm a tenure investigation has been completed
   So that I can make a decision on the sole to joint application

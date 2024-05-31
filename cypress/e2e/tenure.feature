@@ -8,7 +8,9 @@ Feature: Tenure page
 
     Background:
         Given I am logged in
-
+    
+    # TODO: Combine these tests
+    @SmokeTest
     Scenario: View resident details for new tenure
         Given I seeded the database with a tenure
         When I view a tenure
@@ -21,7 +23,6 @@ Feature: Tenure page
         When I view a tenure
         Then the Scanned historic tenure records button is displayed
 
-    @SmokeTest
     Scenario Outline: Navigate to old tenancy files - button not displayed
         Given I create a tenure that started on date "2014-12-31", with no responsible household members
         And the start date for the tenure record is after 31 December 2013
@@ -41,7 +42,6 @@ Feature: Tenure page
         When I view the Other household members section in the tenure page
         And A message says this tenure has no household members
 
-    @SmokeTest
     Scenario: Navigate to personal details
         Given I seeded the database with a tenure
         When I view a tenure

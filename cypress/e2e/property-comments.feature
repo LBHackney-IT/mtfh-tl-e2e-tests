@@ -9,7 +9,6 @@ Feature: Property Comment
     Background:
         Given I am logged in
 
-    @SmokeTest
     @Negative
     Scenario Outline: Validation message is displayed
         Given I seeded the database with an asset
