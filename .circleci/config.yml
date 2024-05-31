@@ -72,8 +72,9 @@ commands:
         description: 'Run e2e tests'
         steps:
           - *attach_workspace
-          - run: |
-              cat bash.env >> $BASH_ENV
+          - run:
+              name: Copy env vars from bash.env
+              command: cat bash.env >> $BASH_ENV
           - run:
               name: Execute e2e tests
               command: |
@@ -109,7 +110,6 @@ jobs:
       steps:
           - *attach_workspace
           - checkout
-          - aws-cli/install
           # - restore_cache:
           #         key: dependency-cache-{{ checksum "package-lock.json" }}
           - run:
@@ -118,12 +118,9 @@ jobs:
                     echo "export CYPRESS_CACHE_FOLDER=./tmp/cypress_cache" >> $BASH_ENV ;
                     CYPRESS_CACHE_FOLDER=./tmp/cypress_cache npm install
                     ls -la
-          - run: |
-              cp $BASH_ENV bash.env
-          - persist_to_workspace:
-              root: .
-              paths:
-                - bash.env
+          - run: 
+              name: Copy env vars to bash.env
+              command: cp $BASH_ENV bash.env
           - save_cache:
               key: dependency-cache-{{ checksum "package-lock.json" }}
               paths:
@@ -144,6 +141,7 @@ jobs:
             type: string
         steps:
           - *attach_workspace
+          - aws-cli/install
           - run:
               name: Add env vars for <<parameters.stage>> environment
               command: |
@@ -191,8 +189,9 @@ jobs:
                   fi
                 
                   echo "export CYPRESS_TAGS=$cypress_tags" >> $BASH_ENV ;
-          - run: |
-              cp $BASH_ENV bash.env
+          - run:
+              name: Copy env vars to bash.env
+              command: cp $BASH_ENV bash.env
           - persist_to_workspace:
               root: .
               paths:
@@ -245,7 +244,7 @@ workflows:
           requires:
             - assume-role-development
       - setup-e2e-tests:
-          name: Setup e2e tests
+          name: Setup e2e tests ci
           context: mtfh-mfe-e2e-tests
           stage: development
           trigger-context: ci
@@ -254,7 +253,7 @@ workflows:
       - run-ci-tests:
           name: Run continuous integration tests
           requires:
-            - Setup e2e tests
+            - Setup e2e tests ci
 
   e2e-tests-development:
     when:
@@ -268,7 +267,7 @@ workflows:
           requires:
             - assume-role-development
       - setup-e2e-tests:
-          name: Setup e2e tests
+          name: Setup e2e tests development
           context: mtfh-mfe-e2e-tests
           stage: development
           trigger-context: external
@@ -277,7 +276,7 @@ workflows:
       - run-e2e-tests:
           name: Run acceptance tests against development environment
           requires:
-            - Setup e2e tests
+            - Setup e2e tests development
       - trigger-downstream-deployment:
           name: Trigger staging deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: staging
@@ -296,7 +295,7 @@ workflows:
           requires:
             - assume-role-staging
       - setup-e2e-tests:
-          name: Setup e2e tests
+          name: Setup e2e tests staging
           context: mtfh-mfe-e2e-tests
           stage: staging
           trigger-context: external
@@ -305,7 +304,7 @@ workflows:
       - run-e2e-tests:
           name: Run acceptance tests against staging emvironment
           requires:
-            - Setup e2e tests
+            - Setup e2e tests staging
       - trigger-downstream-deployment:
           name: Trigger production deployment of << pipeline.parameters.upstream_pipeline_name >>
           stage: production
@@ -324,7 +323,7 @@ workflows:
           requires:
             - assume-role-production
       - setup-e2e-tests:
-          name: Setup e2e tests
+          name: Setup e2e tests production
           context: mtfh-mfe-e2e-tests
           stage: production
           trigger-context: external
@@ -333,7 +332,7 @@ workflows:
       - run-e2e-tests:
           name: Run acceptance tests against production environment
           requires:
-            - Setup e2e tests
+            - Setup e2e tests production
 
   e2e-tests-devices:
     triggers:
@@ -350,7 +349,7 @@ workflows:
           requires:
             - assume-role-staging
       - setup-e2e-tests:
-          name: Setup e2e tests
+          name: Setup e2e tests devices
           context: mtfh-mfe-e2e-tests
           stage: staging
           trigger-context: devices
@@ -359,4 +358,4 @@ workflows:
       - run-e2e-devices:
           name: Run device tests against staging environment
           requires:
-            - Setup e2e tests
+            - Setup e2e tests devices
