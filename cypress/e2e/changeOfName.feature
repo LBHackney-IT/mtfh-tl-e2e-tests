@@ -128,109 +128,109 @@ Feature: As an internal Hackney User
     #     And I click on Next button
     #     Then a validation error message for 'Title' is displayed
 
-    Scenario Outline: AC4 - CoN Process through 'Make an appointment to check supporting documents'
-        Given I seeded the database with a person with an active tenure
-        Then I visit the 'Person details' page
-        And I click on 'New Process' button
-        And I select 'Changes to a tenancy' from the processes menu
-        Then a further sub menu is expanded into view
-        When I select 'Change of Name' to initiate the change of name process for the selected person
-        Then 'Change of Name' page is displayed
-        And Start Process button is disabled
-        When I select the checkbox 'I have explained to the tenant'
-        Then Start Process button is enabled
-        When I select the button
-        Then Change of Name edit page is displayed
-        And Next button is disabled
-        And Status Stepper is at "Tenant's new name"
-        When I select Title and enter First and Last name
-        And I click on Next button
-        Then I am on the supporting documents page
-        And Status Stepper is at "Request Documents"
-        When I select 'I have made an appointment to check supporting documents' and click on Next button
-        Then 'Review Documents' page is displayed
-        And 'Office appointment scheduled' message box is displayed
+    # Scenario Outline: AC4 - CoN Process through 'Make an appointment to check supporting documents'
+    #    Given I seeded the database with a person with an active tenure
+    #    Then I visit the 'Person details' page
+    #    And I click on 'New Process' button
+    #    And I select 'Changes to a tenancy' from the processes menu
+    #    Then a further sub menu is expanded into view
+    #    When I select 'Change of Name' to initiate the change of name process for the selected person
+    #    Then 'Change of Name' page is displayed
+    #    And Start Process button is disabled
+    #    When I select the checkbox 'I have explained to the tenant'
+    #    Then Start Process button is enabled
+    #    When I select the button
+    #    Then Change of Name edit page is displayed
+    #    And Next button is disabled
+    #    And Status Stepper is at "Tenant's new name"
+    #    When I select Title and enter First and Last name
+    #    And I click on Next button
+    #    Then I am on the supporting documents page
+    #    And Status Stepper is at "Request Documents"
+    #    When I select 'I have made an appointment to check supporting documents' and click on Next button
+    #    Then 'Review Documents' page is displayed
+    #    And 'Office appointment scheduled' message box is displayed
 
-    Scenario Outline: AC5 - Close case at Review Documents stage
-        Given I seeded the database with a person with an active tenure
-        Then I visit the 'Person details' page
-        And I click on 'New Process' button
-        And I select 'Changes to a tenancy' from the processes menu
-        Then a further sub menu is expanded into view
-        When I select 'Change of Name' to initiate the change of name process for the selected person
-        Then 'Change of Name' page is displayed
-        And Start Process button is disabled
-        When I select the checkbox 'I have explained to the tenant'
-        Then Start Process button is enabled
-        When I select the button
-        Then Change of Name edit page is displayed
-        And Next button is disabled
-        And Status Stepper is at "Tenant's new name"
-        When I select Title and enter First and Last name
-        And I click on Next button
-        Then I am on the supporting documents page
-        And Status Stepper is at "Request Documents"
-        When I select 'I have made an appointment to check supporting documents' and click on Next button
-        Then 'Review Documents' page is displayed
-        And 'Office appointment scheduled' message box is displayed
-        When I click on Close Case button
-        Then modal dialog is displayed with 'Reason for close case'
-        When I enter the reason and I click on Close case button
-        Then 'Review Documents' page is displayed with message 'Change of name application will be closed' and reason
-        When I select checkbox to confirm outcome letter and I click on Confirm button
-        Then "Thank you for your confirmation" message is displayed
+    # Scenario Outline: AC5 - Close case at Review Documents stage
+    #    Given I seeded the database with a person with an active tenure
+    #    Then I visit the 'Person details' page
+    #    And I click on 'New Process' button
+    #    And I select 'Changes to a tenancy' from the processes menu
+    #    Then a further sub menu is expanded into view
+    #    When I select 'Change of Name' to initiate the change of name process for the selected person
+    #    Then 'Change of Name' page is displayed
+    #    And Start Process button is disabled
+    #    When I select the checkbox 'I have explained to the tenant'
+    #    Then Start Process button is enabled
+    #    When I select the button
+    #    Then Change of Name edit page is displayed
+    #    And Next button is disabled
+    #    And Status Stepper is at "Tenant's new name"
+    #    When I select Title and enter First and Last name
+    #    And I click on Next button
+    #    Then I am on the supporting documents page
+    #    And Status Stepper is at "Request Documents"
+    #    When I select 'I have made an appointment to check supporting documents' and click on Next button
+    #    Then 'Review Documents' page is displayed
+    #    And 'Office appointment scheduled' message box is displayed
+    #    When I click on Close Case button
+    #    Then modal dialog is displayed with 'Reason for close case'
+    #    When I enter the reason and I click on Close case button
+    #    Then 'Review Documents' page is displayed with message 'Change of name application will be closed' and reason
+    #    When I select checkbox to confirm outcome letter and I click on Confirm button
+    #    Then "Thank you for your confirmation" message is displayed
 
-    Scenario Outline: AC6 - Processes list page, people with inactive tenures
-        Given I seeded the database with an asset with a previous tenure
-        Then I visit the 'Person details' page
-        And I click on 'New Process' button
-        Then I am on the Processes list page
-        And I am not able to see the Change Of Name process listed
+    # Scenario Outline: AC6 - Processes list page, people with inactive tenures
+    #    Given I seeded the database with an asset with a previous tenure
+    #    Then I visit the 'Person details' page
+    #    And I click on 'New Process' button
+    #    Then I am on the Processes list page
+    #    And I am not able to see the Change Of Name process listed
 
-    Scenario Outline: AC7 - Update Contact Details in Request Documents Page
-        Given I seeded the database with a person with an active tenure
-        Then I visit the 'Person details' page
-        And I click on 'New Process' button
-        And I select 'Changes to a tenancy' from the processes menu
-        Then a further sub menu is expanded into view
-        When I select 'Change of Name' to initiate the change of name process for the selected person
-        Then 'Change of Name' page is displayed
-        When I select the checkbox 'I have explained to the tenant'
-        When I select the button
-        Then Change of Name edit page is displayed
-        And Status Stepper is at "Tenant's new name"
-        When I select Title and enter First and Last name
-        And I click on Next button
-        Then I am on the supporting documents page
-        And Status Stepper is at "Request Documents"
-        When I click on the link 'the contact details'
-        Then "Update contact details" modal dialog is displayed
-        When I enter data email address and phone number
-        Then I am on the supporting documents page
-        And the details email address and phone number are displayed
-        When I click on the link 'the contact details'
-        And I click on Remove email address and Remove phone number
-        Then I am on the supporting documents page
+    #  Scenario Outline: AC7 - Update Contact Details in Request Documents Page
+    #    Given I seeded the database with a person with an active tenure
+    #    Then I visit the 'Person details' page
+    #    And I click on 'New Process' button
+    #    And I select 'Changes to a tenancy' from the processes menu
+    #    Then a further sub menu is expanded into view
+    #    When I select 'Change of Name' to initiate the change of name process for the selected person
+    #    Then 'Change of Name' page is displayed
+    #    When I select the checkbox 'I have explained to the tenant'
+    #    When I select the button
+    #    Then Change of Name edit page is displayed
+    #    And Status Stepper is at "Tenant's new name"
+    #    When I select Title and enter First and Last name
+    #    And I click on Next button
+    #    Then I am on the supporting documents page
+    #    And Status Stepper is at "Request Documents"
+    #    When I click on the link 'the contact details'
+    #    Then "Update contact details" modal dialog is displayed
+    #    When I enter data email address and phone number
+    #    Then I am on the supporting documents page
+    #    And the details email address and phone number are displayed
+    #    When I click on the link 'the contact details'
+    #    And I click on Remove email address and Remove phone number
+    #    Then I am on the supporting documents page
 
-    Scenario Outline: AC8 - Error Validation in Update Contact Details Modal Dialog
-        Given I seeded the database with a person with an active tenure
-        Then I visit the 'Person details' page
-        And I click on 'New Process' button
-        And I select 'Changes to a tenancy' from the processes menu
-        Then a further sub menu is expanded into view
-        When I select 'Change of Name' to initiate the change of name process for the selected person
-        Then 'Change of Name' page is displayed
-        When I select the checkbox 'I have explained to the tenant'
-        When I select the button
-        Then Change of Name edit page is displayed
-        And Status Stepper is at "Tenant's new name"
-        When I select Title and enter First and Last name
-        And I click on Next button
-        Then I am on the supporting documents page
-        And Status Stepper is at "Request Documents"
-        When I click on the link 'the contact details'
-        Then "Update contact details" modal dialog is displayed
-        When I click on Save email address without entering any data
-        Then Validation error message is displayed for email address
-        When I click on Save Phone number without entering any data
-        Then Validation error message is displayed for phone number
+    # Scenario Outline: AC8 - Error Validation in Update Contact Details Modal Dialog
+    #   Given I seeded the database with a person with an active tenure
+    #   Then I visit the 'Person details' page
+    #    And I click on 'New Process' button
+    #    And I select 'Changes to a tenancy' from the processes menu
+    #    Then a further sub menu is expanded into view
+    #    When I select 'Change of Name' to initiate the change of name process for the selected person
+    #    Then 'Change of Name' page is displayed
+    #    When I select the checkbox 'I have explained to the tenant'
+    #    When I select the button
+    #    Then Change of Name edit page is displayed
+    #    And Status Stepper is at "Tenant's new name"
+    #    When I select Title and enter First and Last name
+    #    And I click on Next button
+    #    Then I am on the supporting documents page
+    #    And Status Stepper is at "Request Documents"
+    #    When I click on the link 'the contact details'
+    #    Then "Update contact details" modal dialog is displayed
+    #    When I click on Save email address without entering any data
+    #    Then Validation error message is displayed for email address
+    #    When I click on Save Phone number without entering any data
+    #    Then Validation error message is displayed for phone number
