@@ -76,6 +76,7 @@ commands:
             - run:
                 name: Execute e2e tests
                 command: |
+                          echo $AUTH_TOKEN_PRODUCTION ;
                           if [ "<<parameters.stage>>" = "production" ]
                             then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
                           elif [ "<<parameters.stage>>" = "staging" ]
