@@ -23,7 +23,6 @@ Feature: T&L Person Comment
             | commentType |
             | person      |
 
-    @SmokeTest
     @Negative
     Scenario Outline: Validation message is displayed
         Given I seeded the database with a person
@@ -69,7 +68,6 @@ Feature: T&L Person Comment
 
 
     @Positive
-    @SmokeTest
     Scenario Outline: Character limit counter
         Given I seeded the database with a person
         Then I visit the 'Person details' page

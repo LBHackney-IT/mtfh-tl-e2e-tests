@@ -10,7 +10,9 @@ Feature: Processes menu for easier navigation
     Background:
         Given I am logged in
 
+    # TODO - Refactor
     @Positive
+    @SmokeTest
     Scenario Outline: Display process options for person
         Given I seeded the database with a person
         Given I visit the 'Person details' page
@@ -23,6 +25,7 @@ Feature: Processes menu for easier navigation
             | person      |
 
     @Positive
+    @SmokeTest
     Scenario Outline: Display process options for property
         Given I seeded the database with an asset
         Given I view the property in MMH
@@ -35,6 +38,7 @@ Feature: Processes menu for easier navigation
             | property    |
 
     @Positive
+    @SmokeTest
     Scenario Outline: Display process options for tenure
         Given I seeded the database with a tenure
         Given I view a tenure

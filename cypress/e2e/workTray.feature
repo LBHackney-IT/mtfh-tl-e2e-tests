@@ -1,3 +1,8 @@
+@authentication
+@common
+@worktray
+@root
+
 Feature: As an internal Hackney User eg. HO, AHM
   AND any users who have access to the Worktray (post MVP)
   I want to log in to my work tray and see my upcoming tasks for my patch(es)
@@ -6,6 +11,7 @@ Feature: As an internal Hackney User eg. HO, AHM
   Background:
     Given I am logged in
 
+  @SmokeTest
   Scenario: AC1 - Login and View Worktray
     Given I am on the MMH home page
     Then I can see my worktray dashboard

@@ -1,3 +1,10 @@
+@authentication
+@common
+@cautionary-alerts
+@personal-details
+@root
+
+
 Feature: Create Cautionary Alerts
 
     Background:
@@ -20,6 +27,7 @@ Scenario: Add cautionary alert for a Person and verify Red bell icon is displaye
     And I can see the section Cautionary Alerts with a Red bell icon
     And I can see the Cautionary Alert type
 
+@SmokeTest
 Scenario: 'Update cautionary alert' on Check and confirm Cautionary alert page by clicking on the 'Change link'
     Given I seeded the database
     Then I visit the 'Person details' page

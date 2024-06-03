@@ -9,13 +9,13 @@ Feature: Property Add
     Background:
         Given I am logged in
 
+    # TODO: Combine smoke tests into one scenario
     @SmokeTest
     Scenario Outline: 'New property - Page headings/sections and form action buttons are present'
         Given I am on the MMH 'New property' page
         Then I should see the main heading 'New Property', and the user disclaimer along with the other secondary headings: Address, Property management, Asset details
         And the 'Create new property' and 'Cancel' buttons are present, along with a 'Back' link at the top
 
-    @SmokeTest
     Scenario Outline: 'New property - Errors are shown for the "required" fields, when the form is submitted without these'
         Given I am on the MMH 'New property' page
         And I press the 'Create new property' button without editing any of the fields
@@ -40,7 +40,6 @@ Feature: Property Add
         And I see a success message, indicating that the asset has been created successfully
         Then I should be able to view new property in MMH
 
-    @SmokeTest
     Scenario Outline: 'New property - when the required fields are populated, and the POST request fails, an error message is displayed'
         Given I am on the MMH 'New property' page
         And I enter a value for field 'Property Reference'

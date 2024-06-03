@@ -15,7 +15,6 @@ Feature: T&L Search Function
 
     # Please note: these tests rely on database data (be as vague as possible with 'search characters')
 
-    @SmokeTest
     @Positive
     Scenario Outline: Initial property search
         When I click on the radio button for "<searchType>"
@@ -104,7 +103,6 @@ Feature: T&L Search Function
             | samsung-note9 | Jodie       | Person     |
             | samsung-s10   | Molly       | Person     |
 
-    @SmokeTest
     @Positive
     Scenario Outline: Wildcard and partial searches
         When I click on the radio button for "<searchType>"
@@ -118,7 +116,6 @@ Feature: T&L Search Function
             | b*         | Tenure     |
     # | *c*        | Property   | Wildcard does not seem to work for Property
 
-    @SmokeTest
     @Positive
     Scenario Outline: Results are not returned
         When I click on the radio button for "<searchType>"
@@ -132,7 +129,6 @@ Feature: T&L Search Function
             | zy!         | Tenure     |
             | asddsadqduj | Property   |
 
-    @SmokeTest
     @Positive
     @ignore
     Scenario Outline: Multiple search criteria
@@ -145,7 +141,6 @@ Feature: T&L Search Function
             | characters | searchType |
             | ad e       | Person     |
 
-    @SmokeTest
     @Negative
     Scenario Outline: Insufficient characters
         When I click on the radio button for "<searchType>"
@@ -210,7 +205,6 @@ Feature: T&L Search Function
             | Bre        | 12      | Property   |
             | Chris      | 20      | Property   |
 
-    @SmokeTest
     Scenario Outline: Re-execute search
         When I click on the radio button for "<searchType>"
         When I enter any of the following criteria "<firstSearch>"
@@ -227,7 +221,6 @@ Feature: T&L Search Function
             | Steve       | Dave         | Person     |
 
     @ignore
-    @SmokeTest
     @Negative
     Scenario Outline: Search validation scenario
         When I click on the radio button for "<searchType>"

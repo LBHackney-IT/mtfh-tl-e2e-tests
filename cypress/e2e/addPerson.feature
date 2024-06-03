@@ -11,7 +11,6 @@ Feature: Add a new person to a tenure
   Background:
     Given I am logged in
 
-  @SmokeTest
   @Regression
   Scenario: Removed fields are not displayed
     Given I seeded the database with a tenure
@@ -48,7 +47,6 @@ Feature: Add a new person to a tenure
       | Mr    | Named tenure holder | Test      | Test       | Test     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         |
       | Mrs   | Household member    | Test      | Test       | Test     | 09  | 03    | 1983 | Toronto      | Dr             | Karen              | Steve               | Henderson         |
       
-  @SmokeTest
   @Negative
   Scenario Outline: Validation check
     Given I seeded the database with a tenure

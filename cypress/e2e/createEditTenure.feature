@@ -19,7 +19,7 @@ Feature: Create and edit tenure
   #      | tableName          |
   #      | TenureInformation  |
   #
-  @ignore
+  
   @SmokeTest
   Scenario Outline: Create new tenure
     Given I seeded the database with an asset with no attached tenure
@@ -38,7 +38,6 @@ Feature: Create and edit tenure
       | Freehold   | 01       | 01         | 2000      |
 
   @ignore
-  @SmokeTest
   Scenario Outline: Create new tenure search and select existing resident to add to the new tenure
     Given I seeded the database with an asset with no attached tenure
     When I view the property in MMH
@@ -61,7 +60,6 @@ Feature: Create and edit tenure
       | Freehold   | 21       | 05         | 2022      | tre        | TenureInformation |
 
   @ignore
-  @SmokeTest
   Scenario Outline: Create new tenure search and select resident
     Given I seeded the database with an asset with no attached tenure
     When I view the property in MMH
@@ -321,7 +319,6 @@ Feature: Create and edit tenure
     #        | property                             | tenure                               | searchTerm | title | personType          | firstName | middleName | lastName | day | month | year | placeOfBirth | preferredTitle | preferredFirstName | preferredMiddleName | preferredLastName | email                          | emailDescription              | phoneNumber | phoneType | phoneDescription              |
     #        | 58815bed-8996-653d-9e98-ec5d3b68527f | 3a5114c9-1a63-4e15-953d-5b8328e84549 | tre        | Mr    | Named tenure holder | Test      | Test       | guid     | 08  | 05    | 1969 | Hospital     | Mrs            | Alan               | Coach Feratu        | Jefferson         | addPersonToNewTenure@email.com | Add person to new tenure test | 01189998    | Other     | Add person to new tenure test |      | 
   
-  @SmokeTest
   Scenario: Create new tenure and cancel
     Given I seeded the database with an asset with no attached tenure
     When I view the property in MMH
@@ -337,7 +334,6 @@ Feature: Create and edit tenure
     And I click the confirm button
     Then the property information is displayed
 
-  @SmokeTest
   Scenario Outline: Create new tenure that occurs before the end date of a previous tenure
     Given I seeded the database with an asset with a previous tenure
     When I view the property in MMH
@@ -353,7 +349,6 @@ Feature: Create and edit tenure
       | tenureType | startDay | startMonth | startYear |
       | Freehold   | 20       | 05         | 1900      |
 
-  @SmokeTest
   Scenario Outline: Create new tenure with start date that occurs after end date
     Given I seeded the database with an asset with no attached tenure
     When I view the property in MMH

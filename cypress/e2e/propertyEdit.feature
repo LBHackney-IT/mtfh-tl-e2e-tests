@@ -8,7 +8,8 @@ Feature: Property Edit
 
     Background:
         Given I am logged in
-
+    
+    # TODO: Refactor - these tests are acting like unit tests
     @SmokeTest
     Scenario Outline: 'Edit address details button is enabled if the property has a valid UPRN'
         Given I seeded the database with an asset with a valid UPRN
@@ -16,7 +17,6 @@ Feature: Property Edit
         And I can see the asset UPRN
         Then I can see a button that says 'Edit address details'
 
-    @SmokeTest
     Scenario Outline: 'Edit address details button is enabled if the property has no valid UPRN'
         Given I seeded the database with an asset with no valid UPRN
         When I view the asset in MMH
@@ -30,7 +30,6 @@ Feature: Property Edit
         Then I should see the heading 'Edit property address', and property details for the 'Suggestion from the Local Gazetteer' and the 'Current address'
         And the 'Update to this address' and 'Cancel' buttons are present, along with a 'Back to asset' link at the top
 
-    @SmokeTest
     Scenario Outline: 'Edit property address page elements are present - Address without UPRN'
         Given I seeded the database with an asset with no valid UPRN
         Given I am on the MMH 'Edit property address' page for the asset
@@ -49,7 +48,6 @@ Feature: Property Edit
         Then I click on the 'Back to asset view' button
         And I should see the edited address
 
-    @SmokeTest
     Scenario Outline: 'Edit property address - patch address is not successful'
         Given I seeded the database with an asset with a valid UPRN
         Given I am on the MMH 'Edit property address' page for the asset
@@ -57,7 +55,6 @@ Feature: Property Edit
         Then I click on 'Update to this address' button, and the PATCH requests fail
         And I should see and error indicating that the request failed
 
-    @SmokeTest
     Scenario Outline: 'Edit property address - LLPG address fails to be retrieved - manual edit of current address is enabled'
         Given I seeded the database with an asset with a valid UPRN
         Given I am on the MMH 'Edit property address' page, but the LLPG address fails to be retrieved
