@@ -1,8 +1,10 @@
 @authentication
 @common
-@processes
 @root
 @tenure
+@search
+@personal-details
+@worktray
 
 Feature: Tenure page
 

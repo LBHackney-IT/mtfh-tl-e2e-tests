@@ -1,7 +1,6 @@
 @activity-history
 @authentication
 @common
-@processes
 @root
 
 Feature: Activity History for Property

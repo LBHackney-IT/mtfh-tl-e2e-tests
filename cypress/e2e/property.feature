@@ -1,7 +1,7 @@
 @authentication
 @common
-@processes
 @property
+@search
 @root
 
 Feature: Property Page
@@ -10,7 +10,7 @@ Feature: Property Page
   Background:
     Given I am logged in
 
-    # TODO: Combine tests into one
+  # TODO: Combine tests into one
   @SmokeTest
   Scenario Outline: View property details
     Given I seeded the database with an asset with a previous tenure

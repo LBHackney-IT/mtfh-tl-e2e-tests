@@ -1,8 +1,8 @@
 @authentication 
 @common 
 @personal-details 
-@processes 
 @root 
+@worktray
 @EditPersonContactDetailsPage
 
 Feature: Edit contact details for a person

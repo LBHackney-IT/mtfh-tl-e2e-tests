@@ -1,5 +1,7 @@
 @authentication
 @common
+@search
+@processes
 @worktray
 @root
 

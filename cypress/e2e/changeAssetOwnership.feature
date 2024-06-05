@@ -1,6 +1,5 @@
 @authentication
 @common
-@processes
 @asset-ownership
 @root
 
