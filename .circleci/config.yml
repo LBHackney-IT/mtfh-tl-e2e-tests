@@ -189,6 +189,7 @@ jobs:
               condition: << pipeline.parameters.run_workflow_ci >> 
               steps:
                 - *attach_workspace
+                - run: apk update && apk add curl curl-dev bash
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
@@ -204,6 +205,7 @@ jobs:
                 type: string
         steps:
           - *attach_workspace
+          - run: apk update && apk add curl curl-dev bash
           - aws-cli/install
           - checkout
           - execute-e2e-tests:
