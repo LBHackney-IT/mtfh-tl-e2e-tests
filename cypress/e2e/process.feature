@@ -1,9 +1,9 @@
+@processes
 @authentication
 @common
-@processes
-@personal-details
 @root
 @worktray
+@personal-details
 
 Feature: Processes menu for easier navigation
     I want to be able to link directly from any of the 3 Manage My Home entity pages (tenure/person/property) into the google form I use to record information

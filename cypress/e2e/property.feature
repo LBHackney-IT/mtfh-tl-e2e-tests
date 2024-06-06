@@ -1,8 +1,8 @@
+@property
 @authentication
 @common
-@property
-@search
 @root
+@search
 
 Feature: Property Page
   View property page
@@ -24,15 +24,7 @@ Feature: Property Page
     And I click on the breadcrumb
     Then I am taken to the search page
 
-  @Regression
-  Scenario Outline: View property via tenure
-    Given I seeded the database with a tenure
-    When I view a tenure
-    Then tenure page is displayed
-    And the tenure information is displayed
-    And I click on the view property button
-    Then the property information is displayed
-
+    # TODO - Move to person (check that it has a link to a tenure)
   @Regression
   Scenario Outline: View property via person
     Given I seeded the database with a person with an active tenure

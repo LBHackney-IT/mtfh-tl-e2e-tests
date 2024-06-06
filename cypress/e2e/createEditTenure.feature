@@ -1,7 +1,11 @@
+@tenure
 @authentication
 @common
 @root
-@tenure
+@search
+@worktray
+@processes
+@personal-details
 
 Feature: Create and edit tenure
   I want to create a new tenure and edit an existing one

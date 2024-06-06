@@ -1,7 +1,9 @@
+@processes
 @authentication
 @common
-@processes
 @root
+@personal-details
+@worktray
 
 Feature: As a Housing Officer
   I want to confirm a tenure investigation has been completed

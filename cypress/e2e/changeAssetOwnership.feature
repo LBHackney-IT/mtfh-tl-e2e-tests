@@ -1,6 +1,6 @@
+@asset-ownership
 @authentication
 @common
-@asset-ownership
 @root
 
 Feature: Property Add

@@ -1,7 +1,8 @@
+@property
 @authentication
 @common
-@property-edit
 @root
+@search
 
 Feature: Property Edit
     Edit property address

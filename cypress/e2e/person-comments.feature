@@ -1,7 +1,10 @@
-@authentication
 @comments
+@authentication
 @common
 @root
+@personal-details
+@worktray
+@processes
 
 Feature: T&L Person Comment
     I want to create and view person's comments

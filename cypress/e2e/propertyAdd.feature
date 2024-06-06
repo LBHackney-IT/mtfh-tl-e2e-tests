@@ -1,7 +1,8 @@
+@property
 @authentication
 @common
-@property-add
 @root
+@search
 
 Feature: Property Add
     New property

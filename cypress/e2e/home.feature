@@ -1,8 +1,8 @@
+@header
 @authentication
 @common
-@header
-@Production
 @root
+@Production
 
 Feature: T&L Home page
   I am on the Tenants and Leaseholders Home page

@@ -1,6 +1,8 @@
-@common
 @property
-@managePatches
+@authentication
+@common
+@root
+@search
 
 Feature: View and manage patch and area assignment
 	I want to view and manage patch and area assignment

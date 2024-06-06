@@ -1,3 +1,10 @@
+@processes
+@authentication
+@common
+@root
+@personal-details
+@worktray
+
 Feature: As an internal Hackney User
     I want to be able to initiate a change of name process from the processes page,
     via the person page

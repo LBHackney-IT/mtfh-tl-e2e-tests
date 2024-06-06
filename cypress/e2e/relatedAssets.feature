@@ -1,7 +1,8 @@
+@property
 @authentication
 @common
-@property
 @root
+@search
 
 Feature: Related assets
     Related assets

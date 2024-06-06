@@ -1,8 +1,8 @@
+@personal-details
 @authentication
 @common
-@personal-details
-@worktray
 @root
+@worktray
 @processes
 
 @AddPersonPage

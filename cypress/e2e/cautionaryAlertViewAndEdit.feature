@@ -1,8 +1,8 @@
+@cautionary-alerts
 @authentication
 @common
-@cautionary-alerts
-@personal-details
 @root
+@personal-details
 
 Feature: Create Cautionary Alerts
 
