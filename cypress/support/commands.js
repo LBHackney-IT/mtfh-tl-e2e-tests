@@ -53,6 +53,10 @@ Cypress.Commands.add("getActivityHistoryPropertyFixture", () => {
     cy.readFile("cypress/fixtures/activity-history-property.json")
 })
 
+Cypress.Commands.add("getProcessFixture", () => {
+    cy.readFile("cypress/fixtures/Processes.json")
+})
+
 Cypress.Commands.add('generateCustomTemporaryFixture', (data) => {
     cy.writeFile(`cypress/fixtures/CustomTemporaryFixture.json`, JSON.stringify(data));
 });

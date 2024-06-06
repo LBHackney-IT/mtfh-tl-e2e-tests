@@ -10,10 +10,6 @@ module.exports = defineConfig({
     seo: 0,
     pwa: 0,
   },
-  retries: {
-    runMode: 2,
-    openMode: 2,
-  },
   chromeWebSecurity: false,
   video: true,
   projectId: 'fg82nr',

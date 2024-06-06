@@ -119,7 +119,7 @@ And('I am on the contact details page', () => {
   cy.url()
     .should('include', 'contact')
     .then(url => {
-      const personId = /((\w{4,12}-?)){5}/.exec(url)[1] // regex for id
+      const personId = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/.exec(url)[0] // regex for id
       queueDeletePersonWithId(personId);
     });
 })

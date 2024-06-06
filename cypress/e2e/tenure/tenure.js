@@ -9,6 +9,12 @@ import { addTestRecordToDatabase } from "../common/common";
 const tenurePage = new TenurePageObjects
 let tenureId = ''
 
+Then("a link to the property is displayed", () => {
+    cy.getTenureFixture().then((tenure) => {
+        cy.contains(tenure.tenuredAsset.fullAddress)
+    })
+})
+
 Given("the start date of the tenure is {string}", (startOfTenureDate) => {
     cy.log("Creating new tenure record");
     createTenureWithStartDate(startOfTenureDate).then(response => {

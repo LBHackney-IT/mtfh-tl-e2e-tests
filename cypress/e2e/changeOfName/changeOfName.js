@@ -1,15 +1,27 @@
-import { When, Then } from "@badeball/cypress-cucumber-preprocessor"
+import { When, Then, And } from "@badeball/cypress-cucumber-preprocessor"
 import ChangeOfNamePageObjects from '../../pageObjects/changeOfNamePage';
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
+import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import ReviewApplicationPageObjects from "../../pageObjects/reviewApplicationPage";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
+import { getProcess, updateProcessFormData } from "../../../api/processes";
+import { saveFixtureData } from "../../../api/helpers";
+
+const envConfig = require('../../../environment-config');
 const modal = new ModalPageObjects();
 const changeOfName = new ChangeOfNamePageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 const reviewAppPage = new ReviewApplicationPageObjects();
+const processPage = new ProcessesPageObjects();
 
+
+When("I visit the 'initiate change of name process' page", () => {
+    cy.getPersonFixture().then((person) => {
+        cy.visit(`${envConfig.baseUrl}/processes/changeofname/start/person/${person.id}`)
+    })
+});
 
 When("I click on 'New Process' button", () => {
     changeOfName.newProcessButton().click();
@@ -37,18 +49,27 @@ Then("Start Process button is enabled", () => {
     changeOfName.buttonStartProcess().should('be.enabled');
 });
 When("I select the button", () => {
+    cy.intercept('POST', '*/api/v2/process/changeofname').as('createNewProcess')
     changeOfName.buttonStartProcess().click();
+    
+    // Spy on api call & save process data to fixture
+    cy.wait('@createNewProcess')
+      .then((interception) => {
+        const processData = interception.response.body;
+        saveFixtureData('Processes', { id: processData.id }, processData); 
+      });
 });
+
 Then("Change of Name edit page is displayed", () => {
     cy.contains("Enter tenant's new name").should('be.visible');
 });
 Then("Next button is disabled", () => {
     changeOfName.buttonNext().should('be.disabled');
 });
-When("I select Title and enter First and Last name", () => {
-    changeOfName.personTitle().select('Mr');
-    changeOfName.personFirstName().type('Automation Test Edit First Name');
-    changeOfName.personLastName().type('Automation Test Edit Last Name');
+When("I select title {string} and enter first and last names: {string} {string}", (title, firstName, lastName) => {
+    changeOfName.personTitle().select(title);
+    changeOfName.personFirstName().type(firstName);
+    changeOfName.personLastName().type(lastName);
 });
 When("I click on Next button", () => {
     changeOfName.buttonNext().click();
@@ -168,6 +189,54 @@ Then("I am on the HO and AHM approved page", () => {
     cy.contains('Tenure investigator recommendation: Approve application');
     cy.contains('Housing Officer reviewed and Area Housing Manager: Approve application');
 });
+
+When("I make an appointment to sign the documents", () => {
+    tenureReqDocsPage.day().type('31');
+    tenureReqDocsPage.month().type('12');
+    tenureReqDocsPage.year().type('2100')
+    tenureReqDocsPage.hour().type('11');
+    tenureReqDocsPage.minute().type('20');
+    tenureReqDocsPage.ampm().select('AM');
+    
+    cy.contains('Continue').click();
+});
+
+When("I confirm the application", async () => {
+    cy.getProcessFixture()
+    .then(async processRecord => {
+        const apiResponse = await getProcess(processRecord.id, 'changeOfName'); // Get updated etag header
+        
+        const formData = { "appointmentDateTime": new Date().toUTCString() }
+        await updateProcessFormData(processRecord.id, "changeOfName", formData, apiResponse.headers['etag']) // Set appointment date/time to now
+        // ^ Workaround as FE does not let you set the appointment date/time to current time
+        
+        cy.reload();
+        cy.contains('Documents signed').click();
+        cy.contains('I confirm that an outcome letter has been sent to the resident').click();
+        cy.contains('Confirm').click();
+    });
+
+});
+
+Then("I am on the finish page", () => {
+    cy.contains('Supporting documents approved');
+    cy.contains('Tenure investigator recommendation: Approve application');
+    cy.contains('Housing Officer reviewed and Area Housing Manager: Approve application');
+    cy.contains('Tenancy updated');
+    cy.contains('Thank you for your confirmation');
+});
+
+And("the person has a new name - {string} {string}", (firstName, lastName) => {
+    cy.reload();
+    cy.contains(firstName);
+    cy.contains(lastName);
+
+    cy.getPersonFixture().then((initialPersonData) => {
+        cy.contains(initialPersonData.firstName).should('not.exist');
+        cy.contains(initialPersonData.surname).should('not.exist');
+    });
+});
+
 When("I select the option 'I have passed the case to the Area Housing Manager'", () => {
     changeOfName.optionAHMReview().click();
 });
