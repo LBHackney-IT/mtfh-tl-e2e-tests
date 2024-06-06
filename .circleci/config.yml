@@ -45,7 +45,7 @@ executors:
             - image: circleci/python:3.7
     cypress-browsers:
         docker:
-            - image: cypress/browsers:latest
+            - image: cypress/browsers:node16.13.2-chrome100-ff98
         resource_class: medium+
 
 commands:
@@ -151,7 +151,6 @@ jobs:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
                 - *attach_workspace
-                - run: apk update && apk add curl curl-dev bash
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
@@ -189,7 +188,6 @@ jobs:
               condition: << pipeline.parameters.run_workflow_ci >> 
               steps:
                 - *attach_workspace
-                - run: apk update && apk add curl curl-dev bash
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
@@ -205,7 +203,6 @@ jobs:
                 type: string
         steps:
           - *attach_workspace
-          - run: apk update && apk add curl curl-dev bash
           - aws-cli/install
           - checkout
           - execute-e2e-tests:
