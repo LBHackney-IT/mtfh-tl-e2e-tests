@@ -45,7 +45,7 @@ executors:
             - image: circleci/python:3.7
     cypress-browsers:
         docker:
-            - image: cypress/browsers:node16.13.2-chrome100-ff98
+            - image: cypress/browsers:latest
         resource_class: medium+
 
 commands:
