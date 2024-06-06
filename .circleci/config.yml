@@ -151,6 +151,7 @@ jobs:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
                 - *attach_workspace
+                - run: apk update && apk add curl curl-dev bash
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
