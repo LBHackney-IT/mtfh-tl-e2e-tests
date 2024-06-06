@@ -34,6 +34,16 @@ Feature: Property Page
     And I click on the view property button for a person
     Then the property information is displayed
 
+  # TODO - Move to tenure (check that it has a link to a property)
+  @Regression
+  Scenario Outline: View property via tenure
+    Given I seeded the database with a tenure
+    When I view a tenure
+    Then tenure page is displayed
+    And the tenure information is displayed
+    And I click on the view property button
+    Then the property information is displayed
+
   Scenario Outline: Repairs container is displayed
     Given I seeded the database with an asset
     When I view the property in MMH
