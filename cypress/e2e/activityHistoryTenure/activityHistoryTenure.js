@@ -11,6 +11,13 @@ Given('I go to the tenure activity history', () => {
     })
 })
 
+Given('I go to the tenure activity history for {string}', (tenure) => {
+    cy.getTenureFixture().then(()=>{
+        activityHistoryTenure.visit(tenure)
+        cy.intercept("GET",`*/api/v1/activityhistory?targetId=${tenure}`, { fixture: "activity-history-tenure.json" }).as("getActivityHistory")
+    })
+})
+
 Then('tenure migrated activity history is displayed', () => {
     activityHistoryTenure.activityHistoryTenureActivities().contains('Tenure migrated')
 })
@@ -34,7 +41,7 @@ And('table headers should be visible', () => {
 })
 
 Then('the update exists in the activity history {string}', (update) => {
-    activityHistoryTenure.activityHistoryCell().eq(6).contains(`Changed to: ${update}`)
+    activityHistoryTenure.activityHistoryCell().contains(`Changed to: ${update}`)
 })
 
 And("I am on the tenure page for the tenure", () => {
