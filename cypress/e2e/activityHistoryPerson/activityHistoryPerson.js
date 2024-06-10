@@ -11,12 +11,6 @@ Given('I go to the activity history for the person', () => {
     })
 })
 
-Given('I go to the activity history for the {string}', (person) => {
-    cy.getPersonFixture().then(()=>{
-        activityHistoryObjects.visit(person)
-        cy.intercept("GET",`*/api/v1/activityhistory?targetId=${person}`, { fixture: "activity-history-person.json" }).as("getActivityHistory")
-    })
-})
 And('table headers should be visible', () => {
     activityHistoryObjects.tableHeaders().forEach(tableHeader => {
         cy.contains(tableHeader).should('be.visible')

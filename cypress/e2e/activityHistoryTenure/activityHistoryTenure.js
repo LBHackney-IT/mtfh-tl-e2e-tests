@@ -10,12 +10,6 @@ Given('I go to the tenure activity history', () => {
         cy.wait("@getActivityHistory")
     })
 })
-Given('I go to the tenure activity history for {string}', (tenure) => {
-    cy.getTenureFixture().then(()=>{
-        activityHistoryTenure.visit(tenure)
-        cy.intercept("GET",`*/api/v1/activityhistory?targetId=${tenure}`, { fixture: "activity-history-tenure.json" }).as("getActivityHistory")
-    })
-})
 
 Then('tenure migrated activity history is displayed', () => {
     activityHistoryTenure.activityHistoryTenureActivities().contains('Tenure migrated')
