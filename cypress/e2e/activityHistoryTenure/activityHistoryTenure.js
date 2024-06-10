@@ -34,7 +34,7 @@ And('table headers should be visible', () => {
 })
 
 Then('the update exists in the activity history {string}', (update) => {
-    activityHistoryTenure.activityHistoryCell().contains(`Changed to: ${update}`)
+    activityHistoryTenure.activityHistoryCell().eq(6).contains(`Changed to: ${update}`)
 })
 
 And("I am on the tenure page for the tenure", () => {
