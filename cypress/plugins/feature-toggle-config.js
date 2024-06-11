@@ -4,7 +4,7 @@ const fetchFeatureToggleConfiguration = async (env) => {
   let token = env.E2E_ACCESS_TOKEN_LOCAL;
   const featureToggleEndpoint = env.FEATURE_TOGGLE_ENDPOINT;
 
-  url = `${featureToggleEndpoint}/configuration?types=MMH`;
+  url = `${featureToggleEndpoint}/api/v1/configuration?types=MMH`;
   console.log(`Checking feature toggle config at ${url}`)
 
   if (env.ENVIRONMENT === "development") {

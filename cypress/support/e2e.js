@@ -3,7 +3,7 @@ import "cypress-real-events/support";
 import 'cypress-axe'
 require("cypress-plugin-tab");
 require('cypress-xpath');
-import DynamoDb from "../e2e/common/DynamoDb";
+import DynamoDb from "../../api/database/DynamoDb";
 
 // ***********************************************************
 // This example support/index.js is processed and
@@ -21,6 +21,7 @@ import DynamoDb from "../e2e/common/DynamoDb";
 // ***********************************************************
 
 
+// TODO: Move this to a helper file
 const clearDatabase = () => {
     const filename = "cypress/fixtures/recordsToDelete.json";
     cy.readFile(filename).then((recordsToDelete) => {
