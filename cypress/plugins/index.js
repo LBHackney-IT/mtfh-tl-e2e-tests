@@ -11,6 +11,7 @@ const { setEnvironmentConfig } = require("./environment-config")
 module.exports = async (on, config) => {
   config.featureToggles = (await fetchFeatureToggleConfiguration(config.env)) || {};
   config = setEnvironmentConfig(on, config);
+  config = require('@cypress/grep/src/plugin')(config);
 
   on("before:browser:launch", (browser = {}, launchOptions) => {
     prepareAudit(launchOptions);

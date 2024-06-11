@@ -4,6 +4,7 @@ import 'cypress-axe'
 require("cypress-plugin-tab");
 require('cypress-xpath');
 import DynamoDb from "../../api/database/DynamoDb";
+import registerCypressGrep from '@cypress/grep';
 
 // ***********************************************************
 // This example support/index.js is processed and
@@ -20,6 +21,7 @@ import DynamoDb from "../../api/database/DynamoDb";
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+registerCypressGrep();
 
 // TODO: Move this to a helper file
 const clearDatabase = () => {
@@ -44,6 +46,6 @@ before(() => {
     clearDatabase();
 });
 
-// after(() => {
-//     clearDatabase();
-// });
+after(() => {
+    clearDatabase();
+});

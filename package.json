@@ -6,19 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cypress:open": "cypress open",
-    "test:cypress:run": "cypress run -e TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore and not @device'",
-    "test:cypress:production": "cypress run -e TAGS='@Production and not @ignore'",
-    "test:cypress:accessibility": "cypress run -e TAGS='@Accessibility'",
-    "test:cypress:GoogleLighthouse": "cypress run -e TAGS='@GoogleLighthouse'",
-    "test:cypress:staging:devices": "cypress run --browser chrome --headless -e TAGS='@device and not @ignore'",
-    "test:cypress:smoke": "cypress run --browser chrome --headless -e TAGS='@SmokeTest and not @ignore'"
+    "test:cypress:run": "cypress run -e grepTags='--@GoogleLighthouse --@Accessibility --@ignore --@device'",
+    "test:cypress:production": "cypress run -e grepTags='@Production --@ignore'",
+    "test:cypress:accessibility": "cypress run -e grepTags='@Accessibility'",
+    "test:cypress:GoogleLighthouse": "cypress run -e grepTags='@GoogleLighthouse'",
+    "test:cypress:staging:devices": "cypress run --browser chrome --headless -e grepTags='@device --@ignore'",
+    "test:cypress:smoke": "cypress run --browser chrome --headless -e grepTags='@SmokeTest --@ignore'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cypress/grep": "^4.0.2",
     "@cypress/webpack-preprocessor": "^5.14.0",
     "@faker-js/faker": "^7.6.0",
-    "@testing-library/cypress": "^8.0.2",
+    "@testing-library/cypress": "^10.0.2",
     "ansi-regex": ">=5.0.1",
     "axe-core": "^4.7.2",
     "browserslist": ">=4.16.5",
