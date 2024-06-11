@@ -1,7 +1,8 @@
 import './commands';
 import "cypress-real-events/support";
-import 'cypress-axe';
-import 'cypress-plugin-tab';
+import 'cypress-axe'
+require("cypress-plugin-tab");
+require('cypress-xpath');
 import DynamoDb from "../e2e/common/DynamoDb";
 
 // ***********************************************************
@@ -38,10 +39,10 @@ const clearDatabase = () => {
     });
 };
 
-beforeEach(() => {
+before(() => {
     clearDatabase();
 });
 
-afterEach(() => {
+after(() => {
     clearDatabase();
 });
