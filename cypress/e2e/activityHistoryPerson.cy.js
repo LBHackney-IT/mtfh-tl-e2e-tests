@@ -17,7 +17,7 @@ describe('Activity History for a person', () => {
     it('should view activity history', () => {
         cy.getPersonFixture().then((person) => {
             // Given & When
-            activityHistory.visit(person.id)
+            activityHistory.visit(person.id, true)
             
             // Then
             activityHistory.activityTable().should('be.visible')
@@ -42,7 +42,7 @@ describe('Activity History for a person', () => {
             editPersonPage.visit(person.id)
             editPersonPage.preferredMiddleNameContainer().clear();
             editPersonPage.preferredMiddleNameContainer().type(newMidleName);
-            const personUpdatedTime = editPersonPage.clickUpdatePersonButton();
+            const personUpdatedTime = editPersonPage.clickUpdatePersonButton(person.id);
             
             // When
             cy.wait(1000) // To allow events to go through
@@ -51,11 +51,11 @@ describe('Activity History for a person', () => {
             // Then
             activityHistory.activityTable().should('be.visible')
             
-            activityTableRowShouldContainText(0, {
-                date: date.format(personUpdatedTime, "DD/MM/YY HH:mm"),
-                category: "Person",
-                editDetails: `Changed to: ${newMidleName}`
-            });
+            const firstRow = activityHistory.activityTableRow().eq(0)
+            firstRow.should('contain', `Changed to: ${newMidleName}`);
+            firstRow.should('contain', `Previously: ${person.middleName || "[No entry]"}`);
+            firstRow.should('contain', date.format(personUpdatedTime, "DD/MM/YY"));
+            firstRow.should('contain', date.format(personUpdatedTime, "HH:mm"));
         });
     });
 });

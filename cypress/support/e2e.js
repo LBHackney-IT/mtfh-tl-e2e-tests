@@ -44,6 +44,6 @@ before(() => {
     clearDatabase();
 });
 
-after(() => {
-    clearDatabase();
-});
+// after(() => {
+//     clearDatabase();
+// });

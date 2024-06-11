@@ -1,9 +1,15 @@
 
 class ActivityHistoryPageObjects {
-    visit(record) {
+    visit(record, isStubbed = false) {
+        const activityHistoryApiUrl = `*/api/v1/activityhistory?pageSize=5&targetId=${record}`
+        cy.intercept("GET", activityHistoryApiUrl).as("getActivityHistory")
+        if(isStubbed) {
+            cy.intercept("GET", activityHistoryApiUrl, 
+                         { fixture: 'activity-history-person.json' })
+                        .as("getActivityHistory")
+        }
+
         cy.visit(`${Cypress.config("baseUrl")}/activities/person/${record}`)
-        cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${record}`)
-                    .as("getActivityHistory")
         cy.wait("@getActivityHistory")
         cy.injectAxe()
     }
@@ -28,14 +34,6 @@ class ActivityHistoryPageObjects {
 
     closeActivityHistory() {
         return cy.contains('Close activity history')
-    }
-
-    activityTableRowShouldContainText(rowNumber, { date, category, editDetails, editedBy }) {
-        const row = this.activityTableRow().eq(rowNumber);
-        row.should('contain', date);
-        row.should('contain', category);
-        row.should('contain', editDetails);
-        row.should('contain', editedBy);
     }
 }
 

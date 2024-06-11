@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "tableName": "PatchesAndAreas",
+    "key": {
+      "id": "e611b1af-e2cc-45ee-8f17-cd8c09307121"
+    }
+  },
+  {
+    "tableName": "Assets",
+    "key": {
+      "id": "a824407d-38c2-422d-a380-e403fd6717a5"
+    }
+  },
+  {
+    "tableName": "TenureInformation",
+    "key": {
+      "id": "40f4c6e8-76c3-4ec4-9b5f-c4eb4df5ec9c"
+    }
+  },
+  {
+    "tableName": "Persons",
+    "key": {
+      "id": "d0bacbe7-2e24-4c17-a8bd-5703352d1bd3"
+    }
+  },
+  {
+    "tableName": "Persons",
+    "key": {
+      "id": "7ed6b82e-054c-45f9-8fe0-baf8199d0e00"
+    }
+  },
+  {
+    "tableName": "PatchesAndAreas",
+    "key": {
+      "id": "e611b1af-e2cc-45ee-8f17-cd8c09307121"
+    }
+  },
+  {
+    "tableName": "Assets",
+    "key": {
+      "id": "a824407d-38c2-422d-a380-e403fd6717a5"
+    }
+  },
+  {
+    "tableName": "TenureInformation",
+    "key": {
+      "id": "8ad9d5ed-8e70-4bc3-b558-5e869c3f864a"
+    }
+  },
+  {
+    "tableName": "Persons",
+    "key": {
+      "id": "b9180103-61ce-409a-8de3-0caa76fb7784"
+    }
+  },
+  {
+    "tableName": "Persons",
+    "key": {
+      "id": "6e85112b-1c92-4029-aba9-d5a194ed2214"
+    }
+  }
+]

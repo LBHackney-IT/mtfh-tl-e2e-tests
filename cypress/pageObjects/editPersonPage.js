@@ -12,8 +12,8 @@ class EditPersonPageObjects extends AddPersonPageObjects {
         return cy.contains('Update person')
     }
 
-    clickUpdatePersonButton() {
-        cy.intercept("PATCH", `*/api/v1/persons/${person.id}`).as("updatePerson")
+    clickUpdatePersonButton(id) {
+        cy.intercept("PATCH", `*/api/v1/persons/${id}`).as("updatePerson")
         const now = new Date();
         this.updatePersonButton().click();
         cy.wait("@updatePerson")
