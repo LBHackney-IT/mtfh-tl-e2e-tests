@@ -4,7 +4,6 @@
 @root
 @search
 @worktray
-@processes
 @personal-details
 
 Feature: Create and edit tenure

@@ -3,7 +3,6 @@
 @common
 @root
 @property
-@search
 
 Feature: Property Comment
     I want to create and view property's comments

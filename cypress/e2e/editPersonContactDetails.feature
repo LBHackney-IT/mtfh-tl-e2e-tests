@@ -3,7 +3,6 @@
 @common
 @root
 @worktray
-@processes
 
 Feature: Edit contact details for a person
     I want to edit contact details for a person

@@ -3,7 +3,6 @@
 @common
 @root
 @worktray
-@processes
 
 Feature: T&L Person Page
     I want to view a person

@@ -2,7 +2,6 @@
 @authentication
 @common
 @root
-@personal-details
 
 Feature: Create Cautionary Alerts
 

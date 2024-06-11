@@ -2,11 +2,6 @@
 @authentication
 @common
 @root
-@tenure
-@search
-@worktray
-@processes
-@personal-details
 
 Feature: Tenure Comment
     I want to create and view tenure's comments

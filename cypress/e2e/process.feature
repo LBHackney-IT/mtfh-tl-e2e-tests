@@ -2,7 +2,6 @@
 @authentication
 @common
 @root
-@worktray
 @personal-details
 
 Feature: Processes menu for easier navigation

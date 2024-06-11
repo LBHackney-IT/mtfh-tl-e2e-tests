@@ -3,7 +3,6 @@
 @common
 @root
 @personal-details
-@worktray
 
 Feature: As an internal Hackney user
     I want to request relevant supporting documents from both Sole to Joint applicants (the existing tenant and the new tenant)
