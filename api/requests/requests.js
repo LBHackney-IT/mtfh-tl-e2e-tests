@@ -1,8 +1,7 @@
 const axios = require('axios');
-const envConfig = require('../../environment-config')
 
 const config = {
-    headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+    headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
 };
 
 
@@ -20,7 +19,7 @@ async function getRequest(endpoint) {
 
 async function patchRequest(endpoint, payload, ifMatch) {
   const patchConfig = {
-    headers: { 'If-Match': ifMatch, Authorization: `Bearer ${envConfig.gssoTestKey}` }
+    headers: { 'If-Match': ifMatch, Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
   };
     try {
       const response = await axios.patch(endpoint, payload, patchConfig);
@@ -34,7 +33,7 @@ async function patchRequest(endpoint, payload, ifMatch) {
 
 async function postRequest(endpoint, payload,) { 
     try {
-      var bearerToken = envConfig.gssoTestKey
+      var bearerToken = Cypress.config("gssoTestKey")
       cy.log('bearer token: ', bearerToken)
       const response = await axios.post(endpoint, payload, config);  
       cy.log('Sending post request')

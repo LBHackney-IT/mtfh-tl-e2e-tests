@@ -5,14 +5,16 @@
 
 const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 const webpack = require("@cypress/webpack-preprocessor");
-const { getConfiguration } = require("./configuration")
-const fs = require('fs')
+const { fetchFeatureToggleConfiguration } = require("./feature-toggle-config")
+const { setEnvironmentConfig } = require("./environment-config")
 
 module.exports = async (on, config) => {
-  // config.featureToggles = (await getConfiguration(config.env)) || {};
-  // on("before:browser:launch", (browser = {}, launchOptions) => {
-  // // prepareAudit(launchOptions);
-  // });
+  config.featureToggles = (await fetchFeatureToggleConfiguration(config.env)) || {};
+  config = setEnvironmentConfig(on, config);
+
+  on("before:browser:launch", (browser = {}, launchOptions) => {
+    prepareAudit(launchOptions);
+  });
 
   on(
     "file:preprocessor",
