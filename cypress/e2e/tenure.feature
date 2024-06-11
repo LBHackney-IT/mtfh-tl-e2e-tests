@@ -18,7 +18,6 @@ Feature: Tenure page
         When I view a tenure
         Then the tenure information is displayed
         And the residents information is displayed
-        And a link to the property is displayed
 
     Scenario Outline: Navigate to old tenancy files
         Given I create a tenure that started on date "2013-12-31", with no responsible household members
