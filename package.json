@@ -3,15 +3,6 @@
   "version": "1.0.0",
   "description": "End to end tests for MTFH T&L",
   "main": "index.js",
-  "cypress-cucumber-preprocessor": {
-    "stepDefinitions": [
-      "cypress/e2e/[filepath]/*.{js,ts}",
-      "cypress/e2e/common/*.{js,ts}"
-    ],
-    "nonGlobalStepDefinitions": true,
-    "filterSpecs": true,
-    "omitFiltered": true
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cypress:open": "cypress open",
@@ -25,13 +16,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^12.2.0",
     "@cypress/webpack-preprocessor": "^5.14.0",
     "@faker-js/faker": "^7.6.0",
     "@testing-library/cypress": "^8.0.2",
     "ansi-regex": ">=5.0.1",
     "axe-core": "^4.7.2",
     "browserslist": ">=4.16.5",
+    "cypress": "^13.11.0",
     "cypress-audit": "^0.3.0",
     "cypress-axe": "^1.4.0",
     "cypress-localstorage-commands": "^1.4.4",
@@ -45,7 +36,6 @@
   "dependencies": {
     "aws-sdk": "^2.1020.0",
     "axios": "^0.21.3",
-    "cypress": "^10.0.0",
     "cypress-real-events": "^1.7.1",
     "date-and-time": "^1.0.1",
     "uuid": "^8.3.2",

@@ -24,7 +24,6 @@ import comment from "../../../api/comment";
 import { addContactDetails } from "../../../api/contact-details";
 import referenceData from "../../../api/reference-data";
 import { editTenure, getTenure } from "../../../api/tenure";
-import dynamoDb from "../../../cypress/e2e/common/DynamoDb";
 
 import property from "../../../api/property";
 import { guid } from "../../helpers/commentText";
