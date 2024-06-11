@@ -5,8 +5,6 @@
 
 const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 const webpack = require("@cypress/webpack-preprocessor");
-const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
-const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 const { getConfiguration } = require("./configuration")
 const fs = require('fs')
 
@@ -16,9 +14,6 @@ module.exports = async (on, config) => {
   // // prepareAudit(launchOptions);
   // });
 
-  // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
-  await preprocessor.addCucumberPreprocessorPlugin(on, config);
-
   on(
     "file:preprocessor",
     webpack({
@@ -27,17 +22,7 @@ module.exports = async (on, config) => {
           extensions: [".ts", ".js"],
         },
         module: {
-          rules: [
-            {
-              test: /\.feature$/,
-              use: [
-                {
-                  loader: "@badeball/cypress-cucumber-preprocessor/webpack",
-                  options: config,
-                },
-              ],
-            },
-          ],
+          rules: [],
         },
       },
     })
