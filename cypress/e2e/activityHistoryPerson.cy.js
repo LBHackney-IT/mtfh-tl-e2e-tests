@@ -1,7 +1,12 @@
-import { seedDatabase } from "./common/DbHelpers";
-
+import date from "date-and-time";
+import { seedDatabase } from "../helpers/DbHelpers";
 import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPersonPage';
-const activityHistoryObjects = new ActivityHistoryPageObjects()
+import EditPersonPageObjects from "../pageObjects/editPersonPage";
+
+const activityHistory = new ActivityHistoryPageObjects();
+const editPersonPage = new EditPersonPageObjects();
+
+
 
 describe('Activity History for a person', () => {
     beforeEach(() => {
@@ -11,31 +16,46 @@ describe('Activity History for a person', () => {
 
     it('should view activity history', () => {
         cy.getPersonFixture().then((person) => {
-            activityHistoryObjects.visit(person.id)
-            cy.intercept("GET", `*/api/v1/activityhistory?pageSize=5&targetId=${person.id}`, { fixture: "activity-history-person.json" }).as("getActivityHistory")
-            cy.wait("@getActivityHistory")
+            // Given & When
+            activityHistory.visit(person.id)
             
-            activityHistoryObjects.activityTable().should('be.visible')
-            activityHistoryObjects.tableHeaders().forEach(tableHeader => {
+            // Then
+            activityHistory.activityTable().should('be.visible')
+            activityHistory.tableHeaders().forEach(tableHeader => {
                 cy.contains(tableHeader).should('be.visible')
             })
 
             cy.contains(person.firstName).should('be.visible')
             cy.contains(person.surname).should('be.visible')
 
-            activityHistoryObjects.closeActivityHistory().click()
+            activityHistory.closeActivityHistory().click()
             cy.url().should("include", person.id);
         });
     });
 
-    // Uncomment the following code for the 'Update activity history' scenario
-    // it('should update activity history', () => {
-    //   cy.visit('/edit-person'); // Assuming the edit person page URL is '/edit-person'
-    //   cy.selectPreferredMiddleName('<preferredLastName>'); // Assuming you have a custom Cypress command for selecting a preferred middle name
-    //   cy.get('.update-button').click(); // Assuming the update person button has a class 'update-button'
-    //   cy.visit('/activity-history'); // Assuming the activity history page URL is '/activity-history'
-    //   cy.get('.activity-history').should('be.visible'); // Assuming the activity history is displayed in a container with class 'activity-history'
-    //   cy.get('.activity-history').should('contain', '<person>'); // Assuming the activity history should contain the person's name
-    //   cy.get('.activity-history').should('contain', '<preferredLastName>'); // Assuming the activity history should contain the preferred middle name
-    // });
+    //TODO: skipped for 5th July 2023 release as this test is failing in pipeline
+    it('should update activity history', () => {
+        cy.getPersonFixture().then((person) => { 
+            // Given
+            const newMidleName = "MiddleName";
+
+            editPersonPage.visit(person.id)
+            editPersonPage.preferredMiddleNameContainer().clear();
+            editPersonPage.preferredMiddleNameContainer().type(newMidleName);
+            const personUpdatedTime = editPersonPage.clickUpdatePersonButton();
+            
+            // When
+            cy.wait(1000) // To allow events to go through
+            activityHistory.visit(person.id)
+
+            // Then
+            activityHistory.activityTable().should('be.visible')
+            
+            activityTableRowShouldContainText(0, {
+                date: date.format(personUpdatedTime, "DD/MM/YY HH:mm"),
+                category: "Person",
+                editDetails: `Changed to: ${newMidleName}`
+            });
+        });
+    });
 });
