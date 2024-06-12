@@ -24,33 +24,9 @@ When adding new tests, please:
 Install the local dependencies using `npm install`
 
 #### Environment variables
-Create a `cypress.env.json` file from `cypress.env.example.json` from  with the following keys. You can get the endpoints from the AWS parameter store.
->"Environment":
+Create a `cypress.env.json` file by copying the `cypress.env.example.json`. You can get the endpoint details from the AWS parameter store. The properties can be set as follows: `https://${apiGateway}.execute-api.eu-west-2.amazonaws.com/${environment}/api/${apiVersion}`
 
-This sets the environment context. It can be set to `local`, `development`, `staging` and `production`
-
->"E2E_ACCESS_TOKEN_${environment}":
-
-This sets the access token depending upon the environment, you can create one for `local`, `dev`, `staging` and `prod` and set their properties accordingly.
-
->"ASSET_ENDPOINT": ${assetEndpoint}
-
->"HOUSE_SEARCH_ENDPOINT": ${housingSearchEndpoint}
-
->"CONTACT_DETAILS_ENDPOINT": ${contactDetailsEndpoint}
-
->"EQUALITY_DETAILS_ENDPOINT": ${equalityDetailsEndpoint}
-
->"PERSON_ENDPOINT": ${personEndpoint}
-
->"TENURE_ENDPOINT": ${tenureEndpoint}
-
->"CAUTIONARY_ALERT_ENDPOINT": ${cautionaryAlertEndpoint}
-
->"FEATURE_TOGGLE_ENDPOINT" : ${configurationApiEndpoint}
-
-These are the API gateways as taken from the AWS parameter store. The properties can be set as follows: `https://${apiGateway}.execute-api.eu-west-2.amazonaws.com/${environment}/api/${apiVersion}`
-This list is subject to change as the tests start to leverage more of the API's maturing functionality. If in doubt, check the [CircleCI config](https://github.com/LBHackney-IT/mtfh-tl-e2e-tests/blob/83f7a7c8b13124a7d7ecac845ed5a235abe87fd9/.circleci/config.yml#L87) to see exactly what endpoints the tests need to run.
+This list is subject to change as the tests start to leverage more of the API's maturing functionality. If in doubt, check the [CircleCI config](https://github.com/LBHackney-IT/mtfh-tl-e2e-tests/blob/master/.circleci/config.yml#L87) to see exactly what endpoints the tests need to run.
 
 >"AWS_SECRET_ACCESS_KEY": ${yourAWSCredentials}
 
@@ -73,7 +49,7 @@ Start a local test run by using `npm run test:cypress:run`
 Open the Cypress runner console by using `npm run test:cypress:open`
 
 #### Feature tags
-The e2e tests use feature tags in order to run scoped tests. They can be set within a feature file using `@featureTag` and then ran using `cypress run -e tags='@featureTag'` more detailed documents can be found [here](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor#running-tagged-tests).
+The e2e tests use feature tags in order to run scoped tests. They can be set within a feature file using `@featureTag` and then ran using `cypress run -e grepTags='@featureTag'` more detailed documents can be found [here](https://www.npmjs.com/package/@cypress/grep#filter-with-tags).
 
 ## Running the tests in the pipeline
 The tests are configured to run in the pipeline as per the CircleCi config.yml
