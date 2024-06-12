@@ -26,6 +26,10 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/*.cy.js',
     experimentalMemoryManagement: true,
     numTestsKeptInMemory: 25,
-    supportFile: 'cypress/support/e2e.js'
+    supportFile: 'cypress/support/e2e.js',
+    env: {
+        grepFilterSpecs: true,
+        grepOmitFiltered: true
+    }
   },
 })
