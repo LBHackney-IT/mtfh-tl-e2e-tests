@@ -1,7 +1,6 @@
-@authentication
 @comments
+@authentication
 @common
-@processes
 @root
 
 Feature: T&L Person Comment

@@ -1,3 +1,9 @@
+@processes
+@authentication
+@common
+@root
+@personal-details
+
 Feature: As an internal Hackney user
     I want to request relevant supporting documents from both Sole to Joint applicants (the existing tenant and the new tenant)
     So that I can evidence that the applicant is eligible and

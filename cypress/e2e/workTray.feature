@@ -1,7 +1,8 @@
+@worktray
 @authentication
 @common
-@worktray
 @root
+@processes
 
 Feature: As an internal Hackney User eg. HO, AHM
   AND any users who have access to the Worktray (post MVP)

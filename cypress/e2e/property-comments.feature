@@ -1,7 +1,8 @@
-@authentication
 @comments
+@authentication
 @common
 @root
+@property
 
 Feature: Property Comment
     I want to create and view property's comments

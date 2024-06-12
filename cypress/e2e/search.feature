@@ -1,8 +1,7 @@
+@search
 @authentication
 @common
-@processes
 @root
-@search
 
 Feature: T&L Search Function
     I want to search for a person or tenure

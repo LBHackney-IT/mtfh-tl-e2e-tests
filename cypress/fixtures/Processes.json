@@ -1,0 +1,69 @@
+{
+  "id": "f153a470-8d80-4387-ac47-6c1a4bc261d7",
+  "targetId": "4a3db3ae-4d8b-45a1-8714-85be985c0c2e",
+  "targetType": "person",
+  "relatedEntities": [
+    {
+      "id": "4a3db3ae-4d8b-45a1-8714-85be985c0c2e",
+      "targetType": "person",
+      "subType": "tenant",
+      "description": "John Doe"
+    },
+    {
+      "id": "574e0fa0-7092-4f60-8f31-e1b9d1f88b74",
+      "targetType": "tenure",
+      "subType": null,
+      "description": null
+    },
+    {
+      "id": "70801aa9-4944-475f-b204-9aeeefd5fcb5",
+      "targetType": "asset",
+      "subType": null,
+      "description": "90 Test Asset Hackney LONDON E2 8EB"
+    }
+  ],
+  "processName": "changeofname",
+  "patchAssignment": {
+    "patchId": "e611b1af-e2cc-45ee-8f17-cd8c09307121",
+    "patchName": "SH1",
+    "responsibleEntityId": "8ccd8021-e73c-495c-af36-d471a82ae61d",
+    "responsibleName": "Erik Klocko"
+  },
+  "currentState": {
+    "state": "EnterNewName",
+    "permittedTriggers": [
+      "EnterNewName"
+    ],
+    "assignment": {
+      "type": null,
+      "value": null,
+      "patch": "tenants"
+    },
+    "processData": {
+      "formData": null,
+      "documents": null
+    },
+    "createdAt": "2024-06-06T18:27:59.8254873Z",
+    "updatedAt": "2024-06-06T18:27:59.8254873Z"
+  },
+  "previousStates": [
+    {
+      "state": "ApplicationInitialised",
+      "permittedTriggers": [
+        "StartApplication"
+      ],
+      "assignment": {
+        "type": null,
+        "value": null,
+        "patch": "tenants"
+      },
+      "processData": {
+        "formData": null,
+        "documents": null
+      },
+      "createdAt": "2024-06-06T18:27:59.728602Z",
+      "updatedAt": "2024-06-06T18:27:59.7286021Z"
+    }
+  ],
+  "versionNumber": null
+}

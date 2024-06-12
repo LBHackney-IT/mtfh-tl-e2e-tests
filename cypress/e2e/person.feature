@@ -1,8 +1,8 @@
+@personal-details
 @authentication
 @common
-@personal-details
-@processes
 @root
+@worktray
 
 Feature: T&L Person Page
     I want to view a person

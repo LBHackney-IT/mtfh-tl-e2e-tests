@@ -1,8 +1,8 @@
+@property
 @authentication
 @common
-@processes
-@property
 @root
+@search
 
 Feature: Property Page
   View property page
@@ -10,7 +10,7 @@ Feature: Property Page
   Background:
     Given I am logged in
 
-    # TODO: Combine tests into one
+  # TODO: Combine tests into one
   @SmokeTest
   Scenario Outline: View property details
     Given I seeded the database with an asset with a previous tenure
@@ -24,15 +24,7 @@ Feature: Property Page
     And I click on the breadcrumb
     Then I am taken to the search page
 
-  @Regression
-  Scenario Outline: View property via tenure
-    Given I seeded the database with a tenure
-    When I view a tenure
-    Then tenure page is displayed
-    And the tenure information is displayed
-    And I click on the view property button
-    Then the property information is displayed
-
+    # TODO - Move to person (check that it has a link to a tenure)
   @Regression
   Scenario Outline: View property via person
     Given I seeded the database with a person with an active tenure
@@ -40,6 +32,16 @@ Feature: Property Page
     Then I visit the 'Person details' page
     Then the personal details are displayed
     And I click on the view property button for a person
+    Then the property information is displayed
+
+  # TODO - Move to tenure (check that it has a link to a property)
+  @Regression
+  Scenario Outline: View property via tenure
+    Given I seeded the database with a tenure
+    When I view a tenure
+    Then tenure page is displayed
+    And the tenure information is displayed
+    And I click on the view property button
     Then the property information is displayed
 
   Scenario Outline: Repairs container is displayed

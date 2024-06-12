@@ -1,8 +1,8 @@
+@property
 @authentication
 @common
-@processes
-@asset-ownership
 @root
+@search
 
 Feature: Property Add
     Change asset ownership

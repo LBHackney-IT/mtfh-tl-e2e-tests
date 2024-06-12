@@ -1,7 +1,6 @@
-@authentication
 @comments
+@authentication
 @common
-@processes
 @root
 
 Feature: Tenure Comment

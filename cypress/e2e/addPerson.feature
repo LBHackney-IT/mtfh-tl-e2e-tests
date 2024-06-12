@@ -1,8 +1,10 @@
+@tenure
 @authentication
 @common
-@personal-details
-@processes
 @root
+@personal-details
+@search
+@worktray
 
 @AddPersonPage
 Feature: Add a new person to a tenure

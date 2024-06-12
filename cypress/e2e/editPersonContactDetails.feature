@@ -1,9 +1,8 @@
-@authentication 
-@common 
-@personal-details 
-@processes 
-@root 
-@EditPersonContactDetailsPage
+@personal-details
+@authentication
+@common
+@root
+@worktray
 
 Feature: Edit contact details for a person
     I want to edit contact details for a person
