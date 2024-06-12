@@ -1,8 +1,16 @@
-const envConfig = require('../../environment-config')
 
 class ActivityHistoryPageObjects {
-    visit(record) {
-        cy.visit(`${envConfig.baseUrl}/activities/person/${record}`)
+    visit(record, isStubbed = false) {
+        const activityHistoryApiUrl = `*/api/v1/activityhistory?pageSize=5&targetId=${record}`
+        cy.intercept("GET", activityHistoryApiUrl).as("getActivityHistory")
+        if(isStubbed) {
+            cy.intercept("GET", activityHistoryApiUrl, 
+                         { fixture: 'activity-history-person.json' })
+                        .as("getActivityHistory")
+        }
+
+        cy.visit(`${Cypress.config("baseUrl")}/activities/person/${record}`)
+        cy.wait("@getActivityHistory")
         cy.injectAxe()
     }
 

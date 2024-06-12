@@ -5,19 +5,17 @@
 
 const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 const webpack = require("@cypress/webpack-preprocessor");
-const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
-const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild");
-const { getConfiguration } = require("./configuration")
-const fs = require('fs')
+const { fetchFeatureToggleConfiguration } = require("./feature-toggle-config")
+const { setEnvironmentConfig } = require("./environment-config")
 
 module.exports = async (on, config) => {
-  // config.featureToggles = (await getConfiguration(config.env)) || {};
-  // on("before:browser:launch", (browser = {}, launchOptions) => {
-  // // prepareAudit(launchOptions);
-  // });
+  config.featureToggles = (await fetchFeatureToggleConfiguration(config.env)) || {};
+  config = setEnvironmentConfig(on, config);
+  config = require('@cypress/grep/src/plugin')(config);
 
-  // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
-  await preprocessor.addCucumberPreprocessorPlugin(on, config);
+  on("before:browser:launch", (browser = {}, launchOptions) => {
+    prepareAudit(launchOptions);
+  });
 
   on(
     "file:preprocessor",
@@ -27,17 +25,7 @@ module.exports = async (on, config) => {
           extensions: [".ts", ".js"],
         },
         module: {
-          rules: [
-            {
-              test: /\.feature$/,
-              use: [
-                {
-                  loader: "@badeball/cypress-cucumber-preprocessor/webpack",
-                  options: config,
-                },
-              ],
-            },
-          ],
+          rules: [],
         },
       },
     })

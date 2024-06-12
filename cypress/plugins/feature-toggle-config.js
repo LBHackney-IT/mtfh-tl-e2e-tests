@@ -1,8 +1,8 @@
 const axios = require("axios");
 
-const getConfiguration = async (env) => {
+const fetchFeatureToggleConfiguration = async (env) => {
   let token = env.E2E_ACCESS_TOKEN_LOCAL;
-  const featureToggleEndpoint = process.env.FEATURE_TOGGLE_ENDPOINT;
+  const featureToggleEndpoint = env.FEATURE_TOGGLE_ENDPOINT;
 
   url = `${featureToggleEndpoint}/api/v1/configuration?types=MMH`;
   console.log(`Checking feature toggle config at ${url}`)
@@ -40,5 +40,5 @@ const getConfiguration = async (env) => {
 };
 
 module.exports = {
-  getConfiguration,
+  fetchFeatureToggleConfiguration,
 };

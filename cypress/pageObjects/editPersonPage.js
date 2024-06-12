@@ -1,9 +1,23 @@
-const envConfig = require('../../environment-config')
+import AddPersonPageObjects from './addPersonPage'
 
-class EditPersonPageObjects {
+class EditPersonPageObjects extends AddPersonPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${record}/edit`)
+        cy.intercept("GET", `*/api/v1/persons/${record}`).as("getPerson")
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("personUrl")}/${record}/edit`)
         cy.injectAxe()
+        cy.wait("@getPerson")
+    }
+
+    updatePersonButton() {
+        return cy.contains('Update person')
+    }
+
+    clickUpdatePersonButton(id) {
+        cy.intercept("PATCH", `*/api/v1/persons/${id}`).as("updatePerson")
+        const now = new Date();
+        this.updatePersonButton().click();
+        cy.wait("@updatePerson")
+        return now;
     }
 
     mergeConflictDialogBox() {

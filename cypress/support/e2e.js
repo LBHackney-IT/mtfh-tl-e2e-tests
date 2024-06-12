@@ -1,3 +1,11 @@
+import './commands';
+import "cypress-real-events/support";
+import 'cypress-axe'
+require("cypress-plugin-tab");
+require('cypress-xpath');
+import DynamoDb from "../../api/database/DynamoDb";
+import registerCypressGrep from '@cypress/grep';
+
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -13,13 +21,31 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
-import './commands'
+registerCypressGrep();
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
-require('cypress-xpath');
-import "cypress-real-events/support";
-require("cypress-plugin-tab");
+// TODO: Move this to a helper file
+const clearDatabase = () => {
+    const filename = "cypress/fixtures/recordsToDelete.json";
+    cy.readFile(filename).then((recordsToDelete) => {
+        if (recordsToDelete.length) {
+            return new Cypress.Promise((resolve) => {
+                Promise.all(
+                    recordsToDelete.map((record) => DynamoDb.deleteRecord(record))
+                ).then(() => {
+                    resolve();
+                });
+            }).then(() => {
+                cy.writeFile(filename, []);
+                cy.log("Test database records cleared!");
+            });
+        }
+    });
+};
 
-import 'cypress-axe'
+before(() => {
+    clearDatabase();
+});
+
+after(() => {
+    clearDatabase();
+});

@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
-import property from "../../../api/property";
-import { saveFixtureData } from "../../../api/helpers";
+import property from "../property";
+import { saveFixtureData } from "../helpers";
 
 const REGION = "eu-west-2"
 const accessKeyId = Cypress.env('AWS_ACCESS_KEY_ID')

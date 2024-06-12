@@ -1,14 +1,11 @@
-const envConfig = require('../../environment-config')
-
 class AddPersonPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/tenure/${record}/edit/person/new`)
+        cy.visit(`${Cypress.config("baseUrl")}/tenure/${record}/edit/person/new`)
         cy.injectAxe()
     }
 
-
     editPersonEqualityInformation(record) {
-        cy.visit(`${envConfig.baseUrl}/person/${record}/edit/equality-information`)
+        cy.visit(`${Cypress.config("baseUrl")}/person/${record}/edit/equality-information`)
     }
 
     mainContent() {
@@ -189,10 +186,6 @@ class AddPersonPageObjects {
 
     errorSummaryBody() {
         return cy.get('[class="govuk-error-summary__body"]')
-    }
-
-    updatePersonButton() {
-        return cy.contains('Update person')
     }
 
     confirmationModal() {

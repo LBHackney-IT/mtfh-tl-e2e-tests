@@ -84,7 +84,7 @@ commands:
                             export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
 
-                          export FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
+                          export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
@@ -97,18 +97,18 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
                           
-                          export CYPRESS_TAGS='not @GoogleLighthouse and not @Accessibility and not @ignore' ;
+                          export CYPRESS_TAGS='--@GoogleLighthouse --@Accessibility --@ignore' ;
                           export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
-                          [ "<<parameters.trigger-context>>" = "external" ] && [ "<<parameters.stage>>" = "production" ] && export CYPRESS_TAGS="$CYPRESS_TAGS and @Production"
+                          [ "<<parameters.trigger-context>>" = "external" ] && [ "<<parameters.stage>>" = "production" ] && export CYPRESS_TAGS="$CYPRESS_TAGS @Production"
 
                           if [ -n "$PIPELINE_FILTER" ]; then
                             [ $PIPELINE_FILTER = "common" ] || [ $PIPELINE_FILTER = "authentication" ] || [ $PIPELINE_FILTER = "root" ] && export PIPELINE_FILTER="SmokeTest"
-                            export CYPRESS_TAGS="$CYPRESS_TAGS and @$PIPELINE_FILTER"
+                            export CYPRESS_TAGS="$CYPRESS_TAGS @$PIPELINE_FILTER"
                           fi
 
                           if [ "<<parameters.trigger-context>>" = "devices"]
-                            then export CYPRESS_TAGS="$CYPRESS_TAGS and @device" ;
-                            else export CYPRESS_TAGS="$CYPRESS_TAGS and not @device" ;
+                            then export CYPRESS_TAGS="$CYPRESS_TAGS @device" ;
+                            else export CYPRESS_TAGS="$CYPRESS_TAGS --@device" ;
                           fi
 
                           npm install ;
