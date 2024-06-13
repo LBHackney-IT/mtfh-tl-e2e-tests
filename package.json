@@ -16,8 +16,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.1",
     "@cypress/grep": "^4.0.2",
-    "@cypress/webpack-preprocessor": "^5.14.0",
     "@faker-js/faker": "^7.6.0",
     "@testing-library/cypress": "^10.0.2",
     "ansi-regex": ">=5.0.1",
@@ -30,6 +30,7 @@
     "cypress-plugin-tab": "^1.0.5",
     "cypress-social-logins": "^1.11.3",
     "cypress-xpath": "^1.6.2",
+    "esbuild": "^0.21.5",
     "glob-parent": ">=5.1.2",
     "set-value": ">=4.0.1",
     "ws": ">=6.2.2"
