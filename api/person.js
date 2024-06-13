@@ -3,7 +3,6 @@ import { saveFixtureData } from './helpers'
 
 import { createPersonModel } from './models/requests/createPersonModel'
 import { editPersonModel } from './models/requests/editPersonModel'
-import envConfig from "../environment-config";
 
 const personEndpoint =  Cypress.env('PERSON_ENDPOINT')
 const url = `${personEndpoint}/persons`
@@ -15,7 +14,7 @@ const createPerson = () => {
             method: 'POST',
             body: createPersonModel,
             url,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
                 tableName,
@@ -40,7 +39,7 @@ const createPersonWithNewTenure = (tenureId, dateOfBirth) => {
             method: 'POST',
             body: requestModel,
             url,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then((response) => {
             saveFixtureData(
                 tableName,
@@ -54,7 +53,7 @@ const createPersonWithNewTenure = (tenureId, dateOfBirth) => {
     });
 }
 
-const editPerson = async (personId) => {
+export const editPerson = async (personId) => {
     const response = await patchRequest(`${url}/${personId}`, editPersonModel)
     return response
 }

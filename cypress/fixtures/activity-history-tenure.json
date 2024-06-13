@@ -1,67 +1,6 @@
 {
   "results": [
       {
-          "id": "908df50f-d967-482d-849e-0dceedc8efe8",
-          "targetId": "b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5",
-          "type": "create",
-          "targetType": "tenurePerson",
-          "createdAt": "2021-10-08T15:49:12.7021549Z",
-          "timetoLiveForRecord": 0,
-          "oldData": {
-              "householdMembers": [
-                  {
-                      "fullName": "FAKE_Shane FAKE_Hooper",
-                      "isResponsible": true,
-                      "dateOfBirth": "1968-07-29T00:00:00",
-                      "personTenureType": "Tenant",
-                      "id": "cff7f0ff-0851-ff4f-2739-32c9c8611592",
-                      "type": "Person"
-                  },
-                  {
-                      "fullName": "FAKE_Brenda FAKE_Davies",
-                      "isResponsible": true,
-                      "dateOfBirth": "1995-07-21T00:00:00",
-                      "personTenureType": "Tenant",
-                      "id": "447c2c0e-dcad-cba5-12f1-0185cb0de552",
-                      "type": "Person"
-                  }
-              ]
-          },
-          "newData": {
-              "householdMembers": [
-                  {
-                      "fullName": "FAKE_Shane FAKE_Hooper",
-                      "isResponsible": true,
-                      "dateOfBirth": "1968-07-29T00:00:00",
-                      "personTenureType": "Tenant",
-                      "id": "cff7f0ff-0851-ff4f-2739-32c9c8611592",
-                      "type": "Person"
-                  },
-                  {
-                      "fullName": "FAKE_Brenda FAKE_Davies",
-                      "isResponsible": true,
-                      "dateOfBirth": "1995-07-21T00:00:00",
-                      "personTenureType": "Tenant",
-                      "id": "447c2c0e-dcad-cba5-12f1-0185cb0de552",
-                      "type": "Person"
-                  },
-                  {
-                      "fullName": "Mrs. FAKE_Alexander FAKE_Alexander",
-                      "isResponsible": true,
-                      "dateOfBirth": "1928-10-09T00:00:00",
-                      "personTenureType": "Tenant",
-                      "id": "890dded5-13c7-e032-dc12-e351cb752927",
-                      "type": "Person"
-                  }
-              ]
-          },
-          "authorDetails": {
-              "fullName": "Sam Greig",
-              "email": "sam.greig@hackney.gov.uk"
-          },
-          "sourceDomain": "Tenure"
-      },
-      {
           "id": "915c2552-d7fd-1c09-0edd-3a5771699d1c",
           "targetId": "b6cee6e0-b3a8-8a25-c7b6-f8f5ab9288e5",
           "type": "migrate",

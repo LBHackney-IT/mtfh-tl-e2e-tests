@@ -1,10 +1,10 @@
 import date from "date-and-time";
 import { seedDatabase } from "../helpers/DbHelpers";
-import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPersonPage';
-import EditPersonPageObjects from "../pageObjects/editPersonPage";
+import { editPerson } from "../../api/person";
+import { editPersonModel } from "../../api/models/requests/editPersonModel";
+import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPage';
 
-const activityHistory = new ActivityHistoryPageObjects();
-const editPersonPage = new EditPersonPageObjects();
+const activityHistory = new ActivityHistoryPageObjects("person");
 const tags = ['@activity-history', '@authentication', '@common', '@root'];
 
 
@@ -20,40 +20,51 @@ describe('Activity History for a person', { 'tags': tags }, () => {
             activityHistory.visit(person.id, true)
             
             // Then
+            cy.contains(person.firstName).should('be.visible')
+            cy.contains(person.surname).should('be.visible')
+
             activityHistory.activityTable().should('be.visible')
             activityHistory.tableHeaders().forEach(tableHeader => {
                 cy.contains(tableHeader).should('be.visible')
             })
 
-            cy.contains(person.firstName).should('be.visible')
-            cy.contains(person.surname).should('be.visible')
+            cy.getActivityHistoryPersonFixture().then((activityHistoryRecord) => {
+                // TODO: Possibly move to helper
+                // Validate the first row of the activity history table
+                const firstRow = activityHistory.activityTableRow().first();
+                const firstActivityItem = activityHistoryRecord["results"][0];
+                
+                for (const dataValue of Object.values(firstActivityItem.oldData)) {
+                    firstRow.should('contain', `Previously: ${dataValue}`);
+                }
 
+                for (const dataValue of Object.values(firstActivityItem.newData)) {
+                    firstRow.should('contain', `Changed to: ${dataValue}`);
+                }
+            })
+            
             activityHistory.closeActivityHistory().click()
             cy.url().should("include", person.id);
         });
     });
 
-    //TODO: skipped for 5th July 2023 release as this test is failing in pipeline
-    it('should update activity history', { 'tags': '@ignore' }, () => {
-        cy.getPersonFixture().then((person) => { 
+    it('should update activity history', () => {
+        cy.getPersonFixture().then(async (person) => { 
             // Given
-            const newMidleName = "MiddleName";
+            const personUpdatedTime = new Date();
+            await editPerson(person.id).then((response) => {
+                expect(response.status).to.equal(204);
+                cy.wait(1000); // Wait for the data to be updated
+            });
 
-            editPersonPage.visit(person.id)
-            editPersonPage.preferredMiddleNameContainer().clear();
-            editPersonPage.preferredMiddleNameContainer().type(newMidleName);
-            const personUpdatedTime = editPersonPage.clickUpdatePersonButton(person.id);
-            
             // When
-            cy.wait(1000) // To allow events to go through
             activityHistory.visit(person.id)
 
             // Then
             activityHistory.activityTable().should('be.visible')
-            
-            const firstRow = activityHistory.activityTableRow().eq(0)
-            firstRow.should('contain', `Changed to: ${newMidleName}`);
-            firstRow.should('contain', `Previously: ${person.middleName || "[No entry]"}`);
+            const firstRow = activityHistory.activityTableRow().first();
+            firstRow.should('contain', `Changed to: ${editPersonModel.firstName}`);
+            firstRow.should('contain', `Previously: ${person.firstName || "[No entry]"}`);
             firstRow.should('contain', date.format(personUpdatedTime, "DD/MM/YY"));
             // firstRow.should('contain', date.format(personUpdatedTime, "HH:mm"));
             // ^ Flaky test, sometimes it fails because the time might be a minute off (depending on the time the test is run)
