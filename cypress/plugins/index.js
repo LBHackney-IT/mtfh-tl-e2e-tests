@@ -4,7 +4,7 @@
  */
 
 const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
-const webpack = require("@cypress/webpack-preprocessor");
+const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const { fetchFeatureToggleConfiguration } = require("./feature-toggle-config")
 const { setEnvironmentConfig } = require("./environment-config")
 
@@ -17,19 +17,14 @@ module.exports = async (on, config) => {
     prepareAudit(launchOptions);
   });
 
-  on(
-    "file:preprocessor",
-    webpack({
-      webpackOptions: {
-        resolve: {
-          extensions: [".ts", ".js"],
-        },
-        module: {
-          rules: [],
-        },
-      },
-    })
-  );
+  const bundler = createBundler({
+    // any ESBuild options here
+    // https://esbuild.github.io/api/
+    define: {
+        "global": "window"
+    },
+  })
+  on('file:preprocessor', bundler)
 
   on("task", {
     lighthouse: lighthouse((lighthouseReport) => {
