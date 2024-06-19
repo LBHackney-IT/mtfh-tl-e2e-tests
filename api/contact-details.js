@@ -2,7 +2,6 @@ import { saveFixtureData } from './helpers'
 
 const endpoint = Cypress.env('CONTACT_DETAILS_ENDPOINT')
 import { addContactModel } from './models/requests/addContactModel'
-import envConfig from "../environment-config";
 
 const tableName = "ContactDetails";
 
@@ -11,7 +10,7 @@ export const getContactDetails = (personId) => {
         cy.request({
             method: 'GET',
             url: `${endpoint}/contactDetails?targetId=${personId}`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` },
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` },
             failOnStatusCode: false
         }).then(response => {
             resolve(response)
@@ -24,7 +23,7 @@ export const deleteContactDetails = (contactDetailsId, targetId) => {
         cy.request({
             method: 'DELETE',
             url: `${endpoint}/contactDetails?id=${contactDetailsId}&targetId=${targetId}`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             resolve(response)
         })
@@ -52,7 +51,7 @@ export const addContactDetails = (targetId, contactType = null, contactInformati
             method: 'POST',
             body: addContactModel,
             url: `${endpoint}/contactDetails`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
                 tableName,

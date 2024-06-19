@@ -1,14 +1,12 @@
 
-const envConfig = require('../../environment-config')
-const baseUrl = require('../../environment-config').baseUrl
 
 class ChangeOfNamePageObjects {
     visitHomePage() {
-        cy.visit(baseUrl)
+        cy.visit(Cypress.config("baseUrl"))
         cy.injectAxe();
     }
     visit(personId) {
-        cy.visit(`${envConfig.baseUrl}/person/${personId}`);
+        cy.visit(`${Cypress.config("baseUrl")}/person/${personId}`);
     }
     textSearch() {
         return cy.findAllByText('Search');

@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config')
 
 class ActivityHistoryTenurePageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/activities/tenure/${record}`)
+        cy.visit(`${Cypress.config("baseUrl")}/activities/tenure/${record}`)
         cy.injectAxe()
     }
 

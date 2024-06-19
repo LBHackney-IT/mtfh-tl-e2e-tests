@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config')
 
 class ActivityHistoryPropertyPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/activities/property/${record}`)
+        cy.visit(`${Cypress.config("baseUrl")}/activities/property/${record}`)
         cy.injectAxe()
     }
 

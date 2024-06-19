@@ -1,18 +1,17 @@
-const envConfig = require('../../environment-config')
 
 class CreateTenurePageObjects {
     createTenure(tenureId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}/add`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${tenureId}/add`)
         cy.injectAxe()
     }
 
     editTenure(tenureId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}/edit`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${tenureId}/edit`)
         cy.injectAxe()
     }
 
     createNewPerson(propertyId, tenureId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${propertyId}/add/${tenureId}/person`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${propertyId}/add/${tenureId}/person`)
     }
 
     main() {

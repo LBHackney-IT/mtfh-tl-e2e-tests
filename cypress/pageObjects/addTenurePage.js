@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config')
 
 class AddTenurePageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${record}/add`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${record}/add`)
         cy.injectAxe()
     }
 
