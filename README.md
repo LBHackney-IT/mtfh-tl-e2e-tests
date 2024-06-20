@@ -43,6 +43,11 @@ export CYPRESS_AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export CYPRESS_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export CYPRESS_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
 ```
+or, if you have aws sso configured:
+
+```bash
+. ./setEnv.sh <PROFILE_NAME>
+```
 
 #### Starting the tests
 Start a local test run by using `npm run test:cypress:run`
