@@ -66,8 +66,6 @@ describe('Activity History for a person', { 'tags': tags }, () => {
             firstRow.should('contain', `Changed to: ${editPersonModel.firstName}`);
             firstRow.should('contain', `Previously: ${person.firstName || "[No entry]"}`);
             firstRow.should('contain', date.format(personUpdatedTime, "DD/MM/YY"));
-            // firstRow.should('contain', date.format(personUpdatedTime, "HH:mm"));
-            // ^ Flaky test, sometimes it fails because the time might be a minute off (depending on the time the test is run)
         });
     });
 });

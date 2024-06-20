@@ -54,8 +54,6 @@ describe('Activity History for a tenure', { 'tags': tags }, () => {
             firstRow.should('contain', `Changed to: ${newTenureType}`)
             firstRow.should('contain', `Previously: ${tenure.tenureType.description}`);
             firstRow.should('contain', date.format(tenureUpdatedTime, "DD/MM/YY"));
-            // firstRow.should('contain', date.format(tenureUpdatedTime, "HH:mm"));
-            // ^ Flaky test, sometimes it fails because the time might be a minute off (depending on the time the test is run)
         });
     });
 });
