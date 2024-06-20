@@ -29,6 +29,10 @@ class TenurePageObjects {
     return cy.get("#resident-details");
   }
 
+  tenureComment(){
+    return cy.get("#comments")
+  }
+
   viewResidentButton() {
     return cy.get('[class="govuk-button lbh-button govuk-button--secondary lbh-button--secondary view-person-button"]');
   };
