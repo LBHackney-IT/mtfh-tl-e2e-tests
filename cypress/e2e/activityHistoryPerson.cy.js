@@ -14,7 +14,7 @@ describe('Activity History for a person', { 'tags': tags }, () => {
         seedDatabase();
     });
 
-    it('should view activity history', () => {
+    it('should view activity history', { tags: "@SmokeTest" }, () => {
         cy.getPersonFixture().then((person) => {
             // Given & When
             activityHistory.visit(person.id, true)

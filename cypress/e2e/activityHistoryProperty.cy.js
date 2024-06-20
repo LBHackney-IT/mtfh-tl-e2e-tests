@@ -11,7 +11,7 @@ describe('Activity History for a property', { 'tags': tags }, () => {
         seedDatabase();
     });
 
-    it('should view activity history', () => {
+    it('should view activity history', { tags: "@SmokeTest" }, () => {
         cy.getAssetFixture().then((asset) => {
             // Given & When
             activityHistory.visit(asset.id, true)

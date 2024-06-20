@@ -13,7 +13,7 @@ describe('Activity History for a tenure', { 'tags': tags }, () => {
         seedDatabase();
     });
 
-    it('should view activity history', () => {
+    it('should view activity history', { tags: "@SmokeTest" }, () => {
         cy.getTenureFixture().then((tenure) => {
             // Given & When
             activityHistory.visit(tenure.id, true)
