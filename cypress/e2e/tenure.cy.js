@@ -8,7 +8,8 @@ import { addTestRecordToDatabase } from "../helpers/DbHelpers";
 
 const tenurePage = new TenurePageObjects();
 const tags = ['@tenure','@authentication', '@common', '@root', '@search', '@worktray', '@personal-details'];
-
+const smallDevice = ['iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-x', 'iphone-xr', 'iphone-se2', 'samsung-s10']
+const bigDevice = ['ipad-2', 'ipad-mini', 'macbook-11', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9']
 describe('tenure page', {'tags': tags}, () => {
     beforeEach(() => {
         cy.login();
@@ -97,7 +98,7 @@ describe('tenure page', {'tags': tags}, () => {
         });
     });
 
-    it('Accessibility Testing', ()=>{
+    it('Accessibility Testing', {'tags': '@Accessibility'}, ()=>{
         cy.getTenureFixture().then(({ id: tenureId }) => {
             //Given & when
             tenurePage.visit(tenureId);
@@ -124,6 +125,38 @@ describe('tenure page', {'tags': tags}, () => {
                 cy.task("table", violationData);
             }
         });
+    })
+
+    smallDevice.forEach((device) => {
+        it('Mobile view - device with smaller screens', {'tags': '@device'}, ()=> {
+            cy.getTenureFixture().then(({ id: tenureId }) => {
+                //Given 
+                tenurePage.visit(tenureId);
+                //when
+                cy.viewport(`${device}`);
+                tenurePage.tenureDetailsAccordion().click({force: true})
+                //then
+                tenurePage.tenureDetailsAccordionInformation();
+                //when
+                tenurePage.residentDetailsAccordion().click({force: true})
+                //then
+                tenurePage.residentDetailsAccordionInformation();
+            });
+        })
+    });
+
+    bigDevice.forEach((device) => {
+        it('Mobile view - device with bigger screens', {'tags': '@device'}, ()=> {
+            cy.getTenureFixture().then(({ id: tenureId }) => {
+                //Given 
+                tenurePage.visit(tenureId);
+                //when
+                cy.viewport(`${device}`);
+                //then
+                tenurePage.tenureDetailsAccordionInformation();
+                tenurePage.residentDetailsAccordionInformation();
+            });
+        })
     })
 
 })
