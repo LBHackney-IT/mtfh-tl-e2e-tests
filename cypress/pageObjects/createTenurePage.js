@@ -83,7 +83,11 @@ class CreateTenurePageObjects {
     }
 
     searchButton() {
-        return cy.contains('Search')
+        return cy.get('.govuk-button.lbh-button:contains("Search")')
+    }
+
+    searchResults() {
+        return cy.get('.mtfh-search__results')
     }
 
     addAsNamedTenureHolderButton() {
