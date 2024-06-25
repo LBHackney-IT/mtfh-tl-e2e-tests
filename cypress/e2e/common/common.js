@@ -533,7 +533,7 @@ And("I click cancel", () => {
 });
 
 Given("I am on the edit person page for {string}", (person) => {
-  cy.visit(`${envConfig.baseUrl}/person/${person}/edit`);
+    cy.visit(`${Cypress.config("baseUrl")}/person/${person}/edit`);
 });
 
 Then("the add a new person tenure page is correct", () => {
