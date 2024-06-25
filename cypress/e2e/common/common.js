@@ -5,7 +5,6 @@ import {
   When,
   defineParameterType,
 } from "@badeball/cypress-cucumber-preprocessor";
-import ActivityHistoryPageObjects from "../../pageObjects/activityHistoryPersonPage";
 import AddPersonPageObjects from "../../pageObjects/addPersonPage";
 import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 import HomePageObjects from "../../pageObjects/homePage";
@@ -62,8 +61,6 @@ const homePage = new HomePageObjects();
 const emailAdd = "AutomationTest@test.com";
 const phoneNumber = "07788123456";
 
-let dateCaptureDay;
-let dateCaptureTime;
 let personId = "";
 
 const endpoint = Cypress.env("PERSON_ENDPOINT");
@@ -536,13 +533,7 @@ And("I click cancel", () => {
 });
 
 Given("I am on the edit person page for {string}", (person) => {
-  cy.visit(`${Cypress.config("baseUrl")}/person/${person}/edit`);
-});
-
-Then("the activity history is correct", () => {
-  activityHistory.activityTableRow().eq(0).contains(guid);
-  activityHistory.activityTableRow().eq(0).contains(dateCaptureDay);
-  activityHistory.activityTableRow().eq(0).contains(dateCaptureTime);
+    cy.visit(`${Cypress.config("baseUrl")}/person/${person}/edit`);
 });
 
 Then("the add a new person tenure page is correct", () => {

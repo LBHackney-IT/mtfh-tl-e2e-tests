@@ -1,4 +1,4 @@
-import { postRequest, deleteRequest } from './requests/requests'
+import { postRequest, patchRequest, deleteRequest } from './requests/requests'
 import { createTenureModel as _createTenureModel, secureTenureModel } from "./models/requests/addTenureModel";
 import { saveFixtureData } from './helpers'
 import person from "./person";
@@ -77,20 +77,12 @@ export const createTenureWithStartDate = (startOfTenureDate) => {
     })
 }
 
-export const editTenure = (tenureId, tenureType, ifMatch) => {
+export const editTenure = async (tenureId, tenureType, ifMatch) => {
     editTenureModel.tenureType.code = tenureType.substring(0,2).toUpperCase()
     editTenureModel.tenureType.description = tenureType
 
-    return new Cypress.Promise((resolve) => {
-        cy.request({
-            method: 'PATCH',
-            body: editTenureModel,
-            url: `${tenureEndpoint}/tenures/${tenureId}`,
-            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}`, 'If-Match': ifMatch }
-        }).then(response => {
-            resolve(response)
-        })
-    })
+    const response = await patchRequest(`${tenureEndpoint}/tenures/${tenureId}`, editTenureModel, ifMatch)
+    return response
 }
 
 export const deleteTenure = async(tenureId, personId) => {

@@ -20,10 +20,6 @@ class AddPersonPageObjects {
         return cy.get('[class="lbh-heading-h1"]')
     }
 
-    mainContent() {
-        return cy.get('#main-content')
-    }
-
     pageAnnouncement() {
         return cy.get('.lbh-page-announcement')
     }
