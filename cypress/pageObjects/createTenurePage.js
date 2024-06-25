@@ -1,18 +1,17 @@
-const envConfig = require('../../environment-config')
 
 class CreateTenurePageObjects {
     createTenure(tenureId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}/add`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${tenureId}/add`)
         cy.injectAxe()
     }
 
     editTenure(tenureId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenureId}/edit`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${tenureId}/edit`)
         cy.injectAxe()
     }
 
     createNewPerson(propertyId, tenureId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${propertyId}/add/${tenureId}/person`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${propertyId}/add/${tenureId}/person`)
     }
 
     main() {
@@ -84,7 +83,31 @@ class CreateTenurePageObjects {
     }
 
     searchButton() {
-        return cy.contains('Search')
+        return cy.get('.govuk-button.lbh-button:contains("Search")')
+    }
+
+    searchResults() {
+        return cy.get('.mtfh-search__results')
+    }
+
+    sortByOption() {
+        return cy.get('#sortBy-field')
+    }
+
+    showOptions() {
+        return cy.get('#limit-field')
+    }
+
+    numberOfResultsDisplayed(results) {
+        this.showOptions().select(`${results} items`)
+    }
+
+    paginationSummary() {
+        return cy.get('.lbh-pagination__summary')
+    }
+
+    filterStatus() {
+        return cy.get('.mtfh-search-controls__status')
     }
 
     addAsNamedTenureHolderButton() {
@@ -95,6 +118,9 @@ class CreateTenurePageObjects {
         return cy.get('.govuk-button.lbh-button:contains("Add as household member")');
     }
 
+    addAsNamedTenureHolderButtonTemp() {
+        return cy.get('.govuk-button.lbh-button:contains("Add as named tenure holder")');
+    }
     pageAnnouncementContainer() {
         //return cy.contains('.lbh-page-announcement__title')
        return cy.get('.lbh-page-announcement');

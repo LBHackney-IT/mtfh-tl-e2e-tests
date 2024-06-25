@@ -1,6 +1,5 @@
 import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor"
 import PersonPageObjects from '../../pageObjects/personPage'
-import envConfig from '../../../environment-config'
 import validComment from '../../helpers/personCommentText'
 
 
@@ -62,7 +61,7 @@ When('I click on the add comment button', () => {
 
 Then('I am taken to the add comment for person page', () => {
     cy.getPersonFixture((person) => {
-        cy.url().should('contain', `${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person.id}`)
+        cy.url().should('contain', `${Cypress.config("baseUrl")}/${Cypress.config("personCommentsUrl")}/${person.id}`)
     })
 })
 

@@ -1,7 +1,6 @@
 import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
 import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common";
-import { baseUrl } from "../../../environment-config";
 
 Given("I am on the MMH 'Edit asset ownership' page for the asset", () => {
     cy.getAssetFixture().then(asset => {
@@ -98,5 +97,5 @@ Then("I see an error message to confirm the asset ownership has NOT been edited"
 // Helper methods
 
 const getAssetOwnershipEditUrlByGuid = (assetGuid) => {
-    return `${baseUrl}/property/${assetGuid}/edit-asset-ownership`
+    return `${Cypress.config("baseUrl")}/property/${assetGuid}/edit-asset-ownership`
 }

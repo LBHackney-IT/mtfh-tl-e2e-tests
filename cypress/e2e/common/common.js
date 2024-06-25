@@ -44,7 +44,7 @@ import { addTestRecordToDatabase, seedDatabaseWithTenure } from "../../helpers/D
 
 // note - this whole file will need to be refactored in stages
 
-const envConfig = require("../../../environment-config");
+const activityHistory = new ActivityHistoryPageObjects();
 const addPersonPage = new AddPersonPageObjects();
 const footer = new FooterPageObjects();
 const header = new HeaderPageObjects();
@@ -1033,7 +1033,7 @@ And("I can see the text add the contact details", () => {
 // Helper methods
 
 export const getAssetViewUrlByGuid = (assetGuid) => {
-  return `${envConfig.baseUrl}/property/${assetGuid}`;
+  return `${Cypress.config("baseUrl")}/property/${assetGuid}`;
 };
 
 // Database seed methods

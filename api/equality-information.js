@@ -1,4 +1,3 @@
-const envConfig = require("../environment-config");
 const equalityDetailsModel = require('./models/requests/equalityDetailsModel')
 const equalityDetailsEndpoint = Cypress.env('EQUALITY_DETAILS_ENDPOINT')
 const url = `${equalityDetailsEndpoint}/equality-information`
@@ -8,7 +7,7 @@ const getEqualityDetails = (targetId) => {
         cy.request({
             method: 'GET',
             url: `${url}?targetId=${targetId}`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` },
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` },
             failOnStatusCode: false
         }).then(response => {
             resolve(response)
@@ -22,7 +21,7 @@ const editEqualityDetails = (targetId, ifMatch) => {
             method: 'PATCH',
             body: equalityDetailsModel.equalityDetailsModel,
             url: `${url}/${targetId}`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}`, 'If-Match': ifMatch }
         }).then((response) => {
             resolve(response)
         })

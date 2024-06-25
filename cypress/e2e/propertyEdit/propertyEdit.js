@@ -1,7 +1,6 @@
 import { And, Given, Then, When, } from "@badeball/cypress-cucumber-preprocessor";
 import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { addTestRecordToDatabase, getAssetViewUrlByGuid } from "../common/common";
-import { baseUrl } from "../../../environment-config";
 
 const newAddressLine1Value = 'NEW ADDRESS LINE 1'
 const noUprnValue = 'N/A'
@@ -140,7 +139,7 @@ And("I can see the asset does not have a UPRN", () => {
 // Helper methods
 
 const getAssetEditUrlByGuid = (assetGuid) => {
-    return `${baseUrl}/property/edit/${assetGuid}/`
+    return `${Cypress.config("baseUrl")}/property/edit/${assetGuid}/`
 }
 
 // Database seed methods

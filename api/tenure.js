@@ -54,7 +54,7 @@ export const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
     return response
 }
 
-const createTenureWithStartDate = (startOfTenureDate) => {
+export const createTenureWithStartDate = (startOfTenureDate) => {
     const requestModel = _createTenureModel
     requestModel.startOfTenureDate = startOfTenureDate
 

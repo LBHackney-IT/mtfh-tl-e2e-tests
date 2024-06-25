@@ -16,7 +16,6 @@ const propertyCommentsPage = new PropertyCommentsPageObjects()
 const tenurePage = new TenurePageObjects()
 const personPage = new PersonPageObjects()
 const propertyPage = new PropertyPageObjects
-const envConfig = require('../../../environment-config')
 
 let uniqueText = (Math.random() + 1).toString(10).substring(5)
 let commentGroup = ""
@@ -333,7 +332,7 @@ Then('I can cancel the comment', () => {
         case "tenure":
             tenureCommentsPage.cancellationYesButton().contains('Yes').click()
             cy.getTenureFixture().then(async (tenure) => {
-                cy.url().should('eq', `${envConfig.baseUrl}/${envConfig.tenureUrl}/${tenure.id}`)
+                cy.url().should('eq', `${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${tenure.id}`)
             })
             break;
         case "person":

@@ -1,13 +1,12 @@
-const envConfig = require('../../environment-config')
 
 class EditPersonContactDetailsPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/person/${record}`)
+        cy.visit(`${Cypress.config("baseUrl")}/person/${record}`)
         cy.injectAxe()
     }
 
     editPersonContactDetails(record) {
-        cy.visit(`${envConfig.baseUrl}/person/${record}/edit-contact-details`)
+        cy.visit(`${Cypress.config("baseUrl")}/person/${record}/edit-contact-details`)
     }
 
     mainContent() {

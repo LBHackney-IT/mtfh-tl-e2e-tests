@@ -1,8 +1,8 @@
-const envConfig = require('../../environment-config')
+import cypress from "cypress"
 
 class PersonCommentsPageObjects {
     visit(person) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.personCommentsUrl}/${person}`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("personCommentsUrl")}/${person}`)
         cy.injectAxe()
     }
 

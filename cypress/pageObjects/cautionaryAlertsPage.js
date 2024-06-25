@@ -1,4 +1,3 @@
-const envConfig = require('../../environment-config')
 
 class CautionaryAlertsPageObjects {
     addCautionaryAlertLink() {
