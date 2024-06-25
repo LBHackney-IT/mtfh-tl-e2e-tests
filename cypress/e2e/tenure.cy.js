@@ -16,7 +16,7 @@ describe('tenure page', {'tags': tags}, () => {
         seedDatabaseWithTenure();
     });
 
-    it('should view resident details for new tenure', ()=> {
+    it('should view resident details for new tenure', {'tags': '@SmokeTest'}, ()=> {
         cy.getTenureFixture().then(({ id: tenureId }) => {
             tenurePage.visit(tenureId);
 

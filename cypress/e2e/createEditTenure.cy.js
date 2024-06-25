@@ -20,7 +20,7 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
         seedDatabase();
     });
 
-    it('should create a new tenure', ()=> {
+    it('should create a new tenure', {'tags': '@SmokeTest'}, ()=> {
 
         cy.getAssetFixture().then(({ id: tenureId }) => {
             createTenurePage.createTenure(tenureId);
@@ -266,7 +266,7 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
         })
     })
 
-    it('should edit existing tenure', ()=> {
+    it('should edit existing tenure', {'tags': '@SmokeTest'}, ()=> {
         const tenureId = "94690f7d-019e-d00c-21aa-d7a5791b1294"
         cy.getAssetFixture().then(() =>{
             createTenurePage.editTenure(tenureId);

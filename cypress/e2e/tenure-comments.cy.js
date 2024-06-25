@@ -29,7 +29,7 @@ describe('tenure comments page', {'tags': tags}, ()=> {
         seedDatabaseWithTenure();
     });
 
-    it('should be able to create comment for tenure page', ()=>{
+    it('should be able to create comment for tenure page', {'tags': '@SmokeTest'},()=>{
         cy.getTenureFixture().then(({ id: tenureId }) => {
             tenureCommentsPage.visit(tenureId)
 
