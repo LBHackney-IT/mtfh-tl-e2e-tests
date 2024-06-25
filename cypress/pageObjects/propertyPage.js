@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config')
 
 class PropertyPageObjects {
     visit(propertyId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.property}/${propertyId}`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("property")}/${propertyId}`)
         cy.injectAxe()
     }
 

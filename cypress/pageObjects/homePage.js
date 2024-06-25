@@ -1,8 +1,7 @@
-const baseUrl = require('../../environment-config').baseUrl
 
 class HomePageObjects {
     visit() {
-        cy.visit(baseUrl);
+        cy.visit(Cypress.config("baseUrl"));
         cy.injectAxe()
     }
 

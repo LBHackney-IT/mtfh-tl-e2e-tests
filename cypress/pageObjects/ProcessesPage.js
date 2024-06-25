@@ -1,4 +1,3 @@
-const envConfig = require('../../environment-config')
 
 class ProcessesPageObjects{
     pageTitle(){
@@ -39,7 +38,7 @@ class ProcessesPageObjects{
     }
 
     visit(tenureId){
-        return cy.visit(`${envConfig.baseUrl}/${envConfig.startSoleToJointProcessUrl}/${tenureId}`)
+        return cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("startSoleToJointProcessUrl")}/${tenureId}`)
     }
 
     backLink(){

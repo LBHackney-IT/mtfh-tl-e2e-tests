@@ -2,7 +2,6 @@ import { postRequest, deleteRequest } from './requests/requests'
 import { createTenureModel as _createTenureModel, secureTenureModel } from "./models/requests/addTenureModel";
 import { saveFixtureData } from './helpers'
 import person from "./person";
-import envConfig from "../environment-config";
 
 const tenureEndpoint = Cypress.env('TENURE_ENDPOINT')
 const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDate: null}
@@ -13,7 +12,7 @@ export const getTenure = (tenureId) => {
         cy.request({
             method: 'GET',
             url: `${tenureEndpoint}/tenures/${tenureId}`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             resolve(response)
         })
@@ -31,7 +30,7 @@ export const createTenure = (tenureTypeCode) => {
             method: 'POST',
             body: tenureModel,
             url: `${tenureEndpoint}/tenures/`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
                 tableName,
@@ -55,7 +54,7 @@ export const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
     return response
 }
 
-const createTenureWithStartDate = (startOfTenureDate) => {
+export const createTenureWithStartDate = (startOfTenureDate) => {
     const requestModel = _createTenureModel
     requestModel.startOfTenureDate = startOfTenureDate
 
@@ -64,7 +63,7 @@ const createTenureWithStartDate = (startOfTenureDate) => {
             method: 'POST',
             body: requestModel,
             url: `${tenureEndpoint}/tenures/`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
                 tableName,
@@ -87,7 +86,7 @@ export const editTenure = (tenureId, tenureType, ifMatch) => {
             method: 'PATCH',
             body: editTenureModel,
             url: `${tenureEndpoint}/tenures/${tenureId}`,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}`, 'If-Match': ifMatch }
         }).then(response => {
             resolve(response)
         })
@@ -107,7 +106,7 @@ export const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
                 method: 'PATCH',
                 body: { fullName: `${firstName} ${surname}`, personTenureType: "Tenant", isResponsible },
                 url: `${tenureEndpoint}/tenures/${tenureId}/person/${personId}`,
-                headers: { Authorization: `Bearer ${envConfig.gssoTestKey}`, 'If-Match': ifMatch }
+                headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}`, 'If-Match': ifMatch }
             }).then(response => {
                 resolve(response)
             })

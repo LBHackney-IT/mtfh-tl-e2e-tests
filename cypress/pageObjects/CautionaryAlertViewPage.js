@@ -1,9 +1,8 @@
-const envConfig = require('../../environment-config');
 
 class CautionaryAlertViewPageObject {
     // Actions
     visit(cautionaryAlertId) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.alertPreviewUrl}/${cautionaryAlertId}`);
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("alertPreviewUrl")}/${cautionaryAlertId}`);
         cy.injectAxe();
     }
 

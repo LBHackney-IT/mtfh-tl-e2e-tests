@@ -3,7 +3,6 @@ import { saveFixtureData } from './helpers'
 
 import { createPersonModel } from './models/requests/createPersonModel'
 import { editPersonModel } from './models/requests/editPersonModel'
-import envConfig from "../environment-config";
 
 const personEndpoint =  Cypress.env('PERSON_ENDPOINT')
 const url = `${personEndpoint}/persons`
@@ -15,7 +14,7 @@ const createPerson = () => {
             method: 'POST',
             body: createPersonModel,
             url,
-            headers: { Authorization: `Bearer ${envConfig.gssoTestKey}` }
+            headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
                 tableName,

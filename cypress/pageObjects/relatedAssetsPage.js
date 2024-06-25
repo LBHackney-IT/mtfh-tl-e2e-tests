@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config')
 
 class RelatedAssetsPageObjects {
     visit(guid) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.relatedAssetUrl}/${guid}`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("relatedAssetUrl")}/${guid}`)
     }
 
     relatedAssetLinkToPage() {

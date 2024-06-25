@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config')
 
 class ManagePatchesPageObjects {
     visit() {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.property}/all-patches-and-areas`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("property")}/all-patches-and-areas`)
         cy.injectAxe()
     }
 

@@ -1,12 +1,11 @@
 import { And, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { saveFixtureData } from "../../../api/helpers";
 import { generateNewAsset } from "../../../api/models/requests/createAssetModel";
-import { baseUrl } from "../../../environment-config";
 import * as patchData from "../../fixtures/patches.json";
 import { getAssetViewUrlByGuid } from "../common/common";
 const { faker } = require("@faker-js/faker");
 
-const addPropertyAddressUrl = `${baseUrl}/property/new`
+const addPropertyAddressUrl = `${Cypress.config("baseUrl")}/property/new`
 const propertyReference = faker.random.numeric(8)
 const addressLine1 = "47 Test Road"
 const postcode = "MK40 2RF"

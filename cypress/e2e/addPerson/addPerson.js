@@ -6,7 +6,6 @@ import AddPersonPageObjects from '../../pageObjects/addPersonPage'
 import EditPersonPageObjects from '../../pageObjects/editPersonPage'
 import { addTestRecordToDatabase } from '../common/common'
 
-const envConfig = require('../../../environment-config')
 const addPersonPage = new AddPersonPageObjects()
 const editPersonPage = new EditPersonPageObjects()
 const editEqualityDetails = require('../../../api/equality-information')
@@ -267,7 +266,7 @@ Then('the sexual orientation information is displayed', () => {
 Then("I browse to the 'Add Person to Tenure' page for the tenure", () => {
   cy.getTenureFixture().then((tenure) => {
     cy.reload()
-    cy.visit(`${envConfig.baseUrl}/tenure/${tenure.id}/edit/person/new`)
+    cy.visit(`${Cypress.config("baseUrl")}/tenure/${tenure.id}/edit/person/new`)
   })
 });
 

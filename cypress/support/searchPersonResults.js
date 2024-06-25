@@ -1,4 +1,3 @@
-import {gssoTestKey} from "../../environment-config";
 
 const personSearchEndpoint = Cypress.env('HOUSE_SEARCH_ENDPOINT');
 
@@ -9,7 +8,7 @@ export const searchPersonResults = (searchPerson) => {
 
         failOnStatusCode: false,
         headers:{
-            Authorization: `Bearer ${gssoTestKey}`
+            Authorization: `Bearer ${Cypress.config("gssoTestKey")}`
         }
     }).then(result=> {
         expect(result.status).to.equal(200);

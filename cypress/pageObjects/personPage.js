@@ -1,9 +1,8 @@
-const envConfig = require('../../environment-config')
 // will need to update once we have a mechanism for getting a person or some test data
 
 class PersonPageObjects {
     visit(record) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.personUrl}/${record}`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("personUrl")}/${record}`)
         cy.injectAxe()
     }
 

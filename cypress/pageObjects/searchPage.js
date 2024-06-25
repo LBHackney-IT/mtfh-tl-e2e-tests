@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config')
 
 class SearchPageObjects {
     visit() {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.searchUrl}`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("searchUrl")}`)
         cy.injectAxe()
     }
 

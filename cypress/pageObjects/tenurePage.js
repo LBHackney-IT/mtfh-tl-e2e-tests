@@ -1,13 +1,12 @@
-const envConfig = require("../../environment-config");
 
 class TenurePageObjects {
   visit(record) {
-    cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${record}`);
+    cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${record}`);
     cy.injectAxe();
   }
 
   editTenure(record) {
-    cy.visit(`${envConfig.baseUrl}/${envConfig.tenureUrl}/${record}/edit`)
+    cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${record}/edit`)
   }
 
   paymentReference() {
@@ -28,6 +27,10 @@ class TenurePageObjects {
 
   tenureResidentsContainer() {
     return cy.get("#resident-details");
+  }
+
+  tenureComment(){
+    return cy.get("#comments")
   }
 
   viewResidentButton() {

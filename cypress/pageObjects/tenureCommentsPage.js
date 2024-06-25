@@ -1,8 +1,7 @@
-const envConfig = require('../../environment-config');
 
 class TenureCommentsPageObjects {
     visit(tenure) {
-        cy.visit(`${envConfig.baseUrl}/${envConfig.tenureCommentsUrl}/${tenure}`)
+        cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureCommentsUrl")}/${tenure}`)
         cy.injectAxe()
     }
 
