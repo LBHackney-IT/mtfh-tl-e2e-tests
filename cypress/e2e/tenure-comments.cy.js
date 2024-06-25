@@ -31,9 +31,8 @@ describe('tenure comments page', {'tags': tags}, ()=> {
 
     it('should be able to create comment for tenure page', ()=>{
         cy.getTenureFixture().then(({ id: tenureId }) => {
-            //given & when 
             tenureCommentsPage.visit(tenureId)
-            //then
+
             tenureCommentsPage.addCommentForm().should('be.visible')
             tenureCommentsPage.submitCommentButton().should('be.visible')
         });
@@ -41,10 +40,8 @@ describe('tenure comments page', {'tags': tags}, ()=> {
 
     it ('should add comment - Relationship between selected record and records in other entities', ()=>{
         cy.getTenureFixture().then((tenure) => {
-            //given & when 
             tenureCommentsPage.visit(tenure.id)
 
-            //when
             tenureCommentsPage.Commentcheckbox(tenure.householdMembers[1].id).check()
             tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
             tenureCommentsPage.commentFormDescription().type(comment.comment + ' : ' + uniqueText)
@@ -54,7 +51,6 @@ describe('tenure comments page', {'tags': tags}, ()=> {
             tenureCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");
             tenurePage.commentDateTime().should('be.visible')
 
-            //then
             tenurePage.comment().contains(uniqueText)
             cy.getTenureFixture().then(async (tenure) => {
                 cy.contains(tenure.householdMembers[1].fullName).click()
@@ -65,10 +61,8 @@ describe('tenure comments page', {'tags': tags}, ()=> {
 
    it('should not submit comment without mandatory fields', ()=> {
         cy.getTenureFixture().then((tenure) => {
-            //given & when 
             tenureCommentsPage.visit(tenure.id)
 
-                //when & then
                 tenureCommentsPage.commentContainer().type("test comment");
                 tenureCommentsPage.addCommentCategoryField().select("Rents")
                 validationMessageField = "commentTitle"
@@ -95,11 +89,9 @@ describe('tenure comments page', {'tags': tags}, ()=> {
 
    it('should pop up message on cancel comment', ()=> {
         cy.getTenureFixture().then((tenure) => {
-            //given & when 
             tenureCommentsPage.visit(tenure.id)
             tenureCommentsPage.discardCommentLink().click()
             
-            //then
             tenureCommentsPage.cancellationPopUpWindow().contains('Are you sure you wish to cancel adding this comment?')
             tenureCommentsPage.cancellationYesButton().contains('Yes').click()
             cy.getTenureFixture().then(async (tenure) => {
@@ -111,13 +103,11 @@ describe('tenure comments page', {'tags': tags}, ()=> {
 
    it('Character limit counter', ()=> {
         cy.getTenureFixture().then((tenure) => {
-            //given & when 
             tenureCommentsPage.visit(tenure.id)
 
             const inputText = truncateString(helperText.helperText, 350)
             tenureCommentsPage.commentContainer().type(inputText)
 
-            //then
             tenureCommentsPage.characterCountMessage().should('be.visible')
             const difference = differenceInCharacters(350)
             tenureCommentsPage.characterCountMessage().contains(`You have ${difference} characters remaining`)
@@ -126,13 +116,11 @@ describe('tenure comments page', {'tags': tags}, ()=> {
 
    it('Character limit exceeded', ()=> {
         cy.getTenureFixture().then((tenure) => {
-            //given & when 
             tenureCommentsPage.visit(tenure.id)
 
             const inputText = truncateString(helperText.helperText, 1008)
             tenureCommentsPage.commentContainer().type(inputText)
 
-            //then
             tenureCommentsPage.characterCountErrorMessage().should('be.visible')
             const difference = differenceInCharacters(1008)
             tenureCommentsPage.characterCountErrorMessage().contains(`You have ${difference} characters too many`)
@@ -141,12 +129,10 @@ describe('tenure comments page', {'tags': tags}, ()=> {
 
    it('Accessibility tests for tenure comments', {'tags': '@Accessibility'}, ()=> {
         cy.getTenureFixture().then((tenure) => {
-            //given & when 
             tenureCommentsPage.visit(tenure.id)
 
             cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });
 
-            //then
             function axeTerminalLog(violations) {
               cy.task(
                 "log",
@@ -170,9 +156,8 @@ describe('tenure comments page', {'tags': tags}, ()=> {
    device.forEach((test) => {
         it('should create a comment for tenure on a device', {'tags': '@device'}, ()=> {
             cy.getTenureFixture().then((tenure) => {
-                //given
                 tenureCommentsPage.visit(tenure.id)
-                //when
+
                 cy.viewport(`${test}`);
                 tenureCommentsPage.Commentcheckbox(tenure.householdMembers[1].id).check()
                 tenureCommentsPage.addCommentTitleField().type(commentTitle.commentTitle + ' : ' + uniqueText)
@@ -180,7 +165,6 @@ describe('tenure comments page', {'tags': tags}, ()=> {
                 tenureCommentsPage.addCommentCategoryField().select(category.category)
                 tenureCommentsPage.submitCommentButton().click()
 
-                //then
                 tenureCommentsPage.pageAnnouncementHeader().should("be.visible");
                 tenureCommentsPage.pageAnnouncementHeader().contains("Comment successfully saved");
             });

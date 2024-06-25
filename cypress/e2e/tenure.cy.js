@@ -18,10 +18,8 @@ describe('tenure page', {'tags': tags}, () => {
 
     it('should view resident details for new tenure', ()=> {
         cy.getTenureFixture().then(({ id: tenureId }) => {
-            //Given & when
             tenurePage.visit(tenureId);
 
-            //then
             tenurePage.tenureDetailsContainer().should('be.visible');
             tenurePage.tenureDetailsContainer().contains('Status');
             tenurePage.tenureDetailsContainer().contains("Start date");
@@ -40,11 +38,9 @@ describe('tenure page', {'tags': tags}, () => {
             cy.log(`Tenure Id for record ${response.body.id} created!`);
             tenureId = response.body.id
         });
-        //given & when
         cy.getTenureFixture().then(({id: tenureId})=> {
             
             tenurePage.visit(tenureId);
-            //then
             tenurePage.scannedHistoricTenureRecords().should('be.visible')
         })
     });
@@ -58,12 +54,10 @@ describe('tenure page', {'tags': tags}, () => {
         tenureModel.householdMembers = [];
 
         addTestRecordToDatabase("TenureInformation", tenureModel)
-        //given & when
         cy.getTenureFixture().then(({id: tenureId})=> {
             
             tenurePage.visit(tenureId);
 
-            //then
             tenurePage.scannedHistoricTenureRecords().should('not.exist')
             tenurePage.tenureResidentsContainer().should('exist')
             tenurePage.tenureResidentsContainer().contains('This tenure has no household members')
@@ -74,10 +68,8 @@ describe('tenure page', {'tags': tags}, () => {
     
     it('should view household memebers', ()=> {
         cy.getTenureFixture().then(({ id: tenureId }) => {
-            //Given & when
             tenurePage.visit(tenureId);
 
-            //then
             tenurePage.tenureResidentsContainer().should('exist')
             tenurePage.householdMemberLink().should('have.attr', 'href').and('include', '/person')
             tenurePage.householdMemberLink().eq(0).click()
@@ -88,22 +80,18 @@ describe('tenure page', {'tags': tags}, () => {
 
     it('should navigate to personal details', ()=>{
         cy.getTenureFixture().then(({ id: tenureId }) => {
-            //Given & when
             tenurePage.visit(tenureId);
 
             tenurePage.viewResidentButtonforPerson().click();
 
-            //then
             cy.url().should('include', '/person')
         });
     });
 
     it('Accessibility Testing', {'tags': '@Accessibility'}, ()=>{
         cy.getTenureFixture().then(({ id: tenureId }) => {
-            //Given & when
             tenurePage.visit(tenureId);
 
-            //then
             cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });
 
             function axeTerminalLog(violations) {
@@ -130,16 +118,11 @@ describe('tenure page', {'tags': tags}, () => {
     smallDevice.forEach((device) => {
         it('Mobile view - device with smaller screens', {'tags': '@device'}, ()=> {
             cy.getTenureFixture().then(({ id: tenureId }) => {
-                //Given 
                 tenurePage.visit(tenureId);
-                //when
                 cy.viewport(`${device}`);
                 tenurePage.tenureDetailsAccordion().click({force: true})
-                //then
                 tenurePage.tenureDetailsAccordionInformation();
-                //when
                 tenurePage.residentDetailsAccordion().click({force: true})
-                //then
                 tenurePage.residentDetailsAccordionInformation();
             });
         })
@@ -148,11 +131,9 @@ describe('tenure page', {'tags': tags}, () => {
     bigDevice.forEach((device) => {
         it('Mobile view - device with bigger screens', {'tags': '@device'}, ()=> {
             cy.getTenureFixture().then(({ id: tenureId }) => {
-                //Given 
                 tenurePage.visit(tenureId);
-                //when
                 cy.viewport(`${device}`);
-                //then
+
                 tenurePage.tenureDetailsAccordionInformation();
                 tenurePage.residentDetailsAccordionInformation();
             });
