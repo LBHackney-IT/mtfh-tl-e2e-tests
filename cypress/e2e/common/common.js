@@ -5,7 +5,7 @@ import {
   When,
   defineParameterType,
 } from "@badeball/cypress-cucumber-preprocessor";
-import AddPersonPageObjects from "../../pageObjects/addPersonPage";
+import PersonFormObjects from "../../pageObjects/personFormPage";
 import ChangeOfNamePageObjects from "../../pageObjects/changeOfNamePage";
 import HomePageObjects from "../../pageObjects/homePage";
 import PersonContactPageObjects from "../../pageObjects/personContactPage";
@@ -45,7 +45,7 @@ import { addTestRecordToDatabase, seedDatabaseWithTenure } from "../../helpers/D
 // note - this whole file will need to be refactored in stages
 
 const activityHistory = new ActivityHistoryPageObjects();
-const addPersonPage = new AddPersonPageObjects();
+const addPersonPage = new PersonFormObjects();
 const footer = new FooterPageObjects();
 const header = new HeaderPageObjects();
 const modal = new ModalPageObjects();
@@ -537,7 +537,7 @@ Given("I am on the edit person page for {string}", (person) => {
 });
 
 Then("the add a new person tenure page is correct", () => {
-  addPersonPage.addPersonPageIsDisplayed();
+  addPersonPage.personFormDisplayed();
 });
 
 // Tenure page

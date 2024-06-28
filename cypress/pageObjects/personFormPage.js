@@ -1,13 +1,4 @@
-class AddPersonPageObjects {
-    visit(record) {
-        cy.visit(`${Cypress.config("baseUrl")}/tenure/${record}/edit/person/new`)
-        cy.injectAxe()
-    }
-
-    editPersonEqualityInformation(record) {
-        cy.visit(`${Cypress.config("baseUrl")}/person/${record}/edit/equality-information`)
-    }
-
+class PersonFormObjects {
     mainContent() {
         return cy.get('#main-content')
     }
@@ -16,7 +7,7 @@ class AddPersonPageObjects {
         return cy.contains('Tenure payment reference')
     }
     
-    addPersonHeader() {
+    personFormHeader() {
         return cy.get('[class="lbh-heading-h1"]')
     }
 
@@ -168,9 +159,6 @@ class AddPersonPageObjects {
         return cy.get('.other-household-member-link')
     }
 
-    addPersonButton() {
-        return cy.contains('Add person')
-    }
 
     cancelButton() {
         return cy.contains('Cancel')
@@ -197,8 +185,24 @@ class AddPersonPageObjects {
         return cy.get('#equality-information-form-provideUnpaidCare-field')
     }
 
+    selectUnpaidCareRole(carerOption) {
+        this.provideUnpaidCareSelectionField()
+            .within(() => {
+                return cy.contains(carerOption)
+            })
+            .click();
+    }
+
     consideredDisabledSelectionField() {
         return cy.get('#equality-information-form-disabled-field')
+    }
+
+    selectDisbilityOption(disabilityOption) {
+        this.consideredDisabledSelectionField()
+            .within(() => {
+                return cy.contains(disabilityOption)
+            })
+            .click();
     }
 
     ethnicitySelectionBox() {
@@ -209,12 +213,28 @@ class AddPersonPageObjects {
         return cy.get('#equality-information-form-genderValue')
     }
 
+    selectGenderOption(genderOption) {
+        this.genderSelectionField()
+            .within(() => {
+                return cy.contains(genderOption)
+            })
+            .click();
+    }
+
     preferredGenderTermField() {
         return cy.get('#equality-information-form-genderValueIfOther-field')
     }
 
     genderDifferentToBirthSexSelectionField() {
         return cy.get('#equality-information-form-genderDifferentToBirthSex')
+    }
+
+    selectGenderDifferentToBirthSexOption(genderDifferentToBirthSexOption) {
+        this.genderDifferentToBirthSexSelectionField()
+            .within(() => {
+                return cy.contains(genderDifferentToBirthSexOption)
+            })
+            .click();
     }
 
     religionOrBeliefSelectionBox() {
@@ -229,13 +249,22 @@ class AddPersonPageObjects {
         return cy.get('#equality-information-form-pregnancyOrMaternity-field')
     }
 
+    selectpregnancyOrMaternityLeaveOption(pregnancyOrMaternityLeaveOption) {
+        this.pregnancyOrMaternityLeaveSelectionField()
+            .within(() => {
+                return cy.contains(pregnancyOrMaternityLeaveOption)
+            })
+            .click();
+    }
+
     saveEqualityInformationButton() {
         return cy.contains('Save equality information')
     }
 
-    addPersonPageIsDisplayed() {
-        this.addPersonHeader().should('be.visible')
-        this.addPersonHeader().contains('Edit tenure')
+    personFormDisplayed() {
+        this.personFormHeader()
+            .should('be.visible')
+            .should('contain', 'Edit tenure');
     }
 }
-export default AddPersonPageObjects
+export default PersonFormObjects
