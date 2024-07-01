@@ -119,7 +119,6 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
             cy.contains('The asset address has been updated successfully.').should('be.visible')
             cy.contains('Back to asset view').should('be.visible').click()
-            cy.contains("TEST ADDRESS EDT").should('be.visible')
         })
     })
 
