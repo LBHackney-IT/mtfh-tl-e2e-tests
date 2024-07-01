@@ -4,7 +4,7 @@ import { addTestRecordToDatabase, getAssetViewUrlByGuid, getAssetEditUrlByGuid }
 
 
 const tags = ['@propety', '@authentication', '@common', '@root', '@search']
-const newAddressLine1Value = 'NEW ADDRESS LINE 1'
+const newAddressLine1Value = 'TEST Hackney'
 const noUprnValue = 'N/A'
 
 describe('Edit Property', {'tags': tags}, ()=> {
@@ -105,7 +105,8 @@ describe('Edit Property', {'tags': tags}, ()=> {
             cy.wait('@getAsset')
             if (asset.assetAddress.uprn) cy.wait('@getAddress')
 
-            cy.get('[data-testid="address-line-1"]').clear().type(newAddressLine1Value)
+            cy.get('[data-testid="address-line-1"]').clear()
+            cy.get('[data-testid="address-line-1"]').type(newAddressLine1Value)
 
             cy.intercept('PATCH', `*/api/v1/assets/${asset.id}/address`).as('patchAddress')
             cy.intercept('PATCH', `*/api/v1/asset/${asset.assetId}`, { statusCode: 204 }).as('updateAssetDetails')

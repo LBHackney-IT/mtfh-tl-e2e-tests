@@ -132,8 +132,8 @@ describe('Add property', {'tags': tags}, ()=> {
         cy.contains('Patch').should('be.visible');
 
         cy.get('[data-testid="patch-dropdown-1"]').should('be.visible').and('have.value', null);
-        cy.get('[data-testid="patch-dropdown-1"]').select(patchData[1].id);
-        cy.get('[data-testid="patch-dropdown-1"]').should('have.value', patchData[1].id);
+        cy.get('[data-testid="patch-dropdown-1"]').select("SD9");
+        cy.get('[data-testid="patch-dropdown-1"]').should('have.value', "d32b8c9e-a66d-4c29-a283-892cab6b7cf2");
 
         cy.get('[data-testid="patch-remove-link-1"]').should('be.visible');
         cy.get('[data-testid="patch-remove-link-1"]').click();
