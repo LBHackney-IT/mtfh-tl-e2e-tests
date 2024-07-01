@@ -1,7 +1,7 @@
 import { generateAsset } from "../../api/models/requests/createAssetModel";
 import { addTestRecordToDatabase } from "../helpers/DbHelpers";
 import PropertyPageObjects from "../pageObjects/propertyPage";
-import RelatedAssetsPageObjects from "../../pageObjects/relatedAssetsPage";
+import RelatedAssetsPageObjects from "../pageObjects/relatedAssetsPage";
 
 
 const relatedAssetsPage = new RelatedAssetsPageObjects();
