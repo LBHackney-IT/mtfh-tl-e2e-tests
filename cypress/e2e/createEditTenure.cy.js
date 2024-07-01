@@ -297,7 +297,7 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
             cy.getTenureFixture(({ id: tenureId }) => {
                 cy.url().should('include', `tenure/${tenureId}/edit`)
             })
-            createTenurePage.tenureTypeSelection().select("Freehold")
+            createTenurePage.tenureTypeSelection().select("Secure")
             createTenurePage.cancelButton().click();
             modal.modalBody().should('be.visible')
             modal.confirmationButton().click({ force: true });
