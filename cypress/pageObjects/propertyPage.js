@@ -5,6 +5,10 @@ class PropertyPageObjects {
         cy.injectAxe()
     }
 
+    addCommentButton() {
+        return cy.get('.govuk-button lbh-button')
+    }
+
     heading() {
         return cy.get('.heading')
     }
@@ -28,6 +32,10 @@ class PropertyPageObjects {
     newTenureButton() {
         return cy.contains('New tenure')
     }
+
+    tenureDetailsContainer() {
+        return cy.get("#tenure-details");
+    }    
 
     tenureStatus(){
         return cy.contains('Active');
