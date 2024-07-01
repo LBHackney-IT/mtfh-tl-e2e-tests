@@ -93,8 +93,9 @@ describe('Edit Property', {'tags': tags}, ()=> {
     })
 
     it('edit address successfully', ()=> {
-        const testAsset = generateAsset(undefined);
+        const testAsset = generateAsset(undefined, "");
         addTestRecordToDatabase("Assets", testAsset);
+
 
         cy.getAssetFixture().then(asset => {
             cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
@@ -114,7 +115,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
             cy.contains('Update to this address').click()
 
             cy.wait(['@patchAddress', '@updateAssetDetails'])
-            cy.get('[data-testid="asset-address-line-one"]').should('have.value', "TEST ADDRESS EDT")
+            cy.get('[data-testid="address-line-1"]').should('have.value', "TEST ADDRESS EDT")
 
             cy.contains('The asset address has been updated successfully.').should('be.visible')
             cy.contains('Back to asset view').should('be.visible').click()
