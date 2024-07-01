@@ -1,5 +1,5 @@
 import { generateAsset } from "../../api/models/requests/createAssetModel";
-import { addTestRecordToDatabase } from "./common/common";
+import { addTestRecordToDatabase } from "../helpers/DbHelpers";
 import PropertyPageObjects from "../pageObjects/propertyPage";
 import RelatedAssetsPageObjects from "../../pageObjects/relatedAssetsPage";
 
