@@ -278,7 +278,7 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
             cy.getTenureFixture(({ id: tenureId }) => {
                 cy.url().should('include', `tenure/${tenureId}/edit`)
             })
-            createTenurePage.tenureTypeSelection().select("Freehold")    
+            createTenurePage.tenureTypeSelection().select("Secure")    
             cy.contains("Next").click();
             createTenurePage.doneButton().click()
             createTenurePage.confirmTenureUpdatedText().should('contain', 'Tenure updated');            
