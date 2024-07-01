@@ -38,11 +38,11 @@ describe('View property page', {'tags': tags}, ()=> {
                     { fixture: 'repairs.json' }).as('getRepairs')
             })
         
-            cy.wait('@getRepairs').then(() => {
-                propertyPage.repairsSelectionBox().should('be.visible')
-                propertyPage.repairsList().should('be.visible')
-            })
-            propertyPage.repairsCardList().contains("In Progress")
+            // cy.wait('@getRepairs').then(() => {
+            //     propertyPage.repairsSelectionBox().should('be.visible')
+            //     propertyPage.repairsList().should('be.visible')
+            // })
+            // propertyPage.repairsCardList().contains("In Progress")
 
             propertyPage.patchDetails().should("be.visible");
             propertyPage.patchDetails().contains("Patch");

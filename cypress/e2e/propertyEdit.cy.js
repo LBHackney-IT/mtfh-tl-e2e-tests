@@ -106,7 +106,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
             if (asset.assetAddress.uprn) cy.wait('@getAddress')
 
             cy.get('[data-testid="address-line-1"]').clear()
-            cy.get('[data-testid="address-line-1"]').type(newAddressLine1Value)
+            cy.get('[data-testid="address-line-1"]').type("TEST ADDRESS EDT")
 
             cy.intercept('PATCH', `*/api/v1/assets/${asset.id}/address`).as('patchAddress')
             cy.intercept('PATCH', `*/api/v1/asset/${asset.assetId}`, { statusCode: 204 }).as('updateAssetDetails')
@@ -114,11 +114,11 @@ describe('Edit Property', {'tags': tags}, ()=> {
             cy.contains('Update to this address').click()
 
             cy.wait(['@patchAddress', '@updateAssetDetails'])
-            cy.get('[data-testid="asset-address-line-one"]').should('have.value', newAddressLine1Value)
+            cy.get('[data-testid="asset-address-line-one"]').should('have.value', "TEST ADDRESS EDT")
 
             cy.contains('The asset address has been updated successfully.').should('be.visible')
             cy.contains('Back to asset view').should('be.visible').click()
-            cy.contains(newAddressLine1Value).should('be.visible')
+            cy.contains("TEST ADDRESS EDT").should('be.visible')
         })
     })
 
