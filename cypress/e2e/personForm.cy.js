@@ -11,12 +11,10 @@ describe('Person Form', { tags: tags }, () => {
     });
 
     it('Removed fields are not displayed', { tags: "@Regression" }, () => {
-        // Given & When
         cy.getTenureFixture().then((tenure) => {
             editPersonForm.visit(tenure.id);
         });
 
-        // Then
         editPersonForm.genderContainer().should('not.exist');
         editPersonForm.nationalityContainer().should('not.exist');
         editPersonForm.nationalInsuranceNumberContainer().should('not.exist');

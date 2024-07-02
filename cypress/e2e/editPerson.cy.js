@@ -1,7 +1,11 @@
-import { seedDatabaseWithTenure } from "../helpers/DbHelpers";
+import { seedDatabaseWithTenure, addTestRecordToDatabase } from "../helpers/DbHelpers";
 import EditPersonFormObjects from "../pageObjects/editPersonForm";
+import PersonPageObjects from "../pageObjects/personPage";
+import { generateEqualityInformation } from '../../api/models/requests/equalityDetailsModel'
+
 
 const editPersonPage = new EditPersonFormObjects();
+const personPage = new PersonPageObjects();
 const tags = ['@activity-history', '@authentication', '@common', '@root'];
 
 describe('Edit a person', { tags: tags }, () => {
@@ -11,16 +15,18 @@ describe('Edit a person', { tags: tags }, () => {
     });
 
     it('Can edit a person', { tags: ["@SmokeTest", "@Positive"] },() => {
-        // Given
         cy.getPersonFixture().then((person) => {
             editPersonPage.visit(person.id);
         });
-        
-        // When + Then - Cancel confirmation
-        editPersonPage.cancelButton().click();
-        editPersonPage.confirmationModal().should('be.visible');
 
-        // When
+        editPersonPage.cancelButton().click();
+
+        editPersonPage.confirmationModal().should('be.visible')
+        editPersonPage.confirmationModal().contains('Yes')
+        editPersonPage.confirmationModal().contains('Cancel')
+        editPersonPage.confirmationModal().contains('Unsaved changes will be lost.')
+        editPersonPage.confirmationModal().contains('Cancel').click()
+
         editPersonPage.personTitleSelection().select('Mr');
         editPersonPage.firstNameContainer().type('Modified');
         editPersonPage.middleNameContainer().type('Test');

@@ -216,9 +216,9 @@ class PersonFormObjects {
     selectGenderOption(genderOption) {
         this.genderSelectionField()
             .within(() => {
-                return cy.contains(genderOption)
-            })
-            .click();
+                cy.log(genderOption + "__________________________------------------------------------------------------------------")
+                return cy.contains(genderOption).click()
+            }).click();
     }
 
     preferredGenderTermField() {
