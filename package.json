@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:cypress:open": "cypress open -e grepTags='--@ignore'",
-    "test:cypress:run": "cypress run -e grepTags='--@GoogleLighthouse --@Accessibility --@ignore --@device'",
+    "test:cypress:open": "cypress open",
+    "test:cypress:run": "cypress run",
     "test:cypress:production": "cypress run -e grepTags='@Production --@ignore'",
     "test:cypress:accessibility": "cypress run -e grepTags='@Accessibility'",
     "test:cypress:GoogleLighthouse": "cypress run -e grepTags='@GoogleLighthouse'",

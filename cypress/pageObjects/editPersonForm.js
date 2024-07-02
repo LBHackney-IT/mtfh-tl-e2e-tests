@@ -1,11 +1,15 @@
-import AddPersonPageObjects from './addPersonPage'
+import PersonFormObjects from './personFormPage'
 
-class EditPersonPageObjects extends AddPersonPageObjects {
+class EditPersonFormObjects extends PersonFormObjects {
     visit(record) {
         cy.intercept("GET", `*/api/v1/persons/${record}`).as("getPerson")
         cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("personUrl")}/${record}/edit`)
         cy.injectAxe()
         cy.wait("@getPerson")
+    }
+
+    editPersonEqualityInformation(record) {
+        cy.visit(`${Cypress.config("baseUrl")}/person/${record}/edit/equality-information`)
     }
 
     updatePersonButton() {
@@ -29,4 +33,4 @@ class EditPersonPageObjects extends AddPersonPageObjects {
     }
 }
 
-export default EditPersonPageObjects
+export default EditPersonFormObjects

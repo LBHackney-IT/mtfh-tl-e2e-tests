@@ -2,8 +2,8 @@ import { And, Given, Then, When } from '@badeball/cypress-cucumber-preprocessor'
 import { queueDeletePersonWithId } from "../../../api/helpers"
 import { generateEqualityInformation } from '../../../api/models/requests/equalityDetailsModel'
 import guid from '../../helpers/commentText'
-import AddPersonPageObjects from '../../pageObjects/addPersonPage'
-import EditPersonPageObjects from '../../pageObjects/editPersonPage'
+import AddPersonFormObjects from '../../pageObjects/addPersonForm'
+import EditPersonFormObjects from '../../pageObjects/editPersonForm'
 import { addTestRecordToDatabase } from '../common/common'
 
 const addPersonPage = new AddPersonPageObjects()

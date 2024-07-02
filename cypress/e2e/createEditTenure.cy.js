@@ -1,13 +1,13 @@
 import CreateTenurePageObjects from "../pageObjects/createTenurePage";
 import TenurePageObjects from "../pageObjects/tenurePage";
-import AddPersonPageObjects from "../pageObjects/addPersonPage";
+import PersonFormObjects from "../pageObjects/personFormPage";
 import ModalPageObjects from "../pageObjects/sharedComponents/modal";
 import { seedDatabase } from "../helpers/DbHelpers";
 
 
 const createTenurePage = new CreateTenurePageObjects();
 const tenurePage = new TenurePageObjects();
-const addPersonPage = new AddPersonPageObjects();
+const addPersonPage = new PersonFormObjects();
 const modal = new ModalPageObjects()
 const tags = ['@tenure', '@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']
 const filterSearch = ['Last name A-Z', 'Last name Z-A', 'Best match']
