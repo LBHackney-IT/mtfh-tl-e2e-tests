@@ -267,9 +267,9 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
     })
 
     it('should edit existing tenure', {'tags': '@SmokeTest'}, ()=> {
-        const tenureId = "94690f7d-019e-d00c-21aa-d7a5791b1294"
+        const tenureId = "9d271210-0f85-6496-0797-2941e87aeb9c"
         cy.getAssetFixture().then(() =>{
-            createTenurePage.editTenure(tenureId);
+            createTenurePage.editTenure(tenureId)
 
             createTenurePage.tenureTypeSelection().should('be.visible')
             createTenurePage.tenureStartDateDayContainer().should('be.visible')
@@ -278,8 +278,7 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
             cy.getTenureFixture(({ id: tenureId }) => {
                 cy.url().should('include', `tenure/${tenureId}/edit`)
             })
-            createTenurePage.tenureTypeSelection().select("Freehold")
-
+            createTenurePage.tenureTypeSelection().select("Secure")    
             cy.contains("Next").click();
             createTenurePage.doneButton().click()
             createTenurePage.confirmTenureUpdatedText().should('contain', 'Tenure updated');            
@@ -298,7 +297,7 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
             cy.getTenureFixture(({ id: tenureId }) => {
                 cy.url().should('include', `tenure/${tenureId}/edit`)
             })
-            createTenurePage.tenureTypeSelection().select("Freehold")
+            createTenurePage.tenureTypeSelection().select("Secure")
             createTenurePage.cancelButton().click();
             modal.modalBody().should('be.visible')
             modal.confirmationButton().click({ force: true });
