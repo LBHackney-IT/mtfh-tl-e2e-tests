@@ -23,12 +23,10 @@ describe('Person Form', { tags: tags }, () => {
     });
 
     it('Validates date of birth', { tags : "@Negative" },() => {
-        // Given
         cy.getTenureFixture().then((tenure) => {
             editPersonForm.visit(tenure.id);
         });
 
-        // When
         editPersonForm.householdMemberRadioButton().click();
         editPersonForm.personTitleSelection().select('Mr');
         editPersonForm.firstNameContainer().type('Testy');
@@ -41,7 +39,6 @@ describe('Person Form', { tags: tags }, () => {
         editPersonForm.reasonForCreationContainer().type('Some reason');
         editPersonForm.addPersonButton().click();
 
-        // Then
         editPersonForm.addPersonFormErrorContainer().should("be.visible");
         editPersonForm.errorSummaryBody()
                      .should('contain', "This date cannot be in the future");

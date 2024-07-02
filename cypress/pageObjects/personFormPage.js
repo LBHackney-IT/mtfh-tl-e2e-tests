@@ -147,6 +147,10 @@ class PersonFormObjects {
         return cy.contains('Add ID')
     }
 
+    addPersonButton() {
+        return cy.contains('Add person')
+    }
+
     reasonForCreationContainer() {
         return cy.get('[id="person-form-reason-field"]')
     }
@@ -216,7 +220,6 @@ class PersonFormObjects {
     selectGenderOption(genderOption) {
         this.genderSelectionField()
             .within(() => {
-                cy.log(genderOption + "__________________________------------------------------------------------------------------")
                 return cy.contains(genderOption).click()
             }).click();
     }

@@ -2,313 +2,49 @@
   {
     "tableName": "Assets",
     "key": {
-      "id": "7293b55d-5002-40f9-bfe9-eb7efea6641d"
+      "id": "d0dd8fcf-8cbc-4194-a592-cad5ec80b211"
     }
   },
   {
     "tableName": "TenureInformation",
     "key": {
-      "id": "34a51981-795b-4c49-98eb-d5d66a41f48d"
+      "id": "8e6b46db-de01-4bd1-b61e-560e7ffc0584"
     }
   },
   {
     "tableName": "Persons",
     "key": {
-      "id": "c906b715-ad96-4569-bff8-756fec397d3a"
+      "id": "aa033fd3-6363-4d6a-9094-8530f7099aab"
     }
   },
   {
     "tableName": "Persons",
     "key": {
-      "id": "5f203a9c-fa2a-48c9-a55e-8a9258cf3b02"
+      "id": "35414c5b-8168-4c56-b74a-6eae990edf66"
     }
   },
   {
     "tableName": "Assets",
     "key": {
-      "id": "2f9454dc-8add-42a2-8c00-487e65028b77"
+      "id": "3aceb8d8-ec84-4c45-ab84-3f28c2bfa462"
     }
   },
   {
     "tableName": "TenureInformation",
     "key": {
-      "id": "e51d66c0-b24e-4655-b1ba-8f36d922d384"
+      "id": "dca018c1-a89d-47df-9a9c-a49e8562d3c7"
     }
   },
   {
     "tableName": "Persons",
     "key": {
-      "id": "8f3eafe8-c45c-46d0-8441-737a990fdccc"
+      "id": "46a89d81-6f06-474b-8b40-fbe6769ca6d2"
     }
   },
   {
     "tableName": "Persons",
     "key": {
-      "id": "716dc45e-cabb-4ab4-b6e4-1c7be02f7ddd"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "d202f42f-2184-4b17-be4e-b4eb9ecc0caa"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "a0d13f9c-6fff-4278-8120-7d041d63a645"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "b95af254-ad60-4208-99f4-92b909abc8cf"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "2b5aa917-2ed6-4188-817e-e21f7c406f50"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "a44643ba-9f10-4539-b2db-8ad5489f982b"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "55ca1f07-cdf0-45cc-a7e3-694234859cca"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "a2185435-88ca-4135-92cf-cdfb80fea7b0"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "3e29a443-1994-4d66-ac22-b6fe3cb1baee"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "a083055f-376e-4de7-9a04-116109020996"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "1434cf85-44bf-4334-8507-41b29614b003"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "2f9439d3-2e4c-44d8-af83-f15fb36bbbc3"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "042f5483-e0a7-4c40-a1ca-5fd3bbe63213"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "b263d1f2-c584-449e-b01d-3c90243a8a22"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "bfe8ac13-6179-4906-a34e-f57bb5f5b221"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "99af78fa-8ed4-4bd7-8517-f82fae2499dd"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "4cebf97e-1b4c-4250-9b06-72cb348c16e3"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "7568eff8-ba1b-48e4-9bc8-c00a6cb6e4c7"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "c4f08483-3b2b-49ef-96ff-9765780dc094"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "bae8cda8-7615-431e-a4b8-67e4e061b80b"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "50ee94b5-b73d-4f7e-843d-c876c6708f92"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "baee1621-c256-42a6-8625-8df87464959a"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "a4d3fc3c-1e53-4de7-958a-7207eaef8771"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "0f15e8d4-7b67-402d-be05-2a154835c992"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "cfc52663-6f73-44ba-ab69-3ac046cf81f6"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "e5ad45b0-5f97-4e17-9ba4-cafe7a809a83"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "77c14bca-d821-43fc-92ea-769b4394f0d4"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "51777b6b-18d1-4bef-93d3-db10009caa5f"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "df812fff-2e35-48a9-9cc3-704d4685db08"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "d8cc217b-66fc-4829-a4d6-5be944104e1a"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "e240eb0a-1e15-442e-bb96-45ced8a81816"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "5f201b4b-b448-4c09-a74d-f3754747035e"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "a8d513f8-93a9-48a6-8f0e-4895fadf3938"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "e16af0ba-99fd-4f13-bae5-b6c0e233d8ef"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "9489f93d-b558-4e8c-ba12-ff6be7dceb48"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "e4c5b27e-e8d5-4e77-98c2-3f76d4ca9c24"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "7b9956be-de5f-43b7-b51e-253f3516378b"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "818f059d-5d2b-4052-ab8b-256aaebd9366"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "3b9b445e-1e17-44c9-bdc4-d148dfe1239d"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "d1c8f193-3047-4ef5-82e4-b53f6b1382fb"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "efd3b009-a0a2-4441-8e1e-1d9145d07dc7"
-    }
-  },
-  {
-    "tableName": "Assets",
-    "key": {
-      "id": "8a190b9f-353e-400b-8da6-a962068bb464"
-    }
-  },
-  {
-    "tableName": "TenureInformation",
-    "key": {
-      "id": "0c67e976-0960-4ebc-9d3c-5a6469e44bc7"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "164160a5-1fbd-4a5b-ac78-e4bd02e94d9a"
-    }
-  },
-  {
-    "tableName": "Persons",
-    "key": {
-      "id": "dcdd1352-5cbf-443a-854d-523a90f3e94d"
+      "id": "ef8fb552-8e7d-44df-add4-d151df00b3cd"
     }
   }
 ]
