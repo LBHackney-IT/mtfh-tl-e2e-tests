@@ -23,24 +23,24 @@ describe('Person Form', { tags: tags }, () => {
     });
 
     it('Validates date of birth', { tags : "@Negative" },() => {
-        cy.getTenureFixture().then((tenure) => {
-            editPersonForm.visit(tenure.id);
+        cy.getPersonFixture().then((person) => {
+            editPersonForm.visit(person.id);
+        
+            //editPersonForm.householdMemberRadioButton().click();
+            editPersonForm.personTitleSelection().select('Mr');
+            editPersonForm.firstNameContainer().type('Testy');
+            editPersonForm.middleNameContainer().type('McTest');
+            editPersonForm.lastNameContainer().type('Face');
+            // Select date of birth in the future
+            editPersonForm.dateOfBirthDayContainer().type('08');
+            editPersonForm.dateOfBirthMonthContainer().type('05');
+            editPersonForm.dateOfBirthYearContainer().type('2099');
+            //editPersonForm.reasonForCreationContainer().type('Some reason');
+            editPersonForm.updatePersonButton().click();
+
+            editPersonForm.addPersonFormErrorContainer().should("be.visible");
+            editPersonForm.errorSummaryBody()
+                        .should('contain', "This date cannot be in the future");
         });
-
-        editPersonForm.householdMemberRadioButton().click();
-        editPersonForm.personTitleSelection().select('Mr');
-        editPersonForm.firstNameContainer().type('Testy');
-        editPersonForm.middleNameContainer().type('McTest');
-        editPersonForm.lastNameContainer().type('Face');
-        // Select date of birth in the future
-        editPersonForm.dateOfBirthDayContainer().type('08');
-        editPersonForm.dateOfBirthMonthContainer().type('05');
-        editPersonForm.dateOfBirthYearContainer().type('2099');
-        editPersonForm.reasonForCreationContainer().type('Some reason');
-        editPersonForm.addPersonButton().click();
-
-        editPersonForm.addPersonFormErrorContainer().should("be.visible");
-        editPersonForm.errorSummaryBody()
-                     .should('contain', "This date cannot be in the future");
     });
 });
