@@ -1,4 +1,3 @@
-import cypress from "cypress"
 
 class PersonCommentsPageObjects {
     visit(person) {
@@ -8,6 +7,16 @@ class PersonCommentsPageObjects {
 
     Commentcheckbox(id){
         return cy.get(`[id=${id}]`)
+    }
+
+    discardCommentLink (){
+        return cy.get('[class ="govuk-link lbh-link lbh-link--no-visited-state"]')
+    }
+    cancellationPopUpWindow (){
+        return cy.get('[class="lbh-heading-h2 lbh-dialog__title"]')
+    }  
+    cancellationYesButton(){
+        return cy.get('[class="govuk-button lbh-button"]')
     }
 
     addCommentTitleField() {
