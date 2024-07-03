@@ -19,6 +19,14 @@ export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
   });
 };
 
+export const getAssetViewUrlByGuid = (assetGuid) => {
+  return `${Cypress.config("baseUrl")}/property/${assetGuid}`;
+};
+
+export const getAssetEditUrlByGuid = (assetGuid) => {
+  return `${Cypress.config("baseUrl")}/property/edit/${assetGuid}/`
+}
+
 export const seedDatabase = () => {
   // Seed the database with a patch, asset, tenure, and two persons (one responsible)
   const patchModel = patch;

@@ -30,6 +30,21 @@ describe('tenure page', {'tags': tags}, () => {
         
     });
 
+    it('should view property via tenure page', ()=> {
+        cy.getTenureFixture().then(({ id: tenureId }) => {
+            tenurePage.visit(tenureId);
+
+            tenurePage.tenureDetailsContainer().should("be.visible");
+            tenurePage.tenureDetailsContainer().contains("Status");
+            tenurePage.tenureDetailsContainer().contains("Start date");
+            tenurePage.tenureDetailsContainer().contains("End date");
+            tenurePage.tenureDetailsContainer().contains("Type");
+
+            cy.get(".lbh-heading-h2 > .govuk-link").click();
+            cy.url().should("include", "property");
+        });
+    })
+
     it('should navigate to old tenancy files', ()=>{
         cy.log("Creating new tenure record");
         createTenureWithStartDate("2013-12-31").then(response => {
