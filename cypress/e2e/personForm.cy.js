@@ -26,16 +26,14 @@ describe('Person Form', { tags: tags }, () => {
         cy.getPersonFixture().then((person) => {
             editPersonForm.visit(person.id);
         
-            //editPersonForm.householdMemberRadioButton().click();
             editPersonForm.personTitleSelection().select('Mr');
-            editPersonForm.firstNameContainer().type('Testy');
-            editPersonForm.middleNameContainer().type('McTest');
-            editPersonForm.lastNameContainer().type('Face');
+            editPersonForm.firstNameContainer().clear().type('Testy');
+            editPersonForm.middleNameContainer().clear().type('McTest');
+            editPersonForm.lastNameContainer().clear().type('Face');
             // Select date of birth in the future
-            editPersonForm.dateOfBirthDayContainer().type('08');
-            editPersonForm.dateOfBirthMonthContainer().type('05');
-            editPersonForm.dateOfBirthYearContainer().type('2099');
-            //editPersonForm.reasonForCreationContainer().type('Some reason');
+            editPersonForm.dateOfBirthDayContainer().clear().type('08');
+            editPersonForm.dateOfBirthMonthContainer().clear().type('05');
+            editPersonForm.dateOfBirthYearContainer().clear().type('2099');
             editPersonForm.updatePersonButton().click();
 
             editPersonForm.addPersonFormErrorContainer().should("be.visible");
