@@ -13,7 +13,7 @@ const devices = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iph
 describe('MMH Home page', {tags: tags}, ()=> {
         
    
-    it('should show header and footer logout', ()=> {
+    it('should show header and footer whilst logged out', ()=> {
         homePage.visit()
         homePage.iAmOnTheHomePage()
        
@@ -24,7 +24,7 @@ describe('MMH Home page', {tags: tags}, ()=> {
         footer.footerLinksAreCorrect();
     })
 
-    it('should show header and footer login', ()=> {
+    it('should show header and footer whilst logged in', ()=> {
         cy.login();
         window.localStorage.setItem(
             "features",
@@ -49,30 +49,30 @@ describe('MMH Home page', {tags: tags}, ()=> {
         homePage.visit()
         homePage.iAmOnTheHomePage()
 
-        cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });
-
+        
         function axeTerminalLog(violations) {
             cy.task(
-            "log",
-            `${violations.length} accessibility violation${
-                violations.length === 1 ? "" : "s"
-            } ${violations.length === 1 ? "was" : "were"} detected`
+                "log",
+                `${violations.length} accessibility violation${
+                    violations.length === 1 ? "" : "s"
+                } ${violations.length === 1 ? "was" : "were"} detected`
             );
-
+            
             const violationData = violations.map(
-            ({ id, impact, description, nodes }) => ({
-                id,
-                impact,
-                description,
-                nodes: nodes.length,
-            })
+                ({ id, impact, description, nodes }) => ({
+                    id,
+                    impact,
+                    description,
+                    nodes: nodes.length,
+                })
             );
             cy.task("table", violationData);
         }
+        cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });
     })
 
     devices.forEach((device)=> {
-        it('should work on all device', ()=> {
+        it(`should work on  ${device} device type`, ()=> {
             cy.login();
             window.localStorage.setItem(
                 "features",

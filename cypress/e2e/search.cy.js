@@ -17,7 +17,7 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTerm.replaceAll('*',''), { matchCase: false });
         searchPage.searchResults().contains("Property type")
         searchPage.searchResults().contains("Tenure")
         searchPage.searchResults().contains("UPRN")
@@ -31,7 +31,7 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTermTenure);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTermTenure.replace(/\*/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTermTenure.replaceAll('*',''), { matchCase: false });
         searchPage.searchResults().contains("Tenure payment ref");
 
         cy.get('[class*="govuk-back-link lbh-back-link"]').click();
@@ -43,11 +43,11 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTermPerson);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTermPerson.replace(/\*/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTermPerson.replaceAll('*',''), { matchCase: false });
     })
 
     devices.forEach((device) => {
-        it('should search on all device types', () => {
+        it(`should search on ${device} device types`, () => {
             searchPage.visit();
             cy.viewport(`${device}`);
             searchPage.personRadioButton().click();
@@ -56,7 +56,7 @@ describe('Search Page',{tags: tags}, ()=> {
             searchPage.searchContainer().type(searchTerm);
             searchPage.searchButton().click();
     
-            searchPage.searchResults().contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
+            searchPage.searchResults().contains(searchTerm.replaceAll('*',''), { matchCase: false });
     
             const breadCrumb = cy.get('[class*="govuk-back-link lbh-back-link"]');
             breadCrumb.should("be.visible");
@@ -70,16 +70,16 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTerm.replaceAll('*',''), { matchCase: false });
 
         cy.get('[class*="govuk-back-link lbh-back-link"]').click();
 
         searchPage.tenureRadioButton().click();
         const searchTermTenure = "*a"
-        searchPage.searchContainer().type(searchTermTenure);
+        searchPage.searchContainer().clear().type(searchTermTenure);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTermTenure.replace(/\*/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTermTenure.replaceAll('*',''), { matchCase: false });
 
     })
 
@@ -120,7 +120,7 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTerm.replace(/\s/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTerm.replace("/\s/g", ""), { matchCase: false });
     })
 
     it('should display error for insufficient characters', ()=> {
@@ -151,25 +151,25 @@ describe('Search Page',{tags: tags}, ()=> {
     it('accessibility testing', ()=> {
         searchPage.visit();
 
-        cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });   
         function axeTerminalLog(violations) {
             cy.task(
-            "log",
-            `${violations.length} accessibility violation${
-                violations.length === 1 ? "" : "s"
-            } ${violations.length === 1 ? "was" : "were"} detected`
+                "log",
+                `${violations.length} accessibility violation${
+                    violations.length === 1 ? "" : "s"
+                } ${violations.length === 1 ? "was" : "were"} detected`
             );
-
+            
             const violationData = violations.map(
-            ({ id, impact, description, nodes }) => ({
-                id,
-                impact,
-                description,
-                nodes: nodes.length,
-            })
+                ({ id, impact, description, nodes }) => ({
+                    id,
+                    impact,
+                    description,
+                    nodes: nodes.length,
+                })
             );
             cy.task("table", violationData);
         }
+        cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });   
     })
 
     filterSearch.forEach((filter)=> {
@@ -181,7 +181,7 @@ describe('Search Page',{tags: tags}, ()=> {
             searchPage.searchContainer().type(searchTerm);
             searchPage.searchButton().click();
 
-            searchPage.searchResults().contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
+            searchPage.searchResults().contains(searchTerm.replaceAll('*',''), { matchCase: false });
 
             searchPage.sortByOption().contains("Best match");
             searchPage.sortByOption().select(filter);
@@ -203,7 +203,7 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTerm.replaceAll('*',''), { matchCase: false });
 
         searchPage.sortByOption().should("not.exist");
 
@@ -220,7 +220,7 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTermProp);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTermProp.replace(/\*/g, ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTermProp.replaceAll('*',''), { matchCase: false });
 
         searchPage.sortByOption().should("not.exist");  
 
