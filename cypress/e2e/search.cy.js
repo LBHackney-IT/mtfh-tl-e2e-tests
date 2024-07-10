@@ -120,7 +120,7 @@ describe('Search Page',{tags: tags}, ()=> {
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
-        searchPage.searchResults().contains(searchTerm.replace("/\s/g", ""), { matchCase: false });
+        searchPage.searchResults().contains(searchTerm.replace(/\s/g, ""), { matchCase: false });
     })
 
     it('should display error for insufficient characters', ()=> {
