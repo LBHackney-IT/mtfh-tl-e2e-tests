@@ -114,3 +114,43 @@ export const seedDatabaseWithTenure = (isActive) => {
   addTestRecordToDatabase("Persons", personModel2);
 };
 
+export const seedDatabaseWithCautionaryAlert = () => {
+    cy.log("Creating cautionary alert & entities associated with it")
+    .then(() => {
+      const assetModel = asset();
+      const tenureModel = generateTenure({}, assetModel);
+      const personModel = person();
+      const personTenure = tenureToPersonTenure(tenureModel);
+
+      personModel.tenures.push(personTenure);
+      assetModel.tenure = tenureToAssetTenure(tenureModel);
+
+      const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
+        console.log("saveNonDynamoRecord data: ", response)
+        try {
+          saveNonDynamoFixture(
+            "CautionaryAlerts",
+            [response.body],
+            response,
+          ).then((response) => {
+            resolve(response)
+          });
+        }
+        catch (ex) {
+          reject(ex);
+        }
+      });
+
+      const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
+
+      createCautionaryAlert(cautionaryAlertRecord).then((data) => {
+        saveNonDynamoRecord(data).then((moreData) => {
+          Promise.resolve(moreData);
+        });
+      });
+
+      addTestRecordToDatabase("Assets", assetModel)
+      addTestRecordToDatabase("TenureInformation", tenureModel)
+      addTestRecordToDatabase("Persons", personModel)
+    });
+}
