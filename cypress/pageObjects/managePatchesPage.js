@@ -9,19 +9,19 @@ class ManagePatchesPageObjects {
         return cy.get('[data-testid="back-link"]')
     }
 
-    getAreaDropdown() {
+    areaDropdown() {
         return cy.get('[data-testid="area-select"]')
     }
 
-    getPatchRow(patchName) {
+    patchRow(patchName) {
         return cy.get(`[data-testid="${patchName}-row"]`)
     }
 
-    getOfficerNameInput(patchName) {
+    officerNameInput(patchName) {
         return cy.get(`[data-testid="officer-name-input-${patchName}"]`)
     }
 
-    getOfficerEmailInput(patchName) {
+    officerEmailInput(patchName) {
         return cy.get(`[data-testid="officer-email-input-${patchName}"]`)
     }
 
@@ -34,22 +34,22 @@ class ManagePatchesPageObjects {
         if (!validButtons.includes(buttonType)) {
             throw new Error(`Invalid button type ${buttonType}, must be one of ${validButtons}`)
         }
-        return this.getPatchRow(patchName).within(() => {
+        return this.patchRow(patchName).within(() => {
             cy.get(`[data-testid="${buttonType}-button"]`).click()
         });
     }
 
     unassignPatch(patchName) {
         this.clickButtonForPatch(patchName, "edit-assignment")
-        this.getOfficerNameInput(patchName).clear()
-        this.getOfficerEmailInput(patchName).clear()
+        this.officerNameInput(patchName).clear()
+        this.officerEmailInput(patchName).clear()
         this.clickButtonForPatch(patchName, "confirm-reassignment")
     }
 
     reassignPatch(patchName, officerName, officerEmail) {
         this.clickButtonForPatch(patchName, "edit-assignment")
-        this.getOfficerNameInput(patchName).clear().type(officerName)
-        this.getOfficerEmailInput(patchName).clear().type(officerEmail)
+        this.officerNameInput(patchName).clear().type(officerName)
+        this.officerEmailInput(patchName).clear().type(officerEmail)
         this.clickButtonForPatch(patchName, "confirm-reassignment")
     }
 }
