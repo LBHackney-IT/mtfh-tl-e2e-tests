@@ -7,6 +7,18 @@ class CautionaryAlertsPageObjects {
     pageHeaderCautionaryAlert(){
         return cy.get('.lbh-heading-h1');
     }
+
+    dayField(){
+        return cy.get('[name="day"]');
+    }
+
+    monthField(){
+        return cy.get('[name="month"]');
+    }
+
+    yearField(){
+        return cy.get('[name="year"]');
+    }
     
     assureReference() {
         return cy.get('#assure-reference-field-field');
@@ -15,33 +27,52 @@ class CautionaryAlertsPageObjects {
     typeOfCaution() {
         return cy.get('#type-of-caution-field-field');
     };
-        descriptionOfIncident() {
+
+    descriptionOfIncident() {
         return cy.get('#add-cautionary-alert-description-field');
     };
+
     assureReferenceFieldErrorMessg(){
         return cy.get('#assure-reference-field-error');
     };
+
     dateOfIncidentFieldErrorMessg(){
         return cy.get('#date-error');
     };
+
     selectTypeOfCautionFieldErrorMessg(){
         return cy.get('#type-of-caution-field-error');
     };
+
     descriptionOfIncidentFieldErrorMessg(){
         return cy.get('#add-cautionary-alert-description-error');
     };
+
+
+    summaryListRow(){
+        return cy.get('.govuk-summary-list__row');
+    }
+
+    nthSummaryListRow(n){
+        return cy.get('.govuk-summary-list__row').eq(n);
+    }
+
     redBellIconAlert(){
         return cy.get('[data-testid="alert-icon"]');
     };
+    
     changeLinkAssuranceRef(){
         return cy.get('[data-testid="change:assure-ref"]');
     };
+
     changeLinkDateOfIncident(){
         return cy.get('[data-testid="change:incident-date"]');
     };
+
     changeLinkTypeOfCaution(){
         return cy.get('[data-testid="change:caution-type"]');
     };
+
     changeLinkDescription(){
         return cy.get('[data-testid="change:description"]');
     }
