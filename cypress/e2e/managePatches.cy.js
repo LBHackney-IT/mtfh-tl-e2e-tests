@@ -33,7 +33,7 @@ describe("View and manage patch and area assignment", {tags: tags}, () => {
         });
     });
 
-    it("Can manage patches", () => {
+    it("Can manage patches", {tags: "@SmokeTest"}, () => {
         patchesPage.visit();
         cy.url().should('include', 'all-patches-and-areas');
         cy.contains('Patches and areas').should('be.visible');
