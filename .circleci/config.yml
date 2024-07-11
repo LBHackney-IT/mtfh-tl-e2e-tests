@@ -97,22 +97,22 @@ commands:
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
                           
-                          export CYPRESS_TAGS='--@GoogleLighthouse --@Accessibility --@ignore' ;
+                          export CYPRESS_GREPTAGS='--@GoogleLighthouse --@Accessibility --@ignore' ;
                           export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
-                          [ "<<parameters.trigger-context>>" = "external" ] && [ "<<parameters.stage>>" = "production" ] && export CYPRESS_TAGS="$CYPRESS_TAGS @Production"
+                          [ "<<parameters.trigger-context>>" = "external" ] && [ "<<parameters.stage>>" = "production" ] && export CYPRESS_GREPTAGS="$CYPRESS_GREPTAGS @Production"
 
                           if [ -n "$PIPELINE_FILTER" ]; then
                             [ $PIPELINE_FILTER = "common" ] || [ $PIPELINE_FILTER = "authentication" ] || [ $PIPELINE_FILTER = "root" ] && export PIPELINE_FILTER="SmokeTest"
-                            export CYPRESS_TAGS="$CYPRESS_TAGS @$PIPELINE_FILTER"
+                            export CYPRESS_GREPTAGS="$CYPRESS_GREPTAGS @$PIPELINE_FILTER"
                           fi
 
                           if [ "<<parameters.trigger-context>>" = "devices"]
-                            then export CYPRESS_TAGS="$CYPRESS_TAGS @device" ;
-                            else export CYPRESS_TAGS="$CYPRESS_TAGS --@device" ;
+                            then export CYPRESS_GREPTAGS="$CYPRESS_GREPTAGS @device" ;
+                            else export CYPRESS_GREPTAGS="$CYPRESS_GREPTAGS --@device" ;
                           fi
 
                           npm install ;
-                          echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_TAGS" ;
+                          echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_GREPTAGS" ;
                           ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
                        
             - store_artifacts:
