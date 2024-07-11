@@ -39,16 +39,16 @@ describe('Create Cautionary Alerts', { tags: tags }, () => {
 
             // Enter details
             caPage.assureReference().type('121212');
-            caPage.dayField.type('01');
-            caPage.monthField.type('12');
-            caPage.yearField.type('2022');
+            caPage.dayField().type('01');
+            caPage.monthField().type('12');
+            caPage.yearField().type('2022');
             caPage.typeOfCaution().select('No Lone Visits');
             caPage.descriptionOfIncident().clear().type('Test Description');
             caPage.saveAndContinueButton().click();
 
             // Confirm details
             caPage.pageHeaderCautionaryAlert()
-                  .should('contain.text', `Check and confirm cautionary alert for ${person.firstName} ${person.lastName}`);
+                  .should('contain.text', `Check and confirm cautionary alert for ${person.title} ${person.firstName} ${person.surname}`);
             caPage.nthSummaryListRow(0)
                   .should('contain.text', 'Assurance Reference')
                   .and('contain.text', '121212');

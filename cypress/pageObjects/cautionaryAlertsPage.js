@@ -32,6 +32,10 @@ class CautionaryAlertsPageObjects {
         return cy.get('#add-cautionary-alert-description-field');
     };
 
+    saveAndContinueButton() {
+        return cy.contains('Save and continue');
+    }
+
     assureReferenceFieldErrorMessg(){
         return cy.get('#assure-reference-field-error');
     };

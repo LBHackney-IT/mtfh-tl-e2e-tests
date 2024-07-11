@@ -2,7 +2,7 @@
 const cautionaryAlertEndpoint =  Cypress.env('CAUTIONARY_ALERT_ENDPOINT')
 const url = `${cautionaryAlertEndpoint}/cautionary-alerts`
 
-const createCautionaryAlert = (cautionaryAlert) => new Cypress.Promise((resolve) => {
+export const createCautionaryAlert = (cautionaryAlert) => new Cypress.Promise((resolve) => {
         cy.request({
             method: 'POST',
             body: cautionaryAlert,
@@ -12,6 +12,3 @@ const createCautionaryAlert = (cautionaryAlert) => new Cypress.Promise((resolve)
             resolve(response);
         })
     });
-
-
-export default createCautionaryAlert;

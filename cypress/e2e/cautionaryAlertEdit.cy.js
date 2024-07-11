@@ -1,8 +1,6 @@
 import { seedDatabaseWithCautionaryAlert } from "../helpers/DbHelpers";
-
 import PersonPageObjects from "../pageObjects/personPage";
-import CautionaryAlertViewPageObject from "../../pageObjects/CautionaryAlertViewPage";
-import de from "date-and-time/locale/de";
+import CautionaryAlertViewPageObject from "../pageObjects/CautionaryAlertViewPage";
 const personPO = new PersonPageObjects();
 const cautionaryAlertPage = new CautionaryAlertViewPageObject();
 
@@ -16,7 +14,6 @@ const getFormattedDate = (date) => {
     const typedDate = `${year}-${month}-${day}`;
     return typedDate;
 }
-
 
 describe("Edit Cautionary Alerts", { tags: tags }, () => {
     beforeEach(() => {
@@ -52,8 +49,8 @@ describe("Edit Cautionary Alerts", { tags: tags }, () => {
 
         // Enter an invalid date (in the future)
         const today = new Date();
-        const futureDate = new Date(today);
-        futureDate.setDate(today.getDate() + 1);
+        let futureDate = new Date();
+        futureDate.setDate(today.getDate() + 1000);
         futureDate = getFormattedDate(futureDate);
         cautionaryAlertPage.endDateInput().click().type(futureDate);
         cautionaryAlertPage.endDateInputError().should('exist');

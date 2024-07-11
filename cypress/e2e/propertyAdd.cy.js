@@ -1,9 +1,8 @@
 import { seedDatabase } from "../helpers/DbHelpers";
 import { generateNewAsset } from  "../../api/models/requests/createAssetModel";
 import { saveFixtureData } from "../../api/helpers";
-import { getAssetViewUrlByGuid } from "../helpers/DbHelpers";
+import { getAssetViewUrlByGuid } from "../helpers/helpers";
 const { faker } = require("@faker-js/faker");
-import * as patchData from "../fixtures/patches.json";
 
 const tags = ['@property', '@authentication', '@common', '@root', '@search']
 const propertyReference = faker.random.numeric(8)

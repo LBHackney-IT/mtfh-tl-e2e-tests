@@ -1,8 +1,12 @@
 import DynamoDb from "../../api/database/DynamoDb";
+import { saveNonDynamoFixture } from "../../api/helpers";
 import { generateTenure } from "../../api/models/requests/addTenureModel";
 import { asset, generateAsset } from "../../api/models/requests/createAssetModel";
 import { person } from "../../api/models/requests/createPersonModel";
 import { patch } from "../../api/models/requests/patchModel";
+import { cautionaryAlert } from "../../api/models/requests/cautionaryAlertModel";
+import { createCautionaryAlert } from "../../api/cautionary-alert";
+import { tenureToPersonTenure, tenureToAssetTenure } from "./helpers";
 
 export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
   cy.log("Seeding database").then(async () => {
@@ -18,14 +22,6 @@ export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
     });
   });
 };
-
-export const getAssetViewUrlByGuid = (assetGuid) => {
-  return `${Cypress.config("baseUrl")}/property/${assetGuid}`;
-};
-
-export const getAssetEditUrlByGuid = (assetGuid) => {
-  return `${Cypress.config("baseUrl")}/property/edit/${assetGuid}/`
-}
 
 export const seedDatabase = () => {
   // Seed the database with a patch, asset, tenure, and two persons (one responsible)

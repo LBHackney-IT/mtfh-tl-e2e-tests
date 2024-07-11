@@ -1,7 +1,7 @@
 import { seedDatabaseWithCautionaryAlert } from "../helpers/DbHelpers";
 
 import PersonPageObjects from "../pageObjects/personPage";
-import CautionaryAlertViewPageObject from "../../pageObjects/CautionaryAlertViewPage";
+import CautionaryAlertViewPageObject from "../pageObjects/CautionaryAlertViewPage";
 const personPO = new PersonPageObjects();
 const cautionaryAlertPage = new CautionaryAlertViewPageObject();
 
