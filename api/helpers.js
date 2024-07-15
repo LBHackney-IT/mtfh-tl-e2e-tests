@@ -28,3 +28,7 @@ export const saveNonDynamoFixture = (entityName, fixtureData, response) => new C
 export const queueDeletePersonWithId = (id) => {
     saveFixtureData("Persons", { id: id })
 }
+
+export const queueDeleteTenureWithId = (id) => {
+    saveFixtureData("Tenures", { id: id })
+}

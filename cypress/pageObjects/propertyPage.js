@@ -63,11 +63,7 @@ class PropertyPageObjects {
     comment(){
         return cy.get('[class="comment__item --center"]')
     }
-
-    repairsCardList(){
-        return cy.get ('[class ="mtfh-card-list"]')
-    }
-
+    
     repairsSelectionBox() {
         return cy.get('[data-testid="work-order-list:filter"]')
     }

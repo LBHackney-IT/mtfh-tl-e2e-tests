@@ -1,8 +1,12 @@
 import DynamoDb from "../../api/database/DynamoDb";
+import { saveNonDynamoFixture } from "../../api/helpers";
 import { generateTenure } from "../../api/models/requests/addTenureModel";
 import { asset, generateAsset } from "../../api/models/requests/createAssetModel";
 import { person } from "../../api/models/requests/createPersonModel";
 import { patch } from "../../api/models/requests/patchModel";
+import { cautionaryAlert } from "../../api/models/requests/cautionaryAlertModel";
+import { createCautionaryAlert } from "../../api/cautionary-alert";
+import { tenureToPersonTenure, tenureToAssetTenure } from "./helpers";
 
 export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
   cy.log("Seeding database").then(async () => {
@@ -18,14 +22,6 @@ export const addTestRecordToDatabase = (dbTableName, testDbRecord) => {
     });
   });
 };
-
-export const getAssetViewUrlByGuid = (assetGuid) => {
-  return `${Cypress.config("baseUrl")}/property/${assetGuid}`;
-};
-
-export const getAssetEditUrlByGuid = (assetGuid) => {
-  return `${Cypress.config("baseUrl")}/property/edit/${assetGuid}/`
-}
 
 export const seedDatabase = () => {
   // Seed the database with a patch, asset, tenure, and two persons (one responsible)
@@ -114,3 +110,43 @@ export const seedDatabaseWithTenure = (isActive) => {
   addTestRecordToDatabase("Persons", personModel2);
 };
 
+export const seedDatabaseWithCautionaryAlert = () => {
+    cy.log("Creating cautionary alert & entities associated with it")
+    .then(() => {
+      const assetModel = asset();
+      const tenureModel = generateTenure({}, assetModel);
+      const personModel = person();
+      const personTenure = tenureToPersonTenure(tenureModel);
+
+      personModel.tenures.push(personTenure);
+      assetModel.tenure = tenureToAssetTenure(tenureModel);
+
+      const saveNonDynamoRecord = (response) => new Promise((resolve, reject) => {
+        console.log("saveNonDynamoRecord data: ", response)
+        try {
+          saveNonDynamoFixture(
+            "CautionaryAlerts",
+            [response.body],
+            response,
+          ).then((response) => {
+            resolve(response)
+          });
+        }
+        catch (ex) {
+          reject(ex);
+        }
+      });
+
+      const cautionaryAlertRecord = cautionaryAlert(personModel, assetModel);
+
+      createCautionaryAlert(cautionaryAlertRecord).then((data) => {
+        saveNonDynamoRecord(data).then((moreData) => {
+          Promise.resolve(moreData);
+        });
+      });
+
+      addTestRecordToDatabase("Assets", assetModel)
+      addTestRecordToDatabase("TenureInformation", tenureModel)
+      addTestRecordToDatabase("Persons", personModel)
+    });
+}

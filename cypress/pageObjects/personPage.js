@@ -26,10 +26,6 @@ class PersonPageObjects {
         return cy.get('[id="add-comment-category-field"]')
     }
 
-    addCommentButton() {
-        return cy.get('.govuk-button lbh-button')
-    }
-
     commentTable() {
         return cy.get('.comment')
     }

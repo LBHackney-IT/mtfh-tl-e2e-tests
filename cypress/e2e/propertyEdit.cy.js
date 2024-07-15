@@ -1,6 +1,7 @@
 import { seedDatabase } from "../helpers/DbHelpers";
 import { generateAsset } from "../../api/models/requests/createAssetModel";
-import { addTestRecordToDatabase, getAssetViewUrlByGuid, getAssetEditUrlByGuid } from "../helpers/DbHelpers";
+import { addTestRecordToDatabase } from "../helpers/DbHelpers";
+import { getAssetViewUrlByGuid, getAssetEditUrlByGuid } from "../helpers/helpers";
 
 
 const tags = ['@propety', '@authentication', '@common', '@root', '@search']
