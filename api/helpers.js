@@ -32,7 +32,3 @@ export const queueDeletePersonWithId = (id) => {
 export const queueDeleteTenureWithId = (id) => {
     saveFixtureData("Tenures", { id: id })
 }
-
-// export const queueDeleteCautionaryAlertWithId = (id) => {
-//     saveFixtureData("CautionaryAlerts", { id: id })
-// }
