@@ -73,26 +73,5 @@ describe("Edit Cautionary Alerts", { tags: tags }, () => {
         personPO.pageTitle().should('exist');
         personPO.nthCautionaryAlert(0).should('not.exist');
     });
-
-    // TODO: Not sure if we should keep, we don't test api failures for other features
-    it("When an 'End Alert' form submission fails, a Page Error is displayed", () => {
-        cy.getCautionaryAlertFixture().then((cautionaryAlerts) => {
-            // Set up the endpoint to return a 500 error
-            const cautionaryAlertId = cautionaryAlerts[0].alertId;
-            cy.setUpEndAlertError(cautionaryAlertId);
-            cautionaryAlertPage.visit(cautionaryAlertId);
-            
-            // Attempt to end the alert
-            cautionaryAlertPage.endAlertButton().click();
-            const today = new Date();
-            const typedDate = getFormattedDate(today);
-            cautionaryAlertPage.endDateInput().click().type(typedDate);
-            cautionaryAlertPage.confirmButton().click();
-            
-            // Check the error is displayed & stays on the same page
-            cautionaryAlertPage.pageError().should('exist');
-            cy.url().should('include', `/cautionary-alerts/alert/${cautionaryAlertId}`);
-        });
-    });
 })
 
