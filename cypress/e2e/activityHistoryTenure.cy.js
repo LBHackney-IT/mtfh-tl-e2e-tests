@@ -15,10 +15,8 @@ describe('Activity History for a tenure', { 'tags': tags }, () => {
 
     it('should view activity history', { tags: "@SmokeTest" }, () => {
         cy.getTenureFixture().then((tenure) => {
-            // Given & When
             activityHistory.visit(tenure.id, true)
             
-            // Then
             cy.contains(tenure.paymentReference).should('be.visible');
             cy.contains(tenure.tenuredAsset.fullAddress).should('be.visible'); // header
             
@@ -37,7 +35,6 @@ describe('Activity History for a tenure', { 'tags': tags }, () => {
     // To fix: fails on pipeline
     it('should update activity history',{'tags': '@ignore'}, () => {
         cy.getTenureFixture().then(async (tenure) => {
-            // Given
             const newTenureType = "Freehold"
             const tenureUpdatedTime = new Date();
             await editTenure(tenure.id, newTenureType).then((response) => {
@@ -45,10 +42,8 @@ describe('Activity History for a tenure', { 'tags': tags }, () => {
                 cy.wait(1000); // Wait for the data to be updated
             });
 
-            // When
             activityHistory.visit(tenure.id)
 
-            // Then
             activityHistory.activityTable().should('be.visible');
 
             const firstRow = activityHistory.activityTableRow().first();

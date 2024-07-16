@@ -16,10 +16,8 @@ describe('Activity History for a person', { 'tags': tags }, () => {
 
     it('should view activity history', { tags: "@SmokeTest" }, () => {
         cy.getPersonFixture().then((person) => {
-            // Given & When
             activityHistory.visit(person.id, true)
             
-            // Then
             cy.contains(person.firstName).should('be.visible')
             cy.contains(person.surname).should('be.visible')
 
@@ -57,10 +55,8 @@ describe('Activity History for a person', { 'tags': tags }, () => {
                 cy.wait(1000); // Wait for the data to be updated
             });
 
-            // When
             activityHistory.visit(person.id)
 
-            // Then
             activityHistory.activityTable().should('be.visible')
             const firstRow = activityHistory.activityTableRow().first();
             firstRow.should('contain', `Changed to: ${editPersonModel.firstName}`);
