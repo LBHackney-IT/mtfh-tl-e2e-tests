@@ -78,18 +78,4 @@ describe('Worktray Feature', {tags: tags}, ()=> {
         cy.url().should('contain', '/processes/soletojoint/');
         cy.go('back');
     })
-
-    it.only('should sort by correctly', ()=> {
-        //sort by name/address
-        cy.contains('Name / Address').click();
-        cy.get('[data-testid="person-link"]').first().invoke('removeAttr', 'target').should('contain', 'Add API E2E Test')
-
-        cy.contains('Name / Address').click();
-        cy.get('[data-testid="person-link"]').first().should('contain', 'FAKE')
-        //sort by state
-
-        //sort by time
-
-        //sort by process state
-    })
 })
