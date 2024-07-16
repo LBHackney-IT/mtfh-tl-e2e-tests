@@ -21,7 +21,6 @@ describe('create and edit tenure', {'tags': tags}, ()=>{
     });
 
     it('should create a new tenure', {'tags': '@SmokeTest'}, ()=> {
-
         cy.getAssetFixture().then(({ id: tenureId }) => {
             createTenurePage.createTenure(tenureId);
 
