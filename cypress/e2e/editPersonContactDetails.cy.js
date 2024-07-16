@@ -37,4 +37,42 @@ describe('Edit person Contact details', {tags: tags}, ()=> {
         });
     })
 
+    it('should save correspondence address',{'tags': '@SmokeTest'}, () => {
+        cy.getPersonFixture().then((person) => {
+            editPersonContactDetailsPage.editPersonContactDetails(person.id);
+            personContactPage.addCorrespondenceAddressButton().click();
+            personContactPage.addressLineOneField().should("be.visible");
+            personContactPage.addressLineTwoField().should("be.visible");
+            personContactPage.addressLineThreeField().should("be.visible");
+            personContactPage.addressLineFourField().should("be.visible");
+            personContactPage.postcodeLookupButton().should("be.visible");
+            personContactPage.postcodeLookupField().should("be.visible");
+            personContactPage.postcodeField().should("be.visible");
+            
+            personContactPage.addressLineOneField().type("Buckingham Palace");
+            personContactPage.addressLineTwoField().type("Palace");
+            personContactPage.addressLineThreeField().type("London");
+            personContactPage.addressLineFourField().type("England");
+            personContactPage.postcodeField().type("SW1A 1AA");
+
+            personContactPage.saveAddressButton().click();
+
+            personContactPage.confirmationMessage().should("be.visible");
+            personContactPage.confirmationMessage().contains("Correspondence address saved");
+        })
+    })
+
+    it('should not allow more than 5 phone number', ()=> {
+        cy.getPersonFixture().then((person) => {
+            editPersonContactDetailsPage.editPersonContactDetails(person.id);
+
+            cy.intercept("GET", `*/api/v2/contactDetails?targetId=${person.id}`, {
+                fixture: "contact-details.json",
+                statusCode: 200,
+            }).as("getContactDetails");
+
+            
+        })
+    })
+
 })
