@@ -180,13 +180,13 @@ describe('Edit person Contact details', {tags: tags}, ()=> {
         })
     })
 
-    it('should show confirmation model when removing phone number after saved', ()=> {
+    it('add non-uknumber', ()=> {
         cy.getPersonFixture().then((person) => {
             editPersonContactDetailsPage.editPersonContactDetails(person.id);
             personContactPage.addPhoneNumberButton().click();
             personContactPage.phoneNumberContactType();
             cy.get("input[data-test='phone-number-checkbox']").last().check()
-            personContactPage.phoneNumberFields().last().type("07777777777");
+            personContactPage.phoneNumberFields().last().type("+549844444444");
             personContactPage.clickSaveChangesButton();
             cy.contains("Phone numbers updated");
             cy.reload();
