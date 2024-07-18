@@ -23,13 +23,11 @@ describe('Add a new person to a tenure', { tags: tags }, () => {
 
     // TODO: Add options to select tenure holder or household member
     it('Can add a new person to a tenure', { tags: ["@SmokeTest", "@Positive"] }, () => {
-        // Given
         cy.getTenureFixture().then((tenure) => {
             addPersonPage.visit(tenure.id);
         });
         addPersonPage.personFormDisplayed();
 
-        // When
         addPersonPage.tenureHolderRadioButton().click(); 
         // Name
         addPersonPage.personTitleSelection().select('Mr');
@@ -55,7 +53,6 @@ describe('Add a new person to a tenure', { tags: tags }, () => {
         addPersonPage.addPersonButton().click();
         cy.wait('@addPerson');
         
-        // Then
         addPersonPage.pageAnnouncement()
                      .should('be.visible')
                      .and('contain', 'Person added to tenure');
