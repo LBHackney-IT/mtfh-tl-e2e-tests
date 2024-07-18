@@ -13,10 +13,8 @@ describe('Activity History for a property', { 'tags': tags }, () => {
 
     it('should view activity history', { tags: "@SmokeTest" }, () => {
         cy.getAssetFixture().then((asset) => {
-            // Given & When
             activityHistory.visit(asset.id, true)
             
-            // Then
             cy.contains(asset.assetAddress.postCode).should('be.visible'); // header
             activityHistory.activityTable().should('be.visible')
             activityHistory.tableHeaders().forEach(tableHeader => {
