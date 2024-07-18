@@ -17,12 +17,6 @@ class ModalPageObjects {
     modalReason(){
         return cy.get('#mtfh-ho-review-reason-field');
     };
-    modalReasonChangeOfName(){
-        return cy.get('#mtfh-close-case-form-reason-field');
-    };
-    modalCloseCaseChangeOfName(){
-        return cy.get('[data-testid=close-process-modal-submit]');
-    }
 }
 
 export default ModalPageObjects

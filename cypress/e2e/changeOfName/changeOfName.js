@@ -57,7 +57,7 @@ Then("I am on the supporting documents page", () => {
     cy.contains('Checking supporting documents');
     cy.contains('Tenant declaration');
     cy.get('[data-testid=declaration]');
-    changeOfName.statusActiveCheck().should('contain.text', "Request Documents");
+    changeOfName.activeStep().should('contain.text', "Request Documents");
 });
 When("I select Request Documents electronically and click on Next button", () => {
     tenureReqDocsPage.requestDocsElectronically().click();
@@ -178,7 +178,7 @@ When("I select decision as 'Decline'", () => {
     changeOfName.ahmDecisionDecline().click();
 });
 When("I confirm 'I confirm that this is an instruction received by the Area Housing Manager'", () => {
-    changeOfName.ahmConfirmBox().click();
+    changeOfName.ahmConfirmButton().click();
 });
 When("I do not confirm the Tenant declaration checkbox and I click on Next button", () => {
     tenureReqDocsPage.requestDocsElectronically().click();

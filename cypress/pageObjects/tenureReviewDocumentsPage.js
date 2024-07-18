@@ -4,10 +4,10 @@ class TenureReviewDocsPageObjects {
         return cy.get('.lbh-heading-h2');
     };
     submitButton () {
-        return cy.get('.mtfh-layout__main > :nth-child(7)');
+        return cy.get('.lbh-button').contains('Submit case');
     };
     continueButton () {
-        return cy.get('.govuk-button lbh-button').should('contain', 'Continue');
+        return cy.get('.lbh-button').contains('Continue');
     };
     linkChange() {
         return cy.contains('Change');
@@ -35,7 +35,7 @@ class TenureReviewDocsPageObjects {
     }
 
     buttonConfirm(){
-        return cy.contains('Confirm');
+        return cy.get('.lbh-button').contains('Confirm');
     }
     buttonBookAppointment() {
         return cy.contains('Book Appointment');

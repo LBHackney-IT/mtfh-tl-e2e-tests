@@ -1,13 +1,18 @@
+import TenureReviewDocsPageObjects from "./tenureReviewDocumentsPage";
 
-
-class ChangeOfNamePageObjects {
+class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
     visitHomePage() {
         cy.visit(Cypress.config("baseUrl"))
         cy.injectAxe();
     }
-    visit(personId) {
+    visitPersonPage(personId) {
         cy.visit(`${Cypress.config("baseUrl")}/person/${personId}`);
     }
+
+    visitStartPage(personId) {
+        cy.visit(`${Cypress.config("baseUrl")}/processes/changeofname/start/person/${personId}`);
+    }
+    
     textSearch() {
         return cy.findAllByText('Search');
     };
@@ -50,7 +55,7 @@ class ChangeOfNamePageObjects {
         return cy.get('#declaration-form-group-error');
     };
     errorMessage() {
-            return cy.get('.govuk-error-message lbh-error-message');
+            return cy.get('.lbh-error-message');
     };
     errorReviewDocuments() {
         return cy.get('#review-documents-form-group-error');
@@ -59,8 +64,7 @@ class ChangeOfNamePageObjects {
         return cy.findByRole('link', {name:/View documents on the Document Evidence Store/i});
     };
     buttonStartProcess() {
-        cy.wait(1000);
-        return cy.get('.govuk-button');
+        return cy.get('.lbh-button').contains('Start process');
     };
     buttonNext() {
         return cy.contains('Next');
@@ -86,9 +90,15 @@ class ChangeOfNamePageObjects {
     personLNameError() {
         return cy.get('#person-form-surname-error');
     }
-    statusActiveCheck(){
+    activeStep(){
         return cy.get('.mtfh-stepper__step--active');
     };
+    requestDocsElectronically() {
+        return cy.get('#requestType-automatic');
+    };
+    promptAddContactDetails() {
+        return cy.contains("add the contact details");
+    }
     outcomeTenureApprove(){
         return cy.get('#tenure-investigation-recommendation-approve');
     }
@@ -110,23 +120,88 @@ class ChangeOfNamePageObjects {
     ahmDecisionDecline(){
         return cy.get('#ho-review-decline');
     };
-    ahmConfirmBox() {
+
+    checkBoxAhmApproved() {
         return cy.get('#confirm-form-group-field');
     };
+
     ahmNameInput() {
         return cy.get('#area-housing-manager-name-form-group-field');
     };
+
+    ahmConfirmButton() {
+        return cy.get('.lbh-button').contains('Confirm');
+    };
+
     buttonSubmitCase(){
         return cy.get('.mtfh-layout__main > :nth-child(6)');
     };
     errorAreaHousingManagerName() {
         return cy.get('#area-housing-manager-name-form-group-error')
     };
-    buttonReturnToApplication() {
+    modalReturn() {
         return cy.get('[data-testid=close-update-contact-details-modal]');
     };
     emailAddress() {
         return cy.get('#contact-details-email-address-field');
+    }
+
+    phoneNumberType() {
+        return cy.get('#contact-details-phone-type-0-field');
+    }
+
+    phoneNumber() {
+        return cy.get('#contact-details-phone-number-0-field');
+    }
+
+    setAppointmentDateTime(date) {    
+        // Set the date
+        this.appointmentDay().clear().type(date.getDate());
+        this.appointmentMonth().clear().type(date.getMonth() + 1); // Month is 0-indexed
+        this.appointmentYear().clear().type(date.getFullYear());
+    
+        // Convert the time to 12-hour format
+        const appointmentHour = date.getHours();
+        const appointmentMinute = date.getMinutes();
+        const appointmentAmPm = appointmentHour >= 12 ? 'PM' : 'AM';
+        const appointmentHour12 = appointmentHour % 12 || 12;
+    
+        // Set the time
+        this.appointmentHour().clear().type(appointmentHour12);
+        this.appointmentMinute().clear().type(appointmentMinute);
+        this.appointmentAmPmSelector().select(appointmentAmPm);
+    }
+
+    appointmentDay() {
+        return cy.get('[name="day"]')
+    }
+
+    appointmentMonth() {
+        return cy.get('[name="month"]')
+    }
+
+    appointmentYear() {
+        return cy.get('[name="year"]')
+    }
+
+    appointmentHour() {
+        return cy.get('[name="hour"]')
+    }
+
+    appointmentMinute() {
+        return cy.get('[name="minute"]')
+    }
+
+    appointmentAmPmSelector() {
+        return cy.get('[name="amPm"]')
+    }
+
+    documentsSignedButton() {
+        return cy.get('.lbh-button').contains('Documents signed');
+    }
+
+    hasNotifiedResident() {
+        return cy.get('[name="hasNotifiedResident"]');
     }
 }
 export default ChangeOfNamePageObjects;

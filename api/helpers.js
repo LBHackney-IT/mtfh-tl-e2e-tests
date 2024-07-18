@@ -32,3 +32,11 @@ export const queueDeletePersonWithId = (id) => {
 export const queueDeleteTenureWithId = (id) => {
     saveFixtureData("Tenures", { id: id })
 }
+
+export const queueDeleteProcessWithId = (id) => {
+    saveFixtureData("Processes", { id: id })
+}
+
+export const queueDeleteContactDetailsWithId = (id, targetId) => {
+    saveFixtureData("ContactDetails", { id: id, targetId: targetId })
+}
