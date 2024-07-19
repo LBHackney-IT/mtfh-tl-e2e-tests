@@ -5,6 +5,7 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
         cy.visit(Cypress.config("baseUrl"))
         cy.injectAxe();
     }
+
     visitPersonPage(personId) {
         cy.visit(`${Cypress.config("baseUrl")}/person/${personId}`);
     }
@@ -12,7 +13,25 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
     visitStartPage(personId) {
         cy.visit(`${Cypress.config("baseUrl")}/processes/changeofname/start/person/${personId}`);
     }
+
+    visitProcessPage(processId) {
+        cy.visit(`${Cypress.config("baseUrl")}/processes/changeofname/${processId}`);
+        cy.injectAxe();
+    }
+
+    visitActivityHistoryPage(processId) {
+        cy.visit(`${Cypress.config("baseUrl")}/activities/process/changeofname/${processId}`);
+        cy.injectAxe();
+    }
     
+    cardHeader() {
+        return cy.get('h4');
+    }
+
+    cardHeadersContains(text) {
+        return this.cardHeader().filter(`:contains("${text}")`);
+    }
+
     textSearch() {
         return cy.findAllByText('Search');
     };
@@ -66,8 +85,8 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
     buttonStartProcess() {
         return cy.get('.lbh-button').contains('Start process');
     };
-    buttonNext() {
-        return cy.contains('Next');
+    nextButton() {
+        return cy.get('.lbh-button').contains('Next');
     };
     personTitle() {
         return cy.get('#person-form-title-field');
@@ -96,6 +115,15 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
     requestDocsElectronically() {
         return cy.get('#requestType-automatic');
     };
+
+    makeAnAppointToCheckSuppDocs() {
+        return cy.get('#requestType-manual');
+    };
+
+    changeAppointmentLink() {
+        return cy.get('.lbh-link').contains('Change');
+    }
+    
     promptAddContactDetails() {
         return cy.contains("add the contact details");
     }
@@ -111,9 +139,27 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
     checkboxConfirmTenureInvest(){
         return cy.get("#tenure-investigation-completed-field");
     };
+
     optionAHMReview() {
         return cy.get('#ho-review');
     };
+
+    optionAHMReviewAppointment() {
+        return cy.get('#ho-appointment');
+    };
+
+    rescheduleAppointmentLink() {
+        return cy.get('.lbh-link').contains('Reschedule');
+    }
+
+    missedAppointmentLink() {
+        return cy.get('.lbh-link').contains('Office appointment missed - reschedule');
+    }
+
+    missedAppointmentClose() {
+        return cy.get('.lbh-link').contains('Office appointment missed - close case');
+    }
+
     ahmDecisionApprove(){
         return cy.get('#ho-review-approve');
     };
@@ -198,6 +244,11 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
 
     documentsSignedButton() {
         return cy.get('.lbh-button').contains('Documents signed');
+    }
+
+    activityHistoryButton() {
+        return cy.get('.lbh-button').contains('Case activity history');
+    
     }
 
     hasNotifiedResident() {

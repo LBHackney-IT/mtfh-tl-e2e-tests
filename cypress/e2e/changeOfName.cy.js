@@ -1,19 +1,26 @@
 import ChangeOfNamePageObjects from '../pageObjects/changeOfNamePage';
 import ModalPageObjects from '../pageObjects/sharedComponents/modal';
 import { queueDeleteProcessWithId, queueDeleteContactDetailsWithId } from "../../api/helpers";
-import { seedDatabase } from "../helpers/DbHelpers";
+import { seedDatabase, seedDatabaseWithChangeOfNameProcess } from "../helpers/DbHelpers";
 
 const page = new ChangeOfNamePageObjects();
 const modal = new ModalPageObjects();
-tags = ['@processes', '@authentication', '@common', '@root', 'personal-details'];
+tags = ['@processes', '@authentication', '@common', '@root', '@personal-details'];
 
 describe("Change of Name Process", { tags: tags }, () => {
-    const now = new Date();
+    let now = new Date();
+
+    const passTime = (minutes) => {
+        const ms = minutes * 60000;
+        now = new Date(now.getTime() + ms);
+        cy.tick(ms);
+    }
 
     beforeEach(() => {
+        cy.viewport(1080, 1920); // longer viewport so we can debug easier
         cy.login();
         seedDatabase();
-        cy.clock(now.getTime()); // Freeze time
+        cy.clock(new Date(now.getTime())); // Freeze time
 
         // cleanup
         cy.intercept('POST', '**/api/v2/process/changeofname', (req) => {
@@ -46,23 +53,24 @@ describe("Change of Name Process", { tags: tags }, () => {
         page.checkBoxTenantInfo().click();
         page.buttonStartProcess().should('be.enabled');
         page.buttonStartProcess().click();
+        page.buttonStartProcess().click(); // double click to avoid flakiness
         cy.wait("@createProcess");
 
         // Enter new name
         cy.contains("Enter tenant's new name").should('be.visible');
-        page.buttonNext().should('be.disabled');
+        page.nextButton().should('be.disabled');
         page.activeStep().should("be.visible");
         page.activeStep().should("contain.text", "Tenant's new name");
         page.personTitle().select('Mr');
         page.personFirstName().type('CoN First Name');
         page.personLastName().type('CoN Last Name');
-        page.buttonNext().should('be.enabled');
-        page.buttonNext().click();
+        page.nextButton().should('be.enabled');
+        page.nextButton().click();
 
         // Request documents electronically (alternate path - appointment)
         cy.contains("Supporting documents").should('be.visible');
         page.activeStep().should("contain.text", "Request Documents");
-        page.buttonNext().should('be.disabled');
+        page.nextButton().should('be.disabled');
         page.requestDocsElectronically().click();
         
         // Add contact details
@@ -80,16 +88,16 @@ describe("Change of Name Process", { tags: tags }, () => {
         page.modalReturn().click();
         
         page.checkBoxTenantDeclaration().click();
-        cy.contains('Next').click();
+        page.nextButton().click();
 
         // Review documents (alternate path - appointment)
         page.activeStep().should("contain.text", "Review Documents");
-        page.buttonNext().should('be.disabled');
+        page.nextButton().should('be.disabled');
         page.photoId().click();
         page.secondId().click();
         page.checkBoxValidExampleOfOne().click();
-        page.buttonNext().should('be.enabled');
-        page.buttonNext().click();
+        page.nextButton().should('be.enabled');
+        page.nextButton().click();
 
         // Tenure Investigation
         cy.contains("Supporting documents approved").should('be.visible');
@@ -98,11 +106,11 @@ describe("Change of Name Process", { tags: tags }, () => {
         cy.contains("Next Steps").should('be.visible');
         page.continueButton().click();
         page.activeStep().should("contain.text", "Review application");
-        page.buttonConfirm().should('be.disabled');
+        page.confirmButton().should('be.disabled');
         // Approve the application
         page.outcomeTenureApprove().click();
         page.checkboxConfirmTenureInvest().click();
-        page.buttonConfirm().click();
+        page.confirmButton().click();
         
         // Housing Officer review
         cy.contains("Next steps").should('be.visible');
@@ -134,15 +142,15 @@ describe("Change of Name Process", { tags: tags }, () => {
         // Sign documents
         cy.contains("Office appointment scheduled").should('be.visible');
         page.documentsSignedButton().should('be.disabled');
-        cy.tick(600*2000); // Move time forward by 20 minutes
+        passTime(20)
         page.documentsSignedButton().should('be.enabled');
         page.documentsSignedButton().click();
 
         // Confirm
-        page.buttonConfirm().should('be.disabled');
+        page.confirmButton().should('be.disabled');
         page.hasNotifiedResident().click();
-        page.buttonConfirm().should('be.enabled');
-        page.buttonConfirm().click();
+        page.confirmButton().should('be.enabled');
+        page.confirmButton().click();
 
         // Success
         cy.contains('Thank you for your confirmation').should('be.visible');
@@ -154,5 +162,68 @@ describe("Change of Name Process", { tags: tags }, () => {
         });
         cy.contains('CoN First Name').should('exist');
         cy.contains('CoN Last Name').should('exist');
+    });
+
+    it.only("Can schedule and reschedule documents appointments, then fail when not attended", () => {
+        // Seed database with process in NameSubmitted state
+        seedDatabaseWithChangeOfNameProcess();
+        cy.getProcessFixture().then(({ id: processId }) => {
+            page.visitProcessPage(processId);
+        });
+        
+        // Request documents through appointment (alternate path - electronically)
+        cy.contains("Supporting documents").should('be.visible');
+        page.activeStep().should("contain.text", "Request Documents");
+        page.nextButton().should('be.disabled');
+        page.makeAnAppointToCheckSuppDocs().click();
+        // Book initial appointment
+        page.setAppointmentDateTime(new Date(now.getTime() + 600*500)); // 5 minutes from now
+        page.checkBoxTenantDeclaration().click();
+        page.nextButton().click();
+        cy.contains("Office appointment scheduled").should('be.visible');
+        // Change appointment time (informal)
+        page.changeAppointmentLink().click();
+        page.setAppointmentDateTime(new Date(now.getTime() + 600*1000)); // 10 minutes from now
+        page.confirmButton().click();
+        page.cardHeadersContains("Office appointment missed").should('have.length', 0);
+
+        // Reschedule (formal - missed appointment)
+        passTime(11);
+        page.changeAppointmentLink().should('not.exist');
+        page.rescheduleAppointmentLink().should('exist');
+        page.missedAppointmentLink().click();
+        page.setAppointmentDateTime(new Date(now.getTime() + 600*500)); // 5 minutes from now
+        page.confirmButton().click();
+        page.cardHeadersContains("Office appointment missed").should('have.length', 1);
+
+        // // Reschedule (formal - missed appointment again)
+        passTime(10);
+        page.missedAppointmentClose().click();
+        modal.modalBody().should("contain", "Are you sure you want to close this process? You will have to begin the process from the start.");
+        modal.closeCaseBack().click();
+        page.missedAppointmentClose().click();
+        modal.closeCaseReason().type("Missed appointment twice (automated test)");
+        modal.closeCaseButton().click();
+
+        // Case closed
+        page.cardHeadersContains("Office appointment missed").should('have.length', 2);
+        page.cardHeadersContains("Change of name application will be closed").should('have.length', 1);
+        page.checkboxConfirmOutcomeLetter().click();
+        page.confirmButton().click();
+        cy.contains("This case is now closed").should('be.visible');
+        // Confirm activity history and person page
+        cy.getProcessFixture().then(({ id: processId }) => {
+            page.visitActivityHistoryPage(processId);
+        });
+        cy.contains("Change of Name closed:").should('be.visible');
+        cy.contains("Missed appointment twice (automated test)").should('be.visible');
+
+        cy.getPersonFixture().then((person) => {
+            page.visitPersonPage(person.id);
+            cy.contains(person.firstName).should('exist');
+            cy.contains(person.surname).should('exist');
+        });
+        cy.contains("Automation Test Edit First Name").should('not.exist');
+        cy.contains("Automation Test Edit Last Name").should('not.exist');
     });
 });

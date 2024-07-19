@@ -34,7 +34,7 @@ class TenureReviewDocsPageObjects {
         return cy.get('#condition');
     }
 
-    buttonConfirm(){
+    confirmButton(){
         return cy.get('.lbh-button').contains('Confirm');
     }
     buttonBookAppointment() {
@@ -46,7 +46,7 @@ class TenureReviewDocsPageObjects {
     alertCloseCase() {
         return cy.get('[data-testid="close-process-modal-submit"]');
     };
-        activityHistoryText() {
+    activityHistoryText() {
         return cy.contains('Sole to Joint closed');
     }
 

@@ -14,9 +14,18 @@ class ModalPageObjects {
     confirmationButton() {
         return cy.contains('Yes')
     };
-    modalReason(){
-        return cy.get('#mtfh-ho-review-reason-field');
-    };
+
+    closeCaseReason() {
+        return cy.get('#mtfh-close-case-form-reason-field');
+    }
+
+    closeCaseBack() {
+        return cy.get("[data-testid='close-process-modal-back']");
+    }
+
+    closeCaseButton() {
+        return cy.get(".lbh-button").contains("Close case");
+    }
 }
 
 export default ModalPageObjects
