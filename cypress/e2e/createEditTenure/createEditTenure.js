@@ -205,9 +205,9 @@ Given("I seeded the database with an asset with no attached tenure", () => {
 
         return new Cypress.Promise((resolve) => {
             Promise.all([
-                DynamoDb.createRecord("Assets", assetModel),
-                DynamoDb.createRecord("Persons", personModel1),
-                DynamoDb.createRecord("Persons", personModel2),
+                DynamoDb.createRecord("Assets", assetModel, { id: assetModel.id }),
+                DynamoDb.createRecord("Persons", personModel1, { id: personModel1.id }),
+                DynamoDb.createRecord("Persons", personModel2, { id: personModel2.id }),
             ]).then(() => {
                 resolve()
             })

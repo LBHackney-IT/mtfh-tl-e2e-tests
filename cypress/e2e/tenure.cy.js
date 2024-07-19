@@ -68,7 +68,7 @@ describe('tenure page', {'tags': tags}, () => {
         const tenureModel = generateTenure({}, assetModel, [personModel1, { isResponsible: false, personTenureType: "Tenant", ...personModel2 }], undefined, "2014-12-31");
         tenureModel.householdMembers = [];
 
-        addTestRecordToDatabase("TenureInformation", tenureModel)
+        addTestRecordToDatabase("TenureInformation", tenureModel, { id: tenureModel.id });
         cy.getTenureFixture().then(({id: tenureId})=> {
             
             tenurePage.visit(tenureId);

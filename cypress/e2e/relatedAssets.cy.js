@@ -26,7 +26,7 @@ describe('Related assets', {'tags': tags}, ()=>{
     beforeEach(() => {
         cy.login();
         const testAsset = generateAsset();
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
     });
 
     it('should not display link to related asset page', () => {
@@ -65,7 +65,7 @@ describe('Related assets', {'tags': tags}, ()=>{
         testAsset.assetLocation.parentAssets = []
         testAsset.parentAssetIds = "null"
 
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
         cy.generateCustomTemporaryFixture(generateChildrenAssetsFixture(0));
 

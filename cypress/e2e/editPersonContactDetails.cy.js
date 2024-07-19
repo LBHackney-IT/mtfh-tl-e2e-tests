@@ -13,7 +13,7 @@ describe('Edit person Contact details', {tags: tags}, ()=> {
     beforeEach(()=> {
         cy.login()
         const testPerson = person();
-        addTestRecordToDatabase("Persons", testPerson);
+        addTestRecordToDatabase("Persons", testPerson, {id: testPerson.id});
     })
 
     it('should show error message with invalid postcode', ()=> {
