@@ -164,7 +164,7 @@ describe("Change of Name Process", { tags: tags }, () => {
         cy.contains('CoN Last Name').should('exist');
     });
 
-    it.only("Can schedule and reschedule documents appointments, then fail when not attended", () => {
+    it("Can schedule and reschedule documents appointments, then fail when not attended", () => {
         // Seed database with process in NameSubmitted state
         seedDatabaseWithChangeOfNameProcess();
         cy.getProcessFixture().then(({ id: processId }) => {
