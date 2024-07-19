@@ -6,7 +6,6 @@ import PropertyPageObjects from "../pageObjects/propertyPage";
 import TenurePageObjects from "../pageObjects/tenurePage";
 import { seedDatabase, seedDatabaseWithTenure } from "../helpers/DbHelpers";
 
-
 const processesPage = new ProcessesPageObjects();
 const personPage = new PersonPageObjects();
 const propertyPage = new PropertyPageObjects();
@@ -160,7 +159,4 @@ describe('Processes menu', {tags: tags}, ()=> {
             cy.contains("a", "Return to home page").should("have.attr", "href");
         })
     })
-
-
-
 })
