@@ -29,6 +29,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             processesPage.processesMenuList().should('be.visible')
             cy.contains('Back').click()
 
+            //go to property page
             cy.get(":nth-child(1) > .govuk-link").click({force: true});
             cy.url().should('include', '/property')            
             propertyPage.newProcess().click()
@@ -36,12 +37,12 @@ describe('Processes menu', {tags: tags}, ()=> {
             processesPage.processesMenuList().should('be.visible')
             cy.contains('Back').click()
 
+            //go to tenure page
             cy.contains('Tenure').click()
             cy.url().should('include', '/tenure')            
             tenurePage.newProcess().click()
             processesPage.pageTitle()
             processesPage.processesMenuList().should('be.visible')
-
         });
     })
 
@@ -115,7 +116,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             tenureReviewDocsPage.buttonConfirm().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
-            cy.contains("a", "Return to home page").should("have.attr", "href");
+            cy.url().should("include", "manage-my-home")
         })
     })
 
@@ -156,7 +157,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             tenureReviewDocsPage.buttonConfirm().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
-            cy.contains("a", "Return to home page").should("have.attr", "href");
+            cy.url().should("include", "manage-my-home")
         })
     })
 })
