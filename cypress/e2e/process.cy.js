@@ -116,7 +116,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             tenureReviewDocsPage.buttonConfirm().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
-            cy.url().should("include", "manage-my-home")
+            cy.contains("Return to home page").should('attr', 'href').and('contain','/')
         })
     })
 
@@ -157,7 +157,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             tenureReviewDocsPage.buttonConfirm().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
-            cy.url().should("include", "manage-my-home")
+            cy.contains("Return to home page").should('attr', 'href').and('contain','/')
         })
     })
 })
