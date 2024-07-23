@@ -53,7 +53,7 @@ describe("Change of Name Process", { tags: tags }, () => {
         page.checkBoxTenantInfo().click();
         page.buttonStartProcess().should('be.enabled');
         page.buttonStartProcess().click({ force: true });
-
+        cy.wait(1000)
 
         // Enter new name
         cy.contains("Enter tenant's new name").should('be.visible');
