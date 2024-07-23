@@ -51,9 +51,8 @@ describe("Change of Name Process", { tags: tags }, () => {
         cy.contains('Change of Name').should('be.visible');
         page.buttonStartProcess().should('be.disabled');
         page.checkBoxTenantInfo().click();
-        page.buttonStartProcess().should('be.enabled');
-        page.buttonStartProcess().click({ force: true });
-        cy.wait(1000)
+        page.buttonStartProcess().should('be.enabled')
+        cy.contains('Start process').click({force: true})
 
         // Enter new name
         cy.contains("Enter tenant's new name").should('be.visible');
