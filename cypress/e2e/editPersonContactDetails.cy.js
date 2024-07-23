@@ -64,7 +64,7 @@ describe('Edit person Contact details', {tags: tags}, ()=> {
     })
 
     contactTypes.forEach((contactType)=> {
-        it('should not allow more than 5 phone number', ()=> {
+        it(`should not allow more than 5 ${contactType}`, ()=> {
             cy.intercept("GET", `*/api/v2/contactDetails?targetId=${person.id}`, {
                 fixture: "contact-details.json",
                 statusCode: 200,
