@@ -1,11 +1,9 @@
 import { seedDatabaseWithTenure, addTestRecordToDatabase } from "../helpers/DbHelpers";
 import EditPersonFormObjects from "../pageObjects/editPersonForm";
-import PersonPageObjects from "../pageObjects/personPage";
 import { generateEqualityInformation } from '../../api/models/requests/equalityDetailsModel'
 
 
 const editPersonPage = new EditPersonFormObjects();
-const personPage = new PersonPageObjects();
 const tags = ['@activity-history', '@authentication', '@common', '@root'];
 
 describe('Edit a person', { tags: tags }, () => {
