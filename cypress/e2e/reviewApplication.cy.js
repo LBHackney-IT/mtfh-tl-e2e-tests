@@ -1,4 +1,4 @@
-import ProcessesPageObjects from "../pageObjects/processesPage";
+import ProcessesPageObjects from "../pageObjects/ProcessesPage";
 import { seedDatabase } from "../helpers/DbHelpers";
 import PersonFormObjects from "../pageObjects/personFormPage";
 import ReviewApplicationPageObjects from "../pageObjects/reviewApplicationPage";

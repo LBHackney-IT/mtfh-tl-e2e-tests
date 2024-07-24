@@ -1,4 +1,4 @@
-import ProcessesPageObjects from "../pageObjects/processesPage";
+import ProcessesPageObjects from "../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../pageObjects/tenureReviewDocumentsPage";
 import PersonPageObjects from "../pageObjects/personPage";
