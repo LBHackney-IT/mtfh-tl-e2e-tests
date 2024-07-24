@@ -55,7 +55,7 @@ class ReviewApplicationPageObjects {
         return cy.get('[data-testid=confirm-recommendation-modal-submit]');
     };
     interviewApplicantReason() {
-        return cy.get('#mtfh-ho-review-reason-field');
+        return cy.get('[name="reason"]');
     }
 }
 export default ReviewApplicationPageObjects;

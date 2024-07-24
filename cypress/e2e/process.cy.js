@@ -1,4 +1,4 @@
-import ProcessesPageObjects from "../pageObjects/ProcessesPage";
+import ProcessesPageObjects from "../pageObjects/processesPage";
 import TenureRequestDocsPageObjects from "../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../pageObjects/tenureReviewDocumentsPage";
 import PersonPageObjects from "../pageObjects/personPage";
@@ -116,7 +116,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             tenureReviewDocsPage.buttonConfirm().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
-            cy.contains("Return to home page").should('attr', 'href').and('contain','/')
+            cy.contains("Return to home page").should('attr', 'href').and('eq','/')
         })
     })
 
@@ -157,7 +157,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             tenureReviewDocsPage.buttonConfirm().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
-            cy.contains("Return to home page").should('attr', 'href').and('contain','/')
+            cy.contains("Return to home page").should('attr', 'href').and('eq','/')
         })
     })
 })
