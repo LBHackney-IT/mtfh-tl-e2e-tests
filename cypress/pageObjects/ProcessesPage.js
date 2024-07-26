@@ -128,6 +128,13 @@ class ProcessesPageObjects{
     selectNoForRentArrears() {
         return cy.get("#person-form-rent-arrears-no");
     }
+
+    buttonReturnToApplication() {
+        return cy.get('[data-testid=close-update-contact-details-modal]');
+    };
+    emailAddress() {
+        return cy.get('#contact-details-email-address-field');
+    }
 }
 
 export default ProcessesPageObjects
