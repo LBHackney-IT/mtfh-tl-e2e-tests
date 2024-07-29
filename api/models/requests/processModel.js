@@ -1,6 +1,8 @@
+import faker from 'faker';
+
 export const changeOfName_Start = (targetId) => {
     return {
-        "id": "c7f30ed4-0488-4620-93a4-672dcb4fee8e",
+        "id": faker.datatype.uuid(),
         "targetId": targetId,
         "targetType": "person",
         "relatedEntities": [],
@@ -29,7 +31,7 @@ export const changeOfName_Start = (targetId) => {
 
 export const changeOfName_NameSubmitted = (targetId) =>  {
     return {
-        "id": "c7f30ed4-0488-4620-93a4-672dcb4fee8e",
+        "id": faker.datatype.uuid(),
         "targetId": targetId,
         "targetType": "person",
         "relatedEntities": [],
