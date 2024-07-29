@@ -10,8 +10,12 @@ tags = ['@processes', '@authentication', '@common', '@root', '@personal-details'
 describe("Change of Name Process", { tags: tags }, () => {
     let now = new Date();
 
+    const minutesToMs = (minutes) => {
+        return minutes * 60000;
+    };
+
     const passTime = (minutes) => {
-        const ms = minutes * 60000;
+        const ms = minutesToMs(minutes);
         now = new Date(now.getTime() + ms);
         cy.tick(ms);
     }
@@ -140,7 +144,7 @@ describe("Change of Name Process", { tags: tags }, () => {
         page.continueButton().click();
         page.errorMessage().should('contain','The date and time must be in the future');
         // Set appointment to 10 minutes from now
-        const appointmentTime = new Date(now.getTime() + 600*1000);
+        const appointmentTime = new Date(now.getTime() + minutesToMs(10));
         page.setAppointmentDateTime(appointmentTime);
         page.continueButton().click();
         
@@ -153,7 +157,7 @@ describe("Change of Name Process", { tags: tags }, () => {
 
         // Confirm
         page.confirmButton().should('be.disabled');
-        page.hasNotifiedResident().click();
+        page.hasNotifiedResidentCheckbox().click();
         page.confirmButton().should('be.enabled');
         page.confirmButton().click();
 
@@ -182,13 +186,13 @@ describe("Change of Name Process", { tags: tags }, () => {
         page.nextButton().should('be.disabled');
         page.makeAnAppointToCheckSuppDocs().click();
         // Book initial appointment
-        page.setAppointmentDateTime(new Date(now.getTime() + 600*500)); // 5 minutes from now
+        page.setAppointmentDateTime(new Date(now.getTime() + minutesToMs(5)));
         page.checkBoxTenantDeclaration().click();
         page.nextButton().click();
         cy.contains("Office appointment scheduled").should('be.visible');
         // Change appointment time (informal)
         page.changeAppointmentLink().click();
-        page.setAppointmentDateTime(new Date(now.getTime() + 600*1000)); // 10 minutes from now
+        page.setAppointmentDateTime(new Date(now.getTime() + minutesToMs(10)));
         page.confirmButton().click();
         page.cardHeadersContains("Office appointment missed").should('have.length', 0);
 
@@ -197,7 +201,7 @@ describe("Change of Name Process", { tags: tags }, () => {
         page.changeAppointmentLink().should('not.exist');
         page.rescheduleAppointmentLink().should('exist');
         page.missedAppointmentLink().click();
-        page.setAppointmentDateTime(new Date(now.getTime() + 600*500)); // 5 minutes from now
+        page.setAppointmentDateTime(new Date(now.getTime() + minutesToMs(5)));
         page.confirmButton().click();
         page.cardHeadersContains("Office appointment missed").should('have.length', 1);
 

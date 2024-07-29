@@ -251,7 +251,7 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
     
     }
 
-    hasNotifiedResident() {
+    hasNotifiedResidentCheckbox() {
         return cy.get('[name="hasNotifiedResident"]');
     }
 }
