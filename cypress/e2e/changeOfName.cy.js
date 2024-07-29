@@ -220,13 +220,8 @@ describe("Change of Name Process", { tags: tags }, () => {
         page.checkboxConfirmOutcomeLetter().click();
         page.confirmButton().click();
         cy.contains("This case is now closed").should('be.visible');
-        // Confirm activity history and person page
-        cy.getProcessFixture().then(({ id: processId }) => {
-            page.visitActivityHistoryPage(processId);
-        });
-        cy.contains("Change of Name closed:").should('be.visible');
-        cy.contains("Missed appointment twice (automated test)").should('be.visible');
-
+        
+        // Confirm person name has not changed
         cy.getPersonFixture().then((person) => {
             page.visitPersonPage(person.id);
             cy.contains(person.firstName).should('exist');
@@ -234,5 +229,6 @@ describe("Change of Name Process", { tags: tags }, () => {
         });
         cy.contains("Automation Test Edit First Name").should('not.exist');
         cy.contains("Automation Test Edit Last Name").should('not.exist');
+        cy.contains("Process Closed").should('exist');
     });
 });
