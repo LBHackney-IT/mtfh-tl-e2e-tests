@@ -45,7 +45,3 @@ const clearDatabase = () => {
 before(() => {
     clearDatabase();
 });
-
-after(() => {
-    clearDatabase();
-});

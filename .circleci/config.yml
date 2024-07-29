@@ -73,6 +73,8 @@ commands:
           trigger-context:
             type: string
         steps:
+            - restore_cache:
+                key: cypress-cache-records-to-delete-<<parameters.stage>>
             - run:
                 name: Execute e2e tests
                 command: |
@@ -114,7 +116,10 @@ commands:
                           npm install ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_grepTags" ;
                           ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
-                       
+            - save_cache:
+                key: cypress-cache-records-to-delete-<<parameters.stage>>
+                paths:
+                  - /root/project/cypress/fixtures/recordsToDelete.json
             - store_artifacts:
                 path: /root/project/cypress/videos/
                 destination: artifact-file
