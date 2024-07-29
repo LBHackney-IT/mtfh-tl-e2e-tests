@@ -1,4 +1,33 @@
-export const changeOfName = (targetId) =>  {
+export const changeOfName_Start = (targetId) => {
+    return {
+        "id": "c7f30ed4-0488-4620-93a4-672dcb4fee8e",
+        "targetId": targetId,
+        "targetType": "person",
+        "relatedEntities": [],
+        "processName": "changeofname",
+        "patchAssignment": null,
+        "currentState": {
+            "state": "EnterNewName",
+            "permittedTriggers": [
+                "EnterNewName"
+            ],
+            "assignment": {
+                "type": null,
+                "value": null,
+                "patch": "tenants"
+            },
+            "processData": {
+                "formData": null,
+                "documents": null
+            },
+            "createdAt": "2022-09-15T13:25:19.4886596Z",
+            "updatedAt": "2022-09-15T13:25:19.4886597Z"
+        },
+        "previousStates": []
+    }
+}
+
+export const changeOfName_NameSubmitted = (targetId) =>  {
     return {
         "id": "c7f30ed4-0488-4620-93a4-672dcb4fee8e",
         "targetId": targetId,

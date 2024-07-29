@@ -7,7 +7,7 @@ import { patch } from "../../api/models/requests/patchModel";
 import { cautionaryAlert } from "../../api/models/requests/cautionaryAlertModel";
 import { createCautionaryAlert } from "../../api/cautionary-alert";
 import { tenureToPersonTenure, tenureToAssetTenure } from "./helpers";
-import { changeOfName } from "../../api/models/requests/processModel";
+import { changeOfName_Start, changeOfName_NameSubmitted } from "../../api/models/requests/processModel";
 
 export const addTestRecordToDatabase = (dbTableName, testDbRecord, testRecordKey) => {
     cy.log("Seeding database").then(async () => {
@@ -147,11 +147,17 @@ export const seedDatabaseWithCautionaryAlert = () => {
     });
 };
 
-export const seedDatabaseWithChangeOfNameProcess = () => {
+export const seedDatabaseWithChangeOfNameProcess = (state) => {
     seedDatabase();
     cy.log("Seeding database with change of name process").then(() => {
         cy.getPersonFixture().then(({ id: personId }) => {
-            const model = changeOfName(personId);
+            let model;
+            if(state === "submitted") {
+                model = changeOfName_NameSubmitted(personId);
+            } else if (state === "started") {
+                model = changeOfName_Start(personId);
+            }
+
             addTestRecordToDatabase("Processes", model, { id: model.id });
         });
     });
