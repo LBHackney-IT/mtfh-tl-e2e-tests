@@ -13,7 +13,7 @@ const addPersonPageObj = new PersonFormObjects();
 
 const tags = ['@common', '@authetication', '@processes', '@worktray', '@root', '@personal-details'];
 
-function manualChecksPass({ id: tenureId, householdMembers }) {
+function manualDataChecksPass({ id: tenureId, householdMembers }) {
     processPage.visit(tenureId);
     processPage.agreementCheckBox().click();
     processPage.startProcessButton().click();
@@ -41,12 +41,12 @@ function manualChecksPass({ id: tenureId, householdMembers }) {
     tenureReqDocsPage.cautionaryContactNo().click();
     tenureReqDocsPage.successionNo().click();
 };
-describe ('Review Application - processes', {'tags': tags}, ()=> {
+describe ('After checks have completed, feedback is submitted and displayed - processes', {'tags': tags}, ()=> {
     beforeEach(()=> {
         cy.login();
         seedDatabase();
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             cy.contains('Next').click();
             tenureReqDocsPage.requestDocsElectronically().click();
             tenureReqDocsPage.checkboxTenantDeclaration().click();
@@ -125,7 +125,6 @@ describe ('Review Application - processes', {'tags': tags}, ()=> {
         reviewAppPage.appointmentAMPM().select('AM');
         cy.contains('Continue').click();
         reviewAppPage.messageHeadingOfficeAppointment().should('contain.text', 'Office appointment scheduled');
-
     })
 
     it('Tenure investigation recommendation - decline, HO Review - approve application', ()=> {
@@ -160,7 +159,6 @@ describe ('Review Application - processes', {'tags': tags}, ()=> {
         reviewAppPage.appointmentAMPM().select('AM');
         cy.contains('Continue').click();
         reviewAppPage.messageHeadingOfficeAppointment().should('contain.text', 'Office appointment scheduled');
-
     })
 
     it('Tenure investigation recommendation - approve, HO Review - decline application', ()=> {
@@ -189,10 +187,5 @@ describe ('Review Application - processes', {'tags': tags}, ()=> {
         cy.contains('Sole to joint application will be closed');
         tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
         cy.contains('Confirm').click();
-
     })
-
-
-
-
 })

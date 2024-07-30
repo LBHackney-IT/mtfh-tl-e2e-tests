@@ -18,7 +18,7 @@ const tags = ['@process', '@common', '@root', '@authentication', '@personal-deta
 const emailAdd = "AutomationTest@test.com";
 const phoneNumber = "07788123456";
 
-function manualChecksPass({ id: tenureId, householdMembers }) {
+function manualDataChecksPass({ id: tenureId, householdMembers }) {
     processPage.visit(tenureId);
     processPage.agreementCheckBox().click();
     processPage.startProcessButton().click();
@@ -55,7 +55,7 @@ describe('Request and review documents', {'tags': tags}, ()=> {
 
     it('should view request for documents page', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             cy.get('.govuk-button').contains('Next').click();
             cy.contains("Eligibility checks passed");
             cy.contains("Supporting documents");
@@ -76,9 +76,8 @@ describe('Request and review documents', {'tags': tags}, ()=> {
 
     it('should go to person page on request documents', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             tenureReqDocsPage.personLink().click();
-            tenureReqDocsPage.personLink().invoke('removeAttr', 'target').click();
             cy.url().should('include', '/person/')
             cy.findAllByText('Date of birth:');
         });
@@ -86,7 +85,7 @@ describe('Request and review documents', {'tags': tags}, ()=> {
 
     it('should request documents via office appointment', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             cy.contains('Next').click();
             tenureReqDocsPage.makeAnAppointToCheckSuppDocs().click();
             tenureReqDocsPage.day().clear().type('01');
@@ -141,12 +140,11 @@ describe('Request and review documents', {'tags': tags}, ()=> {
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
             cy.contains("Return to home page").should('attr', 'href').and('eq','/')
         });
-
     })
 
     it('should add or update contact detail in request document page', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             cy.contains('Next').click();
             cy.contains("Eligibility checks passed");
             cy.contains("Supporting documents");
@@ -182,7 +180,7 @@ describe('Request and review documents', {'tags': tags}, ()=> {
 
     it('should error in update contact details', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             cy.contains('Next').click();
             cy.contains("Eligibility checks passed");
             cy.contains("Supporting documents");
@@ -202,7 +200,7 @@ describe('Request and review documents', {'tags': tags}, ()=> {
 
     it('review documents screen should work as expected', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             cy.contains('Next').click();
             tenureReqDocsPage.requestDocsElectronically().click();
             tenureReqDocsPage.checkboxTenantDeclaration().click();
@@ -240,12 +238,11 @@ describe('Request and review documents', {'tags': tags}, ()=> {
             cy.contains('Office appointment scheduled').should('exist');
             tenureReviewDocsPage.linkChange().should('exist');
         })
-
     })
 
     it('should close case at review documents stage', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo)
+            manualDataChecksPass(tenureInfo)
             cy.contains('Next').click();
             tenureReqDocsPage.requestDocsElectronically().click();
             tenureReqDocsPage.checkboxTenantDeclaration().click();
@@ -267,7 +264,7 @@ describe('Request and review documents', {'tags': tags}, ()=> {
 
     it('should submit case for tenure investigation review', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
-            manualChecksPass(tenureInfo);
+            manualDataChecksPass(tenureInfo);
             cy.contains('Next').click();
             tenureReqDocsPage.requestDocsElectronically().click();
             tenureReqDocsPage.checkboxTenantDeclaration().click();
@@ -290,8 +287,6 @@ describe('Request and review documents', {'tags': tags}, ()=> {
             tenureReqDocsPage.statusActiveCheck().should('contain.text', 'Finish');
             cy.contains('Continue').click();
             cy.contains("I confirm that the tenure investigation has been completed").should('exist');
-
         });
     })
-
 })
