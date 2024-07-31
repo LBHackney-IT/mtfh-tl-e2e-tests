@@ -23,3 +23,4 @@ cypress/fixtures/TenureInformation.json
 cypress/fixtures/PatchesAndAreas.json
 cypress/fixtures/recordsToDelete.json
 cypress/fixtures/EqualityInformation.json
+cypress/fixtures/Processes.json

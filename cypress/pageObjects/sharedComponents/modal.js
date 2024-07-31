@@ -14,14 +14,17 @@ class ModalPageObjects {
     confirmationButton() {
         return cy.contains('Yes')
     };
-    modalReason(){
-        return cy.get('#mtfh-ho-review-reason-field');
-    };
-    modalReasonChangeOfName(){
+
+    closeCaseReason() {
         return cy.get('#mtfh-close-case-form-reason-field');
-    };
-    modalCloseCaseChangeOfName(){
-        return cy.get('[data-testid=close-process-modal-submit]');
+    }
+
+    closeCaseBack() {
+        return cy.get("[data-testid='close-process-modal-back']");
+    }
+
+    closeCaseButton() {
+        return cy.get(".lbh-button").contains("Close case");
     }
 }
 

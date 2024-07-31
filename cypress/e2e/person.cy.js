@@ -179,11 +179,11 @@ describe('Person page', {'tags': tags}, ()=> {
             type: tenureModel.tenureType.description,
         };
 
-        addTestRecordToDatabase("Assets", assetModel);
-        addTestRecordToDatabase("PatchesAndAreas", patchModel);
-        addTestRecordToDatabase("TenureInformation", tenureModel);
-        addTestRecordToDatabase("Persons", personModel1);
-        addTestRecordToDatabase("Persons", personModel2);
+        addTestRecordToDatabase("Assets", assetModel, { id: assetModel.id });
+        addTestRecordToDatabase("PatchesAndAreas", patchModel, { id: patchModel.id });
+        addTestRecordToDatabase("TenureInformation", tenureModel, { id: tenureModel.id });
+        addTestRecordToDatabase("Persons", personModel1, { id: personModel1.id });
+        addTestRecordToDatabase("Persons", personModel2, { id: personModel2.id });
 
         cy.getPersonFixture().then((person) => {
             personPage.visit(person.id);

@@ -113,7 +113,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             cy.contains("Next").click();
             processesPage.textAutomaticChecksFailed().should('be.visible');
             tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
-            tenureReviewDocsPage.buttonConfirm().click();
+            tenureReviewDocsPage.confirmButton().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
             cy.contains("Return to home page").should('attr', 'href').and('eq','/')
@@ -154,7 +154,7 @@ describe('Processes menu', {tags: tags}, ()=> {
             processesPage.textAutomaticEligibilityChecksPassed().should('be.visible');
             processesPage.textAutomaticChecksFailed().should('be.visible');
             tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
-            tenureReviewDocsPage.buttonConfirm().click();
+            tenureReviewDocsPage.confirmButton().click();
             cy.contains('Thank you for your confirmation');
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
             cy.contains("Return to home page").should('attr', 'href').and('eq','/')

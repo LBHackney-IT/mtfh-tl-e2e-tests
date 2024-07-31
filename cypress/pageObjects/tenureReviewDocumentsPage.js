@@ -4,10 +4,10 @@ class TenureReviewDocsPageObjects {
         return cy.get('.lbh-heading-h2');
     };
     submitButton () {
-        return cy.get('.mtfh-layout__main > :nth-child(7)');
+        return cy.get('.lbh-button').contains('Submit case');
     };
     continueButton () {
-        return cy.get('.govuk-button lbh-button').should('contain', 'Continue');
+        return cy.get('.lbh-button').contains('Continue');
     };
     linkChange() {
         return cy.contains('Change');
@@ -34,8 +34,8 @@ class TenureReviewDocsPageObjects {
         return cy.get('#condition');
     }
 
-    buttonConfirm(){
-        return cy.contains('Confirm');
+    confirmButton(){
+        return cy.get('.lbh-button').contains('Confirm');
     }
     buttonBookAppointment() {
         return cy.contains('Book Appointment');
@@ -46,7 +46,7 @@ class TenureReviewDocsPageObjects {
     alertCloseCase() {
         return cy.get('[data-testid="close-process-modal-submit"]');
     };
-        activityHistoryText() {
+    activityHistoryText() {
         return cy.contains('Sole to Joint closed');
     }
 

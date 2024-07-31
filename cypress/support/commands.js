@@ -46,6 +46,10 @@ Cypress.Commands.add('getAssetFixture', () => {
     cy.readFile('cypress/fixtures/Assets.json')
 })
 
+Cypress.Commands.add("getProcessFixture", () => {
+    cy.readFile("cypress/fixtures/Processes.json")
+})
+
 Cypress.Commands.add("getActivityHistoryPropertyFixture", () => {
     cy.readFile("cypress/fixtures/activity-history-property.json")
 })

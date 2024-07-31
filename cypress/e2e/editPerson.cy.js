@@ -1,12 +1,10 @@
 import { seedDatabaseWithTenure, addTestRecordToDatabase } from "../helpers/DbHelpers";
 import EditPersonFormObjects from "../pageObjects/editPersonForm";
-import PersonPageObjects from "../pageObjects/personPage";
 import { generateEqualityInformation } from '../../api/models/requests/equalityDetailsModel'
 
 
 const editPersonPage = new EditPersonFormObjects();
-const personPage = new PersonPageObjects();
-const tags = ['@activity-history', '@authentication', '@common', '@root'];
+const tags = ['@activity-history', '@person', '@authentication', '@common', '@root'];
 
 describe('Edit a person', { tags: tags }, () => {
     beforeEach(() => {
@@ -52,7 +50,8 @@ describe('Edit a person', { tags: tags }, () => {
     it('Can edit equality information', () => {
         // Go to edit person page
         cy.getPersonFixture().then((person) => {
-            addTestRecordToDatabase("EqualityInformation", generateEqualityInformation(person.id))
+            const equalityInformation = generateEqualityInformation(person.id);
+            addTestRecordToDatabase("EqualityInformation", equalityInformation, { id: equalityInformation.id, targetId: person.id });
             editPersonPage.editPersonEqualityInformation(person.id);
         });
         

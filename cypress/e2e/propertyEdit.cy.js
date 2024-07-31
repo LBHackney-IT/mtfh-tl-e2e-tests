@@ -16,7 +16,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
     it('should edit address enabled if asset has UPRN', ()=> {
         const testAsset = generateAsset(undefined);
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
         cy.getAssetFixture().then(asset => {
             cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
             cy.intercept('GET', `*/api/v2/notes?pageSize=5&targetId=${asset.id}`, { fixture: "asset-notes.json", statusCode: 200 }).as('getNotes')
@@ -33,7 +33,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
     it('should enable edit address button if asset has no valid UPRN', ()=> {
         const testAsset = generateAsset(undefined, "");
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
         cy.getAssetFixture().then(asset => {
             cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
@@ -52,7 +52,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
     it('should present page element - address with UPRN', ()=> {
         const testAsset = generateAsset(undefined);
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
         cy.getAssetFixture().then(asset => {
             cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
@@ -75,7 +75,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
     it('should present page element - address without UPRN', ()=> {
         const testAsset = generateAsset(undefined, "");
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
         cy.getAssetFixture().then(asset => {
             cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
@@ -95,7 +95,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
     it('edit address successfully', ()=> {
         const testAsset = generateAsset(undefined, "");
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
 
         cy.getAssetFixture().then(asset => {
@@ -125,7 +125,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
     it('edit address fails', ()=> {
         const testAsset = generateAsset(undefined);
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
         cy.getAssetFixture().then(asset => {
             cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')
@@ -150,7 +150,7 @@ describe('Edit Property', {'tags': tags}, ()=> {
 
     it('LLPG address fails to be retrieved', ()=> {
         const testAsset = generateAsset(undefined);
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
         cy.getAssetFixture().then(asset => {
             cy.intercept('GET', `*/api/v1/assets/${asset.id}`).as('getAsset')

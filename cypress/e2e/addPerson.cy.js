@@ -10,6 +10,7 @@ describe('Add a new person to a tenure', { tags: tags }, () => {
         cy.login();
         seedDatabaseWithTenure(true);
 
+        // cleanup
         cy.intercept('POST', '**/api/v2/persons', (req) => {
             req.on('after:response', (res) => {
                 if (res.statusCode === 201) {
@@ -18,7 +19,6 @@ describe('Add a new person to a tenure', { tags: tags }, () => {
                 }
             });
         }).as('addPerson');
-        // cleanup
     });
 
     // TODO: Add options to select tenure holder or household member

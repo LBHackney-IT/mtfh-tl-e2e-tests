@@ -66,7 +66,7 @@ describe('View property page', {'tags': tags}, ()=> {
 
     it('should have new tenure button if no tenure information is given', ()=> {
         const testAsset = generateAsset();
-        addTestRecordToDatabase("Assets", testAsset);
+        addTestRecordToDatabase("Assets", testAsset, { id: testAsset.id });
 
         cy.getAssetFixture().then((asset) => {
             propertyPage.visit(asset.id);
@@ -90,7 +90,7 @@ describe('View property page', {'tags': tags}, ()=> {
         assetCharacteristics,
         });
 
-        addTestRecordToDatabase("Assets", assetModel);
+        addTestRecordToDatabase("Assets", assetModel, { id: assetModel.id });
 
         cy.getAssetFixture().then((asset) => {
             propertyPage.visit(asset.id);

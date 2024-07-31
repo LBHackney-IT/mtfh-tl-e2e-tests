@@ -40,36 +40,23 @@ const deleteRecord = async ({ tableName, key }) => {
   }
 }
 
-const createRecord = (tableName, item) => new Promise((resolve, reject) => {
-  docClient.put({
-    TableName: tableName,
-    Item: item
-  }, (err, data) => {
-    if (err) {
-      reject(err);
-    } else {
-      if (item["targetId"]) {
-        saveFixtureData(
-          tableName,
-          {
-            id: item.id,
-            targetId: item.targetId
-          },
-          item,
-        ).then((data) => {
-          resolve(data)
-        });
-      } else {
-        saveFixtureData(
-          tableName,
-          { id: item.id },
-          item,
-        ).then((data) => {
-          resolve(data)
-        });
-      }
-    }
-  })
+const createRecord = (tableName, item, key) => new Promise((resolve, reject) => {
+    docClient.put({
+        TableName: tableName,
+        Item: item
+    }, (err, data) => {
+        if (err) {
+            reject(err);
+        } else {
+            saveFixtureData(
+                tableName,
+                key,
+                item,
+            ).then((data) => {
+                resolve(data)
+            });
+        }
+    })
 })
 
 export default {

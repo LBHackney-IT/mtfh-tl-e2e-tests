@@ -13,7 +13,7 @@ describe('Edit person Contact details', {tags: tags}, ()=> {
     beforeEach(()=> {
         cy.login()
         const testPerson = person();
-        addTestRecordToDatabase("Persons", testPerson);
+        addTestRecordToDatabase("Persons", testPerson, {id: testPerson.id});
     })
 
     it('should show error message with invalid postcode', ()=> {
@@ -64,7 +64,7 @@ describe('Edit person Contact details', {tags: tags}, ()=> {
     })
 
     contactTypes.forEach((contactType)=> {
-        it('should not allow more than 5 phone number', ()=> {
+        it(`should not allow more than 5 ${contactType}`, ()=> {
             cy.intercept("GET", `*/api/v2/contactDetails?targetId=${person.id}`, {
                 fixture: "contact-details.json",
                 statusCode: 200,

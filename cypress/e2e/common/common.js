@@ -919,10 +919,10 @@ When("I click on the link 'the contact details'", () => {
 Then("{string} modal dialog is displayed", (header) => {
   modal.modalBody().should("contain", header);
   modal.modalBody().should("contain", "Add an email address");
-  changeOfName.buttonReturnToApplication().should("exist");
+  changeOfName.modalReturn().should("exist");
 });
 When("I select Return to Application", () => {
-  changeOfName.buttonReturnToApplication().click();
+  changeOfName.modalReturn().click();
 });
 Then("modal dialog is closed and I am on the supporting documents page", () => {
   changeOfName.statusActiveCheck().should("contain.text", "Request Documents");
@@ -940,14 +940,14 @@ When("I enter data email address and phone number", () => {
     "test phone description"
   );
 
-  changeOfName.buttonReturnToApplication().click();
+  changeOfName.modalReturn().click();
 });
 And("I click on Remove email address and Remove phone number", () => {
   cy.get("[data-testid=button-remove-email]").click();
   cy.get("[data-testid=button-confirm-remove-email]").click();
   cy.get("[data-testid=button-remove-phone]").click();
   cy.get("[data-testid=button-confirm-remove-phone]").click();
-  changeOfName.buttonReturnToApplication().click();
+  changeOfName.modalReturn().click();
   // contactDetails.getContactDetails(personId).then(getResponse => {
   //   cy.log(`Status code ${getResponse.status} returned`)
   //   if (getResponse.status === 200) {
