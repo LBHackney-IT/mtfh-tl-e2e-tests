@@ -106,14 +106,15 @@ commands:
                             export CYPRESS_grepTags="$CYPRESS_grepTags @$PIPELINE_FILTER"
                           fi
 
-                          if [ "<<parameters.trigger-context>>" = "devices"]
-                            then export CYPRESS_grepTags="$CYPRESS_grepTags @device" ;
-                            else export CYPRESS_grepTags="$CYPRESS_grepTags --@device" ;
-                          fi
-
+                          if [ "<<parameters.trigger-context>>" = "devices" ]; then
+                            export CYPRESS_grepTags="$CYPRESS_grepTags @device"
+                          else
+                            export CYPRESS_grepTags="$CYPRESS_grepTags --@device"
+                          fi              
+                          
                           npm install ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_grepTags" ;
-                          ./node_modules/.bin/cypress run --record --key 31a18a85-d0e5-4c16-a1d4-5f0eab6a7c58  --parallel --group 'all tests'
+                          ./node_modules/.bin/cypress run
                        
             - store_artifacts:
                 path: /root/project/cypress/videos/
@@ -142,7 +143,6 @@ jobs:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
-        parallelism: 27 # Needs to be the same as the number of feature files
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
@@ -179,7 +179,6 @@ jobs:
                         --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
   
   run-ci-tests:
-        parallelism: 27 # Needs to be the same as the number of feature files
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
@@ -198,7 +197,6 @@ jobs:
                     trigger-context: ci
         
   run-e2e-devices:
-        parallelism: 3
         executor: cypress-browsers
         environment:
             aws-region: eu-west-2
