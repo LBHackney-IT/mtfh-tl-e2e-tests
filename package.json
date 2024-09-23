@@ -11,7 +11,7 @@
     "test:cypress:accessibility": "cypress run -e grepTags='@Accessibility'",
     "test:cypress:GoogleLighthouse": "cypress run -e grepTags='@GoogleLighthouse'",
     "test:cypress:staging:devices": "cypress run --browser chrome --headless -e grepTags='@device -@ignore'",
-    "test:cypress:smoke": "cypress run --browser chrome --headless -e grepTags='@SmokeTest -@ignore'",
+    "test:cypress:smoke": "cypress run --browser chrome --headless -e grepTags='@SmokeTest -@ignore'"
   },
   "author": "",
   "license": "ISC",
