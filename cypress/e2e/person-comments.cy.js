@@ -5,7 +5,6 @@ import helperText from '../helpers/inputText'
 
 const personCommentsPage = new PersonCommentsPageObjects();
 const personPage = new PersonPageObjects();
-const tags = ['@comments', '@authentication', '@common', '@root']
 const device = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 
 function differenceInCharacters(characters) {
@@ -19,7 +18,8 @@ function truncateString(str, num) {
     return str.toString().slice(0, num)
 }
 
-describe('Person comments page', {'tags':tags}, ()=> {
+
+describe('Person comments page', {'tags': ['@comments', '@authentication', '@common', '@root']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

@@ -3,12 +3,11 @@ import { generateAsset } from "../../api/models/requests/createAssetModel";
 import { addTestRecordToDatabase } from "../helpers/DbHelpers";
 import { getAssetViewUrlByGuid, getAssetEditUrlByGuid } from "../helpers/helpers";
 
-
-const tags = ['@propety', '@authentication', '@common', '@root', '@search']
 const newAddressLine1Value = 'TEST Hackney'
 const noUprnValue = 'N/A'
 
-describe('Edit Property', {'tags': tags}, ()=> {
+
+describe('Edit Property', {'tags': ['@propety', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

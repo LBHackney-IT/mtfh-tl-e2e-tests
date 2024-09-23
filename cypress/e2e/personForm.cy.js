@@ -1,10 +1,10 @@
 import { seedDatabaseWithTenure } from "../helpers/DbHelpers";
-
 import EditPersonFormObjects from "../pageObjects/editPersonForm";
-const editPersonForm = new EditPersonFormObjects();
-const tags = ['@activity-history', '@authentication', '@common', '@root'];
 
-describe('Person Form', { tags: tags }, () => {
+const editPersonForm = new EditPersonFormObjects();
+
+
+describe('Person Form', { tags: ['@personal-details', '@authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(true);

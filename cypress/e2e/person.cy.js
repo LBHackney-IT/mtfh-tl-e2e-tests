@@ -5,14 +5,11 @@ import { generateAsset } from "../../api/models/requests/createAssetModel";
 import { patch } from "../../api/models/requests/patchModel";
 import { person } from "../../api/models/requests/createPersonModel";
 
-
 const personPage = new PersonPageObjects();
-
-const tags = ['@personal-details', '@authentication', '@common', '@root', '@worktray']
 const devices = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 
 
-describe('Person page', {'tags': tags}, ()=> {
+describe('Person page', {'tags': ['@personal-details', '@authentication', '@common', '@root', '@worktray']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(false);

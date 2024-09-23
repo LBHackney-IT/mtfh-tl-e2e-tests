@@ -5,9 +5,8 @@ import CautionaryAlertViewPageObject from "../pageObjects/CautionaryAlertViewPag
 const personPO = new PersonPageObjects();
 const cautionaryAlertPage = new CautionaryAlertViewPageObject();
 
-const tags = ['@cautionary-alerts', '@authentication', '@common', '@root'];
 
-describe('View cautionary alerts', { tags: tags }, () => {
+describe('View cautionary alerts', { tags: ['@cautionary-alerts', '@authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         seedDatabaseWithCautionaryAlert();
         cy.login();

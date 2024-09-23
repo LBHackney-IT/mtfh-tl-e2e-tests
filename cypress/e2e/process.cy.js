@@ -13,9 +13,8 @@ const tenurePage = new TenurePageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 
-const tags = ['@process', '@common', '@root', '@authentication', '@personal-details']
 
-describe('Processes menu', {tags: tags}, ()=> {
+describe('Processes menu', {tags: ['@process', '@common', '@root', '@authentication', '@personal-details']}, ()=> {
     beforeEach(()=> {
         cy.login()
         seedDatabaseWithTenure(true);

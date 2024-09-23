@@ -1,15 +1,11 @@
-import changeOfNamePage from "../pageObjects/changeOfNamePage";
 import homePage from "../pageObjects/homePage";
 import workTrayPage from "../pageObjects/workTrayPage";
 
 const homePagePO = new homePage()
 const workTrayPO = new workTrayPage();
-const changeOfNamePagePO = new changeOfNamePage();
-
-const tags = ['@worktray', '@common', '@root', '@processes', '@authentication']
 
 
-describe('Worktray Feature', {tags: tags}, ()=> {
+describe('Worktray Feature', {tags: ['@worktray', '@common', '@root', '@processes', '@authentication']}, ()=> {
     beforeEach(()=> {
         cy.login();
         homePagePO.visit();

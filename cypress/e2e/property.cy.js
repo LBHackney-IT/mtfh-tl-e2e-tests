@@ -11,9 +11,7 @@ import {
 const propertyPage = new PropertyPageObjects();
 const navigation = new NavigationPageObjects();
 
-const tags = ['@property', '@authentication', '@common', '@root', '@search']
-
-describe('View property page', {'tags': tags}, ()=> {
+describe('View property page', {'tags': ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

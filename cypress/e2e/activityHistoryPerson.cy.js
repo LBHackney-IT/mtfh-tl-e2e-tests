@@ -5,10 +5,8 @@ import { editPersonModel } from "../../api/models/requests/editPersonModel";
 import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPage';
 
 const activityHistory = new ActivityHistoryPageObjects("person");
-const tags = ['@activity-history', '@authentication', '@common', '@root'];
 
-
-describe('Activity History for a person', { 'tags': tags }, () => {
+describe('Activity History for a person', { 'tags': ['@activity-history', '@authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();
