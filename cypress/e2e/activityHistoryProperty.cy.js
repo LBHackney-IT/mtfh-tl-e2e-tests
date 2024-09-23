@@ -2,10 +2,9 @@ import { seedDatabase } from "../helpers/DbHelpers";
 import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPage';
 
 const activityHistory = new ActivityHistoryPageObjects("property");
-const tags = ['@activity-history', '@authentication', '@common', '@root'];
 
 
-describe('Activity History for a property', { 'tags': tags }, () => {
+describe('Activity History for a property', { 'tags': ['@activity-history', '@authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

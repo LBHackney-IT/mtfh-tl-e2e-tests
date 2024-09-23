@@ -4,9 +4,9 @@ import { seedDatabase } from "../helpers/DbHelpers";
 import helperText from '../helpers/inputText';
 import { commentTitle, comment } from "../helpers/commentText";
 import category from "../helpers/commentText";
+
 const propertyPage = new PropertyPageObjects();
 const propertyCommentsPage = new PropertyCommentsPageObjects();
-
 let uniqueText = (Math.random() + 1).toString(10).substring(5)
 const device = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 
@@ -21,9 +21,8 @@ function truncateString(str, num) {
     return str.toString().slice(0, num)
 }
 
-const tags = ['@property', '@authentication', '@common', '@root', '@comments']
 
-describe('View property page', {'tags': tags}, ()=> {
+describe('View property page', {'tags': ['@property', '@authentication', '@common', '@root', '@comments']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

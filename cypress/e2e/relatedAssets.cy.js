@@ -3,10 +3,9 @@ import { addTestRecordToDatabase } from "../helpers/DbHelpers";
 import PropertyPageObjects from "../pageObjects/propertyPage";
 import RelatedAssetsPageObjects from "../pageObjects/relatedAssetsPage";
 
-
 const relatedAssetsPage = new RelatedAssetsPageObjects();
 const propertyPage = new PropertyPageObjects();
-const tags = ['@property', '@authentication', '@common', '@root', '@search']
+
 
 const generateChildrenAssetsFixture = (numberOfChildrenAssets = 0) => {
     // Same structure as GetAssetRelationshipsResponse
@@ -22,7 +21,7 @@ const generateChildrenAssetsFixture = (numberOfChildrenAssets = 0) => {
     return childrenAssetsResponseObject;
 }
 
-describe('Related assets', {'tags': tags}, ()=>{
+describe('Related assets', {'tags': ['@property', '@authentication', '@common', '@root', '@search']}, () => {
     beforeEach(() => {
         cy.login();
         const testAsset = generateAsset();

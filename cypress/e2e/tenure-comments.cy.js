@@ -5,10 +5,8 @@ import category from "../helpers/commentText"
 import TenurePageObjects from "../pageObjects/tenurePage";
 import helperText from '../helpers/inputText'
 
-
 const tenurePage = new TenurePageObjects()
 const tenureCommentsPage = new TenureCommentsPageObjects()
-const tags = ['@comments', '@authentication', '@common', '@root']
 let uniqueText = (Math.random() + 1).toString(10).substring(5)
 const device = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 
@@ -23,7 +21,8 @@ function truncateString(str, num) {
     return str.toString().slice(0, num)
 }
 
-describe('tenure comments page', {'tags': tags}, ()=> {
+
+describe('tenure comments page', {'tags': ['@comments', '@authentication', '@common', '@root']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure();

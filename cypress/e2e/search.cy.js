@@ -1,12 +1,12 @@
 import SearchPageObjects from "../pageObjects/searchPage";
 
 const searchPage = new SearchPageObjects();
-const tags = ['@search', '@authentcation', '@common', '@root']
 const devices = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 const filterSearch = ['Last name A-Z', 'Last name Z-A', 'Best match']
 const numberOfResults = ['40', '20', '12']
 
-describe('Search Page',{tags: tags}, ()=> {
+
+describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']}, ()=> {
     beforeEach(()=> {
         cy.login()
     })

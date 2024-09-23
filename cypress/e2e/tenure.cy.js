@@ -7,10 +7,11 @@ import { person } from "../../api/models/requests/createPersonModel";
 import { addTestRecordToDatabase } from "../helpers/DbHelpers";
 
 const tenurePage = new TenurePageObjects();
-const tags = ['@tenure','@authentication', '@common', '@root', '@search', '@worktray', '@personal-details'];
 const smallDevice = ['iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-x', 'iphone-xr', 'iphone-se2', 'samsung-s10']
 const bigDevice = ['ipad-2', 'ipad-mini', 'macbook-11', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9']
-describe('tenure page', {'tags': tags}, () => {
+
+
+describe('tenure page', {'tags': ['@tenure','@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure();

@@ -3,9 +3,8 @@ import { seedDatabase } from "../helpers/DbHelpers";
 
 const propertyPage = new PropertyPageObjects();
 
-const tags = ['@property', '@authentication', '@common', '@root', '@search']
 
-describe('Change Asset Ownership', {'tags': tags}, ()=> {
+describe('Change Asset Ownership', {'tags': ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

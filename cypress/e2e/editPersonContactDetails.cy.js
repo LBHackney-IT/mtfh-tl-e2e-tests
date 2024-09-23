@@ -3,13 +3,12 @@ import PersonContactPageObjects from "../pageObjects/personContactPage";
 import { addTestRecordToDatabase } from "../helpers/DbHelpers";
 import { person } from "../../api/models/requests/createPersonModel";
 
-
 const editPersonContactDetailsPage = new EditPersonContactDetailsPageObjects();
 const personContactPage = new PersonContactPageObjects();
-const tags = ['@personal-details', '@authentication', '@common', '@root', '@worktray']
 const contactTypes = ['email', 'phone']
 
-describe('Edit person Contact details', {tags: tags}, ()=> {
+
+describe('Edit person Contact details', {tags: ['@personal-details', '@authentication', '@common', '@root', '@worktray']}, ()=> {
     beforeEach(()=> {
         cy.login()
         const testPerson = person();

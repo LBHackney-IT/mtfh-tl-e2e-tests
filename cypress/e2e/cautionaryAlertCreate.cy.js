@@ -5,9 +5,8 @@ import PersonPageObjects from '../pageObjects/personPage';
 const personPage = new PersonPageObjects();
 const caPage = new CautionaryAlertsPageObjects();
 
-const tags = ["@cautionary-alerts", "@authentication", "@common", "@root"];
 
-describe('Create Cautionary Alerts', { tags: tags }, () => {
+describe('Create Cautionary Alerts', { tags: ["@cautionary-alerts", "@authentication", "@common", "@root"] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

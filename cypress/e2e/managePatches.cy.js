@@ -4,9 +4,9 @@ import PropertyPageObjects from "../pageObjects/propertyPage";
 
 const patchesPage = new ManagePatchesPageObjects();
 const propertyPage = new PropertyPageObjects();
-const tags = ["@property", "@authentication", "@common", "@root", "@search"]
 
-describe("View and manage patch and area assignment", {tags: tags}, () => {
+
+describe("View and manage patch and area assignment", {tags: ["@property", "@authentication", "@common", "@root", "@search"]}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

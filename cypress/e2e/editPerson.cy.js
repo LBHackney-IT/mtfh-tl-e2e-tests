@@ -2,11 +2,10 @@ import { seedDatabaseWithTenure, addTestRecordToDatabase } from "../helpers/DbHe
 import EditPersonFormObjects from "../pageObjects/editPersonForm";
 import { generateEqualityInformation } from '../../api/models/requests/equalityDetailsModel'
 
-
 const editPersonPage = new EditPersonFormObjects();
-const tags = ['@activity-history', '@person', '@authentication', '@common', '@root'];
 
-describe('Edit a person', { tags: tags }, () => {
+
+describe('Edit a person', { tags: ['@activity-history', '@personal-details', '@authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(true);

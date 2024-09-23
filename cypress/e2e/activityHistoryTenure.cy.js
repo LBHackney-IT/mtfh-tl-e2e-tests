@@ -4,10 +4,9 @@ import { editTenure } from "../../api/tenure";
 import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPage';
 
 const activityHistory = new ActivityHistoryPageObjects("tenure");
-const tags = ['@activity-history', '@authentication', '@common', '@root'];
 
 
-describe('Activity History for a tenure', { 'tags': tags }, () => {
+describe('Activity History for a tenure', { 'tags': ['@activity-history', '@authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

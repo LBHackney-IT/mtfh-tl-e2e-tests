@@ -4,17 +4,15 @@ import PersonFormObjects from "../pageObjects/personFormPage";
 import ModalPageObjects from "../pageObjects/sharedComponents/modal";
 import { seedDatabase } from "../helpers/DbHelpers";
 
-
 const createTenurePage = new CreateTenurePageObjects();
 const tenurePage = new TenurePageObjects();
 const addPersonPage = new PersonFormObjects();
 const modal = new ModalPageObjects()
-const tags = ['@tenure', '@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']
 const filterSearch = ['Last name A-Z', 'Last name Z-A', 'Best match']
 const numberOfResults = ['40', '20', '12']
 const tenureTypes =  ['Freehold', 'Freehold (Serv)', 'Introductory', 'Leasehold (RTB)', 'License Temp Ac', 'Lse 100% Stair', 'Mesne Profit Ac', 'Non-Secure', 'Private Sale LH', 'Rent To Mortgage', 'Shared Equity', 'Shared Owners', 'Short Life Lse', 'Temp Annex', 'Temp B&B', 'Temp Decant', 'Temp Hostel', 'Temp Hostel Lse', 'Temp Private Lt', 'Temp Traveller', 'Tenant Acc Flat', 'Secure']
 
-describe('create and edit tenure', {'tags': tags}, ()=>{
+describe('create and edit tenure', {'tags': ['@tenure', '@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

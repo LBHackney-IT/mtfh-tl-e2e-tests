@@ -1,22 +1,18 @@
 import ProcessesPageObjects from "../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../pageObjects/tenureRequestDocumentsPage";
-import TenurePageObjects from "../pageObjects/tenurePage";
 import TenureReviewDocsPageObjects from "../pageObjects/tenureReviewDocumentsPage";
 import ModalPageObjects from "../pageObjects/sharedComponents/modal";
 import { seedDatabase } from "../helpers/DbHelpers";
 import PersonContactPageObjects from "../pageObjects/personContactPage";
 
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
-const tenurePage = new TenurePageObjects();
 const processPage = new ProcessesPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const modal = new ModalPageObjects();
 const personContactPage = new PersonContactPageObjects();
-
-
-const tags = ['@process', '@common', '@root', '@authentication', '@personal-details']
 const emailAdd = "AutomationTest@test.com";
 const phoneNumber = "07788123456";
+
 
 function manualDataChecksPass({ id: tenureId, householdMembers }) {
     processPage.visit(tenureId);
@@ -47,7 +43,7 @@ function manualDataChecksPass({ id: tenureId, householdMembers }) {
     tenureReqDocsPage.successionNo().click();
 };
 
-describe('Request and review documents', {'tags': tags}, ()=> {
+describe('Request and review documents', {'tags': ['@process', '@common', '@root', '@authentication', '@personal-details']}, ()=> {
     beforeEach(()=> {
         cy.login();
         seedDatabase();

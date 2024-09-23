@@ -4,8 +4,6 @@ import CautionaryAlertViewPageObject from "../pageObjects/CautionaryAlertViewPag
 const personPO = new PersonPageObjects();
 const cautionaryAlertPage = new CautionaryAlertViewPageObject();
 
-const tags = ['@cautionary-alerts', '@authentication', '@common', '@root'];
-
 const getFormattedDate = (date) => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = date.getMonth().toString().padStart(2, '0');
@@ -15,7 +13,7 @@ const getFormattedDate = (date) => {
     return typedDate;
 }
 
-describe("Edit Cautionary Alerts", { tags: tags }, () => {
+describe("Edit Cautionary Alerts", { tags: ['@cautionary-alerts', '@authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         seedDatabaseWithCautionaryAlert();
         cy.login();

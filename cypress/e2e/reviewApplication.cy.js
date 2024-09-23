@@ -11,7 +11,6 @@ const processPage = new ProcessesPageObjects();
 const reviewAppPage = new ReviewApplicationPageObjects();
 const addPersonPageObj = new PersonFormObjects();
 
-const tags = ['@common', '@authetication', '@processes', '@worktray', '@root', '@personal-details'];
 
 function manualDataChecksPass({ id: tenureId, householdMembers }) {
     processPage.visit(tenureId);
@@ -41,7 +40,9 @@ function manualDataChecksPass({ id: tenureId, householdMembers }) {
     tenureReqDocsPage.cautionaryContactNo().click();
     tenureReqDocsPage.successionNo().click();
 };
-describe ('After checks have completed, feedback is submitted and displayed - processes', {'tags': tags}, ()=> {
+
+
+describe ('After checks have completed, feedback is submitted and displayed - processes', {'tags': ['@common', '@authetication', '@processes', '@worktray', '@root', '@personal-details']}, ()=> {
     beforeEach(()=> {
         cy.login();
         seedDatabase();

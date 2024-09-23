@@ -4,13 +4,13 @@ import { saveFixtureData } from "../../api/helpers";
 import { getAssetViewUrlByGuid } from "../helpers/helpers";
 const { faker } = require("@faker-js/faker");
 
-const tags = ['@property', '@authentication', '@common', '@root', '@search']
 const propertyReference = faker.random.numeric(8)
 const addressLine1 = "47 Test Road"
 const postcode = "MK40 2RF"
 const assetGuid = faker.datatype.uuid()
 
-describe('Add property', {'tags': tags}, ()=> {
+
+describe('Add property', {'tags': ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();
