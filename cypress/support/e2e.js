@@ -26,21 +26,32 @@ registerCypressGrep();
 // TODO: Move this to a helper file
 const clearDatabase = () => {
     const filename = "cypress/fixtures/recordsToDelete.json";
-    cy.readFile(filename).then((recordsToDelete) => {
-        if (recordsToDelete.length) {
-            return new Cypress.Promise((resolve) => {
-                Promise.all(
-                    recordsToDelete.map((record) => DynamoDb.deleteRecord(record))
-                ).then(() => {
-                    resolve();
-                });
-            }).then(() => {
-                cy.writeFile(filename, []);
-                cy.log("Test database records cleared!");
+    return cy.readFile(filename).then((recordsToDelete) => {
+      if (recordsToDelete.length) {
+        return new Cypress.Promise((resolve, reject) => {
+          Promise.all(
+            recordsToDelete.map((record) => DynamoDb.deleteRecord(record))
+          )
+            .then(() => {
+              resolve();
+            })
+            .catch((error) => {
+              cy.log("Error deleting records: ", error);
+              reject(error);
             });
-        }
+        }).then(() => {
+          // Clear the file once deletion is complete
+          cy.writeFile(filename, []);
+          cy.log("Test database records cleared!");
+        });
+      } else {
+        // No records to delete, just resolve the promise
+        cy.log("No records to delete.");
+        return new Cypress.Promise((resolve) => resolve());
+      }
     });
-};
+  };
+  
 
 before(() => {
     clearDatabase();

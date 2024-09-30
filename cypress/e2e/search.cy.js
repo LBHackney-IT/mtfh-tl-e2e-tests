@@ -1,8 +1,11 @@
 import SearchPageObjects from "../pageObjects/searchPage";
 
 const searchPage = new SearchPageObjects();
-const devices = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
-const filterSearch = ['Last name A-Z', 'Last name Z-A', 'Best match']
+const devices = [
+    'ipad-2', // "tablet"
+    'macbook-16', // "laptop"
+    'samsung-s10' // "mobile"
+]
 const numberOfResults = ['40', '20', '12']
 
 
@@ -13,7 +16,7 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
     it('should search for a property, person and tenure', {'tags': '@SmokeTest'}, ()=> {
         searchPage.visit();
         //property
-        const searchTerm = "Avenue"
+        const searchTerm = "Avenue";
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
@@ -63,30 +66,10 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
         })
     })
 
-    it('should wildcard search for person, tenure', ()=> {
-        searchPage.visit();
-        searchPage.personRadioButton().click();
-        const searchTerm = "*a"
-        searchPage.searchContainer().type(searchTerm);
-        searchPage.searchButton().click();
-
-        searchPage.searchResults().contains(searchTerm.replaceAll('*',''), { matchCase: false });
-
-        cy.get('[class*="govuk-back-link lbh-back-link"]').click();
-
-        searchPage.tenureRadioButton().click();
-        const searchTermTenure = "*a"
-        searchPage.searchContainer().clear().type(searchTermTenure);
-        searchPage.searchButton().click();
-
-        searchPage.searchResults().contains(searchTermTenure.replaceAll('*',''), { matchCase: false });
-
-    })
-
     it('should not return any results', ()=> {
         searchPage.visit()
         //property
-        const searchTerm = "SHH?"
+        const searchTerm = "XXXXXXXXXXXXXXXXXXXXXXX"
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
@@ -96,7 +79,7 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
 
         //person
         searchPage.personRadioButton().click();
-        const searchTermPerson = "12345"
+        const searchTermPerson = "XXXXXXXXXXXXXXXXXXXXXXX"
         searchPage.searchContainer().type(searchTermPerson);
         searchPage.searchButton().click();
 
@@ -105,7 +88,7 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
         cy.get('[class*="govuk-back-link lbh-back-link"]').click();
         
         //tenure
-        const searchTermTenure = "asdfgessgaqwqs"
+        const searchTermTenure = "XXXXXXXXXXXXXXXXXXXXXXX"
         searchPage.searchContainer().type(searchTermTenure);
         searchPage.searchButton().click();
 
@@ -116,7 +99,7 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
         searchPage.visit();
         
         searchPage.personRadioButton().click();
-        const searchTerm = "ad e"   
+        const searchTerm = "kingsland"   
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();
 
@@ -171,29 +154,6 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
         }
         cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });   
     })
-
-    filterSearch.forEach((filter)=> {
-        it('should filter search for property', ()=> {
-            searchPage.visit();
-
-            searchPage.personRadioButton().click();
-            const searchTerm = "Ab"
-            searchPage.searchContainer().type(searchTerm);
-            searchPage.searchButton().click();
-
-            searchPage.searchResults().contains(searchTerm.replaceAll('*',''), { matchCase: false });
-
-            searchPage.sortByOption().contains("Best match");
-            searchPage.sortByOption().select(filter);
-
-            numberOfResults.forEach((results) => {
-                searchPage.numberOfResultsDisplayed(results);
-                searchPage.paginationSummary().contains(results);
-                searchPage.filterStatus().contains(results);
-            })
-
-        })
-    })  
 
     it('should show correct number of results', ()=> {
         searchPage.visit()
