@@ -21,7 +21,7 @@ const generateChildrenAssetsFixture = (numberOfChildrenAssets = 0) => {
     return childrenAssetsResponseObject;
 }
 
-describe('Related assets', {'tags': ['@property', '@authentication', '@common', '@root', '@search']}, () => {
+describe('Related assets', {tags: ['@property', '@authentication', '@common', '@root', '@search']}, () => {
     beforeEach(() => {
         cy.login();
         const testAsset = generateAsset();

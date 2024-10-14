@@ -19,13 +19,13 @@ function truncateString(str, num) {
 }
 
 
-describe('Person comments page', {'tags': ['@comments', '@authentication', '@common', '@root']}, ()=> {
+describe('Person comments page', {tags: ['@comments', '@authentication', '@common', '@root']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();
     });
 
-    it('should create comment on person page',{'tags': '@SmokeTest'}, ()=> {
+    it('should create comment on person page',{tags: '@SmokeTest'}, ()=> {
         cy.getPersonFixture().then(({ id: personId }) => {
             personCommentsPage.visit(personId)
 
@@ -55,7 +55,7 @@ describe('Person comments page', {'tags': ['@comments', '@authentication', '@com
     })
 
         device.forEach((test) => {
-            it('should create a comment for person on a device', {'tags': '@device'}, ()=> {
+            it('should create a comment for person on a device', {tags: '@device'}, ()=> {
                 cy.getPersonFixture().then((person) => {
                     personCommentsPage.visit(person.id)
 
@@ -113,7 +113,7 @@ describe('Person comments page', {'tags': ['@comments', '@authentication', '@com
         })
     })
 
-    it('Accessibility tests for person comments', {'tags': '@Accessibility'}, ()=> {
+    it('Accessibility tests for person comments', {tags: '@Accessibility'}, ()=> {
         cy.getPersonFixture().then((person) => {
             personCommentsPage.visit(person.id)
 

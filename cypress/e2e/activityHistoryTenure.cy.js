@@ -32,7 +32,7 @@ describe('Activity History for a tenure', { 'tags': ['@activity-history', '@auth
     });
 
     // To fix: fails on pipeline
-    it('should update activity history',{'tags': '@ignore'}, () => {
+    it('should update activity history',{tags: '@ignore'}, () => {
         cy.getTenureFixture().then(async (tenure) => {
             const newTenureType = "Freehold"
             const tenureUpdatedTime = new Date();

@@ -22,7 +22,7 @@ function truncateString(str, num) {
 }
 
 
-describe('View property page', {'tags': ['@property', '@authentication', '@common', '@root', '@comments']}, ()=> {
+describe('View property page', {tags: ['@property', '@authentication', '@common', '@root', '@comments']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();
@@ -43,7 +43,7 @@ describe('View property page', {'tags': ['@property', '@authentication', '@commo
         });
     })
 
-    it('should create comment for property', {'tags':'@SmokeTest'},()=> {
+    it('should create comment for property', {tags:'@SmokeTest'},()=> {
         cy.getAssetFixture().then((asset) => {
             propertyCommentsPage.visit(asset.id);
 
@@ -85,7 +85,7 @@ describe('View property page', {'tags': ['@property', '@authentication', '@commo
         })
    })
 
-   it('Accessibility tests for property comments', {'tags': '@Accessibility'}, ()=> {
+   it('Accessibility tests for property comments', {tags: '@Accessibility'}, ()=> {
         cy.getAssetFixture().then((property) => {
             propertyCommentsPage.visit(property.id)
 
@@ -112,7 +112,7 @@ describe('View property page', {'tags': ['@property', '@authentication', '@commo
         })
    })
    device.forEach((test) => {
-        it('should create a comment for property on a device', {'tags': '@device'}, ()=> {
+        it('should create a comment for property on a device', {tags: '@device'}, ()=> {
             cy.getAssetFixture().then((property) => {
                 propertyCommentsPage.visit(property.id)
 

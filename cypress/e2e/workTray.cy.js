@@ -12,7 +12,7 @@ describe('Worktray Feature', {tags: ['@worktray', '@common', '@root', '@processe
         homePagePO.iAmOnTheHomePage();
     })
 
-    it('should view worktray', {'tags': '@SmokeTest'},()=> {
+    it('should view worktray', {tags: '@SmokeTest'},()=> {
         homePagePO.yourTasksText().should('be.visible');
         workTrayPO.filterBy().click();
         workTrayPO.checkboxSoleToJoint().should('exist');

@@ -42,7 +42,7 @@ function manualDataChecksPass({ id: tenureId, householdMembers }) {
 };
 
 
-describe ('After checks have completed, feedback is submitted and displayed - processes', {'tags': ['@common', '@authetication', '@processes', '@worktray', '@root', '@personal-details']}, ()=> {
+describe ('After checks have completed, feedback is submitted and displayed - processes', {tags: ['@common', '@authetication', '@processes', '@worktray', '@root', '@personal-details']}, ()=> {
     beforeEach(()=> {
         cy.login();
         seedDatabase();

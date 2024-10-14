@@ -13,7 +13,7 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
     beforeEach(()=> {
         cy.login()
     })
-    it('should search for a property, person and tenure', {'tags': '@SmokeTest'}, ()=> {
+    it('should search for a property, person and tenure', {tags: '@SmokeTest'}, ()=> {
         searchPage.visit();
         //property
         const searchTerm = "Avenue";

@@ -45,7 +45,7 @@ describe('Activity History for a person', { 'tags': ['@activity-history', '@auth
     });
 
     //To Fix: fails on pipeline
-    it('should update activity history', {'tags': '@ignore'}, () => {
+    it('should update activity history', {tags: '@ignore'}, () => {
         cy.getPersonFixture().then(async (person) => { 
             const personUpdatedTime = new Date();
             await editPerson(person.id).then((response) => {
