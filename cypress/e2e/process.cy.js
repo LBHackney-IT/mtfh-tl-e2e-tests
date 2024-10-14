@@ -20,7 +20,7 @@ describe('Processes menu', {tags: ['@process', '@common', '@root', '@authenticat
         seedDatabaseWithTenure(true);
     })
 
-    it('should naviage to processes on person, tenure and asset pages', {'tags': '@SmokeTest'},()=> {
+    it('should naviage to processes on person, tenure and asset pages', {tags: '@SmokeTest'},()=> {
         cy.getPersonFixture().then(({ id: personId }) => {
             personPage.visit(personId);
             personPage.newProcess().click()

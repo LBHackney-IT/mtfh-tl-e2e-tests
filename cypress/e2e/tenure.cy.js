@@ -11,13 +11,13 @@ const smallDevice = ['iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+'
 const bigDevice = ['ipad-2', 'ipad-mini', 'macbook-11', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9']
 
 
-describe('tenure page', {'tags': ['@tenure','@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
+describe('tenure page', {tags: ['@tenure','@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure();
     });
 
-    it('should view resident details for new tenure', {'tags': '@SmokeTest'}, ()=> {
+    it('should view resident details for new tenure', {tags: '@SmokeTest'}, ()=> {
         cy.getTenureFixture().then(({ id: tenureId }) => {
             tenurePage.visit(tenureId);
 
@@ -104,7 +104,7 @@ describe('tenure page', {'tags': ['@tenure','@authentication', '@common', '@root
         });
     });
 
-    it('Accessibility Testing', {'tags': '@Accessibility'}, ()=>{
+    it('Accessibility Testing', {tags: '@Accessibility'}, ()=>{
         cy.getTenureFixture().then(({ id: tenureId }) => {
             tenurePage.visit(tenureId);
 
@@ -132,7 +132,7 @@ describe('tenure page', {'tags': ['@tenure','@authentication', '@common', '@root
     })
 
     smallDevice.forEach((device) => {
-        it('Mobile view - device with smaller screens', {'tags': '@device'}, ()=> {
+        it('Mobile view - device with smaller screens', {tags: '@device'}, ()=> {
             cy.getTenureFixture().then(({ id: tenureId }) => {
                 tenurePage.visit(tenureId);
                 cy.viewport(`${device}`);
@@ -145,7 +145,7 @@ describe('tenure page', {'tags': ['@tenure','@authentication', '@common', '@root
     });
 
     bigDevice.forEach((device) => {
-        it('Mobile view - device with bigger screens', {'tags': '@device'}, ()=> {
+        it('Mobile view - device with bigger screens', {tags: '@device'}, ()=> {
             cy.getTenureFixture().then(({ id: tenureId }) => {
                 tenurePage.visit(tenureId);
                 cy.viewport(`${device}`);

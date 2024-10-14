@@ -9,13 +9,13 @@ const personPage = new PersonPageObjects();
 const devices = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 
 
-describe('Person page', {'tags': ['@personal-details', '@authentication', '@common', '@root', '@worktray']}, ()=> {
+describe('Person page', {tags: ['@personal-details', '@authentication', '@common', '@root', '@worktray']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(false);
     })
 
-    it('should view person details page', {'tags': '@SmokeTest'}, ()=> {
+    it('should view person details page', {tags: '@SmokeTest'}, ()=> {
         cy.getPersonFixture().then((person) => {
             personPage.visit(person.id);
 
@@ -117,7 +117,7 @@ describe('Person page', {'tags': ['@personal-details', '@authentication', '@comm
         });
     })
 
-    it('Accessibility testing', {'tags': '@Accessibility'}, ()=> {
+    it('Accessibility testing', {tags: '@Accessibility'}, ()=> {
         cy.getPersonFixture().then((person) => {
             personPage.visit(person.id);
             cy.checkA11y(null, null, axeTerminalLog, { skipFailures: true });

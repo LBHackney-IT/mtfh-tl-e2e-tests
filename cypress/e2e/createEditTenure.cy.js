@@ -12,13 +12,13 @@ const filterSearch = ['Last name A-Z', 'Last name Z-A', 'Best match']
 const numberOfResults = ['40', '20', '12']
 const tenureTypes =  ['Freehold', 'Freehold (Serv)', 'Introductory', 'Leasehold (RTB)', 'License Temp Ac', 'Lse 100% Stair', 'Mesne Profit Ac', 'Non-Secure', 'Private Sale LH', 'Rent To Mortgage', 'Shared Equity', 'Shared Owners', 'Short Life Lse', 'Temp Annex', 'Temp B&B', 'Temp Decant', 'Temp Hostel', 'Temp Hostel Lse', 'Temp Private Lt', 'Temp Traveller', 'Tenant Acc Flat', 'Secure']
 
-describe('create and edit tenure', {'tags': ['@tenure', '@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
+describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();
     });
 
-    it('should create a new tenure', {'tags': '@SmokeTest'}, ()=> {
+    it('should create a new tenure', {tags: '@SmokeTest'}, ()=> {
         cy.getAssetFixture().then(({ id: tenureId }) => {
             createTenurePage.createTenure(tenureId);
 
@@ -264,7 +264,7 @@ describe('create and edit tenure', {'tags': ['@tenure', '@authentication', '@com
     })
 
     // TO fix: fails when tenure type is same as what is was
-    it('should edit existing tenure', {'tags': ['@SmokeTest', '@ignore']}, ()=> {
+    it('should edit existing tenure', {tags: ['@SmokeTest', '@ignore']}, ()=> {
         const tenureId = "94690f7d-019e-d00c-21aa-d7a5791b1294"
         cy.getAssetFixture().then(() =>{
             createTenurePage.editTenure(tenureId)

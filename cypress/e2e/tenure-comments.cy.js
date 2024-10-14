@@ -22,13 +22,13 @@ function truncateString(str, num) {
 }
 
 
-describe('tenure comments page', {'tags': ['@comments', '@authentication', '@common', '@root']}, ()=> {
+describe('tenure comments page', {tags: ['@comments', '@authentication', '@common', '@root']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure();
     });
 
-    it('should be able to create comment for tenure page', {'tags': '@SmokeTest'},()=>{
+    it('should be able to create comment for tenure page', {tags: '@SmokeTest'},()=>{
         cy.getTenureFixture().then(({ id: tenureId }) => {
             tenureCommentsPage.visit(tenureId)
 
@@ -126,7 +126,7 @@ describe('tenure comments page', {'tags': ['@comments', '@authentication', '@com
         })
    })
 
-   it('Accessibility tests for tenure comments', {'tags': '@Accessibility'}, ()=> {
+   it('Accessibility tests for tenure comments', {tags: '@Accessibility'}, ()=> {
         cy.getTenureFixture().then((tenure) => {
             tenureCommentsPage.visit(tenure.id)
 
@@ -153,7 +153,7 @@ describe('tenure comments page', {'tags': ['@comments', '@authentication', '@com
         })
    })
    device.forEach((test) => {
-        it('should create a comment for tenure on a device', {'tags': '@device'}, ()=> {
+        it('should create a comment for tenure on a device', {tags: '@device'}, ()=> {
             cy.getTenureFixture().then((tenure) => {
                 tenureCommentsPage.visit(tenure.id)
 

@@ -10,7 +10,7 @@ const postcode = "MK40 2RF"
 const assetGuid = faker.datatype.uuid()
 
 
-describe('Add property', {'tags': ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
+describe('Add property', {tags: ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();
@@ -53,7 +53,7 @@ describe('Add property', {'tags': ['@property', '@authentication', '@common', '@
         cy.get('span').filter(':contains("Please select an option")').should('be.visible')
     })
 
-    it('should work successfully', {'tags': '@SmokeTest'}, ()=> {
+    it('should work successfully', {tags: '@SmokeTest'}, ()=> {
         cy.intercept('GET', '*/api/v1/patch/all', { fixture: 'patches.json', }).as('getAllPatches')
         cy.visit(`${Cypress.config("baseUrl")}/property/new`)
         cy.wait('@getAllPatches')

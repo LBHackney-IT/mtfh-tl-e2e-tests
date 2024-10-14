@@ -11,13 +11,13 @@ import {
 const propertyPage = new PropertyPageObjects();
 const navigation = new NavigationPageObjects();
 
-describe('View property page', {'tags': ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
+describe('View property page', {tags: ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();
     });
 
-    it('should view property details page',{'tags': '@SmokeTest'}, ()=> {
+    it('should view property details page',{tags: '@SmokeTest'}, ()=> {
         seedDatabaseWithTenure(false);
         cy.getAssetFixture().then((asset) => {
             propertyPage.visit(asset.id);

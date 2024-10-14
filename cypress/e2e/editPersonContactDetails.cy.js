@@ -37,7 +37,7 @@ describe('Edit person Contact details', {tags: ['@personal-details', '@authentic
         });
     })
 
-    it('should save correspondence address',{'tags': '@SmokeTest'}, () => {
+    it('should save correspondence address',{tags: '@SmokeTest'}, () => {
         cy.getPersonFixture().then((person) => {
             editPersonContactDetailsPage.editPersonContactDetails(person.id);
             personContactPage.addCorrespondenceAddressButton().click();
@@ -128,7 +128,7 @@ describe('Edit person Contact details', {tags: ['@personal-details', '@authentic
         })
     })
 
-    it('should add phone successfully',{'tags': '@SmokeTest'}, ()=> {
+    it('should add phone successfully',{tags: '@SmokeTest'}, ()=> {
         cy.getPersonFixture().then((person) => {
             editPersonContactDetailsPage.editPersonContactDetails(person.id);
             personContactPage.addPhoneNumberButton().click();

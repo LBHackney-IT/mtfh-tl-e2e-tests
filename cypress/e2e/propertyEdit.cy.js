@@ -7,7 +7,7 @@ const newAddressLine1Value = 'TEST Hackney'
 const noUprnValue = 'N/A'
 
 
-describe('Edit Property', {'tags': ['@propety', '@authentication', '@common', '@root', '@search']}, ()=> {
+describe('Edit Property', {tags: ['@propety', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();
