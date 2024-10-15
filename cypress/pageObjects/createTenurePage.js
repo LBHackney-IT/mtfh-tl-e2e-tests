@@ -34,28 +34,12 @@ class CreateTenurePageObjects {
         return cy.get('#tenure-form-tenureType-field')
     }
 
-    tenureStartDateDayContainer() {
-        return cy.get('[name="startDay"]')
+    tenureStartDateInput() {
+        return cy.get('#tenure-form-startOfTenureDate-field')
     }
 
-    tenureStartDateMonthContainer() {
-        return cy.get('[name="startMonth"]')
-    }
-
-    tenureStartDateYearContainer() {
-        return cy.get('[name="startYear"]')
-    }
-
-    tenureEndDateDayContainer() {
-        return cy.get('[name="endDay"]')
-    }
-
-    tenureEndDateMonthContainer() {
-        return cy.get('[name="endMonth"]')
-    }
-
-    tenureEndDateYearContainer() {
-        return cy.get('[name="endYear"]')
+    tenureEndDateInput() {
+        return cy.get('#tenure-form-endOfTenureDate-field')
     }
 
     newTenureButton() {

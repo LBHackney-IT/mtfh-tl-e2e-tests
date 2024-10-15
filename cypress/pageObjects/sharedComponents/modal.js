@@ -11,8 +11,12 @@ class ModalPageObjects {
         return cy.get('.lbh-dialog__close')
     }
 
-    confirmationButton() {
+    yesButton() {
         return cy.contains('Yes')
+    };
+
+    confirmationButton() {
+        return cy.contains('Confirm')
     };
 
     closeCaseReason() {
