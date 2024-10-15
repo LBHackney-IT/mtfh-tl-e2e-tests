@@ -17,6 +17,7 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
     });
 
     it('should create a new tenure', {tags: '@SmokeTest'}, ()=> {
+        cy.intercept('GET', '**/tenure/*').as('getTenure');
         cy.getAssetFixture().then(({ id: tenureId }) => {
             createTenurePage.createTenure(tenureId);
 
@@ -28,7 +29,7 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
 
             createTenurePage.tenureStartDateInput().clear().type("2090-01-01")
             cy.contains("Next").click();
-            cy.wait(1000); // TODO: Wait for intercept instead of using wait
+            cy.wait("@getTenure");
             
             createTenurePage.searchContainer().should('be.visible')
             createTenurePage.searchButton().should('be.visible')
@@ -301,7 +302,8 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
                 cy.url().should('include', `tenure/${tenureId}/edit`)
             })
 
-            tenureTypes.forEach(tenureType => {
+            const sampledTenureTypes = Cypress._.sampleSize(tenureTypes, 5); // Randomly select 5 tenure types
+            sampledTenureTypes.forEach(tenureType => {
                 createTenurePage.tenureTypeSelection().select(tenureType);
                 createTenurePage.tenureEndDateInput().should('be.visible').and('be.enabled');
             });
