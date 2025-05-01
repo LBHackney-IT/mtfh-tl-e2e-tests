@@ -158,7 +158,7 @@ describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']
     it('should show correct number of results', ()=> {
         searchPage.visit()
         //tenure
-        const searchTerm = "fake"
+        const searchTerm = "test"
         searchPage.tenureRadioButton().click();
         searchPage.searchContainer().type(searchTerm);
         searchPage.searchButton().click();

@@ -94,15 +94,11 @@ class CreateTenurePageObjects {
         return cy.get('.mtfh-search-controls__status')
     }
 
-    addAsNamedTenureHolderButton() {
-        return cy.contains('Add as named tenure holder')
-    }
-
     addAsHouseholdMember() {
         return cy.get('.govuk-button.lbh-button:contains("Add as household member")');
     }
 
-    addAsNamedTenureHolderButtonTemp() {
+    addAsNamedTenureHolderButton() {
         return cy.get('.govuk-button.lbh-button:contains("Add as named tenure holder")');
     }
     pageAnnouncementContainer() {

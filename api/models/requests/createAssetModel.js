@@ -214,7 +214,9 @@ const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.ran
       "isCouncilProperty": true,
       "managingOrganisation": "London Borough of Hackney",
       "isTMOManaged": false,
-      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724"
+      "managingOrganisationId": "c01e3146-e630-c2cd-e709-18ef57bf3724",
+      "IsTemporaryAccommodationBlock": false,
+      "IsPartOfTemporaryAccommodationBlock": false,
     },
     "assetCharacteristics": {
       "numberOfBedrooms": null,
