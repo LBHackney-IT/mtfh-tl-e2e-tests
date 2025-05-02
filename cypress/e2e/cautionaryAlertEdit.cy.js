@@ -48,15 +48,17 @@ describe("Edit Cautionary Alerts", { tags: ['@cautionary-alerts', '@authenticati
         // Enter an invalid date (in the future)
         const today = new Date();
         let futureDate = new Date();
-        futureDate.setDate(today.getDate() + 1000);
+        futureDate.setDate(today.getDate() + 2000);
         futureDate = getFormattedDate(futureDate);
         cautionaryAlertPage.endDateInput().click().type(futureDate);
         cautionaryAlertPage.endDateInputError().should('exist');
         cautionaryAlertPage.confirmButton().should('be.disabled');
         
         // Enter a valid date
-        const typedDate = getFormattedDate(today);
-        cautionaryAlertPage.endDateInput().click().type(typedDate);
+        let pastDate = new Date();
+        pastDate.setDate(today.getDate() - 1000);
+        pastDate = getFormattedDate(pastDate);
+        cautionaryAlertPage.endDateInput().click().type(pastDate);
         cautionaryAlertPage.endDateInputError().should('not.exist');
         cautionaryAlertPage.confirmButton().should('not.be.disabled');
         cautionaryAlertPage.confirmButton().click();

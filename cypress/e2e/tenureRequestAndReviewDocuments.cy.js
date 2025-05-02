@@ -73,9 +73,10 @@ describe('Request and review documents', {tags: ['@process', '@common', '@root',
     it('should go to person page on request documents', ()=> {
         cy.getTenureFixture().then((tenureInfo) => {
             manualDataChecksPass(tenureInfo);
-            tenureReqDocsPage.personLink().click();
-            cy.url().should('include', '/person/')
-            cy.findAllByText('Date of birth:');
+            //open person page in same tab
+            tenureReqDocsPage.personLink().invoke("attr", "target", "_self").click();
+            cy.url().should('include', '/person/')  
+            cy.findAllByText('Date of birth:'); 
         });
     })
 
@@ -131,7 +132,7 @@ describe('Request and review documents', {tags: ['@process', '@common', '@root',
             cy.contains('Next').click();
             cy.contains('Failed breach of tenure check:');
             tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
-            tenureReviewDocsPage.buttonConfirm().click();
+            tenureReviewDocsPage.confirmButton().click();
             cy.contains("Thank you for your confirmation");
             cy.contains("This case is now closed and we have recorded this on the system - that you have sent an outcome letter to the resident. The outcome can be viewed in the activity history");
             cy.contains("Return to home page").should('attr', 'href').and('eq','/')
@@ -253,7 +254,7 @@ describe('Request and review documents', {tags: ['@process', '@common', '@root',
             cy.contains('Sole to joint application will be closed');
             cy.contains('Test reason for Close case - photo id not given');
             tenureReviewDocsPage.checkboxConfirmOutcomeLetter().click();
-            tenureReviewDocsPage.buttonConfirm().click();
+            tenureReviewDocsPage.confirmButton().click();
             cy.contains('Thank you for your confirmation');
         });
     })

@@ -55,6 +55,26 @@ class PropertyPageObjects {
     managePatchesButton() {
         return cy.get('[data-testid="all-patches-and-areas-button"]')
     }
+
+    editPatchButton() {
+        return cy.get('[data-testid="edit-assignment-button"]')
+    }
+
+    confirmButton() {
+        return cy.get('[data-testid="confirm-reassignment-button"]')
+    }
+
+    cancelButton() {
+        return cy.get('[data-testid="cancel-reassignment-button"]')
+    }
+
+    patchEdit() {
+        return cy.get('[class="mtfh-edit-patch-details"]')
+    }
+    
+    patchNameDropDown() {
+        return cy.get('[data-testid="patch-dropdown-options"]')
+    }
     
     commentDateTime() {
         return cy.get('.comment__date-time')

@@ -29,7 +29,6 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
 
             createTenurePage.tenureStartDateInput().clear().type("2090-01-01")
             cy.contains("Next").click();
-            cy.wait("@getTenure");
             
             createTenurePage.searchContainer().should('be.visible')
             createTenurePage.searchButton().should('be.visible')
@@ -145,7 +144,7 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
                   
              //To fix: Some household members not added correctly
             // for (let i = 1; i < 6; i++) {
-            //     createTenurePage.addAsNamedTenureHolderButtonTemp().eq(i).click()
+            //     createTenurePage.addAsNamedTenureHolderButton().eq(i).click()
             // }
             // createTenurePage.pageAnnouncementContainer().contains("Max. tenure holders added")
         }) 
