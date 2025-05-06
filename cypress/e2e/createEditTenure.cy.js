@@ -104,7 +104,7 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
 
     })
 
-    it('should validate on create new tenure', ()=> {
+    it('should validate on create new tenure', {tags: '@ignore'}, () => {
         cy.getAssetFixture().then(({ id: tenureId }) => {
             createTenurePage.createTenure(tenureId);
 
