@@ -272,8 +272,6 @@ workflows:
     jobs:
       - assume-role-production:
           context: api-assume-role-housing-production-context
-          branches:
-            - fix-pipeline-env-var
       - run-e2e-tests:
           name: Run acceptance tests against production environment
           stage: production
