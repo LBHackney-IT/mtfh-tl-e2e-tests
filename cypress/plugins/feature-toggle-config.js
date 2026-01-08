@@ -16,7 +16,7 @@ const fetchFeatureToggleConfiguration = async (env) => {
   }
 
   if (env.ENVIRONMENT === "production") {
-    token = env.E2E_ACCESS_TOKEN_PROD;
+    token = env.E2E_ACCESS_TOKEN_PRODUCTION;
   }
 
   const response = await axios.get(encodeURI(url), {
