@@ -269,6 +269,7 @@ workflows:
     #   and:
     #     - equal: [ << pipeline.parameters.external_trigger >> ]
     #     - and: [ << pipeline.parameters.production_environment >> ]
+    when: << pipeline.parameters.run_workflow_ci >>
     jobs:
       - assume-role-production:
           context: api-assume-role-housing-production-context
