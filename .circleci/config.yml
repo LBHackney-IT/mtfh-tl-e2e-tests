@@ -265,13 +265,15 @@ workflows:
             - Run acceptance tests against staging environment
       
   e2e-tests-production:
-    when:
-      and:
-        - equal: [ << pipeline.parameters.external_trigger >> ]
-        - and: [ << pipeline.parameters.production_environment >> ]
+    # when:
+    #   and:
+    #     - equal: [ << pipeline.parameters.external_trigger >> ]
+    #     - and: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - assume-role-production:
           context: api-assume-role-housing-production-context
+          branches:
+            - fix-pipeline-env-var
       - run-e2e-tests:
           name: Run acceptance tests against production environment
           stage: production
