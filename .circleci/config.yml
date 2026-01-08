@@ -193,7 +193,7 @@ jobs:
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
-                    stage: development
+                    stage: production
                     trigger-context: ci
         
   run-e2e-devices:
@@ -218,7 +218,7 @@ workflows:
       - assume-role-development:
           context: api-assume-role-housing-development-context
       - run-ci-tests:
-          stage: development
+          stage: production§
           context: mtfh-mfe-e2e-tests
           requires:
             - assume-role-development
@@ -265,11 +265,10 @@ workflows:
             - Run acceptance tests against staging environment
       
   e2e-tests-production:
-    # when:
-    #   and:
-    #     - equal: [ << pipeline.parameters.external_trigger >> ]
-    #     - and: [ << pipeline.parameters.production_environment >> ]
-    when: << pipeline.parameters.run_workflow_ci >>
+    when:
+      and:
+        - equal: [ << pipeline.parameters.external_trigger >> ]
+        - and: [ << pipeline.parameters.production_environment >> ]
     jobs:
       - assume-role-production:
           context: api-assume-role-housing-production-context
