@@ -221,7 +221,7 @@ workflows:
           stage: production
           context: mtfh-mfe-e2e-tests
           requires:
-            - assume-role-development
+            - assume-role-production
 
   e2e-tests-development:
     when:
