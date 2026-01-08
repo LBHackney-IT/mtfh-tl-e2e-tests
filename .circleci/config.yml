@@ -215,10 +215,10 @@ workflows:
   run-ci-tests:
     when: << pipeline.parameters.run_workflow_ci >>
     jobs:
-      - assume-role-development:
-          context: api-assume-role-housing-development-context
+      - assume-role-production:
+          context: api-assume-role-housing-production-context
       - run-ci-tests:
-          stage: production§
+          stage: production
           context: mtfh-mfe-e2e-tests
           requires:
             - assume-role-development
