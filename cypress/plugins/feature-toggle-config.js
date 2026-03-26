@@ -10,7 +10,7 @@ const fetchFeatureToggleConfiguration = async (env) => {
   console.log(`Checking feature toggle config at ${url}`)
 
   if (env.ENVIRONMENT === "development") {
-    console.log("Old token", token.slice(0,10));
+    console.log("Old token", token?.slice(0,10) || "null local token");
     token = await fetchCognitoToken(env);
     console.log("New token", token.slice(0,10));
   }
