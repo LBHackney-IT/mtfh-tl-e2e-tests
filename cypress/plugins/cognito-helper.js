@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 async function fetchCognitoToken(env) {
     const region = env.AWS_REGION;
     const clientId = env.E2E_CLIENT_ID;
@@ -9,29 +11,21 @@ async function fetchCognitoToken(env) {
     }
 
     try {
-        const response = await fetch(`https://cognito-idp.${region}.amazonaws.com/`, {
-            method: 'POST',
+        const response = await axios.post(`https://cognito-idp.${region}.amazonaws.com/`, {
+            AuthFlow: 'USER_PASSWORD_AUTH',
+            ClientId: clientId,
+            AuthParameters: {
+                USERNAME: username,
+                PASSWORD: password,
+            },
+        }, {
             headers: {
                 'Content-Type': 'application/x-amz-json-1.1',
                 'X-Amz-Target': 'AWSCognitoIdentityProviderService.InitiateAuth',
             },
-            body: JSON.stringify({
-                AuthFlow: 'USER_PASSWORD_AUTH',
-                ClientId: clientId,
-                AuthParameters: {
-                    USERNAME: username,
-                    PASSWORD: password,
-                },
-            }),
         });
 
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || JSON.stringify(data));
-        }
-
-        return data.AuthenticationResult.IdToken;
+        return response.data.AuthenticationResult.IdToken;
     } catch (error) {
         console.error('Cognito login failed:', error.message);
         throw error;
