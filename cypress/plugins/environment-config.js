@@ -1,7 +1,7 @@
 const { fetchCognitoToken } = require("./cognito-helper");
 
 const setEnvironmentConfig = async (on, config) => {
-    console.log("Enter: 'setEnvironmentConfig'.");
+    console.log("> Enter: 'setEnvironmentConfig'.");
     // setting page paths
     config.searchUrl = "search"
     config.personUrl = "person"
@@ -22,11 +22,11 @@ const setEnvironmentConfig = async (on, config) => {
     let baseUrl = `${rootUrl}:${rootComponentPort}`
 
     if (environment === 'development') {
-        console.log("Old token", gssoTestKey?.slice(0,10) || "null local token");
+        console.log("> Old token", gssoTestKey?.slice(0,10) || "null local token");
         baseUrl = "https://manage-my-home-development.hackney.gov.uk";
 
         gssoTestKey = await fetchCognitoToken(config.env);
-        console.log("New token", gssoTestKey.slice(0,10));
+        console.log("> New token", gssoTestKey.slice(0,10));
     } else if (environment === 'staging') {
         baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
         gssoTestKey = config.env.E2E_ACCESS_TOKEN_STAGING
@@ -37,8 +37,8 @@ const setEnvironmentConfig = async (on, config) => {
 
     config.baseUrl = baseUrl
     config.gssoTestKey = gssoTestKey
-    console.log("Set config token", config.gssoTestKey.slice(0,10));
-    console.log("Exit 'setEnvironmentConfig'.")
+    console.log("> Set config token", config.gssoTestKey.slice(0,10));
+    console.log("> Exit 'setEnvironmentConfig'.")
     return config
 }
 
