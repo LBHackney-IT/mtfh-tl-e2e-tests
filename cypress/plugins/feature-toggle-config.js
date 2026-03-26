@@ -1,7 +1,8 @@
 const axios = require("axios");
 const { fetchCognitoToken } = require("./cognito-helper");
 
-const fetchFeatureToggleConfiguration = async (env) => {
+const fetchFeatureToggleConfiguration = async (config) => {
+  const env = config.env;
   console.log(">> Enter 'fetchFeatureToggleConfiguration'.");
   let token = env.E2E_ACCESS_TOKEN_LOCAL;
   const featureToggleEndpoint = env.FEATURE_TOGGLE_ENDPOINT;
@@ -11,7 +12,7 @@ const fetchFeatureToggleConfiguration = async (env) => {
 
   if (env.ENVIRONMENT === "development") {
     console.log(">> Old token", token?.slice(0,10) || "null local token");
-    token = await fetchCognitoToken(env);
+    token = config.gssoTestKey;
     console.log(">> New token", token.slice(0,10));
   }
 

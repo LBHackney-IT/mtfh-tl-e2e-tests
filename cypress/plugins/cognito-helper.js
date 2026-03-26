@@ -30,7 +30,6 @@ async function fetchCognitoToken(env) {
             },
         });
         console.log(">>>> Request done.");
-        console.log(">>>> Making a request for cognito token.");
 
         console.log(">>>> Keys 'data':", Object.keys(response.data));
         console.log(">>>> Keys 'auth result':", Object.keys(response.data.AuthenticationResult));
