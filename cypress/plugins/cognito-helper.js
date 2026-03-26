@@ -34,6 +34,9 @@ async function fetchCognitoToken(env) {
         console.log(">>>> Keys 'data':", Object.keys(response.data));
         console.log(">>>> Keys 'auth result':", Object.keys(response.data.AuthenticationResult));
         console.log(">>>> Some number of chars of token", response.data.AuthenticationResult.IdToken.slice(0,10));
+        const payload = response.data.AuthenticationResult.IdToken.split('.')[1];
+        const paddedPayload = payload.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - payload.length % 4) % 4);
+        console.log(JSON.parse(Buffer.from(paddedPayload, 'base64').toString('utf-8')));
         console.log(">>>> End of 'fetchCognitoToken'.");
 
         return response.data.AuthenticationResult.IdToken;
