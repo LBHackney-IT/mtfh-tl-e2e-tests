@@ -22,7 +22,7 @@ const setEnvironmentConfig = async (on, config) => {
     let baseUrl = `${rootUrl}:${rootComponentPort}`
 
     if (environment === 'development') {
-        console.log("Old token", gssoTestKey.slice(0,10));
+        console.log("Old token", gssoTestKey?.slice(0,10) || "null local token");
         baseUrl = "https://manage-my-home-development.hackney.gov.uk";
 
         gssoTestKey = await fetchCognitoToken(config.env);
