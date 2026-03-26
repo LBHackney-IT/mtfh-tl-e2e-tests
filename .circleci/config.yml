@@ -84,6 +84,12 @@ commands:
                             export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
 
+                          # New auth credentials to retrieve the token
+                          export CYPRESS_AWS_REGION=$AWS_REGION
+                          export CYPRESS_E2E_CLIENT_ID=$E2E_CLIENT_ID
+                          export CYPRESS_E2E_USERNAME=$E2E_USERNAME
+                          export CYPRESS_E2E_PASSWORD=$E2E_PASSWORD
+
                           export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text) ;

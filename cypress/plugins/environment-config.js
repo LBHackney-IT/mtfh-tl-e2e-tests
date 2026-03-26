@@ -22,7 +22,6 @@ const setEnvironmentConfig = async (on, config) => {
 
     if (environment === 'development') {
         baseUrl = "https://manage-my-home-development.hackney.gov.uk";
-
         gssoTestKey = await fetchCognitoToken(config.env);
     } else if (environment === 'staging') {
         baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
