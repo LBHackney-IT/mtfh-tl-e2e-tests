@@ -2,6 +2,7 @@ const axios = require("axios");
 const { fetchCognitoToken } = require("./cognito-helper");
 
 const fetchFeatureToggleConfiguration = async (env) => {
+  console.log("Enter 'fetchFeatureToggleConfiguration'.");
   let token = env.E2E_ACCESS_TOKEN_LOCAL;
   const featureToggleEndpoint = env.FEATURE_TOGGLE_ENDPOINT;
 
@@ -9,7 +10,9 @@ const fetchFeatureToggleConfiguration = async (env) => {
   console.log(`Checking feature toggle config at ${url}`)
 
   if (env.ENVIRONMENT === "development") {
+    console.log("Old token", token.slice(0,10));
     token = await fetchCognitoToken(env);
+    console.log("New token", token.slice(0,10));
   }
 
   if (env.ENVIRONMENT === "staging") {
@@ -20,6 +23,7 @@ const fetchFeatureToggleConfiguration = async (env) => {
     token = env.E2E_ACCESS_TOKEN_PRODUCTION;
   }
 
+  console.log("Making feature flags fetch request.");
   const response = await axios.get(encodeURI(url), {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -37,6 +41,7 @@ const fetchFeatureToggleConfiguration = async (env) => {
   });
 
   console.log('Current feature toggle config is set to:', featureToggleStore)
+  console.log("Exit 'fetchFeatureToggleConfiguration'.");
   return featureToggleStore;
 };
 
