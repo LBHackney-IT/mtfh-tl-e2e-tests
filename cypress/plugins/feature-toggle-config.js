@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { fetchCognitoToken } = require("./cognito-helper");
 
 const fetchFeatureToggleConfiguration = async (config) => {
   const env = config.env;
