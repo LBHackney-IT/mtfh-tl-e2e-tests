@@ -1,4 +1,4 @@
-# MTFH E2E Tests
+# MTFH E2E Tests - Trigger all
 
 ## Important - About this repository:
 The purpose of this repository is to store all E2E tests for Manage My Home (MMH).
