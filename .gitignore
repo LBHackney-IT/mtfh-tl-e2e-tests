@@ -24,3 +24,5 @@ cypress/fixtures/PatchesAndAreas.json
 cypress/fixtures/recordsToDelete.json
 cypress/fixtures/EqualityInformation.json
 cypress/fixtures/Processes.json
+
+*.mp4

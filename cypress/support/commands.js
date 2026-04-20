@@ -4,6 +4,7 @@ import 'cypress-audit/commands'
 import "cypress-localstorage-commands"
 
 Cypress.Commands.add('login', () => {
+    // cy.log("Login start")
     const gssoTestKey = Cypress.config("gssoTestKey")
     const environment = Cypress.env("ENVIRONMENT");
     const cookieName = environment === "development" ? "hackneyCognitoToken" : "hackneyToken";
@@ -15,6 +16,13 @@ Cypress.Commands.add('login', () => {
         "features",
         JSON.stringify(Cypress.config("featureToggles"))
     );
+    // maybe here?
+    // const jwksUrl = "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_hmw0JIXQM/.well-known/jwks.json";
+    // cy.intercept('GET', jwksUrl).as('jwksRequest');
+    // cy.visit(Cypress.config("baseUrl"));
+    // cy.wait('@jwksRequest');
+    // cy.wait(5000);
+    // cy.log("Login")
 })
 
 Cypress.Commands.add('logout', () => {

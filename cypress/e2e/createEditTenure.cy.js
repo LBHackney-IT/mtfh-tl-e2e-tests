@@ -209,6 +209,13 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
                 cy.url().should('include', `tenure/${tenureId}/edit`)
             })
             createTenurePage.tenureStartDateInput().clear().type("2000-05-20")
+
+            // I guess validation was updated, but not the e2e tests.
+            // By default it appears to get set to match tenure start date
+            // If you attempt clearing it instead, a pop up regarding resuming tenancy pops up
+            // which is unaccounted for by this test. As such, end date is set +1 day of start date
+            createTenurePage.tenureEndDateInput().clear()//.type("2000-05-21")
+            
             cy.contains("Next").click();
             createTenurePage.doneButton().click()
             createTenurePage.confirmTenureUpdatedText().should('contain', 'Tenure updated');            

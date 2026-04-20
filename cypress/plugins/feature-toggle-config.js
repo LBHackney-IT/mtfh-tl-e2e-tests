@@ -12,7 +12,7 @@ const fetchFeatureToggleConfiguration = async (config) => {
   if (env.ENVIRONMENT === "development") {
     console.log(">> Old token", token?.slice(0,10) || "null local token");
     token = config.gssoTestKey;
-    console.log(">> New token", token.slice(0,10));
+    console.log(">> New token", token.slice(0,11));
   }
 
   if (env.ENVIRONMENT === "staging") {

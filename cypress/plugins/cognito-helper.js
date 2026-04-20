@@ -2,13 +2,14 @@ const axios = require("axios");
 
 async function fetchCognitoToken(env) {
     console.warn(">>>> Running 'fetchCognitoToken'");
-    const region = env.AWS_REGION;
+    const region = env.AWS_REGION || "eu-west-2";
     const clientId = env.E2E_CLIENT_ID;
     const username = env.E2E_USERNAME;
     const password = env.E2E_PASSWORD;
 
     console.log(">>>> Checking cognito env vars emptiness");
     if (!clientId || !username || !password || !region) {
+        console.log(`r:${region}, c:${clientId}, u:${username}, p:${password}`);
         throw new Error(">>>> Missing Cognito login environment variables.");
     }
 

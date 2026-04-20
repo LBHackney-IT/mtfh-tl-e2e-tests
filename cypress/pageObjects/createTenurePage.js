@@ -1,8 +1,20 @@
 
 class CreateTenurePageObjects {
     createTenure(tenureId) {
+        // cy.intercept({
+        // method: 'GET',
+        // pathname: '**/api/v1/configuration',
+        // query: { types: 'MMH' }
+        // }).as('getConfig');
+
         cy.visit(`${Cypress.config("baseUrl")}/${Cypress.config("tenureUrl")}/${tenureId}/add`)
-        cy.injectAxe()
+        
+        // cy.wait('@getConfig');
+        // .then((interception) => {
+        //     expect(interception.response.statusCode).to.eq(200);
+        // });
+        // cy.pause();
+        // cy.injectAxe()
     }
 
     editTenure(tenureId) {

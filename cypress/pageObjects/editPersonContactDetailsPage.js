@@ -12,9 +12,5 @@ class EditPersonContactDetailsPageObjects {
     mainContent() {
         return cy.get('#main-content')
     }
-
-    mainContent() {
-        return cy.get('#main-content')
-    }
 }
 export default EditPersonContactDetailsPageObjects
