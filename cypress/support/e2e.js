@@ -25,33 +25,32 @@ registerCypressGrep();
 
 // TODO: Move this to a helper file
 const clearDatabase = () => {
-    const filename = "cypress/fixtures/recordsToDelete.json";
-    return cy.readFile(filename).then((recordsToDelete) => {
-      if (recordsToDelete.length) {
-        return new Cypress.Promise((resolve, reject) => {
-          Promise.all(
-            recordsToDelete.map((record) => DynamoDb.deleteRecord(record))
-          )
-            .then(() => {
-              resolve();
-            })
-            .catch((error) => {
-              cy.log("Error deleting records: ", error);
-              reject(error);
-            });
-        }).then(() => {
-          // Clear the file once deletion is complete
-          cy.writeFile(filename, []);
-          cy.log("Test database records cleared!");
-        });
-      } else {
-        // No records to delete, just resolve the promise
-        cy.log("No records to delete.");
-        return new Cypress.Promise((resolve) => resolve());
-      }
-    });
-  };
-  
+  const filename = "cypress/fixtures/recordsToDelete.json";
+  return cy.readFile(filename).then((recordsToDelete) => {
+    if (recordsToDelete.length) {
+      return new Cypress.Promise((resolve, reject) => {
+        Promise.all(
+          recordsToDelete.map((record) => DynamoDb.deleteRecord(record))
+        )
+          .then(() => {
+            resolve();
+          })
+          .catch((error) => {
+            cy.log("Error deleting records: ", error);
+            reject(error);
+          });
+      }).then(() => {
+        // Clear the file once deletion is complete
+        cy.writeFile(filename, []);
+        cy.log("Test database records cleared!");
+      });
+    } else {
+      // No records to delete, just resolve the promise
+      cy.log("No records to delete.");
+      return new Cypress.Promise((resolve) => resolve());
+    }
+  });
+};
 
 before(() => {
     clearDatabase();
@@ -59,4 +58,20 @@ before(() => {
 
 after(() => {
     clearDatabase();
+});
+
+beforeEach(() => {
+  const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT') || Cypress.env('FEATURE_TOGGLE'); 
+  const url = `${endpoint}/api/v1/configuration?types=MMH`;
+
+  cy.intercept('GET', url).as('getFeatureToggles');
+});
+
+Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
+  return originalFn(url, options).then((visitContext) => {
+    
+    cy.wait('@getFeatureToggles');
+    
+    return visitContext; 
+  });
 });
