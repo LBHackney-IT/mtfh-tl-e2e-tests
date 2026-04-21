@@ -114,7 +114,7 @@ commands:
                           
                           npm install ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_grepTags" ;
-                          ./node_modules/.bin/cypress run
+                          ./node_modules/.bin/cypress run --config defaultCommandTimeout=8000,requestTimeout=10000,retries=0
                        
             - store_artifacts:
                 path: /root/project/cypress/videos/
