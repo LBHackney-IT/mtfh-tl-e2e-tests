@@ -23,7 +23,9 @@ describe("Change of Name Process", { tags: ['@processes', '@authentication', '@c
         cy.viewport(1080, 1920); // longer viewport so we can debug easier
         cy.login();
         seedDatabase();
-        cy.clock(new Date(now.getTime())); // Freeze time
+        // Using only 'Date' to prevent freezing the timer used by setTimout used by
+        // single SPA router.
+        cy.clock(new Date(now.getTime()), ['Date']); // Freeze time
 
         // cleanup
         cy.intercept('POST', '**/api/v2/process/changeofname', (req) => {
