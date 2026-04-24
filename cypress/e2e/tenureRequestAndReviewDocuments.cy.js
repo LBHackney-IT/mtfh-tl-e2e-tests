@@ -12,6 +12,7 @@ const modal = new ModalPageObjects();
 const personContactPage = new PersonContactPageObjects();
 const emailAdd = "AutomationTest@test.com";
 const phoneNumber = "07788123456";
+const nextYear = new Date().getFullYear() + 1;
 
 
 function manualDataChecksPass({ id: tenureId, householdMembers }) {
@@ -87,7 +88,7 @@ describe('Request and review documents', {tags: ['@process', '@common', '@root',
             tenureReqDocsPage.makeAnAppointToCheckSuppDocs().click();
             tenureReqDocsPage.day().clear().type('01');
             tenureReqDocsPage.month().clear().type('10');
-            tenureReqDocsPage.year().clear().type('2025');
+            tenureReqDocsPage.year().clear().type(`${nextYear}`);
             tenureReqDocsPage.hour().clear().type('10');
             tenureReqDocsPage.minute().clear().type('10');
             tenureReqDocsPage.ampm().select('AM');
@@ -227,7 +228,7 @@ describe('Request and review documents', {tags: ['@process', '@common', '@root',
             tenureReviewDocsPage.checkboxMakeAnAppointment().click();
             tenureReqDocsPage.day().clear().type('02');
             tenureReqDocsPage.month().clear().type('10');
-            tenureReqDocsPage.year().clear().type('2025');
+            tenureReqDocsPage.year().clear().type(`${nextYear}`);
             tenureReqDocsPage.hour().clear().type('11');
             tenureReqDocsPage.minute().clear().type('10');
             tenureReqDocsPage.ampm().select('AM');
