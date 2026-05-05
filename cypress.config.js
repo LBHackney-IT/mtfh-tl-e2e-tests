@@ -27,7 +27,6 @@ module.exports = defineConfig({
     numTestsKeptInMemory: 25,
     supportFile: 'cypress/support/e2e.js',
     env: {
-        grepFilterSpecs: true,
         grepOmitFiltered: true
     }
   },
