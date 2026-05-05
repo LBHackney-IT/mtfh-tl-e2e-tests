@@ -53,28 +53,12 @@ const clearDatabase = () => {
 };
 
 before(() => {
-    clearDatabase();
+  clearDatabase();
 });
 
 after(() => {
-    clearDatabase();
+  clearDatabase();
 });
-
-// beforeEach(() => {
-//   const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT') || Cypress.env('FEATURE_TOGGLE'); 
-//   const url = `${endpoint}/api/v1/configuration?types=MMH`;
-
-//   cy.intercept('GET', url).as('getFeatureToggles');
-// });
-
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
-//   return originalFn(url, options).then((visitContext) => {
-    
-//     cy.wait('@getFeatureToggles');
-    
-//     return visitContext; 
-//   });
-// });
 
 beforeEach(() => {
   const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT') || Cypress.env('FEATURE_TOGGLE'); 

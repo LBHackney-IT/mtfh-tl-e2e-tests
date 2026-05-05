@@ -9,7 +9,9 @@ Cypress.Commands.add('login', () => {
     const environment = Cypress.env("ENVIRONMENT");
     const cookieName = environment === "development" ? "hackneyCognitoToken" : "hackneyToken";
     cy.getCookies().should('be.empty')
-    cy.setCookie(cookieName, gssoTestKey)
+    cy.setCookie(cookieName, gssoTestKey, { 
+        domain: Cypress.config("baseUrl"),
+    });
     cy.getCookie(cookieName).should('have.property', 'value', gssoTestKey)
     cy.log(Cypress.config("featureToggles"))
     window.localStorage.setItem(
