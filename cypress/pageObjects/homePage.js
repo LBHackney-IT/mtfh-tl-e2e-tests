@@ -1,24 +1,26 @@
 
 class HomePageObjects {
     visit() {
-        cy.visit(Cypress.config("baseUrl"));
-        cy.injectAxe()
+        cy.visit(Cypress.config("baseUrl"), {
+            waitForJwks: false,
+        });
+        cy.injectAxe();
     }
 
     mainContent() {
-        return cy.get('[id="main-content"]')
+        return cy.get('[id="main-content"]');
     }
 
     signInButton() {
-        return cy.contains("Sign in with Google")
+        return cy.contains("Sign in with Google");
     }
 
     headerLinks() {
-        return cy.get('.lbh-header__links')
+        return cy.get('.lbh-header__links');
     }
 
     iAmOnTheHomePage() {
-        this.mainContent().should('be.visible')
+        this.mainContent().should('be.visible');
     };
 
     yourTasksText() {
@@ -32,4 +34,5 @@ class HomePageObjects {
         return cy.contains('Patch');
     }
 }
-export default HomePageObjects
+
+export default HomePageObjects;
