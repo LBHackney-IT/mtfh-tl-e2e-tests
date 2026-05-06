@@ -84,6 +84,17 @@ commands:
                             export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
 
+                          # New auth credentials to retrieve the token
+                          # TODO: change to param store once we decide this is ready for staging
+                          export CYPRESS_AWS_REGION=$AWS_REGION
+                          export CYPRESS_E2E_CLIENT_ID=$E2E_CLIENT_ID
+                          export CYPRESS_E2E_USERNAME=$E2E_USERNAME
+                          export CYPRESS_E2E_PASSWORD=$E2E_PASSWORD
+
+                          # Cognito flow feature toggle specifyin list of environments to enable the flow for
+                          export CYPRESS_COGNITO_FLOW_ENABLED_FOR=$COGNITO_FLOW_ENABLED_FOR
+
+                          # The rest of legacy configuration
                           export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
                           export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text) ;
