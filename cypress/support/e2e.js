@@ -70,7 +70,11 @@ beforeEach(() => {
 
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   originalFn(url, options);
-  cy.wait('@getFeatureToggles');
+
+  if (options?.waitForJwks !== false) {
+    cy.wait('@getFeatureToggles');
+  }
+
   cy.wait(1000);
   cy.window({ log: false }); 
 });
