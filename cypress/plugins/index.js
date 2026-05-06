@@ -9,7 +9,7 @@ const { fetchFeatureToggleConfiguration } = require("./feature-toggle-config")
 const { setEnvironmentConfig } = require("./environment-config")
 
 module.exports = async (on, config) => {
-  config.featureToggles = (await fetchFeatureToggleConfiguration(config.env)) || {};
+  config.featureToggles = (await fetchFeatureToggleConfiguration(config)) || {};
   config = await setEnvironmentConfig(on, config);
   config = require('@cypress/grep/src/plugin')(config);
 
