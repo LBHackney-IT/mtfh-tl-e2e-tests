@@ -1,7 +1,9 @@
 
 class HomePageObjects {
     visit() {
-        cy.visit(Cypress.config("baseUrl"));
+        cy.visit(Cypress.config("baseUrl"), {
+            waitForConfiguration: false,
+        });
         cy.injectAxe();
     }
 

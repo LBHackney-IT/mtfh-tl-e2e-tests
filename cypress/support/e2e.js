@@ -62,7 +62,7 @@ after(() => {
 });
 
 beforeEach(() => {
-  const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT') || Cypress.env('FEATURE_TOGGLE'); 
+  const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT'); 
   const url = `${endpoint}/api/v1/configuration?types=MMH`;
 
   cy.intercept('GET', url).as('getFeatureToggles');
@@ -71,7 +71,7 @@ beforeEach(() => {
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   originalFn(url, options);
 
-  if (options?.waitForJwks !== false) {
+  if (options?.waitForConfiguration !== false) {
     cy.wait('@getFeatureToggles');
   }
 
