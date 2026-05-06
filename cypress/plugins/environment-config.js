@@ -1,4 +1,4 @@
-const { fetchCognitoToken } = require("./cognito-helper");
+const { fetchCognitoToken, cognitoFlowEnabled } = require("./cognito-helper");
 
 const setEnvironmentConfig = async (on, config) => {
     // setting page paths
@@ -20,9 +20,16 @@ const setEnvironmentConfig = async (on, config) => {
     let gssoTestKey = config.env.E2E_ACCESS_TOKEN_LOCAL
     let baseUrl = `${rootUrl}:${rootComponentPort}`
 
+    // WIP - will be properly refined upon integrating this with the last environment.
+    // For now, only 1 environment is configured with cognito, and even then we want legacy
+    // flow to remain primary until more flake gets shed from cognito flow.
+    const isCognitoFlow = cognitoFlowEnabled(config);
+
     if (environment === 'development') {
         baseUrl = "https://manage-my-home-development.hackney.gov.uk";
-        gssoTestKey = await fetchCognitoToken(config.env);
+        gssoTestKey = isCognitoFlow
+            ? await fetchCognitoToken(config.env)
+            : config.env.E2E_ACCESS_TOKEN_DEV;
     } else if (environment === 'staging') {
         baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
         gssoTestKey = config.env.E2E_ACCESS_TOKEN_STAGING
@@ -33,6 +40,7 @@ const setEnvironmentConfig = async (on, config) => {
 
     config.baseUrl = baseUrl
     config.gssoTestKey = gssoTestKey
+    config.isCognitoFlow = isCognitoFlow;
 
     return config
 }

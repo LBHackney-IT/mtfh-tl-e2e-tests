@@ -5,8 +5,8 @@ import "cypress-localstorage-commands"
 
 Cypress.Commands.add('login', () => {
     const gssoTestKey = Cypress.config("gssoTestKey")
-    const environment = Cypress.env("ENVIRONMENT");
-    const cookieName = environment === "development" ? "hackneyCognitoToken" : "hackneyToken";
+    const isCognitoFlow = Cypress.config("isCognitoFlow");
+    const cookieName = isCognitoFlow ? "hackneyCognitoToken" : "hackneyToken";
     cy.getCookies().should('be.empty')
     cy.setCookie(cookieName, gssoTestKey)
     cy.getCookie(cookieName).should('have.property', 'value', gssoTestKey)
