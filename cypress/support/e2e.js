@@ -60,3 +60,17 @@ before(() => {
 after(() => {
     clearDatabase();
 });
+
+beforeEach(() => {
+  const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT') || Cypress.env('FEATURE_TOGGLE'); 
+  const url = `${endpoint}/api/v1/configuration?types=MMH`;
+
+  cy.intercept('GET', url).as('getFeatureToggles');
+});
+
+Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
+  originalFn(url, options);
+  cy.wait('@getFeatureToggles');
+  cy.wait(1000);
+  cy.window({ log: false }); 
+});
