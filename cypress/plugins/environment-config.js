@@ -25,6 +25,8 @@ const setEnvironmentConfig = async (on, config) => {
     // flow to remain primary until more flake gets shed from cognito flow.
     const isCognitoFlow = cognitoFlowEnabled(config);
 
+    console.log(`Tests are running using the ${isCognitoFlow ? "Cognito" : "Legacy"} flow.`);
+
     if (environment === 'development') {
         baseUrl = "https://manage-my-home-development.hackney.gov.uk";
         gssoTestKey = isCognitoFlow
