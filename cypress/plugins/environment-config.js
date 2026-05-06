@@ -23,7 +23,7 @@ const setEnvironmentConfig = async (on, config) => {
     // WIP - will be properly refined upon integrating this with the last environment.
     // For now, only 1 environment is configured with cognito, and even then we want legacy
     // flow to remain primary until more flake gets shed from cognito flow.
-    const isCognitoFlow = cognitoFlowEnabled(config);
+    const isCognitoFlow = cognitoFlowEnabled(config.env);
 
     console.log(`Tests are running using the ${isCognitoFlow ? "Cognito" : "Legacy"} flow.`);
 
