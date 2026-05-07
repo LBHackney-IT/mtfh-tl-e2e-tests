@@ -5,34 +5,6 @@ orbs:
   aws-cli: circleci/aws-cli@2.0.3
   cypress: cypress-io/cypress@3.1.3
 
-parameters:
-  run_workflow_ci:
-    description: The default behaviour of the pipeline when a commit and/or merge is performed.
-    default: true
-    type: boolean
-
-  upstream_pipeline_name:
-    description: The name of the mfe that triggered the tests upstream.
-    default: ""
-    type: string
-
-  external_trigger:
-    description: Pipeline triggered externally
-    default: false
-    type: boolean
-
-  development_environment:
-    default: false
-    type: boolean
-
-  staging_environment:
-    default: false
-    type: boolean
-
-  production_environment:
-    default: false
-    type: boolean
-
 references:
     workspace_root: &workspace_root '~'
     attach_workspace: &attach_workspace
@@ -135,23 +107,11 @@ commands:
                 destination: artifact-file
 
 jobs:
-  assume-role-development:
-        executor: docker-python
-        steps:
-            - assume-role-and-persist-workspace:
-                  aws-account: $AWS_ACCOUNT_DEVELOPMENT
-
   assume-role-staging:
         executor: docker-python
         steps:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_STAGING
-
-  assume-role-production:
-        executor: docker-python
-        steps:
-            - assume-role-and-persist-workspace:
-                  aws-account: $AWS_ACCOUNT_PRODUCTION
 
   run-e2e-tests:
         executor: cypress-browsers
@@ -161,52 +121,13 @@ jobs:
             stage:
                 type: string
         steps:
-          - when:
-              condition: << pipeline.parameters.external_trigger >> 
-              steps:
-                - *attach_workspace
-                - aws-cli/install
-                - checkout
-                - execute-e2e-tests:
-                    stage: <<parameters.stage>>
-                    trigger-context: external
+          - *attach_workspace
+          - aws-cli/install
+          - checkout
+          - execute-e2e-tests:
+              stage: <<parameters.stage>>
+              trigger-context: external
 
-  trigger-downstream-deployment:
-        executor: cypress-browsers
-        environment:
-            aws-region: eu-west-2
-        parameters:
-            stage:
-                type: string
-        steps:
-          - run:
-              name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
-              command: |
-                        export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/,,g')"
-                        export DEPLOYMENT_ENVIRONMENT='run_<< parameters.stage >>_workflow' ;
-                        curl --location --request POST 'https://circleci.com/api/v2/project/gh/'"$PIPELINE_FILTER"'/pipeline' \
-                        --header 'Circle-Token: '"$CIRCLE_TOKEN"'' \
-                        --header 'Content-Type: application/json' \
-                        --data '{ "branch": "main", "parameters": { "run_development_workflow": false, '\""$DEPLOYMENT_ENVIRONMENT"\"': true } }' ;
-  
-  run-ci-tests:
-        executor: cypress-browsers
-        environment:
-            aws-region: eu-west-2
-        parameters:
-            stage:
-                type: string
-        steps:
-          - when:
-              condition: << pipeline.parameters.run_workflow_ci >> 
-              steps:
-                - *attach_workspace
-                - aws-cli/install
-                - checkout
-                - execute-e2e-tests:
-                    stage: development
-                    trigger-context: ci
-        
   run-e2e-devices:
         executor: cypress-browsers
         environment:
