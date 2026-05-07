@@ -81,7 +81,7 @@ commands:
                           export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
                           
                           export CYPRESS_grepTags='-@GoogleLighthouse -@Accessibility -@ignore' ;
-                          export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
+                          export PIPELINE_FILTER="$(echo "https://github.com/LBHackney-IT/mtfh-frontend-common" | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                           [ "<<parameters.trigger-context>>" = "external" ] && [ "<<parameters.stage>>" = "production" ] && export CYPRESS_grepTags="$CYPRESS_grepTags @Production"
 
                           if [ -n "$PIPELINE_FILTER" ]; then
