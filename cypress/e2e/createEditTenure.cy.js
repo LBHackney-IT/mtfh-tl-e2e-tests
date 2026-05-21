@@ -104,7 +104,10 @@ describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@comm
 
     })
 
-    it('should validate on create new tenure', {tags: '@ignore'}, () => {
+    // This test conflicts with the one before it. If you were to disable the test above, this would pass.
+    // Might be why this test got ignored. It's puzzling for why this test is triggering regardless of the @ignore tag.
+    // As such, skipping this until the state conflict between the 2 tests gets resolved.
+    it.skip('should validate on create new tenure', {tags: '@ignore'}, () => {
         cy.getAssetFixture().then(({ id: tenureId }) => {
             createTenurePage.createTenure(tenureId);
 
