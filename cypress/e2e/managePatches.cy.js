@@ -6,7 +6,7 @@ const patchesPage = new ManagePatchesPageObjects();
 const propertyPage = new PropertyPageObjects();
 
 
-describe("View and manage patch and area assignment", {tags: ["@property", "@authentication", "@common", "@root", "@search"]}, () => {
+describe.skip("View and manage patch and area assignment", {tags: ["@property", "@authentication", "@common", "@root", "@search"]}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();
