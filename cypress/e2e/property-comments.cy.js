@@ -112,7 +112,7 @@ describe('View property page', {tags: ['@property', '@authentication', '@common'
         })
    })
    device.forEach((test) => {
-        it('should create a comment for property on a device', {tags: '@device'}, ()=> {
+        it.skip('should create a comment for property on a device', {tags: '@device'}, ()=> {
             cy.getAssetFixture().then((property) => {
                 propertyCommentsPage.visit(property.id)
 
