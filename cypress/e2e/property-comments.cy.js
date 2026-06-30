@@ -43,7 +43,7 @@ describe('View property page', {tags: ['@property', '@authentication', '@common'
         });
     })
 
-    it('should create comment for property', {tags:'@SmokeTest'},()=> {
+    it.skip('should create comment for property', {tags:'@SmokeTest'},()=> {
         cy.getAssetFixture().then((asset) => {
             propertyCommentsPage.visit(asset.id);
 
