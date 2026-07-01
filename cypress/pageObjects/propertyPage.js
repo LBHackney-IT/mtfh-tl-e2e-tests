@@ -44,10 +44,6 @@ class PropertyPageObjects {
         return cy.contains('Inactive');
     }
 
-    newProcess(){
-        return cy.contains('New Process')
-    }
-
     patchDetails() {
         return cy.get('[class="mtfh-patch-details"]')
     }

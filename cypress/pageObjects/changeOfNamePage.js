@@ -52,9 +52,6 @@ class ChangeOfNamePageObjects extends TenureReviewDocsPageObjects {
         //return cy.get('button[title="Search"]');
         return cy.get('#search-form > .govuk-button');
     };
-    newProcessButton() {
-        return cy.contains('New Process');
-    };
     changeToATenancyLink(){
         return cy.contains('Change to a tenancy');
     };
