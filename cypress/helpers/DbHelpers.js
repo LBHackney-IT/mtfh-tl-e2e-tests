@@ -1,4 +1,3 @@
-import DynamoDb from "../../api/database/DynamoDb";
 import { saveNonDynamoFixture } from "../../api/helpers";
 import { generateTenure } from "../../api/models/requests/addTenureModel";
 import { asset, generateAsset } from "../../api/models/requests/createAssetModel";
@@ -10,18 +9,17 @@ import { tenureToPersonTenure, tenureToAssetTenure } from "./helpers";
 import { changeOfName_Start, changeOfName_NameSubmitted } from "../../api/models/requests/processModel";
 
 export const addTestRecordToDatabase = (dbTableName, testDbRecord, testRecordKey) => {
-    cy.log("Seeding database").then(async () => {
-        cy.log(
-            `Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`
-        );
-        return new Cypress.Promise((resolve) => {
-            DynamoDb.createRecord(dbTableName, testDbRecord, testRecordKey).then(() => {
-                resolve();
-            });
-        }).then(() => {
-            cy.log("Database seeded!");
-        });
+    cy.log("Seeding database");
+    cy.log(
+        `Adding test record to database table ${dbTableName} and creating a record of it in recordsToDelete.json file`
+    );
+    cy.task('dynamoDb:create', { tableName: dbTableName, item: testDbRecord });
+    cy.readFile('cypress/fixtures/recordsToDelete.json').then((list) => {
+        list.push({ tableName: dbTableName, key: testRecordKey });
+        cy.writeFile('cypress/fixtures/recordsToDelete.json', list);
     });
+    cy.writeFile(`cypress/fixtures/${dbTableName}.json`, testDbRecord);
+    cy.log("Database seeded!");
 };
 
 export const seedDatabase = () => {

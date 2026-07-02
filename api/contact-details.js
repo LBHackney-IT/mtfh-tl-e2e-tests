@@ -1,15 +1,15 @@
 import { saveFixtureData } from './helpers'
-
-const endpoint = Cypress.env('CONTACT_DETAILS_ENDPOINT')
+import { endpoint } from '../cypress/support/endpoints'
 import { addContactModel } from './models/requests/addContactModel'
 
+const contactDetailsUrl = () => endpoint('CONTACT_DETAILS_ENDPOINT')
 const tableName = "ContactDetails";
 
 export const getContactDetails = (personId) => {
     return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
-            url: `${endpoint}/contactDetails?targetId=${personId}`,
+            url: `${contactDetailsUrl()}/contactDetails?targetId=${personId}`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` },
             failOnStatusCode: false
         }).then(response => {
@@ -22,7 +22,7 @@ export const deleteContactDetails = (contactDetailsId, targetId) => {
     return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'DELETE',
-            url: `${endpoint}/contactDetails?id=${contactDetailsId}&targetId=${targetId}`,
+            url: `${contactDetailsUrl()}/contactDetails?id=${contactDetailsId}&targetId=${targetId}`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             resolve(response)
@@ -50,7 +50,7 @@ export const addContactDetails = (targetId, contactType = null, contactInformati
         cy.request({
             method: 'POST',
             body: addContactModel,
-            url: `${endpoint}/contactDetails`,
+            url: `${contactDetailsUrl()}/contactDetails`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(

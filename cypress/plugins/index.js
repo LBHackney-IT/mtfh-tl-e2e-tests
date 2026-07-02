@@ -3,46 +3,46 @@
  * @type {Cypress.PluginConfig}
  */
 
-const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
-const { fetchFeatureToggleConfiguration } = require("./feature-toggle-config")
-const { setEnvironmentConfig } = require("./environment-config")
+const { fetchFeatureToggleConfiguration } = require('./feature-toggle-config');
+const { setEnvironmentConfig } = require('./environment-config');
+const { loadEnv, validateEnv } = require('./load-env');
+const { registerDynamoDbTasks } = require('./dynamoDb-tasks');
+const { registerAuditPlugin } = require('./audit-plugin');
 
 module.exports = async (on, config) => {
-  config = await setEnvironmentConfig(on, config);
-  config.featureToggles = (await fetchFeatureToggleConfiguration(config)) || {};
-  config = require('@cypress/grep/src/plugin')(config);
+  let runtimeConfig = config;
 
-  on("before:browser:launch", (browser = {}, launchOptions) => {
-    prepareAudit(launchOptions);
-  });
+  config = await setEnvironmentConfig(on, config);
+  config = loadEnv(config);
+  validateEnv(config);
+  runtimeConfig = config;
+
+  registerDynamoDbTasks(on, () => runtimeConfig);
+
+  config.featureToggles = (await fetchFeatureToggleConfiguration(config)) || {};
+  const { plugin: cypressGrepPlugin } = require('@cypress/grep/plugin');
+  config = cypressGrepPlugin(config);
+
+  registerAuditPlugin(on);
 
   const bundler = createBundler({
-    // any ESBuild options here
-    // https://esbuild.github.io/api/
     define: {
-        "global": "window"
+      global: 'window',
     },
-  })
-  on('file:preprocessor', bundler)
+  });
+  on('file:preprocessor', bundler);
 
-  on("task", {
-    lighthouse: lighthouse((lighthouseReport) => {
-      console.log(lighthouseReport);
-    }),
-    pa11y: pa11y((pa11yReport) => {
-      console.log(pa11yReport);
-    }),
+  on('task', {
     log(message) {
       console.log(message);
-
       return null;
     },
     table(message) {
       console.table(message);
-
       return null;
     },
   });
+
   return config;
 };

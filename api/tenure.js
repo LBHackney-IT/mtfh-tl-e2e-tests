@@ -2,8 +2,9 @@ import { postRequest, patchRequest, deleteRequest } from './requests/requests'
 import { createTenureModel as _createTenureModel, secureTenureModel } from "./models/requests/addTenureModel";
 import { saveFixtureData } from './helpers'
 import person from "./person";
+import { endpoint } from '../cypress/support/endpoints'
 
-const tenureEndpoint = Cypress.env('TENURE_ENDPOINT')
+const tenuresUrl = () => `${endpoint('TENURE_ENDPOINT')}/tenures`
 const editTenureModel = {tenureType: {code: "", description: ""}, endOfTenureDate: null}
 const tableName = "TenureInformation";
 
@@ -11,7 +12,7 @@ export const getTenure = (tenureId) => {
     return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
-            url: `${tenureEndpoint}/tenures/${tenureId}`,
+            url: `${tenuresUrl()}/${tenureId}`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             resolve(response)
@@ -29,7 +30,7 @@ export const createTenure = (tenureTypeCode) => {
         cy.request({
             method: 'POST',
             body: tenureModel,
-            url: `${tenureEndpoint}/tenures/`,
+            url: `${tenuresUrl()}/`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
@@ -47,7 +48,7 @@ export const createTenure = (tenureTypeCode) => {
 export const createTenureWithNoOtherResponsibleHouseholdMembers = async() => {
     const requestModel = _createTenureModel
     requestModel.householdMembers[1].isResponsible = true
-    const response = await postRequest(`${tenureEndpoint}/tenures/`, requestModel)
+    const response = await postRequest(`${tenuresUrl()}/`, requestModel)
     
     const responseData = response.data;
     saveFixtureData(tableName, { id: responseData.id }, responseData);
@@ -62,7 +63,7 @@ export const createTenureWithStartDate = (startOfTenureDate) => {
         cy.request({
             method: 'POST',
             body: requestModel,
-            url: `${tenureEndpoint}/tenures/`,
+            url: `${tenuresUrl()}/`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
@@ -81,12 +82,12 @@ export const editTenure = async (tenureId, tenureType, ifMatch) => {
     editTenureModel.tenureType.code = tenureType.substring(0,2).toUpperCase()
     editTenureModel.tenureType.description = tenureType
 
-    const response = await patchRequest(`${tenureEndpoint}/tenures/${tenureId}`, editTenureModel, ifMatch)
+    const response = await patchRequest(`${tenuresUrl()}/${tenureId}`, editTenureModel, ifMatch)
     return response
 }
 
 export const deleteTenure = async(tenureId, personId) => {
-    const response = await deleteRequest(`${tenureEndpoint}/tenures/${tenureId}/person/${personId}`)
+    const response = await deleteRequest(`${tenuresUrl()}/${tenureId}/person/${personId}`)
     return response
 }
 
@@ -97,7 +98,7 @@ export const addPersonToTenure = (tenureId, isResponsible, ifMatch) => {
             cy.request({
                 method: 'PATCH',
                 body: { fullName: `${firstName} ${surname}`, personTenureType: "Tenant", isResponsible },
-                url: `${tenureEndpoint}/tenures/${tenureId}/person/${personId}`,
+                url: `${tenuresUrl()}/${tenureId}/person/${personId}`,
                 headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}`, 'If-Match': ifMatch }
             }).then(response => {
                 resolve(response)

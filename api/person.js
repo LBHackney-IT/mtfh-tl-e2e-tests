@@ -1,11 +1,11 @@
 import { patchRequest, getRequest } from './requests/requests'
 import { saveFixtureData } from './helpers'
+import { endpoint } from '../cypress/support/endpoints'
 
 import { createPersonModel } from './models/requests/createPersonModel'
 import { editPersonModel } from './models/requests/editPersonModel'
 
-const personEndpoint =  Cypress.env('PERSON_ENDPOINT')
-const url = `${personEndpoint}/persons`
+const personsUrl = () => `${endpoint('PERSON_ENDPOINT')}/persons`
 const tableName = "Persons";
 
 const createPerson = () => {
@@ -13,7 +13,7 @@ const createPerson = () => {
         cy.request({
             method: 'POST',
             body: createPersonModel,
-            url,
+            url: personsUrl(),
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then(response => {
             saveFixtureData(
@@ -38,7 +38,7 @@ const createPersonWithNewTenure = (tenureId, dateOfBirth) => {
         cy.request({
             method: 'POST',
             body: requestModel,
-            url,
+            url: personsUrl(),
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` }
         }).then((response) => {
             saveFixtureData(
@@ -54,12 +54,12 @@ const createPersonWithNewTenure = (tenureId, dateOfBirth) => {
 }
 
 export const editPerson = async (personId) => {
-    const response = await patchRequest(`${url}/${personId}`, editPersonModel)
+    const response = await patchRequest(`${personsUrl()}/${personId}`, editPersonModel)
     return response
 }
 
 const viewPerson = (personId) => {
-    const response = getRequest(`${url}/${personId}`)
+    const response = getRequest(`${personsUrl()}/${personId}`)
     return response
 }
 

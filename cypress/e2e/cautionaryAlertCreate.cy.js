@@ -1,6 +1,7 @@
 import { seedDatabase } from '../helpers/DbHelpers';
 import CautionaryAlertsPageObjects from '../pageObjects/cautionaryAlertsPage';
 import PersonPageObjects from '../pageObjects/personPage';
+import { endpoint } from '../support/endpoints';
 
 const personPage = new PersonPageObjects();
 const caPage = new CautionaryAlertsPageObjects();
@@ -11,7 +12,7 @@ describe('Create Cautionary Alerts', { tags: ["@cautionary-alerts", "@authentica
         cy.login();
         seedDatabase();
 
-        cy.intercept('POST', `${Cypress.env('CAUTIONARY_ALERT_ENDPOINT')}/cautionary-alerts/`, (req) => {
+        cy.intercept('POST', `${endpoint('CAUTIONARY_ALERT_ENDPOINT')}/cautionary-alerts/`, (req) => {
             req.on('after:response', (res) => {
                 if (res.statusCode === 200) {
                     const alertId = res.body.alertId;

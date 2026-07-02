@@ -45,7 +45,8 @@ executors:
             - image: circleci/python:3.7
     cypress-browsers:
         docker:
-            - image: cypress/browsers:node16.13.2-chrome100-ff98
+            # Pinned to Node 24.17.0 — keep in sync with .nvmrc and package.json engines
+            - image: cypress/browsers:node-24.17.0-chrome-149.0.7827.155-1-ff-152.0-edge-149.0.4022.69-1
         resource_class: medium+
 
 commands:
@@ -123,7 +124,7 @@ commands:
                             export CYPRESS_grepTags="$CYPRESS_grepTags -@device"
                           fi              
                           
-                          npm install ;
+                          npm ci ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_grepTags" ;
                           ./node_modules/.bin/cypress run
                        

@@ -20,34 +20,42 @@ When adding new tests, please:
 - Tag each test or feature file with the name of the related microfrontend. For example, `mtfh-frontend-personal-details` would become `@personal-details`. This ensures that it runs during that mfe's deployment workflow.
 
 ## Running instructions
-#### Installation:
-Install the local dependencies using `npm install`
+
+#### Prerequisites
+
+This project requires **Node 24.17.x** (pinned to `24.17.0`). Use [nvm](https://github.com/nvm-sh/nvm) or your preferred version manager:
+
+```bash
+nvm use          # reads .nvmrc (24.17.0)
+node -v          # should print v24.17.x
+```
+
+#### Installation
+
+Install dependencies with:
+
+```bash
+npm ci
+```
+
+Use `npm install` only when intentionally updating `package-lock.json`.
 
 #### Environment variables
-Create a `cypress.env.json` file by copying the `cypress.env.example.json`. You can get the endpoint details from the AWS parameter store. The properties can be set as follows: `https://${apiGateway}.execute-api.eu-west-2.amazonaws.com/${environment}/api/${apiVersion}`
 
-This list is subject to change as the tests start to leverage more of the API's maturing functionality. If in doubt, check the [CircleCI config](https://github.com/LBHackney-IT/mtfh-tl-e2e-tests/blob/master/.circleci/config.yml#L87) to see exactly what endpoints the tests need to run.
+Secrets (auth tokens, AWS credentials, Cognito passwords) must **never** be committed. Set them as OS environment variables with the `CYPRESS_` prefix.
 
->"AWS_SECRET_ACCESS_KEY": ${yourAWSCredentials}
-
->"AWS_ACCESS_KEY_ID": ${yourAWSCredentials}
-
->"AWS_SESSION_TOKEN": ${yourAWSCredentials}
-
-These are your AWS credentials. Please set them in your CLI rather than in your `cypress.env.json`. All env var names have to have the prefix `CYPRESS_` to be picked up by the test runner if they are not in the json file, so make sure you update the names accordingly. An easy way to do this is:
+**Local setup (recommended):**
 
 ```bash
-// paste in your AWS credentials first
-// ...
-export CYPRESS_AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-export CYPRESS_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-export CYPRESS_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
+source setEnv.sh <aws-sso-profile> development
+export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT='<<your hackney JWT>>'
 ```
-or, if you have aws sso configured:
 
-```bash
-. ./setEnv.sh <PROFILE_NAME>
-```
+`setEnv.sh` fetches API endpoints from AWS SSM and exports short-lived AWS credentials for DynamoDB seeding tasks. Credentials stay in the Node process and are not exposed to the browser.
+
+**Optional non-secret config:** copy `cypress.env.example.json` to `cypress.env.json` for endpoint URLs only if you are not using `setEnv.sh`. Do not put tokens or AWS keys in this file.
+
+The CircleCI pipeline uses the same `CYPRESS_*` variable names from the `mtfh-mfe-e2e-tests` context — no context changes are required.
 
 #### Starting the tests
 Start a local test run by using `npm run test:cypress:run`

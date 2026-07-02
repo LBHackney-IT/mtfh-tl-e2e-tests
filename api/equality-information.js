@@ -1,12 +1,13 @@
 const equalityDetailsModel = require('./models/requests/equalityDetailsModel')
-const equalityDetailsEndpoint = Cypress.env('EQUALITY_DETAILS_ENDPOINT')
-const url = `${equalityDetailsEndpoint}/equality-information`
+const { endpoint } = require('../cypress/support/endpoints')
+
+const equalityInformationUrl = () => `${endpoint('EQUALITY_DETAILS_ENDPOINT')}/equality-information`
 
 const getEqualityDetails = (targetId) => {
     return new Cypress.Promise((resolve) => {
         cy.request({
             method: 'GET',
-            url: `${url}?targetId=${targetId}`,
+            url: `${equalityInformationUrl()}?targetId=${targetId}`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}` },
             failOnStatusCode: false
         }).then(response => {
@@ -20,7 +21,7 @@ const editEqualityDetails = (targetId, ifMatch) => {
         cy.request({
             method: 'PATCH',
             body: equalityDetailsModel.equalityDetailsModel,
-            url: `${url}/${targetId}`,
+            url: `${equalityInformationUrl()}/${targetId}`,
             headers: { Authorization: `Bearer ${Cypress.config("gssoTestKey")}`, 'If-Match': ifMatch }
         }).then((response) => {
             resolve(response)

@@ -3,7 +3,7 @@ import { generateAsset } from "../../../api/models/requests/createAssetModel";
 import { person } from "../../../api/models/requests/createPersonModel";
 import CreateTenurePageObjects from "../../pageObjects/createTenurePage";
 import ModalPageObjects from "../../pageObjects/sharedComponents/modal";
-import DynamoDb from "../common/DynamoDb";
+import { addTestRecordToDatabase } from "../../helpers/DbHelpers";
 
 const createTenurePage = new CreateTenurePageObjects()
 const modal = new ModalPageObjects()
@@ -198,21 +198,13 @@ Then("the tenure information is displayed with the page heading Tenure updated",
 // Database seed methods
 
 Given("I seeded the database with an asset with no attached tenure", () => {
-    cy.log("Seeding database").then(() => {
-        const assetModel = generateAsset()
-        const personModel1 = person();
-        const personModel2 = person();
+    cy.log("Seeding database");
+    const assetModel = generateAsset()
+    const personModel1 = person();
+    const personModel2 = person();
 
-        return new Cypress.Promise((resolve) => {
-            Promise.all([
-                DynamoDb.createRecord("Assets", assetModel, { id: assetModel.id }),
-                DynamoDb.createRecord("Persons", personModel1, { id: personModel1.id }),
-                DynamoDb.createRecord("Persons", personModel2, { id: personModel2.id }),
-            ]).then(() => {
-                resolve()
-            })
-        }).then(() => {
-            cy.log("Database seeded!");
-        })
-    })
+    addTestRecordToDatabase("Assets", assetModel, { id: assetModel.id });
+    addTestRecordToDatabase("Persons", personModel1, { id: personModel1.id });
+    addTestRecordToDatabase("Persons", personModel2, { id: personModel2.id });
+    cy.log("Database seeded!");
 })

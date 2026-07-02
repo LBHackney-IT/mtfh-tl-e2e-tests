@@ -1,7 +1,8 @@
 
-const personSearchEndpoint = Cypress.env('HOUSE_SEARCH_ENDPOINT');
+import { endpoint } from './endpoints';
 
 export const searchPersonResults = (searchPerson) => {
+    const personSearchEndpoint = endpoint('HOUSE_SEARCH_ENDPOINT');
     cy.request({
         method:"GET",
         url:`${personSearchEndpoint}/search/persons?isDesc=true&page=1&pageSize=40&searchText=${searchPerson}`,
