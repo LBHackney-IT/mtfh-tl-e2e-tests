@@ -10,7 +10,7 @@ describe('Change Asset Ownership', {tags: ['@property', '@authentication', '@com
         seedDatabase();
     });
 
-    it.skip('should access form from asset page', ()=> {
+    it('should access form from asset page', ()=> {
         cy.getAssetFixture().then((asset) => {
             propertyPage.visit(asset.id);
 
