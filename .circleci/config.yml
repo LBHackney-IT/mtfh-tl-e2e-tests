@@ -50,6 +50,15 @@ executors:
         resource_class: medium+
 
 commands:
+    # cypress/browsers Node 24+ images omit curl by design (see cypress-io/cypress-docker-images#852).
+    # Required by circleci/aws-cli orb and trigger-downstream-deployment.
+    install-system-deps:
+        description: 'Install OS packages required by AWS CLI and pipeline scripts'
+        steps:
+            - run:
+                name: Install curl and unzip
+                command: apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates
+
     assume-role-and-persist-workspace:
         description: 'Assume deployment role and persist credentials across jobs'
         parameters:
@@ -166,6 +175,7 @@ jobs:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
                 - *attach_workspace
+                - install-system-deps
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
@@ -180,6 +190,7 @@ jobs:
             stage:
                 type: string
         steps:
+          - install-system-deps
           - run:
               name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
               command: |
@@ -202,6 +213,7 @@ jobs:
               condition: << pipeline.parameters.run_workflow_ci >> 
               steps:
                 - *attach_workspace
+                - install-system-deps
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
@@ -217,6 +229,7 @@ jobs:
                 type: string
         steps:
           - *attach_workspace
+          - install-system-deps
           - aws-cli/install
           - checkout
           - execute-e2e-tests:
