@@ -44,8 +44,7 @@ describe('View property page', {tags: ['@property', '@authentication', '@common'
 
             propertyPage.patchDetails().should("be.visible");
             propertyPage.patchDetails().contains("Patch");
-            propertyPage.patchDetails().contains("Housing officer");
-            propertyPage.patchDetails().contains("Area manager"); 
+            propertyPage.neighbourhoodLeadNotice().should("be.visible");
 
             propertyPage.tenureDetailsContainer().should("be.visible");
             propertyPage.tenureDetailsContainer().contains("Status");
@@ -59,6 +58,16 @@ describe('View property page', {tags: ['@property', '@authentication', '@common'
             navigation.backButton().click();
             cy.contains("Search").should("be.visible");
 
+        });
+    })
+
+    it('should display neighbourhood lead notice in patch details on the property sidebar', { tags: '@SmokeTest' }, () => {
+        cy.getAssetFixture().then((asset) => {
+            propertyPage.visit(asset.id);
+
+            propertyPage.propertyViewSidebar().should('be.visible');
+            propertyPage.patchDetails().should('be.visible');
+            propertyPage.neighbourhoodLeadNotice().should('be.visible');
         });
     })
 

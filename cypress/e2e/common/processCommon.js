@@ -1,28 +1,7 @@
 import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
-import PersonPageObjects from "../../pageObjects/personPage";
-import PropertyPageObjects from "../../pageObjects/propertyPage";
-import TenurePageObjects from "../../pageObjects/tenurePage";
 
-const personPage = new PersonPageObjects()
 const processesPage = new ProcessesPageObjects()
-const tenurePage = new TenurePageObjects()
-const propertyPage = new PropertyPageObjects()
-
-When('I select New Process menu {string}',  (processType) => {
-    switch (processType) {
-        case "person":
-            personPage.newProcess().click()
-            break;
-        case "tenure":
-            tenurePage.newProcess().click()
-            break;
-        case "property":
-            propertyPage.newProcess().click()
-        default:
-        break;
-    }
-})
 
 Then ('I am directed to the main process landing page', ()=>{
     processesPage.pageTitle()
