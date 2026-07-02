@@ -43,7 +43,7 @@ describe('View property page', {tags: ['@property', '@authentication', '@common'
         });
     })
 
-    it.skip('should create comment for property', {tags:'@SmokeTest'},()=> {
+    it('should create comment for property', {tags:'@SmokeTest'},()=> {
         cy.getAssetFixture().then((asset) => {
             propertyCommentsPage.visit(asset.id);
 
@@ -112,7 +112,7 @@ describe('View property page', {tags: ['@property', '@authentication', '@common'
         })
    })
    device.forEach((test) => {
-        it.skip('should create a comment for property on a device', {tags: '@device'}, ()=> {
+        it('should create a comment for property on a device', {tags: '@device'}, ()=> {
             cy.getAssetFixture().then((property) => {
                 propertyCommentsPage.visit(property.id)
 
