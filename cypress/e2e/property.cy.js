@@ -1,7 +1,6 @@
 import PropertyPageObjects from "../pageObjects/propertyPage";
 import NavigationPageObjects from "../pageObjects/sharedComponents/navigation";
 import { seedDatabaseWithTenure, seedDatabase, addTestRecordToDatabase } from "../helpers/DbHelpers";
-import { stubPropertyCautionaryAlertsIfNeeded } from "../helpers/helpers";
 import {
     generateAsset,
     assetModelControlledSubmodels,
@@ -14,7 +13,6 @@ const navigation = new NavigationPageObjects();
 
 describe('View property page', {tags: ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
-        stubPropertyCautionaryAlertsIfNeeded();
         cy.login();
         seedDatabase();
     });
