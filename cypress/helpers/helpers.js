@@ -1,7 +1,7 @@
 export const getAssetViewUrlByGuid = (assetGuid) => {
     return `${Cypress.config("baseUrl")}/property/${assetGuid}`;
 };
-  
+
 export const getAssetEditUrlByGuid = (assetGuid) => {
     return `${Cypress.config("baseUrl")}/property/edit/${assetGuid}/`
 }

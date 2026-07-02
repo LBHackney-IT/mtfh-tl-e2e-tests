@@ -139,10 +139,6 @@ class PersonPageObjects {
         return cy.get('[class="mtfh-tenure-details"]')
     }
 
-    newProcess() {
-        return cy.contains('New Process')
-    }
-
     discretionAlertPerson() {
         return cy.get('#accordion-heading-discretion-alert');
     }

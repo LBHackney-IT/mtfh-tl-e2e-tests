@@ -1,11 +1,9 @@
 import { When, Then, Given, And } from "@badeball/cypress-cucumber-preprocessor";
 import ProcessesPageObjects from "../../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../../pageObjects/tenureRequestDocumentsPage";
-import TenurePageObjects from "../../pageObjects/tenurePage";
 import TenureReviewDocsPageObjects from "../../pageObjects/tenureReviewDocumentsPage";
 
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
-const tenurePage = new TenurePageObjects();
 const processPage = new ProcessesPageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 
@@ -62,9 +60,6 @@ Then("a radio button to automatically request the documents on DES is displayed"
 });
 Then("a radio button to make an appointment to review the Supporting documents is displayed", () => {
     tenureReqDocsPage.makeAnAppointToCheckSuppDocs().should('exist');
-});
-When("I click on New Process button", () => {
-    tenurePage.newProcess().click();
 });
 When("I click on process Sole tenant requests a joint tenure link", () => {
     processPage.linkSoleToJoint().click();

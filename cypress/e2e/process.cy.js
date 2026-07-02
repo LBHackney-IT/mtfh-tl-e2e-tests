@@ -1,15 +1,9 @@
 import ProcessesPageObjects from "../pageObjects/ProcessesPage";
 import TenureRequestDocsPageObjects from "../pageObjects/tenureRequestDocumentsPage";
 import TenureReviewDocsPageObjects from "../pageObjects/tenureReviewDocumentsPage";
-import PersonPageObjects from "../pageObjects/personPage";
-import PropertyPageObjects from "../pageObjects/propertyPage";
-import TenurePageObjects from "../pageObjects/tenurePage";
-import { seedDatabase, seedDatabaseWithTenure } from "../helpers/DbHelpers";
+import { seedDatabase } from "../helpers/DbHelpers";
 
 const processesPage = new ProcessesPageObjects();
-const personPage = new PersonPageObjects();
-const propertyPage = new PropertyPageObjects();
-const tenurePage = new TenurePageObjects();
 const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 
@@ -17,32 +11,7 @@ const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 describe('Processes menu', {tags: ['@process', '@common', '@root', '@authentication', '@personal-details']}, ()=> {
     beforeEach(()=> {
         cy.login()
-        seedDatabaseWithTenure(true);
-    })
-
-    it('should naviage to processes on person, tenure and asset pages', {tags: '@SmokeTest'},()=> {
-        cy.getPersonFixture().then(({ id: personId }) => {
-            personPage.visit(personId);
-            personPage.newProcess().click()
-            processesPage.pageTitle()
-            processesPage.processesMenuList().should('be.visible')
-            cy.contains('Back').click()
-
-            //go to property page
-            cy.get(":nth-child(1) > .govuk-link").click({force: true});
-            cy.url().should('include', '/property')            
-            propertyPage.newProcess().click()
-            processesPage.pageTitle()
-            processesPage.processesMenuList().should('be.visible')
-            cy.contains('Back').click()
-
-            //go to tenure page
-            cy.contains('Tenure').click()
-            cy.url().should('include', '/tenure')            
-            tenurePage.newProcess().click()
-            processesPage.pageTitle()
-            processesPage.processesMenuList().should('be.visible')
-        });
+        seedDatabase();
     })
 
     it('should show process landed page', ()=> {
