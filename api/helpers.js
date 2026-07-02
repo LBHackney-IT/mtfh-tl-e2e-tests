@@ -4,15 +4,15 @@ export const saveFixtureData = (tableName, keys, fixtureData, response) => new C
     cy.readFile(filename).then((list) => {
         list.push({ tableName: tableName, key: keys })
         cy.writeFile(filename, list)
+        if (fixtureData) {
+            cy.writeFile(`cypress/fixtures/${tableName}.json`, fixtureData)
+        }
     })
-
-    if (fixtureData)
-        cy.writeFile(`cypress/fixtures/${tableName}.json`, fixtureData)
 
     if (response)
         resolve(response)
-
-    resolve(fixtureData)
+    else
+        resolve(fixtureData)
 })
 
 export const saveNonDynamoFixture = (entityName, fixtureData, response) => new Cypress.Promise((resolve, reject) => {
