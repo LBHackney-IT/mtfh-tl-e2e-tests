@@ -62,14 +62,100 @@ Start a local test run by using `npm run test:cypress:run`
 Open the Cypress runner console by using `npm run test:cypress:open`
 
 #### Feature tags
-The e2e tests use feature tags in order to run scoped tests. They can be set within a feature file using `@featureTag` and then ran using `cypress run -e grepTags='@featureTag'` more detailed documents can be found [here](https://www.npmjs.com/package/@cypress/grep#filter-with-tags).
+
+The e2e tests use tags to scope which tests run in a given pipeline or local command. Tags are set on `describe` or `it` blocks in `.cy.js` files, for example:
+
+```js
+describe('Person page', { tags: ['@personal-details', '@authentication', '@common', '@root'] }, () => {
+  it('should view person details page', { tags: '@SmokeTest' }, () => { /* ... */ });
+});
+```
+
+#### How tag filtering works (Cypress 15 + `@cypress/grep` v6)
+
+`@cypress/grep` v6 reads tag filters from Cypress **`expose`**, not `env`. Do **not** use `-e grepTags=...` or `CYPRESS_grepTags` alone — they are ignored by grep v6.
+
+Tag filters are passed via `--expose` as comma-separated key/value pairs:
+
+```bash
+npx cypress run --expose grepTags=@personal-details+-@ignore,grepFilterSpecs=true
+```
+
+| Setting | Purpose |
+|---------|---------|
+| `grepTags` | Which tests to include/exclude |
+| `grepFilterSpecs=true` | Only load spec files that contain matching tests (avoids walking all 29 files) |
+| `grepOmitFiltered=true` | Omit non-matching tests from output (set in `cypress.config.js` and CI) |
+
+`cypress/plugins/grep-config.js` bridges `grepTags` onto `config.expose` before the grep plugin runs (from `--expose`, legacy `env.grepTags`, or `CYPRESS_grepTags`). On startup you should see:
+
+```text
+@cypress/grep: configured grepTags="@Production+-@ignore+-@device"
+@cypress/grep: filtering using tag(s) "..."
+```
+
+If those lines are **missing**, tag filtering is not active and the full suite will run.
+
+**CLI tip:** use `+` between tags for AND/exclusions in npm scripts and CI. Spaces inside `grepTags` values can be split by the shell, which was the cause of production/smoke appearing to run the same full suite locally.
+
+Convenience scripts in `package.json` already pass the correct tags:
+
+| Script | `grepTags` | Spec scope | Purpose |
+|--------|------------|------------|---------|
+| `npm run test:cypress:run` | `-@GoogleLighthouse+-@Accessibility+-@ignore+-@device` | matching specs only | Default local/CI-style run |
+| `npm run test:cypress:smoke` | `@SmokeTest+-@ignore` | matching specs only | Smoke tests only |
+| `npm run test:cypress:production` | `@Production+-@ignore+-@device` | `home.cy.js` only | Production-safe home page tests |
+| `npm run test:cypress:staging:devices` | `@device+-@ignore` | matching specs only | Device viewport tests |
+| `npm run test:cypress:accessibility` | `@Accessibility` | matching specs only | Accessibility-tagged tests |
+| `npm run test:cypress:GoogleLighthouse` | `@GoogleLighthouse` | matching specs only | Lighthouse tests (if wired) |
+
+**Tag combination rules** (`@cypress/grep`):
+
+- Space-separated tags use **OR** logic when passed as separate tokens (avoid in npm scripts; CI now uses `+` throughout).
+- Use `+` for **AND** logic: `@SmokeTest+@personal-details` or `-@ignore+-@device+@personal-details`.
+- Prefix with `-` to exclude: `@Production+-@ignore+-@device` means must have `@Production`, must not have `@ignore` or `@device`.
+
+More detail: [@cypress/grep — filter with tags](https://www.npmjs.com/package/@cypress/grep#filter-with-tags).
 
 ## Running the tests in the pipeline
-The tests are configured to run in the pipeline as per the CircleCi config.yml
 
-Every test not tagged `@GoogleLighthouse`, `@Accessibility`, `@ignore` or `@device` will run on a CI run of the e2e pipeline (i.e. when a change is made to this repository on any of its branches). Because each feature is ran in parallel within separate containers, you will need to ensure that each of CircleCi's jobs' `parallelism` properties are correctly set to the number of feature files, or parallelism is disabled (by removing the key and property from the job), otherwise the tests won't run correctly.
+The tests are configured in `.circleci/config.yml`. Tag filters are passed to Cypress via `--expose` (comma-separated), with `grepFilterSpecs=true` on all runs. Production additionally passes `--spec cypress/e2e/home.cy.js`.
 
-When triggered externally by the MTFH micro frontends as part of that particular CI workflow, it will  run tests related to that mfe, again without the aforementioned tags, in both `development` and `staging` environments. This works by utilising cucumber's built-in tagging system. When creating new feature files, make sure to tag them with the correct microfrontend name. For example, `mtfh-frontend-personal-details` would become `@personal-details`. Once these tests have ran (and passed) they will trigger a downstream deployment of the parent micro frontend to an elevated environment (successful tests that ran against `development` will trigger a deployment to `staging` etc.). In `production` it will only run tests that have been explicitly tagged with `@Production`. 
+```bash
+./node_modules/.bin/cypress run --expose "grepTags=${GREP_TAGS},grepFilterSpecs=true,grepOmitFiltered=true" --spec cypress/e2e/home.cy.js  # production only
+```
+
+### What runs where and when
+
+| Workflow | Trigger | Environment | `grepTags` | What runs |
+|----------|---------|-------------|------------|-----------|
+| `run-ci-tests` | Push/PR to this repo (`run_workflow_ci: true`) | development | `-@GoogleLighthouse+-@Accessibility+-@ignore+-@device` | All tests except excluded tags |
+| `e2e-tests-development` | External MFE pipeline (`external_trigger` + `development_environment`) | development | Above `+@<mfe>` or `+@SmokeTest`¹ | Tests for the triggering MFE only |
+| `e2e-tests-staging` | External MFE pipeline after dev promotion | staging | Same as development | Tests for the triggering MFE only |
+| `e2e-tests-production` | External MFE pipeline after staging promotion | production | `@Production+-@ignore+-@device` + `home.cy.js` | **Only** `@Production` tests — no MFE or smoke filter |
+| `e2e-tests-devices` | Weekly schedule (Tuesdays, `master` branch) | staging | `-@GoogleLighthouse+-@Accessibility+-@ignore+@device` | Device viewport tests only |
+
+¹ When the upstream MFE is `common`, `authentication`, or `root`, the filter is remapped to `@SmokeTest`.
+
+### External MFE triggers (development & staging)
+
+When an MTFH microfrontend pipeline triggers these tests, `upstream_pipeline_name` is used to derive an MFE tag (e.g. `mtfh-frontend-personal-details` → `@personal-details`). Matching tests run in **development** first; on success, the MFE is deployed to **staging** and the same scoped tests run again. On staging success, production deployment is triggered.
+
+Tag each spec with the related microfrontend name (e.g. `@personal-details`) so it runs during that MFE's deployment workflow.
+
+### Production
+
+Production runs **only** tests explicitly tagged `@Production`. Today that is the home page spec (`home.cy.js`). The pipeline applies three safeguards:
+
+1. **Tag filter only** — `@Production+-@ignore+-@device` (no `@SmokeTest` or MFE tag appended)
+2. **Spec pre-filter** — `grepFilterSpecs=true`
+3. **Hard spec pin** — `--spec cypress/e2e/home.cy.js`
+
+Smoke tests (`@SmokeTest`) and MFE-scoped tags cannot leak into production.
+
+### CI runs of this repository
+
+Every test not tagged `@GoogleLighthouse`, `@Accessibility`, `@ignore`, or `@device` runs when a change is made to this repository. Parallelism in CircleCI jobs must match the number of spec files (or be disabled), otherwise tests may not run correctly across containers.
 
 #### Further testing resources
 Further resources around creating tests can be found [here](https://drive.google.com/drive/folders/1XRqzngDYWvpfeJov1hbyJ_vBa88Ex2R4)

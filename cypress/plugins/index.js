@@ -9,6 +9,7 @@ const { setEnvironmentConfig } = require('./environment-config');
 const { loadEnv, validateEnv } = require('./load-env');
 const { registerDynamoDbTasks } = require('./dynamoDb-tasks');
 const { registerAuditPlugin } = require('./audit-plugin');
+const { applyGrepExpose } = require('./grep-config');
 
 module.exports = async (on, config) => {
   let runtimeConfig = config;
@@ -16,6 +17,7 @@ module.exports = async (on, config) => {
   config = await setEnvironmentConfig(on, config);
   config = loadEnv(config);
   validateEnv(config);
+  config = applyGrepExpose(config);
   runtimeConfig = config;
 
   registerDynamoDbTasks(on, () => runtimeConfig);

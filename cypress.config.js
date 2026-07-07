@@ -17,6 +17,9 @@ module.exports = defineConfig({
   },
   chromeWebSecurity: false,
   video: true,
+  expose: {
+    grepOmitFiltered: true,
+  },
   e2e: {
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config)
@@ -25,8 +28,5 @@ module.exports = defineConfig({
     experimentalMemoryManagement: true,
     numTestsKeptInMemory: 25,
     supportFile: 'cypress/support/e2e.js',
-    env: {
-      grepOmitFiltered: true,
-    },
   },
 })
