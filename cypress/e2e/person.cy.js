@@ -8,6 +8,12 @@ import { person } from "../../api/models/requests/createPersonModel";
 const personPage = new PersonPageObjects();
 const devices = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 
+const mockPersonContactDetails = (personId) => {
+    cy.intercept("GET", `*/api/v2/contactDetails?targetId=${personId}`, {
+        fixture: "contact-details.json",
+        statusCode: 200,
+    }).as("getContactDetails");
+};
 
 describe('Person page', {tags: ['@personal-details', '@authentication', '@common', '@root', '@worktray']}, ()=> {
     beforeEach(() => {
@@ -17,12 +23,9 @@ describe('Person page', {tags: ['@personal-details', '@authentication', '@common
 
     it('should view person details page', {tags: '@SmokeTest'}, ()=> {
         cy.getPersonFixture().then((person) => {
+            mockPersonContactDetails(person.id);
             personPage.visit(person.id);
-
-            cy.intercept("GET", `*/api/v2/contactDetails?targetId=${person.id}`, {
-                fixture: "contact-details.json",
-                statusCode: 200,
-            }).as("getContactDetails");
+            cy.wait("@getContactDetails");
 
             personPage.sidebar().contains("Personal information");
             personPage.sidebar().contains("Date of birth");
@@ -65,12 +68,9 @@ describe('Person page', {tags: ['@personal-details', '@authentication', '@common
     devices.forEach((device) => {
         it('should work for all devices', ()=> {
             cy.getPersonFixture().then((person) => {
+                mockPersonContactDetails(person.id);
                 personPage.visit(person.id);
-    
-                cy.intercept("GET", `*/api/v2/contactDetails?targetId=${person.id}`, {
-                    fixture: "contact-details.json",
-                    statusCode: 200,
-                }).as("getContactDetails");
+                cy.wait("@getContactDetails");
 
                 cy.viewport(`${device}`);
                 cy.wait(1000)

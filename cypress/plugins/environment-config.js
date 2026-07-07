@@ -31,7 +31,7 @@ const setEnvironmentConfig = async (on, config) => {
         baseUrl = "https://manage-my-home-development.hackney.gov.uk";
         gssoTestKey = isCognitoFlow
             ? await fetchCognitoToken(config.env)
-            : config.env.E2E_ACCESS_TOKEN_DEV;
+            : config.env.E2E_ACCESS_TOKEN_DEVELOPMENT || config.env.E2E_ACCESS_TOKEN_DEV;
     } else if (environment === 'staging') {
         baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
         gssoTestKey = config.env.E2E_ACCESS_TOKEN_STAGING

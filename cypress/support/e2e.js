@@ -3,8 +3,8 @@ import "cypress-real-events/support";
 import 'cypress-axe'
 require("cypress-plugin-tab");
 require('cypress-xpath');
-import DynamoDb from "../../api/database/DynamoDb";
-import registerCypressGrep from '@cypress/grep';
+const { register: registerCypressGrep } = require('@cypress/grep');
+import { endpoint } from './endpoints';
 
 // ***********************************************************
 // This example support/index.js is processed and
@@ -23,32 +23,19 @@ import registerCypressGrep from '@cypress/grep';
 
 registerCypressGrep();
 
-// TODO: Move this to a helper file
 const clearDatabase = () => {
     const filename = "cypress/fixtures/recordsToDelete.json";
     return cy.readFile(filename).then((recordsToDelete) => {
       if (recordsToDelete.length) {
-        return new Cypress.Promise((resolve, reject) => {
-          Promise.all(
-            recordsToDelete.map((record) => DynamoDb.deleteRecord(record))
-          )
-            .then(() => {
-              resolve();
-            })
-            .catch((error) => {
-              cy.log("Error deleting records: ", error);
-              reject(error);
-            });
+        return cy.wrap(recordsToDelete).each((record) => {
+          return cy.task('dynamoDb:delete', record);
         }).then(() => {
-          // Clear the file once deletion is complete
           cy.writeFile(filename, []);
           cy.log("Test database records cleared!");
         });
-      } else {
-        // No records to delete, just resolve the promise
-        cy.log("No records to delete.");
-        return new Cypress.Promise((resolve) => resolve());
       }
+
+      cy.log("No records to delete.");
     });
   };
   
@@ -62,8 +49,8 @@ after(() => {
 });
 
 beforeEach(() => {
-  const endpoint = Cypress.env('FEATURE_TOGGLE_ENDPOINT'); 
-  const url = `${endpoint}/api/v1/configuration?types=MMH`;
+  const featureToggleEndpoint = endpoint('FEATURE_TOGGLE_ENDPOINT');
+  const url = `${featureToggleEndpoint}/api/v1/configuration?types=MMH`;
 
   cy.intercept('GET', url).as('getFeatureToggles');
 });

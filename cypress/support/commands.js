@@ -1,7 +1,21 @@
 import '@testing-library/cypress/add-commands';
 import 'cypress-axe';
-import 'cypress-audit/commands';
 import "cypress-localstorage-commands";
+
+try {
+  require('cypress-audit/commands');
+} catch (error) {
+  Cypress.Commands.add('lighthouse', () => {
+    throw new Error(
+      'cypress-audit is unavailable. @GoogleLighthouse tests require puppeteer@~1.19.0 on Node 24.',
+    );
+  });
+  Cypress.Commands.add('pa11y', () => {
+    throw new Error(
+      'cypress-audit is unavailable. @Accessibility tests require puppeteer@~1.19.0 on Node 24.',
+    );
+  });
+}
 
 Cypress.Commands.add('login', () => {
   const gssoTestKey = Cypress.config("gssoTestKey");

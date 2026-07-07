@@ -45,10 +45,20 @@ executors:
             - image: circleci/python:3.7
     cypress-browsers:
         docker:
-            - image: cypress/browsers:node16.13.2-chrome100-ff98
+            # Pinned to Node 24.17.0 — keep in sync with .nvmrc and package.json engines
+            - image: cypress/browsers:node-24.17.0-chrome-149.0.7827.155-1-ff-152.0-edge-149.0.4022.69-1
         resource_class: medium+
 
 commands:
+    # cypress/browsers Node 24+ images omit curl by design (see cypress-io/cypress-docker-images#852).
+    # Required by circleci/aws-cli orb and trigger-downstream-deployment.
+    install-system-deps:
+        description: 'Install OS packages required by AWS CLI and pipeline scripts'
+        steps:
+            - run:
+                name: Install curl and unzip
+                command: apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates
+
     assume-role-and-persist-workspace:
         description: 'Assume deployment role and persist credentials across jobs'
         parameters:
@@ -123,7 +133,7 @@ commands:
                             export CYPRESS_grepTags="$CYPRESS_grepTags -@device"
                           fi              
                           
-                          npm install ;
+                          npm ci ;
                           echo "Running against $CYPRESS_ENVIRONMENT environment with tags $CYPRESS_grepTags" ;
                           ./node_modules/.bin/cypress run
                        
@@ -165,6 +175,7 @@ jobs:
               condition: << pipeline.parameters.external_trigger >> 
               steps:
                 - *attach_workspace
+                - install-system-deps
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
@@ -179,6 +190,7 @@ jobs:
             stage:
                 type: string
         steps:
+          - install-system-deps
           - run:
               name: trigger downstream deployment for <<pipeline.parameters.upstream_pipeline_name>>
               command: |
@@ -201,6 +213,7 @@ jobs:
               condition: << pipeline.parameters.run_workflow_ci >> 
               steps:
                 - *attach_workspace
+                - install-system-deps
                 - aws-cli/install
                 - checkout
                 - execute-e2e-tests:
@@ -216,6 +229,7 @@ jobs:
                 type: string
         steps:
           - *attach_workspace
+          - install-system-deps
           - aws-cli/install
           - checkout
           - execute-e2e-tests:

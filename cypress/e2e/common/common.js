@@ -41,6 +41,7 @@ import {
 import { person } from "../../../api/models/requests/createPersonModel";
 import { patch } from "../../../api/models/requests/patchModel";
 import { addTestRecordToDatabase, seedDatabaseWithTenure } from "../../helpers/DbHelpers";
+import { endpoint as personEndpoint } from "../../support/endpoints";
 
 // note - this whole file will need to be refactored in stages
 
@@ -62,8 +63,6 @@ const emailAdd = "AutomationTest@test.com";
 const phoneNumber = "07788123456";
 
 let personId = "";
-
-const endpoint = Cypress.env("PERSON_ENDPOINT");
 
 export const tenureToPersonTenure = (tenure) => ({
   id: tenure.id,
@@ -187,7 +186,7 @@ Then("I want to view a person", async () => {
   cy.log(`Status code ${response.status} returned`);
   cy.log(`Person record ${personId} read!`);
   cy.log(`${personId}`);
-  cy.log(endpoint);
+  cy.log(personEndpoint('PERSON_ENDPOINT'));
   assert.deepEqual(response.status, 200);
 });
 
