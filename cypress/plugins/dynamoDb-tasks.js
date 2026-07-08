@@ -57,7 +57,6 @@ async function deleteRecord(record, { assetEndpoint, token }) {
     }
 
     const result = await docClient.delete({ TableName: tableName, Key: key }).promise();
-    console.log(`A record has been deleted from DynamoDb table ${tableName}:`, result);
     return result;
   } catch (deleteError) {
     console.log('A record is not deleted:', deleteError);

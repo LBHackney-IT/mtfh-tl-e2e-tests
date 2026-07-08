@@ -8,14 +8,14 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:cypress:open": "cypress open -e grepTags='-@ignore'",
-    "test:cypress:run": "cypress run -e grepTags='-@GoogleLighthouse -@Accessibility -@ignore -@device'",
-    "test:cypress:run:local": "cypress run -e grepTags='-@GoogleLighthouse -@Accessibility -@ignore -@device' --config video=false,retries=0,screenshotOnRunFailure=false",
-    "test:cypress:production": "cypress run -e grepTags='@Production -@ignore'",
-    "test:cypress:accessibility": "cypress run -e grepTags='@Accessibility'",
-    "test:cypress:GoogleLighthouse": "cypress run -e grepTags='@GoogleLighthouse'",
-    "test:cypress:staging:devices": "cypress run --browser chrome --headless -e grepTags='@device -@ignore'",
-    "test:cypress:smoke": "cypress run --browser chrome --headless -e grepTags='@SmokeTest -@ignore'"
+    "test:cypress:open": "cypress open --expose grepTags=-@ignore",
+    "test:cypress:run": "cypress run --expose grepTags=-@GoogleLighthouse+-@Accessibility+-@ignore+-@device,grepFilterSpecs=true",
+    "test:cypress:run:local": "cypress run --expose grepTags=-@GoogleLighthouse+-@Accessibility+-@ignore+-@device,grepFilterSpecs=true --config video=false,retries=0,screenshotOnRunFailure=false",
+    "test:cypress:production": "cypress run --expose grepTags=@Production+-@ignore+-@device,grepFilterSpecs=true --spec cypress/e2e/home.cy.js",
+    "test:cypress:accessibility": "cypress run --expose grepTags=@Accessibility,grepFilterSpecs=true",
+    "test:cypress:GoogleLighthouse": "cypress run --expose grepTags=@GoogleLighthouse,grepFilterSpecs=true",
+    "test:cypress:staging:devices": "cypress run --browser chrome --headless --expose grepTags=@device+-@ignore,grepFilterSpecs=true",
+    "test:cypress:smoke": "cypress run --browser chrome --headless --expose grepTags=@SmokeTest+-@ignore,grepFilterSpecs=true"
   },
   "author": "",
   "license": "ISC",
