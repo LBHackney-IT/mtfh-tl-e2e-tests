@@ -87,7 +87,7 @@ npx cypress run --expose grepTags=@personal-details+-@ignore,grepFilterSpecs=tru
 | `grepFilterSpecs=true` | Only load spec files that contain matching tests (avoids walking all 29 files) |
 | `grepOmitFiltered=true` | Omit non-matching tests from output (set in `cypress.config.js` and CI) |
 
-`cypress/plugins/grep-config.js` bridges `grepTags` onto `config.expose` before the grep plugin runs (from `--expose`, legacy `env.grepTags`, or `CYPRESS_grepTags`). On startup you should see:
+`cypress/plugins/grep-config.js` copies `--expose` values onto `config.expose` before the grep plugin runs. On startup you should see:
 
 ```text
 @cypress/grep: configured grepTags="@Production+-@ignore+-@device"

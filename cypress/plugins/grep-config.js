@@ -1,8 +1,9 @@
 /**
- * Normalise @cypress/grep v6 settings onto config.expose before the grep plugin runs.
+ * Ensure @cypress/grep v6 settings are on config.expose before the grep plugin runs.
  *
- * Cypress 15 reads grepTags from expose (not env). CLI/npm quoting can drop or split
- * space-separated tag strings, so we also accept CYPRESS_grepTags and legacy env.grepTags.
+ * Cypress 15 / @cypress/grep v6 read grepTags from expose (via --expose), not env.
+ * This bridges CLI --expose values onto config.expose when Cypress has not already
+ * populated them (e.g. npm-script quoting edge cases).
  */
 function applyGrepExpose(config) {
   config.expose = {
@@ -16,7 +17,10 @@ function applyGrepExpose(config) {
   });
 
   if (exposeArg) {
+    // Capture group is the value after grepTags=, up to the next comma.
+    // e.g. "grepTags=@SmokeTest+-@ignore,grepFilterSpecs=true" → "@SmokeTest+-@ignore"
     const grepTagsMatch = exposeArg.match(/grepTags=([^,]+)/);
+
     if (grepTagsMatch && !config.expose.grepTags) {
       config.expose.grepTags = grepTagsMatch[1].trim();
     }
@@ -24,16 +28,6 @@ function applyGrepExpose(config) {
     if (/grepFilterSpecs=true/i.test(exposeArg)) {
       config.expose.grepFilterSpecs = true;
     }
-  }
-
-  const grepTags =
-    config.expose.grepTags ??
-    config.expose['grep-tags'] ??
-    config.env?.grepTags ??
-    process.env.CYPRESS_grepTags;
-
-  if (grepTags) {
-    config.expose.grepTags = grepTags;
   }
 
   if (config.expose.grepTags) {
