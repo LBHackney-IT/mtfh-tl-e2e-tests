@@ -637,7 +637,8 @@ Then("I am on the create new tenure page {string}", (id) => {
 
 And("the property's patch details are displayed", () => {
   propertyPage.patchDetails().should("be.visible");
-  propertyPage.patchDetails().contains("Patch");
+  propertyPage.housingManagementAreaName().should("be.visible").and("contain.text", "NORTHEAST");
+  propertyPage.patchDetails().contains("Housing Management Area");
   propertyPage.neighbourhoodLeadNotice().should("be.visible");
 });
 When("I click on the new tenure button", () => {

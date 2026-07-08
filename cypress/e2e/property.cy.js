@@ -43,7 +43,8 @@ describe('View property page', {tags: ['@property', '@authentication', '@common'
             // propertyPage.repairsCardList().contains("In Progress")
 
             propertyPage.patchDetails().should("be.visible");
-            propertyPage.patchDetails().contains("Patch");
+            propertyPage.housingManagementAreaName().should("be.visible").and("contain.text", "NORTHEAST");
+            propertyPage.patchDetails().contains("Housing Management Area");
             propertyPage.neighbourhoodLeadNotice().should("be.visible");
 
             propertyPage.tenureDetailsContainer().should("be.visible");

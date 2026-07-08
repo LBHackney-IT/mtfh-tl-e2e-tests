@@ -48,6 +48,14 @@ class PropertyPageObjects {
         return cy.get('[class="mtfh-patch-details"]')
     }
 
+    housingManagementAreaName() {
+        return cy.getByTestId("neighbourhood-name");
+    }
+
+    noHousingManagementArea() {
+        return cy.getByTestId("no-neighbourhood");
+    }
+
     neighbourhoodLeadNotice() {
         return this.patchDetails().contains(
             'From 6 July 2026, housing services in this area are managed by a Neighbourhood Lead.'

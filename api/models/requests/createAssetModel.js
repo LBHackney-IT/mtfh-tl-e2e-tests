@@ -1,5 +1,14 @@
 const { faker } = require("@faker-js/faker");
 
+const neighbourhoodValues = {
+  NORTHEAST: "NORTHEAST",
+  NORTHWEST: "NORTHWEST",
+  SOUTH: "SOUTH",
+  CENTRAL: "CENTRAL",
+};
+
+const defaultNeighbourhood = neighbourhoodValues.NORTHEAST;
+
 const createAssetModel = {
   "id": faker.datatype.uuid(),
   "assetId": "12876875",
@@ -12,7 +21,8 @@ const createAssetModel = {
     "addressLine3": "London",
     "addressLine4": "",
     "postCode": "E5 8DH",
-    "postPreamble": "1 Newcome House"
+    "postPreamble": "1 Newcome House",
+    "neighbourhood": defaultNeighbourhood
   },
   "assetManagement": {
     "agent": "HAH",
@@ -93,7 +103,8 @@ const defaultAssetAddress = {
   "addressLine2": "",
   "addressLine3": "",
   "addressLine4": "",
-  "postCode": "E9 6PT"
+  "postCode": "E9 6PT",
+  "neighbourhood": defaultNeighbourhood
 };
 const defaultAssetManagement = {
   "agent": "",
@@ -162,7 +173,8 @@ const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.nu
       "addressLine3": "LONDON",
       "addressLine4": "",
       "postCode": "E2 8EB",
-      "postPreamble": ""
+      "postPreamble": "",
+      "neighbourhood": defaultNeighbourhood
     },
     "assetManagement": {
       "agent": "Hackney Homes",
@@ -275,5 +287,7 @@ module.exports = {
   defaultAssetLocation,
   assetCharacteristicsModel,
   generateAsset,
-  generateNewAsset
+  generateNewAsset,
+  neighbourhoodValues,
+  defaultNeighbourhood,
 };

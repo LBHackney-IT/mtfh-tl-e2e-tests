@@ -15,7 +15,8 @@ describe.skip("edit patches on property page", {tags: ["@property", "@authentica
             // Navigate to property page & view patch details
             propertyPage.visit(asset.id);
             propertyPage.patchDetails().should("be.visible");
-            propertyPage.patchDetails().contains("Patch");
+            propertyPage.housingManagementAreaName().should("be.visible").and("contain.text", "NORTHEAST");
+            propertyPage.patchDetails().contains("Housing Management Area");
             propertyPage.patchDetails().contains("Housing officer");
             propertyPage.patchDetails().contains("Area manager");
             
@@ -39,7 +40,8 @@ describe.skip("edit patches on property page", {tags: ["@property", "@authentica
             // Navigate to property page & view patch details
             propertyPage.visit(asset.id);
             propertyPage.patchDetails().should("be.visible");
-            propertyPage.patchDetails().contains("Patch");
+            propertyPage.housingManagementAreaName().should("be.visible").and("contain.text", "NORTHEAST");
+            propertyPage.patchDetails().contains("Housing Management Area");
             propertyPage.patchDetails().contains("Housing officer");
             propertyPage.patchDetails().contains("Area manager");
             
@@ -56,10 +58,10 @@ describe.skip("edit patches on property page", {tags: ["@property", "@authentica
             propertyPage.confirmButton().should("not.exist");
             propertyPage.cancelButton().should("not.exist");
             propertyPage.patchDetails().should("be.visible");
-            propertyPage.patchDetails().contains("HN1");
+            propertyPage.housingManagementAreaName().should("be.visible").and("contain.text", "NORTHEAST");
+            propertyPage.patchDetails().contains("Housing Management Area");
             propertyPage.patchDetails().contains("Housing officer");
             propertyPage.patchDetails().contains("Area manager");
-            propertyPage.patchDetails().contains("Patch");
         });
     }); 
 });
