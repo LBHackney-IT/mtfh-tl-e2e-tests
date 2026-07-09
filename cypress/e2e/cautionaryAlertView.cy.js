@@ -6,7 +6,7 @@ const personPO = new PersonPageObjects();
 const cautionaryAlertPage = new CautionaryAlertViewPageObject();
 
 
-describe('View cautionary alerts', { tags: ['@cautionary-alerts', '@authentication', '@common', '@root'] }, () => {
+describe('View cautionary alerts', { tags: ['@cautionary-alerts', '@cognito-authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         seedDatabaseWithCautionaryAlert();
         cy.login();

@@ -9,7 +9,7 @@ const devices = [
 const numberOfResults = ['40', '20', '12']
 
 
-describe('Search Page',{tags: ['@search', '@authentication', '@common', '@root']}, ()=> {
+describe('Search Page',{tags: ['@search', '@cognito-authentication', '@common', '@root']}, ()=> {
     beforeEach(()=> {
         cy.login()
     })

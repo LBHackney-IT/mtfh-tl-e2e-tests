@@ -13,7 +13,7 @@ const getFormattedDate = (date) => {
     return typedDate;
 }
 
-describe("Edit Cautionary Alerts", { tags: ['@cautionary-alerts', '@authentication', '@common', '@root'] }, () => {
+describe("Edit Cautionary Alerts", { tags: ['@cautionary-alerts', '@cognito-authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         seedDatabaseWithCautionaryAlert();
         cy.login();

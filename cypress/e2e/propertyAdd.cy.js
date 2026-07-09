@@ -10,7 +10,7 @@ const postcode = "MK40 2RF"
 const assetGuid = faker.datatype.uuid()
 
 
-describe('Add property', {tags: ['@property', '@authentication', '@common', '@root', '@search']}, ()=> {
+describe('Add property', {tags: ['@property', '@cognito-authentication', '@common', '@root', '@search']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

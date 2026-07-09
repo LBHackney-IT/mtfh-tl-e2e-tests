@@ -44,7 +44,7 @@ function manualDataChecksPass({ id: tenureId, householdMembers }) {
     tenureReqDocsPage.successionNo().click();
 };
 
-describe('Request and review documents', {tags: ['@process', '@common', '@root', '@authentication', '@personal-details']}, ()=> {
+describe('Request and review documents', {tags: ['@process', '@common', '@root', '@cognito-authentication', '@personal-details']}, ()=> {
     beforeEach(()=> {
         cy.login();
         seedDatabase();

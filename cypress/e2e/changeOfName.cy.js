@@ -6,7 +6,7 @@ import { seedDatabase, seedDatabaseWithChangeOfNameProcess } from "../helpers/Db
 const page = new ChangeOfNamePageObjects();
 const modal = new ModalPageObjects();
 
-describe("Change of Name Process", { tags: ['@processes', '@authentication', '@common', '@root', '@personal-details'] }, () => {
+describe("Change of Name Process", { tags: ['@processes', '@cognito-authentication', '@common', '@root', '@personal-details'] }, () => {
     let now = new Date();
 
     const minutesToMs = (minutes) => {

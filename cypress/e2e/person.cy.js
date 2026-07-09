@@ -15,7 +15,7 @@ const mockPersonContactDetails = (personId) => {
     }).as("getContactDetails");
 };
 
-describe('Person page', {tags: ['@personal-details', '@authentication', '@common', '@root', '@worktray']}, ()=> {
+describe('Person page', {tags: ['@personal-details', '@cognito-authentication', '@common', '@root', '@worktray']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(false);

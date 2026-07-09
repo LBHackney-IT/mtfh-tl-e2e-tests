@@ -5,7 +5,7 @@ import { generateEqualityInformation } from '../../api/models/requests/equalityD
 const editPersonPage = new EditPersonFormObjects();
 
 
-describe('Edit a person', { tags: ['@activity-history', '@personal-details', '@authentication', '@common', '@root'] }, () => {
+describe('Edit a person', { tags: ['@activity-history', '@personal-details', '@cognito-authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(true);

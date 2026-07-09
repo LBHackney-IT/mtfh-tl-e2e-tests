@@ -4,7 +4,7 @@ import EditPersonFormObjects from "../pageObjects/editPersonForm";
 const editPersonForm = new EditPersonFormObjects();
 
 
-describe('Person Form', { tags: ['@personal-details', '@authentication', '@common', '@root'] }, () => {
+describe('Person Form', { tags: ['@personal-details', '@cognito-authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(true);

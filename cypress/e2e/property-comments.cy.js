@@ -22,7 +22,7 @@ function truncateString(str, num) {
 }
 
 
-describe('View property page', {tags: ['@property', '@authentication', '@common', '@root', '@comments']}, ()=> {
+describe('View property page', {tags: ['@property', '@cognito-authentication', '@common', '@root', '@comments']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

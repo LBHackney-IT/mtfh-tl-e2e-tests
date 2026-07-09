@@ -19,7 +19,7 @@ function truncateString(str, num) {
 }
 
 
-describe('Person comments page', {tags: ['@comments', '@authentication', '@common', '@root']}, ()=> {
+describe('Person comments page', {tags: ['@comments', '@cognito-authentication', '@common', '@root']}, ()=> {
     beforeEach(() => {
         cy.login();
         seedDatabase();

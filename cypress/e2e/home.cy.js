@@ -8,7 +8,7 @@ const header = new HeaderPageObjects();
 const devices = ['ipad-2', 'ipad-mini', 'iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+', 'iphone-7', 'iphone-8', 'iphone-xr', 'iphone-se2', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']
 
 
-describe('MMH Home page', {tags: ['@header', '@authentication', '@common', '@root', '@Production' ]}, ()=> {
+describe('MMH Home page', {tags: ['@header', '@cognito-authentication', '@common', '@root', '@Production' ]}, ()=> {
         
    
     it('should show header and footer whilst logged out', ()=> {

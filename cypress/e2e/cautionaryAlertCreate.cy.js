@@ -7,7 +7,7 @@ const personPage = new PersonPageObjects();
 const caPage = new CautionaryAlertsPageObjects();
 
 
-describe('Create Cautionary Alerts', { tags: ["@cautionary-alerts", "@authentication", "@common", "@root"] }, () => {
+describe('Create Cautionary Alerts', { tags: ["@cautionary-alerts", "@cognito-authentication", "@common", "@root"] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

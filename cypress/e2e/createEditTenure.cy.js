@@ -10,7 +10,7 @@ const addPersonPage = new PersonFormObjects();
 const modal = new ModalPageObjects()
 const tenureTypes =  ['Freehold', 'Freehold (Serv)', 'Introductory', 'Leasehold (RTB)', 'License Temp Ac', 'Lse 100% Stair', 'Mesne Profit Ac', 'Non-Secure', 'Private Sale LH', 'Rent To Mortgage', 'Shared Equity', 'Shared Owners', 'Short Life Lse', 'Temp Annex', 'Temp B&B', 'Temp Decant', 'Temp Hostel', 'Temp Hostel Lse', 'Temp Private Lt', 'Temp Traveller', 'Tenant Acc Flat', 'Secure']
 
-describe('create and edit tenure', { tags: ['@tenure', '@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
+describe('create and edit tenure', { tags: ['@tenure', '@cognito-authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

@@ -8,7 +8,7 @@ const personContactPage = new PersonContactPageObjects();
 const contactTypes = ['email', 'phone']
 
 
-describe('Edit person Contact details', {tags: ['@personal-details', '@authentication', '@common', '@root', '@worktray']}, ()=> {
+describe('Edit person Contact details', {tags: ['@personal-details', '@cognito-authentication', '@common', '@root', '@worktray']}, ()=> {
     beforeEach(()=> {
         cy.login()
         const testPerson = person();
