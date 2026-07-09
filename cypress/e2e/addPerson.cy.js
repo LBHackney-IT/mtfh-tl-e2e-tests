@@ -4,7 +4,7 @@ import { queueDeletePersonWithId } from "../../api/helpers";
 import AddPersonFormObjects from '../pageObjects/addPersonForm';
 const addPersonPage = new AddPersonFormObjects();
 
-describe('Add a new person to a tenure', { tags: ['@tenure', '@authentication', '@common', '@root'] }, () => {
+describe('Add a new person to a tenure', { tags: ['@tenure', '@cognito-authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure(true);

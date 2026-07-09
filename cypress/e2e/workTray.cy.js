@@ -5,7 +5,7 @@ const homePagePO = new homePage()
 const workTrayPO = new workTrayPage();
 
 
-describe.skip('Worktray Feature', {tags: ['@worktray', '@common', '@root', '@processes', '@authentication']}, ()=> {
+describe.skip('Worktray Feature', {tags: ['@worktray', '@common', '@root', '@processes', '@cognito-authentication']}, ()=> {
     beforeEach(()=> {
         cy.login();
         homePagePO.visit();

@@ -66,7 +66,7 @@ Open the Cypress runner console by using `npm run test:cypress:open`
 The e2e tests use tags to scope which tests run in a given pipeline or local command. Tags are set on `describe` or `it` blocks in `.cy.js` files, for example:
 
 ```js
-describe('Person page', { tags: ['@personal-details', '@authentication', '@common', '@root'] }, () => {
+describe('Person page', { tags: ['@personal-details', '@cognito-authentication', '@common', '@root'] }, () => {
   it('should view person details page', { tags: '@SmokeTest' }, () => { /* ... */ });
 });
 ```
@@ -135,7 +135,7 @@ The tests are configured in `.circleci/config.yml`. Tag filters are passed to Cy
 | `e2e-tests-production` | External MFE pipeline after staging promotion | production | `@Production+-@ignore+-@device` + `home.cy.js` | **Only** `@Production` tests — no MFE or smoke filter |
 | `e2e-tests-devices` | Weekly schedule (Tuesdays, `master` branch) | staging | `-@GoogleLighthouse+-@Accessibility+-@ignore+@device` | Device viewport tests only |
 
-¹ When the upstream MFE is `common`, `authentication`, or `root`, the filter is remapped to `@SmokeTest`.
+¹ When the upstream MFE is `common`, `cognito-authentication`, or `root`, the filter is remapped to `@SmokeTest`.
 
 ### External MFE triggers (development & staging)
 

@@ -6,7 +6,7 @@ import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPage';
 const activityHistory = new ActivityHistoryPageObjects("tenure");
 
 
-describe('Activity History for a tenure', { 'tags': ['@activity-history', '@authentication', '@common', '@root'] }, () => {
+describe('Activity History for a tenure', { 'tags': ['@activity-history', '@cognito-authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

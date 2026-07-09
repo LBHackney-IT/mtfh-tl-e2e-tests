@@ -4,7 +4,7 @@ import PropertyPageObjects from "../pageObjects/propertyPage";
 const propertyPage = new PropertyPageObjects();
 
 
-describe.skip("edit patches on property page", {tags: ["@property", "@authentication", "@common", "@root"]}, () => {
+describe.skip("edit patches on property page", {tags: ["@property", "@cognito-authentication", "@common", "@root"]}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

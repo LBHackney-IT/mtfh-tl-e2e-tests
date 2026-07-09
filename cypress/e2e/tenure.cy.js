@@ -11,7 +11,7 @@ const smallDevice = ['iphone-3', 'iphone-4', 'iphone-5', 'iphone-6', 'iphone-6+'
 const bigDevice = ['ipad-2', 'ipad-mini', 'macbook-11', 'macbook-11', 'macbook-13', 'macbook-15', 'macbook-16', 'samsung-note9']
 
 
-describe('tenure page', {tags: ['@tenure','@authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
+describe('tenure page', {tags: ['@tenure','@cognito-authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabaseWithTenure();

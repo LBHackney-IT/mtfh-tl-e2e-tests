@@ -8,7 +8,7 @@ const tenureReqDocsPage = new TenureRequestDocsPageObjects();
 const tenureReviewDocsPage = new TenureReviewDocsPageObjects();
 
 
-describe('Processes menu', {tags: ['@process', '@common', '@root', '@authentication', '@personal-details']}, ()=> {
+describe('Processes menu', {tags: ['@process', '@common', '@root', '@cognito-authentication', '@personal-details']}, ()=> {
     beforeEach(()=> {
         cy.login()
         seedDatabase();

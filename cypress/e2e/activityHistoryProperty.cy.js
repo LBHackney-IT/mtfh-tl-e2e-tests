@@ -4,7 +4,7 @@ import ActivityHistoryPageObjects from '../pageObjects/activityHistoryPage';
 const activityHistory = new ActivityHistoryPageObjects("property");
 
 
-describe('Activity History for a property', { 'tags': ['@activity-history', '@authentication', '@common', '@root'] }, () => {
+describe('Activity History for a property', { 'tags': ['@activity-history', '@cognito-authentication', '@common', '@root'] }, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();

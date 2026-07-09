@@ -128,7 +128,7 @@ commands:
                             export GREP_TAGS='-@GoogleLighthouse+-@Accessibility+-@ignore+-@device'
                             export PIPELINE_FILTER="$(echo << pipeline.parameters.upstream_pipeline_name >> | sed 's,https://github.com/LBHackney-IT/mtfh-frontend-,,g')"
                             if [ -n "$PIPELINE_FILTER" ]; then
-                              ( [ "$PIPELINE_FILTER" = "common" ] || [ "$PIPELINE_FILTER" = "authentication" ] || [ "$PIPELINE_FILTER" = "root" ] ) && export PIPELINE_FILTER="SmokeTest"
+                              ( [ "$PIPELINE_FILTER" = "common" ] || [ "$PIPELINE_FILTER" = "cognito-authentication" ] || [ "$PIPELINE_FILTER" = "root" ] ) && export PIPELINE_FILTER="SmokeTest"
                               export GREP_TAGS="$GREP_TAGS+@$PIPELINE_FILTER"
                             fi
                           fi
