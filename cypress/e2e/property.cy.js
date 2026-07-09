@@ -42,9 +42,7 @@ describe('View property page', {tags: ['@property', '@cognito-authentication', '
             // })
             // propertyPage.repairsCardList().contains("In Progress")
 
-            propertyPage.patchDetails().should("be.visible");
-            propertyPage.patchDetails().contains("Patch");
-            propertyPage.neighbourhoodLeadNotice().should("be.visible");
+            propertyPage.assertPatchDetailsDisplayed();
 
             propertyPage.tenureDetailsContainer().should("be.visible");
             propertyPage.tenureDetailsContainer().contains("Status");
@@ -61,13 +59,12 @@ describe('View property page', {tags: ['@property', '@cognito-authentication', '
         });
     })
 
-    it('should display neighbourhood lead notice in patch details on the property sidebar', { tags: '@SmokeTest' }, () => {
+    it('should display patch details note on the property sidebar', { tags: '@SmokeTest' }, () => {
         cy.getAssetFixture().then((asset) => {
             propertyPage.visit(asset.id);
 
             propertyPage.propertyViewSidebar().should('be.visible');
-            propertyPage.patchDetails().should('be.visible');
-            propertyPage.neighbourhoodLeadNotice().should('be.visible');
+            propertyPage.assertPatchDetailsDisplayed();
         });
     })
 

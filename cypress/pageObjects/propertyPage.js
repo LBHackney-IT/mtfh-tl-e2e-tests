@@ -48,32 +48,23 @@ class PropertyPageObjects {
         return cy.get('[class="mtfh-patch-details"]')
     }
 
-    neighbourhoodLeadNotice() {
-        return this.patchDetails().contains(
-            'From 6 July 2026, housing services in this area are managed by a Neighbourhood Lead.'
-        )
+    patchNote() {
+        return cy.getByTestId('patch-note');
     }
 
-    editPatchButton() {
-        return cy.get('[data-testid="edit-assignment-button"]')
+    assertPatchDetailsDisplayed() {
+        this.patchDetails().within(() => {
+            cy.contains('h2', 'Patch details').should('be.visible');
+            cy.get('[data-testid="patch-note"]')
+                .should('contain', 'The way Tenancy Services are delivered has changed');
+            cy.get('[data-testid="patch-note"]')
+                .should('contain', 'neighbourhood@hackney.gov.uk');
+            cy.get('[data-testid="patch-name"]').should('not.exist');
+            cy.get('[data-testid="edit-assignment-button"]').should('not.exist');
+            cy.get('[data-testid="all-patches-and-areas-button"]').should('not.exist');
+        });
     }
 
-    confirmButton() {
-        return cy.get('[data-testid="confirm-reassignment-button"]')
-    }
-
-    cancelButton() {
-        return cy.get('[data-testid="cancel-reassignment-button"]')
-    }
-
-    patchEdit() {
-        return cy.get('[class="mtfh-edit-patch-details"]')
-    }
-    
-    patchNameDropDown() {
-        return cy.get('[data-testid="patch-dropdown-options"]')
-    }
-    
     commentDateTime() {
         return cy.get('.comment__date-time')
     }

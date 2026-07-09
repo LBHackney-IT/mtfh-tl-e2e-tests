@@ -635,9 +635,7 @@ Then("I am on the create new tenure page {string}", (id) => {
 });
 
 And("the property's patch details are displayed", () => {
-  propertyPage.patchDetails().should("be.visible");
-  propertyPage.patchDetails().contains("Patch");
-  propertyPage.neighbourhoodLeadNotice().should("be.visible");
+  propertyPage.assertPatchDetailsDisplayed();
 });
 When("I click on the new tenure button", () => {
   propertyPage.newTenureButton().click();
