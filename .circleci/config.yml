@@ -239,25 +239,25 @@ commands:
                     - .aws
                     - project/*
 
-  terraform-init-then-apply:
-      description: "Initialize and apply the terraform configuration"
-      parameters:
-          environment:
-              type: string
-      steps:
-          - *attach_workspace
-          - checkout
-          - run:
-                name: get and init
-                command: |
-                    cd ./terraform/<<parameters.environment>>/
-                    terraform get -update=true
-                    terraform init
-          - run:
-                name: apply
-                command: |
-                    cd ./terraform/<<parameters.environment>>/
-                    terraform apply -auto-approve
+    terraform-init-then-apply:
+        description: "Initialize and apply the terraform configuration"
+        parameters:
+            environment:
+                type: string
+        steps:
+            - *attach_workspace
+            - checkout
+            - run:
+                  name: get and init
+                  command: |
+                      cd ./terraform/<<parameters.environment>>/
+                      terraform get -update=true
+                      terraform init
+            - run:
+                  name: apply
+                  command: |
+                      cd ./terraform/<<parameters.environment>>/
+                      terraform apply -auto-approve
 
 jobs:
   assume-role-development:
