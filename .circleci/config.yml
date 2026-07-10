@@ -384,7 +384,7 @@ workflows:
       - assume-role-development:
           context: api-assume-role-housing-development-context     
           requires:
-            - assume-role-development
+            - permit-development-terraform-workflow
       - assume-role-development-apis:
           context: api-assume-role-development-context
           requires:
