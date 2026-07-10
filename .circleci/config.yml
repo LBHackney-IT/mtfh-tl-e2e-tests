@@ -63,10 +63,7 @@ commands:
                 command: apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates
 
     assume-role-and-persist-workspace:
-        description: >
-          Assume a deployment role into a named AWS profile and persist ~/.aws.
-          When attach-existing-workspace is true, restores profiles from a previous
-          job and merges them so the orb does not overwrite existing config.
+        description: 'Assume a deployment role into a named AWS profile and persist ~/.aws'
         parameters:
             aws-account:
                 type: string
@@ -81,63 +78,25 @@ commands:
                 condition: <<parameters.attach-existing-workspace>>
                 steps:
                   - *attach_workspace
-                  - run:
-                      name: Backup existing AWS profiles
-                      command: |
-                        if [ -d "$HOME/.aws" ]; then
-                          cp -a "$HOME/.aws" "$HOME/.aws-existing"
-                          echo "Backed up existing AWS profiles"
-                          ls -la "$HOME/.aws-existing" || true
-                        else
-                          echo "No existing ~/.aws to merge"
-                        fi
             - checkout
+            - run:
+                name: Stash existing AWS credentials
+                command: |
+                  if [ -f "$HOME/.aws/credentials" ]; then
+                    cp "$HOME/.aws/credentials" /tmp/aws-credentials.existing
+                  fi
             - aws_assume_role/assume_role:
                   account: <<parameters.aws-account>>
                   profile_name: <<parameters.profile-name>>
                   role: 'LBH_Circle_CI_Deployment_Role'
-            - when:
-                condition: <<parameters.attach-existing-workspace>>
-                steps:
-                  - run:
-                      name: Merge previous AWS profiles into ~/.aws
-                      command: |
-                        set -euo pipefail
-                        PROFILE="<<parameters.profile-name>>"
-                        EXISTING_CREDS="$HOME/.aws-existing/credentials"
-                        NEW_CREDS="$HOME/.aws/credentials"
-                        MERGED_CREDS="$HOME/.aws/credentials.merged"
-
-                        mkdir -p "$HOME/.aws"
-                        : > "$MERGED_CREDS"
-
-                        # Keep every profile from the previous job except the one we just assumed
-                        if [ -f "$EXISTING_CREDS" ]; then
-                          awk -v skip="[$PROFILE]" '
-                            /^\[/ { keep = ($0 != skip) }
-                            keep { print }
-                          ' "$EXISTING_CREDS" >> "$MERGED_CREDS"
-                          echo "" >> "$MERGED_CREDS"
-                        fi
-
-                        # Append the newly assumed profile from the orb output
-                        if [ -f "$NEW_CREDS" ]; then
-                          awk -v keep_only="[$PROFILE]" '
-                            /^\[/ { keep = ($0 == keep_only) }
-                            keep { print }
-                          ' "$NEW_CREDS" >> "$MERGED_CREDS"
-                        fi
-
-                        mv "$MERGED_CREDS" "$NEW_CREDS"
-
-                        if [ -f "$HOME/.aws-existing/config" ] && [ ! -f "$HOME/.aws/config" ]; then
-                          cp "$HOME/.aws-existing/config" "$HOME/.aws/config"
-                        elif [ -f "$HOME/.aws-existing/config" ] && [ -f "$HOME/.aws/config" ]; then
-                          cat "$HOME/.aws-existing/config" >> "$HOME/.aws/config"
-                        fi
-
-                        echo "Merged AWS profiles:"
-                        grep -E '^\[' "$NEW_CREDS" || true
+            - run:
+                name: Merge AWS profiles
+                command: |
+                  if [ -f /tmp/aws-credentials.existing ]; then
+                    cat /tmp/aws-credentials.existing "$HOME/.aws/credentials" > /tmp/aws-credentials.merged
+                    mv /tmp/aws-credentials.merged "$HOME/.aws/credentials"
+                  fi
+                  echo "AWS profiles:" && grep -E '^\[' "$HOME/.aws/credentials" || true
             - persist_to_workspace:
                   root: *workspace_root
                   paths:
