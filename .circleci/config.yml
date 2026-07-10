@@ -383,6 +383,8 @@ workflows:
                 - feat/ssi-1171-rollout-cognito-auth
       - assume-role-development:
           context: api-assume-role-housing-development-context     
+          requires:
+            - assume-role-development
       - assume-role-development-apis:
           context: api-assume-role-development-context
           requires:
