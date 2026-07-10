@@ -1,4 +1,5 @@
 locals {
+  environment = "development"
   e2e_credentials = jsondecode(
     data.aws_secretsmanager_secret_version.e2e_credentials_value.secret_string
   )
@@ -16,7 +17,21 @@ data "aws_secretsmanager_secret_version" "e2e_credentials_value" {
 
 resource "aws_ssm_parameter" "e2e_client_id" {
   provider = aws.housing-development
-  name     = "/housing-tl/development/e2e-cognito-client-id"
-  type     = "SecureString"
+  name     = "/housing-tl/${local.environment}/e2e-cognito-client-id"
+  type     = "String"
   value    = local.e2e_credentials.client_id
+}
+
+resource "aws_ssm_parameter" "e2e_username" {
+  provider = aws.housing-development
+  name     = "/housing-tl/${local.environment}/e2e-cognito-username"
+  type     = "String"
+  value    = local.e2e_credentials.email
+}
+
+resource "aws_ssm_parameter" "e2e_password" {
+  provider = aws.housing-development
+  name     = "/housing-tl/${local.environment}/e2e-cognito-password"
+  type     = "SecureString"
+  value    = local.e2e_credentials.password
 }

@@ -239,6 +239,26 @@ commands:
                     - .aws
                     - project/*
 
+  terraform-init-then-apply:
+      description: "Initialize and apply the terraform configuration"
+      parameters:
+          environment:
+              type: string
+      steps:
+          - *attach_workspace
+          - checkout
+          - run:
+                name: get and init
+                command: |
+                    cd ./terraform/<<parameters.environment>>/
+                    terraform get -update=true
+                    terraform init
+          - run:
+                name: apply
+                command: |
+                    cd ./terraform/<<parameters.environment>>/
+                    terraform apply -auto-approve
+
 jobs:
   assume-role-development:
         executor: docker-python
@@ -345,23 +365,39 @@ jobs:
         steps:
         - terraform-init-then-plan:
             environment: "development"
+  
+  terraform-apply-development:
+        executor: docker-terraform
+        steps:
+        - terraform-init-then-apply:
+            environment: "development"
     
 workflows:
-  test-assume-roles:
+  deploy-terraform-development:
     jobs:
-      - assume-role-development:
-          context: api-assume-role-housing-development-context
+      - permit-development-terraform-workflow:
+          type: approval
           filters:
             branches:
               only:
                 - feat/ssi-1171-rollout-cognito-auth
+      - assume-role-development:
+          context: api-assume-role-housing-development-context     
       - assume-role-development-apis:
           context: api-assume-role-development-context
           requires:
             - assume-role-development
       - terraform-init-and-plan-development:
-                    requires:
-                        - assume-role-development-apis
+            requires:
+                - assume-role-development-apis
+      - permit-development-terraform-deployment:
+            type: approval
+            requires:
+                - terraform-init-and-plan-development
+      - terraform-apply-development:
+            requires:
+                - permit-development-terraform-deployment
+      
   # run-ci-tests:
   #   when: << pipeline.parameters.run_workflow_ci >>
   #   jobs:
