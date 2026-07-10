@@ -63,19 +63,81 @@ commands:
                 command: apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates
 
     assume-role-and-persist-workspace:
-        description: "Assume deployment role and persist credentials across jobs"
+        description: >
+          Assume a deployment role into a named AWS profile and persist ~/.aws.
+          When attach-existing-workspace is true, restores profiles from a previous
+          job and merges them so the orb does not overwrite existing config.
         parameters:
             aws-account:
                 type: string
             profile-name:
                 type: string
                 default: default
+            attach-existing-workspace:
+                type: boolean
+                default: false
         steps:
+            - when:
+                condition: <<parameters.attach-existing-workspace>>
+                steps:
+                  - *attach_workspace
+                  - run:
+                      name: Backup existing AWS profiles
+                      command: |
+                        if [ -d "$HOME/.aws" ]; then
+                          cp -a "$HOME/.aws" "$HOME/.aws-existing"
+                          echo "Backed up existing AWS profiles"
+                          ls -la "$HOME/.aws-existing" || true
+                        else
+                          echo "No existing ~/.aws to merge"
+                        fi
             - checkout
             - aws_assume_role/assume_role:
                   account: <<parameters.aws-account>>
                   profile_name: <<parameters.profile-name>>
-                  role: "LBH_Circle_CI_Deployment_Role"
+                  role: 'LBH_Circle_CI_Deployment_Role'
+            - when:
+                condition: <<parameters.attach-existing-workspace>>
+                steps:
+                  - run:
+                      name: Merge previous AWS profiles into ~/.aws
+                      command: |
+                        set -euo pipefail
+                        PROFILE="<<parameters.profile-name>>"
+                        EXISTING_CREDS="$HOME/.aws-existing/credentials"
+                        NEW_CREDS="$HOME/.aws/credentials"
+                        MERGED_CREDS="$HOME/.aws/credentials.merged"
+
+                        mkdir -p "$HOME/.aws"
+                        : > "$MERGED_CREDS"
+
+                        # Keep every profile from the previous job except the one we just assumed
+                        if [ -f "$EXISTING_CREDS" ]; then
+                          awk -v skip="[$PROFILE]" '
+                            /^\[/ { keep = ($0 != skip) }
+                            keep { print }
+                          ' "$EXISTING_CREDS" >> "$MERGED_CREDS"
+                          echo "" >> "$MERGED_CREDS"
+                        fi
+
+                        # Append the newly assumed profile from the orb output
+                        if [ -f "$NEW_CREDS" ]; then
+                          awk -v keep_only="[$PROFILE]" '
+                            /^\[/ { keep = ($0 == keep_only) }
+                            keep { print }
+                          ' "$NEW_CREDS" >> "$MERGED_CREDS"
+                        fi
+
+                        mv "$MERGED_CREDS" "$NEW_CREDS"
+
+                        if [ -f "$HOME/.aws-existing/config" ] && [ ! -f "$HOME/.aws/config" ]; then
+                          cp "$HOME/.aws-existing/config" "$HOME/.aws/config"
+                        elif [ -f "$HOME/.aws-existing/config" ] && [ -f "$HOME/.aws/config" ]; then
+                          cat "$HOME/.aws-existing/config" >> "$HOME/.aws/config"
+                        fi
+
+                        echo "Merged AWS profiles:"
+                        grep -E '^\[' "$NEW_CREDS" || true
             - persist_to_workspace:
                   root: *workspace_root
                   paths:
@@ -203,6 +265,7 @@ jobs:
         steps:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_DEVELOPMENT
+                  profile-name: default
 
   assume-role-development-apis:
         executor: docker-python
@@ -210,6 +273,7 @@ jobs:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_DEVELOPMENT
                   profile-name: apis
+                  attach-existing-workspace: true
 
   assume-role-staging:
         executor: docker-python
