@@ -1,13 +1,13 @@
 provider "aws" {
-  alias   = "housing-development"
-  region  = "eu-west-2"
-  profile = "default"
+  alias   = "housing"
+  region  = var.aws_region
+  profile = var.housing_aws_profile
 }
 
 provider "aws" {
-  alias   = "developmentapis"
-  region  = "eu-west-2"
-  profile = "developmentapis"
+  alias   = "apis"
+  region  = var.aws_region
+  profile = var.apis_aws_profile
 }
 
 terraform {
@@ -19,9 +19,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = "terraform-state-housing-development"
+    bucket  = var.s3_backend_bucket
     encrypt = true
-    region  = "eu-west-2"
+    region  = var.aws_region
     key     = "services/t-and-l-e2e-tests/state"
   }
 }

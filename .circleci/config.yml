@@ -272,7 +272,7 @@ jobs:
         steps:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_DEVELOPMENT
-                  profile-name: developmentapis
+                  profile-name: apis
                   attach-existing-workspace: true
 
   assume-role-staging:
