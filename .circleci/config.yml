@@ -48,6 +48,9 @@ executors:
             # Pinned to Node 24.17.0 — keep in sync with .nvmrc and package.json engines
             - image: cypress/browsers:node-24.17.0-chrome-149.0.7827.155-1-ff-152.0-edge-149.0.4022.69-1
         resource_class: medium+
+    docker-terraform:
+        docker:
+            - image: "hashicorp/terraform:light"
 
 commands:
     # cypress/browsers Node 24+ images omit curl by design (see cypress-io/cypress-docker-images#852).
@@ -210,6 +213,31 @@ commands:
             - store_artifacts:
                 path: /root/project/cypress/screenshots/
                 destination: artifact-file
+      
+    terraform-init-then-plan:
+        description: "Initializes and run plan from terraform configuration"
+        parameters:
+            environment:
+                type: string
+        steps:
+            - *attach_workspace
+            - checkout
+            - run:
+                command: |
+                    cd ./terraform/<<parameters.environment>>/
+                    terraform get -update=true
+                    terraform init
+                name: get and init
+            - run:
+                name: plan
+                command: |
+                    cd ./terraform/<<parameters.environment>>/
+                    terraform plan -out=plan.out
+            - persist_to_workspace:
+                root: *workspace_root
+                paths:
+                    - .aws
+                    - project/*
 
 jobs:
   assume-role-development:
@@ -311,6 +339,12 @@ jobs:
           - execute-e2e-tests:
               stage: staging
               trigger-context: devices
+
+  terraform-init-and-plan-development:
+        executor: docker-terraform
+        steps:
+        - terraform-init-then-plan:
+            environment: "development"
     
 workflows:
   test-assume-roles:
@@ -325,6 +359,9 @@ workflows:
           context: api-assume-role-development-context
           requires:
             - assume-role-development
+      - terraform-init-and-plan-development:
+                    requires:
+                        - assume-role-development-apis
   # run-ci-tests:
   #   when: << pipeline.parameters.run_workflow_ci >>
   #   jobs:
