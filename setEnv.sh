@@ -18,15 +18,31 @@ if ! aws sts get-caller-identity --profile "$PROFILE" > /dev/null 2>&1; then
   fi
 fi
 
+ssm_get() {
+  aws ssm get-parameter \
+    --name "/housing-tl/$STAGE/$1" \
+    --query Parameter.Value \
+    --output text \
+    --profile "$PROFILE" \
+    "${@:2}"
+}
+
 export CYPRESS_ENVIRONMENT="$STAGE"
-export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/property-api-url" --query Parameter.Value --output text --profile "$PROFILE")
-export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/house-search-api-url" --query Parameter.Value --output text --profile "$PROFILE")
-export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/contact-details-api-url" --query Parameter.Value --output text --profile "$PROFILE")
-export CYPRESS_EQUALITY_DETAILS_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/equality-information-api-url" --query Parameter.Value --output text --profile "$PROFILE")
-export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/person-api-url" --query Parameter.Value --output text --profile "$PROFILE")
-export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/tenure-api-url" --query Parameter.Value --output text --profile "$PROFILE")
-export CYPRESS_CAUTIONARY_ALERT_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/cautionary-alerts-api-url" --query Parameter.Value --output text --profile "$PROFILE")
-export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name "/housing-tl/$STAGE/configuration-api-url" --query Parameter.Value --output text --profile "$PROFILE")
+export CYPRESS_AWS_REGION="eu-west-2"
+export CYPRESS_COGNITO_FLOW_ENABLED_FOR="${CYPRESS_COGNITO_FLOW_ENABLED_FOR:-$STAGE}"
+
+export CYPRESS_ASSET_ENDPOINT=$(ssm_get "property-api-url")
+export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(ssm_get "house-search-api-url")
+export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(ssm_get "contact-details-api-url")
+export CYPRESS_EQUALITY_DETAILS_ENDPOINT=$(ssm_get "equality-information-api-url")
+export CYPRESS_PERSON_ENDPOINT=$(ssm_get "person-api-url")
+export CYPRESS_TENURE_ENDPOINT=$(ssm_get "tenure-api-url")
+export CYPRESS_CAUTIONARY_ALERT_ENDPOINT=$(ssm_get "cautionary-alerts-api-url")
+export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(ssm_get "configuration-api-url")
+
+export CYPRESS_E2E_CLIENT_ID=$(ssm_get "e2e-cognito-client-id")
+export CYPRESS_E2E_USERNAME=$(ssm_get "e2e-cognito-username")
+export CYPRESS_E2E_PASSWORD=$(ssm_get "e2e-cognito-password" --with-decryption)
 
 # Set AWS credentials for Cypress DynamoDB tasks in the current terminal session
 eval "$(aws configure export-credentials --profile "$PROFILE" --format env)" || {
@@ -38,5 +54,18 @@ export CYPRESS_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export CYPRESS_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
 
 echo "Cypress environment configured for stage: $STAGE"
-echo "Set your auth token separately, e.g.:"
-echo "  export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT='<<your hackney JWT>>'"
+echo "API endpoints and Cognito credentials loaded from SSM."
+
+# Optional overrides (e.g. legacy JWT, or CYPRESS_COGNITO_FLOW_ENABLED_FOR)
+if [ -f .env ]; then
+  # SC1091: shellcheck cannot follow a non-constant / optional path (.env is gitignored
+  # and may be absent), so it warns on `source`. Safe to ignore here.
+  # shellcheck disable=SC1091
+  source .env
+  echo "Optional overrides loaded from .env"
+fi
+
+# SC1091: path is built at runtime via BASH_SOURCE; shellcheck cannot resolve it statically.
+# shellcheck disable=SC1091
+source "$(dirname "${BASH_SOURCE[0]}")/verifyEnv.sh"
+verify_cypress_env || return 1

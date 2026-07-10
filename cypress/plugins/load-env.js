@@ -40,7 +40,7 @@ function validateEnv(config) {
 
   if (!environment) {
     throw new Error(
-      'ENVIRONMENT is required. Set CYPRESS_ENVIRONMENT or add it to cypress.env.json.',
+      'ENVIRONMENT is required. Set CYPRESS_ENVIRONMENT (e.g. via setEnv.sh).',
     );
   }
 
