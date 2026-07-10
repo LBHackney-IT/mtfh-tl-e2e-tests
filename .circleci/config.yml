@@ -93,8 +93,15 @@ commands:
                 name: Merge AWS profiles
                 command: |
                   if [ -f /tmp/aws-credentials.existing ]; then
-                    cat /tmp/aws-credentials.existing "$HOME/.aws/credentials" > /tmp/aws-credentials.merged
-                    mv /tmp/aws-credentials.merged "$HOME/.aws/credentials"
+                    PROFILE="<<parameters.profile-name>>"
+                    cp "$HOME/.aws/credentials" /tmp/aws-credentials.new
+                    cp /tmp/aws-credentials.existing "$HOME/.aws/credentials"
+                    # Orb often also writes [default]; only append the profile we just assumed
+                    awk -v p="[$PROFILE]" '
+                      $0 == p { keep=1; print; next }
+                      /^\[/ { keep=0 }
+                      keep
+                    ' /tmp/aws-credentials.new >> "$HOME/.aws/credentials"
                   fi
                   echo "AWS profiles:" && grep -E '^\[' "$HOME/.aws/credentials" || true
             - persist_to_workspace:
