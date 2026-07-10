@@ -21,9 +21,3 @@ variable "aws_region" {
   type        = string
   default     = "eu-west-2"
 }
-
-variable "s3_backend_bucket" {
-  description = "S3 bucket to store the terraform state"
-  type        = string
-  default     = "terraform-state-housing-development"
-}

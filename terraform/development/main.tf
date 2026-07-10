@@ -19,9 +19,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = var.s3_backend_bucket
+    bucket  = "terraform-state-housing-development"
     encrypt = true
-    region  = var.aws_region
+    region  = "eu-west-2"
     key     = "services/t-and-l-e2e-tests/state"
   }
 }
