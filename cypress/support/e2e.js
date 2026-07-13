@@ -118,11 +118,15 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
   const { pathname, href } = parseVisitUrl(url);
   const visitOptions = buildVisitOptions(options);
 
-  ensureAuthCookie();
+  // Logged-out visits must not re-seed the auth cookie (home "Sign in" test, etc.)
+  if (options.authenticate !== false) {
+    ensureAuthCookie();
+  }
 
   const useCognitoDeepLinkWarmup =
     Cypress.config("isCognitoFlow") &&
     options.authWarmup !== false &&
+    options.authenticate !== false &&
     isDeepLinkPath(pathname);
 
   if (useCognitoDeepLinkWarmup) {
