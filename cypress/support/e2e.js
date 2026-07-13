@@ -5,6 +5,14 @@ require("cypress-plugin-tab");
 require('cypress-xpath');
 const { register: registerCypressGrep } = require('@cypress/grep');
 import { endpoint } from './endpoints';
+import { flushPendingRecordsToDelete } from '../../api/helpers';
+import {
+  awaitAppReady,
+  ensureAuthCookie,
+  isDeepLinkPath,
+  parseVisitUrl,
+  seedAutStorage,
+} from './auth';
 
 // ***********************************************************
 // This example support/index.js is processed and
@@ -25,23 +33,30 @@ registerCypressGrep();
 
 const clearDatabase = () => {
     const filename = "cypress/fixtures/recordsToDelete.json";
-    return cy.readFile(filename).then((recordsToDelete) => {
-      if (recordsToDelete.length) {
-        return cy.wrap(recordsToDelete).each((record) => {
-          return cy.task('dynamoDb:delete', record);
-        }).then(() => {
-          cy.writeFile(filename, []);
-          cy.log("Test database records cleared!");
-        });
-      }
+    return flushPendingRecordsToDelete().then(() => {
+      return cy.readFile(filename).then((recordsToDelete) => {
+        if (recordsToDelete.length) {
+          return cy.wrap(recordsToDelete).each((record) => {
+            return cy.task('dynamoDb:delete', record);
+          }).then(() => {
+            cy.writeFile(filename, []);
+            cy.log("Test database records cleared!");
+          });
+        }
 
-      cy.log("No records to delete.");
+        cy.log("No records to delete.");
+      });
     });
   };
   
 
 before(() => {
     clearDatabase();
+});
+
+afterEach(() => {
+    // Persist deletes queued from intercept callbacks (no cy.* there — see api/helpers.js)
+    flushPendingRecordsToDelete();
 });
 
 after(() => {
@@ -55,13 +70,61 @@ beforeEach(() => {
   cy.intercept('GET', url).as('getFeatureToggles');
 });
 
-Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
-  originalFn(url, options);
+const buildVisitOptions = (options = {}) => ({
+  ...options,
+  onBeforeLoad(win) {
+    seedAutStorage(win, Cypress.config("featureToggles"));
+    if (typeof options.onBeforeLoad === "function") {
+      options.onBeforeLoad(win);
+    }
+  },
+});
 
-  if (options?.waitForConfiguration !== false) {
-    cy.wait('@getFeatureToggles');
+const assertStayedOnPath = (pathname, options = {}) => {
+  if (
+    options.waitForPath === false ||
+    !isDeepLinkPath(pathname)
+  ) {
+    return;
+  }
+  cy.location("pathname", { timeout: 30000 }).should("eq", pathname);
+};
+
+/**
+ * Cognito auth MFE can bounce cold deep links: push("/search") → Redirect to "/".
+ * Settle on "/" first, then client-navigate so auth never mounts on the target route.
+ */
+const visitDeepLinkViaAuthWarmup = (originalFn, url, options, { pathname, href }) => {
+  const visitOptions = buildVisitOptions(options);
+
+  originalFn("/", visitOptions);
+  awaitAppReady(options);
+
+  cy.window().then((win) => {
+    win.history.pushState({}, "", href);
+    win.dispatchEvent(new PopStateEvent("popstate"));
+  });
+
+  assertStayedOnPath(pathname, options);
+};
+
+Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
+  const { pathname, href } = parseVisitUrl(url);
+  const visitOptions = buildVisitOptions(options);
+
+  ensureAuthCookie();
+
+  const useCognitoDeepLinkWarmup =
+    Cypress.config("isCognitoFlow") &&
+    options.authWarmup !== false &&
+    isDeepLinkPath(pathname);
+
+  if (useCognitoDeepLinkWarmup) {
+    visitDeepLinkViaAuthWarmup(originalFn, url, options, { pathname, href });
+    return;
   }
 
-  cy.wait(1000);
-  cy.window({ log: false }); 
+  originalFn(url, visitOptions);
+  awaitAppReady(options);
+  assertStayedOnPath(pathname, options);
 });

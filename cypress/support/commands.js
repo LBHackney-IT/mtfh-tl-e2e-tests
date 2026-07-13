@@ -1,6 +1,7 @@
 import '@testing-library/cypress/add-commands';
 import 'cypress-axe';
 import "cypress-localstorage-commands";
+import { authCookieName, authCookieOptions } from './auth';
 
 try {
   require('cypress-audit/commands');
@@ -19,21 +20,34 @@ try {
 
 Cypress.Commands.add('login', () => {
   const gssoTestKey = Cypress.config("gssoTestKey");
-  const isCognitoFlow = Cypress.config("isCognitoFlow");
-  const cookieName = isCognitoFlow ? "hackneyCognitoToken" : "hackneyToken";
+  const cookieName = authCookieName();
+
   cy.getCookies().should('be.empty');
-  cy.setCookie(cookieName, gssoTestKey);
+  cy.setCookie(cookieName, gssoTestKey, authCookieOptions());
   cy.getCookie(cookieName).should('have.property', 'value', gssoTestKey);
   cy.log(Cypress.config("featureToggles"));
-  window.localStorage.setItem(
-    "features",
-    JSON.stringify(Cypress.config("featureToggles"))
-  );
+  // Features are seeded into the AUT in the visit overwrite (onBeforeLoad).
 });
 
 Cypress.Commands.add('logout', () => {
   cy.clearCookies();
   cy.getCookies().should('be.empty');
+});
+
+/**
+ * Wait until MMH auth + configuration bootstrap has settled in the AUT.
+ * Header "Sign out" means isAuthorised() is true after Single SPA remount.
+ */
+Cypress.Commands.add('waitForAuthenticatedApp', (options = {}) => {
+  const { timeout = 30000 } = options;
+
+  cy.window({ log: false, timeout }).should((win) => {
+    const raw = win.localStorage.getItem("features");
+    expect(raw, "features localStorage").to.be.a("string").and.not.be.empty;
+    expect(JSON.parse(raw).MMH, "MMH configuration").to.be.an("object");
+  });
+
+  cy.contains(".lbh-header", "Sign out", { timeout }).should("be.visible");
 });
 
 // Fixture data (json files added to gitignore file)
