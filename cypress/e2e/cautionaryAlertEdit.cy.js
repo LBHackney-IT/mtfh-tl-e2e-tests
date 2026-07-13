@@ -6,7 +6,10 @@ const cautionaryAlertPage = new CautionaryAlertViewPageObject();
 
 const getFormattedDate = (date) => {
     const day = date.getDate().toString().padStart(2, '0');
-    const month = date.getMonth().toString().padStart(2, '0');
+    // getMonth() is 0-based; without +1, January becomes "00" and cy.type() on
+    // <input type="date"> fails (YYYY-MM-DD). Other months were silently off-by-one
+    // but still valid strings — so this only blew up when the computed date landed in January.
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear().toString();
     // On the UI it's DD-MM-YYYY, however, cypress demands the opposite for it to work as expected.
     const typedDate = `${year}-${month}-${day}`;
@@ -67,9 +70,10 @@ describe("Edit Cautionary Alerts", { tags: ['@cautionary-alerts', '@cognito-auth
         cy.getPersonFixture().then((person) => {
             const personId = person.id;
             cy.url().should('include', `/person/${personId}`) // => true
+            // Do not cy.reload() — bypasses Cognito visit warmup and bounces to worktray
+            cy.visit(`${Cypress.config("baseUrl")}/person/${personId}`);
         });
 
-        cy.reload();
         personPO.pageTitle().should('exist');
         personPO.nthCautionaryAlert(0).should('not.exist');
     });
