@@ -106,6 +106,12 @@ const visitDeepLinkViaAuthWarmup = (originalFn, url, options, { pathname, href }
   });
 
   assertStayedOnPath(pathname, options);
+  // Auth can still redirect shortly after client-nav; confirm we remain on target.
+  if (options.waitForPath !== false && isDeepLinkPath(pathname)) {
+    cy.wait(1500);
+    cy.location("pathname").should("eq", pathname);
+    cy.contains(".lbh-header", "Sign out").should("be.visible");
+  }
 };
 
 Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {

@@ -184,11 +184,12 @@ describe('Edit person Contact details', {tags: ['@personal-details', '@cognito-a
             editPersonContactDetailsPage.editPersonContactDetails(person.id);
             personContactPage.addPhoneNumberButton().click();
             personContactPage.phoneNumberContactType();
-            cy.get("input[data-test='phone-number-checkbox']").last().check()
+            personContactPage.toggleIsNonUkNumber();
             personContactPage.phoneNumberFields().last().type("+549844444444");
             personContactPage.clickSaveChangesButton();
             cy.contains("Phone numbers updated");
-            cy.reload();
+            // cy.reload() bypasses the visit overwrite (no Cognito warmup) and bounces to /
+            cy.visit(`${Cypress.config("baseUrl")}/person/${person.id}/edit-contact-details`);
             cy.get("input[data-test='phone-number-checkbox']").last().should("be.checked");
         })
     })
