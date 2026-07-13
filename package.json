@@ -4,7 +4,7 @@
   "description": "End to end tests for MTFH T&L",
   "main": "index.js",
   "engines": {
-    "node": "24.17.x"
+    "node": "24.x.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
