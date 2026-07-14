@@ -6,7 +6,7 @@ const cautionaryAlertPage = new CautionaryAlertViewPageObject();
 
 const getFormattedDate = (date) => {
     const day = date.getDate().toString().padStart(2, '0');
-    const month = date.getMonth().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear().toString();
     // On the UI it's DD-MM-YYYY, however, cypress demands the opposite for it to work as expected.
     const typedDate = `${year}-${month}-${day}`;
