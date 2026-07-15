@@ -6,13 +6,6 @@ require('cypress-xpath');
 const { register: registerCypressGrep } = require('@cypress/grep');
 import { endpoint } from './endpoints';
 import { flushPendingRecordsToDelete } from '../../api/helpers';
-import {
-  awaitAppReady,
-  ensureAuthCookie,
-  isDeepLinkPath,
-  parseVisitUrl,
-  seedAutStorage,
-} from './auth';
 
 // ***********************************************************
 // This example support/index.js is processed and
@@ -70,71 +63,23 @@ beforeEach(() => {
   cy.intercept('GET', url).as('getFeatureToggles');
 });
 
-const buildVisitOptions = (options = {}) => ({
-  ...options,
-  onBeforeLoad(win) {
-    seedAutStorage(win, Cypress.config("featureToggles"));
-    if (typeof options.onBeforeLoad === "function") {
-      options.onBeforeLoad(win);
-    }
-  },
-});
-
-const assertStayedOnPath = (pathname, options = {}) => {
-  if (
-    options.waitForPath === false ||
-    !isDeepLinkPath(pathname)
-  ) {
-    return;
-  }
-  cy.location("pathname", { timeout: 30000 }).should("eq", pathname);
-};
-
-/**
- * Cognito auth MFE can bounce cold deep links: push("/search") → Redirect to "/".
- * Settle on "/" first, then client-navigate so auth never mounts on the target route.
- */
-const visitDeepLinkViaAuthWarmup = (originalFn, url, options, { pathname, href }) => {
-  const visitOptions = buildVisitOptions(options);
-
-  originalFn("/", visitOptions);
-  awaitAppReady(options);
-
-  cy.window().then((win) => {
-    win.history.pushState({}, "", href);
-    win.dispatchEvent(new PopStateEvent("popstate"));
+Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
+  originalFn(url, {
+    ...options,
+    onBeforeLoad(win) {
+      const featureToggles = Cypress.config("featureToggles");
+      if (featureToggles) {
+        win.localStorage.setItem("features", JSON.stringify(featureToggles));
+      }
+      if (typeof options.onBeforeLoad === "function") {
+        options.onBeforeLoad(win);
+      }
+    },
   });
 
-  assertStayedOnPath(pathname, options);
-  // Auth can still redirect shortly after client-nav; confirm we remain on target.
-  if (options.waitForPath !== false && isDeepLinkPath(pathname)) {
-    cy.wait(1500);
-    cy.location("pathname").should("eq", pathname);
-    cy.contains(".lbh-header", "Sign out").should("be.visible");
-  }
-};
-
-Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
-  const { pathname, href } = parseVisitUrl(url);
-  const visitOptions = buildVisitOptions(options);
-
-  // Logged-out visits must not re-seed the auth cookie (home "Sign in" test, etc.)
-  if (options.authenticate !== false) {
-    ensureAuthCookie();
+  if (options.waitForConfiguration !== false) {
+    cy.wait('@getFeatureToggles');
   }
 
-  const useCognitoDeepLinkWarmup =
-    Cypress.config("isCognitoFlow") &&
-    options.authWarmup !== false &&
-    options.authenticate !== false &&
-    isDeepLinkPath(pathname);
-
-  if (useCognitoDeepLinkWarmup) {
-    visitDeepLinkViaAuthWarmup(originalFn, url, options, { pathname, href });
-    return;
-  }
-
-  originalFn(url, visitOptions);
-  awaitAppReady(options);
-  assertStayedOnPath(pathname, options);
+  cy.wait(1000);
 });

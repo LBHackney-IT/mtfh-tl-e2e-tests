@@ -70,10 +70,9 @@ describe("Edit Cautionary Alerts", { tags: ['@cautionary-alerts', '@cognito-auth
         cy.getPersonFixture().then((person) => {
             const personId = person.id;
             cy.url().should('include', `/person/${personId}`) // => true
-            // Do not cy.reload() — bypasses Cognito visit warmup and bounces to worktray
-            cy.visit(`${Cypress.config("baseUrl")}/person/${personId}`);
         });
 
+        cy.reload();
         personPO.pageTitle().should('exist');
         personPO.nthCautionaryAlert(0).should('not.exist');
     });

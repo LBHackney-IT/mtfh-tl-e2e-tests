@@ -66,16 +66,9 @@ describe('Create Cautionary Alerts', { tags: ["@cautionary-alerts", "@cognito-au
             cy.contains('Save cautionary alert').click();
             cy.wait('@addCautionaryAlert');
 
-            // Check for red bell icon & alert text.
-            // Do not cy.reload() — reload bypasses the visit overwrite (no Cognito
-            // deep-link warmup) and bounces to worktray, so alert-icon never appears.
-            cy.intercept(
-                'GET',
-                '**/cautionary-alerts/persons/**',
-            ).as('getPersonCautionaryAlerts');
+            // Check for red bell icon & alert text
             personPage.visit(person.id);
-            cy.location('pathname').should('include', `/person/${person.id}`);
-            cy.wait('@getPersonCautionaryAlerts');
+            cy.reload();
             caPage.redBellIconAlert().should('exist');
             cy.contains('No Lone Visits');
         });

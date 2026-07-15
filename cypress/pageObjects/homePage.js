@@ -1,10 +1,8 @@
 
 class HomePageObjects {
-    visit({ authenticated = true } = {}) {
+    visit() {
         cy.visit(Cypress.config("baseUrl"), {
             waitForConfiguration: false,
-            waitForAuthentication: authenticated,
-            authenticate: authenticated,
         });
         cy.injectAxe();
     }

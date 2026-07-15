@@ -13,7 +13,7 @@ describe('MMH Home page', {tags: ['@header', '@cognito-authentication', '@common
    
     it('should show header and footer whilst logged out', ()=> {
         cy.clearCookies();
-        homePage.visit({ authenticated: false })
+        homePage.visit()
         homePage.iAmOnTheHomePage()
        
         homePage.signInButton().should('be.visible')
