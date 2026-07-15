@@ -3,8 +3,7 @@ import TenurePageObjects from "../pageObjects/tenurePage";
 import PersonFormObjects from "../pageObjects/personFormPage";
 import ModalPageObjects from "../pageObjects/sharedComponents/modal";
 import { seedDatabase } from "../helpers/DbHelpers";
-import { queueDeletePersonWithId } from "../../api/helpers";
-import { endpoint } from "../support/endpoints";
+const { faker } = require("@faker-js/faker");
 
 const createTenurePage = new CreateTenurePageObjects();
 const tenurePage = new TenurePageObjects();
@@ -146,21 +145,17 @@ describe('create and edit tenure', { tags: ['@tenure', '@cognito-authentication'
             completeTenureDetailsStep();
 
             const searchTerm = "tre"
-            searchForResidents(searchTerm);
-            attachPersonFromSearch(() => {
-                createTenurePage.addAsNamedTenureHolderButton().first().click();
-            });
+            createTenurePage.searchContainer().clear().type(searchTerm);
+            createTenurePage.searchButton().click();
+            createTenurePage.searchResults().contains(searchTerm.replace(/\*/g, ""), { matchCase: false });
+            createTenurePage.addAsNamedTenureHolderButton().first().click()
+            createTenurePage.pageAnnouncementContainer().should('contain', 'Person added to tenure');
 
-            // Search cards stay in place after attach. eq(0) is the named holder we just
-            // added — the UI short-circuits with "already added" and never PATCHes.
-            // Use later cards for household members.
-            createTenurePage.addAsHouseholdMember().should('have.length.at.least', 3);
-            for (let i = 1; i <= 2; i++) {
-                attachPersonFromSearch(() => {
-                    createTenurePage.addAsHouseholdMember().eq(i).click();
-                });
+            //add 2 household memebers
+            for (let i = 0; i < 2; i++) {
+                createTenurePage.addAsHouseholdMember().eq(i).click()
             }
-
+            createTenurePage.pageAnnouncementContainer().should('contain', 'Person added to tenure');
             createTenurePage.doneButton().click()
             cy.findAllByText("New tenure completed");
 
@@ -334,7 +329,8 @@ describe('create and edit tenure', { tags: ['@tenure', '@cognito-authentication'
             cy.getTenureFixture(({ id: tenureId }) => {
                 cy.url().should('include', `tenure/${tenureId}/edit`)
             })
-            createTenurePage.tenureStartDateInput().clear().type("2000-05-20")
+            const pastDate = faker.date.past().toISOString().split("T")[0];
+            createTenurePage.tenureStartDateInput().clear().type(pastDate)
             cy.contains("Next").click();
             createTenurePage.doneButton().click()
             createTenurePage.confirmTenureUpdatedText().should('contain', 'Tenure updated');            
