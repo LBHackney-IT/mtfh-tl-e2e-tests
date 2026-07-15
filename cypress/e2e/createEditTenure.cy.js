@@ -3,6 +3,8 @@ import TenurePageObjects from "../pageObjects/tenurePage";
 import PersonFormObjects from "../pageObjects/personFormPage";
 import ModalPageObjects from "../pageObjects/sharedComponents/modal";
 import { seedDatabase } from "../helpers/DbHelpers";
+import { queueDeletePersonWithId } from "../../api/helpers";
+import { endpoint } from "../support/endpoints";
 const { faker } = require("@faker-js/faker");
 
 const createTenurePage = new CreateTenurePageObjects();
