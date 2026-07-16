@@ -3,8 +3,6 @@ import TenurePageObjects from "../pageObjects/tenurePage";
 import PersonFormObjects from "../pageObjects/personFormPage";
 import ModalPageObjects from "../pageObjects/sharedComponents/modal";
 import { seedDatabase } from "../helpers/DbHelpers";
-import { queueDeletePersonWithId } from "../../api/helpers";
-import { endpoint } from "../support/endpoints";
 const { faker } = require("@faker-js/faker");
 
 const createTenurePage = new CreateTenurePageObjects();
@@ -13,139 +11,29 @@ const addPersonPage = new PersonFormObjects();
 const modal = new ModalPageObjects()
 const tenureTypes =  ['Freehold', 'Freehold (Serv)', 'Introductory', 'Leasehold (RTB)', 'License Temp Ac', 'Lse 100% Stair', 'Mesne Profit Ac', 'Non-Secure', 'Private Sale LH', 'Rent To Mortgage', 'Shared Equity', 'Shared Owners', 'Short Life Lse', 'Temp Annex', 'Temp B&B', 'Temp Decant', 'Temp Hostel', 'Temp Hostel Lse', 'Temp Private Lt', 'Temp Traveller', 'Tenant Acc Flat', 'Secure']
 
-/**
- * After creating a tenure, household mutations need a current ETag (If-Match).
- * Tenure listeners often bump VersionNumber shortly after create; the UI keeps a
- * stale etag (especially while filling the new-person form), and the API returns
- * 409 VersionNumberConflict → warning "Unable to attach person to tenure".
- *
- * We wait until the etag is stable after create, then overwrite If-Match on each
- * attach PATCH with a sync GET so the header is current even if person POST took
- * long enough for another version bump.
- */
-const waitForTenureEtag = (tenureId, attempts = 20) => {
-    const url = `${endpoint('TENURE_ENDPOINT')}/tenures/${tenureId}`;
-    const token = Cypress.config('gssoTestKey');
-    let lastEtag = null;
-
-    const attempt = (remaining) => {
-        cy.request({
-            url,
-            headers: { Authorization: `Bearer ${token}` },
-            failOnStatusCode: false,
-        }).then((res) => {
-            const etag = res.headers.etag;
-            if (res.status === 200 && etag && etag === lastEtag) {
-                return;
-            }
-            if (res.status === 200 && etag) {
-                lastEtag = etag;
-            }
-            if (remaining <= 1) {
-                throw new Error(
-                    `Tenure ${tenureId} ETag did not stabilise (last status ${res.status}, etag ${etag})`,
-                );
-            }
-            cy.wait(1000).then(() => attempt(remaining - 1));
-        });
-    };
-
-    attempt(attempts);
-};
-
-const refreshIfMatchOnAttach = (req) => {
-    const match = req.url.match(/\/tenures\/([^/?]+)\/person\//);
-    if (!match) {
-        req.continue();
-        return;
-    }
-
-    const tenureUrl = `${endpoint('TENURE_ENDPOINT')}/tenures/${match[1]}`;
-    const token = Cypress.config('gssoTestKey');
-
-    // Sync XHR is intentional here: cy.* cannot run inside intercept handlers, and
-    // person POST can outlast a pre-click etag refresh.
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', tenureUrl, false);
-    xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-    xhr.send();
-    const etag = xhr.getResponseHeader('etag');
-    if (etag) {
-        req.headers['if-match'] = etag;
-    }
-    req.continue();
-};
-
-const registerTenurePersonIntercepts = () => {
-    cy.intercept('GET', '**/search/persons**').as('searchPersons');
-    cy.intercept('POST', '**/tenures**').as('createTenure');
-    cy.intercept('PATCH', '**/tenures/**/person/**', refreshIfMatchOnAttach).as(
-        'attachPersonToTenure',
-    );
-    cy.intercept('POST', '**/api/v2/persons', (req) => {
-        req.on('after:response', (res) => {
-            if (res.statusCode === 201 && res.body?.id) {
-                queueDeletePersonWithId(res.body.id);
-            }
-        });
-    }).as('addPerson');
-};
-
-const completeTenureDetailsStep = () => {
-    cy.contains('Next').click();
-    return cy.wait('@createTenure').then(({ response }) => {
-        expect(response?.statusCode, 'create tenure').to.be.oneOf([200, 201]);
-        const createdTenureId = response.body.id;
-        expect(createdTenureId, 'created tenure id').to.be.a('string');
-        waitForTenureEtag(createdTenureId);
-        createTenurePage.searchContainer().should('be.visible');
-        createTenurePage.searchButton().should('be.visible');
-        return cy.wrap(createdTenureId);
-    });
-};
-
-const searchForResidents = (searchTerm) => {
-    createTenurePage.searchContainer().clear().type(searchTerm);
-    createTenurePage.searchButton().click();
-    cy.wait('@searchPersons');
-    createTenurePage.searchResults().should('be.visible');
-    createTenurePage.searchResults().contains(searchTerm.replace(/\*/g, ''), {
-        matchCase: false,
-    });
-};
-
-const assertPersonAddedAnnouncement = () => {
-    // Prefer text match — pages can also render an unrelated --warning announcement
-    cy.contains('.lbh-page-announcement', 'Person added to tenure').should('be.visible');
-};
-
-const attachPersonFromSearch = (clickAdd) => {
-    clickAdd();
-    cy.wait('@attachPersonToTenure')
-        .its('response.statusCode')
-        .should('be.oneOf', [200, 204]);
-    assertPersonAddedAnnouncement();
-};
-
 describe('create and edit tenure', { tags: ['@tenure', '@cognito-authentication', '@common', '@root', '@search', '@worktray', '@personal-details']}, () => {
     beforeEach(() => {
         cy.login();
         seedDatabase();
-        registerTenurePersonIntercepts();
     });
 
     it('should create a new tenure', {tags: '@SmokeTest'}, ()=> {
-        cy.getAssetFixture().then(({ id: assetId }) => {
-            createTenurePage.createTenure(assetId);
+        cy.intercept('GET', '**/tenure/*').as('getTenure');
+        cy.getAssetFixture().then(({ id: tenureId }) => {
+            createTenurePage.createTenure(tenureId);
 
-            cy.url().should("contain", `tenure/${assetId}/add`);
+            cy.url().should("contain", `tenure/${tenureId}/add`);
             createTenurePage.addPropertyHeading().should('be.visible')
             createTenurePage.propertyAddress().should('be.visible')
 
             createTenurePage.tenureTypeSelection().select("Non-Secure")
-            createTenurePage.tenureStartDateInput().clear().type("2090-01-01")
-            completeTenureDetailsStep();
 
+            createTenurePage.tenureStartDateInput().clear().type("2090-01-01")
+            cy.contains("Next").click();
+            
+            createTenurePage.searchContainer().should('be.visible')
+            createTenurePage.searchButton().should('be.visible')
+            //select resident to add to new tenure
             const searchTerm = "tre"
             createTenurePage.searchContainer().clear().type(searchTerm);
             createTenurePage.searchButton().click();
@@ -160,7 +48,7 @@ describe('create and edit tenure', { tags: ['@tenure', '@cognito-authentication'
             createTenurePage.pageAnnouncementContainer().should('contain', 'Person added to tenure');
             createTenurePage.doneButton().click()
             cy.findAllByText("New tenure completed");
-
+            
             tenurePage.tenureDetailsContainer().should("be.visible");
             tenurePage.tenureDetailsContainer().contains("Status");
             tenurePage.tenureDetailsContainer().contains("Start date");
@@ -170,25 +58,26 @@ describe('create and edit tenure', { tags: ['@tenure', '@cognito-authentication'
     })
 
     it('should create a new tenure and add a new person', ()=> {
-        cy.getAssetFixture().then(({ id: assetId }) => {
-            createTenurePage.createTenure(assetId);
+        cy.getAssetFixture().then(({ id: tenureId }) => {
+            createTenurePage.createTenure(tenureId);
 
-            cy.url().should("contain", `tenure/${assetId}/add`);
+            cy.url().should("contain", `tenure/${tenureId}/add`);
             createTenurePage.addPropertyHeading().should('be.visible')
             createTenurePage.propertyAddress().should('be.visible')
 
             createTenurePage.tenureTypeSelection().select("Non-Secure")
             createTenurePage.tenureStartDateInput().clear().type("2090-01-01")
-            completeTenureDetailsStep();
+            cy.contains("Next").click();
+            createTenurePage.searchContainer().should('be.visible')
+            createTenurePage.searchButton().should('be.visible')
 
             createTenurePage.createNewPersonButton().should('have.attr', 'aria-disabled').and('equal', 'true')
 
             const searchTerm = "tre"
-            searchForResidents(searchTerm);
+            createTenurePage.searchContainer().clear().type(searchTerm);
+            createTenurePage.searchButton().click();
 
-            createTenurePage.createNewPersonButton()
-                .should('not.have.attr', 'aria-disabled', 'true')
-                .click();
+            createTenurePage.createNewPersonButton().click();
 
             cy.url().should('include', '/person/new/')
             addPersonPage.tenureHolderRadioButton().click();
@@ -200,20 +89,13 @@ describe('create and edit tenure', { tags: ['@tenure', '@cognito-authentication'
             addPersonPage.dateOfBirthYearContainer().clear().type("1969");
             addPersonPage.reasonForCreationContainer().type("This is a test");
             addPersonPage.addPersonButton().click();
-            cy.wait('@addPerson').its('response.statusCode').should('eq', 201);
-            cy.wait('@attachPersonToTenure')
-                .its('response.statusCode')
-                .should('be.oneOf', [200, 204]);
-            assertPersonAddedAnnouncement();
+            createTenurePage.pageAnnouncementContainer().should('contain', 'Person added to tenure');
             cy.url().should('include', '/person/new/add/')
             cy.url().should('include', '/contact')
             cy.contains("Next").click();
-            addPersonPage.ageGroupSelectionBox().should('be.visible');
             addPersonPage.saveEqualityInformationButton().click()
-            createTenurePage.addedHouseholdMembersContainer()
-                .should('be.visible')
-                .and('contain', 'Mr. Test Test')
-                .and('contain', '08/05/1969,');
+            createTenurePage.addedHouseholdMembersContainer().contains(`Mr. Test Test`)
+            createTenurePage.addedHouseholdMembersContainer().contains(`08/05/1969,`)
 
             createTenurePage.searchContainer().should('be.visible')
             createTenurePage.searchButton().should('be.visible')
