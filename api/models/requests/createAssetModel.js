@@ -12,7 +12,8 @@ const createAssetModel = {
     "addressLine3": "London",
     "addressLine4": "",
     "postCode": "E5 8DH",
-    "postPreamble": "1 Newcome House"
+    "postPreamble": "1 Newcome House",
+    "neighbourhood": "CENTRAL"
   },
   "assetManagement": {
     "agent": "HAH",
@@ -93,7 +94,8 @@ const defaultAssetAddress = {
   "addressLine2": "",
   "addressLine3": "",
   "addressLine4": "",
-  "postCode": "E9 6PT"
+  "postCode": "E9 6PT",
+  "neighbourhood": "CENTRAL"
 };
 const defaultAssetManagement = {
   "agent": "",
@@ -162,7 +164,8 @@ const generateAsset = (assetGuid = faker.datatype.uuid(), uprn = faker.random.nu
       "addressLine3": "LONDON",
       "addressLine4": "",
       "postCode": "E2 8EB",
-      "postPreamble": ""
+      "postPreamble": "",
+      "neighbourhood": "CENTRAL"
     },
     "assetManagement": {
       "agent": "Hackney Homes",
@@ -206,7 +209,8 @@ const generateNewAsset = (assetGuid = faker.datatype.uuid(), assetId = faker.ran
       "addressLine2": "",
       "addressLine3": "",
       "addressLine4": "",
-      "postCode": "MK40 2RF"
+      "postCode": "MK40 2RF",
+      "neighbourhood": "CENTRAL"
     },
     "assetManagement": {
       "agent": "",

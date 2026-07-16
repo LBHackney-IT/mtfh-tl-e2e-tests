@@ -15,7 +15,8 @@
       "addressLine3": "",
       "addressLine4": "",
       "postCode": "E8 1NT",
-      "postPreamble": null
+      "postPreamble": null,
+      "neighbourhood": "CENTRAL"
     },
     "assetManagement": {
       "agent": null,
