@@ -7,7 +7,7 @@ const page = new ChangeOfNamePageObjects();
 const modal = new ModalPageObjects();
 
 describe("Change of Name Process", { tags: ['@processes', '@cognito-authentication', '@common', '@root', '@personal-details'] }, () => {
-    let now = new Date();
+    let now;
 
     const minutesToMs = (minutes) => {
         return minutes * 60000;
@@ -19,13 +19,16 @@ describe("Change of Name Process", { tags: ['@processes', '@cognito-authenticati
         cy.tick(ms);
     }
 
+    const freezeTime = () => cy.clock(now.getTime(), ['Date']);
+    const restoreTime = () => cy.clock().then((clock) => clock.restore());
+
     beforeEach(() => {
+        now = new Date();
         cy.viewport(1080, 1920); // longer viewport so we can debug easier
         cy.login();
         seedDatabase();
-        // Using only 'Date' to prevent freezing the timer used by setTimout used by
-        // single SPA router.
-        cy.clock(new Date(now.getTime()), ['Date']); // Freeze time
+        // Do NOT cy.clock here — freezing Date before the first visit breaks
+        // Single SPA / Cognito deep-link mounting. Install clock only when needed.
 
         // cleanup
         cy.intercept('POST', '**/api/v2/process/changeofname', (req) => {
@@ -136,7 +139,8 @@ describe("Change of Name Process", { tags: ['@processes', '@cognito-authenticati
         // changeOfName.ahm
         cy.contains('Confirm').click();
 
-        // Tenure Appointment 
+        // Tenure Appointment — freeze Date only for appointment scheduling / passTime
+        freezeTime();
         cy.contains('Supporting documents approved');
         cy.contains('Tenure investigator recommendation: Approve application');
         cy.contains('Housing Officer reviewed and Area Housing Manager: Approve application');
@@ -166,6 +170,8 @@ describe("Change of Name Process", { tags: ['@processes', '@cognito-authenticati
         cy.contains('Thank you for your confirmation').should('be.visible');
         cy.contains('Tenancy updated').should('be.visible');
 
+        restoreTime();
+
         // Check the person's name has been updated
         cy.getPersonFixture().then(({ id: personId }) => {
             page.visitPersonPage(personId);
@@ -186,6 +192,10 @@ describe("Change of Name Process", { tags: ['@processes', '@cognito-authenticati
         page.activeStep().should("contain.text", "Request Documents");
         page.nextButton().should('be.disabled');
         page.makeAnAppointToCheckSuppDocs().click();
+
+        // Freeze Date only after the process page has mounted (needed for passTime / isPast)
+        freezeTime();
+
         // Book initial appointment
         page.setAppointmentDateTime(new Date(now.getTime() + minutesToMs(5)));
         page.checkBoxTenantDeclaration().click();
@@ -221,6 +231,8 @@ describe("Change of Name Process", { tags: ['@processes', '@cognito-authenticati
         page.checkboxConfirmOutcomeLetter().click();
         page.confirmButton().click();
         cy.contains("This case is now closed").should('be.visible');
+
+        restoreTime();
         
         // Confirm person name has not changed
         cy.getPersonFixture().then((person) => {

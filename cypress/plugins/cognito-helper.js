@@ -33,9 +33,14 @@ async function fetchCognitoToken(env) {
 }
 
 function cognitoFlowEnabled(configEnv) {
-    return configEnv.COGNITO_FLOW_ENABLED_FOR
-        ?.split(',')
-        ?.some(env => env.trim() === configEnv.ENVIRONMENT?.trim()) || false;
+    const value = configEnv.COGNITO_FLOW_ENABLED;
+    if (typeof value === 'boolean') {
+        return value;
+    }
+    if (typeof value === 'string') {
+        return value.trim().toLowerCase() === 'true';
+    }
+    return false;
 }
 
 module.exports = {

@@ -1,3 +1,6 @@
+const { cognitoFlowEnabled } = require('./cognito-helper');
+const { LEGACY_TOKEN_KEYS, legacyTokenEnvVar } = require('./legacy-auth');
+
 const ENDPOINT_KEYS = [
   'ASSET_ENDPOINT',
   'HOUSE_SEARCH_ENDPOINT',
@@ -12,9 +15,7 @@ const ENDPOINT_KEYS = [
 ];
 
 const SECRET_KEYS = [
-  'E2E_ACCESS_TOKEN_LOCAL',
   'E2E_ACCESS_TOKEN_DEVELOPMENT',
-  'E2E_ACCESS_TOKEN_DEV',
   'E2E_ACCESS_TOKEN_STAGING',
   'E2E_ACCESS_TOKEN_PRODUCTION',
   'E2E_CLIENT_ID',
@@ -40,7 +41,13 @@ function validateEnv(config) {
 
   if (!environment) {
     throw new Error(
-      'ENVIRONMENT is required. Set CYPRESS_ENVIRONMENT or add it to cypress.env.json.',
+      'ENVIRONMENT is required. Set CYPRESS_ENVIRONMENT (e.g. via setEnv.sh).',
+    );
+  }
+
+  if (!config.env.E2E_BASE_URL) {
+    throw new Error(
+      'E2E_BASE_URL is required. Set CYPRESS_E2E_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).',
     );
   }
 
@@ -61,10 +68,7 @@ function validateEnv(config) {
     config.env.E2E_PASSWORD &&
     config.env.AWS_REGION;
 
-  const cognitoEnabled =
-    config.env.COGNITO_FLOW_ENABLED_FOR
-      ?.split(',')
-      ?.some((env) => env.trim() === environment.trim()) || false;
+  const cognitoEnabled = cognitoFlowEnabled(config.env);
 
   if (cognitoEnabled && !hasCognitoCredentials) {
     throw new Error(
@@ -73,22 +77,11 @@ function validateEnv(config) {
   }
 
   if (!cognitoEnabled) {
-    const tokenKeyByEnvironment = {
-      development: 'E2E_ACCESS_TOKEN_DEVELOPMENT',
-      staging: 'E2E_ACCESS_TOKEN_STAGING',
-      production: 'E2E_ACCESS_TOKEN_PRODUCTION',
-    };
-    const tokenKey = tokenKeyByEnvironment[environment];
-    const legacyDevTokenKey = 'E2E_ACCESS_TOKEN_DEV';
+    const tokenKey = LEGACY_TOKEN_KEYS[environment];
 
-    if (
-      tokenKey &&
-      !config.env.E2E_ACCESS_TOKEN_LOCAL &&
-      !config.env[tokenKey] &&
-      !(environment === 'development' && config.env[legacyDevTokenKey])
-    ) {
+    if (tokenKey && !config.env[tokenKey]) {
       throw new Error(
-        `Missing auth token for ${environment}. Set CYPRESS_${tokenKey} or CYPRESS_E2E_ACCESS_TOKEN_LOCAL.`,
+        `Missing auth token for ${environment}. Set ${legacyTokenEnvVar(environment)}.`,
       );
     }
   }

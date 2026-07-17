@@ -7,6 +7,8 @@ class EditPersonContactDetailsPageObjects {
 
     editPersonContactDetails(record) {
         cy.visit(`${Cypress.config("baseUrl")}/person/${record}/edit-contact-details`);
+        cy.location("pathname").should("include", "/edit-contact-details");
+        cy.contains("Add a phone number", { timeout: 30000 }).should("be.visible");
     }
 
     mainContent() {

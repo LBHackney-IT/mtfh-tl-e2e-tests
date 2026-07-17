@@ -21,7 +21,7 @@ When adding new tests, please:
 
 ## Running instructions
 
-#### Prerequisites
+### Prerequisites
 
 This project requires **Node 24.17.x** (pinned to `24.17.0`). Use [nvm](https://github.com/nvm-sh/nvm) or your preferred version manager:
 
@@ -30,7 +30,7 @@ nvm use          # reads .nvmrc (24.17.0)
 node -v          # should print v24.17.x
 ```
 
-#### Installation
+### Installation
 
 Install dependencies with:
 
@@ -40,28 +40,140 @@ npm ci
 
 Use `npm install` only when intentionally updating `package-lock.json`.
 
-#### Environment variables
+### Environment variables
 
-Secrets (auth tokens, AWS credentials, Cognito passwords) must **never** be committed. Set them as OS environment variables with the `CYPRESS_` prefix.
+Cypress 15 is configured with `allowCypressEnv: false`, so **`cypress.env.json` is not used**. All configuration must be provided as OS environment variables with the `CYPRESS_` prefix. Cypress reads these into `config.env` at startup.
 
-**Local setup (recommended):**
+Secrets must **never** be committed. Cognito credentials live in AWS SSM (password is a `SecureString`).
 
-```bash
-source setEnv.sh <aws-sso-profile> development
-export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT='<<your hackney JWT>>'
+#### Files
+
+| File | Committed | Purpose |
+|------|-----------|---------|
+| `loadCypressEnvFromSsm.sh` | Yes | Single SSM → `CYPRESS_*` mapping shared by local and CircleCI |
+| `setEnv.sh` | Yes | SSO login, sources shared loader, exports AWS credentials, `.env` overrides, verifies env |
+| `verifyEnv.sh` | Yes | Verification logic used by `setEnv.sh`; can also be run standalone |
+| `.env.example` | Yes | Optional overrides template (legacy JWT, Cognito toggle) |
+| `.env` | No (gitignored) | Optional local overrides only — not required for Cognito |
+
+#### Loading environment variables (every new terminal session)
+
+Ensure you have used Common Fate to get the appropriate permisions to the AWS account you are targeting with the test, for example housing-development. If you forget you'll receive the following error:
+
+```text
+aws: [ERROR]: An error occurred (ForbiddenException) when calling the GetRoleCredentials operation: No access
 ```
 
-`setEnv.sh` fetches API endpoints from AWS SSM and exports short-lived AWS credentials for DynamoDB seeding tasks. Credentials stay in the Node process and are not exposed to the browser.
+`source` from the project root (not `./`) so exports apply to your current shell:
 
-**Optional non-secret config:** copy `cypress.env.example.json` to `cypress.env.json` for endpoint URLs only if you are not using `setEnv.sh`. Do not put tokens or AWS keys in this file.
+```bash
+source setEnv.sh <aws-sso-profile> <stage>
+# example:
+source setEnv.sh housing-development development
+```
+
+Both values are required. AWS profile names are user-defined, so the stage is never inferred from the profile name.
+That loads API endpoints and Cognito credentials via `loadCypressEnvFromSsm.sh` from Parameter Store paths under `/housing-tl/<stage>/` (same script CircleCI uses):
+
+| Parameter | Env var | Type |
+|-----------|---------|------|
+| `e2e-base-url` | `CYPRESS_E2E_BASE_URL` | String |
+| `property-api-url`, … | `CYPRESS_*_ENDPOINT` | String |
+| `e2e-cognito-client-id` | `CYPRESS_E2E_CLIENT_ID` | String |
+| `e2e-cognito-username` | `CYPRESS_E2E_USERNAME` | String |
+| `e2e-cognito-password` | `CYPRESS_E2E_PASSWORD` | SecureString (`--with-decryption`) |
+| `e2e-cognito-flow-enabled` | `CYPRESS_COGNITO_FLOW_ENABLED` | String `true` / `false` |
+
+Add new SSM-backed vars in one place: append a line to `CYPRESS_SSM_MAPPINGS` in `loadCypressEnvFromSsm.sh`.
+
+`setEnv.sh` also sets short-lived `CYPRESS_AWS_*` credentials for DynamoDB seeding (CircleCI does the same from the assumed-role profile). Cognito on/off can be overridden in `.env` after the SSM load.
+
+**Base URL:** use `CYPRESS_E2E_BASE_URL`, not `CYPRESS_BASE_URL`. Cypress treats `CYPRESS_BASE_URL` as a reserved config override (`config.baseUrl`) and does **not** put it in `config.env`. The shared loader sets `CYPRESS_E2E_BASE_URL` from SSM; `environment-config.js` then copies `config.env.E2E_BASE_URL` onto Cypress `config.baseUrl` for `cy.visit` / `cy.request`.
+
+#### Authentication
+
+**Cognito flow (when SSM / `.env` has `CYPRESS_COGNITO_FLOW_ENABLED=true`):** credentials come from SSM. On Cypress startup you should see:
+
+```text
+Tests are running using the Cognito flow.
+```
+
+**Legacy JWT flow:** set the toggle to `false` and export the stage token matching the pipeline (e.g. in `.env`):
+
+```bash
+export CYPRESS_COGNITO_FLOW_ENABLED=false
+export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT='<<your hackney JWT>>'
+# staging:  CYPRESS_E2E_ACCESS_TOKEN_STAGING
+# production: CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION
+```
+
+In CircleCI, Cognito on/off and the base URL both come from the same `loadCypressEnvFromSsm.sh` script (SSM `e2e-cognito-flow-enabled`, `e2e-base-url`), so they can be changed per stage without a code change. The job only keeps secrets for the **active** auth flow in the Cypress environment: Cognito credentials when enabled, or the stage legacy JWT when disabled.
+
+#### Verify before running tests
+
+`setEnv.sh` automatically runs `verifyEnv.sh` at the end. It prints `OK` or `MISSING` for each required variable (secrets are masked) and returns an error if anything is unset.
+
+You can also re-run verification without calling AWS again:
+
+```bash
+source verifyEnv.sh && verify_cypress_env
+```
+
+**Example output (success)**
+
+```text
+Cypress environment configured for stage: development
+API endpoints and Cognito credentials loaded from SSM.
+
+Verifying environment variables...
+OK       CYPRESS_ENVIRONMENT                    development
+OK       CYPRESS_E2E_BASE_URL                   https://manage-my-home-development.hackney.gov.uk
+OK       CYPRESS_ASSET_ENDPOINT                 https://xw8x2e7q06.execute-api.eu-west-2.amaz...
+OK       CYPRESS_HOUSE_SEARCH_ENDPOINT          https://y1e46yws9c.execute-api.eu-west-2.amaz...
+OK       CYPRESS_CONTACT_DETAILS_ENDPOINT       https://gos4l9my1a.execute-api.eu-west-2.amaz...
+OK       CYPRESS_EQUALITY_DETAILS_ENDPOINT      https://rgq79ov75i.execute-api.eu-west-2.amaz...
+OK       CYPRESS_PERSON_ENDPOINT                https://sr1g61wye9.execute-api.eu-west-2.amaz...
+OK       CYPRESS_TENURE_ENDPOINT                https://2524go3mdg.execute-api.eu-west-2.amaz...
+OK       CYPRESS_CAUTIONARY_ALERT_ENDPOINT      https://qhsg1gyqlj.execute-api.eu-west-2.amaz...
+OK       CYPRESS_FEATURE_TOGGLE_ENDPOINT        https://a9nuohv61k.execute-api.eu-west-2.amaz...
+OK       CYPRESS_AWS_ACCESS_KEY_ID              ASIA2J4Q...
+OK       CYPRESS_AWS_SECRET_ACCESS_KEY          (set)
+OK       CYPRESS_AWS_SESSION_TOKEN              (set)
+OK       CYPRESS_COGNITO_FLOW_ENABLED           true
+OK       CYPRESS_AWS_REGION                     eu-west-2
+OK       CYPRESS_E2E_CLIENT_ID                  <<cognito-app-client-id>>
+OK       CYPRESS_E2E_USERNAME                   e2e-testing-development-t-and-l@hackney.gov.uk
+OK       CYPRESS_E2E_PASSWORD                   (set)
+
+All required variables are set.
+```
+
+**Expected values (development + Cognito flow)** — all set by `setEnv.sh` from SSM / AWS SSO unless noted:
+
+| Variable | Example / shape |
+|----------|-----------------|
+| `CYPRESS_ENVIRONMENT` | `development` |
+| `CYPRESS_E2E_BASE_URL` | `https://manage-my-home-development.hackney.gov.uk` → copied to Cypress `baseUrl` |
+| `CYPRESS_*_ENDPOINT` | API Gateway URLs under `/housing-tl/development/…` |
+| `CYPRESS_AWS_ACCESS_KEY_ID` / `SECRET` / `SESSION_TOKEN` | short-lived SSO credentials |
+| `CYPRESS_AWS_REGION` | `eu-west-2` |
+| `CYPRESS_E2E_CLIENT_ID` | Cognito app client ID |
+| `CYPRESS_E2E_USERNAME` | e2e test user email |
+| `CYPRESS_E2E_PASSWORD` | `(set)` — from SecureString |
+| `CYPRESS_COGNITO_FLOW_ENABLED` | from SSM `e2e-cognito-flow-enabled` (override in `.env`) |
+
+**Legacy JWT flow:** if `CYPRESS_COGNITO_FLOW_ENABLED` is `false`, verification checks for the stage token (`CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT` / `_STAGING` / `_PRODUCTION`) instead of the Cognito variables. There is no `*_LOCAL` or `*_DEV` alias.
+
+### Run tests
+
+```bash
+npm run test:cypress:open    # interactive runner
+npm run test:cypress:run     # headless
+```
 
 The CircleCI pipeline uses the same `CYPRESS_*` variable names from the `mtfh-mfe-e2e-tests` context — no context changes are required.
 
-#### Starting the tests
-Start a local test run by using `npm run test:cypress:run`
-Open the Cypress runner console by using `npm run test:cypress:open`
-
-#### Feature tags
+### Feature tags
 
 The e2e tests use tags to scope which tests run in a given pipeline or local command. Tags are set on `describe` or `it` blocks in `.cy.js` files, for example:
 
@@ -71,7 +183,7 @@ describe('Person page', { tags: ['@personal-details', '@cognito-authentication',
 });
 ```
 
-#### How tag filtering works (Cypress 15 + `@cypress/grep` v6)
+### How tag filtering works (Cypress 15 + `@cypress/grep` v6)
 
 `@cypress/grep` v6 reads tag filters from Cypress **`expose`**, not `env`. Do **not** use `-e grepTags=...` or `CYPRESS_grepTags` alone — they are ignored by grep v6.
 
@@ -157,5 +269,5 @@ Smoke tests (`@SmokeTest`) and MFE-scoped tags cannot leak into production.
 
 Every test not tagged `@GoogleLighthouse`, `@Accessibility`, `@ignore`, or `@device` runs when a change is made to this repository. Parallelism in CircleCI jobs must match the number of spec files (or be disabled), otherwise tests may not run correctly across containers.
 
-#### Further testing resources
+### Further testing resources
 Further resources around creating tests can be found [here](https://drive.google.com/drive/folders/1XRqzngDYWvpfeJov1hbyJ_vBa88Ex2R4)
