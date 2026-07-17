@@ -239,12 +239,13 @@ jobs:
         steps:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_STAGING
+                  profile-name: default
 
   assume-role-staging-apis:
         executor: docker-python
         steps:
             - assume-role-and-persist-workspace:
-                  aws-account: $AWS_ACCOUNT_DEVELOPMENT
+                  aws-account: $AWS_ACCOUNT_STAGING
                   profile-name: apis
                   attach-existing-workspace: true
 
