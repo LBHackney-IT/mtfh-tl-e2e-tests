@@ -38,20 +38,11 @@ _cognito_flow_enabled() {
 }
 
 _has_legacy_token() {
-  case "${CYPRESS_ENVIRONMENT:-}" in
-    development)
-      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT:-}" ]
-      ;;
-    staging)
-      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_STAGING:-}" ]
-      ;;
-    production)
-      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION:-}" ]
-      ;;
-    *)
-      false
-      ;;
-  esac
+  local environment="${CYPRESS_ENVIRONMENT:-}"
+  [ -z "$environment" ] && return 1
+  # Matches LEGACY_TOKEN_KEYS in cypress/plugins/legacy-auth.js
+  local var="CYPRESS_E2E_ACCESS_TOKEN_${environment^^}"
+  [ -n "${!var}" ]
 }
 
 verify_cypress_env() {

@@ -1,4 +1,5 @@
 const { cognitoFlowEnabled } = require('./cognito-helper');
+const { LEGACY_TOKEN_KEYS, legacyTokenEnvVar } = require('./legacy-auth');
 
 const ENDPOINT_KEYS = [
   'ASSET_ENDPOINT',
@@ -76,16 +77,11 @@ function validateEnv(config) {
   }
 
   if (!cognitoEnabled) {
-    const tokenKeyByEnvironment = {
-      development: 'E2E_ACCESS_TOKEN_DEVELOPMENT',
-      staging: 'E2E_ACCESS_TOKEN_STAGING',
-      production: 'E2E_ACCESS_TOKEN_PRODUCTION',
-    };
-    const tokenKey = tokenKeyByEnvironment[environment];
+    const tokenKey = LEGACY_TOKEN_KEYS[environment];
 
     if (tokenKey && !config.env[tokenKey]) {
       throw new Error(
-        `Missing auth token for ${environment}. Set CYPRESS_${tokenKey}.`,
+        `Missing auth token for ${environment}. Set ${legacyTokenEnvVar(environment)}.`,
       );
     }
   }

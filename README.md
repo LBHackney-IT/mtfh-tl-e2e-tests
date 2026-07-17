@@ -78,15 +78,15 @@ That loads API endpoints and Cognito credentials from Parameter Store paths unde
 | `e2e-cognito-client-id` | `CYPRESS_E2E_CLIENT_ID` | String |
 | `e2e-cognito-username` | `CYPRESS_E2E_USERNAME` | String |
 | `e2e-cognito-password` | `CYPRESS_E2E_PASSWORD` | SecureString (`--with-decryption`) |
-| `e2e-cognito-flow-enabled` | `CYPRESS_COGNITO_FLOW_ENABLED` (CircleCI) | String `true` / `false` |
+| `e2e-cognito-flow-enabled` | `CYPRESS_COGNITO_FLOW_ENABLED` | String `true` / `false` |
 
-Also sets `CYPRESS_ENVIRONMENT`, `CYPRESS_AWS_REGION`, `CYPRESS_COGNITO_FLOW_ENABLED` (defaults to `true` locally), and short-lived `CYPRESS_AWS_*` credentials for DynamoDB seeding.
+Also sets `CYPRESS_ENVIRONMENT`, `CYPRESS_AWS_REGION`, `CYPRESS_COGNITO_FLOW_ENABLED` (from SSM `e2e-cognito-flow-enabled`, overridable in `.env`), and short-lived `CYPRESS_AWS_*` credentials for DynamoDB seeding.
 
 **Base URL:** use `CYPRESS_E2E_BASE_URL`, not `CYPRESS_BASE_URL`. Cypress treats `CYPRESS_BASE_URL` as a reserved config override (`config.baseUrl`) and does **not** put it in `config.env`. `setEnv.sh` / CircleCI load `CYPRESS_E2E_BASE_URL` from SSM; `environment-config.js` then copies `config.env.E2E_BASE_URL` onto Cypress `config.baseUrl` for `cy.visit` / `cy.request`.
 
 #### Authentication
 
-**Cognito flow (default locally):** credentials come from SSM. On Cypress startup you should see:
+**Cognito flow (when SSM / `.env` has `CYPRESS_COGNITO_FLOW_ENABLED=true`):** credentials come from SSM. On Cypress startup you should see:
 
 ```text
 Tests are running using the Cognito flow.
@@ -154,7 +154,7 @@ All required variables are set.
 | `CYPRESS_E2E_CLIENT_ID` | Cognito app client ID |
 | `CYPRESS_E2E_USERNAME` | e2e test user email |
 | `CYPRESS_E2E_PASSWORD` | `(set)` — from SecureString |
-| `CYPRESS_COGNITO_FLOW_ENABLED` | `true` (default locally; SSM in CircleCI) |
+| `CYPRESS_COGNITO_FLOW_ENABLED` | from SSM `e2e-cognito-flow-enabled` (override in `.env`) |
 
 **Legacy JWT flow:** if `CYPRESS_COGNITO_FLOW_ENABLED` is `false`, verification checks for the stage token (`CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT` / `_STAGING` / `_PRODUCTION`) instead of the Cognito variables. There is no `*_LOCAL` or `*_DEV` alias.
 

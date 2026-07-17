@@ -29,13 +29,12 @@ ssm_get() {
 
 export CYPRESS_ENVIRONMENT="$STAGE"
 export CYPRESS_AWS_REGION="eu-west-2"
-# true = Cognito flow; false = legacy JWT. Always reset here so a stale shell
-# value from a previous run does not stick after commenting out the .env override.
-export CYPRESS_COGNITO_FLOW_ENABLED=true
 # Prefer CYPRESS_E2E_BASE_URL over reserved CYPRESS_BASE_URL (which maps to
 # Cypress config.baseUrl instead of config.env and causes silent mis-reads).
 unset CYPRESS_BASE_URL
 export CYPRESS_E2E_BASE_URL=$(ssm_get "e2e-base-url")
+# Same SSM toggle as CircleCI; override in .env if needed.
+export CYPRESS_COGNITO_FLOW_ENABLED=$(ssm_get "e2e-cognito-flow-enabled")
 
 export CYPRESS_ASSET_ENDPOINT=$(ssm_get "property-api-url")
 export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(ssm_get "house-search-api-url")
