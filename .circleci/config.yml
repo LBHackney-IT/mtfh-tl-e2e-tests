@@ -121,17 +121,25 @@ commands:
                 name: Execute e2e tests
                 shell: /bin/bash -eo pipefail
                 command: |
-                          if [ "<<parameters.stage>>" = "production" ]
-                            then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
-                          elif [ "<<parameters.stage>>" = "staging" ]
-                            then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
-                          else
-                            export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
-                          fi
-
                           # Shared SSM → CYPRESS_* mapping (same as local setEnv.sh)
                           # shellcheck disable=SC1091
                           source ./loadCypressEnvFromSsm.sh "<<parameters.stage>>"
+
+                          # Only put the auth secrets needed for the active flow into the Cypress env.
+                          cognito_enabled="$(echo "${CYPRESS_COGNITO_FLOW_ENABLED:-}" | xargs | tr '[:upper:]' '[:lower:]')"
+                          if [ "$cognito_enabled" = "true" ]; then
+                            unset AUTH_TOKEN_DEVELOPMENT AUTH_TOKEN_STAGING AUTH_TOKEN_PRODUCTION
+                            unset CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT CYPRESS_E2E_ACCESS_TOKEN_STAGING CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION
+                          else
+                            unset CYPRESS_E2E_CLIENT_ID CYPRESS_E2E_USERNAME CYPRESS_E2E_PASSWORD
+                            if [ "<<parameters.stage>>" = "production" ]; then
+                              export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
+                            elif [ "<<parameters.stage>>" = "staging" ]; then
+                              export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
+                            else
+                              export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
+                            fi
+                          fi
 
                           export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default)
                           export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default)

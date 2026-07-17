@@ -104,7 +104,7 @@ export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT='<<your hackney JWT>>'
 # production: CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION
 ```
 
-In CircleCI, Cognito on/off and the base URL both come from the same `loadCypressEnvFromSsm.sh` script (SSM `e2e-cognito-flow-enabled`, `e2e-base-url`), so they can be changed per stage without a code change.
+In CircleCI, Cognito on/off and the base URL both come from the same `loadCypressEnvFromSsm.sh` script (SSM `e2e-cognito-flow-enabled`, `e2e-base-url`), so they can be changed per stage without a code change. The job only keeps secrets for the **active** auth flow in the Cypress environment: Cognito credentials when enabled, or the stage legacy JWT when disabled.
 
 #### Verify before running tests
 
