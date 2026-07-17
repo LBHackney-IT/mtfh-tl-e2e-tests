@@ -254,6 +254,16 @@ jobs:
         steps:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_PRODUCTION
+                  profile-name: default
+  
+  assume-role-production-apis:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_PRODUCTION
+                  profile-name: apis
+                  attach-existing-workspace: true
+
 
   run-e2e-tests:
         executor: cypress-browsers
@@ -339,6 +349,12 @@ jobs:
         steps:
         - terraform-init-then-plan:
             environment: "staging"
+
+  terraform-init-and-plan-production:
+        executor: docker-terraform
+        steps:
+        - terraform-init-then-plan:
+            environment: "production"       
   
   terraform-apply-development:
         executor: docker-terraform
@@ -352,6 +368,12 @@ jobs:
         - terraform-init-then-apply:
             environment: "staging"
     
+  terraform-apply-production:
+        executor: docker-terraform
+        steps:
+        - terraform-init-then-apply:
+            environment: "production"
+            
 workflows:
   deploy-terraform-development:
     jobs:
@@ -406,6 +428,33 @@ workflows:
       - terraform-apply-staging:
             requires:
                 - permit-staging-terraform-deployment    
+
+  deploy-terraform-production:
+    jobs:
+      - permit-production-terraform-workflow:
+          type: approval
+          filters:
+            branches:
+              only:
+                - feat/ssi-1171-rollout-cognito-auth
+      - assume-role-production:
+          context: api-assume-role-housing-production-context     
+          requires:
+            - permit-production-terraform-workflow
+      - assume-role-production-apis:
+          context: api-assume-role-production-context
+          requires:
+            - assume-role-production
+      - terraform-init-and-plan-production:
+            requires:
+                - assume-role-production-apis
+      - permit-production-terraform-deployment:
+            type: approval
+            requires:
+                - terraform-init-and-plan-production
+      - terraform-apply-production:
+            requires:
+                - permit-production-terraform-deployment  
 
   # run-ci-tests:
   #   when: << pipeline.parameters.run_workflow_ci >>
