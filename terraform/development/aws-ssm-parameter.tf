@@ -41,8 +41,16 @@ resource "aws_ssm_parameter" "e2e_cognito_flow_enabled" {
   provider    = aws.housing
   name        = "/housing-tl/${var.environment}/e2e-cognito-flow-enabled"
   type        = "String"
-  value       = var.e2e_cognito_flow_enabled
+  value       = var.e2e_cognito_flow_enabled ? "true" : "false"
   lifecycle {
     ignore_changes = [value]
   }
+}
+
+resource "aws_ssm_parameter" "e2e_base_url" {
+  description = "Manage My Home base URL used by Cypress (CYPRESS_BASE_URL)"
+  provider    = aws.housing
+  name        = "/housing-tl/${var.environment}/e2e-base-url"
+  type        = "String"
+  value       = var.e2e_base_url
 }

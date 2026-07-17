@@ -27,3 +27,9 @@ variable "e2e_cognito_flow_enabled" {
   type        = bool
   default     = false
 }
+
+variable "e2e_base_url" {
+  description = "Manage My Home base URL for Cypress e2e tests (CYPRESS_BASE_URL)"
+  type        = string
+  default     = "https://manage-my-home-development.hackney.gov.uk"
+}

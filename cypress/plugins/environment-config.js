@@ -1,54 +1,60 @@
 const { fetchCognitoToken, cognitoFlowEnabled } = require("./cognito-helper");
 
-const setEnvironmentConfig = async (on, config) => {
-    // setting page paths
-    config.searchUrl = "search"
-    config.personUrl = "person"
-    config.personCommentsUrl = "comment/person"
-    config.tenureCommentsUrl="comment/tenure"
-    config.propertyCommentsUrl="comment/property"
-    config.startSoleToJointProcessUrl="processes/soletojoint/start/tenure"
-    config.alertPreviewUrl="cautionary-alerts/alert"
-    config.relatedAssetUrl="property/related"
-    config.tenureUrl = "tenure"
-    config.property = "property"
-    
-    // Set baseUrl and gssoTestKey based on environment
-    const environment = config.env.ENVIRONMENT
-    let rootUrl = "http://local.hackney.gov.uk"
-    let rootComponentPort = "9000"
-    let gssoTestKey = config.env.E2E_ACCESS_TOKEN_LOCAL
-    let baseUrl = `${rootUrl}:${rootComponentPort}`
+const LEGACY_TOKEN_KEYS = {
+  development: ["E2E_ACCESS_TOKEN_DEVELOPMENT", "E2E_ACCESS_TOKEN_DEV"],
+  staging: ["E2E_ACCESS_TOKEN_STAGING"],
+  production: ["E2E_ACCESS_TOKEN_PRODUCTION"],
+  local: ["E2E_ACCESS_TOKEN_LOCAL"],
+};
 
-    // Cognito vs legacy JWT is controlled by CYPRESS_COGNITO_FLOW_ENABLED (true/false).
-    const isCognitoFlow = cognitoFlowEnabled(config.env);
-
-    console.log(`Tests are running using the ${isCognitoFlow ? "Cognito" : "Legacy"} flow.`);
-
-    if (environment === 'development') {
-        baseUrl = "https://manage-my-home-development.hackney.gov.uk";
-        gssoTestKey = isCognitoFlow
-            ? await fetchCognitoToken(config.env)
-            : config.env.E2E_ACCESS_TOKEN_DEVELOPMENT || config.env.E2E_ACCESS_TOKEN_DEV;
-    } else if (environment === 'staging') {
-        baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
-        gssoTestKey = isCognitoFlow
-            ? await fetchCognitoToken(config.env)
-            : config.env.E2E_ACCESS_TOKEN_STAGING;
-    } else if (environment === 'production') {
-        baseUrl = "https://manage-my-home.hackney.gov.uk"
-        gssoTestKey = isCognitoFlow
-            ? await fetchCognitoToken(config.env)
-            : config.env.E2E_ACCESS_TOKEN_PRODUCTION;
+function resolveLegacyToken(configEnv, environment) {
+  const keys = LEGACY_TOKEN_KEYS[environment] || [];
+  for (const key of keys) {
+    if (configEnv[key]) {
+      return configEnv[key];
     }
-
-    config.baseUrl = baseUrl
-    config.gssoTestKey = gssoTestKey
-    config.isCognitoFlow = isCognitoFlow;
-
-    return config
+  }
+  return configEnv.E2E_ACCESS_TOKEN_LOCAL;
 }
 
+const setEnvironmentConfig = async (on, config) => {
+  // setting page paths
+  config.searchUrl = "search";
+  config.personUrl = "person";
+  config.personCommentsUrl = "comment/person";
+  config.tenureCommentsUrl = "comment/tenure";
+  config.propertyCommentsUrl = "comment/property";
+  config.startSoleToJointProcessUrl = "processes/soletojoint/start/tenure";
+  config.alertPreviewUrl = "cautionary-alerts/alert";
+  config.relatedAssetUrl = "property/related";
+  config.tenureUrl = "tenure";
+  config.property = "property";
+
+  const environment = config.env.ENVIRONMENT;
+  const isCognitoFlow = cognitoFlowEnabled(config.env);
+  const baseUrl = config.env.BASE_URL;
+
+  if (!baseUrl) {
+    throw new Error(
+      "BASE_URL is required. Set CYPRESS_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).",
+    );
+  }
+
+  console.log(
+    `Tests are running using the ${isCognitoFlow ? "Cognito" : "Legacy"} flow.`,
+  );
+
+  config.baseUrl = baseUrl;
+  config.gssoTestKey = isCognitoFlow
+    ? await fetchCognitoToken(config.env)
+    : resolveLegacyToken(config.env, environment);
+  config.isCognitoFlow = isCognitoFlow;
+
+  return config;
+};
+
 module.exports = {
-    setEnvironmentConfig
-} 
+  setEnvironmentConfig,
+  resolveLegacyToken,
+  LEGACY_TOKEN_KEYS,
+};

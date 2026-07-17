@@ -46,6 +46,12 @@ function validateEnv(config) {
     );
   }
 
+  if (!config.env.BASE_URL) {
+    throw new Error(
+      'BASE_URL is required. Set CYPRESS_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).',
+    );
+  }
+
   const missingEndpoints = ENDPOINT_KEYS.filter(
     (key) => key !== 'REFERENCE_DATA_ENDPOINT' && key !== 'COMMENTS_ENDPOINT' && !config.env[key],
   );

@@ -136,6 +136,7 @@ commands:
 
                           # Cognito flow toggle (true = Cognito, false = legacy JWT).
                           export CYPRESS_COGNITO_FLOW_ENABLED=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-flow-enabled --query Parameter.Value --output text) ;
+                          export CYPRESS_BASE_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-base-url --query Parameter.Value --output text) ;
 
                           # The rest of legacy configuration
                           export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
