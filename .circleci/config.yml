@@ -240,6 +240,14 @@ jobs:
             - assume-role-and-persist-workspace:
                   aws-account: $AWS_ACCOUNT_STAGING
 
+  assume-role-staging-apis:
+        executor: docker-python
+        steps:
+            - assume-role-and-persist-workspace:
+                  aws-account: $AWS_ACCOUNT_DEVELOPMENT
+                  profile-name: apis
+                  attach-existing-workspace: true
+
   assume-role-production:
         executor: docker-python
         steps:
@@ -324,12 +332,24 @@ jobs:
         steps:
         - terraform-init-then-plan:
             environment: "development"
+
+  terraform-init-and-plan-staging:
+        executor: docker-terraform
+        steps:
+        - terraform-init-then-plan:
+            environment: "staging"
   
   terraform-apply-development:
         executor: docker-terraform
         steps:
         - terraform-init-then-apply:
             environment: "development"
+  
+  terraform-apply-staging:
+        executor: docker-terraform
+        steps:
+        - terraform-init-then-apply:
+            environment: "staging"
     
 workflows:
   deploy-terraform-development:
@@ -358,7 +378,34 @@ workflows:
       - terraform-apply-development:
             requires:
                 - permit-development-terraform-deployment
-      
+
+  deploy-terraform-staging:
+    jobs:
+      - permit-staging-terraform-workflow:
+          type: approval
+          filters:
+            branches:
+              only:
+                - feat/ssi-1171-rollout-cognito-auth
+      - assume-role-staging:
+          context: api-assume-role-housing-staging-context     
+          requires:
+            - permit-staging-terraform-workflow
+      - assume-role-staging-apis:
+          context: api-assume-role-staging-context
+          requires:
+            - assume-role-staging
+      - terraform-init-and-plan-staging:
+            requires:
+                - assume-role-staging-apis
+      - permit-staging-terraform-deployment:
+            type: approval
+            requires:
+                - terraform-init-and-plan-staging
+      - terraform-apply-staging:
+            requires:
+                - permit-staging-terraform-deployment    
+
   # run-ci-tests:
   #   when: << pipeline.parameters.run_workflow_ci >>
   #   jobs:
