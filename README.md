@@ -67,9 +67,12 @@ aws: [ERROR]: An error occurred (ForbiddenException) when calling the GetRoleCre
 `source` from the project root (not `./`) so exports apply to your current shell:
 
 ```bash
-source setEnv.sh <aws-sso-profile> development
+source setEnv.sh <aws-sso-profile> <stage>
+# example:
+source setEnv.sh housing-development development
 ```
 
+Both values are required. AWS profile names are user-defined, so the stage is never inferred from the profile name.
 That loads API endpoints and Cognito credentials via `loadCypressEnvFromSsm.sh` from Parameter Store paths under `/housing-tl/<stage>/` (same script CircleCI uses):
 
 | Parameter | Env var | Type |

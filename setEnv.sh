@@ -1,21 +1,21 @@
 #!/bin/bash
 
 PROFILE=$1
-STAGE=${2:-development}
+STAGE=$2
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Check if profile is provided
-if [ -z "$PROFILE" ]; then
-  echo "Usage: source setEnv.sh <aws-sso-profile> [stage]"
+# Require both values because AWS profile names are user-defined.
+if [ -z "$PROFILE" ] || [ -z "$STAGE" ]; then
+  echo "Usage: source setEnv.sh <aws-sso-profile> <stage>"
   echo "Example: source setEnv.sh housing-development development"
-  exit 1
+  return 1 2>/dev/null || exit 1
 fi
 
 # login if token expired
 if ! aws sts get-caller-identity --profile "$PROFILE" > /dev/null 2>&1; then
   if ! aws sso login --profile "$PROFILE"; then
     echo "SSO login with profile $PROFILE failed"
-    exit 1
+    return 1 2>/dev/null || exit 1
   fi
 fi
 
