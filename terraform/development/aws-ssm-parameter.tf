@@ -5,8 +5,9 @@ locals {
 }
 
 data "aws_secretsmanager_secret" "e2e_credentials" {
-  provider = aws.apis
-  name     = "/hackney-google-auth-service/mfe-e2e-pipeline-credentials"
+  description = "E2E credentials for the environment from APIs account"
+  provider    = aws.apis
+  name        = "/hackney-google-auth-service/mfe-e2e-pipeline-credentials"
 }
 
 data "aws_secretsmanager_secret_version" "e2e_credentials_value" {
@@ -35,3 +36,13 @@ resource "aws_ssm_parameter" "e2e_password" {
   value    = local.e2e_credentials.password
 }
 
+resource "aws_ssm_parameter" "e2e_cognito_flow_enabled" {
+  description = "Whether the Cognito flow is enabled for the environment. Falls back to legacy flow if set to false"
+  provider    = aws.housing
+  name        = "/housing-tl/${var.environment}/e2e-cognito-flow-enabled"
+  type        = "String"
+  value       = var.e2e_cognito_flow_enabled
+  lifecycle {
+    ignore_changes = [value]
+  }
+}

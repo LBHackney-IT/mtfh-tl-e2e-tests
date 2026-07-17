@@ -128,15 +128,14 @@ commands:
                             export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
 
-                          # New auth credentials to retrieve the token
-                          # TODO: change to param store once we decide this is ready for staging
-                          export CYPRESS_AWS_REGION=$AWS_REGION
-                          export CYPRESS_E2E_CLIENT_ID=$E2E_CLIENT_ID
-                          export CYPRESS_E2E_USERNAME=$E2E_USERNAME
-                          export CYPRESS_E2E_PASSWORD=$E2E_PASSWORD
+                          # New Cognito auth credentials
+                          export CYPRESS_AWS_REGION=eu-west-2
+                          export CYPRESS_E2E_CLIENT_ID=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-client-id --query Parameter.Value --output text) ;
+                          export CYPRESS_E2E_USERNAME=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-username --query Parameter.Value --output text) ;
+                          export CYPRESS_E2E_PASSWORD=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-password --query Parameter.Value --with-decryption --output text) ;
 
-                          # Cognito flow feature toggle specifyin list of environments to enable the flow for
-                          export CYPRESS_COGNITO_FLOW_ENABLED_FOR=$COGNITO_FLOW_ENABLED_FOR
+                          # Cognito flow toggle (true = Cognito, false = legacy JWT).
+                          export CYPRESS_COGNITO_FLOW_ENABLED=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-flow-enabled --query Parameter.Value --output text) ;
 
                           # The rest of legacy configuration
                           export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;

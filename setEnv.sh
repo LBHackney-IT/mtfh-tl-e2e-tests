@@ -29,7 +29,9 @@ ssm_get() {
 
 export CYPRESS_ENVIRONMENT="$STAGE"
 export CYPRESS_AWS_REGION="eu-west-2"
-export CYPRESS_COGNITO_FLOW_ENABLED_FOR="${CYPRESS_COGNITO_FLOW_ENABLED_FOR:-$STAGE}"
+# true = Cognito flow; false = legacy JWT. Always reset here so a stale shell
+# value from a previous run does not stick after commenting out the .env override.
+export CYPRESS_COGNITO_FLOW_ENABLED=true
 
 export CYPRESS_ASSET_ENDPOINT=$(ssm_get "property-api-url")
 export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(ssm_get "house-search-api-url")
@@ -56,7 +58,7 @@ export CYPRESS_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
 echo "Cypress environment configured for stage: $STAGE"
 echo "API endpoints and Cognito credentials loaded from SSM."
 
-# Optional overrides (e.g. legacy JWT, or CYPRESS_COGNITO_FLOW_ENABLED_FOR)
+# Optional overrides (e.g. legacy JWT, or CYPRESS_COGNITO_FLOW_ENABLED=false)
 if [ -f .env ]; then
   # SC1091: shellcheck cannot follow a non-constant / optional path (.env is gitignored
   # and may be absent), so it warns on `source`. Safe to ignore here.

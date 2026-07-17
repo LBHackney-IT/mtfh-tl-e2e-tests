@@ -31,20 +31,10 @@ _preview_value() {
   esac
 }
 
-_cognito_enabled_for_environment() {
-  local environment="${CYPRESS_ENVIRONMENT:-}"
-  local enabled_for="${CYPRESS_COGNITO_FLOW_ENABLED_FOR:-}"
-
-  [ -z "$environment" ] && return 1
-
-  IFS=',' read -ra environments <<< "$enabled_for"
-  for env in "${environments[@]}"; do
-    if [ "$(echo "$env" | xargs)" = "$environment" ]; then
-      return 0
-    fi
-  done
-
-  return 1
+_cognito_flow_enabled() {
+  local value
+  value="$(echo "${CYPRESS_COGNITO_FLOW_ENABLED:-}" | xargs | tr '[:upper:]' '[:lower:]')"
+  [ "$value" = "true" ]
 }
 
 _has_legacy_token() {
@@ -87,13 +77,14 @@ verify_cypress_env() {
     CYPRESS_AWS_SESSION_TOKEN
   )
 
-  if _cognito_enabled_for_environment; then
+  required_vars+=(CYPRESS_COGNITO_FLOW_ENABLED)
+
+  if _cognito_flow_enabled; then
     required_vars+=(
       CYPRESS_AWS_REGION
       CYPRESS_E2E_CLIENT_ID
       CYPRESS_E2E_USERNAME
       CYPRESS_E2E_PASSWORD
-      CYPRESS_COGNITO_FLOW_ENABLED_FOR
     )
   fi
 
@@ -110,7 +101,7 @@ verify_cypress_env() {
     fi
   done
 
-  if ! _cognito_enabled_for_environment; then
+  if [ -n "${CYPRESS_COGNITO_FLOW_ENABLED:-}" ] && ! _cognito_flow_enabled; then
     if _has_legacy_token; then
       printf "OK       %-36s %s\n" "legacy auth token" "(set)"
     else

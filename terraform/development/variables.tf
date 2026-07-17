@@ -21,3 +21,9 @@ variable "aws_region" {
   type        = string
   default     = "eu-west-2"
 }
+
+variable "e2e_cognito_flow_enabled" {
+  description = "Whether the Cognito flow is enabled for the environment. Falls back to legacy flow if set to false"
+  type        = bool
+  default     = false
+}

@@ -1,3 +1,5 @@
+const { cognitoFlowEnabled } = require('./cognito-helper');
+
 const ENDPOINT_KEYS = [
   'ASSET_ENDPOINT',
   'HOUSE_SEARCH_ENDPOINT',
@@ -61,10 +63,7 @@ function validateEnv(config) {
     config.env.E2E_PASSWORD &&
     config.env.AWS_REGION;
 
-  const cognitoEnabled =
-    config.env.COGNITO_FLOW_ENABLED_FOR
-      ?.split(',')
-      ?.some((env) => env.trim() === environment.trim()) || false;
+  const cognitoEnabled = cognitoFlowEnabled(config.env);
 
   if (cognitoEnabled && !hasCognitoCredentials) {
     throw new Error(

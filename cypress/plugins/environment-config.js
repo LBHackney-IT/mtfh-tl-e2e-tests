@@ -20,9 +20,7 @@ const setEnvironmentConfig = async (on, config) => {
     let gssoTestKey = config.env.E2E_ACCESS_TOKEN_LOCAL
     let baseUrl = `${rootUrl}:${rootComponentPort}`
 
-    // WIP - will be properly refined upon integrating this with the last environment.
-    // For now, only 1 environment is configured with cognito, and even then we want legacy
-    // flow to remain primary until more flake gets shed from cognito flow.
+    // Cognito vs legacy JWT is controlled by CYPRESS_COGNITO_FLOW_ENABLED (true/false).
     const isCognitoFlow = cognitoFlowEnabled(config.env);
 
     console.log(`Tests are running using the ${isCognitoFlow ? "Cognito" : "Legacy"} flow.`);
@@ -34,10 +32,14 @@ const setEnvironmentConfig = async (on, config) => {
             : config.env.E2E_ACCESS_TOKEN_DEVELOPMENT || config.env.E2E_ACCESS_TOKEN_DEV;
     } else if (environment === 'staging') {
         baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
-        gssoTestKey = config.env.E2E_ACCESS_TOKEN_STAGING
+        gssoTestKey = isCognitoFlow
+            ? await fetchCognitoToken(config.env)
+            : config.env.E2E_ACCESS_TOKEN_STAGING;
     } else if (environment === 'production') {
         baseUrl = "https://manage-my-home.hackney.gov.uk"
-        gssoTestKey = config.env.E2E_ACCESS_TOKEN_PRODUCTION
+        gssoTestKey = isCognitoFlow
+            ? await fetchCognitoToken(config.env)
+            : config.env.E2E_ACCESS_TOKEN_PRODUCTION;
     }
 
     config.baseUrl = baseUrl
