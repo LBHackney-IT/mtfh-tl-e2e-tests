@@ -4,10 +4,10 @@ locals {
   )
 }
 
+// E2E credentials for the environment from matching APIs account
 data "aws_secretsmanager_secret" "e2e_credentials" {
-  description = "E2E credentials for the environment from APIs account"
-  provider    = aws.apis
-  name        = "/hackney-google-auth-service/mfe-e2e-pipeline-credentials"
+  provider = aws.apis
+  name     = "/hackney-google-auth-service/mfe-e2e-pipeline-credentials"
 }
 
 data "aws_secretsmanager_secret_version" "e2e_credentials_value" {
