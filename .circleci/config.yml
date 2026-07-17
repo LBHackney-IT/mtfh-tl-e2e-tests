@@ -119,39 +119,24 @@ commands:
         steps:
             - run:
                 name: Execute e2e tests
+                shell: /bin/bash -eo pipefail
                 command: |
                           if [ "<<parameters.stage>>" = "production" ]
                             then export CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION=$AUTH_TOKEN_PRODUCTION
                           elif [ "<<parameters.stage>>" = "staging" ]
                             then export CYPRESS_E2E_ACCESS_TOKEN_STAGING=$AUTH_TOKEN_STAGING
-                          else 
+                          else
                             export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT=$AUTH_TOKEN_DEVELOPMENT
                           fi
 
-                          # New Cognito auth credentials
-                          export CYPRESS_AWS_REGION=eu-west-2
-                          export CYPRESS_E2E_CLIENT_ID=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-client-id --query Parameter.Value --output text) ;
-                          export CYPRESS_E2E_USERNAME=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-username --query Parameter.Value --output text) ;
-                          export CYPRESS_E2E_PASSWORD=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-password --query Parameter.Value --with-decryption --output text) ;
+                          # Shared SSM → CYPRESS_* mapping (same as local setEnv.sh)
+                          # shellcheck disable=SC1091
+                          source ./loadCypressEnvFromSsm.sh "<<parameters.stage>>"
 
-                          # Cognito flow toggle (true = Cognito, false = legacy JWT).
-                          export CYPRESS_COGNITO_FLOW_ENABLED=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-cognito-flow-enabled --query Parameter.Value --output text) ;
-                          export CYPRESS_E2E_BASE_URL=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/e2e-base-url --query Parameter.Value --output text) ;
+                          export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default)
+                          export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default)
+                          export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default)
 
-                          # The rest of legacy configuration
-                          export CYPRESS_FEATURE_TOGGLE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/configuration-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_ASSET_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/property-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_HOUSE_SEARCH_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/house-search-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_CONTACT_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/contact-details-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_EQUALITY_DETAILS_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/equality-information-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_PERSON_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/person-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_TENURE_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/tenure-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_CAUTIONARY_ALERT_ENDPOINT=$(aws ssm get-parameter --name /housing-tl/<<parameters.stage>>/cautionary-alerts-api-url --query Parameter.Value --output text) ;
-                          export CYPRESS_ENVIRONMENT=<<parameters.stage>> ;
-                          export CYPRESS_AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default) ;
-                          export CYPRESS_AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default) ;
-                          export CYPRESS_AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile default) ;
-                          
                           if [ "<<parameters.trigger-context>>" = "external" ] && [ "<<parameters.stage>>" = "production" ]; then
                             # Production runs only @Production-tagged tests (home.cy.js); no MFE/smoke filter.
                             export GREP_TAGS='@Production+-@ignore+-@device'

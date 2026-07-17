@@ -50,7 +50,8 @@ Secrets must **never** be committed. Cognito credentials live in AWS SSM (passwo
 
 | File | Committed | Purpose |
 |------|-----------|---------|
-| `setEnv.sh` | Yes | Fetches API endpoints, base URL, Cognito credentials from SSM; exports AWS credentials; verifies env |
+| `loadCypressEnvFromSsm.sh` | Yes | Single SSM → `CYPRESS_*` mapping shared by local and CircleCI |
+| `setEnv.sh` | Yes | SSO login, sources shared loader, exports AWS credentials, `.env` overrides, verifies env |
 | `verifyEnv.sh` | Yes | Verification logic used by `setEnv.sh`; can also be run standalone |
 | `.env.example` | Yes | Optional overrides template (legacy JWT, Cognito toggle) |
 | `.env` | No (gitignored) | Optional local overrides only — not required for Cognito |
@@ -69,7 +70,7 @@ aws: [ERROR]: An error occurred (ForbiddenException) when calling the GetRoleCre
 source setEnv.sh <aws-sso-profile> development
 ```
 
-That loads API endpoints and Cognito credentials from Parameter Store paths under `/housing-tl/<stage>/`:
+That loads API endpoints and Cognito credentials via `loadCypressEnvFromSsm.sh` from Parameter Store paths under `/housing-tl/<stage>/` (same script CircleCI uses):
 
 | Parameter | Env var | Type |
 |-----------|---------|------|
@@ -80,9 +81,11 @@ That loads API endpoints and Cognito credentials from Parameter Store paths unde
 | `e2e-cognito-password` | `CYPRESS_E2E_PASSWORD` | SecureString (`--with-decryption`) |
 | `e2e-cognito-flow-enabled` | `CYPRESS_COGNITO_FLOW_ENABLED` | String `true` / `false` |
 
-Also sets `CYPRESS_ENVIRONMENT`, `CYPRESS_AWS_REGION`, `CYPRESS_COGNITO_FLOW_ENABLED` (from SSM `e2e-cognito-flow-enabled`, overridable in `.env`), and short-lived `CYPRESS_AWS_*` credentials for DynamoDB seeding.
+Add new SSM-backed vars in one place: append a line to `CYPRESS_SSM_MAPPINGS` in `loadCypressEnvFromSsm.sh`.
 
-**Base URL:** use `CYPRESS_E2E_BASE_URL`, not `CYPRESS_BASE_URL`. Cypress treats `CYPRESS_BASE_URL` as a reserved config override (`config.baseUrl`) and does **not** put it in `config.env`. `setEnv.sh` / CircleCI load `CYPRESS_E2E_BASE_URL` from SSM; `environment-config.js` then copies `config.env.E2E_BASE_URL` onto Cypress `config.baseUrl` for `cy.visit` / `cy.request`.
+`setEnv.sh` also sets short-lived `CYPRESS_AWS_*` credentials for DynamoDB seeding (CircleCI does the same from the assumed-role profile). Cognito on/off can be overridden in `.env` after the SSM load.
+
+**Base URL:** use `CYPRESS_E2E_BASE_URL`, not `CYPRESS_BASE_URL`. Cypress treats `CYPRESS_BASE_URL` as a reserved config override (`config.baseUrl`) and does **not** put it in `config.env`. The shared loader sets `CYPRESS_E2E_BASE_URL` from SSM; `environment-config.js` then copies `config.env.E2E_BASE_URL` onto Cypress `config.baseUrl` for `cy.visit` / `cy.request`.
 
 #### Authentication
 
@@ -101,7 +104,7 @@ export CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT='<<your hackney JWT>>'
 # production: CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION
 ```
 
-In CircleCI, Cognito on/off and the base URL both come from SSM (`e2e-cognito-flow-enabled`, `e2e-base-url`) so they can be changed per stage without a code change.
+In CircleCI, Cognito on/off and the base URL both come from the same `loadCypressEnvFromSsm.sh` script (SSM `e2e-cognito-flow-enabled`, `e2e-base-url`), so they can be changed per stage without a code change.
 
 #### Verify before running tests
 
