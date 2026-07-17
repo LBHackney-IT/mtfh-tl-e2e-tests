@@ -40,16 +40,13 @@ _cognito_flow_enabled() {
 _has_legacy_token() {
   case "${CYPRESS_ENVIRONMENT:-}" in
     development)
-      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_LOCAL:-}" ] \
-        || [ -n "${CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT:-}" ]
+      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT:-}" ]
       ;;
     staging)
-      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_LOCAL:-}" ] \
-        || [ -n "${CYPRESS_E2E_ACCESS_TOKEN_STAGING:-}" ]
+      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_STAGING:-}" ]
       ;;
     production)
-      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_LOCAL:-}" ] \
-        || [ -n "${CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION:-}" ]
+      [ -n "${CYPRESS_E2E_ACCESS_TOKEN_PRODUCTION:-}" ]
       ;;
     *)
       false
@@ -106,7 +103,7 @@ verify_cypress_env() {
       printf "OK       %-36s %s\n" "legacy auth token" "(set)"
     else
       printf "MISSING  %-36s\n" "legacy auth token"
-      echo "         Set CYPRESS_E2E_ACCESS_TOKEN_${CYPRESS_ENVIRONMENT^^} or CYPRESS_E2E_ACCESS_TOKEN_LOCAL"
+      echo "         Set CYPRESS_E2E_ACCESS_TOKEN_${CYPRESS_ENVIRONMENT^^}"
       missing=$((missing + 1))
     fi
   fi

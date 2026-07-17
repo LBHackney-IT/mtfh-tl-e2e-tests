@@ -14,7 +14,6 @@ const ENDPOINT_KEYS = [
 ];
 
 const SECRET_KEYS = [
-  'E2E_ACCESS_TOKEN_LOCAL',
   'E2E_ACCESS_TOKEN_DEVELOPMENT',
   'E2E_ACCESS_TOKEN_STAGING',
   'E2E_ACCESS_TOKEN_PRODUCTION',
@@ -84,13 +83,9 @@ function validateEnv(config) {
     };
     const tokenKey = tokenKeyByEnvironment[environment];
 
-    if (
-      tokenKey &&
-      !config.env.E2E_ACCESS_TOKEN_LOCAL &&
-      !config.env[tokenKey]
-    ) {
+    if (tokenKey && !config.env[tokenKey]) {
       throw new Error(
-        `Missing auth token for ${environment}. Set CYPRESS_${tokenKey} or CYPRESS_E2E_ACCESS_TOKEN_LOCAL.`,
+        `Missing auth token for ${environment}. Set CYPRESS_${tokenKey}.`,
       );
     }
   }

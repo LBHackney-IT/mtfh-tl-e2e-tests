@@ -1,20 +1,14 @@
 const { fetchCognitoToken, cognitoFlowEnabled } = require("./cognito-helper");
 
 const LEGACY_TOKEN_KEYS = {
-  development: ["E2E_ACCESS_TOKEN_DEVELOPMENT"],
-  staging: ["E2E_ACCESS_TOKEN_STAGING"],
-  production: ["E2E_ACCESS_TOKEN_PRODUCTION"],
-  local: ["E2E_ACCESS_TOKEN_LOCAL"],
+  development: "E2E_ACCESS_TOKEN_DEVELOPMENT",
+  staging: "E2E_ACCESS_TOKEN_STAGING",
+  production: "E2E_ACCESS_TOKEN_PRODUCTION",
 };
 
 function resolveLegacyToken(configEnv, environment) {
-  const keys = LEGACY_TOKEN_KEYS[environment] || [];
-  for (const key of keys) {
-    if (configEnv[key]) {
-      return configEnv[key];
-    }
-  }
-  return configEnv.E2E_ACCESS_TOKEN_LOCAL;
+  const key = LEGACY_TOKEN_KEYS[environment];
+  return key ? configEnv[key] : undefined;
 }
 
 const setEnvironmentConfig = async (on, config) => {
