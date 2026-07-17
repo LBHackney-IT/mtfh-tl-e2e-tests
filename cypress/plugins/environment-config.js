@@ -1,7 +1,7 @@
 const { fetchCognitoToken, cognitoFlowEnabled } = require("./cognito-helper");
 
 const LEGACY_TOKEN_KEYS = {
-  development: ["E2E_ACCESS_TOKEN_DEVELOPMENT", "E2E_ACCESS_TOKEN_DEV"],
+  development: ["E2E_ACCESS_TOKEN_DEVELOPMENT"],
   staging: ["E2E_ACCESS_TOKEN_STAGING"],
   production: ["E2E_ACCESS_TOKEN_PRODUCTION"],
   local: ["E2E_ACCESS_TOKEN_LOCAL"],

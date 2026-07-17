@@ -41,8 +41,7 @@ _has_legacy_token() {
   case "${CYPRESS_ENVIRONMENT:-}" in
     development)
       [ -n "${CYPRESS_E2E_ACCESS_TOKEN_LOCAL:-}" ] \
-        || [ -n "${CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT:-}" ] \
-        || [ -n "${CYPRESS_E2E_ACCESS_TOKEN_DEV:-}" ]
+        || [ -n "${CYPRESS_E2E_ACCESS_TOKEN_DEVELOPMENT:-}" ]
       ;;
     staging)
       [ -n "${CYPRESS_E2E_ACCESS_TOKEN_LOCAL:-}" ] \
