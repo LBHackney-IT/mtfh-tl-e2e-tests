@@ -26,11 +26,13 @@ const setEnvironmentConfig = async (on, config) => {
 
   const environment = config.env.ENVIRONMENT;
   const isCognitoFlow = cognitoFlowEnabled(config.env);
-  const baseUrl = config.env.BASE_URL;
+  // Use CYPRESS_E2E_BASE_URL (not reserved CYPRESS_BASE_URL) so the value lands in
+  // config.env, then copy it onto Cypress config.baseUrl for cy.visit / cy.request.
+  const baseUrl = config.env.E2E_BASE_URL;
 
   if (!baseUrl) {
     throw new Error(
-      "BASE_URL is required. Set CYPRESS_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).",
+      "E2E_BASE_URL is required. Set CYPRESS_E2E_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).",
     );
   }
 

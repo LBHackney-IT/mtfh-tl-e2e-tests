@@ -60,7 +60,7 @@ verify_cypress_env() {
   local preview
   local -a required_vars=(
     CYPRESS_ENVIRONMENT
-    CYPRESS_BASE_URL
+    CYPRESS_E2E_BASE_URL
     CYPRESS_ASSET_ENDPOINT
     CYPRESS_HOUSE_SEARCH_ENDPOINT
     CYPRESS_CONTACT_DETAILS_ENDPOINT

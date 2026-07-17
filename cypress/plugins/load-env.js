@@ -44,9 +44,9 @@ function validateEnv(config) {
     );
   }
 
-  if (!config.env.BASE_URL) {
+  if (!config.env.E2E_BASE_URL) {
     throw new Error(
-      'BASE_URL is required. Set CYPRESS_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).',
+      'E2E_BASE_URL is required. Set CYPRESS_E2E_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).',
     );
   }
 
