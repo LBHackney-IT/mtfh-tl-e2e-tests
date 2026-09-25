@@ -11,7 +11,7 @@ variable "apis_aws_profile" {
 }
 
 variable "housing_aws_profile" {
-  description = "AWS profile name for Housing account. Must much CircleCi configuration."
+  description = "AWS profile name for Housing account. Must match CircleCi configuration."
   type        = string
   default     = "default"
 }
