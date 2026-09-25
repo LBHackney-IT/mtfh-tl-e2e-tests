@@ -12,6 +12,7 @@ describe('MMH Home page', {tags: ['@header', '@cognito-authentication', '@common
         
    
     it('should show header and footer whilst logged out', ()=> {
+        cy.clearCookies();
         homePage.visit()
         homePage.iAmOnTheHomePage()
        

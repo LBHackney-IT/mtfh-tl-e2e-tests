@@ -5,6 +5,7 @@ require("cypress-plugin-tab");
 require('cypress-xpath');
 const { register: registerCypressGrep } = require('@cypress/grep');
 import { endpoint } from './endpoints';
+import { flushPendingRecordsToDelete } from '../../api/helpers';
 
 // ***********************************************************
 // This example support/index.js is processed and
@@ -25,23 +26,30 @@ registerCypressGrep();
 
 const clearDatabase = () => {
     const filename = "cypress/fixtures/recordsToDelete.json";
-    return cy.readFile(filename).then((recordsToDelete) => {
-      if (recordsToDelete.length) {
-        return cy.wrap(recordsToDelete).each((record) => {
-          return cy.task('dynamoDb:delete', record);
-        }).then(() => {
-          cy.writeFile(filename, []);
-          cy.log("Test database records cleared!");
-        });
-      }
+    return flushPendingRecordsToDelete().then(() => {
+      return cy.readFile(filename).then((recordsToDelete) => {
+        if (recordsToDelete.length) {
+          return cy.wrap(recordsToDelete).each((record) => {
+            return cy.task('dynamoDb:delete', record);
+          }).then(() => {
+            cy.writeFile(filename, []);
+            cy.log("Test database records cleared!");
+          });
+        }
 
-      cy.log("No records to delete.");
+        cy.log("No records to delete.");
+      });
     });
   };
   
 
 before(() => {
     clearDatabase();
+});
+
+afterEach(() => {
+    // Persist deletes queued from intercept callbacks (no cy.* there — see api/helpers.js)
+    flushPendingRecordsToDelete();
 });
 
 after(() => {
@@ -55,13 +63,23 @@ beforeEach(() => {
   cy.intercept('GET', url).as('getFeatureToggles');
 });
 
-Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
-  originalFn(url, options);
+Cypress.Commands.overwrite('visit', (originalFn, url, options = {}) => {
+  originalFn(url, {
+    ...options,
+    onBeforeLoad(win) {
+      const featureToggles = Cypress.config("featureToggles");
+      if (featureToggles) {
+        win.localStorage.setItem("features", JSON.stringify(featureToggles));
+      }
+      if (typeof options.onBeforeLoad === "function") {
+        options.onBeforeLoad(win);
+      }
+    },
+  });
 
-  if (options?.waitForConfiguration !== false) {
+  if (options.waitForConfiguration !== false) {
     cy.wait('@getFeatureToggles');
   }
 
   cy.wait(1000);
-  cy.window({ log: false }); 
 });

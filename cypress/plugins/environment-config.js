@@ -1,52 +1,44 @@
 const { fetchCognitoToken, cognitoFlowEnabled } = require("./cognito-helper");
+const { resolveLegacyToken } = require("./legacy-auth");
 
 const setEnvironmentConfig = async (on, config) => {
-    // setting page paths
-    config.searchUrl = "search"
-    config.personUrl = "person"
-    config.personCommentsUrl = "comment/person"
-    config.tenureCommentsUrl="comment/tenure"
-    config.propertyCommentsUrl="comment/property"
-    config.startSoleToJointProcessUrl="processes/soletojoint/start/tenure"
-    config.alertPreviewUrl="cautionary-alerts/alert"
-    config.relatedAssetUrl="property/related"
-    config.tenureUrl = "tenure"
-    config.property = "property"
-    
-    // Set baseUrl and gssoTestKey based on environment
-    const environment = config.env.ENVIRONMENT
-    let rootUrl = "http://local.hackney.gov.uk"
-    let rootComponentPort = "9000"
-    let gssoTestKey = config.env.E2E_ACCESS_TOKEN_LOCAL
-    let baseUrl = `${rootUrl}:${rootComponentPort}`
+  // setting page paths
+  config.searchUrl = "search";
+  config.personUrl = "person";
+  config.personCommentsUrl = "comment/person";
+  config.tenureCommentsUrl = "comment/tenure";
+  config.propertyCommentsUrl = "comment/property";
+  config.startSoleToJointProcessUrl = "processes/soletojoint/start/tenure";
+  config.alertPreviewUrl = "cautionary-alerts/alert";
+  config.relatedAssetUrl = "property/related";
+  config.tenureUrl = "tenure";
+  config.property = "property";
 
-    // WIP - will be properly refined upon integrating this with the last environment.
-    // For now, only 1 environment is configured with cognito, and even then we want legacy
-    // flow to remain primary until more flake gets shed from cognito flow.
-    const isCognitoFlow = cognitoFlowEnabled(config.env);
+  const environment = config.env.ENVIRONMENT;
+  const isCognitoFlow = cognitoFlowEnabled(config.env);
+  // Use CYPRESS_E2E_BASE_URL (not reserved CYPRESS_BASE_URL) so the value lands in
+  // config.env, then copy it onto Cypress config.baseUrl for cy.visit / cy.request.
+  const baseUrl = config.env.E2E_BASE_URL;
 
-    console.log(`Tests are running using the ${isCognitoFlow ? "Cognito" : "Legacy"} flow.`);
+  if (!baseUrl) {
+    throw new Error(
+      "E2E_BASE_URL is required. Set CYPRESS_E2E_BASE_URL (e.g. via setEnv.sh / SSM e2e-base-url).",
+    );
+  }
 
-    if (environment === 'development') {
-        baseUrl = "https://manage-my-home-development.hackney.gov.uk";
-        gssoTestKey = isCognitoFlow
-            ? await fetchCognitoToken(config.env)
-            : config.env.E2E_ACCESS_TOKEN_DEVELOPMENT || config.env.E2E_ACCESS_TOKEN_DEV;
-    } else if (environment === 'staging') {
-        baseUrl = "https://manage-my-home-staging.hackney.gov.uk"
-        gssoTestKey = config.env.E2E_ACCESS_TOKEN_STAGING
-    } else if (environment === 'production') {
-        baseUrl = "https://manage-my-home.hackney.gov.uk"
-        gssoTestKey = config.env.E2E_ACCESS_TOKEN_PRODUCTION
-    }
+  console.log(
+    `Tests are running using the ${isCognitoFlow ? "Cognito" : "Legacy"} flow.`,
+  );
 
-    config.baseUrl = baseUrl
-    config.gssoTestKey = gssoTestKey
-    config.isCognitoFlow = isCognitoFlow;
+  config.baseUrl = baseUrl;
+  config.gssoTestKey = isCognitoFlow
+    ? await fetchCognitoToken(config.env)
+    : resolveLegacyToken(config.env, environment);
+  config.isCognitoFlow = isCognitoFlow;
 
-    return config
-}
+  return config;
+};
 
 module.exports = {
-    setEnvironmentConfig
-} 
+  setEnvironmentConfig,
+};
