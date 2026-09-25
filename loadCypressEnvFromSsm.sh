@@ -75,7 +75,8 @@ load_cypress_env_from_ssm() {
         return 1
       fi
     fi
-    printf -v "$var" '%s' "$value"
+    # Avoid bash-only `printf -v` so this works when sourced from zsh.
+    eval "$var=\$value"
     export "$var"
   done
 

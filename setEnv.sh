@@ -2,7 +2,15 @@
 
 PROFILE=$1
 STAGE=$2
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Resolve this file's directory when sourced from bash or zsh (macOS default).
+# zsh's ${(%):-%x} is inside eval so bash 3.2 never parses it.
+if [ -n "${BASH_SOURCE[0]:-}" ]; then
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+elif [ -n "${ZSH_VERSION:-}" ]; then
+  eval 'SCRIPT_DIR="$(cd "$(dirname "${(%):-%x}")" && pwd)"'
+else
+  SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+fi
 
 # Require both values because AWS profile names are user-defined.
 if [ -z "$PROFILE" ] || [ -z "$STAGE" ]; then

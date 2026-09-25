@@ -1,9 +1,25 @@
 #!/bin/bash
 
+# Portable helpers: ${var^^} is Bash 4+ (not macOS /bin/bash 3.2, not zsh).
+# ${!var} indirect expansion is Bash-only (zsh uses ${(P)var}).
+_to_upper() {
+  printf '%s' "$1" | tr '[:lower:]' '[:upper:]'
+}
+
+_value_of() {
+  # shellcheck disable=SC1083
+  eval "printf '%s' \"\${$1-}\""
+}
+
+_truncate() {
+  printf '%s' "$1" | cut -c1-"$2"
+}
+
 # Print a masked preview of a variable value for verification output.
 _preview_value() {
   local var="$1"
-  local value="${!var}"
+  local value
+  value="$(_value_of "$var")"
 
   case "$var" in
     *PASSWORD*|*SECRET*|*SESSION_TOKEN*|*ACCESS_TOKEN*)
@@ -13,13 +29,13 @@ _preview_value() {
       ;;
     CYPRESS_AWS_ACCESS_KEY_ID)
       if [ -n "$value" ]; then
-        echo "${value:0:8}..."
+        echo "$(_truncate "$value" 8)..."
       fi
       ;;
     CYPRESS_*_ENDPOINT)
       if [ -n "$value" ]; then
         if [ "${#value}" -gt 48 ]; then
-          echo "${value:0:48}..."
+          echo "$(_truncate "$value" 48)..."
         else
           echo "$value"
         fi
@@ -41,8 +57,8 @@ _has_legacy_token() {
   local environment="${CYPRESS_ENVIRONMENT:-}"
   [ -z "$environment" ] && return 1
   # Matches LEGACY_TOKEN_KEYS in cypress/plugins/legacy-auth.js
-  local var="CYPRESS_E2E_ACCESS_TOKEN_${environment^^}"
-  [ -n "${!var}" ]
+  local var="CYPRESS_E2E_ACCESS_TOKEN_$(_to_upper "$environment")"
+  [ -n "$(_value_of "$var")" ]
 }
 
 verify_cypress_env() {
@@ -80,7 +96,7 @@ verify_cypress_env() {
   echo "Verifying environment variables..."
 
   for var in "${required_vars[@]}"; do
-    if [ -z "${!var}" ]; then
+    if [ -z "$(_value_of "$var")" ]; then
       printf "MISSING  %-36s\n" "$var"
       missing=$((missing + 1))
     else
@@ -94,7 +110,7 @@ verify_cypress_env() {
       printf "OK       %-36s %s\n" "legacy auth token" "(set)"
     else
       printf "MISSING  %-36s\n" "legacy auth token"
-      echo "         Set CYPRESS_E2E_ACCESS_TOKEN_${CYPRESS_ENVIRONMENT^^}"
+      echo "         Set CYPRESS_E2E_ACCESS_TOKEN_$(_to_upper "${CYPRESS_ENVIRONMENT}")"
       missing=$((missing + 1))
     fi
   fi
@@ -111,7 +127,7 @@ verify_cypress_env() {
   return 0
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+if [ -n "${BASH_VERSION:-}" ] && [ "${BASH_SOURCE[0]}" = "$0" ]; then
   verify_cypress_env
   exit $?
 fi
