@@ -5,7 +5,7 @@ variable "environment" {
 }
 
 variable "apis_aws_profile" {
-  description = "AWS profile name for APIs account. Must much CircleCi configuration."
+  description = "AWS profile name for APIs account. Must match CircleCi configuration."
   type        = string
   default     = "apis"
 }
