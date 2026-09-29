@@ -1,41 +1,29 @@
 const axios = require("axios");
-const { fetchCognitoToken } = require("./cognito-helper");
 
 const fetchFeatureToggleConfiguration = async (config) => {
-  const env = config.env;
-  let token = env.E2E_ACCESS_TOKEN_LOCAL;
-  const featureToggleEndpoint = env.FEATURE_TOGGLE_ENDPOINT;
+  const featureToggleEndpoint = config.env.FEATURE_TOGGLE_ENDPOINT;
+  const token = config.gssoTestKey;
+  const url = `${featureToggleEndpoint}/api/v1/configuration?types=MMH`;
 
-  url = `${featureToggleEndpoint}/api/v1/configuration?types=MMH`;
-  console.log(`Checking feature toggle config at ${url}`)
-
-  if (env.ENVIRONMENT === "development") {
-    token = config.gssoTestKey;
-  }
-  else if (env.ENVIRONMENT === "staging") {
-    token = env.E2E_ACCESS_TOKEN_STAGING;
-  }
-  else if (env.ENVIRONMENT === "production") {
-    token = env.E2E_ACCESS_TOKEN_PRODUCTION;
-  }
+  console.log(`Checking feature toggle config at ${url}`);
 
   const response = await axios.get(encodeURI(url), {
     headers: {
       Authorization: `Bearer ${token}`,
-      "x-hackney-user": token
+      "x-hackney-user": token,
     },
   });
 
   let featureToggleStore = {};
 
-  response.data.forEach(({ type, ...config }) => {
+  response.data.forEach(({ type, ...toggleConfig }) => {
     featureToggleStore = {
       ...featureToggleStore,
-      [type]: { ...config },
+      [type]: { ...toggleConfig },
     };
   });
 
-  console.log('Current feature toggle config is set to:', featureToggleStore)
+  console.log("Current feature toggle config is set to:", featureToggleStore);
   return featureToggleStore;
 };
 

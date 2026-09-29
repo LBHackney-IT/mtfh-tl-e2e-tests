@@ -19,16 +19,15 @@ try {
 
 Cypress.Commands.add('login', () => {
   const gssoTestKey = Cypress.config("gssoTestKey");
-  const isCognitoFlow = Cypress.config("isCognitoFlow");
-  const cookieName = isCognitoFlow ? "hackneyCognitoToken" : "hackneyToken";
+  const cookieName = Cypress.config("isCognitoFlow")
+    ? "hackneyCognitoToken"
+    : "hackneyToken";
+
   cy.getCookies().should('be.empty');
-  cy.setCookie(cookieName, gssoTestKey);
+  cy.setCookie(cookieName, gssoTestKey, { path: "/" });
   cy.getCookie(cookieName).should('have.property', 'value', gssoTestKey);
   cy.log(Cypress.config("featureToggles"));
-  window.localStorage.setItem(
-    "features",
-    JSON.stringify(Cypress.config("featureToggles"))
-  );
+  // Feature toggles are seeded into the AUT in the visit overwrite (onBeforeLoad).
 });
 
 Cypress.Commands.add('logout', () => {
